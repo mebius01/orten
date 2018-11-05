@@ -35,6 +35,10 @@ class Category(models.Model):
 	def __str__(self):
 		return self.name
 
+	def get_absolute_url(self):
+		return reverse('shop:product_list_by_category', args=[self.slug])
+
+
 class Product(models.Model):
 	category = models.ForeignKey(Category, on_delete=models.CASCADE) #коталог продукта связь m2m
 	name = models.CharField(max_length=400, db_index=True) #имя продукта
@@ -73,6 +77,9 @@ class Product(models.Model):
 
 	def __str__(self):
 		return self.name
+
+	def get_absolute_url(self):
+		return reverse('shop:product_detail', args=[self.id, self.slug])
 
 
 class Services(models.Model):
