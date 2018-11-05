@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product, Services, Rates
+from .models import Category, Product, Services, Rates, ProductStock
 
 # Register your models here.
 
@@ -25,7 +25,13 @@ class ServicesAdmin(admin.ModelAdmin):
 	list_filter = ['name', 'price_retail']
 	prepopulated_fields = {'slug': ('name',)}
 
+class ProductStockAdmin(admin.ModelAdmin):
+	list_display = ['id', 'stock_start', 'stock_end', 'product', 'slug', 'available', 'description',]
+	list_filter = ['stock_start', 'stock_end', 'product',]
+	prepopulated_fields = {'slug': ('product',)}
+
 admin.site.register(Category, CategoryAdmin,)
 admin.site.register(Product, ProductAdmin,)
 admin.site.register(Services, ServicesAdmin,)
 admin.site.register(Rates, RatesAdmin,)
+admin.site.register(ProductStock, ProductStockAdmin,)

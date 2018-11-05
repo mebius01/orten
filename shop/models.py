@@ -52,6 +52,7 @@ class Product(models.Model):
 	available = models.BooleanField(default=True) # булево значение, указывающее, доступен ли продукт или нет
 	created = models.DateTimeField(auto_now_add=True) # дата создания
 	updated = models.DateTimeField(auto_now=True) #дата обновления
+
 	
 	# @classmethod
 	# def price_uah(cls, price):
@@ -73,6 +74,7 @@ class Product(models.Model):
 	def __str__(self):
 		return self.name
 
+
 class Services(models.Model):
 	category = models.ForeignKey(Category, on_delete=models.CASCADE) #коталог продукта связь m2m
 	name = models.CharField(max_length=400, db_index=True) #имя продукта
@@ -93,7 +95,22 @@ class Services(models.Model):
 
 	def __str__(self):
 		return self.name
-	
+
+
+class ProductStock(models.Model):
+	product = models.ForeignKey(Product, on_delete=models.CASCADE)
+	available = models.BooleanField(default=True)
+	slug = models.SlugField(max_length=400, db_index=True)	
+	description = models.TextField(blank=True) #описание акции
+	stock_start = models.DateTimeField(auto_now=False, auto_now_add=False,) # дата создания
+	stock_end = models.DateTimeField(auto_now=False, auto_now_add=False,) # дата окончания
+
+	class Meta:
+		ordering = ('product',)
+		verbose_name = 'Акция'
+		verbose_name_plural = 'Акции'
+
+
 
 class Order(models.Model): #сведений о клиенте
 	first_name = models.CharField(max_length=50)
