@@ -2,6 +2,8 @@ from django.db import models
 from django.db.models import F
 # Create your models here.
 
+from mptt.models import MPTTModel, TreeForeignKey
+
 CURRENCY_CHOICES = (
 	('eur','EUR'),
 	('usd','USD'),
@@ -23,6 +25,39 @@ class Rates(models.Model): #курс валют
 	eur = models.DecimalField(max_digits=10, decimal_places=2, blank=True)
 
 
+class Genre(MPTTModel):
+	name = models.CharField(max_length=50, unique=True)
+	slug = models.SlugField(max_length=200, db_index=True, unique=True)
+	parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
+
+	class Meta:
+		ordering = ('name',)
+		verbose_name = 'КатегорияMPTTModel'
+		verbose_name_plural = 'КатегорииMPTTModel'
+
+	class MPTTMeta:
+		order_insertion_by = ['name']
+
+	def dep_tree(self):
+		return str(self.get_ancestors())
+
+	def get_products(self):
+		return self.product_set.all()
+
+	def get_slug_list(self):
+		try:
+			ancestors = self.get_ancestors(include_self=True)
+		except:
+			ancestors = []
+		else:
+			ancestors = [ i.slug for i in ancestors]
+		slugs = []
+		for i in range(len(ancestors)):
+			slugs.append('/'.join(ancestors[:i+1]))
+		return slugs
+	def __str__(self):
+		return self.name
+
 class Category(models.Model):
 	name = models.CharField(max_length=200, db_index=True)
 	slug = models.SlugField(max_length=200, db_index=True, unique=True)
@@ -42,7 +77,7 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-	category = models.ForeignKey(Category, on_delete=models.CASCADE) #коталог продукта связь m2m
+	category = models.ForeignKey(Genre, on_delete=models.CASCADE) #коталог продукта связь m2m
 	name = models.CharField(max_length=400, db_index=True) #имя продукта
 	vendor_code = models.CharField(max_length=200, db_index=True) #артикул или парт-номер
 	slug = models.SlugField(max_length=400, db_index=True)

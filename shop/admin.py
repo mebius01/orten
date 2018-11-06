@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Category, Product, Services, Rates, ProductStock
+from .models import Category, Product, Services, Rates, ProductStock, Genre
+from mptt.admin import MPTTModelAdmin
 
 # Register your models here.
 
@@ -10,7 +11,9 @@ class RatesAdmin(admin.ModelAdmin):
 class CategoryAdmin(admin.ModelAdmin):
 	list_display = ['name', 'slug']
 	prepopulated_fields = {'slug': ('name',)}
-
+class GenreAdmin(admin.ModelAdmin):
+	list_display = ['name', 'slug']
+	prepopulated_fields = {'slug': ('name',)}
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -35,3 +38,4 @@ admin.site.register(Product, ProductAdmin,)
 admin.site.register(Services, ServicesAdmin,)
 admin.site.register(Rates, RatesAdmin,)
 admin.site.register(ProductStock, ProductStockAdmin,)
+admin.site.register(Genre, MPTTModelAdmin)
