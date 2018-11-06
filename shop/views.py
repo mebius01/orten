@@ -1,8 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from shop.models import Category, Product
 # Create your views here.
-def base(request):
-	return render(request, 'base.html')
+
 
 def product_list(request, category_slug=None):
 	category = None
