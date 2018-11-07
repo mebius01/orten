@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product, Services, Rates, ProductStock, Genre
+from .models import Category, Product, Services, Rates, ProductStock
 from mptt.admin import MPTTModelAdmin
 
 # Register your models here.
@@ -8,12 +8,12 @@ class RatesAdmin(admin.ModelAdmin):
 	list_display = ['id', 'usd', 'eur',]
 	list_editable = ['usd', 'eur']
 
-class CategoryAdmin(admin.ModelAdmin):
-	list_display = ['name', 'slug']
+class CategoryAdmin(MPTTModelAdmin):
 	prepopulated_fields = {'slug': ('name',)}
-class GenreAdmin(admin.ModelAdmin):
-	list_display = ['name', 'slug']
-	prepopulated_fields = {'slug': ('name',)}
+	mptt_level_indent = 30
+# class GenreAdmin(admin.ModelAdmin):
+# 	list_display = ['name', 'slug']
+# 	prepopulated_fields = {'slug': ('name',)}
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -38,4 +38,3 @@ admin.site.register(Product, ProductAdmin,)
 admin.site.register(Services, ServicesAdmin,)
 admin.site.register(Rates, RatesAdmin,)
 admin.site.register(ProductStock, ProductStockAdmin,)
-admin.site.register(Genre, MPTTModelAdmin)

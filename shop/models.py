@@ -25,24 +25,22 @@ class Rates(models.Model): #курс валют
 	eur = models.DecimalField(max_digits=10, decimal_places=2, blank=True)
 
 
-class Genre(MPTTModel):
+class Category(MPTTModel):
 	name = models.CharField(max_length=50, unique=True)
 	slug = models.SlugField(max_length=200, db_index=True, unique=True)
+	image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
+	description = models.TextField(blank=True) #описание Категории
 	parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
 
+	# class MPTTMeta:
+	# 	order_insertion_by = ['name']
+
 	class Meta:
+		unique_together = (('parent', 'slug',))
 		ordering = ('name',)
-		verbose_name = 'КатегорияMPTTModel'
-		verbose_name_plural = 'КатегорииMPTTModel'
+		verbose_name = 'Категория'
+		verbose_name_plural = 'Категории'
 
-	class MPTTMeta:
-		order_insertion_by = ['name']
-
-	def dep_tree(self):
-		return str(self.get_ancestors())
-
-	def get_products(self):
-		return self.product_set.all()
 
 	def get_slug_list(self):
 		try:
@@ -55,29 +53,30 @@ class Genre(MPTTModel):
 		for i in range(len(ancestors)):
 			slugs.append('/'.join(ancestors[:i+1]))
 		return slugs
+	
 	def __str__(self):
 		return self.name
 
-class Category(models.Model):
-	name = models.CharField(max_length=200, db_index=True)
-	slug = models.SlugField(max_length=200, db_index=True, unique=True)
+# class Category(models.Model):
+# 	name = models.CharField(max_length=200, db_index=True)
+# 	slug = models.SlugField(max_length=200, db_index=True, unique=True)
 
-	class Meta:
-		ordering = ('name',)
-		verbose_name = 'Категория'
-		verbose_name_plural = 'Категории'
+# 	class Meta:
+# 		ordering = ('name',)
+# 		verbose_name = 'Категория'
+# 		verbose_name_plural = 'Категории'
 
-	def __str__(self):
-		return self.name
+# 	def __str__(self):
+# 		return self.name
 
-	def get_absolute_url(self):
-		from django.urls import reverse
-		return reverse('shop:product_list_by_category', args=[str(self.slug)])
+# 	def get_absolute_url(self):
+# 		from django.urls import reverse
+# 		return reverse('shop:product_list_by_category', args=[str(self.slug)])
 
 
 
 class Product(models.Model):
-	category = models.ForeignKey(Genre, on_delete=models.CASCADE) #коталог продукта связь m2m
+	category = models.ForeignKey(Category, on_delete=models.CASCADE) #коталог продукта связь m2m
 	name = models.CharField(max_length=400, db_index=True) #имя продукта
 	vendor_code = models.CharField(max_length=200, db_index=True) #артикул или парт-номер
 	slug = models.SlugField(max_length=400, db_index=True)
