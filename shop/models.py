@@ -57,22 +57,6 @@ class Category(MPTTModel):
 	def __str__(self):
 		return self.name
 
-# class Category(models.Model):
-# 	name = models.CharField(max_length=200, db_index=True)
-# 	slug = models.SlugField(max_length=200, db_index=True, unique=True)
-
-# 	class Meta:
-# 		ordering = ('name',)
-# 		verbose_name = 'Категория'
-# 		verbose_name_plural = 'Категории'
-
-# 	def __str__(self):
-# 		return self.name
-
-# 	def get_absolute_url(self):
-# 		from django.urls import reverse
-# 		return reverse('shop:product_list_by_category', args=[str(self.slug)])
-
 
 
 class Product(models.Model):
