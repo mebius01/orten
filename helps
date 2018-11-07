@@ -1,0 +1,65 @@
+>>> Product.objects.get(id=1).price_purchase
+Decimal('58.00')
+
+>>> Product.objects.get(id=1).price_retail
+Decimal('0.00')
+
+>>> Rates.objects.get(id=1).usd
+Decimal('28.46')
+
+>>> Product.objects.get(id=1).interest
+Decimal('0.00')
+
+------------------
+
+http://content.finance.ua/ru/xml/currency-cash  rкурс валют JSON XML
+
+------------------
+
+https://all-service.com.ua/catalog/
+На главную / Интернет-магазин
+
+https://all-service.com.ua/catalog/1027-orgtehnika/
+На главную / Интернет-магазин / Оргтехника
+
+https://all-service.com.ua/catalog/1027-orgtehnika/1290-printer-i-mfu/
+На главную / Интернет-магазин / Оргтехника / Принтер и МФУ
+
+https://all-service.com.ua/catalog/1027-orgtehnika/1290-printer-i-mfu/280715-a4-hp-dj-ink-advantage-2136-f5s33c.html
+На главную / Интернет-магазин / Оргтехника / Принтер и МФУ / МФУ A4 HP DJ Ink Advantage 2136 (F5S33C)
+
+
+https://all-service.com.ua/catalog/5377-uslugi/
+На главную / Интернет-магазин / Услуги
+
+https://all-service.com.ua/catalog/5377-uslugi/5721-remont-printerov-i-mfu/
+На главную / Интернет-магазин / Услуги / Ремонт принтеров и МФУ
+
+https://all-service.com.ua/catalog/5377-uslugi/5721-remont-printerov-i-mfu/131605-.html
+На главную / Интернет-магазин / Услуги / Ремонт принтеров и МФУ / Замена термопленки принтера и мфу
+
+http://127.0.0.1:8000/shop/  ==  https://all-service.com.ua/catalog/
+
+Инструменты:
+импорт csv в модель django  https://django-adaptors.readthedocs.io/en/latest/
+Древовидные структуры данных в Django  https://proft.me/2010/09/7/drevovidnye-struktury-dannyh-v-django/
+Как начать Django проект, который можно масштабировать https://apirobot.me/posts/how-to-start-django-project-that-scales#%D0%B7%D0%B0%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\
+
+
+
