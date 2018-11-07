@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from shop.models import Category, Product
 # Create your views here.
 
-def show_category(request, hierarchy= None):
+def category(request, hierarchy=None):
 	category_slug = hierarchy.split('/')
 	parent = None
 	category = Category.objects.all()
