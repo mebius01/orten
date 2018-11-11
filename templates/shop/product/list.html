@@ -1,34 +1,51 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block title %}
     {% if category %}{{ category.name }}{% else %}Products{% endif %}
 {% endblock %}
 {% block content %}
-    <div id="sidebar">
-        <h3>Categories</h3>
-        <ul>
-            <li {% if not category %}class="selected"{% endif %}>
-              
-            </li>
-            {% for c in categories %}
-                <li>
-               <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
-    <div id="main" class="product-list">
-        <h1>{% if category %}{{ category.name }}{% else %}Products{% endif %}</h1>
-        {% for product in products %}
-            <div class="item">
-                <a href="{{ product.get_absolute_url }}">
-                    <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/image.png" %}{% endif %}">
-                </a>
-                <a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br>
-                <h2>{{ product.price_retail }}</h2>
-                <h1>{{product.vendor_code}}</h1>
-                {{product.description}}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+{% for product in products %}
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail" >
+                    <h4 class="text-center"><span class="label label-info">{{ product.vendor_code }}</span></h4>
+
+                    <img src="{% if product.image %}{{ product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" width="189" height="255" alt="lorem">
+
+                    <div class="caption">
+                        <div class="row">
+                            <div class="col-md-6 col-xs-6">
+
+                                <h3>{{ product.name }}</h3>
+
+                            </div>
+                            <div class="col-md-6 col-xs-6 price">
+
+                                <h3><label>{{ product.price_purchase }}</label></h3>
+
+                            </div>
+                        </div>
+                        <p>{{product.description}}</p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a class="btn btn-primary btn-product"><span class="glyphicon glyphicon-thumbs-up"></span> Like</a> 
+                            </div>
+                            <div class="col-md-6">
+                                <a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</a></div>
+                        </div>
+
+                        <p> </p>
+                    </div>
+                </div>
             </div>
-        {% endfor %}
+{% endfor %}
+
+        </div>
     </div>
+</div>
+
 {% endblock %}
