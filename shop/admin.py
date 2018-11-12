@@ -17,7 +17,7 @@ class CategoryAdmin(MPTTModelAdmin):
 
 
 class ProductAdmin(admin.ModelAdmin):
-	list_display = ['name', 'slug', 'price_purchase', 'currency', 'interest', 'price_retail',  'stock', 'available', 'created', 'updated']
+	list_display = ['name', 'slug', 'saler', 'price_purchase', 'price_uah', 'currency', 'interest', 'price_retail',  'stock', 'available', 'created', 'updated']
 	list_filter = ['available', 'created', 'updated']
 	list_editable = ['price_purchase', 'currency', 'interest', 'price_retail', 'stock', 'available']
 	prepopulated_fields = {'slug': ('name',)}

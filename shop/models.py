@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import F
+from decimal import *
 # Create your models here.
 
 from mptt.models import MPTTModel, TreeForeignKey
@@ -7,14 +8,24 @@ from mptt.models import MPTTModel, TreeForeignKey
 CURRENCY_CHOICES = (
 	('eur','EUR'),
 	('usd','USD'),
-	('uah', 'UAH')
+	('uah', 'UAH'),
 	)
 
+SALER_CHOICES = (
+	('esko','esko'),
+	('softcom','softcom'),
+	('megateid', 'megateid'),
+	('baden', 'baden'),
+	('Konica', 'Konica'),
+
+	)
+
+
 INTEREST_CHOICES = (
-	(7,'7%'),
-	(15,'15%'),
-	(20,'20%'),
-	(25,'25%'),
+	(Decimal("0.07"), '7%'),
+	(Decimal("0.15"), '15%'),
+	(Decimal("0.20"), '20%'),
+	(Decimal("0.25"), '25%'),
 
 
 	)
@@ -62,6 +73,7 @@ class Category(MPTTModel):
 class Product(models.Model):
 	category = models.ForeignKey(Category, on_delete=models.CASCADE) #коталог продукта связь m2m
 	name = models.CharField(max_length=400, db_index=True) #имя продукта
+	saler =  models.CharField(max_length=25, choices=SALER_CHOICES, blank=True)
 	vendor_code = models.CharField(max_length=200, db_index=True) #артикул или парт-номер
 	slug = models.SlugField(max_length=400, db_index=True)
 	image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True) #картинка
@@ -69,7 +81,7 @@ class Product(models.Model):
 
 	currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES, blank=True) #валюта
 	price_purchase = models.DecimalField(max_digits=10, decimal_places=2, blank=True) #цена Закупки
-	interest = models.DecimalField(max_digits=5, decimal_places=2, blank=True) #Процент
+	interest = models.DecimalField(max_digits=5, decimal_places=2, blank=True, choices=INTEREST_CHOICES, null=True) #Процент
 	price_retail = models.DecimalField(max_digits=10, decimal_places=2, blank=True) #розничная цена
 
 	stock = models.PositiveIntegerField(blank=True) # Остатки
@@ -81,12 +93,35 @@ class Product(models.Model):
 	# @classmethod
 	# def price_uah(cls, price):
 	# 	p = cls(price=price*28)
-	# 	return p
-		
-	# def price_uah(self, price):
-	# 	self.price=float(self.price)
-	# 	return self.price*28.5
+# 	# 	return p
+# SALER_CHOICES = (
+# 	('esko','esko'),
+# 	('softcom','softcom'),
+# 	('megateid', 'megateid'),
+# 	('baden', 'baden'),
+# 	('Konica', 'Konica'),
 
+	@property
+	def price_uah(self):
+		rates_usd=float(Rates.objects.get(id=1).usd)
+		rates_eur=float(Rates.objects.get(id=1).eur)
+		self.price_purchase=float(self.price_purchase)
+		self.interest=float(self.interest)
+		if self.saler == 'softcom':
+			a = ((self.price_purchase*self.interest)+self.price_purchase)*rates_usd
+			return format(a, '.2f')
+		if self.saler == 'esko':
+			a = ((self.price_purchase*self.interest)+self.price_purchase)*rates_usd
+			return format(a, '.2f')
+		if self.saler == 'megateid':
+			a = ((self.price_purchase*self.interest)+self.price_purchase)*rates_usd
+			return format(a, '.2f')
+		if self.saler == 'Konica':
+			a = self.price_purchase*rates_eur
+			return format(a, '.2f')
+		if self.saler == 'baden':
+			a= self.price_purchase
+			return format(a, '.2f')
 
 	class Meta:
 		ordering = ('name',)
