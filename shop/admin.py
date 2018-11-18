@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Category, Product, Services, Rates, ProductStock
 from mptt.admin import MPTTModelAdmin
-
+from import_export.admin import ImportExportModelAdmin
 # Register your models here.
 
 class RatesAdmin(admin.ModelAdmin):
@@ -16,11 +16,11 @@ class CategoryAdmin(MPTTModelAdmin):
 # 	prepopulated_fields = {'slug': ('name',)}
 
 
-class ProductAdmin(admin.ModelAdmin):
-	list_display = ['name', 'slug', 'saler', 'price_purchase', 'price_uah', 'currency', 'interest', 'price_retail',  'stock', 'available', 'created', 'updated']
-	list_filter = ['available', 'created', 'updated']
-	list_editable = ['price_purchase', 'currency', 'interest', 'price_retail', 'stock', 'available']
-	prepopulated_fields = {'slug': ('name',)}
+# class ProductAdmin(admin.ModelAdmin):
+# 	list_display = ['name', 'slug', 'saler', 'price_purchase', 'price_uah', 'currency', 'interest', 'price_retail', 'stock', 'available', 'updated']
+# 	list_filter = ['available', 'created', 'updated']
+# 	list_editable = ['price_purchase', 'currency', 'interest', 'price_retail', 'stock', 'available']
+# 	prepopulated_fields = {'slug': ('name',)}
 
 
 class ServicesAdmin(admin.ModelAdmin):
@@ -32,6 +32,12 @@ class ProductStockAdmin(admin.ModelAdmin):
 	list_display = ['id', 'stock_start', 'stock_end', 'product', 'slug', 'available', 'description',]
 	list_filter = ['stock_start', 'stock_end', 'product',]
 	prepopulated_fields = {'slug': ('product',)}
+
+class ProductAdmin(ImportExportModelAdmin):
+	list_display = ['name', 'slug', 'saler', 'price_purchase', 'price_uah', 'currency', 'interest', 'price_retail', 'stock', 'available', 'updated']
+	list_filter = ['available', 'created', 'updated']
+	list_editable = ['price_purchase', 'currency', 'interest', 'price_retail', 'stock', 'available']
+	prepopulated_fields = {'slug': ('name',)}
 
 admin.site.register(Category, CategoryAdmin,)
 admin.site.register(Product, ProductAdmin,)
