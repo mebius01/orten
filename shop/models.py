@@ -4,6 +4,7 @@ from decimal import *
 # Create your models here.
 
 from mptt.models import MPTTModel, TreeForeignKey
+from taggit.managers import TaggableManager
 
 CURRENCY_CHOICES = (
 	('eur','EUR'),
@@ -43,8 +44,8 @@ class Category(MPTTModel):
 	description = models.TextField(blank=True) #описание Категории
 	parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
 
-	# class MPTTMeta:
-	# 	order_insertion_by = ['name']
+	class MPTTMeta:
+		order_insertion_by = ['name', 'slug']
 
 	class Meta:
 		unique_together = (('parent', 'slug',))
@@ -53,17 +54,8 @@ class Category(MPTTModel):
 		verbose_name_plural = 'Категории'
 
 
-	def get_slug_list(self):
-		try:
-			ancestors = self.get_ancestors(include_self=True)
-		except:
-			ancestors = []
-		else:
-			ancestors = [ i.slug for i in ancestors]
-		slugs = []
-		for i in range(len(ancestors)):
-			slugs.append('/'.join(ancestors[:i+1]))
-		return slugs
+	# def get_absolute_url(self):
+	# 	return reverse('product_list_by_category', args=[self.slug])
 	
 	def __str__(self):
 		return self.name
@@ -71,35 +63,28 @@ class Category(MPTTModel):
 
 
 class Product(models.Model):
-	category = models.ForeignKey(Category, on_delete=models.CASCADE) #коталог продукта связь m2m
-	name = models.CharField(max_length=400, db_index=True) #имя продукта
-	saler =  models.CharField(max_length=25, choices=SALER_CHOICES, blank=True)
-	vendor_code = models.CharField(max_length=200, db_index=True) #артикул или парт-номер
-	slug = models.SlugField(max_length=400, db_index=True)
-	image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True) #картинка
-	description = models.TextField(blank=True) #описание продукта
-
-	currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES, blank=True) #валюта
-	price_purchase = models.DecimalField(max_digits=10, decimal_places=2, blank=True) #цена Закупки
-	interest = models.DecimalField(max_digits=5, decimal_places=2, blank=True, choices=INTEREST_CHOICES, null=True) #Процент
-	price_retail = models.DecimalField(max_digits=10, decimal_places=2, blank=True) #розничная цена
-
-	stock = models.PositiveIntegerField(blank=True) # Остатки
-	available = models.BooleanField(default=True) # булево значение, указывающее, доступен ли продукт или нет
-	created = models.DateTimeField(auto_now_add=True) # дата создания
-	updated = models.DateTimeField(auto_now=True) #дата обновления
-
+	category = models.ForeignKey(Category, on_delete=models.CASCADE, help_text='Каталог товара (расходные материалы, компьютеры и комплетующие и т д)') #коталог продукта связь m2m
+	name = models.CharField(max_length=400, db_index=True, help_text='Название товара') #имя продукта
+	saler =  models.CharField(max_length=25, choices=SALER_CHOICES, blank=True, help_text='Поставщик')
+	vendor_code = models.CharField(max_length=200, db_index=True, help_text='Артикул, парт номер') #артикул или парт-номер
+	vendor = models.CharField(max_length=200, blank=True, help_text='Производитель') # Производитель
 	
-	# @classmethod
-	# def price_uah(cls, price):
-	# 	p = cls(price=price*28)
-# 	# 	return p
-# SALER_CHOICES = (
-# 	('esko','esko'),
-# 	('softcom','softcom'),
-# 	('megateid', 'megateid'),
-# 	('baden', 'baden'),
-# 	('Konica', 'Konica'),
+	slug = models.SlugField(max_length=400, help_text='')
+	
+	image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True, help_text='') #картинка
+	
+	keywords =  models.TextField(blank=True, help_text='Ключивые слова (тонер, материнская плата, пружина)')#краткое описание продукта
+	description = models.TextField(blank=True, help_text='Описание товара') #описание продукта
+	tags = TaggableManager(through=None, blank=True, help_text = 'Список тегов, разделенных запятыми')
+
+	currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES, blank=True, help_text='Валюта входа') #валюта
+	price_purchase = models.DecimalField(max_digits=10, decimal_places=2, blank=True, help_text='Цена входящая') #цена Закупки
+	interest = models.DecimalField(max_digits=5, decimal_places=2, blank=True, choices=INTEREST_CHOICES, null=True, help_text='Процент, накрутка') #Процент
+	
+	stock = models.PositiveIntegerField(blank=True, help_text='Остатоки') # Остатки
+	available = models.BooleanField(default=True, help_text='Доступен ли к заказу') # булево значение, указывающее, доступен ли продукт или нет
+	created = models.DateTimeField(auto_now_add=True, help_text='дата создания') # дата создания
+	updated = models.DateTimeField(auto_now=True, help_text='дата обновления') #дата обновления
 
 	@property
 	def price_uah(self):

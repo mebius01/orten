@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'shop',
     'mptt',
     'import_export',
+    'taggit',
 ]
 
 MIDDLEWARE = [
