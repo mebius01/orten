@@ -55,15 +55,27 @@ class Category(MPTTModel):
 		verbose_name = 'Категория'
 		verbose_name_plural = 'Категории'
 
-	def get_absolute_url(self):
-		url = "/%s/" % self.slug
-		page = self
-		while page.parent:
-			url = "/%s%s" % (page.parent.slug, url)
-			page = page.parent
-		return url
+	def get_slug_list(self):
+		try:
+			ancestors = self.get_ancestors(include_self=True)
+		except:
+			ancestors = []
+		else:
+			ancestors = [ i.slug for i in ancestors]
+			slugs = []
+		for i in range(len(ancestors)):
+			slugs.append('/'.join(ancestors[:i+1]))
+		return slugs
 
-		# return '/'.join([x['slug'] for x in self.get_ancestors(include_self=True).values()])
+	# def get_absolute_url(self):
+	# 	url = "/%s/" % self.slug
+	# 	page = self
+	# 	while page.parent:
+	# 		url = "/%s%s" % (page.parent.slug, url)
+	# 		page = page.parent
+	# 	return url
+	def get_absolute_url(self):
+		return '/'.join([x['slug'] for x in self.get_ancestors(include_self=True).values()])
 	# def get_absolute_url(self):
 	# 	return reverse('category', args=[self.slug])
 	

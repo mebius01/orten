@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load staticfiles %}
+{% load namify %}
 
 <html lang="en">
 <head>
@@ -101,6 +102,14 @@
   </div><!-- /.container-fluid -->
 </nav>
 
+<ul class="breadcrumbs">
+    <li><a href="shop/">Home</a></li>
+     
+    {% for i in instance.category.get_slug_list %}
+       <li><a href="/category/{{ i }}">{{ i | get_name }}</a></li>
+    {% endfor %}
+
+</ul>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
