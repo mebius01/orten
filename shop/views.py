@@ -24,7 +24,7 @@ def show_category(request,hierarchy= None):
 		instance = get_object_or_404(Product, slug = category_slug[-1])
 		return render(request, "shop/postDetail.html", {'instance':instance})
 	else:
-		return render(request, 'shop/categories.html', {'instance':instance})
+		return render(request, 'shop/categories.html', {'instance':instance, 'category': Category.objects.all()})
 
 
 def product_list(request, category_slug=None):

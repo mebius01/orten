@@ -105,9 +105,10 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/shop/category/">Home</a></li>
-    {% for i in instance.category.get_slug_list %}
+    {% for i in instance.get_slug_list %}
     <li class="breadcrumb-item"><a href="/shop/category/{{ i }}">{{ i | get_name }}</a></li>
     {% endfor %}
+    
   </ol>
 </nav>
 
