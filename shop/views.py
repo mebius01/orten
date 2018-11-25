@@ -9,6 +9,7 @@ def category(request):
 # 	if not page.get_absolute_url().strip('/') == full_slug:
 # 		raise Http404
 	return render(request, 'shop/list_category.html', {'category': Category.objects.all()})
+
 def show_category(request,hierarchy= None):
 	category_slug = hierarchy.split('/')
 	parent = None

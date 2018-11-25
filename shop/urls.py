@@ -26,11 +26,11 @@ urlpatterns = [
 	# path('', views.category_list, name='category_list'),
 	path('', views.product_list, name ='base'),
 	# path('<category_slug>/', views.product_list, name='product_list_by_category'),
-    path('<id>/<slug>/', views.product_detail, name='product_detail'),
+    # 
     path('category/', views.category, name ='category'),
     # path('category/<full_slug>/', views.category, name ='category'),
     re_path(r'^category/(?P<hierarchy>.+)/$', views.show_category, name='category'),
-
+    re_path(r'^category/(?P<hierarchy>.+)/(?P<slug>.+)/$', views.product_detail, name='product_detail'),
 
 
 

@@ -5,6 +5,7 @@
 {% block content %}
 <ul>
     {% recursetree category %}
+
         <li>
             <a href="{{ node.get_absolute_url }}">{{ node.name }}</a>
             {% if not node.is_leaf_node %}
@@ -13,6 +14,15 @@
                 </ul>
             {% endif %}
         </li>
+    {% for ii in node.get_ancestors %}
+    {{ii}}
+    {{node.name}}
+    {%endfor%}
     {% endrecursetree %}
 </ul>
+
+
+
+
+
 {% endblock %}
