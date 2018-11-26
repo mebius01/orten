@@ -1,18 +1,17 @@
 {% extends 'base.html' %}
 {% load static  %}
-
 {% load mptt_tags %}
 {% block head_title %} {{ instance.name }} {% endblock %}
-
 {% block content %}
 
-<br>
 <div class="text-center"><h2>{{instance.name}}</h2></div>
+
 {% for it in instance.get_ancestors %}
 <a href="/shop/category/{{it.get_absolute_url}}">{{ it.name }}</a>
 {%endfor%}
  <a href="/shop/category/{{instance.get_absolute_url}}">{{ instance.name }}</a>
 {% if  instance.children.all %}
+
     <h4>Sub Categories</h4>
 
     {% for i in instance.children.all %}

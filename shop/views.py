@@ -3,11 +3,6 @@ from shop.models import Category, Product
 # Create your views here.
 
 def category(request):
-# 	slugs = full_slug.split('/')
-# 	page_slug = slugs[-1]
-# 	page = get_object_or_404(Category ,slug=page_slug)
-# 	if not page.get_absolute_url().strip('/') == full_slug:
-# 		raise Http404
 	return render(request, 'shop/list_category.html', {'category': Category.objects.all()})
 
 def show_category(request,hierarchy= None):
@@ -24,7 +19,7 @@ def show_category(request,hierarchy= None):
 		instance = get_object_or_404(Product, slug = category_slug[-1])
 		return render(request, "shop/postDetail.html", {'instance':instance})
 	else:
-		return render(request, 'shop/categories.html', {'instance':instance, 'category': Category.objects.all()})
+		return render(request, 'shop/categories.html', {'instance':instance})
 
 
 def product_list(request, category_slug=None):
@@ -37,6 +32,6 @@ def product_list(request, category_slug=None):
 	return render(request, 'shop/product/list.html', {'category': category, 'categories': categories, 'products': products})
 
 
-def product_detail(request, id, slug):
-	product = get_object_or_404(Product, id=id, slug=slug, available=True)
+def product_detail(request, slug):
+	product = get_object_or_404(Product, slug=slug, available=True)
 	return render(request, 'shop/product_card.html',  {'product': product})

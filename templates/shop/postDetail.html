@@ -1,4 +1,13 @@
-{% extends 'base.html' %}
-{% load static  %}
-{% load namify %}
-
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    {% if category %}{{ category.title }}{% else %}Products{% endif %}
+{% endblock %}
+{% block content %}
+    <div class="product-detail">
+        <h1>{{ instance.name }}</h1>
+        <h2><a href="{{ category.get_absolute_url }}">{{ instance.name }}</a></h2>
+        <p class="price">{{ instance.price_purchase }}</p>
+        {{ instance.description|linebreaks }}
+    </div>
+{% endblock %}
