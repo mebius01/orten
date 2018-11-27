@@ -1,10 +1,31 @@
 {% extends "base.html" %}
 {% load static %}
+{% load mptt_tags %}
 {% block title %}
 {% if category %}{{ category.name }}{% else %}Products{% endif %}
 {% endblock %}
 {% block content %}
 <hr>
+
+---------------
+<ul>
+    {% recursetree categories %}
+    <li>
+        <a href="{{ node.get_absolute_url }}">{{ node.name }}</a>
+        {{ node.get_ancestors|tree_path:" > " }}
+        {% if not node.is_leaf_node %}
+        <ul class="children" {{node.slug}}>
+            {{ children }}
+        </ul>
+        {% endif %}
+    </li>
+    {% endrecursetree %}
+</ul>
+{{ categories | tree_path }}
+{% for it in categories.get_ancestors %}
+<a href="/shop/category/{{it.get_absolute_url}}">{{ it.name }}</a>
+{%endfor%}
+
 <table class="table table-bordered">
     <tr>
         <th>Фото</th>
