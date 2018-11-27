@@ -142,7 +142,7 @@ class Product(models.Model):
 
 	def get_absolute_url(self):
 		from django.urls import reverse
-		return reverse('shop:product_detail', args=[self.id, self.slug])
+		return reverse('shop:product_detail', self.slug)
 
 
 class Services(models.Model):

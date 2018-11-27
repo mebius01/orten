@@ -1,81 +1,50 @@
 {% extends "base.html" %}
 {% load static %}
 {% block title %}
-    {% if category %}{{ category.name }}{% else %}Products{% endif %}
+{% if category %}{{ category.name }}{% else %}Products{% endif %}
 {% endblock %}
-
 {% block content %}
-
-<table class="table table-hover">
-  <thead>
+<hr>
+<table class="table table-bordered">
     <tr>
-      <th>#</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
+        <th>Фото</th>
+        <th>Бренд</th>
+        <th>Название</th>
+        <th>Артикул</th>
+        <th>Нали- чие</th>
+        <th>Цена</th>
+        <th>В корзину</th>
+        <th></th>
     </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-{% for product in products %}
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail" >
-                    <h4 class="text-center"><span class="label label-info">{{ product.vendor_code }}</span></h4>
+        {% for product in products %}
+    <tr id="">
+        <td>
+            <a class="item_img"><img src="{% if product.image %}{{ product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt="lorem">
+        </td>
+            <td>
+            {{ product.vendor }}
+        </td>
+            <td>
+                <a href="{{product.category.slug}}/{{product.slug}}" id="name">{{ product.name }}
+        </td>
+            <td>
+            {{ product.vendor_code }}
+        </td>
+            <td>
+                <img src="{% static "img/existence_1.png" %}">
+        </td>
+            <td>
+                {{ product.price_uah }}
+        </td>
+            <td>
+              <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
+                  <span class="glyphicon glyphicon-minus"></span>
+              </button>
+        </td>
+            <td>
+              <img src="{% static "img/litlebasket.png" %}">
+        </td>
 
-                    <img src="{% if product.image %}{{ product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" width="189" height="255" alt="lorem">
-
-                    <div class="caption">
-                        <div class="row">
-                            <div class="col-md-6 col-xs-6">
-
-                                <h3>{{ product.name }}</h3>
-
-                            </div>
-                            <div class="col-md-6 col-xs-6 price">
-
-                                <p>price_purchase = {{ product.price_purchase }} usd</p>
-                                <p>price_uah = {{product.price_uah}} uha</p>
-                                
-
-                            </div>
-                        </div>
-                        <p>{{product.description}}</p>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <a class="btn btn-primary btn-product"><span class="glyphicon glyphicon-thumbs-up"></span> Like</a> 
-                            </div>
-                            <div class="col-md-6">
-                                <a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</a></div>
-                        </div>
-
-                        <p> </p>
-                    </div>
-                </div>
-            </div>
-{% endfor %}
-
-        </div>
-    </div>
-</div>
-{% endblock %}
+        </tr>
+            {% endfor %}
+    {% endblock %}

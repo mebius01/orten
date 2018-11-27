@@ -1,23 +1,17 @@
 {% extends 'base.html' %}
 {% load mptt_tags %}
-{% load static  %}
+{% load static %}
 {% block content %}
 <ul>
     {% recursetree category %}
-
-        <li>
-            <a href="{{ node.get_absolute_url }}">{{ node.name }}</a>
-            {% if not node.is_leaf_node %}
-                <ul class="children" {{node.slug}}>
-                    {{ children }}
-                </ul>
-            {% endif %}
-        </li>
+    <li>
+        <a href="{{ node.get_absolute_url }}">{{ node.name }}</a>
+        {% if not node.is_leaf_node %}
+        <ul class="children" {{node.slug}}>
+            {{ children }}
+        </ul>
+        {% endif %}
+    </li>
     {% endrecursetree %}
 </ul>
-
-
-
-
-
 {% endblock %}
