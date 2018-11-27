@@ -4,16 +4,12 @@
     {% if category %}{{ category.title }}{% else %}Products{% endif %}
 {% endblock %}
 {% block content %}
-<div class="container-fluid">
-				<div class="col-md-12">
-					<div class="product col-md-3 service-image-left">
-					
-					<div class="container service1-items col-sm-2 col-md-2 pull-left">
-						<center>
-							<img src="{% if instance.image %}{{ instance.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" width="255" height="255" alt="lorem">
-						</center>
-					</div>
-				</div>
+ <div class="container">
+        	<div class="row">
+               <div class="col-xs-4 item-photo">
+                    <img style="max-width:100%;" src="{% if instance.image %}{{ instance.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" />
+                </div>
+			
 					
 				<div class="col-md-7">
 					<div class="product-title">{{ instance.name }}</div>
@@ -70,5 +66,6 @@
 		</div>
 	</div>
 </div>
+
 
 {% endblock %}
