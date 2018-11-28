@@ -11,20 +11,16 @@
 <ul>
     {% recursetree categories %}
     <li>
-        <a href="{{ node.get_absolute_url }}">{{ node.name }}</a>
-        {{ node.get_ancestors|tree_path:" > " }}
+        <a href="category/{{ node.get_absolute_url }}">{{ node.name }}</a>
         {% if not node.is_leaf_node %}
         <ul class="children" {{node.slug}}>
             {{ children }}
         </ul>
         {% endif %}
     </li>
-    {% endrecursetree %}
+    
 </ul>
-{{ categories | tree_path }}
-{% for it in categories.get_ancestors %}
-<a href="/shop/category/{{it.get_absolute_url}}">{{ it.name }}</a>
-{%endfor%}
+
 
 <table class="table table-bordered">
     <tr>
@@ -46,7 +42,7 @@
             {{ product.vendor }}
         </td>
             <td>
-                <a href="{{product.category.slug}}/{{product.slug}}" id="name">{{ product.name }}
+                <a href="category/{{ node.get_absolute_url }}/{{product.slug}}" id="name">{{ product.name }}
         </td>
             <td>
             {{ product.vendor_code }}
@@ -68,4 +64,5 @@
 
         </tr>
             {% endfor %}
+        {% endrecursetree %}
     {% endblock %}
