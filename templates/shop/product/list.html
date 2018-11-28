@@ -2,25 +2,9 @@
 {% load static %}
 {% load mptt_tags %}
 {% block title %}
-{% if category %}{{ category.name }}{% else %}Products{% endif %}
 {% endblock %}
 {% block content %}
 <hr>
-
----------------
-<ul>
-    {% recursetree categories %}
-    <li>
-        <a href="category/{{ node.get_absolute_url }}">{{ node.name }}</a>
-        {% if not node.is_leaf_node %}
-        <ul class="children" {{node.slug}}>
-            {{ children }}
-        </ul>
-        {% endif %}
-    </li>
-    
-</ul>
-
 
 <table class="table table-bordered">
     <tr>
@@ -42,7 +26,8 @@
             {{ product.vendor }}
         </td>
             <td>
-                <a href="category/{{ node.get_absolute_url }}/{{product.slug}}" id="name">{{ product.name }}
+                <a href="category/{{ product.category.get_slug_list|last }}/{{product.slug}}" id="name">{{ product.name }}
+
         </td>
             <td>
             {{ product.vendor_code }}
@@ -64,5 +49,5 @@
 
         </tr>
             {% endfor %}
-        {% endrecursetree %}
+
     {% endblock %}

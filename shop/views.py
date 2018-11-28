@@ -9,15 +9,16 @@ def show_category(request,hierarchy= None):
 	category_slug = hierarchy.split('/')
 	parent = None
 	root = Category.objects.all()
-
 	for slug in category_slug[:-1]:
 		parent = root.get(parent=parent, slug = slug)
 
 	try:
 		instance = Category.objects.get(parent=parent, slug=category_slug[-1])
 	except:
-		instance = get_object_or_404(Product, slug = category_slug[-1])
-		return render(request, "shop/postDetail.html", {'instance':instance})
+		product = Product.objects.filter(slug=category_slug[-1])
+		instance = get_object_or_404(product, slug = category_slug[-1])
+		print(product, instance)
+		return render(request, "shop/postDetail.html", {'instance':instance, 'product': product})
 	else:
 		return render(request, 'shop/categories.html', {'instance':instance})
 
