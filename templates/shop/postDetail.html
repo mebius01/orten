@@ -5,7 +5,17 @@
 {% block content %}
 
 
-{{product.get.category}}
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/shop/category/">Категории</a></li>
+            {% for i in category.get_ancestors %}
+            <li class="breadcrumb-item"><a href="/shop/category/{{ i.get_absolute_url }}">{{ i.name }}</a></li>
+            {% endfor %}
+            <li class="breadcrumb-item"><a href="/shop/category/{{category.get.get_slug_list|last}}">{{category.get.name}}</a></li>
+            <li class="breadcrumb-item"></li>
+        </ol>
+    </nav>
+
 <div class="container">
     <div class="row">
         <div class="col-xs-4 item-photo">
