@@ -1,7 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}
-{% endblock %}
 {% block content %}
 
 <div class="container">
@@ -16,7 +14,7 @@
                 <hr>
                 <div class="product-price">{{ instance.price_uah }}</div>
                 <hr>
-                <div class="product-stock">In Stock</div>
+                <div class="product-stock">Доступен к заказу</div>
                 <hr>
                 <div class="btn-group cart">
                     <button type="button" class="btn btn-success">
@@ -54,4 +52,5 @@
 </div>
 </div>
 </div>
+
 {% endblock %}
