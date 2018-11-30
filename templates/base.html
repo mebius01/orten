@@ -132,17 +132,17 @@
             </div>
         </div>
     </nav>
+
+
     <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/shop/category/">Категории</a></li>
-            {% for i in instance.get_ancestors %}
+            {% for i in category.get_ancestors %}
             <li class="breadcrumb-item"><a href="/shop/category/{{ i.get_absolute_url }}">{{ i.name }}</a></li>
             {% endfor %}
-            <li class="breadcrumb-item">{{instance.name}}</li>
+            <li class="breadcrumb-item"><a href="/shop/category/{{category.get.get_slug_list|last}}">{{category.get.name}}</a></li>
         </ol>
     </nav>
-
-
 
 
     <!-- ------------------------------------Section 2 4 5 6 START-->
