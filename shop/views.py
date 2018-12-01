@@ -32,10 +32,10 @@ def show_category(request,hierarchy=None, tag_slug=None):
 		return render(request, 'shop/categories.html', {'instance':instance, 'category':category, 'tag':tag})
 		print(tag)
 
-def product_detail(request, product_slug):
-	instance = Product.objects.get(slug=product_slug)
-	category = Category.objects.all()
-	return render(request, 'shop/postDetail.html', {'instance':instance, 'category':category})
+# def product_detail(request, product_slug):
+# 	instance = Product.objects.get(slug=product_slug)
+# 	category = Category.objects.all()
+# 	return render(request, 'shop/postDetail.html', {'instance':instance, 'category':category})
 
 def product_list(request, tag_slug=None):
 	products = Product.objects.all()
