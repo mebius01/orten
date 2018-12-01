@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from shop.models import Category, Product
+
+from taggit.models import Tag
 # Create your views here.
 
 def category(request):
@@ -30,11 +32,17 @@ def show_category(request,hierarchy=None, tag_slug=None):
 		return render(request, 'shop/categories.html', {'instance':instance, 'category':category, 'tag':tag})
 		print(tag)
 
+def product_detail(request, product_slug):
+	instance = Product.objects.get(slug=product_slug)
+	category = Category.objects.all()
+	return render(request, 'shop/postDetail.html', {'instance':instance, 'category':category})
 
-def product_list(request):
-	categories = Category.objects.all()
-	products = Product.objects.filter(available=True)
-	return render(request, 'shop/product/list.html', {'categories': categories, 'products': products})
+def product_list(request, tag_slug=None):
+	products = Product.objects.all()
+	if tag_slug:
+		tag = get_object_or_404(Tag, slug=tag_slug)
+		products = products.filter(tags__in=[tag])
+	return render(request, 'shop/product/list.html', {'products': products})
 
 
 # def product_detail(request, slug):

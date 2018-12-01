@@ -140,10 +140,12 @@ class Product(models.Model):
 	def __str__(self):
 		return self.name
 
+	# def get_absolute_url(self):
+	# 	return (self.slug)
+	
 	def get_absolute_url(self):
-		from django.urls import reverse
-		return reverse('shop:product_detail', self.slug)
-
+		# slug_list = [self.category.get_absolute_url(), self.slug]
+		return (self.category.get_absolute_url()+'/'+self.slug)
 
 class Services(models.Model):
 	category = models.ForeignKey(Category, on_delete=models.CASCADE) #коталог продукта связь m2m
