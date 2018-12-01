@@ -8,15 +8,15 @@ def category(request):
 	list_category = Category.objects.all()
 	return render(request, 'shop/list_category.html', {'list_category': list_category})
 
-def show_category(request,hierarchy=None, tag_slug=None):
+def show_category(request,hierarchy=None, tag_id=None):
 	category_slug = hierarchy.split('/')
 
 	parent = None
 	root = Category.objects.all()
 	tag = None
 	
-	if tag_slug:
-		tag = get_object_or_404(Tag, slug=tag_slug)
+	if tag_id:
+		tag = get_object_or_404(Tag, slug=tag_id)
 		product_list_all = porduct_list_all.filter(tags__in=[tag])
 	print(tag)
 	for slug in category_slug[:-1]:
@@ -37,10 +37,10 @@ def show_category(request,hierarchy=None, tag_slug=None):
 # 	category = Category.objects.all()
 # 	return render(request, 'shop/postDetail.html', {'instance':instance, 'category':category})
 
-def product_list(request, tag_slug=None):
+def product_list(request, tag_id=None):
 	products = Product.objects.all()
-	if tag_slug:
-		tag = get_object_or_404(Tag, slug=tag_slug)
+	if tag_id:
+		tag = get_object_or_404(Tag, id=tag_id)
 		products = products.filter(tags__in=[tag])
 	return render(request, 'shop/product/list.html', {'products': products})
 
