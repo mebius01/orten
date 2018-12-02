@@ -1,50 +1,61 @@
 {% extends 'base.html' %}
-{% load static  %}
+{% load static %}
 {% load mptt_tags %}
 {% block head_title %} {{ instance.name }} {% endblock %}
 {% block content %}
-
 <div class="text-center"><h2>{{instance.name}}</h2></div>
 
-{% for it in instance.get_ancestors %}
-<a href="/shop/category/{{it.get_absolute_url}}">{{ it.name }}</a>
-{%endfor%}
- <a href="/shop/category/{{instance.get_absolute_url}}">{{ instance.name }}</a> ----
-{% if  instance.children.all %}
+{% if instance.children.all %}
 
-    <h4>Sub Categories</h4>
-
+<div class="container">
     {% for i in instance.children.all %}
-        <a href="{{ i.slug }}"> {{ i.name }} </a><br>
-    {% endfor %}
-
-    <br><hr>
-{% endif %}
+<hr>
 
 
+<div class="animated fadeIn subject-detail-card">
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="subject-cover-image">
+                <img class="card-img-top" src="{% if i.image %}{{ i.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" width="155" height="155" alt="lorem" class="leftimg" class="img-responsive" />
+                    </div>
+            </div>
+            <div class="col-sm-8">
+                <h4 class="card-title"><a href="{{ i.slug }}"> {{ i.name }} </a><br></h4>
+                <div class="subject-discription">
+                    <p class="card-text"> {{i.description | truncatewords_html:28 | safe}} </p>
+                </div>
+            </div>
+            <div class="text-center col-sm-2">
+                <button class="btn btn-default orange-circle-button" href="#">10 <br />Lactures<br /><span>Read more</span></button>
+            </div>
+        </div>
+    </div>
 
-
-{% if  instance.product.all %}
- {% for i in instance.product.all %}
-  <h4>Posts</h4>
-  <div class="row small-up-1 medium-up-3" >
-
-   <div class="column">
-    <a href="{{ i.slug }}">
-      <div class="card" style="width: 300px; border-color: black">
-         <div class="card-divider">
-           <strong>{{ i.title | truncatechars:30}}</strong>
-         </div>
-
-         <div class="card-section">
-          <small>{{ i.publish}} </small>
-          <p>{{ i.content | safe | truncatechars_html:120 }}</p>
-         </div>
-      </div>
-    </a>
-   </div>
 {% endfor %}
-
 {% endif %}
+
+
+
+{% if instance.product.all %}
+    {% for i in instance.product.all %}
+Здесь вывод продуктов для данной категории
+<h4>Posts</h4>
+<div class="row small-up-1 medium-up-3">
+    <div class="column">
+        <a href="{{ i.slug }}">
+<div class="card" style="width: 300px; border-color: black">
+ <div class="card-divider">
+   <strong>{{ i.title | truncatechars:30}}</strong>
+ </div>
+
+ <div class="card-section">
+  <small>{{ i.publish}} </small>
+  <p>{{ i.content | safe | truncatechars_html:120 }}</p>
+ </div>
+</div>
+</a>
+    </div>
+    {% endfor %}
+    {% endif %}
 </div>
 {% endblock %}

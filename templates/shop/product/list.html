@@ -5,6 +5,11 @@
 {% endblock %}
 {% block content %}
 <hr>
+Tags| <strong>
+{% for tag in produts.tags.all %}
+<a href="/shop/tag/{{tag.id}}"> {{ tag.name }}</a> |
+{% endfor %}
+</strong>
 
 <table class="table table-bordered">
     <tr>
