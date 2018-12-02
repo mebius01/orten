@@ -22,7 +22,7 @@
             <div class="col-sm-8">
                 <h4 class="card-title"><a href="{{ i.slug }}"> {{ i.name }} </a><br></h4>
                 <div class="subject-discription">
-                    <p class="card-text"> {{i.description | truncatewords_html:28 | safe}} </p>
+                    <p class="card-text"> {{i.description | truncatewords_html:58 | safe}} </p>
                 </div>
             </div>
             <div class="text-center col-sm-2">
@@ -35,27 +35,49 @@
 {% endif %}
 
 
+{% if products.all %}
+<table class="table table-bordered">
+    <tr>
+        <th>Фото</th>
+        <th>Бренд</th>
+        <th>Название</th>
+        <th>Артикул</th>
+        <th>Нали- чие</th>
+        <th>Цена</th>
+        <th>В корзину</th>
+        <th></th>
+    </tr>
+        {% for product in products %}
+    <tr id="">
+        <td>
+            <a class="item_img"><img src="{% if product.image %}{{ product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt="lorem">
+        </td>
+            <td>
+            {{ product.vendor }}
+        </td>
+            <td>
+                <a href="{% url 'shop:show_category' product.get_absolute_url%}" id="name">{{ product.name }}
 
-{% if instance.product.all %}
-    {% for i in instance.product.all %}
-Здесь вывод продуктов для данной категории
-<h4>Posts</h4>
-<div class="row small-up-1 medium-up-3">
-    <div class="column">
-        <a href="{{ i.slug }}">
-<div class="card" style="width: 300px; border-color: black">
- <div class="card-divider">
-   <strong>{{ i.title | truncatechars:30}}</strong>
- </div>
+        </td>
+            <td>
+            {{ product.vendor_code }}
+        </td>
+            <td>
+                <img src="{% static "img/existence_1.png" %}">
+        </td>
+            <td>
+                {{ product.price_uah }}
+        </td>
+            <td>
+              <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
+                  <span class="glyphicon glyphicon-minus"></span>
+              </button>
+        </td>
+            <td>
+              <img src="{% static "img/litlebasket.png" %}">
+        </td>
 
- <div class="card-section">
-  <small>{{ i.publish}} </small>
-  <p>{{ i.content | safe | truncatechars_html:120 }}</p>
- </div>
-</div>
-</a>
-    </div>
-    {% endfor %}
-    {% endif %}
-</div>
+        </tr>
+            {% endfor %}
+{% endif %}
 {% endblock %}

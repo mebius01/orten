@@ -28,9 +28,11 @@ def show_category(request,hierarchy=None, tag_id=None):
 		instance = get_object_or_404(Product, slug = category_slug[-1])
 		return render(request, "shop/postDetail.html", {'instance':instance, 'category':category, 'tag':tag})
 	else:
-		category = Category.objects.filter(slug=category_slug[-1])
-		return render(request, 'shop/categories.html', {'instance':instance, 'category':category, 'tag':tag})
-		print(tag)
+		category = Category.objects.get(slug=category_slug[-1])
+		products = Product.objects.filter(category=category)
+		print(products)
+		print(category)
+		return render(request, 'shop/categories.html', {'instance':instance, 'category':category, 'products': products})
 
 # def product_detail(request, product_slug):
 # 	instance = Product.objects.get(slug=product_slug)
