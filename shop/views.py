@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from shop.models import Category, Product
-
+from cart.forms import CartAddProductForm
 from taggit.models import Tag
 # Create your views here.
 
@@ -24,9 +24,10 @@ def show_category(request,hierarchy=None, tag_id=None):
 	try:
 		instance = Category.objects.get(parent=parent, slug=category_slug[-1])
 	except:
+		cart_product_form = CartAddProductForm()
 		category = Category.objects.filter(slug=category_slug[-2])
 		instance = get_object_or_404(Product, slug = category_slug[-1])
-		return render(request, "shop/postDetail.html", {'instance':instance, 'category':category, 'tag':tag})
+		return render(request, "shop/postDetail.html", {'instance':instance, 'category':category, 'tag':tag, 'cart_product_form': cart_product_form})
 	else:
 		category = Category.objects.get(slug=category_slug[-1])
 		products = Product.objects.filter(category=category)
