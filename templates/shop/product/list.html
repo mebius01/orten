@@ -46,12 +46,13 @@ Tags| <strong>
             <td>
              
 <div class="btn-group cart">
-                 <form action="{% url "cart:cart_add" product.id %}" method="post">
+    <!--
+{#                  <form action="{% url "cart:cart_add" product.id %}" method="post">
                 {{ cart_product_form }}
                  {% csrf_token %}
                    <input type="submit" value="Добавить в корзину">
-</form>
-
+</form> #}
+-->
         </td>
             <td>
               <img src="{% static "img/litlebasket.png" %}">

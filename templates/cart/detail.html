@@ -9,7 +9,7 @@
 
   <h1>Ваша корзина товаров</h1>
 
-    <a href="{{product.get_absolute_url}}}" class="btn">Продолжить Шопинг</a>
+    <a href="{{product.get_absolute_url}}" class="btn">Продолжить Шопинг</a>
     <a href="#">Оформить заказ</a>
 
 <table class="table">
@@ -18,8 +18,8 @@
         <th>Изображение</th>
         <th>Продукт</th>
         <th>Цена</th>
-        <th>Сумма</th>
         <th>Количество/Обновить</th>
+        <th>Сумма</th>
         <th>Удалить</th>
     </tr>
   </thead>
@@ -48,6 +48,7 @@
           {{ item.update_quantity_form.update }}
           {% csrf_token %}
           <input type="submit" value="Обновить">
+        </form>
         </td>
 
         <td>
