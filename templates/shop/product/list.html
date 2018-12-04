@@ -44,7 +44,7 @@ Tags| <strong>
                 {{ product.price_uah }}
         </td>
             <td>
-                <p class="price">{{ product.price_uah }} руб.</p>
+                <p class="price">{{ product.price_uah }} </p>
               <form action="{% url "cart:cart_add" product.id %}" method="post">
                 {{ cart_product_form }}
                  {% csrf_token %}
