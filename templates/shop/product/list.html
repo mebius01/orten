@@ -44,12 +44,14 @@ Tags| <strong>
                 {{ product.price_uah }}
         </td>
             <td>
-                <p class="price">{{ product.price_uah }} </p>
-              <form action="{% url "cart:cart_add" product.id %}" method="post">
+             
+<div class="btn-group cart">
+                 <form action="{% url "cart:cart_add" product.id %}" method="post">
                 {{ cart_product_form }}
                  {% csrf_token %}
                    <input type="submit" value="Добавить в корзину">
 </form>
+
         </td>
             <td>
               <img src="{% static "img/litlebasket.png" %}">
