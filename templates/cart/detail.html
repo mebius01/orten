@@ -9,9 +9,8 @@
 
   <h1>Ваша корзина товаров</h1>
 
-    <a href="{{product.get_absolute_url}}" class="btn">Продолжить Шопинг</a>
-    <a href="#">Оформить заказ</a>
-
+    <a href="{% url "shop:product_list" %}" class="btn">Продолжить Шопинг</a>
+    <a href="{% url "order:order_create" %}" class="btn">Оформить заказ</a>
 <table class="table">
   <thead>
     <tr>
