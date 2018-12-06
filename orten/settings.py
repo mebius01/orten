@@ -143,3 +143,6 @@ MEDIA_URL = '/media/'
 IMPORT_EXPORT_USE_TRANSACTIONS = True
 
 CART_SESSION_ID = 'cart'
+
+# Email
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
