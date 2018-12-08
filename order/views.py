@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from .tasks import order_created
 # Create your views here.
 
 from django.shortcuts import render
@@ -21,7 +21,7 @@ def order_create(request):
 					quantity=item['quantity'])
 	
 			cart.clear()
-			# order_created.delay(order.id)
+			order_created.delay(order.id)
 			return render(request, 'order/created.html', {'order': order})
 
 	form = OrderCreateForm()
