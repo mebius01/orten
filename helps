@@ -87,14 +87,38 @@ https://djangosnippets.org/snippets/362/
 Использование Celery с Django для обработки фоновых задач
 https://code.tutsplus.com/ru/tutorials/using-celery-with-django-for-background-task-processing--cms-28732
 
+Продающий интернет магазин
+https://poltor.com/stati/sekrety-sozdaniya-prodayushhego-internet-magazina.html
+https://secl.com.ua/publikacii.html
+
+
+SEO Перенос сайта на новую CMS без потери позиций и трафика: как подготовить ТЗ программисту
+https://netpeak.net/ru/blog/perenos-saita-na-novuyu-cms-bez-poteri-pozitsii-i-trafika-kak-podgotovit-tz-programmistu/
 
 
 
 
+------------------------------
+>>>ord=Order.objects.get(id=28)
+>>> ord.items.all()
+<QuerySet [<OrderItem: 28>, <OrderItem: 29>, <OrderItem: 30>]>
 
+>>> ord.items.all()[1]
+<OrderItem: 29>
 
+>>> ord.items.all()[1].product
+<Product: Резак Agent GL 310>
 
-\
+>>> ord.items.all()[1].quantity
+2
 
+>>> ord.items.all()[1].price
+Decimal('616.00')
 
+>>> ord.items.all()[1].get_cost()
+Decimal('1232.00')
 
+<Order: Заказ: 28>
+>>> ord.get_total_cost()
+
+-----------------------------

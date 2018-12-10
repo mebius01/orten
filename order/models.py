@@ -31,8 +31,8 @@ class OrderItem(models.Model):
 	price = models.DecimalField(verbose_name='Цена', max_digits=10, decimal_places=2)
 	quantity = models.PositiveIntegerField(verbose_name='Количество', default=1)
 
-def __str__(self):
-	return '{}'.format(self.id)
+	def __str__(self):
+		return '{}'.format(self.id)
 
-def get_cost(self):
-	return self.price * self.quantity
+	def get_cost(self):
+		return self.price * self.quantity
