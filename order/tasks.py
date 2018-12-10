@@ -7,9 +7,11 @@ def order_created(order_id):
 	"""
 	Отправка Email сообщения о создании покупке
 	"""
+
 	order = Order.objects.get(id=order_id)
 	subject = 'Заказ c номером {}'.format(order.id)
 	message = 'Дорогой, {}, вы успешно сделали заказ.\
-	           Номер вашего заказа {}'.format(order.first_name, order.id)
+	           Номер вашего заказа {}'.format(order.first_name, order.get_total_cost())
+
 	mail_send = send_mail(subject, message, 'consmebius@gmail.com', [order.email])
 	return mail_send
