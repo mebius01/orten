@@ -122,3 +122,19 @@ Decimal('1232.00')
 >>> ord.get_total_cost()
 
 -----------------------------
+ Отправка EMail Django
+https://godjango.com/19-using-templates-for-sending-emails/
+https://stackoverflow.com/questions/2809547/creating-email-templates-with-django
+
+
+
+
+
+
+
+
+
+
+
+
+
