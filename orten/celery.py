@@ -1,13 +1,3 @@
-# import os
-# from celery import Celery
-# from __future__ import absolute_import
-# # Основыне настройки Django для celery
-
-# os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'orten.settings')
-# app = Celery('orten')
-# app.config_from_object('django.conf:settings')
-# app.autodiscover_tasks()
-
 # from __future__ import absolute_import, unicode_literals
 import os
 from celery import Celery

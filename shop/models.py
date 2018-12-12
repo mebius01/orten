@@ -67,21 +67,11 @@ class Category(MPTTModel):
 			slugs.append('/'.join(ancestors[:i+1]))
 		return slugs
 
-	# def get_absolute_url(self):
-	# 	url = "/%s/" % self.slug
-	# 	page = self
-	# 	while page.parent:
-	# 		url = "/%s%s" % (page.parent.slug, url)
-	# 		page = page.parent
-	# 	return url
 	def get_absolute_url(self):
 		return '/'.join([x['slug'] for x in self.get_ancestors(include_self=True).values()])
-	# def get_absolute_url(self):
-	# 	return reverse('category', args=[self.slug])
-	
+
 	def __str__(self):
 		return self.name
-# mptt.register(Group, order_insertion_by=['name'])
 
 
 class Product(models.Model):
@@ -140,11 +130,7 @@ class Product(models.Model):
 	def __str__(self):
 		return self.name
 
-	# def get_absolute_url(self):
-	# 	return (self.slug)
-	
 	def get_absolute_url(self):
-		# slug_list = [self.category.get_absolute_url(), self.slug]
 		return (self.category.get_absolute_url()+'/'+self.slug)
 
 class Services(models.Model):
@@ -168,6 +154,9 @@ class Services(models.Model):
 	def __str__(self):
 		return self.name
 
+	def get_absolute_url(self):
+		return (self.category.get_absolute_url()+'/'+self.slug)
+
 
 class ProductStock(models.Model):
 	product = models.ForeignKey(Product, on_delete=models.CASCADE)
@@ -181,28 +170,3 @@ class ProductStock(models.Model):
 		ordering = ('product',)
 		verbose_name = 'Акция'
 		verbose_name_plural = 'Акции'
-
-
-
-class Order(models.Model): #сведений о клиенте
-	first_name = models.CharField(max_length=50)
-	last_name = models.CharField(max_length=50)
-	email = models.EmailField()
-	city = models.CharField(max_length=100)
-	phone = models.CharField(max_length=250)
-	new_post_office = models.CharField(max_length=20)
-	created = models.DateTimeField(auto_now_add=True)
-	updated = models.DateTimeField(auto_now=True)
-	paid = models.BooleanField(default=False)
-
-
-	class Meta:
-		ordering = ('-created',)
-		verbose_name = 'Заказ'
-		verbose_name_plural = 'Заказы'
-
-	def __str__(self):
-		return 'Order {}'.format(self.id)
-
-	def get_total_cost(self): #получить общую стоимость товаров
-		return sum(item.get_cost() for item in self.items.all())

@@ -1,6 +1,7 @@
 from django.urls import path, re_path
 from .import views
 
+
 app_name = 'cart'
 urlpatterns = [
 	path('remove/<product_id>', views.cart_remove, name='cart_remove'),

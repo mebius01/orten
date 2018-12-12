@@ -45,7 +45,7 @@ def product_list(request, tag_id=None):
 	if tag_id:
 		tag = get_object_or_404(Tag, id=tag_id)
 		products = products.filter(tags__in=[tag])
-	return render(request, 'shop/product/list.html', {'products': products})
+	return render(request, 'shop/list.html', {'products': products})
 
 
 # def product_detail(request, slug):
