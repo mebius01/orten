@@ -145,12 +145,12 @@ IMPORT_EXPORT_USE_TRANSACTIONS = True
 CART_SESSION_ID = 'cart'
 
 # Email
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-'send_email.apps.SendEmailConfig'
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'consmebius@gmail.com'
-EMAIL_HOST_PASSWORD = '92klp12OT'
-DEFAULT_FROM_EMAIL = ''
-DEFAULT_TO_EMAIL = ''
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# 'send_email.apps.SendEmailConfig'
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'MAIL@gmail.com'
+# EMAIL_HOST_PASSWORD = 'PASS'
+# DEFAULT_FROM_EMAIL = ''
+# DEFAULT_TO_EMAIL = ''
