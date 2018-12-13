@@ -42,10 +42,12 @@ def show_category(request,hierarchy=None, tag_id=None):
 
 def product_list(request, tag_id=None):
 	products = Product.objects.all()
+	cart_product_form = CartAddProductForm()
 	if tag_id:
 		tag = get_object_or_404(Tag, id=tag_id)
 		products = products.filter(tags__in=[tag])
-	return render(request, 'shop/list.html', {'products': products})
+
+	return render(request, 'shop/list.html', {'products': products, 'cart_product_form': cart_product_form})
 
 
 # def product_detail(request, slug):

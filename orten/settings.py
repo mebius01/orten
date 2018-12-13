@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'mptt',
     'import_export',
     'taggit',
+    'sitetree',
 ]
 
 MIDDLEWARE = [
