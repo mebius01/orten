@@ -2,9 +2,7 @@
 {% load mptt_tags %}
 {% load static %}
 {% block content %}
-{% load sitetree%}
 
-{% sitetree_breadcrumbs from "shop" %}
 <ul>
     {% recursetree list_category %}
     <li>
