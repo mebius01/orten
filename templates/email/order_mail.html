@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+{% load static %}
+<body>
+
+Увожаемый <strong>{{order.first_name}}</strong> 
+<p> Вы успешно сделали заказ заказ на нашем <a href="http://127.0.0.1:8000/shop/" id="name"> orten.in.ua </a>
+<p>Номер вашего заказа {{order.id}} </p>
+
+<table class="table">
+  <thead>
+    <tr>
+        <th>Продукт</th>
+        <th>Цена</th>
+        <th>Количесво</th>
+        <th>Сумма</th>
+    </tr>
+  </thead>
+
+{% for item in order.items.all %}
+  <tbody>
+    <tr>
+
+        <td>
+         <a href="http://127.0.0.1:8000/shop/category/{{ item.product.get_absolute_url }}" id="name"> {{ item.product.name }}
+        </td>
+
+        <td>
+          {{ item.price }}
+        </td>
+
+        <td>
+          {{item.quantity }}
+        </td>
+
+        <td>
+          {{ item.get_cost }}
+        </td>
+    </tr>
+{% endfor %}
+<hr>
+    <tr class="total">
+          <td>
+            Total
+          </td>
+
+          <td
+             class="num">{{ order.get_total_cost }}
+          </td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+</body>
+</html>
