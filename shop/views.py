@@ -26,10 +26,6 @@ def show_category(request,hierarchy=None):
 		products = Product.objects.filter(category=category)
 		return render(request, 'shop/categories.html', {'instance':instance, 'category':category, 'products': products})
 
-# def product_detail(request, product_slug):
-# 	instance = Product.objects.get(slug=product_slug)
-# 	category = Category.objects.all()
-# 	return render(request, 'shop/postDetail.html', {'instance':instance, 'category':category})
 
 def product_list(request, tag_id=None):
 	products = Product.objects.all()
@@ -44,4 +40,4 @@ def product_list(request, tag_id=None):
 def product_detail(request, slug):
 	cart_product_form = CartAddProductForm()
 	product = get_object_or_404(Product, slug=slug, available=True)
-	return render(request, 'shop/postDetail.html', {'product': product, 'cart_product_form': cart_product_form})
+	return render(request, 'shop/product_detail.html', {'product': product, 'cart_product_form': cart_product_form})

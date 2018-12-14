@@ -55,17 +55,6 @@ class Category(MPTTModel):
 		verbose_name = 'Категория'
 		verbose_name_plural = 'Категории'
 
-	def get_slug_list(self):
-		try:
-			ancestors = self.get_ancestors(include_self=True)
-		except:
-			ancestors = []
-		else:
-			ancestors = [ i.slug for i in ancestors]
-			slugs = []
-		for i in range(len(ancestors)):
-			slugs.append('/'.join(ancestors[:i+1]))
-		return slugs
 
 	def get_absolute_url(self):
 		return '/'.join([x['slug'] for x in self.get_ancestors(include_self=True).values()])
