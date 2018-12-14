@@ -36,6 +36,10 @@ class Rates(models.Model): #курс валют
 	usd = models.DecimalField(max_digits=10, decimal_places=2, blank=True)
 	eur = models.DecimalField(max_digits=10, decimal_places=2, blank=True)
 
+	class Meta:
+		verbose_name = 'Курс Валют'
+		verbose_name_plural = 'Курсы Валют'
+
 
 class Category(MPTTModel):
 	name = models.CharField(max_length=50, unique=True)
