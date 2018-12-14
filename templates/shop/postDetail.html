@@ -3,7 +3,7 @@
 {% block content %}
 
 Tags| <strong>
-{% for tag in instance.tags.all %}
+{% for tag in product.tags.all %}
 <a href="/shop/tag/{{tag.id}}"> {{ tag.name }}</a> |
 {% endfor %}
 </strong>
@@ -12,19 +12,19 @@ Tags| <strong>
 <div class="container">
     <div class="row">
         <div class="col-xs-4 item-photo">
-            <img style="max-width:100%;" src="{% if instance.image %}{{ instance.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" />
+            <img style="max-width:100%;" src="{% if product.image %}{{ product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" />
                 </div>
             <div class="col-md-7">
-                <div class="product-title">{{ instance.name }}</div>
+                <div class="product-title">{{ product.name }}</div>
                 <hr>
-                <div class="product-desc">{{ instance.keywords }}</div>
+                <div class="product-desc">{{ product.keywords }}</div>
                 <hr>
-                <div class="product-price">{{ instance.price_uah }}</div>
+                <div class="product-price">{{ product.price_uah }}</div>
                 <hr>
                 <div class="product-stock">Доступен к заказу</div>
                 <hr>
                 <div class="btn-group cart">
-                 <form action="{% url "cart:cart_add" instance.id %}" method="post">
+                 <form action="{% url "cart:cart_add" product.id %}" method="post">
                 {{ cart_product_form }}
                  {% csrf_token %}
                    <input type="submit" value="Добавить в корзину">
@@ -47,7 +47,7 @@ Tags| <strong>
         <div id="myTabContent" class="tab-content">
             <div class="tab-pane fade in active" id="service-one">
                 <class="container product-info">
-                    {{ instance.description|linebreaks }}
+                    {{ product.description|linebreaks }}
             </div>
             <div class="tab-pane fade" id="service-two">
                 <section class="container">

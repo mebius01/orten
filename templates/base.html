@@ -145,6 +145,7 @@
             </div>
         </div>
     </nav>
+<!--
     <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/shop/category/">Категории</a></li>
@@ -154,9 +155,10 @@
             <li class="breadcrumb-item"><a href="/shop/category/{{category.get.get_absolute_url}}">{{category.get.name}}</a></li>
         </ol>
     </nav>
+-->
 
-{% sitetree_breadcrumbs from "shop" %}
-{% sitetree_menu from "shop" include "trunk, topmenu" %}
+{% sitetree_breadcrumbs from "shop" template "sitetree/breadcrumbs_bootstrap4.html" %}
+
 
     <!-- ------------------------------------Section 2 4 5 6 START-->
 
