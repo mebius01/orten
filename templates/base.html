@@ -145,7 +145,18 @@
             </div>
         </div>
     </nav>
-<!--
+<nav aria-label="breadcrumb" role="navigation">
+    <ol class="breadcrumb">
+        {% for item in ategory.get_ancestors %}
+            {% if not forloop.last %}
+                <li class="breadcrumb-item"><a href="{% sitetree_url for item %}">{{ item.title_resolved }}</a></li>
+            {% else %}
+                <li class="breadcrumb-item active">{{ item.title_resolved }}</li>
+            {% endif %}
+        {% endfor %}
+    </ol>
+</nav>
+
     <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/shop/category/">Категории</a></li>
@@ -155,7 +166,7 @@
             <li class="breadcrumb-item"><a href="/shop/category/{{category.get.get_absolute_url}}">{{category.get.name}}</a></li>
         </ol>
     </nav>
--->
+
 
 {% sitetree_breadcrumbs from "shop" template "sitetree/breadcrumbs_bootstrap4.html" %}
 
