@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
 {% block breadcrumbs %}
-{% load static %}
-{% load sitetree %}
-
 {{ block.super }}
     {% for i in category.get_anc %}  
             » <a href="/shop/category/{{ i.get_absolute_url }}">{{ i.name }}</a>
     {% endfor %}
 {% endblock %}
 
+{% load static %}
+{% load sitetree %}
 {% block head_title %} {{ category.name }} {% endblock %}
 
 

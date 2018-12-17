@@ -1,13 +1,10 @@
 {% extends 'shop/categories.html' %}
-
 {% block breadcrumbs %}
 {{ block.super }} » {{instance.name}}
 {% endblock %}
 
 {% load static %}
 {% block content %}
-
-
 <p>
 Tags| <strong>
 {% for tag in instance.tags.all %}
