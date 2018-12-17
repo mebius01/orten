@@ -1,5 +1,7 @@
 {% extends "base.html" %}
-
+{% block breadcrumbs %}
+{{ block.super }} » Order
+{% endblock %}
 
 {% block title %}
   Оформление заказа

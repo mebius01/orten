@@ -1,8 +1,18 @@
 {% extends 'base.html' %}
+{% block breadcrumbs %}
 {% load static %}
-{% load mptt_tags %}
 {% load sitetree %}
+
+{{ block.super }}
+    {% for i in category.get_anc %}  
+            » <a href="/shop/category/{{ i.get_absolute_url }}">{{ i.name }}</a>
+    {% endfor %}
+{% endblock %}
+
 {% block head_title %} {{ category.name }} {% endblock %}
+
+
+
 {% block content %}
 <div class="text-center"><h2>{{category.name}}</h2></div>
 

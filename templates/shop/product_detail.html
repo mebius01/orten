@@ -1,15 +1,20 @@
-{% extends "base.html" %}
+{% extends 'shop/categories.html' %}
+
+{% block breadcrumbs %}
+{{ block.super }} » {{instance.name}}
+{% endblock %}
+
 {% load static %}
 {% block content %}
 
 
-
+<p>
 Tags| <strong>
 {% for tag in instance.tags.all %}
 <a href="/shop/tag/{{tag.id}}"> {{ tag.name }}</a> |
 {% endfor %}
 </strong>
-
+</p>
 
 <div class="container">
     <div class="row">
@@ -27,7 +32,7 @@ Tags| <strong>
                 <hr>
                 <div class="btn-group cart">
                  <form action="{% url "cart:cart_add" instance.id %}" method="post">
-                {{ cart_instance_form }}
+                {{ cart_product_form }}
                  {% csrf_token %}
                    <input type="submit" value="Добавить в корзину">
 </form>
