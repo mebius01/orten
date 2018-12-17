@@ -63,6 +63,10 @@ class Category(MPTTModel):
 	def get_absolute_url(self):
 		return '/'.join([x['slug'] for x in self.get_ancestors(include_self=True).values()])
 
+	def get_anc(self):
+		return self.get_ancestors(include_self=True)
+
+
 	def __str__(self):
 		return self.name
 

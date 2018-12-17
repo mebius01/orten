@@ -146,33 +146,21 @@
             </div>
         </div>
     </nav>
-<nav aria-label="breadcrumb" role="navigation">
-    <ol class="breadcrumb">
-        {% for item in category.get_ancestors %}
-            {% if not category.is_leaf_node %}
-                <li class="breadcrumb-item"><a href="/shop/category/{{ item.get_absolute_url }}">{{ item.name }}</a></li>
-            {% else %}
-                <li class="breadcrumb-item active">{{category.get.name}}</li>
-            {% endif %}
-        {% endfor %}
-    </ol>
-</nav>
 
+mptt
     <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/shop/">Shop</a></li>
             <li class="breadcrumb-item"><a href="/shop/category/">Категории</a></li>
-            {% for i in category.get_ancestors %}
+            
+            {% for i in category.get_anc %}
             <li class="breadcrumb-item"><a href="/shop/category/{{ i.get_absolute_url }}">{{ i.name }}</a></li>
-            {% if i.is_leaf_node %}
-             <li class="breadcrumb-item">{{i.name}}</a></li>
-             {%endif%}
-            {% endfor %}
-           
+             {% endfor %}
+             <li class="breadcrumb-item">{{instance.name}}</a></li>
         </ol>
     </nav>
 
-
+sittree
 {% sitetree_breadcrumbs from "shop" template "sitetree/breadcrumbs_bootstrap4.html" %}
 
 

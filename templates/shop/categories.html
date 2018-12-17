@@ -2,14 +2,14 @@
 {% load static %}
 {% load mptt_tags %}
 {% load sitetree %}
-{% block head_title %} {{ instance.name }} {% endblock %}
+{% block head_title %} {{ category.name }} {% endblock %}
 {% block content %}
-<div class="text-center"><h2>{{instance.name}}</h2></div>
+<div class="text-center"><h2>{{category.name}}</h2></div>
 
-{% if instance.children.all %}
+{% if category.children.all %}
 
 <div class="container">
-    {% for i in instance.children.all %}
+    {% for i in category.children.all %}
 <hr>
 
 
@@ -57,7 +57,8 @@
             {{ product.vendor }}
         </td>
             <td>
-                <a href="{% url 'shop:product_detail' product.slug%}" id="name">{{ product.name }}
+               <!-- <a href="{% url 'shop:product_detail' product.slug%}" id="name">{{ product.name }} -->
+                    <a href="{% url 'shop:show_category' product.get_absolute_url%}" id="name">{{ product.name }}
 
         </td>
             <td>
