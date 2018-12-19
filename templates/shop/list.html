@@ -11,6 +11,9 @@ Tags| <strong>
 {% endfor %}
 </strong>
 
+
+
+
 <table class="table table-bordered">
     <tr>
         <th>Фото</th>
@@ -21,7 +24,7 @@ Tags| <strong>
         <th>Цена</th>
         <th>В корзину</th>
     </tr>
-        {% for product in products %}
+    {% for product in products %}
     <tr id="">
         <td>
             <a class="item_img"><img src="{% if product.image %}{{ product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt="lorem">
@@ -55,5 +58,3 @@ Tags| <strong>
             {% endfor %}
 
 {% endblock %}
-
-            

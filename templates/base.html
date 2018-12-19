@@ -2,170 +2,299 @@
 {% load staticfiles %}
 {% load sitetree%}
 {% load mptt_tags %}
+
 <html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <link href="{% static "/shop/css/min.css" %}" rel="stylesheet" type="text/css" />
-    <link rel="shortcut icon" href="{% static '/shop/img/favicon.png' %}" type="image/png" />
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-</head>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-<body>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse">
-<i class="fa fa-chevron-down faa-vertical animated"></i>
-</a>
-                <a tabindex="0" class="navbar-brand faa-pulse faa-slow animated" data-toggle="popover" data-trigger="focus" data-html="true" data-placement="bottom" data-title="Brand Quote..." data-content="<img class='img-responsive' height='140' width='140' src='data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=='/<p>Your Brand Image</p>">
-<i class="fa fa-balance-scale"></i>
-<i class="fa fa-lg">O</i>
-<i class="fa fa-lg">r</i>
-<i class="fa fa-lg">t</i>
-<i class="fa fa-lg">e</i>
-<i class="fa fa-lg">n</i>
-</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a class="faa-parent animated-hover">
-<i class="fa fa-fw fa-lg fa-home faa-tada faa-fast"></i>Home
-</a>
-                    </li>
-                    <li>
-                        <a class="faa-parent animated-hover">
-<i class="fa fa-fw fa-lg fa-quote-left faa-tada faa-fast"></i>About Us
-</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle faa-parent animated-hover" data-toggle="dropdown">
-<i class="fa fa-fw fa-lg fa-th faa-tada faa-fast"></i>Products
-<span class="fa fa-caret-down"></span>
-</a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a class="faa-parent animated-hover">
-<i class="fa fa-fw fa-level-down faa-tada faa-fast"></i>Portfolio
-</a>
-                            </li>
-                            <li>
-                                <a class="faa-parent animated-hover">
-<i class="fa fa-fw fa-external-link faa-tada faa-fast"></i>Individual
-</a>
-                            </li>
-                            <li>
-                                <a class="faa-parent animated-hover">
-<i class="fa fa-fw fa-search faa-tada faa-fast"></i>Search
-</a>
-                            </li>
-                            <li>
-                                <a class="faa-parent animated-hover">
-<i class="fa fa-fw fa-file-pdf-o faa-tada faa-fast"></i>Product Detail
-</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a class="faa-parent animated-hover">
-<i class="fa fa-fw fa-flag faa-tada faa-fast"></i>Specification
-</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="faa-parent animated-hover">
-<i class="fa fa-fw fa-lg fa-map-marker faa-tada faa-fast"></i>Contact Us
-</a>
-                    </li>
-                </ul>
-                <form class="navbar-form navbar-left" role="search">
-                    <div class="form-group has-feedback">
-                        <label for="search" class="sr-only">Search</label>
-                        <input type="text" class="form-control" name="search" id="search" placeholder="search">
-                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                    </div>
-                </form>
-                <div class="cart">
-                    {% with total_items=cart|length %}
-                        {% if cart|length > 0 %}
-                            Ваша корзина:
-                            <a href="{% url "cart:cart_detail" %}">
-                                {{ total_items }} тов. {{ cart.get_total_price_uah }}
-                            </a>
-                         {% else %}
-                              Корзина пустая
-                        {% endif %}
-                    {% endwith %}
-                </div>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-lg fa-sign-in faa-tada faa-fast"></i>LogIn <span class="caret"></span></a>
-                        <ul id="login-dp" class="dropdown-menu">
-                            <li>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        Login via
-                                        <div class="social-buttons">
-                                            <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
-                                            <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
-                                        </div>
-                                        or
-                                        <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
-                                            <div class="form-group">
-                                                <label class="sr-only" for="exampleInputEmail2">Email address</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="sr-only" for="exampleInputPassword2">Password</label>
-                                                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
-                                                <div class="help-block text-right"><a href="">Forget the password ?</a></div>
-                                            </div>
-                                            <div class="form-group">
-                                                <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> keep me logged-in
-                                                </label>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="bottom text-center">
-                                        New here ? <a href="#"><b>Join Us</b></a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+
+  </head>
+  <body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-9">
+            
         </div>
-    </nav>
-<!--
-mptt
-    <nav>
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/shop/">Shop</a></li>
-            <li class="breadcrumb-item"><a href="/shop/category/">Категории</a></li>
+        <div class="col-3">
+            {% with total_items=cart|length %}
+    {% if cart|length > 0 %}
+        <a href="{% url "cart:cart_detail" %}">
+            <p>Товаров:
+             <span class="badge badge-light">{{ total_items }}</span>
+           На сумму:
+             <span class="badge badge-light">{{ total_items }}{{ cart.get_total_price_uah }}</p></span>
+        </a>
+     {% else %}
+          Корзина пустая
+    {% endif %}
+{% endwith %}
+        </div>
 
-            {% for i in category.get_anc %}
-            <li class="breadcrumb-item"><a href="/shop/category/{{ i.get_absolute_url }}">{{ i.name }}</a></li>
-             {% endfor %}
+    </div>
+</div>
 
-             <li class="breadcrumb-item">{{instance.name}}</a></li>
-           
-        </ol>
-    </nav>
--->
+<hr>
 
-{% block breadcrumbs %}
+<div class="container">
+    <div class="row">
+        {% block breadcrumbs %}
     <a href="/shop/">Shop</a>
 {% endblock %}
+    </div>
+</div>
+
+<hr>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-1">1</div>
+    <div class="col-1">2</div>
+    <div class="col-1">3</div>
+    <div class="col-1">4</div>
+    <div class="col-1">5</div>
+    <div class="col-1">6</div>
+    <div class="col-1">7</div>
+    <div class="col-1">8</div>
+    <div class="col-1">9</div>
+    <div class="col-1">10</div>
+    <div class="col-1">11</div>
+    <div class="col-1">12</div>
+  </div>
+</div>
+
+<nav class="navbar navbar-expand-md fixed-top top-nav">
+    <div class="container">
+          <a class="navbar-brand" href="#"><strong>Grafreez</strong></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Services</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Team</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Prices</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">FAQ's</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+              </li>
+            </ul>
+          </div>    
+    </div>
+</nav>
+
+<!-- Intro Seven -->
+<section class="intro carousel slide bg-overlay-light h-auto" id="carouselExampleCaptions">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="1" class=""></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <div class="carousel-item active">
+        <img class="d-block img-fluid" alt="First slide" src="https://grafreez.com/wp-content/temp_demos/suffi/img/intro-bg-01.jpg">
+        <div class="carousel-caption ">
+            <h2 class="display-4 text-white mb-2 mt-4">In the business world, the rearview mirror is always clearer than the windshield.</h2>
+            <p class="text-white mb-3 px-5 lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do enim ad minim veniam, </p>
+            <a href="#" class="btn btn-primary btn-capsul px-4 py-2">Explore More</a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img class="d-block img-fluid" alt="First slide" src="https://grafreez.com/wp-content/temp_demos/suffi/img/intro-bg-02.jpg">
+        <div class="carousel-caption ">
+            <h2 class="display-4 text-white mb-2 mt-4">Accept the challenges so that you can feel the exhilaration of victory.</h2>
+            <p class="text-white mb-3 px-5 lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do enim ad minim veniam, </p>
+            <a href="#" class="btn btn-primary btn-capsul px-4 py-2">Explore More</a>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</section>
+
+<!-- Info block 1 -->
+<section class="info-section">
+    <div class="container">
+        <div class="head-box text-center mb-5">
+            <h2>Who We Are</h2>
+            <h6 class="text-underline-primary">This is information panel</h6>
+        </div>
+        <div class="three-panel-block mt-5">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="service-block-overlay text-center mb-5 p-lg-3">
+                        <i class="fa fa-laptop box-circle-solid mt-3 mb-3" aria-hidden="true"></i>
+                        <h3>Responsive Design</h3>
+                        <p class="px-4">Never in all their history have men been able truly to conceive of the world as one a single sphere</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="service-block-overlay text-center mb-5 p-lg-3">
+                        <i class="fa fa-calendar box-circle-solid mt-3 mb-3" aria-hidden="true"></i>
+                        <h3>Integrated Calendar</h3>
+                        <p class="px-4">Never in all their history have men been able truly to conceive of the world as one a single sphere</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="service-block-overlay text-center mb-5 p-lg-3">
+                        <i class="fa fa-bug box-circle-solid mt-3 mb-3" aria-hidden="true"></i>
+                        <h3>Bug Free Solutions</h3>
+                        <p class="px-4">Never in all their history have men been able truly to conceive of the world as one a single sphere</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="service-block-overlay text-center p-lg-3">
+                        <i class="fa fa-cloud-upload box-circle-solid mt-3 mb-3" aria-hidden="true"></i>
+                        <h3>Cloud Storage</h3>
+                        <p class="px-4">Never in all their history have men been able truly to conceive of the world as one a single sphere</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="service-block-overlay text-center p-lg-3">
+                        <i class="fa fa-diamond box-circle-solid mt-3 mb-3" aria-hidden="true"></i>
+                        <h3>Premium Features</h3>
+                        <p class="px-4">Never in all their history have men been able truly to conceive of the world as one a single sphere</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="service-block-overlay text-center p-lg-3">
+                        <i class="fa fa-comments box-circle-solid mt-3 mb-3" aria-hidden="true"></i>
+                        <h3>24/7 Support</h3>
+                        <p class="px-4">Never in all their history have men been able truly to conceive of the world as one a single sphere</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Info block 1 -->
+<section class="info-section bg-primary py-0">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 col-lg-6 content-half mt-md-0 pl-5 pt-4">
+                <div class="head-box mb-5 pl-5 mt-2">
+                    <h2 class="text-white">Our Story</h2>
+                    <h6 class="text-white text-underline-rb-white">This is information panel</h6>
+                </div>
+                <ul class="pl-5">
+                    <li>
+                        <i class="fa fa-laptop box-round-outline" aria-hidden="true"></i>
+                        <span class="list-content">
+                            <strong>Responsive Design</strong>
+                            <br>Eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </span>
+                    </li>
+                    <li>
+                        <i class="fa fa-cloud-upload box-round-outline" aria-hidden="true"></i>
+                        <span class="list-content">
+                            <strong>Cloud Storage</strong>
+                            <br>Eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </span>
+                    </li>
+                    <li>
+                        <i class="fa fa-diamond box-round-outline" aria-hidden="true"></i>
+                        <span class="list-content">
+                            <strong>Premium Features</strong>
+                            <br>Eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-6 p-0 m-0">
+                <img src="https://grafreez.com/wp-content/temp_demos/suffi/img/intro-bg.jpg" class="img-fluid">
+            </div>
+        </div>
+</section>
+<!-- team style 1 -->
+<section class="team-section py-5">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="head-box text-center mb-5 col-md-12">
+                <h2>Meet Our Team</h2>
+                <h6 class="text-underline-primary mb-5">This is information panel</h6>
+            </div>
+            <div class="col-md-4 mb-md-0 mb-sm-4">
+                <div class="member-box anim-lf t-bottom">
+                    <img class="img-fluid" src="https://grafreez.com/wp-content/temp_demos/suffi/img/t-member-01.jpg" alt="">
+                    <div class="overlay-content">
+                      <h3 class="text-white ml-3 my-0">Jim Gorden</h3>
+                      <p class="text-white ml-3 mb-3">Developer</p>
+                      <span class="socail-l ml-3 mb-3">
+                        <a href="#" class="mr-2"><i class="fa fa-facebook box-circle-solid"></i></a>
+                        <a href="#" class="mr-2"><i class="fa fa-twitter box-circle-solid"></i></a>
+                        <a href="#"><i class="fa fa-dribbble box-circle-solid"></i></a>
+                      </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-md-0 mb-sm-4">
+                <div class="member-box anim-lf t-bottom">
+                    <img class="img-fluid" src="https://grafreez.com/wp-content/temp_demos/suffi/img/t-member-02.jpg" alt="">
+                    <div class="overlay-content">
+                      <h3 class="text-white ml-3 my-0">Peyton Warren</h3>
+                      <p class="text-white ml-3 mb-3">UI/UX</p>
+                      <span class="socail-l ml-3 mb-3">
+                        <a href="#" class="mr-2"><i class="fa fa-facebook box-circle-solid"></i></a>
+                        <a href="#" class="mr-2"><i class="fa fa-twitter box-circle-solid"></i></a>
+                        <a href="#"><i class="fa fa-dribbble box-circle-solid"></i></a>
+                      </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-md-0 mb-sm-4">
+                <div class="member-box anim-lf t-bottom">
+                    <img class="img-fluid" src="https://grafreez.com/wp-content/temp_demos/suffi/img/t-member-03.jpg" alt="">
+                    <div class="overlay-content">
+                      <h3 class="text-white ml-3 my-0">Craig Thompson</h3>
+                      <p class="text-white ml-3 mb-3">Manager</p>
+                      <span class="socail-l ml-3 mb-3">
+                        <a href="#" class="mr-2"><i class="fa fa-facebook box-circle-solid"></i></a>
+                        <a href="#" class="mr-2"><i class="fa fa-twitter box-circle-solid"></i></a>
+                        <a href="#"><i class="fa fa-dribbble box-circle-solid"></i></a>
+                      </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="action-sec">
+          <div class="container">
+              <div class="action-box text-center"><h2>GET FULL FREE VERSION HERE </h2><a class="btn btn-theme" href="https://grafreez.com/580/multi-purpose-bootstrap-business-template/" target="_blank" title="Free Business Bootstrap Template">Free Business Bootstrap Template</a></div>
+          </div>
+          <br>
+          <br>
+      </section>
+
+
     <!-- ------------------------------------Section 2 4 5 6 START-->
 
     {% block content %}
@@ -175,6 +304,8 @@ mptt
     <!-- -------------------------------------Sectcion 2 4 5 6 END-->
 </body>
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </html>
