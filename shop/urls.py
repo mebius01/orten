@@ -23,7 +23,8 @@ from django.conf.urls.static import static
 app_name = 'shop'
 
 urlpatterns = [
-	path('', views.product_list, name ='product_list'),
+    path('', views.home, name='home'),
+	path('product_list/', views.product_list, name ='product_list'),
     path('tag/<tag_id>/', views.product_list, name='list_product_by_tag'),
     path('category/', views.category, name ='list_category'),
     path('<slug>/', views.product_detail, name='product_detail'),

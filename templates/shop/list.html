@@ -1,20 +1,25 @@
 {% extends "base.html" %}
 {% load static %}
 {% load mptt_tags %}
-{% block title %}
-{% endblock %}
+
 {% block content %}
-<hr>
-Tags| <strong>
-{% for tag in produts.tags.all %}
-<a href="/shop/tag/{{tag.id}}"> {{ tag.name }}</a> |
-{% endfor %}
-</strong>
 
 
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            Tags| <strong>
+            {% for tag in produts.tags.all %}
+            <a href="/shop/tag/{{tag.id}}"> {{ tag.name }}</a> |
+            {% endfor %}
+            </strong>
+        </div>
+    </div>
 
-
-<table class="table table-bordered">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-bordered">
+  <thead>
     <tr>
         <th>Фото</th>
         <th>Бренд</th>
@@ -24,6 +29,9 @@ Tags| <strong>
         <th>Цена</th>
         <th>В корзину</th>
     </tr>
+  </thead>
+  <tbody>
+    <tr>
     {% for product in products %}
     <tr id="">
         <td>
@@ -53,8 +61,14 @@ Tags| <strong>
             </form> 
 
         </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 
-        </tr>
-            {% endfor %}
+        </div>
+    </div>
+</div>
 
+<hr>
 {% endblock %}

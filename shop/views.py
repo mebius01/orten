@@ -4,6 +4,9 @@ from cart.forms import CartAddProductForm
 from taggit.models import Tag
 # Create your views here.
 
+def home(request):
+	return render(request, 'shop/home.html')
+
 def category(request):
 	list_category = Category.objects.all()
 	return render(request, 'shop/list_category.html', {'list_category': list_category})
