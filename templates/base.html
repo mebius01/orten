@@ -16,7 +16,7 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-1">1</div>
     <div class="col-1">2</div>
@@ -112,7 +112,6 @@
     </div>
 </div>
 
-<hr>
 
 
 
@@ -124,46 +123,54 @@
     
     <!-- -------------------------------------Sectcion 2 4 5 6 END-->
 
+<style>
+    body {
+  padding: 40px;
+  max-width: 960px;
+  margin: auto;
+}
+
+.container {
+  overflow: hidden;
+}
+
+.column {
+  box-sizing: border-box;
+  float: left;
+  width: 50%;
+}
+
+
+
+.col-3 {
+  border-left: 1px solid;
+  margin-left: -1px;
+  padding-left: 20px;
+}
+
+.column p:first-child {
+  margin-top: 0;
+}
+
+</style>
 
 <div class="container">
-<section class="info-section bg-primary py-0">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-lg-6 content-half mt-md-0 pl-5 pt-4">
-                <div class="head-box mb-5 pl-5 mt-2">
-                    <h2 class="text-white">Our Story</h2>
-                    <h6 class="text-white text-underline-rb-white">This is information panel</h6>
-                </div>
-                <ul class="pl-5">
-                    <li>
-                        <i class="fa fa-laptop box-round-outline" aria-hidden="true"></i>
-                        <span class="list-content">
-                            <strong>Responsive Design</strong>
-                            <br>Eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </span>
-                    </li>
-                    <li>
-                        <i class="fa fa-cloud-upload box-round-outline" aria-hidden="true"></i>
-                        <span class="list-content">
-                            <strong>Cloud Storage</strong>
-                            <br>Eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </span>
-                    </li>
-                    <li>
-                        <i class="fa fa-diamond box-round-outline" aria-hidden="true"></i>
-                        <span class="list-content">
-                            <strong>Premium Features</strong>
-                            <br>Eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </span>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-md-6 p-0 m-0">
-                <img src="https://grafreez.com/wp-content/temp_demos/suffi/img/intro-bg.jpg" class="img-fluid">
-            </div>
+    <hr>
+    <div class="row">
+        <div class="col-3">
+            <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, voluptatibus, sunt. Excepturi consequuntur mollitia, tempore sit vel, maxime aliquid reiciendis saepe aperiam laboriosam aliquam, neque temporibus cum voluptatum. Consequatur, commodi.</div>
         </div>
-</section>
+        <div class="col-3">
+            <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus sunt eos laudantium enim, est assumenda inventore iure repellat facere neque praesentium aperiam nemo vero labore aspernatur atque? Ipsa, voluptatum, blanditiis.</div>
+        </div>
+        <div class="col-6">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1361.720638744628!2d32.03841690959814!3d46.95301928698204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c5cbbad43f6f6d%3A0x4784e49173525ad2!2z0J7RgNGC0Y3QvSwg0J7QntCe!5e0!3m2!1sru!2sua!4v1545424552649" width="500" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+    </div>
+    <hr>
 </div>
+
+
 
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
