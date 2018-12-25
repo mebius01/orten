@@ -27,6 +27,9 @@
 background: #56B397;
 }
 
+.thead-color {
+    background: #6cbbcb;
+}
 .card-header {
     background: #6cbbcb;
 }
@@ -185,9 +188,9 @@ footer a {
                 </div>
                 {% with total_items=cart|length %}
                 {% if cart|length > 0 %}
-                <a class="btn btn-success btn-sm ml-3" href="{% url "cart:cart_detail" %}">
-                    <i class="fa fa-shopping-cart"></i>Cart
-                    <span class="badge badge-light">{{ total_items }}</span>
+                <a class="btn btn btn-outline-success btn-sm ml-3" href="{% url "cart:cart_detail" %}">
+                    <i class="fa fa-shopping-cart"></i>  Cart  
+                    <span class="badge badge-light">  {{ total_items }}</span>
                     {% else %}
                 <a class="btn btn-success btn-sm ml-3" href="{% url "cart:cart_detail" %}">
                     <i class="fa fa-shopping-cart"></i>Cart

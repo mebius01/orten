@@ -18,7 +18,7 @@
     <div class="row">
         <div class="col-12">
             <table class="table">
-                <thead class="thead-light">
+                <thead class="thead-color">
                     <tr>
                         <th>Product</th>
                         <th>Price</th>
@@ -47,10 +47,10 @@
                       </td>
 
 
-                        <td class="col-sm-1 col-md-1 text-center"><span class="badge badge-light">{{ item.price_uah }}</span></td>
-                        <td><span class="badge badge-light">{{item.quantity}}</span>
+                        <td class="col-sm-1 col-md-1 text-center">{{ item.price_uah }}</td>
+                        <td>{{item.quantity}}
                         </td>
-                        <td class="col-sm-1 col-md-1 text-center"><span class="badge badge-light">{{ item.total_price_uah }}</span></td>
+                        <td class="col-sm-1 col-md-1 text-center">{{ item.total_price_uah }}</td>
                       
                         <td class="col-sm-3 col-md-3" style="text-align: center">
                         <form action="{% url "cart:cart_add" product.id %}" method="post" class="add">
@@ -124,7 +124,7 @@
                         <td>   </td>
                         <td>   </td>
                         <td class="text-center"><h5>Total</h5></td>
-                        <td class="text-center"><h5><span class="badge badge-light">{{ cart.get_total_price_uah }}</span></h5></td>
+                        <td class="text-center"><h5>{{ cart.get_total_price_uah }}</h5></td>
                     </tr>
                 </tbody>
             </table>
