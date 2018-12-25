@@ -1,52 +1,105 @@
 {% extends "base.html" %}
 {% load static %}
 {% load mptt_tags %}
-
+{% load bootstrap4 %}
 
 {% block content %}
-
-<section class="team-section py-5">
-    <div class="container">
-        <div class="row mb-5">
-            <div class="head-box text-center mb-5 col-md-12">
-                <h2>Meet Our Team</h2>
-                <h6 class="text-underline-primary mb-5">This is information panel</h6>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-sm-3">
+<div class="card bg-light mb-3">
+    <article class="card-group-item">
+        <header class="card-header">
+            <h6 class="title"><i class="fas fa-hand-holding-usd"></i>  Selection Price</h6>
+        </header>
+        <div class="filter-content">
+            <div class="card-body">
+            <div class="form-row">
+            <div class="form-group col-md-6">
+              <label>Min</label>
+              <input type="number" class="form-control" id="inputEmail4" placeholder="$0">
             </div>
-            {% for product in products %}
-            <div class="col-md-4 mb-md-0 mb-sm-4">
-                <div class="member-box anim-lf t-bottom">
-                    <img class="img-fluid" src="{% static "img/no_image.png" %}" alt="">
-                    <div class="overlay-content">
-                      <h3 class="text-white ml-3 my-0">{{ product.name }}</h3>
-                      <p class="text-white ml-3 mb-3">{{ product.price_uah }}</p>
-                      <span class="socail-l ml-3 mb-3">
-                        <a href="#" class="mr-2"><i class="fa fa-facebook box-circle-solid"></i></a>
-                        <a href="#" class="mr-2"><i class="fa fa-twitter box-circle-solid"></i></a>
-                        <a href="#"><i class="fa fa-dribbble box-circle-solid"></i></a>
-                      </span>
-                    </div>
+            <div class="form-group col-md-6 text-right">
+              <label>Max</label>
+              <input type="number" class="form-control" placeholder="$1,0000">
+            </div>
+            </div>
+            </div> <!-- card-body.// -->
+        </div>
+    </article> <!-- card-group-item.// -->
+    <article class="card-group-item">
+        <header class="card-header">
+            <h6 class="title"><i class="fas fa-landmark"></i>  Selection Vendor</h6>
+        </header>
+        <div class="filter-content">
+            <div class="card-body">
+                <div class="custom-control custom-checkbox">
+                    <span class="float-right badge badge-light round">52</span>
+                    <input type="checkbox" class="custom-control-input" id="Check1">
+                    <label class="custom-control-label" for="Check1">Vendor</label>
+                </div> <!-- form-check.// -->
+
+                <div class="custom-control custom-checkbox">
+                    <span class="float-right badge badge-light round">132</span>
+                    <input type="checkbox" class="custom-control-input" id="Check2">
+                    <label class="custom-control-label" for="Check2">Vendor</label>
+                </div> <!-- form-check.// -->
+
+                <div class="custom-control custom-checkbox">
+                    <span class="float-right badge badge-light round">17</span>
+                    <input type="checkbox" class="custom-control-input" id="Check3">
+                    <label class="custom-control-label" for="Check3">Vendor</label>
+                </div> <!-- form-check.// -->
+
+                <div class="custom-control custom-checkbox">
+                    <span class="float-right badge badge-light round">7</span>
+                    <input type="checkbox" class="custom-control-input" id="Check4">
+                    <label class="custom-control-label" for="Check4">Vendor</label>
+                </div> <!-- form-check.// -->
+            </div> <!-- card-body.// -->
+        </div>
+    </article> <!-- card-group-item.// -->
+     <article class="card-group-item">
+        <header class="card-header">
+            <h6 class="title"><i class="fas fa-tag"></i>  Selection Tags</h6>
+        </header>
+                <div class="filter-content">
+            <div class="card-body">
+                <div class="custom-control custom-checkbox">
+                    <span class="float-right badge badge-light round">52</span>
+                    <input type="checkbox" class="custom-control-input" id="Check1">
+                    <label class="custom-control-label" for="Check1">Tags</label>
+                </div> <!-- form-check.// -->
+
+                <div class="custom-control custom-checkbox">
+                    <span class="float-right badge badge-light round">132</span>
+                    <input type="checkbox" class="custom-control-input" id="Check2">
+                    <label class="custom-control-label" for="Check2">Tags</label>
+                </div> <!-- form-check.// -->
+
+                <div class="custom-control custom-checkbox">
+                    <span class="float-right badge badge-light round">17</span>
+                    <input type="checkbox" class="custom-control-input" id="Check3">
+                    <label class="custom-control-label" for="Check3">Tags</label>
+                </div> <!-- form-check.// -->
+
+                <div class="custom-control custom-checkbox">
+                    <span class="float-right badge badge-light round">7</span>
+                    <input type="checkbox" class="custom-control-input" id="Check4">
+                    <label class="custom-control-label" for="Check4">Tags</label>
+                </div> <!-- form-check.// -->
+            </div> <!-- card-body.// -->
+        </div>
+
+</div> <!-- card.// -->
+</div>
+
+        <div class="col-sm">
+                <div class="card-header text-white text-uppercase">
+                    <i class="fas fa-list"></i> List Products
                 </div>
-            </div>
-            <hr>
-            {%endfor%}
-        </div>
-    </div>
-
-
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            Tags| <strong>
-            {% for tag in produts.tags.all %}
-            <a href="/shop/tag/{{tag.id}}"> {{ tag.name }}</a> |
-            {% endfor %}
-            </strong>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-12">
-            <table class="table table-bordered">
+                <div class="card-body">
+            <table class="table">
   <thead>
     <tr>
         <th>Фото</th>
@@ -55,7 +108,8 @@
         <th>Артикул</th>
         <th>Нали- чие</th>
         <th>Цена</th>
-        <th>В корзину</th>
+         <th colspan="2">В корзину</th>
+        
     </tr>
   </thead>
   <tbody>
@@ -83,9 +137,17 @@
         </td>
             <td>
             <form action="{% url "cart:cart_add" product.id %}" method="post">
-                {{ cart_product_form.quantity }}
                 {% csrf_token %}
-            <input type="submit" value="Добавить в корзину">
+
+                
+                  {% bootstrap_field cart_product_form.quantity show_label=False %}
+            </td>
+            <td>
+                                  {% buttons %}
+                    <button type="submit" class="btn btn-outline-primary"><i class="fab fa-get-pocket"></i></button>
+                  {% endbuttons %}
+            
+
             </form> 
 
         </td>
@@ -98,5 +160,86 @@
     </div>
 </div>
 
-<hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% comment %}
+    
+<section class="team-section py-5">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="head-box text-center mb-5 col-md-12">
+                <h2>Meet Our Team</h2>
+                <h6 class="text-underline-primary mb-5">This is information panel</h6>
+            </div>
+            {% for product in products %}
+            <div class="col-md-4 mb-md-0 mb-sm-4">
+                <div class="member-box anim-lf t-bottom">
+                    <img class="img-fluid" src="{% static "img/no_image.png" %}" alt="">
+                    <div class="overlay-content">
+                      <h3 class="text-white ml-3 my-0">{{ product.name }}</h3>
+                      <p class="text-white ml-3 mb-3">{{ product.price_uah }}</p>
+                      <span class="socail-l ml-3 mb-3">
+                        <a href="#" class="mr-2"><i class="fa fa-facebook box-circle-solid"></i></a>
+                        <a href="#" class="mr-2"><i class="fa fa-twitter box-circle-solid"></i></a>
+                        <a href="#"><i class="fa fa-dribbble box-circle-solid"></i></a>
+                      </span>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            {%endfor%}
+        </div>
+    </div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <strong>
+            {% for tag in produts.tags.all %}
+            <a href="/shop/tag/{{tag.id}}"> {{ tag.name }}</a> |
+            {% endfor %}
+            </strong>
+        </div>
+    </div>
+
+{% endcomment %}
+
+
+
+
+
+<div class="d-flex justify-content-center">
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    <li class="page-item"><a href="" class="page-link">0</a></li>
+    <li class="page-item"><a href="" class="page-link">0</a></li>
+    <li class="page-item"><a href="" class="page-link">0</a></li>
+    <li class="page-item"><a href="" class="page-link">0</a></li>
+    <li class="page-item"><a href="" class="page-link">0</a></li>
+    <li class="page-item"><a href="" class="page-link">0</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+</div>
 {% endblock %}

@@ -16,29 +16,6 @@ http://content.finance.ua/ru/xml/currency-cash  rкурс валют JSON XML
 
 ------------------
 
-https://all-service.com.ua/catalog/
-На главную / Интернет-магазин
-
-https://all-service.com.ua/catalog/1027-orgtehnika/
-На главную / Интернет-магазин / Оргтехника
-
-https://all-service.com.ua/catalog/1027-orgtehnika/1290-printer-i-mfu/
-На главную / Интернет-магазин / Оргтехника / Принтер и МФУ
-
-https://all-service.com.ua/catalog/1027-orgtehnika/1290-printer-i-mfu/280715-a4-hp-dj-ink-advantage-2136-f5s33c.html
-На главную / Интернет-магазин / Оргтехника / Принтер и МФУ / МФУ A4 HP DJ Ink Advantage 2136 (F5S33C)
-
-
-https://all-service.com.ua/catalog/5377-uslugi/
-На главную / Интернет-магазин / Услуги
-
-https://all-service.com.ua/catalog/5377-uslugi/5721-remont-printerov-i-mfu/
-На главную / Интернет-магазин / Услуги / Ремонт принтеров и МФУ
-
-https://all-service.com.ua/catalog/5377-uslugi/5721-remont-printerov-i-mfu/131605-.html
-На главную / Интернет-магазин / Услуги / Ремонт принтеров и МФУ / Замена термопленки принтера и мфу
-
-http://127.0.0.1:8000/shop/  ==  https://all-service.com.ua/catalog/
 
 Инструменты:
 импорт csv в модель django  https://django-adaptors.readthedocs.io/en/latest/
@@ -46,45 +23,29 @@ http://127.0.0.1:8000/shop/  ==  https://all-service.com.ua/catalog/
 Древовидные структуры данных в Django  https://proft.me/2010/09/7/drevovidnye-struktury-dannyh-v-django/  https://djangopy.org/how-to/how-to-implement-categories-in-django/
 Как начать Django проект, который можно масштабировать https://apirobot.me/posts/how-to-start-django-project-that-scales#%D0%B7%D0%B0%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5
 
-
-
-navbar menu withe ligin https://bootsnipp.com/snippets/featured/fancy-navbar-login-sign-in-form
-"Bootstrap 4 Navbar with Icon Top" https://bootsnipp.com/snippets/featured/bootstrap-4-navbar-with-icon-top
-
-"Buttons minus and plus in input " https://bootsnipp.com/snippets/featured/buttons-minus-and-plus-in-input
-
-"bootstrap multi step form" https://bootsnipp.com/snippets/exG18
 "Step by step form wizard " https://bootsnipp.com/snippets/j6rkb
-
-CARD
-"Store product layout" https://bootsnipp.com/snippets/featured/store-product-layout
-"Carousel Product Cart Slider" https://bootsnipp.com/snippets/featured/carousel-product-cart-slider
-"Bootstrap 4 - Product Page" https://bootsnipp.com/snippets/X2ym0
-"Product Page For Online Shop" https://bootsnipp.com/snippets/featured/product-page-for-online-shop
 "eCommerce Product Detail" https://bootsnipp.com/snippets/featured/ecommerce-product-detail
-"Ecommerce Product Template by t-php.fr" https://bootsnipp.com/snippets/Waxxr
-"List Grid View" https://bootsnipp.com/snippets/featured/list-grid-view !!
-
-"Product Shopping Grid Styles" https://bootsnipp.com/snippets/O5yMd !!!!!!!!!!!!!!!!!!!!
-"eCommerce Quick view Popup & Product row" https://bootsnipp.com/snippets/featured/ecommerce-quick-view-popup-amp-product-row
 
 
 NAVBAR
 "Toggle navbar with Slide Down Animation" https://bootsnipp.com/snippets/featured/toggle-navbar-with-slide-down-animation
-"overview with navbar" https://bootsnipp.com/snippets/mMEgM
+
+Широкое меню
+"overview with navbar" https://bootsnipp.com/snippets/mMEgM 
 "Navbar 2.0" https://bootsnipp.com/snippets/gmyP1
-"Bootstrap Navbar and Slider Overlay Text" https://bootsnipp.com/snippets/40NOn !! переделать и все ок!
+
 "Animated Brand in Navbar" https://bootsnipp.com/snippets/rv7WR
-"Mi navbar "https://bootsnipp.com/snippets/QbZE1
 
-https://code.google.com/archive/p/django-autocomplete/ AutoComplete for ForeignKey and ManyToManyField
+https://bootsnipp.com/grafreez Красивые шаблоны
+https://bootsnipp.com/snippets/xrXp9 продукт кард
+https://bootsnipp.com/TPHP почти полный интернет магазин!
 
-"Page with left and right sidebar" https://bootsnipp.com/snippets/featured/page-with-left-and-right-sidebar
+https://code.google.com/archive/p/django-autocomplete/ AutoComplete for ForeignKey and ManyToManyField !!!
+
 "page" https://bootsnipp.com/snippets/BEyRr Ухты))
 
 
-
-"Bootstrap 4 business website template" https://bootsnipp.com/snippets/6X2mr!!!!!!!
+------------------------------
 
 https://itchief.ru/bootstrap/images Bootstrap - CSS классы для изображений
 
@@ -104,7 +65,7 @@ SEO Перенос сайта на новую CMS без потери позиц
 https://netpeak.net/ru/blog/perenos-saita-na-novuyu-cms-bez-poteri-pozitsii-i-trafika-kak-podgotovit-tz-programmistu/
 
 
-
+https://itchief.ru/bootstrap/spacing-v4 Страт по bootstrap	
 
 ------------------------------
 >>>ord=Order.objects.get(id=28)
@@ -135,7 +96,9 @@ https://godjango.com/19-using-templates-for-sending-emails/
 https://stackoverflow.com/questions/2809547/creating-email-templates-with-django
 
 
-
+html color
+https://www.hexcolortool.com/
+http://html-color.org/
 
 
 

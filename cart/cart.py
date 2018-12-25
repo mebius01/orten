@@ -54,6 +54,7 @@ class Cart(object):
 
 		for item in self.cart.values():
 			item['price_uah'] = Decimal(item['price_uah'])
+			item['quantity'] = int(item['quantity'])
 			item['total_price_uah'] = item['price_uah'] * item['quantity']
 			yield item
 

@@ -1,70 +1,249 @@
 {% extends 'shop/categories.html' %}
+{% load bootstrap4 %}
+
 {% block breadcrumbs %}
 {{ block.super }} » {{instance.name}}
 {% endblock %}
 
 {% load static %}
 {% block content %}
-<p>
-Tags| <strong>
-{% for tag in instance.tags.all %}
-<a href="/shop/tag/{{tag.id}}"> {{ tag.name }}</a> |
-{% endfor %}
-</strong>
-</p>
+
+
+
+<style>
+    /*
+** Style Simple Ecommerce Theme for Bootstrap 4
+** Created by T-PHP https://t-php.fr/43-theme-ecommerce-bootstrap-4.html
+
+<p class="product_tags">Tags: 
+                        {% for tag in instance.tags.all %}
+                            <a href="/tag/{{tag.id}}">{{ tag.name }}</a> |
+                        {% endfor %}
+                    </p>
+                    <hr>
+                    <p class="product_name">{{ instance.name }}</p>
+                    <hr>
+                    <p class="product_vendor">{{ instance.vendor }}</p>
+                    <hr>
+                    <p class="product_vendor_code">{{ instance.vendor_code }}</p>
+*/
+.price {
+    color: #c01508;
+    text-align: center;
+    font-weight: bold;
+    font-size: 150%;
+}
+
+.product_tags {
+    color: #c01508;
+    text-align: center;
+    font-weight: bold;
+    font-size: 150%;
+}
+
+.product_name {
+    color: #c01508;
+    text-align: center;
+    font-weight: bold;
+    font-size: 150%;
+}
+
+.product_vendor {
+    color: #c01508;
+    text-align: center;
+    font-weight: bold;
+    font-size: 150%;
+}
+
+.product_vendor_code {
+    color: #c01508;
+    text-align: center;
+    font-weight: bold;
+    font-size: 150%;
+}
+
+
+
+.category_block li:hover {
+    background-color: #007bff;
+}
+.category_block li:hover a {
+    color: #ffffff;
+}
+.category_block li a {
+    color: #343a40;
+}
+.add_to_cart_block .price {
+    color: #c01508;
+    text-align: center;
+    font-weight: bold;
+    font-size: 200%;
+    margin-bottom: 0;
+}
+.add_to_cart_block .price_discounted {
+    color: #343a40;
+    text-align: center;
+    text-decoration: line-through;
+    font-size: 140%;
+}
+.product_rassurance {
+    padding: 10px;
+    margin-top: 15px;
+    background: #ffffff;
+    border: 1px solid #6c757d;
+    color: #6c757d;
+}
+.product_rassurance .list-inline {
+    margin-bottom: 0;
+    text-transform: uppercase;
+    text-align: center;
+}
+.product_rassurance .list-inline li:hover {
+    color: #343a40;
+}
+
+
+
+</style>
+<div class="container">
+    <div class="row">
+        <!-- Image -->
+        <div class="col-12 col-lg-6">
+            <div class="card bg-light mb-3">
+                <div class="card-body">
+                    <a href="" data-toggle="modal" data-target="#productModal">
+                        <img style="max-width:100%;" src="{% if instance.image %}{{ instance.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}"></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add to cart -->
+        <div class="col-12 col-lg-6 add_to_cart_block">
+            <div class="card bg-light mb-3">
+                <div class="card-body">
+
+                    <p class="product_tags">Tags: 
+                        {% for tag in instance.tags.all %}
+                            <a href="/tag/{{tag.id}}">{{ tag.name }}</a> |
+                        {% endfor %}
+                    </p>
+                    <hr>
+                    <p class="product_name">{{ instance.name }} Lorem</p>
+                    <hr>
+                    <p class="product_vendor">{{ instance.vendor }}</p>
+                    <hr>
+                    <p class="product_vendor_code">{{ instance.vendor_code }}</p>
+                    <hr>
+                    <p class="price">{{ instance.price_uah }}</p>
+                    <hr>
+                    <p class="price_discounted"></p>
+                    <form action="{% url "cart:cart_add" instance.id %}" method="post">
+                {% csrf_token %}
+                  {% bootstrap_field cart_product_form.quantity show_label=False %}
+                  {% bootstrap_field cart_product_form.update show_label=False %}
+                  <button type="submit" class="btn btn-success btn-lg btn-block text-uppercase">
+                   Add To Cart
+                  </button>
+                </form>
+                        {% comment %}
+                            <div class="form-group">
+                            <label>Quantity :</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <button type="button" class="quantity-left-minus btn btn-danger btn-number"  data-type="minus" data-field="">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                                <input type="text" class="form-control"  id="quantity" name="quantity" min="1" max="100" value="1">
+                                <div class="input-group-append">
+                                    <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-success btn-lg btn-block text-uppercase">
+                            <i class="fa fa-shopping-cart"></i> Add To Cart
+                        </a>
+                    </form>
+                        {% endcomment %}
+
+                    <div class="product_rassurance">
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-truck fa-2x"></a></i><br/>Доставки</li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-credit-card fa-2x"></a></i><br/>Оплаты</li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-phone fa-2x"></i></a><br/>Контакты</li>
+                        </ul>
+                    </div>
+
+                    {% comment %}
+                        <div class="reviews_product p-3 mb-2 ">
+                        3 reviews
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        (4/5)
+                        <a class="pull-right" href="#reviews">View all reviews</a>
+                    </div>
+                    <div class="datasheet p-3 mb-2 bg-info text-white">
+                        <a href="" class="text-white"><i class="fa fa-file-text"></i> Download DataSheet</a>
+                    </div>
+                </div>
+                    {% endcomment %}
+            </div>
+        </div>
+    </div>
 
 <div class="container">
     <div class="row">
-        <div class="col-xs-4 item-photo">
-           <img style="max-width:100%;" src="{% if instance.image %}{{ instance.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" />
-                </div>
-            <div class="col-md-7">
-                <div class="product-title">{{ instance.name }}</div>
-                <hr>
-                <div class="instance-desc">{{ instance.keywords }}</div>
-                <hr>
-                <div class="instance-price">{{ instance.price_uah }}</div>
-                <hr>
-                <div class="instance-stock">Доступен к заказу</div>
-                <hr>
-                <div class="btn-group cart">
-                 <form action="{% url "cart:cart_add" instance.id %}" method="post">
-                {{ cart_product_form }}
-                 {% csrf_token %}
-                   <input type="submit" value="Добавить в корзину">
-</form>
-                </div>
-                <div class="btn-group wishlist">
-                    <button type="button" class="btn btn-danger">
-                        Add to wishlist
-                    </button>
-                </div>
-            </div>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">DESCRIPTION</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">INFO</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">REVIEWS</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"> {{ instance.description|linebreaks }}</div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit amet necessitatibus, beatae libero nesciunt maiores numquam itaque suscipit pariatur explicabo. Quisquam minus praesentium nobis laudantium, culpa modi, dolores quis ex?</div>
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae doloribus fugit ab excepturi, ut doloremque, itaque expedita tenetur laborum eos et, necessitatibus natus! Harum laudantium, adipisci quisquam quas nulla delectus.</div>
+</div>
         </div>
     </div>
-    <div class="container-fluid">
-        <ul id="myTab" class="nav nav-tabs nav_tabs">
-            <li class="active"><a href="#service-one" data-toggle="tab">DESCRIPTION</a></li>
-            <li><a href="#service-two" data-toggle="tab">instance INFO</a></li>
-            <li><a href="#service-three" data-toggle="tab">REVIEWS</a></li>
-        </ul>
-        <div id="myTabContent" class="tab-content">
-            <div class="tab-pane fade in active" id="service-one">
-                <class="container instance-info">
-                    {{ instance.description|linebreaks }}
-            </div>
-            <div class="tab-pane fade" id="service-two">
-                <section class="container">
-                </section>
-            </div>
-            <div class="tab-pane fade" id="service-three">
-            </div>
-        </div>
-        <hr>
-    </div>
+</div>
+</div>
 </div>
 </div>
 </div>
 
+<script>
+    
+
+    $(document).ready(function(){
+        var quantity = 1;
+
+        $('.quantity-right-plus').click(function(e){
+            e.preventDefault();
+            var quantity = parseInt($('#quantity').val());
+            $('#quantity').val(quantity + 1);
+        });
+
+        $('.quantity-left-minus').click(function(e){
+            e.preventDefault();
+            var quantity = parseInt($('#quantity').val());
+            if(quantity > 1){
+                $('#quantity').val(quantity - 1);
+            }
+        });
+
+    });
+
+</script>
 
 {% endblock %}

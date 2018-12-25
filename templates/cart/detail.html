@@ -1,8 +1,11 @@
 {% extends "base.html" %}
+{% load bootstrap4 %}
 
 {% block breadcrumbs %}
 {{ block.super }}» Cart
 {% endblock %}
+
+
 
 {% load static %}
 {% block title %}
@@ -11,6 +14,137 @@
 {% block content %}
 
 
+<div class="container mb-4">
+    <div class="row">
+        <div class="col-12">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th class="text-center"> Qt </th>
+                        <th class="text-center">Total</th>
+                      
+                        <th colspan="2" class="text-center"></th>
+
+                    </tr>
+                </thead>
+                {% for item in cart %}
+                {% with product=item.product %}
+                <tbody>
+                    <tr>
+                      <td class="col-sm-6 col-md-6">
+                        <div class="media">
+                            <a class="thumbnail pull-left" href="#"> <img src="{% if product.image %}{{ product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" style="width: 72px; height: 72px;"> </a>
+
+                            <div class="media-body">
+                                <h6 class="media-heading"><a href="{% url 'shop:show_category' product.get_absolute_url %}">{{ product.name }}</a></h6>
+                                <h6 class="media-heading"><a href="#">{{ product.vendor }}</a></h6>
+                                <span>Status: </span><span class="text-success">
+                                <strong>In Stock</strong></span>
+                            </div>
+                        </div>
+                      </td>
+
+
+                        <td class="col-sm-1 col-md-1 text-center"><span class="badge badge-light">{{ item.price_uah }}</span></td>
+                        <td><span class="badge badge-light">{{item.quantity}}</span>
+                        </td>
+                        <td class="col-sm-1 col-md-1 text-center"><span class="badge badge-light">{{ item.total_price_uah }}</span></td>
+                      
+                        <td class="col-sm-3 col-md-3" style="text-align: center">
+                        <form action="{% url "cart:cart_add" product.id %}" method="post" class="add">
+                          <div class="row">
+                            <div class="col">
+                          {{ item.update_quantity_form.quantity }}
+                          {{ item.update_quantity_form.update }}
+                          {% csrf_token %}
+                          </div>
+                          <div class="col">
+                          <button type="submit" class="btn btn-outline-primary"><i class="fab fa-get-pocket"></i></button>
+                        </div>
+                          </div>
+                        </form>
+                        </td>
+{% comment %}
+  
+
+                <form action="{% url "cart:cart_add" product.id %}" method="post" class="add">
+                  <div class="form-row align-items-center">
+                    <div class="col-auto my-1">
+                      <label class="mr-sm-2" for="inlineFormCustomSelect">Preference</label>
+                      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                        {% for i in item.update_quantity_form.quantity %}
+                        <option value="{{i}}">{{i}}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="col-auto my-1">
+                      <div class="custom-control custom-checkbox mr-sm-2">
+                       {{ item.update_quantity_form.update }}
+                      </div>
+                    </div>
+
+                    <div class="col-auto my-1">
+                      {% csrf_token %}
+                          <button type="submit" class="btn btn-outline-primary"> Submit</button>
+                      
+                    </div>
+                  </div>
+                </form>
+{% endcomment %}
+                        
+
+                        <td class="col-sm-1 col-md-1">
+                         <a href="{% url "cart:cart_remove" product.id %}" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i><role="button" aria-pressed="true"></a>
+                      </td>
+                    </tr>
+                     {% endwith %}
+                     {% endfor %}
+                    {% comment %}
+                      
+                    <tr>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>   </td>
+                        <td><h5>Subtotal</h5></td>
+                        <td class="text-right"><h5><strong>$24.59</strong></h5></td>
+                    </tr>
+                    <tr>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>   </td>
+                        <td><h5>Estimated shipping</h5></td>
+                        <td class="text-right"><h5><strong>$6.94</strong></h5></td>
+                    </tr>
+                    {% endcomment %}
+                    <tr>
+                      <td></td>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>   </td>
+                        <td class="text-center"><h5>Total</h5></td>
+                        <td class="text-center"><h5><span class="badge badge-light">{{ cart.get_total_price_uah }}</span></h5></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="col mb-2">
+            <div class="row">
+                <div class="col-sm-12  col-md-6">
+
+                  <a href="{% url "shop:product_list" %}" class="btn btn-block btn-outline-primary"><i class="fas fa-angle-double-left"></i>Shoping<role="button" ></a>
+                </div>
+                <div class="col-sm-12 col-md-6 text-right">
+                    <a href="{% url "order:order_create" %}" class="btn btn-block btn-outline-success">Checkout<i class="fas fa-angle-double-right"></i><role="button"></a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+<hr>
+{% comment %}
+  
   <h1>Ваша корзина товаров</h1>
 
     <a href="{% url "shop:product_list" %}" class="btn">Продолжить Шопинг</a>
@@ -79,6 +213,8 @@
   </tbody>
 </table>
 
+
+{% endcomment %}
 
 
 {% endblock %}

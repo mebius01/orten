@@ -24,6 +24,7 @@ app_name = 'shop'
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('test', views._test),
 	path('product_list/', views.product_list, name ='product_list'),
     path('tag/<tag_id>/', views.product_list, name='list_product_by_tag'),
     path('category/', views.category, name ='list_category'),

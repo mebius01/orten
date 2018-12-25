@@ -7,6 +7,9 @@ from taggit.models import Tag
 def home(request):
 	return render(request, 'shop/home.html')
 
+def _test(request):
+	return render(request, 'base-test.html')
+
 def category(request):
 	list_category = Category.objects.all()
 	return render(request, 'shop/list_category.html', {'list_category': list_category})

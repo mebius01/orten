@@ -25,7 +25,7 @@ SECRET_KEY = '*!rh^do6@bep_=*@3x$jzuw+zw*i*n%yu3a8p0nap74^x!+38u'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'taggit',
     'sitetree',
     'debug_toolbar',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [

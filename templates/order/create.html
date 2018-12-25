@@ -2,7 +2,7 @@
 {% block breadcrumbs %}
 {{ block.super }} » Order
 {% endblock %}
-
+{% load bootstrap4 %}
 {% block title %}
   Оформление заказа
 {% endblock %}
@@ -12,7 +12,7 @@
   <div class="col-sm-4">
     <h2>Заполните форму</h2>
     <form class="order-form" action="." method="post">
-      {{ form.as_p }}
+      {% bootstrap_form form %}
       {% csrf_token %}
       <input type="submit" value="Отправить">
     </form>

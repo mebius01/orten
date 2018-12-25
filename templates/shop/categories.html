@@ -1,10 +1,17 @@
 {% extends 'base.html' %}
+<div class="container">
+    <div class="row">
+      <div class="col-12">
 {% block breadcrumbs %}
 {{ block.super }}
     {% for i in category.get_anc %}  
-            » <a href="/shop/category/{{ i.get_absolute_url }}">{{ i.name }}</a>
+           »  <a href="/category/{{ i.get_absolute_url }}">{{ i.name }}</a>
     {% endfor %}
 {% endblock %}
+      </div>
+    </div>
+</div>
+
 
 {% load static %}
 {% load sitetree %}
