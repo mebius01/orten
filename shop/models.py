@@ -142,6 +142,7 @@ class Services(models.Model):
 	updated = models.DateTimeField(auto_now=True) #дата обновления
 
 
+
 	class Meta:
 		ordering = ('name',)
 		verbose_name = 'Услуга'
@@ -157,12 +158,20 @@ class Services(models.Model):
 
 class ProductStock(models.Model):
 	product = models.ForeignKey(Product, on_delete=models.CASCADE)
-	discount = models.DecimalField(max_digits=10, decimal_places=2, blank=True,null=True, help_text='Цена скидки')
+	discount_percent =  models.DecimalField(max_digits=5, decimal_places=2, blank=True, choices=INTEREST_CHOICES, null=True, help_text='Процент скидка') #Процент)
 	available = models.BooleanField(default=True)
 	slug = models.SlugField(max_length=400, db_index=True)	
 	description = models.TextField(blank=True) #описание акции
 	stock_start = models.DateTimeField(auto_now=False, auto_now_add=False,) # дата создания
 	stock_end = models.DateTimeField(auto_now=False, auto_now_add=False,) # дата окончания
+
+	@property
+	def discount(self):
+		product_price_uah=float(self.product.price_uah)
+		discount_percent=float(self.discount_percent)
+		return product_price_uah - (product_price_uah*discount_percent)
+
+
 
 	class Meta:
 		ordering = ('product',)
