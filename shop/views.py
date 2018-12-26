@@ -3,6 +3,7 @@ from shop.models import Category, Product, ProductStock
 from cart.forms import CartAddProductForm
 from taggit.models import Tag
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Q
 # Create your views here.
 
 def home(request):
@@ -44,6 +45,12 @@ def show_category(request,hierarchy=None,tag_id=None):
 
 
 def product_list(request, tag_id=None):
+
+	search_in_body_title = request.GET.get('search', '')
+	if search_in_body_title:
+		products_all = Product.objects.filter(Q(name__icontains = search_in_body_title) | Q(description__icontains = search_in_body_title))
+	else:
+		products_all = Product.objects.all().order_by('-publish')
 	products_all = Product.objects.all()
 
 
@@ -52,7 +59,7 @@ def product_list(request, tag_id=None):
 		tag = get_object_or_404(Tag, id=tag_id)
 		products_all = products_all.filter(tags__in=[tag])
 
-	paginator = Paginator(products_all, 1)
+	paginator = Paginator(products_all, 3)
 	page = request.GET.get('page')
 	try:
 		products = paginator.page(page)

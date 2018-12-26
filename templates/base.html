@@ -174,8 +174,8 @@ footer a {
                 </li>
             </ul>
 
-            <form class="form-inline my-2 my-lg-0">
-                <div class="input-group input-group-sm">
+{% comment %}
+                    <div class="input-group input-group-sm">
                     <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Search...">
                     <div class="input-group-append">
                         <button type="button" class="btn btn-secondary btn-number">
@@ -183,6 +183,15 @@ footer a {
                         </button>
                     </div>
                 </div>
+{% endcomment %}
+
+       <form class="navbar-form navbar-left" role="search" action="{% url 'shop:product_list' %}">
+        <div class="form-group">
+          <input type="text" class="search-query" placeholder="Search" name="search">
+        </div>
+      </form>
+
+            <form class="form-inline my-2 my-lg-0">
                 {% with total_items=cart|length %}
                 {% if cart|length > 0 %}
                 <a class="btn btn btn-outline-success btn-sm ml-3" href="{% url "cart:cart_detail" %}">
