@@ -157,6 +157,7 @@ class Services(models.Model):
 
 class ProductStock(models.Model):
 	product = models.ForeignKey(Product, on_delete=models.CASCADE)
+	discount = models.DecimalField(max_digits=10, decimal_places=2, blank=True,null=True, help_text='Цена скидки')
 	available = models.BooleanField(default=True)
 	slug = models.SlugField(max_length=400, db_index=True)	
 	description = models.TextField(blank=True) #описание акции

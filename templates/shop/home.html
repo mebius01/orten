@@ -1,9 +1,28 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
 
 <style>
-	
-	.card {
+
+
+.carousel-control-next-icon {
+
+    height: 0;
+    border-top: 50px solid transparent;
+    border-left: 50px solid red;
+    border-bottom: 50px solid transparent;
+    opacity:0.2;
+}
+
+.carousel-control-prev-icon{
+width: 0;
+    height: 0;
+    border-top: 50px solid transparent;
+    border-right: 50px solid red;
+    border-bottom: 50px solid transparent;
+    opacity:0.2;
+}
+.card {
   margin: 0 auto;
 }
 .card .carousel-item {
@@ -71,26 +90,16 @@ a:hover > .ico {
 <div class="container">
     <div class="row">
         <div class="col">
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-
-
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
+            
             <img class="first-slide" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap" width="230" height="230">
             <div class="container">
-              <div class="carousel-caption text-right">
-                <h4>Example headline.</h4>
+              <div class="carousel-caption text-dark text-right">
+                
+                <h4>1111111111</h4>
+                
                 <p>
                 <li>1</li>
                 <li>2</li>
@@ -100,25 +109,20 @@ a:hover > .ico {
               </div>
             </div>
           </div>
+          {% for item in product_stok %}
           <div class="carousel-item">
-            <img class="second-slide" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap" width="230" height="230">
+            <img class="second-slide" src="{% if item.product.image %}{{ item.product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="Card image cap" width="230" height="230">
             <div class="container">
-              <div class="carousel-caption text-right">
-                <h1>Another example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-outline-primary btn-sm">Маленькая кнопка с ценой</a></p>
+              <div class="carousel-caption text-dark text-right">
+                <h1>{{item.product.name}}</h1>
+                <p>{{item.product.description|truncatechars:59}}</p>
+                <p>Цена: {{item.product.price_uah}}</p>
+                <p><a href="{% url 'shop:show_category' item.product.get_absolute_url %}" class="btn btn-outline-primary btn-sm">Купить по акции {{item.discount}}</a></p>
               </div>
             </div>
           </div>
-          <div class="carousel-item">
-            <img class="third-slide" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap" width="230" height="230">
-            <div class="container">
-              <div class="carousel-caption text-right">
-                <h1>One more for good measure.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-outline-primary btn-sm">Маленькая кнопка с ценой</a></p>
-              </div>
-            </div>
+          {% endfor %}
+    
           </div>
         </div>
         <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">

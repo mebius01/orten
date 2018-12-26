@@ -1,11 +1,12 @@
 from django.shortcuts import render, get_object_or_404
-from shop.models import Category, Product
+from shop.models import Category, Product, ProductStock
 from cart.forms import CartAddProductForm
 from taggit.models import Tag
 # Create your views here.
 
 def home(request):
-	return render(request, 'shop/home.html')
+	product_stok = ProductStock.objects.all()
+	return render(request, 'shop/home.html', {'product_stok':product_stok})
 
 def _test(request):
 	return render(request, 'base-test.html')
