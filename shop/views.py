@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from shop.models import Category, Product, ProductStock
 from cart.forms import CartAddProductForm
 from taggit.models import Tag
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 
 def home(request):
@@ -43,13 +44,26 @@ def show_category(request,hierarchy=None,tag_id=None):
 
 
 def product_list(request, tag_id=None):
-	products = Product.objects.all()
+	products_all = Product.objects.all()
+
+
 	cart_product_form = CartAddProductForm()
 	if tag_id:
 		tag = get_object_or_404(Tag, id=tag_id)
-		products = products.filter(tags__in=[tag])
+		products_all = products_all.filter(tags__in=[tag])
 
-	return render(request, 'shop/list.html', {'products': products, 'cart_product_form': cart_product_form})
+	paginator = Paginator(products_all, 1)
+	page = request.GET.get('page')
+	try:
+		products = paginator.page(page)
+	except PageNotAnInteger:
+		# Если страница не является целым числом, показать первую страницу.
+		products = paginator.page(1)
+	except EmptyPage:
+		# Если страница выходит за пределы допустимого диапазона (например, 9999), казать последнюю страницу результатов
+		products = paginator.page(paginator.num_pages)
+
+	return render(request, 'shop/list.html', {'products': products, 'products_all': products_all, 'cart_product_form': cart_product_form})
 
 
 def product_detail(request, slug):
