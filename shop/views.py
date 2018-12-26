@@ -6,7 +6,8 @@ from taggit.models import Tag
 
 def home(request):
 	product_stok = ProductStock.objects.all()
-	return render(request, 'shop/home.html', {'product_stok':product_stok})
+	category = Category.objects.all()
+	return render(request, 'shop/home.html', {'product_stok':product_stok, 'category':category})
 
 def _test(request):
 	return render(request, 'base-test.html')

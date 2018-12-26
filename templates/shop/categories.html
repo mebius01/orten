@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-<div class="container">
+<div class="container-fluid">
     <div class="row">
       <div class="col-12">
 {% block breadcrumbs %}
@@ -20,6 +20,27 @@
 
 
 {% block content %}
+
+<div class="container-fluid">
+<div class="row">
+  <div class="col-4">
+    <div class="list-group" id="list-tab" role="tablist">
+      <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">{{category.name}}</a>
+
+    </div>
+  </div>
+  <div class="col-8">
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+          {{category.description}}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
 <div class="text-center"><h2>{{category.name}}</h2></div>
 
 {% if category.children.all %}
@@ -39,7 +60,7 @@
             <div class="col-sm-8">
                 <h4 class="card-title"><a href="{{ i.slug }}"> {{ i.name }} </a><br></h4>
                 <div class="subject-discription">
-                    <p class="card-text"> {{i.description | truncatewords_html:58 | safe}} </p>
+                    <p class="card-text"> {{i.description }} </p>
                 </div>
             </div>
             <div class="text-center col-sm-2">
