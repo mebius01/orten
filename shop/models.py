@@ -1,6 +1,8 @@
 from django.db import models
 from django.db.models import F
 from decimal import *
+import django_filters
+
 # Create your models here.
 
 from mptt.models import MPTTModel, TreeForeignKey
@@ -129,6 +131,13 @@ class Product(models.Model):
 
 	def get_absolute_url(self):
 		return (self.category.get_absolute_url()+'/'+self.slug)
+
+class ProductFilter(django_filters.FilterSet):
+	name = django_filters.CharFilter(lookup_expr='iexact')
+	class Meta:
+		model = Product
+		fields = ['name','vendor',]
+
 
 class Services(models.Model):
 	category = models.ForeignKey(Category, on_delete=models.CASCADE) #коталог продукта связь m2m

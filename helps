@@ -109,9 +109,43 @@ https://proglib.io/p/5-flexbox-techniques/
 Понимание CSS сеток с нуля
 https://medium.com/@dedguran/%D0%BF%D0%BE%D0%BD%D0%B8%D0%BC%D0%B0%D0%BD%D0%B8%D0%B5-css-%D1%81%D0%B5%D1%82%D0%BE%D0%BA-%D1%81-%D0%BD%D1%83%D0%BB%D1%8F-3bcf28b906f8
 
+--------------------------
+
+Postgres:
+
+root@iv:/home/iv/project/virtshop# sudo -u postgres psql
+psql (9.6.10)
+postgres=# CREATE DATABASE orten_db;
+CREATE DATABASE
+postgres=# CREATE USER iv WITH PASSWORD '1234';
+postgres=# DROP USER iv
+postgres=# CREATE USER iv WITH PASSWORD '1234';
+CREATE ROLE
+postgres=# ALTER ROLE iv SET client_encoding TO 'utf8';
+ALTER ROLE
+postgres=# ALTER ROLE iv SET default_transaction_isolation TO 'read committed';
+ALTER ROLE
+postgres=# ALTER ROLE iv SET timezone TO 'UTC';
+ALTER ROLE
+postgres=# GRANT ALL PRIVILEGES ON DATABASE orten_db TO iv;
+GRANT
+postgres=# \q
+root@iv:/home/iv/project/virtshop# exit
+(virtshop) iv@iv:~/project/virtshop$ cd orten/
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'orten_db',
+        'USER' : 'iv',
+        'PASSWORD' : '1234',
+        'HOST' : '127.0.0.1',
+        'PORT' : '5432',
+    }
+}
 
 
+(virtshop) iv@iv:~/project/virtshop/orten$ ./manage.py migrate
 
 
-
-
+https://djbook.ru/forum/topic/4259/

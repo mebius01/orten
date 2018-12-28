@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'sitetree',
     'debug_toolbar',
     'bootstrap4',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
