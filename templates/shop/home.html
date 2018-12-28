@@ -127,16 +127,18 @@ a:hover > .ico {
       </div>
 </div>
 
+{% comment %}
+    
 
   <div class="wrapper">
 <div class="three-panel-block mt-5">
-                    <div class="card-header text-white text-uppercase">
-                    <i class="fa fa-trophy"></i> Best products
-                </div>
-    <div class="row">
+ <div class="row">
 
 
 {% for item_on in products %}
+
+
+
 
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="service-block-overlay text-center mb-5 p-lg-3">
@@ -159,64 +161,6 @@ a:hover > .ico {
         </div>
     </div>
 </div>
-
-{% comment %}
-    
-<div class="container mt-3 mb-4">
-    <div class="row">
-        <div class="col-sm">
-            <div class="card">
-                <div class="card-header text-white text-uppercase">
-                    <i class="fa fa-trophy"></i> Best products
-                </div>
-                <div class="card-body">
-
-
-                 <div class="card-deck">
-                    <div class="card">
-                        <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Название карточки</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Название карточки</h5>
-                            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Название карточки</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-{% endcomment %}
-
 
 <style>
 .three-panel-block{
@@ -307,6 +251,67 @@ h2 {
   bottom: 0;
   left: 0;
 }
+
+{% endcomment %}
+
+    
+<div class="container mt-3 mb-4">
+    <div class="row">
+        <div class="col-sm">
+            <div class="card">
+                <div class="card-header text-white text-uppercase">
+                    <i class="fa fa-trophy"></i> Best products
+                </div>
+                <div class="card-body">
+
+
+                 <div class="card-deck">
+                    <div class="card">
+                        <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Название карточки</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Название карточки</h5>
+                            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Название карточки</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 
 
 {% endblock %}
