@@ -9,7 +9,8 @@ from django.db.models import Q
 def home(request):
 	product_stok = ProductStock.objects.all()
 	category = Category.objects.all()
-	return render(request, 'shop/home.html', {'product_stok':product_stok, 'category':category})
+	products = Product.objects.all()
+	return render(request, 'shop/home.html', {'products':products, 'product_stok':product_stok, 'category':category})
 
 def _test(request):
 	return render(request, 'base-test.html')
