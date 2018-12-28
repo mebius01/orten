@@ -128,9 +128,40 @@ a:hover > .ico {
 </div>
 
 
+  <div class="wrapper">
+<div class="three-panel-block mt-5">
+                    <div class="card-header text-white text-uppercase">
+                    <i class="fa fa-trophy"></i> Best products
+                </div>
+    <div class="row">
 
 
+{% for item_on in products %}
 
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="service-block-overlay text-center mb-5 p-lg-3">
+                        <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{item_on.name}}</h5>
+                            <hr>
+                            <p class="card-text">{{item_on.description|truncatechars:78}}</p>
+                            <hr>
+                        </div>
+                        
+                            <div class="btn btn-danger btn-block">{{item_on.price_uah}}</div>
+                        
+                    </div>
+                    </div>
+
+{% endfor %}
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% comment %}
+    
 <div class="container mt-3 mb-4">
     <div class="row">
         <div class="col-sm">
@@ -184,6 +215,7 @@ a:hover > .ico {
         </div>
     </div>
 </div>
+{% endcomment %}
 
 
 <style>
@@ -203,170 +235,78 @@ a:hover > .ico {
     border-radius: 50%;
 }
 
-
-</style>
-
-<style>
-    .my-flex-card > div > div.card {
-    height: calc(100% - 15px);
-    margin-bottom: 15px;
+/* resets */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
 }
-</style>
-<div class="row my-flex-card">
-    <div class="col-lg-3 col-sm-6">
-        <div class="card">
-            <div class="card-block">
-                        <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Название карточки</h5>
-                            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-sm-6">
-        <div class="card">
-            <div class="card-block">
-               <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, a, quaerat. Alias, vero recusandae. Natus, commodi quos at dolorum quae perferendis omnis repellat ullam molestiae non? Provident maiores voluptas, assumenda!</div>
-               <div>Fuga eius minima aut a assumenda ipsam, sed illo ducimus inventore unde! In accusantium voluptatum dolorem dolores, voluptate officiis voluptas, doloremque, dolor nisi unde recusandae exercitationem enim! Error amet, molestiae!</div>
-                <div class="card-footer">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-sm-6">
-        <div class="card">
-            <div class="card-block">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, rerum dolore iusto, tenetur 
-                 <div class="card-footer">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-            </div>
-        </div>
-    </div>
-        <div class="col-lg-3 col-sm-6">
-        <div class="card">
-            <div class="card-block">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, rerum dolore iusto, tenetur 
-                 <div class="card-footer">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-            </div>
-        </div>
-    </div>
-        <div class="col-lg-3 col-sm-6">
-        <div class="card">
-            <div class="card-block">
-                Lorem ipsum dolor sit amet, Loremconsectetur adipisicing elit. Necessitatibus, rerum dolore iusto, tenetur 
-                 <div class="card-footer">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-            </div>
-        </div>
-    </div>
-        <div class="col-lg-3 col-sm-6">
-        <div class="card">
-            <div class="card-block">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, rerum dolore iusto, tenetur 
-            </div>
-        </div>
-    </div>
-        <div class="col-lg-3 col-sm-6">
-        <div class="card">
-            <div class="card-block">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, rerum dolore iusto, tenetur 
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-sm-6">
-        <div class="card">
-            <div class="card-block">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus corrupti ut officia iure eaque autem voluptatum nemo in, voluptas, tempora incidunt alias qui minus perferendis molestias dolor illum! Unde, necessitatibus.
-            </div>
-        </div>
-    </div>
-</div>
-        <div class="three-panel-block mt-5">
-            <div class="row">
-{% for item_on in products %}
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="service-block-overlay text-center mb-5 p-lg-3">
-                        <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">{{item_on.name}}</h5>
-                            <hr>
-                            <p class="card-text">{{item_on.description|truncatechars:78}}</p>
-                            <hr>
-                        </div>
-                        
-                            <div class="btn btn-danger btn-block">{{item_on.price_uah}}</div>
-                        
-                    </div>
-                    </div>
+/* global
+body {
+  background-color: rgb(40,40,40);
+  color: rgb(100,100,100);
+  font-family: sans-serif;
+  font-size: 14px;
+  line-height: 1.3;
+}
+ */
+.wrapper {
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 95%;
+  background-color: #fff;
+}
 
-{% endfor %}
-                </div>
-<hr>
+h2 {
+  font-weight: 700;
+}
 
-                 <div class="card-deck">
-                    <div class="card">
-                        <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Название карточки</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Название карточки</h5>
-                            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam tempora modi labore ratione, repellat, consectetur id magnam dolores quia sunt accusantium ad. Nulla dicta amet doloremque, recusandae impedit assumenda, labore.</li>
-  </ul>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                    </div>
-                </div>
-</div>
+/* grid */
+[class*="row-"] {
+  margin-bottom: 20px;
+}
+[class*="row-"]:last-child {
+  margin-bottom: 0;
+}
+[class*="col-"] {
+}
+
+@media all and ( min-width: 768px ) {
+  
+  /* all cols margin */
+  [class*="col-"] {
+    margin-right: 20px;
+  }
+  [class*="col-"]:last-child {
+    margin-right: 0;
+  }
+
+  .col-1-4 {
+    float: left;
+    width: 25%;
+    position: relative;
+    padding-bottom: 20px;
+  }
+  .row-4 {
+    padding-left: 60px;
+    display: flex;
+  }
+  .row-4 [class*="col-"]:first-child {
+    margin-left: -60px;
+  }  
+}
+
+.btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
 
 
-
-
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-            </div>
-        </div>
-    </div>
-</div>
 {% endblock %}
