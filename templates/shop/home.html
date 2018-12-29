@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-
+{% load bootstrap4 %}
 <style>
 
 
@@ -136,14 +136,8 @@ a:hover > .ico {
 	end slidr------------->
 {% endcomment %}
     
-<div class="container mt-3 mb-4">
-    <div class="row">
-        <div class="col-sm">
-            <div class="card">
-                <div class="card-header text-white text-uppercase">
-                    <i class="fa fa-trophy"></i> Best products
-                </div>
 
+<!--
 <div class="three-panel-block mt-5">
 <div class="row">
 
@@ -152,13 +146,16 @@ a:hover > .ico {
 
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="service-block-overlay text-center mb-5 p-lg-3">
-                    	<div class="card">
+                        <div class="card">
                         <img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="Card image cap" width="230" height="230">
-							<h5 class="card-title">{{item.name}}</h5>
+                            <h6 class="card-title">{{item.name}}</h6>
                             <p class="card-text">
                             <p>{{item.vendor}}</p>
-							<p>{{item.vendor_code}}</p>
-                            	{{item.description|truncatechars:88}}
+                            <p>{{item.vendor_code}}</p>
+                            {% comment %}
+                                
+                                {{item.description|truncatechars:88}}
+                            {% endcomment %}
                             </p>
                         </div>
                         <div class="card-footer">
@@ -169,12 +166,10 @@ a:hover > .ico {
 
 
 {% endfor %}
-</div>
-</div>
-</div>
-</div>
     </div>
 </div>
+
+
 
 <style>
 .three-panel-block{
@@ -273,9 +268,99 @@ h2 {
     </div>
 </div>
 
+-->
+
+<!-- container best product-->
 
 
+<style>
+.col-sm-4 {
+border: 1px;
+}
+</style>
 
+<div class="container mt-2 mb-3">
+    <div class="row">
+            <div class="card">
+                <div class="card-header bg-primary text-white text-uppercase">
+                    <i class="fa fa-trophy"></i> Best products
+                </div>
+                <div class="card-body">
+                    <div class="row">
+{% comment %}
+{% for item in products %}
+
+
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="service-block-overlay text-center mb-5 p-lg-3">
+                        <div class="card">
+                        <img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="Card image cap" width="230" height="230">
+                            <h6 class="card-title">{{item.name}}</h6>
+                            <p class="card-text">
+                            <p>{{item.vendor}}</p>
+                            <p>{{item.vendor_code}}</p>
+                            {% comment %}
+                                
+                                {{item.description|truncatechars:88}}
+                           
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                         <h2><a class="text-success" href="{% url 'shop:show_category' item.get_absolute_url %}">{{item.price_uah}}</a></h2>
+                        </div>
+                        </div>
+                        </div>
+ {% endcomment %}
+
+
+{% for item in products %}
+<!-- container CARD -->
+                        <div class="col-sm-4">
+                            <div class="card  h-100">
+                                 <img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="Card image cap" width="230" height="230">
+
+                                <div class="card-body">
+                                   
+                                    <h4 class="card-title"><a href="{% url 'shop:show_category' item.get_absolute_url %}" title="View Product">{{item.name}}</a></h4>
+                                    {{item.price_uah}}
+                                    <div class="row">
+                                        <div class="col">
+                                   <form action="{% url "cart:cart_add" item.id %}" method="post">
+                                    {% csrf_token %}
+                                    
+                                        {% bootstrap_field cart_product_form.quantity show_label=False %}
+                                        </div>
+
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-outline-primary"><i class="fab fa-get-pocket"></i></button>
+                                    </div>
+                                        </form> 
+                                    </div>
+                                    <p>{{item.vendor}}</p>
+                                    <p>{{item.vendor_code}}</p>
+                                    <p>{{item.description|truncatechars:58}}</p>
+                                  
+                                </div>
+                            </div>
+                        </div>
+<!-- end container cerd -->
+{% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- END container best product-->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 {% endblock %}

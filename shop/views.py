@@ -10,7 +10,8 @@ def home(request):
 	product_stok = ProductStock.objects.all()
 	category = Category.objects.all()
 	products = Product.objects.all()
-	return render(request, 'shop/home.html', {'products':products, 'product_stok':product_stok, 'category':category})
+	cart_product_form = CartAddProductForm()
+	return render(request, 'shop/home.html', {'cart_product_form':cart_product_form, 'products':products, 'product_stok':product_stok, 'category':category})
 
 def _test(request):
 	return render(request, 'base-test.html')
