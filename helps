@@ -113,6 +113,7 @@ https://medium.com/@dedguran/%D0%BF%D0%BE%D0%BD%D0%B8%D0%BC%D0%B0%D0%BD%D0%B8%D0
 
 Postgres:
 
+root@ho:/home/iv/project/virt-shop/orten# apt-get install postgresql postgresql-server-dev-9.6
 root@iv:/home/iv/project/virtshop# sudo -u postgres psql
 psql (9.6.10)
 postgres=# CREATE DATABASE orten_db;
@@ -132,6 +133,8 @@ GRANT
 postgres=# \q
 root@iv:/home/iv/project/virtshop# exit
 (virtshop) iv@iv:~/project/virtshop$ cd orten/
+(virt-shop) iv@ho:~/project/virt-shop/orten$ pip install psycopg2-binary psycopg2
+
 
 DATABASES = {
     'default': {
@@ -146,6 +149,12 @@ DATABASES = {
 
 
 (virtshop) iv@iv:~/project/virtshop/orten$ ./manage.py migrate
+(virt-shop) iv@ho:~/project/virt-shop/orten$ ./manage.py createsuperuser					
+
+
+
+
+
 
 http://qaru.site/questions/417796/how-can-i-make-bootstrap-4-cards-all-the-same-height !!!!!!!!!!!!
 
@@ -154,6 +163,17 @@ https://toster.ru/q/399738
 
 https://djbook.ru/forum/topic/4259/
 
+Я не собираюсь оценивать варианты во время импорта, именно поэтому я создал отдельную функцию, которая генерирует список вариантов:
 
+def get_choices():
+    return [(...) for x in SomeModel.objects.filter(...).order_by(...)]
+
+class SomeFilterSet(django_filters.FilterSet):
+    field = django_filters.ChoiceField(
+        choices=get_choices,  # not calling it here
+    )
+    class Meta:
+        ...
+Я ожидаю, choicesчто его оценивают при создании экземпляра набора фильтров или при вызове самого фильтра, но вместо этого он оценивается по определению фильтра, прямо здесь __init__:
 
 http://qaru.site/questions/417796/how-can-i-make-bootstrap-4-cards !!!!!!!!!!!

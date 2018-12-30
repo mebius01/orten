@@ -24,8 +24,9 @@
                         <th>Price</th>
                         <th class="text-center"> Qt </th>
                         <th class="text-center">Total</th>
-                      
-                        <th colspan="2" class="text-center"></th>
+              
+
+                        <th colspan="2" class="text-center">МанипуляторsУдоляторs</th>
 
                     </tr>
                 </thead>
@@ -52,19 +53,17 @@
                         </td>
                         <td class="col-sm-1 col-md-1 text-center">{{ item.total_price_uah }}</td>
                       
-                        <td class="col-sm-3 col-md-3" style="text-align: center">
+                        <td class="col-sm-1 col-md-1">
+
                         <form action="{% url "cart:cart_add" product.id %}" method="post" class="add">
-                          <div class="row">
-                            <div class="col">
-                          {{ item.update_quantity_form.quantity }}
+                        
+                         {{ item.update_quantity_form.quantity }}
                           {{ item.update_quantity_form.update }}
+                        
                           {% csrf_token %}
-                          </div>
-                          <div class="col">
                           <button type="submit" class="btn btn-outline-primary"><i class="fab fa-get-pocket"></i></button>
-                        </div>
-                          </div>
                         </form>
+                        </div>
                         </td>
 {% comment %}
   
@@ -123,7 +122,7 @@
                         <td>   </td>
                         <td>   </td>
                         <td>   </td>
-                        <td class="text-center"><h5>Total</h5></td>
+                        <td class="text-center"><h5>Tota</h5></td>
                         <td class="text-center"><h5>{{ cart.get_total_price_uah }}</h5></td>
                     </tr>
                 </tbody>

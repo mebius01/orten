@@ -132,11 +132,6 @@ class Product(models.Model):
 	def get_absolute_url(self):
 		return (self.category.get_absolute_url()+'/'+self.slug)
 
-class ProductFilter(django_filters.FilterSet):
-	name = django_filters.CharFilter(lookup_expr='iexact')
-	class Meta:
-		model = Product
-		fields = ['name','vendor',]
 
 
 class Services(models.Model):
