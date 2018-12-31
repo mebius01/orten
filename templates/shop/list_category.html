@@ -4,25 +4,54 @@
 {% block content %}
 
 <div class="container-fluid">
-    
-<div class="row">
-  <div class="col-4">
-    <div class="list-group" id="list-tab" role="tablist">
-      <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
 
-    </div>
-  </div>
-  <div class="col-8">
-    <div class="tab-content" id="nav-tabContent">
-      <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">...</div>
+<div id="accordion" role="tablist">
+  <div class="card">
+    <div class="card-header" role="tab" id="headingOne">
+      <h5 class="mb-0">
+        <a style="text-decoration: none" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <div class="card-header text-white text-uppercase"><i class="fas fa-sort-amount-down"></i>  Categories</div>
+        </a>
+      </h5>
+</div>
+<div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
 
-    </div>
-  </div>
+      </div>
+</div>
+</div>
+<div class="card">
+    <div class="card-header" role="tab" id="headingTwo">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Collapsible Group Item #2
+        </a>
+      </h5>
+</div>
+<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+         ...............................................................................#2
+      </div>
+</div>
+</div>
+<div class="card">
+    <div class="card-header" role="tab" id="headingThree">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Collapsible Group Item #3
+        </a>
+      </h5>
+</div>
+<div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+      <div class="card-body">
+       ...............................................................................#3
+      </div>
 </div>
 </div>
 
 
-<ul>
+
+
     {% recursetree list_category %}
     <li>
         <a href="{{ node.get_absolute_url }}">{{ node.name }}</a>

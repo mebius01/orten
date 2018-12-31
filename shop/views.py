@@ -26,7 +26,7 @@ def show_category(request,hierarchy=None,tag_id=None):
 	parent = None
 	root = Category.objects.all()
 	tag = None
-	
+
 	if tag_id:
 		tag = get_object_or_404(Tag, slug=tag_id)
 		product_list_all = porduct_list_all.filter(tags__in=[tag])
@@ -43,7 +43,8 @@ def show_category(request,hierarchy=None,tag_id=None):
 	else:
 		category = Category.objects.get(slug=category_slug[-1])
 		products = Product.objects.filter(category=category)
-		return render(request, 'shop/categories.html', {'category':category, 'products': products})
+		category_all = Category.objects.all()
+		return render(request, 'shop/categories.html', {'category':category, 'products': products, 'category_all':category_all})
 
 def search(request):
 	products = Product.objects.all()

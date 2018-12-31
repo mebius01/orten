@@ -3,7 +3,21 @@
 {% load sitetree%}
 {% load mptt_tags %}
 {% load bootstrap4 %}
-
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-1">1</div>
+    <div class="col-1">2</div>
+    <div class="col-1">3</div>
+    <div class="col-1">4</div>
+    <div class="col-1">5</div>
+    <div class="col-1">6</div>
+    <div class="col-1">7</div>
+    <div class="col-1">8</div>
+    <div class="col-1">9</div>
+    <div class="col-1">10</div>
+    <div class="col-1">11</div>
+    <div class="col-1">12</div>
+  </div>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -204,7 +218,7 @@ li {
                 {% with total_items=cart|length %}
                 {% if cart|length > 0 %}
                 <a class="btn btn btn-outline-success btn-sm ml-3" href="{% url "cart:cart_detail" %}">
-                    <i class="fa fa-shopping-cart"></i>  Cart  
+                    <i class="fa fa-shopping-cart"></i>  Cart
                     <span class="badge badge-light">  {{ total_items }}</span>
                     {% else %}
                 <a class="btn btn-success btn-sm ml-3" href="{% url "cart:cart_detail" %}">
@@ -220,7 +234,7 @@ li {
 
 
 {% comment %}
-    
+
 
 <div class="container">
     <div class="row">
@@ -256,9 +270,8 @@ li {
     {% block content %}
     {{content}}
     {% endblock %}
-    
+
     <!-- -------------------------------------Sectcion 2 4 5 6 END-->
-<!-->
 
 <div class="container-fluid">
   <div class="row">
@@ -275,7 +288,7 @@ li {
     <div class="col-1">11</div>
     <div class="col-1">12</div>
   </div>
-</!-->
+
 
 <!-- Footer -->
 <footer class="text-light">

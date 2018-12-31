@@ -4,7 +4,7 @@
       <div class="col-12">
 {% block breadcrumbs %}
 {{ block.super }}
-    {% for i in category.get_anc %}  
+    {% for i in category.get_anc %}
            »  <a href="/category/{{ i.get_absolute_url }}">{{ i.name }}</a>
     {% endfor %}
 {% endblock %}
@@ -14,34 +14,46 @@
 
 
 {% load static %}
-{% load sitetree %}
-{% block head_title %} {{ category.name }} {% endblock %}
-
-
-
+{% load mptt_tags %}
 {% block content %}
+
+<title>Orten - Category All</title>
 
 <div class="container-fluid">
 <div class="row">
-  <div class="col-4">
-    <div class="list-group" id="list-tab" role="tablist">
-      <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">{{category.name}}</a>
 
-    </div>
-  </div>
-  <div class="col-8">
-    <div class="tab-content" id="nav-tabContent">
-      <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
-          {{category.description}}
-      </div>
+  <div class="col-12 col-sm-3">
+              <div class="card bg-light mb-3">
+                  <div class="card-header text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
+                  <ul class="list-group category_block">
+                      {% for item in category_all %}
+                      <li class="list-group-item"><a href="/category/{{ item.get_absolute_url }}">{{ item.name }}</a></li>
 
-    </div>
-  </div>
-</div>
+                      {% endfor %}
+                  </ul>
+              </div>
+          </div>
+          <div class="col">
+  <div class="row">
+    <div class="col-sm">
+            <div class="card-header text-bleck text-uppercase">
+                <i class="fas fa-list"></i>  List Products {{category.name}}
+            </div>
+            <div class="card-body">
+{{category.description}}
+<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio enim cumque consectetur aspernatur quasi quod dicta rem, officia, magni vero voluptatibus eveniet reiciendis fugit nesciunt impedit ipsam dignissimos! Delectus, architecto.</div>
+<div>Cumque cupiditate, fuga, natus voluptatem saepe deleniti ullam itaque labore excepturi. Officiis consequuntur eaque omnis deleniti nisi voluptate ducimus ipsa natus, ea suscipit error enim ipsum repudiandae incidunt amet eligendi!</div>
+<div>Sapiente hic, repudiandae nihil, sunt dolore delectus sit possimus a enim error, tenetur veniam iusto itaque! Eligendi, ex quasi inventore expedita dolores sunt officiis blanditiis repellat eaque magni nulla eius!</div>
+<div>Eius vel sint voluptatum nam libero unde doloribus non sunt culpa aut animi quaerat soluta, magni magnam vitae vero laudantium quos ipsum similique porro odio quasi. Eius minima soluta, ea?</div>
+<div>Possimus delectus voluptates error vero illo, a sint voluptatibus eius blanditiis eum, iste facilis velit et cumque minima, laboriosam nemo alias quod consequatur autem beatae, fugit porro quas commodi. Incidunt.</div>
+<div>Amet porro, placeat esse corrupti officia enim, est cumque quos laborum dolore corporis. Maxime perferendis recusandae consequuntur saepe harum assumenda at iure possimus odio laudantium, temporibus quae cupiditate sed provident!</div>
+<div>Corporis placeat repellendus ex. Quam dolor optio tempore, incidunt, atque ipsam necessitatibus corrupti! Veritatis praesentium similique est ipsam enim et laborum consequatur, aliquam ipsum excepturi facilis! Ducimus velit dolores itaque.</div>
+<div>Incidunt amet vel neque enim dolor aliquam, fugit! Placeat quaerat, esse assumenda dicta quasi repellat sunt consequuntur, pariatur delectus quisquam recusandae adipisci, dignissimos, ipsum sit blanditiis optio amet possimus autem.</div>
+</dev>
+</dev>
+</dev>
 
-
-
-<div class="text-center"><h2>{{category.name}}</h2></div>
+{% block comment %}
 
 {% if category.children.all %}
 
@@ -72,6 +84,8 @@
 {% endfor %}
 {% endif %}
 
+
+{% endblock %}
 
 {% if products.all %}
 <table class="table table-bordered">
@@ -119,4 +133,14 @@
         </tr>
             {% endfor %}
 {% endif %}
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 {% endblock %}

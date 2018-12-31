@@ -3,7 +3,13 @@
 {% load mptt_tags %}
 {% load bootstrap4 %}
 
+
+
+
+
 {% block content %}
+
+<title>Orten - Product List</title>
 
 
 <div class="container-fluid">
@@ -111,7 +117,7 @@
         <th>Нали- чие</th>
         <th>Цена</th>
          <th colspan="2">В корзину</th>
-        
+
     </tr>
   </thead>
   <tbody>
@@ -141,16 +147,16 @@
             <form action="{% url "cart:cart_add" product.id %}" method="post">
                 {% csrf_token %}
 
-                
+
                   {% bootstrap_field cart_product_form.quantity show_label=False %}
             </td>
             <td>
                                   {% buttons %}
                     <button type="submit" class="btn btn-outline-primary"><i class="fab fa-get-pocket"></i></button>
                   {% endbuttons %}
-            
 
-            </form> 
+
+            </form>
 
         </td>
     </tr>
@@ -173,7 +179,7 @@
     </div>
 </div>
 {% comment %}
-    
+
 <section class="team-section py-5">
     <div class="container">
         <div class="row mb-5">
@@ -231,7 +237,7 @@
     {% for p in products.paginator.page_range %}
     <li class="page-item"><a href="?page={{ p }}" class="page-link">{{ p }}</a></li>
     {% endfor %}
-
+<li class="page-item">
 {% if products.has_next %}
       <a class="page-link" href="?page={{ products.next_page_number }}" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
