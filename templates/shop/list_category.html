@@ -27,15 +27,11 @@
               <div class="card bg-light mb-3">
 <!--List category-->
                   <div class="card-header text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
-{% recursetree category_all %}
-
-        <li class="list-group-item"><a href="{{ node.get_absolute_url }}">{{ node.name }}</a></li>
-        {% if not node.is_leaf_node %}
-        <ul class="children" {{node.slug}}>
-            {{ children }}
-        </ul>
-        {% endif %}
-    {% endrecursetree %}
+                  <ul class="list-group category_block">
+                      {% for item in category_all.get_cached_trees %}
+                      <li class="list-group-item"><a href="/category/{{ item.get_absolute_url }}">{{ item.name }}</a></li>
+                      {% endfor %}
+                  </ul>
               </div>
           </div>
 <!--end list category-->
@@ -45,7 +41,7 @@
   <div class="row">
     <div class="col-sm">
             <div class="card-header text-bleck text-uppercase">
-                <i class="fas fa-list"></i>  List Products {{category.name}}
+                <i class="fas fa-list"></i>  List Category {{category.name}}
             </div>
             <div class="card-body">
             </dev>
