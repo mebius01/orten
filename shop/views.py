@@ -17,8 +17,8 @@ def _test(request):
 	return render(request, 'base-test.html')
 
 def category(request):
-	list_category = Category.objects.all()
-	return render(request, 'shop/list_category.html', {'list_category': list_category})
+	category_all = Category.objects.all()
+	return render(request, 'shop/list_category.html', {'category_all': category_all})
 
 def show_category(request,hierarchy=None,tag_id=None):
 	category_slug = hierarchy.split('/')
@@ -26,7 +26,7 @@ def show_category(request,hierarchy=None,tag_id=None):
 	parent = None
 	root = Category.objects.all()
 	tag = None
-
+	cart_product_form = CartAddProductForm()
 	if tag_id:
 		tag = get_object_or_404(Tag, slug=tag_id)
 		product_list_all = porduct_list_all.filter(tags__in=[tag])
@@ -36,7 +36,6 @@ def show_category(request,hierarchy=None,tag_id=None):
 	try:
 		instance = Category.objects.get(parent=parent, slug=category_slug[-1])
 	except:
-		cart_product_form = CartAddProductForm()
 		instance = get_object_or_404(Product, slug = category_slug[-1])
 		category = Category.objects.get(product=instance)
 		return render(request, "shop/product_detail.html", {'instance':instance, 'category':category, 'tag':tag, 'cart_product_form': cart_product_form})
@@ -44,7 +43,7 @@ def show_category(request,hierarchy=None,tag_id=None):
 		category = Category.objects.get(slug=category_slug[-1])
 		products = Product.objects.filter(category=category)
 		category_all = Category.objects.all()
-		return render(request, 'shop/categories.html', {'category':category, 'products': products, 'category_all':category_all})
+		return render(request, 'shop/categories.html', {'category':category, 'products': products, 'category_all':category_all, 'cart_product_form': cart_product_form})
 
 def search(request):
 	products = Product.objects.all()

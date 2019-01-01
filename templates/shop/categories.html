@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
 <div class="container-fluid">
     <div class="row">
       <div class="col-12">
@@ -24,71 +25,42 @@
 
   <div class="col-12 col-sm-3">
               <div class="card bg-light mb-3">
+<!--List category-->
                   <div class="card-header text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
                   <ul class="list-group category_block">
-                      {% for item in category_all %}
+                      {% for item in category_all.get_descendants %}
                       <li class="list-group-item"><a href="/category/{{ item.get_absolute_url }}">{{ item.name }}</a></li>
-
                       {% endfor %}
                   </ul>
+                  {% recursetree category_all %}
+
+        <li class="list-group-item"><a href="{{ node.get_absolute_url }}">{{ node.name }}</a></li>
+        {% if not node.is_leaf_node %}
+        <ul class="children" {{node.slug}}>
+            {{ children }}
+        </ul>
+        {% endif %}
+    {% endrecursetree %}
               </div>
           </div>
-          <div class="col">
+<!--end list category-->
+
+<!--block list product & category dis -->
+<div class="col">
   <div class="row">
     <div class="col-sm">
             <div class="card-header text-bleck text-uppercase">
                 <i class="fas fa-list"></i>  List Products {{category.name}}
             </div>
             <div class="card-body">
-{{category.description}}
-<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio enim cumque consectetur aspernatur quasi quod dicta rem, officia, magni vero voluptatibus eveniet reiciendis fugit nesciunt impedit ipsam dignissimos! Delectus, architecto.</div>
-<div>Cumque cupiditate, fuga, natus voluptatem saepe deleniti ullam itaque labore excepturi. Officiis consequuntur eaque omnis deleniti nisi voluptate ducimus ipsa natus, ea suscipit error enim ipsum repudiandae incidunt amet eligendi!</div>
-<div>Sapiente hic, repudiandae nihil, sunt dolore delectus sit possimus a enim error, tenetur veniam iusto itaque! Eligendi, ex quasi inventore expedita dolores sunt officiis blanditiis repellat eaque magni nulla eius!</div>
-<div>Eius vel sint voluptatum nam libero unde doloribus non sunt culpa aut animi quaerat soluta, magni magnam vitae vero laudantium quos ipsum similique porro odio quasi. Eius minima soluta, ea?</div>
-<div>Possimus delectus voluptates error vero illo, a sint voluptatibus eius blanditiis eum, iste facilis velit et cumque minima, laboriosam nemo alias quod consequatur autem beatae, fugit porro quas commodi. Incidunt.</div>
-<div>Amet porro, placeat esse corrupti officia enim, est cumque quos laborum dolore corporis. Maxime perferendis recusandae consequuntur saepe harum assumenda at iure possimus odio laudantium, temporibus quae cupiditate sed provident!</div>
-<div>Corporis placeat repellendus ex. Quam dolor optio tempore, incidunt, atque ipsam necessitatibus corrupti! Veritatis praesentium similique est ipsam enim et laborum consequatur, aliquam ipsum excepturi facilis! Ducimus velit dolores itaque.</div>
-<div>Incidunt amet vel neque enim dolor aliquam, fugit! Placeat quaerat, esse assumenda dicta quasi repellat sunt consequuntur, pariatur delectus quisquam recusandae adipisci, dignissimos, ipsum sit blanditiis optio amet possimus autem.</div>
-</dev>
-</dev>
-</dev>
-
-{% block comment %}
-
-{% if category.children.all %}
-
-<div class="container">
-    {% for i in category.children.all %}
-<hr>
+            </dev>
+          </dev>
+        </dev>
 
 
-<div class="animated fadeIn subject-detail-card">
-    <div class="row">
-        <div class="col-sm-2">
-            <div class="subject-cover-image">
-                <img class="card-img-top" src="{% if i.image %}{{ i.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" width="155" height="155" alt="lorem" class="leftimg" class="img-responsive" />
-                    </div>
-            </div>
-            <div class="col-sm-8">
-                <h4 class="card-title"><a href="{{ i.slug }}"> {{ i.name }} </a><br></h4>
-                <div class="subject-discription">
-                    <p class="card-text"> {{i.description }} </p>
-                </div>
-            </div>
-            <div class="text-center col-sm-2">
-                <button class="btn btn-default orange-circle-button" href="#">10 <br />Lactures<br /><span>Read more</span></button>
-            </div>
-        </div>
-    </div>
-
-{% endfor %}
-{% endif %}
-
-
-{% endblock %}
-
-{% if products.all %}
-<table class="table table-bordered">
+{% if products %}
+<table class="table">
+  <thead>
     <tr>
         <th>Фото</th>
         <th>Бренд</th>
@@ -96,10 +68,13 @@
         <th>Артикул</th>
         <th>Нали- чие</th>
         <th>Цена</th>
-        <th>В корзину</th>
-        <th></th>
+         <th colspan="2">В корзину</th>
+
     </tr>
-        {% for product in products %}
+  </thead>
+  <tbody>
+    <tr>
+    {% for product in products %}
     <tr id="">
         <td>
             <a class="item_img"><img src="{% if product.image %}{{ product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt="lorem">
@@ -108,8 +83,7 @@
             {{ product.vendor }}
         </td>
             <td>
-               <!-- <a href="{% url 'shop:product_detail' product.slug%}" id="name">{{ product.name }} -->
-                    <a href="{% url 'shop:show_category' product.get_absolute_url%}" id="name">{{ product.name }}
+                <a href="{% url 'shop:show_category' product.get_absolute_url %}" id="name">{{ product.name }}
 
         </td>
             <td>
@@ -122,17 +96,35 @@
                 {{ product.price_uah }}
         </td>
             <td>
-              <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
-                  <span class="glyphicon glyphicon-minus"></span>
-              </button>
-        </td>
-            <td>
-              <img src="{% static "img/litlebasket.png" %}">
-        </td>
+            <form action="{% url "cart:cart_add" product.id %}" method="post">
+                {% csrf_token %}
 
-        </tr>
-            {% endfor %}
+
+                  {% bootstrap_field cart_product_form.quantity show_label=False %}
+            </td>
+            <td>
+                                  {% buttons %}
+                    <button type="submit" class="btn btn-outline-primary"><i class="fab fa-get-pocket"></i></button>
+                  {% endbuttons %}
+
+
+            </form>
+
+        </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+        </div>
+    </div>
+</div>
+
+{% else %}
+{{category.description}}
+
 {% endif %}
+
 </div>
 </div>
 </div>
