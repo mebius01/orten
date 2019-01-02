@@ -42,5 +42,35 @@
     </div>
   </div>
 </div>
+</div>
 
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3" id="sidebar">
+                      <div class="list-group panel">
+          <a href="#menu2" class="list-group-item">Menu-1</a>
+
+            <div class="list-group panel">
+          <a href="#menu2" class="list-group-item" data-toggle="collapse" data-parent="#sidebar">Menu-2</a>
+          <div class="collapse" id="menu2">
+
+              <a href="#menu1sub1" class="list-group-item" data-toggle="collapse">SubMenu-1 <i class="fa fa-caret-down"></i></a>
+              <div class="collapse" id="menu1sub1">
+              
+                  <a href="#menu1sub1sub1" class="list-group-item" data-toggle="collapse">Subitem 3 c <i class="fa fa-caret-down"></i></a>
+                  <div class="collapse" id="menu1sub1sub1">
+                      <a href="#" class="list-group-item">Subitem 3 c - item 1</a>
+                  </div>
+                  
+              </div>
+              <a href="#" class="list-group-item" data-parent="#menu1">SubMenu-2</a>
+              <a href="#" class="list-group-item" data-parent="#menu1">SubMenu-3</a>
+                
+        </div>
+    </div>
+</div>
+</div>
+</div>
 {% endblock %}
