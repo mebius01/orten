@@ -5,7 +5,7 @@ from taggit.models import Tag
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 # Create your views here.
-from shop.filters import ProductFilter
+# from shop.filters import ProductFilter
 def home(request):
 	product_stok = ProductStock.objects.all()
 	category = Category.objects.all()
