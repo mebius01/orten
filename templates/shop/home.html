@@ -74,11 +74,13 @@ a:hover > .ico {
         <div class="col-12 col-sm-3">
             <div class="card bg-light mb-3">
                 <div class="card-header text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
-                {% recursetree category %}
                 <ul class="list-group category_block">
-                    <li class="list-group-item"><a style="text-decoration: none" href="category/{{ node.get_absolute_url }}">{{ node.name }}</a></li>
-                </ul>
-                {% endrecursetree %}
+                      {% for item in category %}
+                      {% if item.product_set.count %}
+                      <li class="list-group-item"><a href="/category/{{ item.get_absolute_url }}">{{ item.name }}</a></li>
+                      {% endif %}
+                      {% endfor %}
+                  </ul>
             </div>
         </div>
 

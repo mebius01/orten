@@ -22,109 +22,25 @@
 
 <div class="container-fluid">
 <div class="row">
+  <div class="col-4">
+    <div class="list-group" id="list-tab" role="tablist">
 
-  <div class="col-12 col-sm-3">
-              <div class="card bg-light mb-3">
-<!--List category-->
-                  <div class="card-header text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
-                  <ul class="list-group category_block">
-                      {% for item in category_all.get_cached_trees %}
-                      <li class="list-group-item"><a href="/category/{{ item.get_absolute_url }}">{{ item.name }}</a></li>
-                      {% endfor %}
-                  </ul>
-              </div>
-          </div>
-<!--end list category-->
-
-<!--block list product & category dis -->
-<div class="col">
-  <div class="row">
-    <div class="col-sm">
-            <div class="card-header text-bleck text-uppercase">
-                <i class="fas fa-list"></i>  List Category {{category.name}}
-            </div>
-            <div class="card-body">
-            </dev>
-          </dev>
-        </dev>
-
-
-{% if products %}
-<table class="table">
-  <thead>
-    <tr>
-        <th>Фото</th>
-        <th>Бренд</th>
-        <th>Название</th>
-        <th>Артикул</th>
-        <th>Нали- чие</th>
-        <th>Цена</th>
-         <th colspan="2">В корзину</th>
-
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-    {% for product in products %}
-    <tr id="">
-        <td>
-            <a class="item_img"><img src="{% if product.image %}{{ product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt="lorem">
-        </td>
-            <td>
-            {{ product.vendor }}
-        </td>
-            <td>
-                <a href="{% url 'shop:show_category' product.get_absolute_url %}" id="name">{{ product.name }}
-
-        </td>
-            <td>
-            {{ product.vendor_code }}
-        </td>
-            <td>
-                <img src="{% static "img/existence_1.png" %}">
-        </td>
-            <td>
-                {{ product.price_uah }}
-        </td>
-            <td>
-            <form action="{% url "cart:cart_add" product.id %}" method="post">
-                {% csrf_token %}
-
-
-                  {% bootstrap_field cart_product_form.quantity show_label=False %}
-            </td>
-            <td>
-                                  {% buttons %}
-                    <button type="submit" class="btn btn-outline-primary"><i class="fab fa-get-pocket"></i></button>
-                  {% endbuttons %}
-
-
-            </form>
-
-        </td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-
-        </div>
+      <div class="card-header text-bleck text-uppercase"><i class="fa fa-list"></i> Categories</div>
+      {% for item in category_all.get_ancestors %}
+      <a class="list-group-item list-group-item-action" id="list-{{item.slug}}-list" data-toggle="list" href="#list-{{item.slug}}" role="tab" aria-controls="{{item.slug}}">{{item.name}}</a>
+      {% endfor %}
     </div>
-</div>
-
-{% else %}
-{{category.description}}
-
-{% endif %}
-
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+  </div>
+  <div class="col-8">
+    <div class="tab-content" id="nav-tabContent">
+      <div class="card-header text-bleck text-uppercase"><i class="fas fa-list"></i>  List Category </div>
+      {% for item in category_all.get_descendants %}
+      <div class="tab-pane fade" id="list-{{item.slug}}" role="tabpanel" aria-labelledby="list-{{item.slug}}-list">
+     {{item.get_children}}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 </div>
 
 {% endblock %}

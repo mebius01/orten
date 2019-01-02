@@ -29,18 +29,12 @@
                   <div class="card-header text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
                   <ul class="list-group category_block">
                       {% for item in category_all.get_descendants %}
+                      {% if item.product_set.count %}
                       <li class="list-group-item"><a href="/category/{{ item.get_absolute_url }}">{{ item.name }}</a></li>
+                      {% endif %}
                       {% endfor %}
                   </ul>
-                  {% recursetree category_all %}
 
-        <li class="list-group-item"><a href="{{ node.get_absolute_url }}">{{ node.name }}</a></li>
-        {% if not node.is_leaf_node %}
-        <ul class="children" {{node.slug}}>
-            {{ children }}
-        </ul>
-        {% endif %}
-    {% endrecursetree %}
               </div>
           </div>
 <!--end list category-->
@@ -50,7 +44,7 @@
   <div class="row">
     <div class="col-sm">
             <div class="card-header text-bleck text-uppercase">
-                <i class="fas fa-list"></i>  List Products {{category.name}}
+                <i class="fas fa-list"></i>  List Products for {{category.name}}
             </div>
             <div class="card-body">
             </dev>
@@ -58,7 +52,7 @@
         </dev>
 
 
-{% if products %}
+
 <table class="table">
   <thead>
     <tr>
@@ -120,10 +114,6 @@
     </div>
 </div>
 
-{% else %}
-{{category.description}}
-
-{% endif %}
 
 </div>
 </div>
@@ -136,3 +126,15 @@
 </div>
 </div>
 {% endblock %}
+
+{% comment %}
+                      {% recursetree category_all %}
+
+        <li class="list-group-item"><a href="{{ node.get_absolute_url }}">{{ node.name }}</a></li>
+        {% if not node.is_leaf_node %}
+        <ul class="children" {{node.slug}}>
+            {{ children }}
+        </ul>
+        {% endif %}
+    {% endrecursetree %}
+{% endcomment %}
