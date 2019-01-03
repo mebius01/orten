@@ -10,7 +10,7 @@ class ProductFilter(django_filters.FilterSet):
 	vendor=django_filters.ChoiceFilter(choices=set(l))
 	class Meta:
 		model = Product
-		fields = ['vendor']
+		fields = ['vendor', 'saler']
 
 # class ProductFilter(django_filters.FilterSet):
 # 	# fields = django_filters.ModelChoiceFilter(field_name='vendor', lookup_expr='isnull', null_label='Uncategorized', queryset=Category.objects.all(),

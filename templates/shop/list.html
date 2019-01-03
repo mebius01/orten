@@ -40,7 +40,7 @@
             <h6 class="title"><i class="fas fa-landmark"></i>  Selection Vendor</h6>
         </header>
             <form method="get">
-                {{ filter.form.as_p }}
+                {% bootstrap_form filter.form %}
                 <button type="submit">Search</button>
             </form>
               <ul>
@@ -132,7 +132,7 @@
   </thead>
   <tbody>
     <tr>
-    {% for product in products %}
+    {% for product in filter.qs %}
     <tr id="">
         <td>
             <a class="item_img"><img src="{% if product.image %}{{ product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt="lorem">
