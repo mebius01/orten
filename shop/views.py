@@ -4,8 +4,8 @@ from cart.forms import CartAddProductForm
 from taggit.models import Tag
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
-# Create your views here.
-# from shop.filters import ProductFilter
+from shop.filters import ProductFilter
+
 def home(request):
 	product_stok = ProductStock.objects.all()
 	category = Category.objects.all()
@@ -48,16 +48,17 @@ def show_category(request,hierarchy=None,tag_id=None):
 def search(request):
 	products = Product.objects.all()
 	products_filter = ProductFilter(request.GET, queryset=products)
-	return render(request, 'shop/search_list.html', {'filter': products_filter, 'products':products})
+	return render(request, 'shop/list.html', {'filter': products_filter, 'products':products})
 
 def product_list(request, tag_id=None):
 
-	search_in_body_title = request.GET.get('search', '')
-	if search_in_body_title:
-		products_all = Product.objects.filter(Q(name__icontains = search_in_body_title) | Q(description__icontains = search_in_body_title))
-	else:
-		products_all = Product.objects.all().order_by('-publish')
+	# search_in_body_title = request.GET.get('search', '')
+	# if search_in_body_title:
+	# 	products_all = Product.objects.filter(Q(name__icontains = search_in_body_title) | Q(description__icontains = search_in_body_title))
+	# else:
+	# 	products_all = Product.objects.all().order_by('-publish')
 	products_all = Product.objects.all()
+	products_filter = ProductFilter(request.GET, queryset=products_all)
 
 
 	cart_product_form = CartAddProductForm()
@@ -76,7 +77,7 @@ def product_list(request, tag_id=None):
 		# Если страница выходит за пределы допустимого диапазона (например, 9999), казать последнюю страницу результатов
 		products = paginator.page(paginator.num_pages)
 
-	return render(request, 'shop/list.html', {'products': products, 'products_all': products_all, 'cart_product_form': cart_product_form})
+	return render(request, 'shop/list.html', {'filter': products_filter, 'products': products, 'products_all': products_all, 'cart_product_form': cart_product_form})
 
 
 def product_detail(request, slug):

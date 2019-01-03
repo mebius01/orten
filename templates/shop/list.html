@@ -39,6 +39,16 @@
         <header class="card-header">
             <h6 class="title"><i class="fas fa-landmark"></i>  Selection Vendor</h6>
         </header>
+            <form method="get">
+                {{ filter.form.as_p }}
+                <button type="submit">Search</button>
+            </form>
+              <ul>
+              {% for item in filter.qs %}
+                <li>{{ item.name }} - {{ item.vendor }}</li>
+              {% endfor %}
+              </ul>
+
         <div class="filter-content">
             <div class="card-body">
                 <div class="custom-control custom-checkbox">

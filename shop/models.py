@@ -134,6 +134,7 @@ class Product(models.Model):
 
 
 
+
 class Services(models.Model):
 	category = models.ForeignKey(Category, on_delete=models.CASCADE) #коталог продукта связь m2m
 	name = models.CharField(max_length=400, db_index=True) #имя продукта
