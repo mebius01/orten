@@ -13,6 +13,7 @@ def home(request):
 	cart_product_form = CartAddProductForm()
 	return render(request, 'shop/home.html', {'cart_product_form':cart_product_form, 'products':products, 'product_stok':product_stok, 'category':category})
 
+# тестовый шаблон
 def _test(request):
 	return render(request, 'base-test.html')
 
@@ -59,8 +60,6 @@ def product_list(request, tag_id=None):
 	# 	products_all = Product.objects.all().order_by('-publish')
 	products_all = Product.objects.all()
 	products_filter = ProductFilter(request.GET, queryset=products_all)
-
-
 	cart_product_form = CartAddProductForm()
 	if tag_id:
 		tag = get_object_or_404(Tag, id=tag_id)
