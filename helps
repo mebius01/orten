@@ -187,7 +187,10 @@ https://simpleisbetterthancomplex.com/tutorial/2016/11/28/how-to-filter-queryset
 https://simpleisbetterthancomplex.com/questions/2017/03/22/how-to-dynamically-filter-modelchoices-queryset-in-a-modelform.html
 https://it4it.ru/2012/08/08/dinamicheskij-choicefield-v-django-forms/
 http://qaru.site/questions/2209465/how-to-get-one-field-from-model-in-django 
+https://stackoverrun.com/ru/q/13016207
 Product.objects.values_list("vendor", flat=True)
 <QuerySet ['Konica Minolta', 'Agent', 'Тест', 'Тест', '', 'Тест', 'Тест']>
-
 https://stackoverflow.com/questions/2122461/django-filters-using-an-allvaluesfilter-with-a-linkwidget-on-a-manytomanyfie filters !!!!
+
+ELASTIC 
+https://techstricks.com/django-haystack-and-elasticsearch-tutorial/

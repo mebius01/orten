@@ -63,9 +63,9 @@ def product_list(request, tag_id=None):
 	cart_product_form = CartAddProductForm()
 	if tag_id:
 		tag = get_object_or_404(Tag, id=tag_id)
-		products_all = products_all.filter(tags__in=[tag])
+		products_filter = products_filter.filter(tags__in=[tag])
 
-	paginator = Paginator(products_all, 3)
+	paginator = Paginator(products_filter.qs, 1)
 	page = request.GET.get('page')
 	try:
 		products = paginator.page(page)
@@ -76,7 +76,7 @@ def product_list(request, tag_id=None):
 		# Если страница выходит за пределы допустимого диапазона (например, 9999), казать последнюю страницу результатов
 		products = paginator.page(paginator.num_pages)
 
-	return render(request, 'shop/list.html', {'filter': products_filter, 'products': products, 'products_all': products_all, 'cart_product_form': cart_product_form})
+	return render(request, 'shop/list.html', {'filter': products_filter, 'products': products, 'cart_product_form': cart_product_form})
 
 
 def product_detail(request, slug):
