@@ -43,11 +43,8 @@
                 {% bootstrap_form filter.form show_label=False%}
                 <button type="submit">Search</button>
             </form>
-              <ul>
-              {% for item in filter.qs %}
-                <li>{{ item.name }} - {{ item.vendor }}</li>
-              {% endfor %}
-              </ul>
+                <button href="{% url 'shop:product_list' %}">reset</button>
+
 
         <div class="filter-content">
             <div class="card-body">
@@ -132,7 +129,7 @@
   </thead>
   <tbody>
     <tr>
-    {% for product in filter.qs %}
+    {% for product in products %}
     <tr id="">
         <td>
             <a class="item_img"><img src="{% if product.image %}{{ product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt="lorem">
@@ -229,9 +226,13 @@
     </div>
 
 {% endcomment %}
-
-
-
+{% comment %}
+?search=SSL
+?vendor=Patron&type_product=foo
+?page=1
+/?vendor=Ricoh&type_product=МФУ
+<a href="?page={{ products.previous_page_number }}{% if request.GET.queryset %}&queryset={{ request.GET.queryset }}{% endif %}">previous</a>
+{% endcomment %}
 <div class="d-flex justify-content-center">
 <nav aria-label="Page navigation example">
   <ul class="pagination">

@@ -88,7 +88,7 @@ class Product(models.Model):
 	
 	keywords =  models.TextField(blank=True, help_text='Ключивые слова (тонер, материнская плата, пружина)')#краткое описание продукта
 	description = models.TextField(blank=True, help_text='Описание товара') #описание продукта
-	tags = TaggableManager(through=None, blank=True, help_text = 'Список тегов, разделенных запятыми')
+	# tags = TaggableManager(through=None, blank=True, help_text = 'Список тегов, разделенных запятыми')
 
 	currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES, blank=True, help_text='Валюта входа') #валюта
 	price_purchase = models.DecimalField(max_digits=10, decimal_places=2, blank=True, help_text='Цена входящая') #цена Закупки

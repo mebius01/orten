@@ -3,7 +3,6 @@ from shop.models import Category, Product, ProductStock
 from cart.forms import CartAddProductForm
 from taggit.models import Tag
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.db.models import Q
 from shop.filters import ProductFilter
 
 def home(request):
@@ -51,22 +50,10 @@ def search(request):
 	products_filter = ProductFilter(request.GET, queryset=products)
 	return render(request, 'shop/list.html', {'filter': products_filter, 'products':products})
 
-def product_list(request, tag_id=None):
-
-	# search_in_body_title = request.GET.get('search', '')
-	# if search_in_body_title:
-	# 	products_all = Product.objects.filter(Q(name__icontains = search_in_body_title) | Q(description__icontains = search_in_body_title))
-	# else:
-	# 	products_all = Product.objects.all().order_by('-publish')
-	products_all = Product.objects.all()
-	products_filter = ProductFilter(request.GET, queryset=products_all)
-	cart_product_form = CartAddProductForm()
-	if tag_id:
-		tag = get_object_or_404(Tag, id=tag_id)
-		products_filter = products_filter.filter(tags__in=[tag])
-
-	paginator = Paginator(products_filter.qs, 1)
-	page = request.GET.get('page')
+def product_list(request):
+	products_filter = ProductFilter(request.GET, queryset=Product.objects.all())
+	page = request.GET.get('page', 1)
+	paginator = Paginator(products_filter.qs, 80)
 	try:
 		products = paginator.page(page)
 	except PageNotAnInteger:
@@ -76,7 +63,9 @@ def product_list(request, tag_id=None):
 		# Если страница выходит за пределы допустимого диапазона (например, 9999), казать последнюю страницу результатов
 		products = paginator.page(paginator.num_pages)
 
+	cart_product_form = CartAddProductForm()
 	return render(request, 'shop/list.html', {'filter': products_filter, 'products': products, 'cart_product_form': cart_product_form})
+
 
 
 def product_detail(request, slug):

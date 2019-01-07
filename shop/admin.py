@@ -3,12 +3,20 @@ from .models import Category, Product, Services, Rates, ProductStock
 from mptt.admin import MPTTModelAdmin
 from import_export.admin import ImportExportModelAdmin
 # Register your models here.
+from import_export import resources
+
+class ProductResource(resources.ModelResource):
+
+	class Meta:
+		model = Product
+		# fields = ['id', 'category', 'name', 'vendor', 'vendor_code', 'slug', 'saler', 'currency', 'price_purchase', 'interest', 'stock', 'available',]
 
 class RatesAdmin(admin.ModelAdmin):
 	list_display = ['id', 'usd', 'eur',]
 	list_editable = ['usd', 'eur']
 
 class CategoryAdmin(MPTTModelAdmin):
+	list_display = ['name', 'id', 'slug']
 	prepopulated_fields = {'slug': ('name',)}
 	mptt_level_indent = 30
 
@@ -23,7 +31,9 @@ class ProductStockAdmin(admin.ModelAdmin):
 	prepopulated_fields = {'slug': ('product',)}
 
 class ProductAdmin(ImportExportModelAdmin):
-	list_display = ['name', 'slug', 'saler', 'price_purchase', 'price_uah', 'currency', 'interest', 'stock', 'available', 'updated']
+	resource_class = ProductResource
+	search_fields = ['name',]
+	list_display = ['name', 'id', 'slug', 'saler', 'price_purchase', 'price_uah', 'currency', 'interest', 'stock', 'available', 'updated']
 	list_filter = ['available', 'created', 'updated']
 	list_editable = ['price_purchase', 'currency', 'interest', 'stock', 'available']
 	prepopulated_fields = {'slug': ('name',)}
@@ -33,3 +43,4 @@ admin.site.register(Product, ProductAdmin,)
 admin.site.register(Services, ServicesAdmin,)
 admin.site.register(Rates, RatesAdmin,)
 admin.site.register(ProductStock, ProductStockAdmin,)
+# admin.site.register(ProductResource,)
