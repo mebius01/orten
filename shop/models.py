@@ -6,7 +6,7 @@ import django_filters
 # Create your models here.
 
 from mptt.models import MPTTModel, TreeForeignKey
-from taggit.managers import TaggableManager
+# from taggit.managers import TaggableManager
 
 CURRENCY_CHOICES = (
 	('eur','EUR'),
@@ -29,18 +29,20 @@ INTEREST_CHOICES = (
 	(Decimal("0.15"), '15%'),
 	(Decimal("0.20"), '20%'),
 	(Decimal("0.25"), '25%'),
+	(Decimal("0.30"), '30%'),
+
 
 
 	)
 
-class Rates(models.Model): #курс валют
-	"""docstring for Rates"""
-	usd = models.DecimalField(max_digits=10, decimal_places=2, blank=True)
-	eur = models.DecimalField(max_digits=10, decimal_places=2, blank=True)
+# class Rates(models.Model): #курс валют
+# 	"""docstring for Rates"""
+# 	usd = models.DecimalField(max_digits=10, decimal_places=2, blank=True)
+# 	eur = models.DecimalField(max_digits=10, decimal_places=2, blank=True)
 
-	class Meta:
-		verbose_name = 'Курс Валют'
-		verbose_name_plural = 'Курсы Валют'
+# 	class Meta:
+# 		verbose_name = 'Курс Валют'
+# 		verbose_name_plural = 'Курсы Валют'
 
 
 class Category(MPTTModel):
@@ -90,8 +92,8 @@ class Product(models.Model):
 	description = models.TextField(blank=True, help_text='Описание товара') #описание продукта
 	# tags = TaggableManager(through=None, blank=True, help_text = 'Список тегов, разделенных запятыми')
 
-	currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES, blank=True, help_text='Валюта входа') #валюта
-	price_purchase = models.DecimalField(max_digits=10, decimal_places=2, blank=True, help_text='Цена входящая') #цена Закупки
+	# currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES, blank=True, help_text='Валюта входа') #валюта
+	price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, help_text='Цена входящая') #цена Закупки
 	interest = models.DecimalField(max_digits=5, decimal_places=2, blank=True, choices=INTEREST_CHOICES, null=True, help_text='Процент, накрутка') #Процент
 	
 	stock = models.PositiveIntegerField(blank=True, help_text='Остатоки') # Остатки
@@ -99,27 +101,27 @@ class Product(models.Model):
 	created = models.DateTimeField(auto_now_add=True, help_text='дата создания') # дата создания
 	updated = models.DateTimeField(auto_now=True, help_text='дата обновления') #дата обновления
 
-	@property
-	def price_uah(self):
-		rates_usd=float(Rates.objects.get(id=1).usd)
-		rates_eur=float(Rates.objects.get(id=1).eur)
-		self.price_purchase=float(self.price_purchase)
-		self.interest=float(self.interest)
-		if self.saler == 'softcom':
-			a = ((self.price_purchase*self.interest)+self.price_purchase)*rates_usd
-			return format(a, '.2f')
-		if self.saler == 'esko':
-			a = ((self.price_purchase*self.interest)+self.price_purchase)*rates_usd
-			return format(a, '.2f')
-		if self.saler == 'megateid':
-			a = ((self.price_purchase*self.interest)+self.price_purchase)*rates_usd
-			return format(a, '.2f')
-		if self.saler == 'Konica':
-			a = self.price_purchase*rates_eur
-			return format(a, '.2f')
-		if self.saler == 'baden':
-			a= self.price_purchase
-			return format(a, '.2f')
+	# @property
+	# def price_uah(self):
+	# 	rates_usd=float(Rates.objects.get(id=1).usd)
+	# 	rates_eur=float(Rates.objects.get(id=1).eur)
+	# 	self.price_purchase=float(self.price_purchase)
+	# 	self.interest=float(self.interest)
+	# 	if self.saler == 'softcom':
+	# 		a = ((self.price_purchase*self.interest)+self.price_purchase)*rates_usd
+	# 		return format(a, '.2f')
+	# 	if self.saler == 'esko':
+	# 		a = ((self.price_purchase*self.interest)+self.price_purchase)*rates_usd
+	# 		return format(a, '.2f')
+	# 	if self.saler == 'megateid':
+	# 		a = ((self.price_purchase*self.interest)+self.price_purchase)*rates_usd
+	# 		return format(a, '.2f')
+	# 	if self.saler == 'Konica':
+	# 		a = self.price_purchase*rates_eur
+	# 		return format(a, '.2f')
+	# 	if self.saler == 'baden':
+	# 		a= self.price_purchase
+	# 		return format(a, '.2f')
 
 	class Meta:
 		ordering = ('name',)
@@ -144,7 +146,7 @@ class Services(models.Model):
 	slug = models.SlugField(max_length=400, db_index=True)
 	image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True) #картинка
 	description = models.TextField(blank=True) #описание продукта
-	price_retail = models.DecimalField(max_digits=10, decimal_places=2)
+	price = models.DecimalField(max_digits=10, decimal_places=2)
 	created = models.DateTimeField(auto_now_add=True) # дата создания
 	updated = models.DateTimeField(auto_now=True) #дата обновления
 
@@ -174,7 +176,7 @@ class ProductStock(models.Model):
 
 	@property
 	def discount(self):
-		product_price_uah=float(self.product.price_uah)
+		product_price_uah=float(self.product.price)
 		discount_percent=float(self.discount_percent)
 		return product_price_uah - (product_price_uah*discount_percent)
 

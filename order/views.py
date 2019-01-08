@@ -15,7 +15,7 @@ def order_create(request):
 		if form.is_valid():
 			order = form.save()
 			for item in cart:
-				OrderItem.objects.create(order=order, product=item['product'], price=item['price_uah'], quantity=item['quantity'])
+				OrderItem.objects.create(order=order, product=item['product'], price=item['price'], quantity=item['quantity'])
 			cart.clear()
 			order_created.delay(order.id)
 			return render(request, 'order/created.html', {'order': order})
