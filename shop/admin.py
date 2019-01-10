@@ -9,7 +9,7 @@ from import_export import resources
 
 # 	class Meta:
 # 		model = Product
-		# fields = ['id', 'category', 'name', 'vendor', 'vendor_code', 'slug', 'saler', 'price', 'interest', 'stock', 'available',]
+		# fields = ['id', 'category', 'name', 'vendor', 'vendor_code', 'slug', 'price', 'interest', 'stock', 'available',]
 
 # class RatesAdmin(admin.ModelAdmin):
 # 	list_display = ['id', 'usd', 'eur',]
@@ -33,7 +33,7 @@ class ProductStockAdmin(admin.ModelAdmin):
 class ProductAdmin(ImportExportModelAdmin):
 	# resource_class = ProductResource
 	search_fields = ['name',]
-	list_display = ['name', 'id', 'slug', 'saler', 'price', 'interest', 'stock', 'available', 'updated']
+	list_display = ['name', 'id', 'slug', 'price', 'interest', 'stock', 'available', 'updated']
 	list_filter = ['available', 'created', 'updated']
 	list_editable = ['price', 'interest', 'stock', 'available']
 	prepopulated_fields = {'slug': ('name',)}

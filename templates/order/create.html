@@ -23,7 +23,7 @@
     <ul>
       {% for item in cart  %}
         <li>
-          {{ item.product.name }} | Количество: {{ item.quantity }} | Цена: {{ item.total_price_uah }}
+          {{ item.product.name }} | Количество: {{ item.quantity }} | Цена: {{ item.total_price }}
         </li>
 
       {% endfor %}
@@ -31,7 +31,7 @@
     </ul>
     <ul>
     <li>
-    На сумму: {{ cart.get_total_price_uah }}
+    На сумму: {{ cart.get_total_price }}
       
     </li>
     </ul>

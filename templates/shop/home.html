@@ -105,7 +105,7 @@ a:hover > .ico {
               <div class="carousel-caption text-dark text-right">
                 <h4>{{item.product.name}}</h4>
 
-                <p>Цена: {{item.product.price_uah}}</p>
+                <p>Цена: {{item.product.price}}</p>
                 <p><a href="{% url 'shop:show_category' item.product.get_absolute_url %}"> Купить по акции {{item.discount}}</a></p>
               </div>
               {% endfor %}
@@ -117,7 +117,7 @@ a:hover > .ico {
             <div class="container">
               <div class="carousel-caption text-dark text-right">
                 <h4>{{item.product.name}}</h4>
-                <p>Цена: {{item.product.price_uah}}</p>
+                <p>Цена: {{item.product.price}}</p>
                 <p><a href="{% url 'shop:show_category' item.product.get_absolute_url %}"> Купить по акции {{item.discount}}</a></p>
               </div>
             </div>
@@ -164,7 +164,7 @@ a:hover > .ico {
 <ul class="list-group list-group-flush">
     <li class="list-group-item">{{item.vendor}}</li>
     <li class="list-group-item">{{item.vendor_code}}</li>
-    <li class="list-group-item">{{item.price_uah}}</li>
+    <li class="list-group-item">{{item.price}}</li>
   </ul>
 
 </div>
