@@ -73,16 +73,41 @@ a:hover > .ico {
     <div class="row">
         <div class="col-12 col-sm-3">
             <div class="card bg-light mb-3">
-                <div class="card-header text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
+                <div class="card-header text-white text-uppercase"><i class="fa fa-list"></i>  Категории</div>
+                <div class="accordion" id="accordionExample">
+
+
+    {% for item in category.get_cached_trees %}
+    {% if item.is_root_node %}
+    <div class="card-header" id="heading-{{item.slug}}">
+        <ul class="list-group text-white" data-toggle="collapse" data-target="#collapse-{{item.slug}}" aria-expanded="true" aria-controls="collapse-{{item.slug}}">{{item.name}}
+        </ul>
+    </div>
+    
+    <div id="collapse-{{item.slug}}" class="collapse show" aria-labelledby="heading-{{item.slug}}" data-parent="#accordionExample">
+      <div class="card-body">
+          <ul class="list-group list-group-flush">
+            {% for item_children in item.get_children %}
+            <li class="list-group-item"><a class="text-muted" href="/category/{{ item_children.get_absolute_url }}">{{item_children.name}}</a></li>
+            {% endfor %}
+          </ul>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+{% endfor %}
+            </div>
+{% comment %}
+    
                 <ul class="list-group category_block">
-                      {% for item in category %}
+                      {% for item in category.get_cached_trees %}
                       {% if item.product_set.count %}
                       <li class="list-group-item"><a href="/category/{{ item.get_absolute_url }}">{{ item.name }}</a></li>
                       {% endif %}
                       {% endfor %}
                   </ul>
-            </div>
-        </div>
+
+{% endcomment %}
 
         <div class="col">
             <div class="row">
@@ -142,11 +167,11 @@ a:hover > .ico {
 
 <!-- container best product-->
 
-<div class="container mt-2 mb-3">
+<div class="container mt-3 mb-3">
     <div class="row">
             <div class="card">
                 <div class="card-header text-white text-uppercase">
-                    <i class="fa fa-trophy"></i> Best products
+                    <i class="fa fa-trophy"></i>  Новинки
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -155,7 +180,7 @@ a:hover > .ico {
 <div class="card-group">
 {% for item in products %}
 
-<div class="col-sm-4">
+<div class="col-sm-4 p-2">
 <div class="card  h-100">
 <img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="Card image cap" width="230" height="230">
 <div class="card-body">
@@ -164,7 +189,6 @@ a:hover > .ico {
 <ul class="list-group list-group-flush">
     <li class="list-group-item">{{item.vendor}}</li>
     <li class="list-group-item">{{item.vendor_code}}</li>
-    <li class="list-group-item">{{item.price}}</li>
   </ul>
 
 </div>
@@ -179,7 +203,7 @@ a:hover > .ico {
                 </div>
 
             <div class="col">
-                <button type="submit" class="btn btn-outline-primary"><i class="fab fa-get-pocket"></i> add to cart</button>
+                <button type="submit" class="btn btn-outline-primary">{{item.price}}</button>
             </div>
                 </form>
             </div>

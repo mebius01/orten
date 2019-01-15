@@ -8,7 +8,7 @@ from shop.filters import ProductFilter
 def home(request):
 	product_stok = ProductStock.objects.all()
 	category = Category.objects.all()
-	products = Product.objects.all()
+	products = Product.objects.all().order_by()[:9]
 	cart_product_form = CartAddProductForm()
 	return render(request, 'shop/home.html', {'cart_product_form':cart_product_form, 'products':products, 'product_stok':product_stok, 'category':category})
 
