@@ -147,7 +147,7 @@
                 <img src="{% static "img/existence_1.png" %}">
         </td>
             <td>
-                {{ product.price_uah }}
+                {{ product.price }}
         </td>
             <td>
             <form action="{% url "cart:cart_add" product.id %}" method="post">
@@ -199,7 +199,7 @@
                     <img class="img-fluid" src="{% static "img/no_image.png" %}" alt="">
                     <div class="overlay-content">
                       <h3 class="text-white ml-3 my-0">{{ product.name }}</h3>
-                      <p class="text-white ml-3 mb-3">{{ product.price_uah }}</p>
+                      <p class="text-white ml-3 mb-3">{{ product.price }}</p>
                       <span class="socail-l ml-3 mb-3">
                         <a href="#" class="mr-2"><i class="fa fa-facebook box-circle-solid"></i></a>
                         <a href="#" class="mr-2"><i class="fa fa-twitter box-circle-solid"></i></a>
@@ -232,8 +232,22 @@
 /?vendor=Ricoh&type_product=МФУ
 <a href="?page={{ products.previous_page_number }}{% if request.GET.queryset %}&queryset={{ request.GET.queryset }}{% endif %}">previous</a>
 {% endcomment %}
+
+<script>
+    $(function() {
+        $(selector).pagination({
+             items: 100,
+             itemsOnPage: 4,
+            cssStyle: 'light-theme'
+        })
+});
+
+</script>
+
 <div class="d-flex justify-content-center">
-<nav aria-label="Page navigation example">
+    {% bootstrap_pagination products %}
+{% comment %}
+    <nav aria-label="Page navigation example">
   <ul class="pagination">
     <li class="page-item">
     {% if products.has_previous %}
@@ -257,5 +271,11 @@
     </li>
   </ul>
 </nav>
+{% endcomment %}
 </div>
+
+
+
+
+
 {% endblock %}
