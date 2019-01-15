@@ -232,8 +232,22 @@
 /?vendor=Ricoh&type_product=МФУ
 <a href="?page={{ products.previous_page_number }}{% if request.GET.queryset %}&queryset={{ request.GET.queryset }}{% endif %}">previous</a>
 {% endcomment %}
+
+<script>
+    $(function() {
+        $(selector).pagination({
+             items: 100,
+             itemsOnPage: 4,
+            cssStyle: 'light-theme'
+        })
+});
+
+</script>
+
 <div class="d-flex justify-content-center">
-<nav aria-label="Page navigation example">
+    {% bootstrap_pagination products %}
+{% comment %}
+    <nav aria-label="Page navigation example">
   <ul class="pagination">
     <li class="page-item">
     {% if products.has_previous %}
@@ -257,5 +271,11 @@
     </li>
   </ul>
 </nav>
+{% endcomment %}
 </div>
+
+
+
+
+
 {% endblock %}

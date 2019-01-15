@@ -191,6 +191,7 @@ https://stackoverrun.com/ru/q/13016207
 Product.objects.values_list("vendor", flat=True)
 <QuerySet ['Konica Minolta', 'Agent', 'Тест', 'Тест', '', 'Тест', 'Тест']>
 https://stackoverflow.com/questions/2122461/django-filters-using-an-allvaluesfilter-with-a-linkwidget-on-a-manytomanyfie filters !!!!
+https://stackoverrun.com/ru/q/13016207
 
 ELASTIC 
 https://techstricks.com/django-haystack-and-elasticsearch-tutorial/
