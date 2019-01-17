@@ -2,235 +2,172 @@
 {% load bootstrap4 %}
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12">
-            {% block breadcrumbs %}
-            {{ block.super }}
-            <i class="fas fa-chevron-right"></i> <a href="/category/">Категории</a>
-            {% endblock %}
-        </div>
+      <div class="col-12">
+{% block breadcrumbs %}
+{{ block.super }}
+    {% for i in category.get_anc %}
+           <i class="fas fa-chevron-right"></i>  <a href="/category/{{ i.get_absolute_url }}">{{ i.name }}</a>
+    {% endfor %}
+{% endblock %}
+      </div>
     </div>
 </div>
+
+
 {% load static %}
 {% load mptt_tags %}
 {% block content %}
+
 <title>Orten - Category All</title>
+
+
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-3">
-            <div class="list-group" id="list-tab" role="tablist">
-                <div class="card-header text-bleck text-uppercase"><i class="fa fa-list mr-3"></i>Категории</div>
-                <div class="accordion" id="accordionExample">
-                    {% for item in category.get_cached_trees %}
-                    {% if item.is_root_node %}
-                    <div class="card-header" id="heading-{{item.slug}}">
-                        <ul class="list-group text-white" data-toggle="collapse" data-target="#collapse-{{item.slug}}" aria-expanded="true" aria-controls="collapse-{{item.slug}}">{{item.name}}
-                        </ul>
-                    </div>
-                    <div id="collapse-{{item.slug}}" class="collapse show" aria-labelledby="heading-{{item.slug}}" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                {% for item_children in item.get_children %}
-                                <li class="list-group-item"><a class="text-muted" href="/category/{{ item_children.get_absolute_url }}">{{item_children.name}}</a></li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                {% endif %}
-                {% endfor %}
+<div class="row">
+  <div class="col-3">
+    <div class="list-group" id="list-tab" role="tablist">
+      <div class="card-header text-white text-uppercase"><i class="fa fa-list"></i>  Категории</div>
+        <div class="accordion" id="accordionExample">
+
+
+    {% for item in category.get_cached_trees %}
+    {% if item.is_root_node %}
+    <div class="card-header" id="heading-{{item.slug}}">
+        <ul class="list-group text-white" data-toggle="collapse" data-target="#collapse-{{item.slug}}" aria-expanded="true" aria-controls="collapse-{{item.slug}}">{{item.name}}
+        </ul>
+    </div>
+    
+    <div id="collapse-{{item.slug}}" class="collapse show" aria-labelledby="heading-{{item.slug}}" data-parent="#accordionExample">
+      <div class="card-body">
+          <ul class="list-group list-group-flush">
+            {% for item in item.get_children %}
+            <li class="list-group-item"><a class="text-muted" id="list-{{item.slug}}-list" data-toggle="list" href="#list-{{item.slug}}" role="tab" aria-controls="{{item.slug}}">{{item.name}}</a></li>
+            {% endfor %}
+          </ul>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+{% endfor %}
             </div>
-            <div class="col-9">
-                <div class="card">
-                    <div class="card-header text-bleck text-uppercase"><i class="fas fa-list mr-3"></i>List Category</div>
-                    <div class="card-body">
-                        <div class="card-group">
 
-                            {% for item in category %}
-                            {% if item.is_child_node %}
-                            <div class="col-sm-4 p-2">
-                                <div class="card  h-100">
-                                    <img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{item.name}}" width="230" height="230">
-                                    <div class="card-footer bg-transparent">
-                                        <div class="row">
-<a class="text-muted" href="{% url 'shop:show_category' item.get_absolute_url %}" title="{{item.name}}">{{item.name}}<span class="badge badge-light ml-3">{{ item.product_set.count }}</span></a>
+<div class="col-9">
+    <div class="tab-content" id="nav-tabContent">
+      <div class="card-header text-bleck text-uppercase"><i class="fas fa-list"></i>  List Category </div>
+
+      {% for item in category.get_descendants %}
+      <div class="tab-pane fade" id="list-{{item.slug}}" role="tabpanel" aria-labelledby="list-{{item.slug}}-list">
+     {% for i in item.get_children%}
 
 
+<div class="row mb-2">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="" width="230" height="230">
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="card-body">
+                                        <div class="news-content">
+                                            <a href="/category/{{ i.get_absolute_url }}" class="text-muted"><h2>{{ i.name }}</h2></a>
+                                        </div>
+                                        <hr>
+                                        <div class="news-footer">
+                                        <small>{{ i.description }}</small>
+                                        </div>
+                                        <hr>
+                                        <div class="news-footer">
+                                            <ul class="list-inline list-unstyled">
+                                                <li class="list-inline-item text-secondary">
+                                                    <i class="fab fa-cloudscale"></i>
+                                                    Counter Product : {{ i.product_set.count }}
+                                                </li>
+                                            </ul>
+                                        </div>   
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        {% endif %}
-                        {% endfor %}
                     </div>
                 </div>
             </div>
-        </div>
+
+
+
+
+      {% endfor %}
+
+      </div>
+      {% endfor %}
     </div>
+  </div>
+</div>
+</div>
+
 </div>
 </div>
 </div>
+
+
+
+
+
 {% endblock %}
+
 {% comment %}
 
-
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-<button> <i class="fa fa fa-th-large" >-india-7615949353 </i></button>
-  
-<div class="sidebar left ">
-  <ul class="list-sidebar bg-defoult">
-    <!--<li class="nav-header "> <span> <img alt="image" class="img-circle" src="http://placehold.it/150x150"> </span>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
-        <li><a href="#">Regular link</a></li>
-        <li class="disabled"><a href="#">Disabled link</a></li>
-        <li><a href="#">Another link</a></li> 
-      </ul> -->
-    </li>
-    <li> <a href="#" data-toggle="collapse" data-target="#dashboard" class="collapsed active" > <i class="fa fa-th-large"></i> <span class="nav-label"> Dashboards </span> <span class="fa fa-chevron-left pull-right"></span> </a>
-      <ul class="sub-menu collapse" id="dashboard">
-        <li class="active"><a href="#">CSS3 Animation</a></li>
-        <li><a href="#">General</a></li>
-        <li><a href="#">Buttons</a></li>
-        <li><a href="#">Tabs & Accordions</a></li>
-        <li><a href="#">Typography</a></li>
-        <li><a href="#">FontAwesome</a></li>
-        <li><a href="#">Slider</a></li>
-        <li><a href="#">Panels</a></li>
-        <li><a href="#">Widgets</a></li>
-        <li><a href="#">Bootstrap Model</a></li>
-      </ul>
-    </li>
-    <li> <a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a> </li>
-    <li> <a href="#" data-toggle="collapse" data-target="#products" class="collapsed active" > <i class="fa fa-bar-chart-o"></i> <span class="nav-label">Graphs</span> <span class="fa fa-chevron-left pull-right"></span> </a>
-      <ul class="sub-menu collapse" id="products">
-        <li class="active"><a href="#">CSS3 Animation</a></li>
-        <li><a href="#">General</a></li>
-        <li><a href="#">Buttons</a></li>
-        <li><a href="#">Tabs & Accordions</a></li>
-        <li><a href="#">Typography</a></li>
-        <li><a href="#">FontAwesome</a></li>
-        <li><a href="#">Slider</a></li>
-        <li><a href="#">Panels</a></li>
-        <li><a href="#">Widgets</a></li>
-        <li><a href="#">Bootstrap Model</a></li>
-      </ul>
-    </li>
-    <li> <a href="#"><i class="fa fa-laptop"></i> <span class="nav-label">Grid options</span></a> </li>
-    <li> <a href="#" data-toggle="collapse" data-target="#tables" class="collapsed active" ><i class="fa fa-table"></i> <span class="nav-label">Tables</span><span class="fa fa-chevron-left pull-right"></span></a>
-      <ul  class="sub-menu collapse" id="tables" >
-        <li><a href=""> Static Tables</a></li>
-        <li><a href=""> Data Tables</a></li>
-        <li><a href=""> Foo Tables</a></li>
-        <li><a href=""> jqGrid</a></li>
-      </ul>
-    </li>
-    <li> <a href="#" data-toggle="collapse" data-target="#e-commerce" class="collapsed active" ><i class="fa fa-shopping-cart"></i> <span class="nav-label">E-commerce</span><span class="fa fa-chevron-left pull-right"></span></a>
-      <ul  class="sub-menu collapse" id="e-commerce" >
-        <li><a href=""> Products grid</a></li>
-        <li><a href=""> Products list</a></li>
-        <li><a href="">Product edit</a></li>
-        <li><a href=""> Product detail</a></li>
-        <li><a href="">Cart</a></li>
-        <li><a href=""> Orders</a></li>
-        <li><a href=""> Credit Card form</a> </li>
-      </ul>
-    </li>
-    <li> <a href=""><i class="fa fa-pie-chart"></i> <span class="nav-label">Metrics</span> </a></li>
-    <li> <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Other Pages</span></a> </li>
-    <li> <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Other Pages</span></a> </li>
-    <li> <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Other Pages</span></a> </li>
-    <li> <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Other Pages</span></a> </li>
-    <li> <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Other Pages</span></a> </li>
-  </ul>
-</div>
-
-
+<div class="col-9">
+    <div class="tab-content" id="nav-tabContent">
+      <div class="card-header text-bleck text-uppercase"><i class="fas fa-list"></i>  List Category </div>
 
 
 
 {% for item in category.get_descendants %}
 <div class="tab-pane fade" id="list-{{item.slug}}" role="tabpanel" aria-labelledby="list-{{item.slug}}-list">
-    {% for i in item.get_children%}
-    <div class="row mb-2">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="" width="230" height="230">
-                                </div>
-                            <div class="col-md-9">
-                                <div class="card-body">
-                                    <div class="news-content">
-                                        <a href="/category/{{ i.get_absolute_url }}" class="text-muted"><h2>{{ i.name }}</h2></a>
-                                    </div>
-                                    <hr>
-                                    <div class="news-footer">
-                                        <small>{{ i.description }}</small>
-                                    </div>
-                                    <hr>
-                                    <div class="news-footer">
-                                        <ul class="list-inline list-unstyled">
-                                            <li class="list-inline-item text-secondary">
-                                                <i class="fab fa-cloudscale"></i>
-                                                Counter Product : {{ i.product_set.count }}
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
+{% for i in item.get_children%}
+         <div class="card-body">
+<a href="/category/{{ i.get_absolute_url }}">{{ i.name }}....</a>
+
+<<<<<<< HEAD
+
+=======
+>>>>>>> 839f61db268251d1229b99336d71d85801f56596
 </div>
+
 {% endfor %}
+{% endfor %}
+
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="col-9">
-    <div class="tab-content" id="nav-tabContent">
-        <div class="card-header text-bleck text-uppercase"><i class="fas fa-list"></i> List Category </div>
-        {% for item in category.get_descendants %}
-        <div class="tab-pane fade" id="list-{{item.slug}}" role="tabpanel" aria-labelledby="list-{{item.slug}}-list">
-            {% for i in item.get_children%}
-            <div class="card-body">
-                <a href="/category/{{ i.get_absolute_url }}">{{ i.name }}....</a>
-                <<<<<<< HEAD=======>>>>>>> 839f61db268251d1229b99336d71d85801f56596
-            </div>
-            {% endfor %}
-            {% endfor %}
-        </div>
-    </div>
-</div>
+
 {% endblock %}
-<div class="card-header text-bleck text-uppercase"><i class="fa fa-list"></i> Categories</div>
-{% for i in category.get_ancestors %}
-<a class="list-group-item list-group-item-action" id="list-{{item.slug}}-list" data-toggle="list" href="#list-{{item.slug}}" role="tab" aria-controls="{{item.slug}}">{{item.name}}</a>
-{% endfor %}
-</div>
-</div>
-<div class="col-9">
-    <div class="tab-content" id="nav-tabContent">
-        <div class="card-header text-bleck text-uppercase"><i class="fas fa-list"></i> List Category </div>
-        {% for item in category.get_descendants %}
-        <div class="tab-pane fade" id="list-{{item.slug}}" role="tabpanel" aria-labelledby="list-{{item.slug}}-list">
-            {{item.get_children}}
-        </div>
-        {% endfor %}
+
+
+
+
+  <div class="card-header text-bleck text-uppercase"><i class="fa fa-list"></i> Categories</div>
+      {% for i in category.get_ancestors %}
+
+      <a class="list-group-item list-group-item-action" id="list-{{item.slug}}-list" data-toggle="list" href="#list-{{item.slug}}" role="tab" aria-controls="{{item.slug}}">{{item.name}}</a>
+      {% endfor %}
     </div>
+  </div>
+  <div class="col-9">
+    <div class="tab-content" id="nav-tabContent">
+      <div class="card-header text-bleck text-uppercase"><i class="fas fa-list"></i>  List Category </div>
+      {% for item in category.get_descendants %}
+      <div class="tab-pane fade" id="list-{{item.slug}}" role="tabpanel" aria-labelledby="list-{{item.slug}}-list">
+     {{item.get_children}}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 </div>
 </div>
+
 </div>
-</div>
+
 {% endcomment %}
