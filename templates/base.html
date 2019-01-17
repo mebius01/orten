@@ -17,12 +17,8 @@
     <div class="col-1">11</div>
     <div class="col-1">12</div>
   </div>
-<<<<<<< HEAD
-<html lang="en">
-
-=======
 <html lang="ru">
->>>>>>> 839f61db268251d1229b99336d71d85801f56596
+
   <head>
 
     <!-- Required meta tags -->
@@ -201,16 +197,16 @@ li {
 
 <nav class="navbar navbar-expand-md navbar-light">
     <div class="container-fluid">
-        <form class="form-inline my-2 my-lg-0">
-                    <div class="input-group input-group-sm">
-                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Search...">
-                    <div class="input-group-append">
-                        <button type="button" class="btn btn-secondary btn-number">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-</form>
+<!--
+<div class="input-sm mb-2 mr-sm-2">
+    <form action="">
+<select class="custom-select" id="inlineFormCustomSelectPref">
+    <option value="ru">RU</option>
+    <option value="ua">UA</option>
+  </select>
+  </form>
+</div>
+-->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -240,35 +236,27 @@ li {
 
 {% endcomment %}
 
-<div class="input-sm mb-2 mr-sm-2">
-    <form action="">
-<select class="custom-select" id="inlineFormCustomSelectPref">
-    <option value="ru">RU</option>
-    <option value="ua">UA</option>
-  </select>
-  </form>
-</div>
-
-
+ <form class="form-inline my-2 my-lg-0 mr-2">
+                    <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Search...">
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-secondary btn-number">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+</form>
                {% with total_items=cart|length %}
                 {% if cart|length > 0 %}
                 <a href="{% url "cart:cart_detail" %}">
-<<<<<<< HEAD
-                    <i class="fa fa-shopping-cart"></i>  Cart
-=======
                     <i class="fa fa-shopping-cart mr-2"></i>Cart
->>>>>>> 839f61db268251d1229b99336d71d85801f56596
+
                     <span class="badge badge-light">  {{ total_items }}</span>
                 </a>
                     {% else %}
                 <a href="{% url "cart:cart_detail" %}">
-<<<<<<< HEAD
-                    <i class="fa fa-shopping-cart"></i>Cart
-                    <span class="badge badge-light">  0</span>
-=======
                     <i class="fa fa-shopping-cart mr-2"></i>Cart
-                    <span class="badge badge-light">0</span>
->>>>>>> 839f61db268251d1229b99336d71d85801f56596
+                    <span class="badge badge-light ml-1">0</span>
                     {% endif %}
                     {% endwith %}
                 </a>

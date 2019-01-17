@@ -64,29 +64,29 @@
                     </thead>
                     <tbody>
                         <tr>
-                            {% for product in products %}
+                            {% for item in products %}
                         <tr id="">
                             <td>
-                                <a class="item_img"><img src="{% if product.image %}{{ product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt="{{item.name}}">
+                                <a class="item_img"><img src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt="{{item.name}}">
         </td>
             <td>
-            {{ product.vendor }}
+            {{ item.vendor }}
         </td>
             <td>
-                <a href="{% url 'shop:show_category' product.get_absolute_url %}" id="name">{{ product.name }}
+                <a href="{% url 'shop:show_category' item.get_absolute_url %}" id="name">{{ item.name }}
 
         </td>
             <td>
-            {{ product.vendor_code }}
+            {{ item.vendor_code }}
         </td>
             <td>
                 <img src="{% static "img/existence_1.png" %}">
         </td>
             <td>
-                {{ product.price_uah }}
+                {{ item.price }}
         </td>
             <td>
-            <form action="{% url "cart:cart_add" product.id %}" method="post">
+            <form action="{% url "cart:cart_add" item.id %}" method="post">
                 {% csrf_token %}
 
 
@@ -153,7 +153,7 @@
                             {% for product in products %}
                         <tr id="">
                             <td>
-                                <a class="item_img"><img src="{% if product.image %}{{ product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt="{{item.name}}">
+                                <a class="item_img"><img src="{% if item.image %}{{ product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt="{{item.name}}">
         </td>
             <td>
             {{ product.vendor }}

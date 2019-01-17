@@ -93,11 +93,7 @@ WSGI_APPLICATION = 'orten.wsgi.application'
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 #         'NAME': 'orten_db',
 #         'USER' : 'iv',
-<<<<<<< HEAD
-#         'PASSWORD' : '091284mi',
-=======
 #         'PASSWORD' : '1234',
->>>>>>> 839f61db268251d1229b99336d71d85801f56596
 #         'HOST' : '127.0.0.1',
 #         'PORT' : '5432',
 #     }
