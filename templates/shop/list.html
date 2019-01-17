@@ -128,29 +128,29 @@
   </thead>
   <tbody>
     <tr>
-    {% for product in products %}
+    {% for item in products %}
     <tr id="">
         <td>
-            <a class="item_img"><img src="{% if product.image %}{{ product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt="lorem">
+            <a class="item_img"><img src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt="{{item.name}}">
         </td>
             <td>
-            {{ product.vendor }}
+            {{ item.vendor }}
         </td>
             <td>
-                <a href="{% url 'shop:show_category' product.get_absolute_url %}" id="name">{{ product.name }}
+                <a href="{% url 'shop:show_category' item.get_absolute_url %}" id="name">{{ item.name }}
 
         </td>
             <td>
-            {{ product.vendor_code }}
+            {{ item.vendor_code }}
         </td>
             <td>
                  <i class="fas fa-check"></i>
         </td>
             <td>
-                {{ product.price }}
+                {{ item.price }}
         </td>
             <td>
-            <form action="{% url "cart:cart_add" product.id %}" method="post">
+            <form action="{% url "cart:cart_add" item.id %}" method="post">
                 {% csrf_token %}
 
 
@@ -198,8 +198,8 @@
                 <div class="member-box anim-lf t-bottom">
                     <img class="img-fluid" src="{% static "img/no_image.png" %}" alt="">
                     <div class="overlay-content">
-                      <h3 class="text-white ml-3 my-0">{{ product.name }}</h3>
-                      <p class="text-white ml-3 mb-3">{{ product.price }}</p>
+                      <h3 class="text-white ml-3 my-0">{{ item.name }}</h3>
+                      <p class="text-white ml-3 mb-3">{{ item.price }}</p>
                       <span class="socail-l ml-3 mb-3">
                         <a href="#" class="mr-2"><i class="fa fa-facebook box-circle-solid"></i></a>
                         <a href="#" class="mr-2"><i class="fa fa-twitter box-circle-solid"></i></a>

@@ -2,76 +2,158 @@
 {% load bootstrap4 %}
 <div class="container-fluid">
     <div class="row">
-      <div class="col-12">
-{% block breadcrumbs %}
-{{ block.super }}
-    {% for i in category.get_anc %}
-           <i class="fas fa-chevron-right"></i>  <a href="/category/{{ i.get_absolute_url }}">{{ i.name }}</a>
-    {% endfor %}
-{% endblock %}
-      </div>
+        <div class="col-12">
+            {% block breadcrumbs %}
+            {{ block.super }}
+            {% for i in category.get_anc %}
+            <i class="fas fa-chevron-right"></i> <a href="/category/{{ i.get_absolute_url }}">{{ i.name }}</a>
+            {% endfor %}
+            {% endblock %}
+        </div>
     </div>
 </div>
-
-
 {% load static %}
 {% load mptt_tags %}
 {% block content %}
-
 <title>Orten - Category All</title>
-
-<div class="container-fluid">
 <div class="row">
+    <div class="col-3">
+        <div class="list-group" id="list-tab" role="tablist">
+            <!--List category-->
+            <div class="card-header text-bleck text-uppercase"><i class="fa fa-list mr-3"></i>Категории</div>
+            <div class="accordion" id="accordionExample">
+                {% for item in category_all.get_cached_trees %}
+                {% if item.is_root_node %}
+                <div class="card-header" id="heading-{{item.slug}}">
+                    <ul class="list-group text-white" data-toggle="collapse" data-target="#collapse-{{item.slug}}" aria-expanded="true" aria-controls="collapse-{{item.slug}}">{{item.name}}
+                    </ul>
+                </div>
+                <div id="collapse-{{item.slug}}" class="collapse show" aria-labelledby="heading-{{item.slug}}" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            {% for item_children in item.get_children %}
+                            <li class="list-group-item"><a class="text-muted" href="/category/{{ item_children.get_absolute_url }}">{{item_children.name}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <!--end list category-->
+        <!--block list product & category dis -->
+        <div class="col-9">
+            <div class="card">
+                    <div class="card-header text-bleck text-uppercase"><i class="fas fa-list mr-3"></i>List Category</div>
+                    <div class="card-body">
+                        <div class="card-group">
 
-  <div class="col-12 col-sm-3">
-              <div class="card bg-light mb-3">
-<!--List category-->
-                  <div class="card-header text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
-                  <ul class="list-group category_block">
-                      {% for item in category_all.get_descendants %}
-                      {% if item.product_set.count %}
-                      <li class="list-group-item"><a href="/category/{{ item.get_absolute_url }}">{{ item.name }}</a></li>
-                      {% endif %}
-                      {% endfor %}
-                  </ul>
+{% if products %}
+<table class="table">
+                    <thead>
+                        <tr>
+                            <th>Фото</th>
+                            <th>Бренд</th>
+                            <th>Название</th>
+                            <th>Артикул</th>
+                            <th>Нали- чие</th>
+                            <th>Цена</th>
+                            <th colspan="2">В корзину</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            {% for product in products %}
+                        <tr id="">
+                            <td>
+                                <a class="item_img"><img src="{% if product.image %}{{ product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt="{{item.name}}">
+        </td>
+            <td>
+            {{ product.vendor }}
+        </td>
+            <td>
+                <a href="{% url 'shop:show_category' product.get_absolute_url %}" id="name">{{ product.name }}
 
-              </div>
-          </div>
-<!--end list category-->
+        </td>
+            <td>
+            {{ product.vendor_code }}
+        </td>
+            <td>
+                <img src="{% static "img/existence_1.png" %}">
+        </td>
+            <td>
+                {{ product.price_uah }}
+        </td>
+            <td>
+            <form action="{% url "cart:cart_add" product.id %}" method="post">
+                {% csrf_token %}
 
-<!--block list product & category dis -->
-<div class="col">
-  <div class="row">
-    <div class="col-sm">
+
+                  {% bootstrap_field cart_product_form.quantity show_label=False %}
+            </td>
+            <td>
+                                  {% buttons %}
+                    <button type="submit" class="btn btn-outline-primary"><i class="fab fa-get-pocket"></i></button>
+                  {% endbuttons %}
+
+
+            </form>
+
+        </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% else %}
+.................
+
+{%endif%}
+
+
+
+                        </dev>
+                        </dev>
+                        </dev>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}
+{% comment %}
+<div class="col-9">
+    <div class="row">
+        <div class="col-sm">
             <div class="card-header text-bleck text-uppercase">
-                <i class="fas fa-list"></i>  List Products for {{category.name}}
+                <i class="fas fa-list"></i> List Products for {{category.name}}
             </div>
             <div class="card-body">
-            </dev>
-          </dev>
-        </dev>
-
-
-
-<table class="table">
-  <thead>
-    <tr>
-        <th>Фото</th>
-        <th>Бренд</th>
-        <th>Название</th>
-        <th>Артикул</th>
-        <th>Нали- чие</th>
-        <th>Цена</th>
-         <th colspan="2">В корзину</th>
-
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-    {% for product in products %}
-    <tr id="">
-        <td>
-            <a class="item_img"><img src="{% if product.image %}{{ product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt="lorem">
+                </dev>
+                </dev>
+                </dev>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Фото</th>
+                            <th>Бренд</th>
+                            <th>Название</th>
+                            <th>Артикул</th>
+                            <th>Нали- чие</th>
+                            <th>Цена</th>
+                            <th colspan="2">В корзину</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            {% for product in products %}
+                        <tr id="">
+                            <td>
+                                <a class="item_img"><img src="{% if product.image %}{{ product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt="{{item.name}}">
         </td>
             <td>
             {{ product.vendor }}
@@ -125,16 +207,26 @@
 </div>
 </div>
 </div>
-{% endblock %}
 
-{% comment %}
+
+
+
+
+
+
+
+
+
+
+
+
                       {% recursetree category_all %}
 
         <li class="list-group-item"><a href="{{ node.get_absolute_url }}">{{ node.name }}</a></li>
-        {% if not node.is_leaf_node %}
-        <ul class="children" {{node.slug}}>
-            {{ children }}
-        </ul>
-        {% endif %}
-    {% endrecursetree %}
-{% endcomment %}
+                                {% if not node.is_leaf_node %}
+                                <ul class="children" {{node.slug}}>
+                                    {{ children }}
+                                </ul>
+                                {% endif %}
+                                {% endrecursetree %}
+                                {% endcomment %}

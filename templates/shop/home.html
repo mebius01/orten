@@ -72,15 +72,10 @@ a:hover > .ico {
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 col-sm-3">
-<<<<<<< HEAD
-            <div class="card bg-light mb-3">
-                <div class="card-header text-white text-uppercase"><i class="fa fa-list"></i>  Категории</div>
-                <div class="accordion" id="accordionExample">
-=======
-        <div class="list-group" id="list-tab" role="tablist">
+<div class="list-group" id="list-tab" role="tablist">
       <div class="card-header text-white text-uppercase"><i class="fa fa-list"></i>  Категории</div>
         <div class="accordion" id="accordionExample">
->>>>>>> 839f61db268251d1229b99336d71d85801f56596
+
 
 
     {% for item in category.get_cached_trees %}
@@ -164,7 +159,7 @@ a:hover > .ico {
             {% for item in product_stok|slice:":1" %}
           <div class="carousel-item active">
 
-            <img class="second-slide" src="{% if item.product.image %}{{ item.product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="Card image cap" width="230" height="230">
+            <img class="second-slide" src="{% if item.product.image %}{{ item.product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{item.product.name}}" width="230" height="230">
             <div class="container">
               <div class="carousel-caption text-dark text-right">
                 <h4>{{item.product.name}}</h4>
@@ -177,7 +172,7 @@ a:hover > .ico {
           </div>
           {% for item in product_stok|slice:"1:" %}
           <div class="carousel-item">
-            <img class="second-slide" src="{% if item.product.image %}{{ item.product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="Card image cap" width="230" height="230">
+            <img class="second-slide" src="{% if item.product.image %}{{ item.product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{item.product.name}}" width="230" height="230">
             <div class="container">
               <div class="carousel-caption text-dark text-right">
                 <h4>{{item.product.name}}</h4>
@@ -209,9 +204,7 @@ a:hover > .ico {
 <div class="container mt-3 mb-3">
     <div class="row">
             <div class="card">
-                <div class="card-header text-white text-uppercase">
-                    <i class="fa fa-trophy"></i>  Новинки
-                </div>
+                <div class="card-header text-white text-uppercase"><i class="fa fa-trophy"></i>  Новинки</div>
                 <div class="card-body">
                     <div class="row">
 
@@ -221,25 +214,21 @@ a:hover > .ico {
 
 <div class="col-sm-4 p-2">
 <div class="card  h-100">
-<img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="Card image cap" width="230" height="230">
+<img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{item.name}}" width="230" height="230">
 <div class="card-body">
-<h6 class="card-title"><a href="{% url 'shop:show_category' item.get_absolute_url %}" title="View Product">{{item.name}}</a></h6>
+<h6 class="card-title "><a href="{% url 'shop:show_category' item.get_absolute_url %}" title="View Product">{{item.name}}</a></h6>
 <p class="card-text"> </p>
 <ul class="list-group list-group-flush">
-<<<<<<< HEAD
-    <li class="list-group-item">{{item.vendor}}</li>
-    <li class="list-group-item">{{item.vendor_code}}</li>
-=======
+
     <p>
     {{item.vendor}}
     <br>
     {{item.vendor_code}}
     </p>
->>>>>>> 839f61db268251d1229b99336d71d85801f56596
   </ul>
 
 </div>
-<div class="card-footer">
+<div class="card-footer bg-transparent">
 
 <div class="row">
                 <div class="col">
@@ -250,11 +239,9 @@ a:hover > .ico {
                 </div>
 
             <div class="col">
-<<<<<<< HEAD
-                <button type="submit" class="btn btn-outline-primary">{{item.price}}</button>
-=======
+
                 <button type="submit" class="btn btn-outline-primary"><i class="fas fa-shopping-basket"></i></i> {{item.price}}</button>
->>>>>>> 839f61db268251d1229b99336d71d85801f56596
+
             </div>
                 </form>
             </div>
