@@ -72,9 +72,15 @@ a:hover > .ico {
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 col-sm-3">
+<<<<<<< HEAD
             <div class="card bg-light mb-3">
                 <div class="card-header text-white text-uppercase"><i class="fa fa-list"></i>  Категории</div>
                 <div class="accordion" id="accordionExample">
+=======
+        <div class="list-group" id="list-tab" role="tablist">
+      <div class="card-header text-white text-uppercase"><i class="fa fa-list"></i>  Категории</div>
+        <div class="accordion" id="accordionExample">
+>>>>>>> 839f61db268251d1229b99336d71d85801f56596
 
 
     {% for item in category.get_cached_trees %}
@@ -98,7 +104,39 @@ a:hover > .ico {
 {% endfor %}
             </div>
 {% comment %}
+<<<<<<< HEAD
     
+=======
+
+<div class="card bg-light mb-3">
+                <div class="card-header text-white text-uppercase"><i class="fa fa-list"></i>  Категории</div>
+                <div class="accordion" id="accordionExample">
+
+
+    {% for item in category.get_cached_trees %}
+    {% if item.is_root_node %}
+    <div class="card-header" id="heading-{{item.slug}}">
+        <ul class="list-group text-white" data-toggle="collapse" data-target="#collapse-{{item.slug}}" aria-expanded="true" aria-controls="collapse-{{item.slug}}">{{item.name}}
+        </ul>
+    </div>
+    
+    <div id="collapse-{{item.slug}}" class="collapse show" aria-labelledby="heading-{{item.slug}}" data-parent="#accordionExample">
+      <div class="card-body">
+          <ul class="list-group list-group-flush">
+            {% for item_children in item.get_children %}
+            <li class="list-group-item"><a class="text-muted" data-toggle="list" href="/category/{{ item_children.get_absolute_url }}">{{item_children.name}}</a></li>
+            {% endfor %}
+          </ul>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+{% endfor %}
+
+
+
+
+>>>>>>> 839f61db268251d1229b99336d71d85801f56596
                 <ul class="list-group category_block">
                       {% for item in category.get_cached_trees %}
                       {% if item.product_set.count %}
@@ -113,6 +151,7 @@ a:hover > .ico {
             <div class="row">
 
 <!-- end КАТЕГОРИИ-->
+
 
 
 <!---Start slider -->
@@ -187,8 +226,16 @@ a:hover > .ico {
 <h6 class="card-title"><a href="{% url 'shop:show_category' item.get_absolute_url %}" title="View Product">{{item.name}}</a></h6>
 <p class="card-text"> </p>
 <ul class="list-group list-group-flush">
+<<<<<<< HEAD
     <li class="list-group-item">{{item.vendor}}</li>
     <li class="list-group-item">{{item.vendor_code}}</li>
+=======
+    <p>
+    {{item.vendor}}
+    <br>
+    {{item.vendor_code}}
+    </p>
+>>>>>>> 839f61db268251d1229b99336d71d85801f56596
   </ul>
 
 </div>
@@ -203,7 +250,11 @@ a:hover > .ico {
                 </div>
 
             <div class="col">
+<<<<<<< HEAD
                 <button type="submit" class="btn btn-outline-primary">{{item.price}}</button>
+=======
+                <button type="submit" class="btn btn-outline-primary"><i class="fas fa-shopping-basket"></i></i> {{item.price}}</button>
+>>>>>>> 839f61db268251d1229b99336d71d85801f56596
             </div>
                 </form>
             </div>

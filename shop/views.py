@@ -17,8 +17,8 @@ def _test(request):
 	return render(request, 'base-test.html')
 
 def category(request):
-	category_all = Category.objects.all()
-	return render(request, 'shop/list_category.html', {'category_all': category_all})
+	category = Category.objects.all()
+	return render(request, 'shop/list_category.html', {'category': category})
 
 def show_category(request,hierarchy=None,tag_id=None):
 	category_slug = hierarchy.split('/')
@@ -53,7 +53,7 @@ def search(request):
 def product_list(request):
 	products_filter = ProductFilter(request.GET, queryset=Product.objects.all())
 	page = request.GET.get('page', 1)
-	paginator = Paginator(products_filter.qs, 80)
+	paginator = Paginator(products_filter.qs, 2)
 	try:
 		products = paginator.page(page)
 	except PageNotAnInteger:
