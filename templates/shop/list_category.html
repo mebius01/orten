@@ -6,7 +6,7 @@
 {% block breadcrumbs %}
 {{ block.super }}
     {% for i in category.get_anc %}
-           »  <a href="/category/{{ i.get_absolute_url }}">{{ i.name }}</a>
+           <i class="fas fa-chevron-right"></i>  <a href="/category/{{ i.get_absolute_url }}">{{ i.name }}</a>
     {% endfor %}
 {% endblock %}
       </div>
@@ -20,21 +20,75 @@
 
 <title>Orten - Category All</title>
 
+
 <div class="container-fluid">
 <div class="row">
-  <div class="col-4">
+  <div class="col-3">
     <div class="list-group" id="list-tab" role="tablist">
+      <div class="card-header text-white text-uppercase"><i class="fa fa-list"></i>  Категории</div>
+        <div class="accordion" id="accordionExample">
 
-      <div class="card-header text-bleck text-uppercase"><i class="fa fa-list"></i> Categories</div>
-      {% for item in category_all.get_ancestors %}
+
+    {% for item in category.get_cached_trees %}
+    {% if item.is_root_node %}
+    <div class="card-header" id="heading-{{item.slug}}">
+        <ul class="list-group text-white" data-toggle="collapse" data-target="#collapse-{{item.slug}}" aria-expanded="true" aria-controls="collapse-{{item.slug}}">{{item.name}}
+        </ul>
+    </div>
+    
+    <div id="collapse-{{item.slug}}" class="collapse show" aria-labelledby="heading-{{item.slug}}" data-parent="#accordionExample">
+      <div class="card-body">
+          <ul class="list-group list-group-flush">
+            {% for item in item.get_children %}
+            <li class="list-group-item"><a class="text-muted" id="list-{{item.slug}}-list" data-toggle="list" href="#list-{{item.slug}}" role="tab" aria-controls="{{item.slug}}">{{item.name}}</a></li>
+            {% endfor %}
+          </ul>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+{% endfor %}
+            </div>
+
+<div class="col-9">
+    <div class="tab-content" id="nav-tabContent">
+      <div class="card-header text-bleck text-uppercase"><i class="fas fa-list"></i>  List Category </div>
+
+      {% for item in category.get_descendants %}
+      <div class="tab-pane fade" id="list-{{item.slug}}" role="tabpanel" aria-labelledby="list-{{item.slug}}-list">
+     {% for i in item.get_children%}
+     <a href="/category/{{ i.get_absolute_url }}">{{ i.name }}</a>
+      {% endfor %}
+
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+{% endblock %}
+
+{% comment %}
+  <div class="card-header text-bleck text-uppercase"><i class="fa fa-list"></i> Categories</div>
+      {% for item in category.get_ancestors %}
+
       <a class="list-group-item list-group-item-action" id="list-{{item.slug}}-list" data-toggle="list" href="#list-{{item.slug}}" role="tab" aria-controls="{{item.slug}}">{{item.name}}</a>
       {% endfor %}
     </div>
   </div>
-  <div class="col-8">
+  <div class="col-9">
     <div class="tab-content" id="nav-tabContent">
       <div class="card-header text-bleck text-uppercase"><i class="fas fa-list"></i>  List Category </div>
-      {% for item in category_all.get_descendants %}
+      {% for item in category.get_descendants %}
       <div class="tab-pane fade" id="list-{{item.slug}}" role="tabpanel" aria-labelledby="list-{{item.slug}}-list">
      {{item.get_children}}
       </div>
@@ -46,31 +100,4 @@
 
 </div>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-3" id="sidebar">
-                      <div class="list-group panel">
-          <a href="#menu2" class="list-group-item">Menu-1</a>
-
-            <div class="list-group panel">
-          <a href="#menu2" class="list-group-item" data-toggle="collapse" data-parent="#sidebar">Menu-2</a>
-          <div class="collapse" id="menu2">
-
-              <a href="#menu1sub1" class="list-group-item" data-toggle="collapse">SubMenu-1 <i class="fa fa-caret-down"></i></a>
-              <div class="collapse" id="menu1sub1">
-              
-                  <a href="#menu1sub1sub1" class="list-group-item" data-toggle="collapse">Subitem 3 c <i class="fa fa-caret-down"></i></a>
-                  <div class="collapse" id="menu1sub1sub1">
-                      <a href="#" class="list-group-item">Subitem 3 c - item 1</a>
-                  </div>
-                  
-              </div>
-              <a href="#" class="list-group-item" data-parent="#menu1">SubMenu-2</a>
-              <a href="#" class="list-group-item" data-parent="#menu1">SubMenu-3</a>
-                
-        </div>
-    </div>
-</div>
-</div>
-</div>
-{% endblock %}
+{% endcomment %}

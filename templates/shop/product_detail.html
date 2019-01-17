@@ -135,7 +135,7 @@
                     <hr>
                     <p class="product_vendor_code">{{ instance.vendor_code }}</p>
                     <hr>
-                    <p class="price">{{ instance.price_uah }}</p>
+                    <p class="price">{{ instance.price }}</p>
                     <hr>
                     <p class="price_discounted"></p>
                     <form action="{% url "cart:cart_add" instance.id %}" method="post">
