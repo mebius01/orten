@@ -188,13 +188,15 @@ li {
 
 <nav class="navbar navbar-expand-md navbar-light">
     <div class="container-fluid">
-        <form class="mr-sm-2">
-    <div class="input-group input-group-sm">
-<select class="custom-select" id="inlineFormCustomSelectPref">
-    <option value="ru">RU</option>
-    <option value="ua">UA</option>
-  </select>
-</div>
+        <form class="form-inline my-2 my-lg-0">
+                    <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Search...">
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-secondary btn-number">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
 </form>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -244,18 +246,16 @@ li {
 
 {% endcomment %}
 
+<div class="input-sm mb-2 mr-sm-2">
+    <form action="">
+<select class="custom-select" id="inlineFormCustomSelectPref">
+    <option value="ru">RU</option>
+    <option value="ua">UA</option>
+  </select>
+  </form>
+</div>
 
-<form class="form-inline my-2 my-lg-0">
-<div class="input-group input-group-sm">
-<input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Search...">
-<div class="input-group-append">
-    <button type="button" class="btn btn-secondary btn-number">
-        <i class="fa fa-search"></i>
-    </button>
-</div>
-</div>
-</form>
-<i class="mr-2"></i>
+
                {% with total_items=cart|length %}
                 {% if cart|length > 0 %}
                 <a href="{% url "cart:cart_detail" %}">
