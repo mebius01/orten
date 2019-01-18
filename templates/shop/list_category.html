@@ -70,9 +70,10 @@
 
 
 {% recursetree category %}
-<ul><a href="{{node.get_absolute_url}}" data-toggle="collapse" data-target="#{{node.slug}}" class="collapsed active text-muted" ><i class="fas fa-th-list p-3"></i>{{node.name}}</a></ul>
+<ul><a class="btn btn-link" data-toggle="collapse" data-target="#{{node.slug}}" class="collapsing"><i class="fas fa-th-large p-3"></i>{{node.name}}
+</a><a href="{{node.get_absolute_url}}"><i class="fas fa-chevron-right"></i></a></ul>
 {% if not node.is_leaf_node %}
-<ul class="children list-group list-group-flush collapse" id="{{node.slug}}">
+<ul class="children list-group list-group-flush collapsing" id="{{node.slug}}">
 <li class="list-group-item"><a class="text-muted" href="{{node.get_absolute_url}}">{{ children }}</a></li> 
 </ul>
 {% endif %}
