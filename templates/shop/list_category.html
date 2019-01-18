@@ -18,7 +18,7 @@
     <div class="row">
         <div class="col-3">
             <div class="list-group" id="list-tab" role="tablist">
-                <div class="card-header text-bleck text-uppercase"><i class="fa fa-list mr-3"></i>Категории</div>
+                <div class="card-header text-bleck text-uppercase"><i class="fa fa-list"></i>Категории</div>
                 <ul class="list-sidebar bg-defoult">
     <!--<li class="nav-header "> <span> <img alt="image" class="img-circle" src="http://placehold.it/150x150"> </span>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
@@ -27,29 +27,58 @@
         <li><a href="#">Another link</a></li> 
       </ul> -->
     </li>
-    <a  href="#" data-toggle="collapse" data-target="#dashboard" class="collapsed active text-muted" > <i class="fa fa-th-large mr-3 "></i>Dashboards <span class="fa fa-chevron-left pull-right ml-5"></span> </a>
-      <ul class="sub-menu collapse" id="dashboard">
-        <a class="active"><a href="#">CSS3 Animation</a>
-        <br>
-        <a href="#">General</a>
-        <br>
-        <a href="#">Buttons</a>
-        <br>
-        <a href="#">Tabs & Accordions</a>
-        <br>
-        <a href="#">Typography</a>
-        <br>
-        <a href="#">FontAwesome</a>
-        <br>
-        <a href="#">Slider</a>
-        <br>
-        <a href="#">Panels</a>
-        <br>
-        <a href="#">Widgets</a>
-        <br>
-        <a href="#">Bootstrap Model</a>
-        <br>
+
+
+
+{% comment %}
+    <div class="card-header" id="heading-{{item.slug}}">
+<ul class="list-group text-white" data-toggle="collapse" data-target="#collapse-{{item.slug}}" aria-expanded="true" aria-controls="collapse-{{item.slug}}">{{item.name}}
+</ul>
+</div>
+<div id="collapse-{{item.slug}}" class="collapse show" aria-labelledby="heading-{{item.slug}}" data-parent="#accordionExample">
+<div class="card-body">
+<ul class="list-group list-group-flush">
+{% for item_children in item.get_children %}
+<li class="list-group-item"><a class="text-muted" href="/category/{{ item_children.get_absolute_url }}">{{item_children.name}}</a></li>
+{% endfor %}
+
+
+
+{% for item in category %}
+    {% if item.is_root_node %}
+    <ul><a href="#" data-toggle="collapse" data-target="#{{item.slug}}" class="collapsed active text-muted" ><i class="fas fa-th-list p-3"></i>{{item.name}}</a></ul>
+      <ul class="list-group list-group-flush collapse" id="{{item.slug}}">
+       
+            <li class="list-group-item"><a class="text-muted" href="#"><span class="fas fa-chevron-right"></span>{{item.name}}</a></li> 
+        
+
+
       </ul>
+{%endif%}
+{% endfor %}
+{% endcomment %}
+
+{% recursetree category %}
+
+        <a href="{{ node.get_absolute_url }}">{{ node.name }}</a>
+                                {% if not node.is_leaf_node %}
+                                <ul class="children" {{node.slug}}>
+                                    {{ children }}
+                                </ul>
+                                {% endif %}
+                                {% endrecursetree %}
+
+
+{% recursetree category %}
+<ul><a href="{{node.get_absolute_url}}" data-toggle="collapse" data-target="#{{node.slug}}" class="collapsed active text-muted" ><i class="fas fa-th-list p-3"></i>{{node.name}}</a></ul>
+{% if not node.is_leaf_node %}
+<ul class="children list-group list-group-flush collapse" id="{{node.slug}}">
+<li class="list-group-item"><a class="text-muted" href="{{node.get_absolute_url}}">{{ children }}</a></li> 
+</ul>
+{% endif %}
+{% endrecursetree %}
+
+
 
     <li> <a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a> </li>
     <li> <a href="#" data-toggle="collapse" data-target="#products" class="collapsed active" > <i class="fa fa-bar-chart-o"></i> <span class="nav-label">Graphs</span> <span class="fa fa-chevron-left pull-right"></span> </a>
@@ -93,6 +122,10 @@
     <li> <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Other Pages</span></a> </li>
     <li> <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Other Pages</span></a> </li>
   </ul>
+
+
+
+
                 <div class="accordion" id="accordionExample">
                     {% for item in category.get_cached_trees %}
                     {% if item.is_root_node %}
