@@ -103,15 +103,19 @@
 }
 
 footer {
-    background: #56B397;
-    padding: 20px;
+    
+    padding: 10px;
+     background: #56B397;
+
 }
+
 footer a {
-    color: #f8f9fa!important
+    color: #22262A!important
 }
 
 li {
     margin-bottom: 10px;
+
 }
 
 .cool-link {
@@ -251,7 +255,7 @@ li {
                 <a href="{% url "cart:cart_detail" %}">
                     <i class="fa fa-shopping-cart mr-2"></i>Cart
 
-                    <span class="badge badge-light">  {{ total_items }}</span>
+                    <span class="badge badge-light ml-1">  {{ total_items }}</span>
                 </a>
                     {% else %}
                 <a href="{% url "cart:cart_detail" %}">
@@ -328,11 +332,11 @@ li {
 
 
 <!-- Footer -->
-<footer class="text-light">
+<footer class="text-bleck">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3 p-0 m-0">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1361.720638744628!2d32.03841690959814!3d46.95301928698204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c5cbbad43f6f6d%3A0x4784e49173525ad2!2z0J7RgNGC0Y3QvSwg0J7QntCe!5e0!3m2!1sru!2sua!4v1545424552649" width="350" height="250" frameborder="" style="border:0" allowfullscreen></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5446.935101617827!2d32.040273!3d46.952503!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4784e49173525ad2!2z0J7RgNGC0Y3QvSwg0J7QntCe!5e0!3m2!1sru!2sua!4v1547893952458" frameborder="0" style="border:0" allowfullscreen></iframe>
 
             </div>
 
@@ -352,7 +356,7 @@ li {
                 <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
                 <ul class="list-unstyled">
                     <li><i class="fas fa-clock mr-2"></i>Пн-Пт:<time> 9:00 - 18:00</time></li>
-                    <li><i class="fas fa-clock mr-2"></i>Сб:<time>9:00 - 14:00</time></li>
+                    <li><i class="fas fa-clock mr-2"></i>Сб:<time> 9:00 - 14:00</time></li>
                     <li><a href="">Link 3</a></li>
                     <li><a href="">Link 4</a></li>
                 </ul>
@@ -362,10 +366,10 @@ li {
                 <h5>Контакты</h5>
                 <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
                 <ul class="list-unstyled">
-                    <li><i class="fa fa-home mr-2"></i> г. Николаев пр. Мира, 5</li>
-                    <li><a href="mailto:orten_office@ukr.net"><i class="fas fa-envelope mr-2"></i> orten_office@ukr.net</a></li>
-                    <li><i class="fas fa-phone mr-2"></i> (0512) 56-65-39</li>
-                    <li><i class="fas fa-mobile mr-3"></i> (050) 318-40-64</li>
+                    <li><i class="fa fa-home mr-2"></i>г. Николаев пр. Мира, 5</li>
+                    <li><a href="mailto:orten_office@ukr.net"><i class="fas fa-envelope mr-2"></i>orten_office@ukr.net</a></li>
+                    <li><i class="fas fa-phone mr-2"></i>(0512) 56-65-39</li>
+                    <li><i class="fas fa-mobile mr-3"></i>(050) 318-40-64</li>
                 </ul>
             </div>
             
@@ -380,8 +384,6 @@ li {
         </div>
     </div>
 </footer>
-hr
-
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

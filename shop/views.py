@@ -43,7 +43,7 @@ def show_category(request,hierarchy=None,tag_id=None):
 		category = Category.objects.get(slug=category_slug[-1])
 		products = Product.objects.filter(category=category)
 		category_all = Category.objects.all()
-		return render(request, 'shop/categories.html', {'category':category, 'products': products, 'category_all':category_all, 'cart_product_form': cart_product_form})
+		return render(request, 'shop/categories.html', {'instance':instance, 'category':category, 'products': products, 'category_all':category_all, 'cart_product_form': cart_product_form})
 
 def search(request):
 	products = Product.objects.all()

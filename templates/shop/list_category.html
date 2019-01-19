@@ -16,17 +16,52 @@
 <title>Orten - Category All</title>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-3">
-            <div class="list-group" id="list-tab" role="tablist">
-                <div class="card-header text-bleck text-uppercase"><i class="fa fa-list"></i>Категории</div>
-                <ul class="list-sidebar bg-defoult">
-    <!--<li class="nav-header "> <span> <img alt="image" class="img-circle" src="http://placehold.it/150x150"> </span>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
-        <li><a href="#">Regular link</a></li>
-        <li class="disabled"><a href="#">Disabled link</a></li>
-        <li><a href="#">Another link</a></li> 
-      </ul> -->
-    </li>
+    <div class="col-3">
+        <div class="list-group" id="list-tab" role="tablist">
+            <!--List category-->
+            <div class="card-header text-bleck text-uppercase"><i class="fa fa-list mr-3"></i>Категории</div>
+   <div class="accordion" id="accordionExample">
+                    {% for item in category.get_cached_trees %}
+                    {% if item.is_root_node %}
+                    <div class="card-header" id="heading-{{item.slug}}">
+                        <ul class="list-group text-white" data-toggle="collapse" data-target="#collapse-{{item.slug}}" aria-expanded="true" aria-controls="collapse-{{item.slug}}">{{item.name}}
+                        </ul>
+                    </div>
+                    <div id="collapse-{{item.slug}}" class="collapse" aria-labelledby="heading-{{item.slug}}" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                {% for item_children in item.get_descendants %}
+                                <li class="list-group-item"><a class="text-muted" href="/category/{{ item_children.get_absolute_url }}">{{item_children.name}}<span class="badge ml-2">{{ item_children.product_set.count }}</span></a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+
+
+{% recursetree category %}
+
+        <a href="{{ node.get_absolute_url }}"><span class="text-muted">{{ node.name }}</span></a>
+                                {% if not node.is_leaf_node %}
+                                <ul class="children" {{node.slug}}>
+                                    {{ children }}
+                                </ul>
+                                {% endif %}
+                                {% endrecursetree %}
+
+
+{% recursetree category %}
+<ul><a class="btn btn-link" data-toggle="collapse" data-target="#{{node.slug}}" class="collapsing"><i class="fas fa-th-large p-3"></i>{{node.name}}
+</a><a href="{{node.get_absolute_url}}"><i class="fas fa-chevron-right"></i></a></ul>
+{% if not node.is_leaf_node %}
+<ul class="children list-group list-group-flush collapsing" id="{{node.slug}}">
+<li class="list-group-item"><a class="text-muted" href="{{node.get_absolute_url}}">{{ children }}</a></li> 
+</ul>
+{% endif %}
+{% endrecursetree %}
+</div>
 
 
 
@@ -58,30 +93,50 @@
 {% endfor %}
 {% endcomment %}
 
-{% recursetree category %}
-
-        <a href="{{ node.get_absolute_url }}">{{ node.name }}</a>
-                                {% if not node.is_leaf_node %}
-                                <ul class="children" {{node.slug}}>
-                                    {{ children }}
-                                </ul>
-                                {% endif %}
-                                {% endrecursetree %}
-
-
-{% recursetree category %}
-<ul><a class="btn btn-link" data-toggle="collapse" data-target="#{{node.slug}}" class="collapsing"><i class="fas fa-th-large p-3"></i>{{node.name}}
-</a><a href="{{node.get_absolute_url}}"><i class="fas fa-chevron-right"></i></a></ul>
-{% if not node.is_leaf_node %}
-<ul class="children list-group list-group-flush collapsing" id="{{node.slug}}">
-<li class="list-group-item"><a class="text-muted" href="{{node.get_absolute_url}}">{{ children }}</a></li> 
-</ul>
-{% endif %}
-{% endrecursetree %}
 
 
 
-    <li> <a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a> </li>
+
+
+               
+            <div class="col-9">
+                <div class="card">
+                    <div class="card-header text-bleck text-uppercase"><i class="fas fa-list mr-3"></i>List Category</div>
+                    <div class="card-body">
+                        <div class="card-group">
+
+                            {% for item in category %}
+                            {% if item.is_root_node %}
+                            <div class="col-sm-4 p-2">
+                                <div class="card  h-100">
+                                    <img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{item.name}}" width="230" height="230">
+                                    <div class="card-footer bg-transparent">
+                                        <div class="row">
+<a class="text-muted" href="{% url 'shop:show_category' item.get_absolute_url %}" title="{{item.name}}">{{item.name}}<span class="badge badge-light ml-3">{{ item.product_set.count }}</span></a>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+
+
+
+
+{% endblock %}
+{% comment %}
+ <li> <a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a> </li>
     <li> <a href="#" data-toggle="collapse" data-target="#products" class="collapsed active" > <i class="fa fa-bar-chart-o"></i> <span class="nav-label">Graphs</span> <span class="fa fa-chevron-left pull-right"></span> </a>
       <ul class="sub-menu collapse" id="products">
         <li class="active"><a href="#">CSS3 Animation</a></li>
@@ -123,62 +178,6 @@
     <li> <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Other Pages</span></a> </li>
     <li> <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Other Pages</span></a> </li>
   </ul>
-
-
-
-
-                <div class="accordion" id="accordionExample">
-                    {% for item in category.get_cached_trees %}
-                    {% if item.is_root_node %}
-                    <div class="card-header" id="heading-{{item.slug}}">
-                        <ul class="list-group text-white" data-toggle="collapse" data-target="#collapse-{{item.slug}}" aria-expanded="true" aria-controls="collapse-{{item.slug}}">{{item.name}}
-                        </ul>
-                    </div>
-                    <div id="collapse-{{item.slug}}" class="collapse show" aria-labelledby="heading-{{item.slug}}" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                {% for item_children in item.get_children %}
-                                <li class="list-group-item"><a class="text-muted" href="/category/{{ item_children.get_absolute_url }}">{{item_children.name}}</a></li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                {% endif %}
-                {% endfor %}
-            </div>
-            <div class="col-9">
-                <div class="card">
-                    <div class="card-header text-bleck text-uppercase"><i class="fas fa-list mr-3"></i>List Category</div>
-                    <div class="card-body">
-                        <div class="card-group">
-
-                            {% for item in category %}
-                            {% if item.is_child_node %}
-                            <div class="col-sm-4 p-2">
-                                <div class="card  h-100">
-                                    <img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{item.name}}" width="230" height="230">
-                                    <div class="card-footer bg-transparent">
-                                        <div class="row">
-<a class="text-muted" href="{% url 'shop:show_category' item.get_absolute_url %}" title="{{item.name}}">{{item.name}}<span class="badge badge-light ml-3">{{ item.product_set.count }}</span></a>
-
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {% endif %}
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-</div>
-{% endblock %}
-{% comment %}
 
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
