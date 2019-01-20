@@ -36,12 +36,12 @@
                     <tr>
                       <td class="col-sm-6 col-md-6">
                         <div class="media">
-                            <a class="thumbnail pull-left" href="#"> <img src="{% if product.image %}{{ product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" style="width: 72px; height: 72px;"> </a>
+                            <a class="thumbnail pull-left" href="#"> <img src="{% if product.image %}{{ product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" style="width: 72px; height: 72px;"></a>
 
                             <div class="media-body">
-                                <h6 class="media-heading"><a href="{% url 'shop:show_category' product.get_absolute_url %}">{{ product.name }}</a></h6>
-                                <h6 class="media-heading"><a href="#">{{ product.vendor }}</a></h6>
-                                <span>Status: </span><span class="text-success">
+                                <h6 class="media-heading pl-3"><a href="{% url 'shop:show_category' product.get_absolute_url %}">{{ product.name }}</a></h6>
+                                <h6 class="media-heading pl-3"><a href="#">{{ product.vendor }}</a></h6>
+                                <div class="text pl-3"> Status: <span class="text-success">
                                 <strong>In Stock</strong></span>
                             </div>
                         </div>
@@ -123,7 +123,7 @@
                         <td>   </td>
                         <td>   </td>
                         <td class="text-center"><h5>Tota</h5></td>
-                        <td class="text-center"><h5>{{ cart.get_total_price_uah }}</h5></td>
+                        <td class="text-center"><h5>{{ cart.get_total_price }}</h5></td>
                     </tr>
                 </tbody>
             </table>

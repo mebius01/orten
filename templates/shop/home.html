@@ -72,30 +72,7 @@ a:hover > .ico {
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 col-sm-3">
-        <div class="list-group" id="list-tab" role="tablist">
-      <div class="card-header text-white text-uppercase"><i class="fa fa-list"></i>  Категории</div>
-        <div class="accordion" id="accordionExample">
-
-
-    {% for item in category.get_cached_trees %}
-    {% if item.is_root_node %}
-    <div class="card-header" id="heading-{{item.slug}}">
-        <ul class="list-group text-white" data-toggle="collapse" data-target="#collapse-{{item.slug}}" aria-expanded="true" aria-controls="collapse-{{item.slug}}">{{item.name}}
-        </ul>
-    </div>
-    
-    <div id="collapse-{{item.slug}}" class="collapse show" aria-labelledby="heading-{{item.slug}}" data-parent="#accordionExample">
-      <div class="card-body">
-          <ul class="list-group list-group-flush">
-            {% for item_children in item.get_children %}
-            <li class="list-group-item"><a class="text-muted" href="/category/{{ item_children.get_absolute_url }}">{{item_children.name}}</a></li>
-            {% endfor %}
-          </ul>
-      </div>
-    </div>
-  </div>
-  {% endif %}
-{% endfor %}
+ {% include "include/include_category_list.html" %}
             </div>
 {% comment %}
 
@@ -267,11 +244,22 @@ a:hover > .ico {
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
 
 
 <!-- CATEGORY START -->
 
-<div class="card-header text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
+
+
+
+<!-- CATEGORY END -->
+
+{% endblock %}
+
+{% comment %}
+    <div class="card-header text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
     <div class="row">
         <div class="col-md-12">
             <div class="row mb-2">
@@ -398,13 +386,4 @@ a:hover > .ico {
                     </div>
                 </div>
             </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<!-- CATEGORY END -->
-
-{% endblock %}
+{% endcomment %}
