@@ -2,11 +2,12 @@
 {% load bootstrap4 %}
 
 {% block breadcrumbs %}
-{{ block.super }} » {{instance.name}}
+{{ block.super }}{{instance.name}} 
 {% endblock %}
 
 {% load static %}
 {% block content %}
+<title>{{ instance.name }}</title>
 
 
 
@@ -19,7 +20,7 @@
                         {% for tag in instance.tags.all %}
                             <a href="/tag/{{tag.id}}">{{ tag.name }}</a> |
                         {% endfor %}
-                    </p>
+                    </span>
                     <hr>
                     <p class="product_name">{{ instance.name }}</p>
                     <hr>
@@ -74,13 +75,6 @@
 .category_block li a {
     color: #343a40;
 }
-.add_to_cart_block .price {
-    color: #c01508;
-    text-align: center;
-    font-weight: bold;
-    font-size: 200%;
-    margin-bottom: 0;
-}
 .add_to_cart_block .price_discounted {
     color: #343a40;
     text-align: center;
@@ -103,9 +97,25 @@
     color: #343a40;
 }
 
+.add_to_cart_block .product_price {
+    color: #f0301e;
+    font-weight: bold;
+    font-size: 120%;
+    margin-bottom: 0;
+}
 
+
+.leftstr, .rightstr {
+    float: left; /* Обтекание справа */ 
+    width: 50%; /* Ширина текстового блока */ 
+}
+.rightstr {
+    text-align: right; /* Выравнивание по правому краю */ 
+}
 
 </style>
+
+
 <div class="container">
     <div class="row">
         <!-- Image -->
@@ -122,22 +132,16 @@
         <div class="col-12 col-lg-6 add_to_cart_block">
             <div class="card bg-light mb-3">
                 <div class="card-body">
-
-                    <p class="product_tags">Tags: 
-                        {% for tag in instance.tags.all %}
-                            <a href="/tag/{{tag.id}}">{{ tag.name }}</a> |
-                        {% endfor %}
-                    </p>
+                    <span class="product_name">{{ instance.name }}</span>
                     <hr>
-                    <p class="product_name">{{ instance.name }} Lorem</p>
+                    <span class="leftstr">Вендор:</span><span class="rightstr product_vendor">
+                        <a class="text-muted" href="{% url 'shop:product_list' %}?vendor={{ instance.vendor }}">{{ instance.vendor }}</a></span><div style="clear: left"></div>
                     <hr>
-                    <p class="product_vendor">{{ instance.vendor }}</p>
+                    <span class="leftstr">Артикул:</span><span class="rightstr product_vendor_code">{{ instance.vendor_code }}</span><div style="clear: left"></div>
                     <hr>
-                    <p class="product_vendor_code">{{ instance.vendor_code }}</p>
+                    <span class="leftstr">Цена:</span><span class="rightstr product_price">{{ instance.price }}</span><div style="clear: left"></div>
                     <hr>
-                    <p class="price">{{ instance.price }}</p>
-                    <hr>
-                    <p class="price_discounted"></p>
+                    
                     <form action="{% url "cart:cart_add" instance.id %}" method="post">
                 {% csrf_token %}
                   {% bootstrap_field cart_product_form.quantity show_label=False %}
