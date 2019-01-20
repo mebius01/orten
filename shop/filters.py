@@ -2,16 +2,21 @@ import django_filters
 from shop.models import Category, Product
 
 class ProductFilter(django_filters.FilterSet):
-	# vendor=django_filters.AllValuesFilter(widget=django_filters.widgets.LinkWidget)
-	# price_purchase=django_filters.AllValuesFilter(widget=django_filters.widgets.RangeWidget)
+	# vendor1=django_filters.AllValuesFilter(widget=django_filters.widgets.LinkWidget)
+	# price=django_filters.AllValuesFilter(widget=django_filters.widgets.RangeWidget)
+	
+	
 	l=[]
 	for i in Product.objects.all():
 		l.append((i.vendor, i.vendor))
 	vendor=django_filters.ChoiceFilter(choices=set(l))
+	
+
 	l=[]
 	for i in Product.objects.all():
 		l.append((i.type_product, i.type_product))
-	type_product=django_filters.ChoiceFilter(choices=set(l))
+	type_product=django_filters.ChoiceFilter(choices=set(l), label='Type product')
+	
 	class Meta:
 		model = Product
 		fields = ['vendor', 'type_product']

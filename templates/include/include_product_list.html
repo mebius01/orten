@@ -1,0 +1,45 @@
+{% load static %}
+{% load bootstrap4 %}
+
+<div class="table-responsive-sm">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Фото</th>
+        <th scope="col">Бренд</th>
+        <th scope="col">Имя</th>
+        <th scope="col">Артикул</th>
+        <th scope="col">Ниаличие</th>
+        <th scope="col">Цена</th>
+        <th colspan="2">В корзину</th>
+      </tr>
+    </thead>
+    {% for product in products %}
+    <tbody>
+      <tr>
+        <th scope="row">
+            <a class="item_img"><img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt=".">
+        </th>
+        <td>{{ product.vendor }}</td>
+        <td>
+            <a href="{% url 'shop:show_category' product.get_absolute_url %}">{{ product.name }}
+        </td>
+        <td>{{ product.vendor_code }}</td>
+        <td><i class="fas fa-check"></i></td>
+        <td>{{ product.price }}</td>
+        <td>
+          <form action="{% url "cart:cart_add" product.id %}" method="post">
+            {% csrf_token %}
+            {% bootstrap_field cart_product_form.quantity show_label=False %}
+          </td>
+          <td>
+            {% buttons %}
+            <button type="submit" class="btn btn-outline-primary"><i class="fab fa-get-pocket"></i></button>
+            {% endbuttons %}
+          </form>
+         </td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+</div>
