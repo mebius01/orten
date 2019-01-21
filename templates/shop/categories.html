@@ -18,7 +18,8 @@
 <title>Orten - Category All</title>
     <div class="row">
         <div class="col col-sm-3">
-        <div class="list-group" id="list-tab" role="tablist">
+
+        <div class="list-group bg-light" id="list-tab" role="tablist">
             <!--List category-->
             <div class="card-header text-bleck text-uppercase"><i class="fa fa-list mr-3"></i>Категории</div>
             <div class="accordion" id="accordionExample">
@@ -28,11 +29,11 @@
                         <ul class="list-group text-white" data-toggle="collapse" data-target="#collapse-{{item.slug}}" aria-expanded="true" aria-controls="collapse-{{item.slug}}">{{item.name}}
                         </ul>
                     </div>
-                    <div id="collapse-{{item.slug}}" class="collapse" aria-labelledby="heading-{{item.slug}}" data-parent="#accordionExample">
+                    <div id="collapse-{{item.slug}}" class="collapse show" aria-labelledby="heading-{{item.slug}}" data-parent="#accordionExample">
                         <div class="card-body">
                             <ul class="list-group list-group-flush">
                                 {% for item_children in item.get_descendants %}
-                                <li class="list-group-item"><a class="text-muted" href="/category/{{ item_children.get_absolute_url }}">{{item_children.name}}<span class="badge ml-2">{{ item_children.product_set.count }}</span></a></li>
+                                <li class="list-group-item bg-light"><a class="text-muted" href="/category/{{ item_children.get_absolute_url }}">{{item_children.name}}<span class="badge ml-2">{{ item_children.product_set.count }}</span></a></li>
                                 {% endfor %}
                             </ul>
                         </div>
@@ -46,12 +47,17 @@
         <div class="col">
             <div class="card">
                     <div class="card-header text-bleck text-uppercase"><i class="fas fa-list mr-3"></i>List Category</div>
-                    <div class="card-body">
+                    <div class="card-body bg-light">
                         <div class="card-group">
 
 {% if products %}
 
+<meta http-equiv="REFRESH" content="0;url={% url 'shop:product_list' %}?category={{instance.id}}">
+
+{% comment %}
 {% include "include/include_product_list.html" %}
+{% endcomment %}
+
 
 {% else %}
 
@@ -63,6 +69,8 @@
                                     <div class="card-footer bg-transparent">
                                         <div class="row">
 <a class="text-muted" href="{% url 'shop:show_category' i.get_absolute_url %}" title="{{i.name}}">{{i.name}}<span class="badge badge-light ml-3">{{ i.product_set.count }}</span></a>
+
+product_list/?price__gt=&price__lt=&category=8&vendor=&type_product=
 
 
                                     </div>
