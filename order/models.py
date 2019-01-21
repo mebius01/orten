@@ -4,13 +4,29 @@ from django.db import models
 from django.db import models
 from shop.models import Product
 
+PAY_CHOICES = (
+	('Ниличные','Ниличные'),
+	('Безналичный расчет', 'Безналичный расчет'),
+	)
+
+DELIVERY_CHOICES = (
+	('Самовывоз','Самовывоз'),
+	('Новой Почтой','Новой Почтой'),
+	)
+
 class Order(models.Model):
-	first_name = models.CharField(verbose_name='Имя', max_length=50)
+	delivery_method = models.CharField(max_length=50, choices=DELIVERY_CHOICES, help_text='Спопсоб доставки', default=True)
+	pay_method = models.CharField(max_length=50, choices=PAY_CHOICES, help_text='Спопсоб оплаты', default=True)
+
 	last_name = models.CharField(verbose_name='Фамилия', max_length=50)
-	email = models.EmailField(verbose_name='Email')
-	address =  models.CharField(verbose_name='Адрес', max_length=250)
-	postal_code = models.CharField(verbose_name='Почтовый код', max_length=20)
+	first_name = models.CharField(verbose_name='Имя', max_length=50)
+	sur_name = models.CharField(verbose_name='Отчесво', max_length=50, default=True)
 	city = models.CharField(verbose_name='Город', max_length=100)
+
+	mobile_phone = models.CharField(max_length=15, help_text='Телефон', default=True)
+	email = models.EmailField(verbose_name='Email', help_text='E-Mail')
+	note_text = models.CharField(max_length=254, help_text='Дополнения, пожелания, заметки', default=True)
+
 	created = models.DateTimeField(verbose_name='Создан', auto_now_add=True)
 	updated = models.DateTimeField(verbose_name='Обновлен', auto_now=True)
 	paid = models.BooleanField(verbose_name='Оплачен', default=False)

@@ -164,11 +164,12 @@ CART_SESSION_ID = 'cart'
 # Email
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # 'send_email.apps.SendEmailConfig'
+
 # EMAIL_USE_TLS = True
 # EMAIL_HOST = 'smtp.gmail.com'
 # EMAIL_PORT = 587
-# EMAIL_HOST_USER = 'MAIL@gmail.com'
-# EMAIL_HOST_PASSWORD = 'PASS'
+# EMAIL_HOST_USER = '@gmail.com'
+# EMAIL_HOST_PASSWORD = ''
 # DEFAULT_FROM_EMAIL = ''
 # DEFAULT_TO_EMAIL = ''
 
