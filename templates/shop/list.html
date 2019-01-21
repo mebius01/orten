@@ -7,7 +7,7 @@
         <div class="col-12">
             {% block breadcrumbs %}
             {{ block.super }}
-            <a class="text-primary" href="{% url 'shop:product_list' %}">List Product</a>
+            <a class="text-primary" href="{% url 'shop:product_list' %}">Товары</a>
             {% endblock %}
         </div>
     </div>
@@ -27,98 +27,51 @@
 <div class="card bg-light mb-3">
     <article class="card-group-item">
         <header class="card-header">
-            <h6 class="title"><i class="fas fa-hand-holding-usd"></i>  Selection Price</h6>
+            <h6 class="title"><i class="fas fa-filter pr-3"></i>Filters</h6>
         </header>
         <div class="filter-content">
             <div class="card-body">
             <div class="form-row">
             <div class="form-group col-md-6">
+<!-- filter price -->
               <label>Min</label>
-              <input type="number" class="form-control" id="inputEmail4" placeholder="$0">
-            </div>
-            <div class="form-group col-md-6 text-right">
+              <form action="" method="get">
+             {% bootstrap_field filter.form.price__gt placeholder="0" show_label=False %} 
+      </div>
+      <div class="form-group col-md-6 text-right">
               <label>Max</label>
-              <input type="number" class="form-control" placeholder="$1,0000">
-            </div>
+              {% bootstrap_field filter.form.price__lt placeholder="10000" show_label=False %}
+      </div>
+        
+        <div class="form-group col-md-12">
+        {% bootstrap_field filter.form.category show_label=False%}
+
+
+<!-- Vendor filter -->
+        {% bootstrap_field filter.form.vendor show_label=False%}
+
+<!-- Typ_Product filter -->
+
+        {% bootstrap_field filter.form.type_product placeholder="Type Product" show_label=False%}
+<!--Кнопка -->
+<button type="submit" class="btn btn-block btn-outline-success">Фильтр<i class="fab fa-get-pocket pl-2"></i></button>
+<a class="btn btn-block btn-outline-danger" href="{% url 'shop:product_list' %}">Сброс<i class="fas fa-redo-alt pl-2"></i></a>
+
+
+               
+                </form>
+           </div>
             </div>
             </div> <!-- card-body.// -->
         </div>
     </article> <!-- card-group-item.// -->
-    <article class="card-group-item">
-        <header class="card-header">
-            <h6 class="title"><i class="fas fa-landmark"></i>  Selection Vendor</h6>
-        </header>
-            <form method="get">
-                {% bootstrap_form filter.form show_label=False%}
-                <button type="submit">Search</button>
-            </form>
-
-
-        <div class="filter-content">
-            <div class="card-body">
-                <div class="custom-control custom-checkbox">
-                    <span class="float-right badge badge-light round">52</span>
-                    <input type="checkbox" class="custom-control-input" id="Check1">
-                    <label class="custom-control-label" for="Check1">Vendor</label>
-                </div> <!-- form-check.// -->
-
-                <div class="custom-control custom-checkbox">
-                    <span class="float-right badge badge-light round">132</span>
-                    <input type="checkbox" class="custom-control-input" id="Check2">
-                    <label class="custom-control-label" for="Check2">Vendor</label>
-                </div> <!-- form-check.// -->
-
-                <div class="custom-control custom-checkbox">
-                    <span class="float-right badge badge-light round">17</span>
-                    <input type="checkbox" class="custom-control-input" id="Check3">
-                    <label class="custom-control-label" for="Check3">Vendor</label>
-                </div> <!-- form-check.// -->
-
-                <div class="custom-control custom-checkbox">
-                    <span class="float-right badge badge-light round">7</span>
-                    <input type="checkbox" class="custom-control-input" id="Check4">
-                    <label class="custom-control-label" for="Check4">Vendor</label>
-                </div> <!-- form-check.// -->
-            </div> <!-- card-body.// -->
-        </div>
-    </article> <!-- card-group-item.// -->
-     <article class="card-group-item">
-        <header class="card-header">
-            <h6 class="title"><i class="fas fa-tag"></i>  Selection Tags</h6>
-        </header>
-                <div class="filter-content">
-            <div class="card-body">
-                <div class="custom-control custom-checkbox">
-                    <span class="float-right badge badge-light round">52</span>
-                    <input type="checkbox" class="custom-control-input" id="Check1">
-                    <label class="custom-control-label" for="Check1">Tags</label>
-                </div> <!-- form-check.// -->
-
-                <div class="custom-control custom-checkbox">
-                    <span class="float-right badge badge-light round">132</span>
-                    <input type="checkbox" class="custom-control-input" id="Check2">
-                    <label class="custom-control-label" for="Check2">Tags</label>
-                </div> <!-- form-check.// -->
-
-                <div class="custom-control custom-checkbox">
-                    <span class="float-right badge badge-light round">17</span>
-                    <input type="checkbox" class="custom-control-input" id="Check3">
-                    <label class="custom-control-label" for="Check3">Tags</label>
-                </div> <!-- form-check.// -->
-
-                <div class="custom-control custom-checkbox">
-                    <span class="float-right badge badge-light round">7</span>
-                    <input type="checkbox" class="custom-control-input" id="Check4">
-                    <label class="custom-control-label" for="Check4">Tags</label>
-                </div> <!-- form-check.// -->
-            </div> <!-- card-body.// -->
-        </div>
+    
 
 </div> <!-- card.// -->
 </div>
 
         <div class="col">
-            <div class="card">
+            <div class="card card bg-light">
                     <div class="card-header text-bleck text-uppercase"><i class="fas fa-list mr-3"></i>List Product</div>
                     <div class="card-body">
                         <div class="card-group">

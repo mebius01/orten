@@ -53,7 +53,7 @@ def search(request):
 def product_list(request):
 	products_filter = ProductFilter(request.GET, queryset=Product.objects.all())
 	page = request.GET.get('page', 1)
-	paginator = Paginator(products_filter.qs, 2)
+	paginator = Paginator(products_filter.qs, 60)
 	try:
 		products = paginator.page(page)
 	except PageNotAnInteger:
