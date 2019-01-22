@@ -43,8 +43,6 @@ INSTALLED_APPS = [
     'order',
     'mptt',
     'import_export',
-    # 'taggit',
-    # 'sitetree',
     'debug_toolbar',
     'bootstrap4',
     'django_filters',

@@ -15,17 +15,17 @@ DELIVERY_CHOICES = (
 	)
 
 class Order(models.Model):
-	delivery_method = models.CharField(max_length=50, choices=DELIVERY_CHOICES, help_text='Спопсоб доставки', default=True)
-	pay_method = models.CharField(max_length=50, choices=PAY_CHOICES, help_text='Спопсоб оплаты', default=True)
+	delivery_method = models.CharField(max_length=50, choices=DELIVERY_CHOICES, verbose_name='Спопсоб доставки', default=True)
+	pay_method = models.CharField(max_length=50, choices=PAY_CHOICES, verbose_name='Спопсоб оплаты', default=True)
 
 	last_name = models.CharField(verbose_name='Фамилия', max_length=50)
 	first_name = models.CharField(verbose_name='Имя', max_length=50)
-	sur_name = models.CharField(verbose_name='Отчесво', max_length=50, default=True)
+	sur_name = models.CharField(verbose_name='Отчесво', max_length=50)
 	city = models.CharField(verbose_name='Город', max_length=100)
 
-	mobile_phone = models.CharField(max_length=15, help_text='Телефон', default=True)
-	email = models.EmailField(verbose_name='Email', help_text='E-Mail')
-	note_text = models.CharField(max_length=254, help_text='Дополнения, пожелания, заметки', default=True)
+	mobile_phone = models.CharField(max_length=15, verbose_name='Телефон')
+	email = models.EmailField(verbose_name='Email')
+	note_text =  models.TextField(blank=True, max_length=512, verbose_name='Дополнения, пожелания, заметки')
 
 	created = models.DateTimeField(verbose_name='Создан', auto_now_add=True)
 	updated = models.DateTimeField(verbose_name='Обновлен', auto_now=True)

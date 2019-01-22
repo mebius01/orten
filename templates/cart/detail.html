@@ -1,72 +1,53 @@
 {% extends "base.html" %}
 {% load bootstrap4 %}
-
+{% load static %}
 {% block breadcrumbs %}
 {{ block.super }}<span class="text-primary">Корзина</span>
 {% endblock %}
-
-
-
 {% load static %}
 {% block title %}
 {% endblock %}
 
-{% block content %}
 
+{% block content %}
+<title>Мусарок</title>
 
 <div class="container-fluid">
-<div class="table-responsive-sm">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Фото</th>
-        <th scope="col">Бренд</th>
-        <th scope="col">Имя</th>
-        <th scope="col">Артикул</th>
-        <th scope="col">Цена</th>
-        <th scope="col">Количество</th>
-        <th scope="col">Сумма</th>
-        <th scope="col">Удалить</th>
-      </tr>
-    </thead>
-{% for item in cart %}
-{% with product=item.product %}
-    <tbody>
-      <tr>
-        <th scope="row">
-          <a class="thumbnail pull-left" href="{% url 'shop:show_category' product.get_absolute_url %}"> <img src="{% if product.image %}{{ product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" style="width: 72px; height: 72px;"></a>
-        </th>
-        <td>
-           {{ product.vendor }}
-        </td>
-        <td>
-          <a href="{% url 'shop:show_category' product.get_absolute_url %}">{{ product.name }}
-        </td>
-        <td>
-          {{ product.vendor_code }}
-        </td>
-        <td>
-          {{ product.price }}
-        </td>
-        <td>
-          <form action="{% url "cart:cart_add" product.id %}" method="post" class="add">
-           {{ item.update_quantity_form.quantity }}
-           {{ item.update_quantity_form.update }}
-           {% csrf_token %}
-           <button type="submit" class="btn btn-outline-primary"><i class="fab fa-get-pocket"></i></button>
-           </form>
-        </td>
-        <td>
-           {{ item.total_price }}
-        </td>
-        <td>
-          <a href="{% url "cart:cart_remove" product.id %}" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i><role="button" aria-pressed="true">
-        </td>
-    </tbody>
-    {% endwith %}
-    {% endfor %}
-  </table>
-</div>
+    <div class="row">
+
+    <div class="col-sm-3">
+      <div class="card">
+       <div class="card-header text-bleck text-uppercase"><i class="fab fa-wpforms pr-3"></i>Полезная Информация</div>
+        <div class="card-body bg-light">
+
+<ul>
+  <li>Доставка</li>
+  <br>
+  <li>Оплата</li>
+  <br>
+  <li>Контакты</li>
+</ul>
+
+
+        </div>
+      </div>
+    </div>
+  
+
+<div class="col-sm-9">
+    <div class="card bg-light">
+     <div class="card-header text-bleck text-uppercase"><i class="fas fa-truck pr-3"></i>Ваш Заказ</div>
+      <div class="card-body bg-light">
+
+
+{%include 'include/include_cart_list.html' %}
+
+      </div>
+    </div>
+  </div>
+
+
+
 </div>
       <div class="row">
                 <div class="col-6">
@@ -80,7 +61,7 @@
         </div>
     </div>
 </div>
-<hr>
+
 {% comment %}
   
   <h1>Ваша корзина товаров</h1>
