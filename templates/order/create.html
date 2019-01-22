@@ -36,13 +36,107 @@
      <div class="card-header text-bleck text-uppercase"><i class="fas fa-truck pr-3"></i>Ваш Заказ</div>
       <div class="card-body bg-light">
 
-
+{% comment %}
+  
 {%include 'include/include_cart_list.html' %}
+{% endcomment %}
+
+
+
+  <table class="table-responsive-sm">
+    <thead>
+      <tr>
+        <th scope="col">Фото</th>
+        <th scope="col">Бренд</th>
+        <th scope="col">Имя</th>
+        <th scope="col">Артикул</th>
+        <th scope="col">Цена</th>
+        <th scope="col">Количество</th>
+        <th scope="col">Сумма</th>
+        <th scope="col">Удалить</th>
+      </tr>
+    </thead>
+{% for item in cart %}
+{% with product=item.product %}
+
+    <tbody class="border">
+      <tr>
+        <th scope="row">
+          <a class="thumbnail pull-left" href="{% url 'shop:show_category' product.get_absolute_url %}"> <img src="{% if product.image %}{{ product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" style="width: 72px; height: 72px;"></a>
+        </th>
+        <td>
+           {{ product.vendor }}
+        </td>
+        <td>
+          <a href="{% url 'shop:show_category' product.get_absolute_url %}">{{ product.name }}
+        </td>
+        <td>
+          {{ product.vendor_code }}
+        </td>
+        <td>
+          {{ product.price }}
+        </td>
+        <td>
+          <span class="badge badge-secondary p-2">{{ item.quantity }}</span>
+        </td>
+        <td>
+           {{ item.total_price }}
+        </td>
+        <td>
+          <a href="{% url "cart:cart_remove" product.id %}" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i><role="button" aria-pressed="true">
+        </td>
+    </tbody>
+    {% endwith %}
+    {% endfor %}
+
+
+<tbody class="border">
+    <td><h5>Сумма:</h5></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>
+      <h5>{{ cart.get_total_price }}</h5>
+    </td>
+    <td>
+      <span class="badge badge-secondary p-2">{{ cart|length }}</span>
+    </td>   
+    <td></td>
+    <td></td>
+
+  </table>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+ 
+    </div>
+    <div class="col">
+      
+    </div>
+  </div>
+</div>
+
+   
+
+
 
       </div>
     </div>
+
   </div>
 </div>
 </div>  
 
 {% endblock %}
+
+{% comment %}
+  Продукт: {{ item.product.name }}
+<br>
+Количество: {{ item.quantity }} 
+<br>
+Цена: {{ item.total_price }}
+<br>
+Тотал: {{ cart.get_total_price }}
+
+{% endcomment %}
