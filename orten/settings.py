@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'shop',
     'cart',
     'order',
+    'taggit',
     'mptt',
     'import_export',
     'debug_toolbar',
@@ -57,8 +58,17 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # Simplified static file serving.
+    # https://warehouse.python.org/project/whitenoise/
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 
 ]
+
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 ROOT_URLCONF = 'orten.urls'
 TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")

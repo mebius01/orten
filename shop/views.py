@@ -7,42 +7,43 @@ from shop.filters import ProductFilter
 
 def home(request):
 	product_stok = ProductStock.objects.all()
-	category = Category.objects.all()
+	category_all = Category.objects.all()
 	products = Product.objects.all().order_by()[:9]
 	cart_product_form = CartAddProductForm()
-	return render(request, 'shop/home.html', {'cart_product_form':cart_product_form, 'products':products, 'product_stok':product_stok, 'category':category})
+	return render(request, 'shop/home.html', {'cart_product_form':cart_product_form, 'products':products, 'product_stok':product_stok, 'category_all':category_all})
+
+
 
 # тестовый шаблон
 def _test(request):
 	return render(request, 'base-test.html')
 
 def category(request):
-	category = Category.objects.all()
-	return render(request, 'shop/list_category.html', {'category': category})
+	category_all = Category.objects.all()
+	return render(request, 'shop/list_category.html', {'category_all': category_all})
 
-def show_category(request,hierarchy=None,tag_id=None):
+def show_category(request, hierarchy=None):
+	# Раззделяет строку УРЛа на список [категория, подкатегория, подкатегорияПодкатегории, итд]
 	category_slug = hierarchy.split('/')
 
 	parent = None
-	root = Category.objects.all()
-	tag = None
+	category_all = Category.objects.all()
+
+	# Форма количиства и корзины
 	cart_product_form = CartAddProductForm()
-	if tag_id:
-		tag = get_object_or_404(Tag, slug=tag_id)
-		product_list_all = porduct_list_all.filter(tags__in=[tag])
 
 	for slug in category_slug[:-1]:
-		parent = root.get(parent=parent, slug = slug)
+		parent = category_all.get(parent=parent, slug = slug)
 	try:
 		instance = Category.objects.get(parent=parent, slug=category_slug[-1])
 	except:
 		instance = get_object_or_404(Product, slug = category_slug[-1])
 		category = Category.objects.get(product=instance)
-		return render(request, "shop/product_detail.html", {'instance':instance, 'category':category, 'tag':tag, 'cart_product_form': cart_product_form})
+		# filter_tag=Product.objects.filter(tags=instance.tags.all()[0].id)
+		return render(request, "shop/product_detail.html", {'instance':instance, 'category':category, 'cart_product_form': cart_product_form})
 	else:
 		category = Category.objects.get(slug=category_slug[-1])
 		products = Product.objects.filter(category=category)
-		category_all = Category.objects.all()
 		return render(request, 'shop/categories.html', {'instance':instance, 'category':category, 'products': products, 'category_all':category_all, 'cart_product_form': cart_product_form})
 
 def search(request):

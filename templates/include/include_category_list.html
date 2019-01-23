@@ -2,7 +2,7 @@
     <!--List category-->
     <div class="card-header text-bleck text-uppercase"><i class="fa fa-list mr-3"></i>Категории</div>
     <div class="accordion" id="accordionExample">
-        {% for item in category.get_cached_trees %}
+        {% for item in category_all.get_cached_trees %}
         {% if item.is_root_node %}
         <div class="card-header" id="heading-{{item.slug}}">
             <ul class="list-group text-white" data-toggle="collapse" data-target="#collapse-{{item.slug}}" aria-expanded="true" aria-controls="collapse-{{item.slug}}">{{item.name}}

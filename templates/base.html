@@ -21,6 +21,8 @@
 
 <head>
 
+<link rel="shortcut icon" type="image/png" href="{% static "img/favicon.png" %}">
+
   <!-- <link rel="stylesheet" href="{% static "shop/css/main.css" %}" type="text/css">
   Required meta tags -->
     <meta charset="utf-8">
@@ -33,95 +35,95 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 <style>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-    /*
-** Style Simple Ecommerce Theme for Bootstrap 4
-** Created by T-PHP https://t-php.fr/43-theme-ecommerce-bootstrap-4.html
-*/
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+        /*
+    ** Style Simple Ecommerce Theme for Bootstrap 4
+    ** Created by T-PHP https://t-php.fr/43-theme-ecommerce-bootstrap-4.html
+    */
 
-.thead-color {
-    background: #6cbbcb;
-}
-.card-header {
-    background: #6cbbcb;
-}
-.navbar {
-    background: #56B397;
-    /*background: transparent;*/
-     /*height: 35px !important;*/
-}
-.navbar a {
-    color: #22262A!important
+    .thead-color {
+        background: #6cbbcb;
+    }
+    .card-header {
+        background: #6cbbcb;
+    }
+    .navbar {
+        background: #56B397;
+        /*background: transparent;*/
+         /*height: 35px !important;*/
+    }
+    .navbar a {
+        color: #22262A!important
 
-}
-.bloc_left_price {
-    color: #c01508;
-    text-align: center;
-    font-weight: bold;
-    font-size: 150%;
-}
-.category_block li:hover {
-    background-color: #007bff;
-}
-.category_block li:hover a {
-    color: #ffffff;
-}
-.category_block li a {
-    color: #343a40;
-}
-.add_to_cart_block .price {
-    color: #c01508;
-    text-align: center;
-    font-weight: bold;
-    font-size: 200%;
-    margin-bottom: 0;
-}
-.add_to_cart_block .price_discounted {
-    color: #343a40;
-    text-align: center;
-    text-decoration: line-through;
-    font-size: 140%;
-}
-.product_rassurance {
-    padding: 10px;
-    margin-top: 15px;
-    background: #ffffff;
-    border: 1px solid #6c757d;
-    color: #6c757d;
-}
-.product_rassurance .list-inline {
-    margin-bottom: 0;
-    text-transform: uppercase;
-    text-align: center;
-}
-.product_rassurance .list-inline li:hover {
-    color: #343a40;
-}
-.reviews_product .fa-star {
-    color: gold;
-}
+    }
+    .bloc_left_price {
+        color: #c01508;
+        text-align: center;
+        font-weight: bold;
+        font-size: 150%;
+    }
+    .category_block li:hover {
+        background-color: #007bff;
+    }
+    .category_block li:hover a {
+        color: #ffffff;
+    }
+    .category_block li a {
+        color: #343a40;
+    }
+    .add_to_cart_block .price {
+        color: #c01508;
+        text-align: center;
+        font-weight: bold;
+        font-size: 200%;
+        margin-bottom: 0;
+    }
+    .add_to_cart_block .price_discounted {
+        color: #343a40;
+        text-align: center;
+        text-decoration: line-through;
+        font-size: 140%;
+    }
+    .product_rassurance {
+        padding: 10px;
+        margin-top: 15px;
+        background: #ffffff;
+        border: 1px solid #6c757d;
+        color: #6c757d;
+    }
+    .product_rassurance .list-inline {
+        margin-bottom: 0;
+        text-transform: uppercase;
+        text-align: center;
+    }
+    .product_rassurance .list-inline li:hover {
+        color: #343a40;
+    }
+    .reviews_product .fa-star {
+        color: gold;
+    }
 
-footer {
-    
-    padding: 10px;
-     background: #56B397;
+    footer {
+        
+        padding: 10px;
+         background: #56B397;
 
-}
+    }
 
-footer a {
-    color: #22262A!important
-}
+    footer a {
+        color: #22262A!important
+    }
 
-li {
-    margin-bottom: 10px;
+    li {
+        margin-bottom: 10px;
 
-}
+    }
 
-.cool-link {
-    display: inline-block;
-    color: #000;
-    text-decoration: none;
-}
+    .cool-link {
+        display: inline-block;
+        color: #000;
+        text-decoration: none;
+    }
 
 
 
@@ -219,13 +221,13 @@ li {
         <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
             <ul class="navbar-nav m-auto">
                 
-                    <a class="nav-link" href="{% url 'shop:home' %}">Home</a>
-                    <a class="nav-link" href="{% url 'shop:list_category' %}">Categories <span class="sr-only">(current)</span></a>
-                    <a class="nav-link" href="{% url 'shop:product_list' %}">Product</a>
-                    <a class="nav-link" href="#">Contact</a>
-                    <a class="nav-link" href="#">Contact</a>
-                    <a class="nav-link" href="#">Contact</a>
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="{% url 'shop:home' %}">Дом</a>
+                    <a class="nav-link" href="{% url 'shop:list_category' %}">Категории<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{% url 'shop:product_list' %}">Товары</a>
+                    <a class="nav-link" href="#">Полиграфия</a>
+                    <a class="nav-link" href="#">Сервисный центр</a>
+                    <a class="nav-link" href="#">Доставка и оплата</a>
+                    <a class="nav-link" href="#">Контакты</a>
                     <a class="nav-link" href="#">Contact</a>
             </ul>   
 
