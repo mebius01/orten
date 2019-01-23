@@ -20,28 +20,9 @@
         <div class="col col-sm-3">
 
         <div class="list-group bg-light" id="list-tab" role="tablist">
-            <!--List category-->
-            <div class="card-header text-bleck text-uppercase"><i class="fa fa-list mr-3"></i>Категории</div>
-            <div class="accordion" id="accordionExample">
-                    {% for item in category_all.get_cached_trees %}
-                    {% if item.is_root_node %}
-                    <div class="card-header" id="heading-{{item.slug}}">
-                        <ul class="list-group text-white" data-toggle="collapse" data-target="#collapse-{{item.slug}}" aria-expanded="true" aria-controls="collapse-{{item.slug}}">{{item.name}}
-                        </ul>
-                    </div>
-                    <div id="collapse-{{item.slug}}" class="collapse show" aria-labelledby="heading-{{item.slug}}" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                {% for item_children in item.get_descendants %}
-                                <li class="list-group-item bg-light"><a class="text-muted" href="/category/{{ item_children.get_absolute_url }}">{{item_children.name}}<span class="badge ml-2">{{ item_children.product_set.count }}</span></a></li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                {% endif %}
-                {% endfor %}
+            {% include "include/include_category_list.html" %}
         </div>
+    </div>
         <!--end list category-->
         <!--block list product & category dis -->
         <div class="col">
@@ -98,6 +79,32 @@
 
 {% endblock %}
 {% comment %}
+
+
+<!--List category-->
+            <div class="card-header text-bleck text-uppercase"><i class="fa fa-list mr-3"></i>Категории</div>
+            <div class="accordion" id="accordionExample">
+                    {% for item in category_all.get_cached_trees %}
+                    {% if item.is_root_node %}
+                    <div class="card-header" id="heading-{{item.slug}}">
+                        <ul class="list-group text-white" data-toggle="collapse" data-target="#collapse-{{item.slug}}" aria-expanded="true" aria-controls="collapse-{{item.slug}}">{{item.name}}
+                        </ul>
+                    </div>
+                    <div id="collapse-{{item.slug}}" class="collapse show" aria-labelledby="heading-{{item.slug}}" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                {% for item_children in item.get_descendants %}
+                                <li class="list-group-item bg-light"><a class="text-muted" href="/category/{{ item_children.get_absolute_url }}">{{item_children.name}}<span class="badge ml-2">{{ item_children.product_set.count }}</span></a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+
+
+
 <div class="col-9">
     <div class="row">
         <div class="col-sm">

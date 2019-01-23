@@ -7,18 +7,18 @@ from shop.filters import ProductFilter
 
 def home(request):
 	product_stok = ProductStock.objects.all()
-	category = Category.objects.all()
+	category_all = Category.objects.all()
 	products = Product.objects.all().order_by()[:9]
 	cart_product_form = CartAddProductForm()
-	return render(request, 'shop/home.html', {'cart_product_form':cart_product_form, 'products':products, 'product_stok':product_stok, 'category':category})
+	return render(request, 'shop/home.html', {'cart_product_form':cart_product_form, 'products':products, 'product_stok':product_stok, 'category_all':category_all})
 
 # тестовый шаблон
 def _test(request):
 	return render(request, 'base-test.html')
 
 def category(request):
-	category = Category.objects.all()
-	return render(request, 'shop/list_category.html', {'category': category})
+	category_all = Category.objects.all()
+	return render(request, 'shop/list_category.html', {'category_all': category_all})
 
 def show_category(request,hierarchy=None,tag_id=None):
 	category_slug = hierarchy.split('/')
