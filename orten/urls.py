@@ -18,11 +18,15 @@ from django.urls import path, include
 from shop import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic import RedirectView
+
+
 if settings.DEBUG:
     import debug_toolbar
 urlpatterns = [
     path('__debug__/', include(debug_toolbar.urls)),
     path('admin/', admin.site.urls),
+    path('favicon.ico', RedirectView.as_view(url='/static/img/favicon.ico'), name='favicon'),
     path('', include('shop.urls')),
     path('cart/', include('cart.urls')),
     path('order/', include('order.urls')),
