@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'shop',
     'cart',
     'order',
+    'taggit',
     'mptt',
     'import_export',
     'debug_toolbar',

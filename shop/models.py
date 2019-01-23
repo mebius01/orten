@@ -6,7 +6,7 @@ import django_filters
 # Create your models here.
 
 from mptt.models import MPTTModel, TreeForeignKey
-# from taggit.managers import TaggableManager
+from taggit.managers import TaggableManager
 
 CURRENCY_CHOICES = (
 	('eur','EUR'),
@@ -78,6 +78,7 @@ class Category(MPTTModel):
 class Product(models.Model):
 	category = models.ForeignKey(Category, on_delete=models.CASCADE, help_text='Каталог товара (расходные материалы, компьютеры и комплетующие и т д)') #коталог продукта связь m2m
 	name = models.CharField(max_length=400, db_index=True, help_text='Название товара') #имя продукта
+	# name_f_k = models.ForeignKey(Product.name, on_delete=models.CASCADE, help_text='Каталог товара (расходные материалы, компьютеры и комплетующие и т д)')
 	# saler =  models.CharField(max_length=25, choices=SALER_CHOICES, blank=True, help_text='Поставщик')
 	
 	vendor_code = models.CharField(max_length=200, db_index=True, help_text='Артикул, парт номер') #артикул или парт-номер
@@ -90,7 +91,7 @@ class Product(models.Model):
 	
 	keywords =  models.TextField(blank=True, help_text='Ключивые слова (тонер, материнская плата, пружина)')#краткое описание продукта
 	description = models.TextField(blank=True, help_text='Описание товара') #описание продукта
-	# tags = TaggableManager(through=None, blank=True, help_text = 'Список тегов, разделенных запятыми')
+	tags = TaggableManager(through=None, blank=True, help_text = 'Список тегов, разделенных запятыми')
 
 	# currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES, blank=True, help_text='Валюта входа') #валюта
 	price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, help_text='Цена входящая') #цена Закупки

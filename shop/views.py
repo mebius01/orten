@@ -20,16 +20,13 @@ def category(request):
 	category_all = Category.objects.all()
 	return render(request, 'shop/list_category.html', {'category_all': category_all})
 
-def show_category(request,hierarchy=None,tag_id=None):
+def show_category(request,hierarchy=None):
 	category_slug = hierarchy.split('/')
 
 	parent = None
 	root = Category.objects.all()
 	tag = None
 	cart_product_form = CartAddProductForm()
-	if tag_id:
-		tag = get_object_or_404(Tag, slug=tag_id)
-		product_list_all = porduct_list_all.filter(tags__in=[tag])
 
 	for slug in category_slug[:-1]:
 		parent = root.get(parent=parent, slug = slug)
@@ -38,7 +35,8 @@ def show_category(request,hierarchy=None,tag_id=None):
 	except:
 		instance = get_object_or_404(Product, slug = category_slug[-1])
 		category = Category.objects.get(product=instance)
-		return render(request, "shop/product_detail.html", {'instance':instance, 'category':category, 'tag':tag, 'cart_product_form': cart_product_form})
+		filter_tag=Product.objects.filter(tags=instance.tags.all()[0].id)
+		return render(request, "shop/product_detail.html", {'filter_tag':filter_tag, 'instance':instance, 'category':category, 'cart_product_form': cart_product_form})
 	else:
 		category = Category.objects.get(slug=category_slug[-1])
 		products = Product.objects.filter(category=category)

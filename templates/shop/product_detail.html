@@ -166,6 +166,8 @@
             <div class="card bg-light mb-3">
                 <div class="card-body">
                     <span class="product_name">{{ instance.name }}</span>
+
+                    
                     <hr>
                     <span class="leftstr">Вендор:</span><span class="rightstr product_vendor">
                         <a class="text-muted" href="{% url 'shop:product_list' %}?vendor={{ instance.vendor }}">{{ instance.vendor }}</a></span><div style="clear: left"></div>
@@ -180,7 +182,7 @@
                   {% bootstrap_field cart_product_form.quantity show_label=False %}
                   {% bootstrap_field cart_product_form.update show_label=False %}
                   <button type="submit" class="btn btn-success btn-lg btn-block text-uppercase">
-                   <i class="fa fa-shopping-cart pr-3"></i>Add To Cart
+                   <i class="fa fa-shopping-cart pr-3"></i>Купить
                   </button>
                 </form>
 
@@ -251,8 +253,23 @@
   </div>
 </div>
 
+<div class="container-fluid">
+<div class="row">
+    <div class="card card bg-light">
+            <div class="card-header text-bleck text-uppercase"><i class="fab fa-connectdevelop p-3"></i>Связи</div>
+            <div class="card-body">
+                <div class="card-group">
 
 
+{% with filter_tag|slice:"1:" as products %}     
+{% include "include/include_product_list.html" %}
+{% endwith %}
+
+</div>
+</div>
+</div>
+</div>
+</div>
 
 
 
