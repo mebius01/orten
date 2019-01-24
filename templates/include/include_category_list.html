@@ -1,15 +1,15 @@
-<div class="accordion" id="accordionExample">
+<div class="accordion" id="accordionCategory">
  {% for item in category_all.get_cached_trees %}
         {% if item.is_root_node %}
         <div class="card-header" id="heading-{{item.slug}}">
             <ul class="list-group text-white" data-toggle="collapse" data-target="#collapse-{{item.slug}}" aria-expanded="true" aria-controls="collapse-{{item.slug}}">{{item.name}}
             </ul>
         </div>
-        <div id="collapse-{{item.slug}}" class="collapse" aria-labelledby="heading-{{item.slug}}" data-parent="#accordionExample">
+        <div id="collapse-{{item.slug}}" class="collapse show" aria-labelledby="heading-{{item.slug}}" data-parent="#accordionCategory">
             <div class="card-list-groub">
                 <ul class="list-group-flush">
                     {% for item_children in item.get_descendants %}
-                    <li class="list-group-item bg-light"><a class="text-muted" href="/category/{{ item_children.get_absolute_url }}">{{item_children.name}}<span class="badge ml-2">{{ item_children.product_set.count }}</span></a></li>
+                    <li class="list-group-item bg-light"><a class="text-muted" href="/category/{{ item_children.get_absolute_url }}">{{item_children.name}}</a></li> {% comment %} <span class="badge ml-2">{{ item_children.product_set.count }}</span>{% endcomment %}
                     {% endfor %}
                 </ul>
             </div>
