@@ -16,13 +16,23 @@
 <title>Orten - Category All</title>
 <div class="container-fluid">
     <div class="row">
-    <div class="col-sm-3">
-        <div class="card bg-light">
 
-        {% include "include/include_category_list.html" %}
-</div>
-</div>  
+<!-- Блок Категорий -->
+        <div class="col-12 col-sm-3">
+            <div class="card bg-light">
+                <article class="card-group-item">
+                    <header class="card-header">
+                        <h6 class="title"><i class="fa fa-list pr-3"></i>Категории</h6>
+                    </header>
 
+                    <div class="card-body p-0">
+                        {% include "include/include_category_list.html" %}
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        
 
 
 {% comment %}
