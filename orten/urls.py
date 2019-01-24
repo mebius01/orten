@@ -26,7 +26,7 @@ if settings.DEBUG:
 urlpatterns = [
     path('__debug__/', include(debug_toolbar.urls)),
     path('admin/', admin.site.urls),
-    path('favicon.ico', RedirectView.as_view(url='/static/img/favicon.ico'), name='favicon'),
+    path('favicon.ico', RedirectView.as_view(url='/static/img/favicon.png'), name='favicon'),
     path('', include('shop.urls')),
     path('cart/', include('cart.urls')),
     path('order/', include('order.urls')),

@@ -5,7 +5,7 @@
         <div class="col-12">
             {% block breadcrumbs %}
             {{ block.super }}
-            <a href="/category/"> <span class="text-primary">Категории</span></a>
+            <a href="/category/"><span class="text-primary">Категории</span></a>
             {% endblock %}
         </div>
     </div>
@@ -32,11 +32,13 @@
             </div>
         </div>
 
-
-            <div class="col">
-                <div class="card">
-                    <div class="card-header text-bleck text-uppercase"><i class="fas fa-list mr-3"></i>List Category</div>
-                    <div class="card-body bg-light">
+<!-- Блок Карт категорий  -->
+        <div class="col-12 col-sm-9">
+            <div class="card bg-light">
+                <article class="card-group-item">
+                    <header class="card-header text-bleck text-uppercase">
+                        <h6 class="title"><i class="fas fa-list pr-3"></i>сисок Категорий</h6>
+                    </header>
                         <div class="card-group">
 
                             {% for item in category_all %}
@@ -46,22 +48,18 @@
                                     <img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{item.name}}" width="230" height="230">
                                     <div class="card-footer bg-transparent">
                                         <div class="row">
-<a class="text-muted" href="{% url 'shop:show_category' item.get_absolute_url %}" title="{{item.name}}">{{item.name}}<span class="badge badge-light ml-3">{{ item.product_set.count }}</span></a>
-
-
+                                            <a class="text-muted" href="{% url 'shop:show_category' item.get_absolute_url %}" title="{{item.name}}">{{item.name}}<span class="badge badge-light ml-3">{{ item.product_set.count }}</span></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            {% endif %}
+                            {% endfor %}
                         </div>
-                        {% endif %}
-                        {% endfor %}
-                    </div>
-                </div>
+                </article>
             </div>
         </div>
     </div>
-</div>
-</div>
 </div>
 
 

@@ -7,6 +7,7 @@
         <div class="col-12">
             {% block breadcrumbs %}
             {{ block.super }}
+            <a class="text-primary" href="{% url 'shop:list_category' %}">Категории</a><i class="fas fa-chevron-right pl-1"></i>
             {% for i in category.get_anc %}
             <a class="text-primary" href="/category/{{ i.get_absolute_url }}">{{ i.name }}</a><i class="fas fa-chevron-right pl-1"></i>
             {% endfor %}
@@ -40,13 +41,14 @@
             <div class="card bg-light">
                 <article class="card-group-item">
                     <header class="card-header text-bleck text-uppercase">
-                        <h6 class="title"><i class="fas fa-glass-cheers pr-3"></i>сисок категорий</h6>
+                        <h6 class="title"><i class="fa fa-list pr-3"></i>сисок категорий</h6>
                     </header>
                     <div class="card-group">
                     {% if products %}
-                    <meta http-equiv="REFRESH" content="0;url={% url 'shop:product_list' %}?category={{instance.id}}">
-                    {% comment %}
                     {% include "include/include_product_list.html" %}
+                    
+                    {% comment %}
+                    <meta http-equiv="REFRESH" content="0;url={% url 'shop:product_list' %}?category={{instance.id}}">
                     {% endcomment %}
                     {% else %}
                     {% for i in instance.children.all %}
