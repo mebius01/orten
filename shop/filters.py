@@ -23,7 +23,7 @@ class ProductFilter(django_filters.FilterSet):
 	
 	class Meta:
 		model = Product
-		fields = ['vendor', 'type_product', 'price__gt', 'price__lt', 'category']
+		fields = ['vendor', 'type_product', 'price__gt', 'price__lt', 'category']# , 'vendor_code']
 
 # class ProductFilter(django_filters.FilterSet):
 # 	# fields = django_filters.ModelChoiceFilter(field_name='vendor', lookup_expr='isnull', null_label='Uncategorized', queryset=Category.objects.all(),

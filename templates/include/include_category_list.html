@@ -1,7 +1,4 @@
-<div class="list-group  bg-light" id="list-tab" role="tablist">
-    <!--List category-->
-    <div class="card-header text-bleck text-uppercase"><i class="fa fa-list mr-3"></i>Категории</div>
-    <div class="accordion" id="accordionExample">
+
         {% for item in category_all.get_cached_trees %}
         {% if item.is_root_node %}
         <div class="card-header" id="heading-{{item.slug}}">

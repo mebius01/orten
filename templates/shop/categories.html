@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load bootstrap4 %}
+{% load static %}
+{% load mptt_tags %}
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
@@ -12,8 +14,7 @@
         </div>
     </div>
 </div>
-{% load static %}
-{% load mptt_tags %}
+
 {% block content %}
 <title>Orten - Category All</title>
     <div class="row">
