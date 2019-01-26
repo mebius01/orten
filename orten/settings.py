@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'bootstrap4',
     'django_filters',
+    'haystack',
 ]
 
 MIDDLEWARE = [
@@ -196,3 +197,10 @@ DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.logging.LoggingPanel',
     'debug_toolbar.panels.redirects.RedirectsPanel',
 ]
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
+        'URL': 'http://127.0.0.1:8983/solr'
+    },
+}

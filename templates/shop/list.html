@@ -2,6 +2,8 @@
 {% load static %}
 {% load mptt_tags %}
 {% load bootstrap4 %}
+{% load paginator_filter %}
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
@@ -102,7 +104,189 @@
         </div>
     </div>
 </div>
+
+
+
+<hr>
+<h2>Пагинация с w3 активным</h2>
+
+
+<div class="pagination">
+  <a href="#">&laquo;</a>
+  <a href="#">1</a>
+  <a class="active" href="#">2</a>
+  <a href="#">3</a>
+  <a href="#">4</a>
+  <a href="#">5</a>
+  <a href="#">6</a>
+  <a href="#">&raquo;</a>
+</div>
+<hr>
+
+<h2>Пагинация с w3</h2>
+
+<div class="w3-bar">
+  <a href="#" class="w3-button">&laquo;</a>
+  <a href="#" class="w3-button">1</a>
+  <a href="#" class="w3-button">2</a>
+  <a href="#" class="w3-button">3</a>
+  <a href="#" class="w3-button">4</a>
+  <a href="#" class="w3-button">5</a>
+  <a href="#" class="w3-button">&raquo;</a>
+</div>
+<hr>
+
+<h2>Пагинация с фильром</h2>
+
+  Page {{ products.number }} of {{ paginator.num_pages }}
+
+  {% if products.has_next %}
+    {% if products.next_page_number != paginator.num_pages %}
+      <a href="?{% param_replace page=products.next_page_number %}">Next</a>
+    {% endif %}
+    <a href="?{% param_replace page=paginator.num_pages %}">Last</a>
+  {% endif %}
+
+  <p>Objects {{ products.start_index }}—{{ products.end_index }}</p>
+<hr>
+
+<h2>Пример Пагинация  simpleisbetterthancomplex.com/tutorial/2016/08/03/how-to-paginate-with-django.html</h2>
+
+<style>
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+</style>
+
+  <ul class="pagination">
+    {% if products.has_previous %}
+      <a href="?page={{ products.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span>
+    {% endif %}
+    {% for i in paginator.page_range %}
+      {% if products.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span>
+      {% else %}
+        <a href="?page={{ i }}">{{ i }}</a>
+      {% endif %}
+    {% endfor %}
+    {% if products.has_next %}
+      <a href="?page={{ products.next_page_number }}">&raquo;</a>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span>
+    {% endif %}
+  </ul>
+
+<hr>
+<div class="pagination">
+  <a href="#">&laquo;</a>
+  <a href="#">1</a>
+  <a href="#" class="active">2</a>
+  <a href="#">3</a>
+  <a href="#">4</a>
+  <a href="#">5</a>
+  <a href="#">6</a>
+  <a href="#">&raquo;</a>
+</div>
+
 {% comment %}
+
+    {% bootstrap_pagination products size="small" %}
+
+
+<div class="d-flex justify-content-center">
+  <ul class="pagination">
+    {% if products.has_previous %}
+      <a href="?page={{ products.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in products.paginator.page_range %}
+      {% if products.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if products.has_next %}
+      <li><a href="?page={{ products.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+</div>
+
+
+
+<script>
+    $(function() {
+        $(selector).pagination({
+             items: 100,
+             itemsOnPage: 4,
+            cssStyle: 'light-theme'
+        })
+});
+
+</script>
+
+<div class="d-flex justify-content-center">
+    {% bootstrap_pagination products %}
+
+
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item">
+
+    {% if products.has_previous %}
+
+      <a class="page-link" href="?page={{ products.previous_page_number }}" aria-label="Previous">
+
+
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+        {% endif %}
+      </a>
+    </li>
+
+    {% for p in products.paginator.page_range %}
+
+    <li class="page-item"><a href="?page={{ p }}" class="page-link">{{ p }}</a></li>
+
+    {% endfor %}
+
+<li class="page-item">
+
+{% if products.has_next %}
+
+      <a class="page-link" href="?page={{ products.next_page_number }}" aria-label="Next">
+
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+        {% endif %}
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
+
 
 <section class="team-section py-5">
     <div class="container">
@@ -151,19 +335,7 @@
 <a href="?page={{ products.previous_page_number }}{% if request.GET.queryset %}&queryset={{ request.GET.queryset }}{% endif %}">previous</a>
 {% endcomment %}
 
-<script>
-    $(function() {
-        $(selector).pagination({
-             items: 100,
-             itemsOnPage: 4,
-            cssStyle: 'light-theme'
-        })
-});
 
-</script>
-
-<div class="d-flex justify-content-center">
-    {% bootstrap_pagination products %}
 {% comment %}
 
 
@@ -251,7 +423,7 @@
   </ul>
 </nav>
 {% endcomment %}
-</div>
+
 
 
 

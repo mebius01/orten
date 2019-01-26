@@ -54,7 +54,7 @@ def search(request):
 def product_list(request):
 	products_filter = ProductFilter(request.GET, queryset=Product.objects.all())
 	page = request.GET.get('page', 1)
-	paginator = Paginator(products_filter.qs, 60)
+	paginator = Paginator(products_filter.qs, 2)
 	try:
 		products = paginator.page(page)
 	except PageNotAnInteger:
@@ -65,7 +65,7 @@ def product_list(request):
 		products = paginator.page(paginator.num_pages)
 
 	cart_product_form = CartAddProductForm()
-	return render(request, 'shop/list.html', {'filter': products_filter, 'products': products, 'cart_product_form': cart_product_form})
+	return render(request, 'shop/list.html', {'paginator':paginator, 'filter': products_filter, 'products': products, 'cart_product_form': cart_product_form})
 
 
 
