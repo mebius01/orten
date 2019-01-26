@@ -9,7 +9,7 @@
         <div class="col-12">
             {% block breadcrumbs %}
             {{ block.super }}
-            <a class="text-primary" href="{% url 'shop:product_list' %}">Товары</a>
+            <li><a href="{% url 'shop:product_list' %}">Товары</a></li>
             {% endblock %}
         </div>
     </div>
@@ -105,38 +105,41 @@
     </div>
 </div>
 
-
-
 <hr>
-<h2>Пагинация с w3 активным</h2>
 
+<div class="d-flex justify-content-center">
+  <ul class="pagination">
 
-<div class="pagination">
-  <a href="#">&laquo;</a>
-  <a href="#">1</a>
-  <a class="active" href="#">2</a>
-  <a href="#">3</a>
-  <a href="#">4</a>
-  <a href="#">5</a>
-  <a href="#">6</a>
-  <a href="#">&raquo;</a>
+     <a href="?{% param_replace page=1 %}">First</a>
+    {% if products.has_previous %}
+      <a href="?{% param_replace page=products.previous_page_number %}">&laquo;</a></li>
+    {% endif %}
+
+    {% for i in paginator.page_range %}
+      {% if products.number == i %}
+         <a class="active" href="#">{{ i }}</a>
+      {% else %}
+        <a href="?{%param_replace page=i %}">{{ i }}</a>
+      {% endif %}
+    {% endfor %}
+
+    {% if products.has_next %}
+      <a href="?{% param_replace page=products.next_page_number %}">&raquo;</a>
+    {% endif %}
+    <a href="?{% param_replace page=paginator.num_pages %}">Last</a>
+
+  </ul>
 </div>
-<hr>
 
-<h2>Пагинация с w3</h2>
+{% comment %}
 
-<div class="w3-bar">
-  <a href="#" class="w3-button">&laquo;</a>
-  <a href="#" class="w3-button">1</a>
-  <a href="#" class="w3-button">2</a>
-  <a href="#" class="w3-button">3</a>
-  <a href="#" class="w3-button">4</a>
-  <a href="#" class="w3-button">5</a>
-  <a href="#" class="w3-button">&raquo;</a>
-</div>
-<hr>
 
-<h2>Пагинация с фильром</h2>
+{% if products.has_previous %}
+    <a href="?{% param_replace page=1 %}">First</a>
+    {% if products.previous_page_number != 1 %}
+      <a href="?{% param_replace page=products.previous_page_number %}">Previous</a>
+    {% endif %}
+  {% endif %}
 
   Page {{ products.number }} of {{ paginator.num_pages }}
 
@@ -148,64 +151,8 @@
   {% endif %}
 
   <p>Objects {{ products.start_index }}—{{ products.end_index }}</p>
-<hr>
 
-<h2>Пример Пагинация  simpleisbetterthancomplex.com/tutorial/2016/08/03/how-to-paginate-with-django.html</h2>
 
-<style>
-.pagination {
-  display: inline-block;
-}
-
-.pagination a {
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
-  transition: background-color .3s;
-}
-
-.pagination a.active {
-  background-color: #4CAF50;
-  color: white;
-}
-
-.pagination a:hover:not(.active) {background-color: #ddd;}
-</style>
-
-  <ul class="pagination">
-    {% if products.has_previous %}
-      <a href="?page={{ products.previous_page_number }}">&laquo;</a></li>
-    {% else %}
-      <li class="disabled"><span>&laquo;</span>
-    {% endif %}
-    {% for i in paginator.page_range %}
-      {% if products.number == i %}
-        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span>
-      {% else %}
-        <a href="?page={{ i }}">{{ i }}</a>
-      {% endif %}
-    {% endfor %}
-    {% if products.has_next %}
-      <a href="?page={{ products.next_page_number }}">&raquo;</a>
-    {% else %}
-      <li class="disabled"><span>&raquo;</span>
-    {% endif %}
-  </ul>
-
-<hr>
-<div class="pagination">
-  <a href="#">&laquo;</a>
-  <a href="#">1</a>
-  <a href="#" class="active">2</a>
-  <a href="#">3</a>
-  <a href="#">4</a>
-  <a href="#">5</a>
-  <a href="#">6</a>
-  <a href="#">&raquo;</a>
-</div>
-
-{% comment %}
 
     {% bootstrap_pagination products size="small" %}
 

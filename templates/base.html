@@ -128,7 +128,44 @@
         text-decoration: none;
     }
 
+/*Пагинатор*/
 
+    .pagination {
+      display: inline-block;
+    }
+
+    .pagination a {
+      color: black;
+      float: left;
+      padding: 8px 16px;
+      text-decoration: none;
+      transition: background-color .3s;
+    }
+
+    .pagination a.active {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .pagination a:hover:not(.active) {background-color: #ddd;}
+
+/*Крошки*/
+
+    ul.breadcrumb {
+      padding: 8px 16px;
+      list-style: none;
+      background-color: #fff;
+    }
+
+    ul.breadcrumb li {
+        display: inline;
+    }
+
+
+    ul.breadcrumb li a {
+        color: #56B397;
+        padding: 6px;
+    }
 
 
 </style>
@@ -299,18 +336,7 @@
 </div>
 {% endcomment %}
 
-<style>
-ul.breadcrumb {
-  padding: 8px 16px;
-  list-style: none;
-  background-color: #eee;
-}
 
-ul.breadcrumb li {display: inline;}
-
-
-ul.breadcrumb li a {color: green;}
-</style>
 
 <ul class="breadcrumb">
 
@@ -345,7 +371,7 @@ ul.breadcrumb li a {color: green;}
     <div class="col-1">11</div>
     <div class="col-1">12</div>
   </div>
-
+</div>
 
 <!-- Footer -->
 <footer class="text-bleck">
