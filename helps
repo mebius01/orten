@@ -201,3 +201,17 @@ https://djbook.ru/examples/68/
 
 справочник по классам
 https://bootstrapcreative.com/resources/bootstrap-4-css-classes-index/
+------------------------------
+from django.contrib.postgres.search import SearchVector
+
+search_vector = SearchVector('body_text', 'blog__name')
+Entry.objects.annotate(search=search_vector).filter(search='Cheese').values_list('headline', flat=True))
+
+Entry.objects.filter(body_text__search = 'Cheese').values_list('headline', flat = True))
+
+from django.contrib.postgres.search import SearchVector
+search_vector = SearchVector('body_text', 'blog__name')
+Entry.objects.annotate(search=search_vector).filter(search='Cheese').values_list('headline', flat=True))
+
+Product.objects.annotate(search=SearchVector('vendor_code', 'name', 'description'),).filter(search='ga-780')
+

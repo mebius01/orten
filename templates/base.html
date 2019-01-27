@@ -283,16 +283,11 @@
 
 {% endcomment %}
 
- <form class="form-inline my-2 my-lg-0 mr-2">
-                    <div class="input-group input-group-sm">
-                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Search...">
-                    <div class="input-group-append">
-                        <button type="button" class="btn btn-secondary btn-number">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-</form>
+       <form class="form-inline my-2 my-lg-0 mr-2" role="search" action="{% url 'shop:product_list' %}">
+        <div class="form-group">
+          <input type="text" class="search-query" placeholder="Search..." name="search">
+        </div>
+      </form>
                {% with total_items=cart|length %}
                 {% if cart|length > 0 %}
                 <a href="{% url "cart:cart_detail" %}">

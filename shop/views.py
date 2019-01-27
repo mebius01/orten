@@ -4,6 +4,7 @@ from cart.forms import CartAddProductForm
 from taggit.models import Tag
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from shop.filters import ProductFilter
+from django.db.models import Q
 
 def home(request):
 	product_stok = ProductStock.objects.all()
@@ -52,7 +53,12 @@ def search(request):
 	return render(request, 'shop/list.html', {'filter': products_filter, 'products':products})
 
 def product_list(request):
-	products_filter = ProductFilter(request.GET, queryset=Product.objects.all())
+	search = request.GET.get('search', '')
+	if search:
+		product_list_all = Product.objects.filter(Q(name__icontains = search) | Q(vendor_code__icontains = search))
+	else:
+		product_list_all = Product.objects.all().order_by('-updated')
+	products_filter = ProductFilter(request.GET, queryset=product_list_all)
 	page = request.GET.get('page', 1)
 	paginator = Paginator(products_filter.qs, 32)
 	try:
