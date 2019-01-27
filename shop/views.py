@@ -5,6 +5,8 @@ from taggit.models import Tag
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from shop.filters import ProductFilter
 from django.db.models import Q
+from django.contrib.postgres.search import SearchVector
+from django.contrib.postgres.search import TrigramSimilarity
 
 def home(request):
 	product_stok = ProductStock.objects.all()
@@ -55,12 +57,12 @@ def search(request):
 def product_list(request):
 	search = request.GET.get('search', '')
 	if search:
-		product_list_all = Product.objects.filter(Q(name__icontains = search) | Q(vendor_code__icontains = search))
+		product_list_all = Product.objects.annotate(search=SearchVector('vendor_code', 'name', 'description'),).filter(search=search)
 	else:
 		product_list_all = Product.objects.all().order_by('-updated')
 	products_filter = ProductFilter(request.GET, queryset=product_list_all)
 	page = request.GET.get('page', 1)
-	paginator = Paginator(products_filter.qs, 32)
+	paginator = Paginator(products_filter.qs, 2)
 	try:
 		products = paginator.page(page)
 	except PageNotAnInteger:

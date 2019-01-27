@@ -1,6 +1,6 @@
 import django_filters
 from shop.models import Category, Product
-
+from django.contrib.postgres.search import SearchVector
 
 class ProductFilter(django_filters.FilterSet):
 	# vendor1=django_filters.AllValuesFilter(widget=django_filters.widgets.LinkWidget)
@@ -19,8 +19,9 @@ class ProductFilter(django_filters.FilterSet):
 		l.append((i.type_product, i.type_product))
 	type_product=django_filters.ChoiceFilter(choices=set(l), empty_label='Тип Товара')
 
-	# category=django_filters.ChoiceFilter(empty_label='Категория')
-	
+	search=Product.objects.annotate(search=SearchVector('vendor_code', 'name', 'description'),).filter(search='')
+
+
 	class Meta:
 		model = Product
 		fields = ['vendor', 'type_product', 'price__gt', 'price__lt', 'category']# , 'vendor_code']
