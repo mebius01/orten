@@ -55,11 +55,11 @@ def search(request):
 	return render(request, 'shop/list.html', {'filter': products_filter, 'products':products})
 
 def product_list(request):
-	search = request.GET.get('search', '')
-	if search:
-		product_list_all = Product.objects.annotate(search=SearchVector('vendor_code', 'name', 'description'),).filter(search=search)
-	else:
-		product_list_all = Product.objects.all().order_by('-updated')
+	# search = request.GET.get('search', '')
+	# if search:
+	# 	product_list_all = Product.objects.annotate(search=SearchVector('vendor_code', 'name', 'description'),).filter(search=search)
+	# else:
+	# 	product_list_all = Product.objects.all().order_by('-updated')
 	products_filter = ProductFilter(request.GET, queryset=product_list_all)
 	page = request.GET.get('page', 1)
 	paginator = Paginator(products_filter.qs, 2)
