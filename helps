@@ -203,6 +203,7 @@ https://djbook.ru/examples/68/
 https://bootstrapcreative.com/resources/bootstrap-4-css-classes-index/
 ------------------------------
 https://medium.com/@pauloxnet/full-text-search-in-django-with-postgresql-4e3584dee4ae
+https://docs.djangoproject.com/en/2.1/ref/contrib/postgres/search/
 
 from django.contrib.postgres.search import SearchVector
 
