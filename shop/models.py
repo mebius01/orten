@@ -140,31 +140,31 @@ class Product(models.Model):
 
 
 
-class Services(models.Model):
-	category = models.ForeignKey(Category,related_name='services', on_delete=models.CASCADE) #коталог продукта связь
-	name = models.CharField(max_length=400, db_index=True) #имя продукта
-	accessories = models.ManyToManyField(Product, blank=True)
-	vendor_code = models.CharField(max_length=200, blank=True) #артикул или парт-номер
-	slug = models.SlugField(max_length=400, db_index=True)
-	image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True) #картинка
-	description = models.TextField(blank=True) #описание продукта
-	price = models.DecimalField(max_digits=10, decimal_places=2)
-	created = models.DateTimeField(auto_now_add=True) # дата создания
-	updated = models.DateTimeField(auto_now=True) #дата обновления
+# class Services(models.Model):
+# 	category = models.ForeignKey(Category,related_name='services', on_delete=models.CASCADE) #коталог продукта связь
+# 	name = models.CharField(max_length=400, db_index=True) #имя продукта
+# 	accessories = models.ManyToManyField(Product, blank=True)
+# 	vendor_code = models.CharField(max_length=200, blank=True) #артикул или парт-номер
+# 	slug = models.SlugField(max_length=400, db_index=True)
+# 	image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True) #картинка
+# 	description = models.TextField(blank=True) #описание продукта
+# 	price = models.DecimalField(max_digits=10, decimal_places=2)
+# 	created = models.DateTimeField(auto_now_add=True) # дата создания
+# 	updated = models.DateTimeField(auto_now=True) #дата обновления
 
 
 
-	class Meta:
-		ordering = ('name',)
-		verbose_name = 'Услуга'
-		verbose_name_plural = 'Услуги'
-		index_together = (('id', 'slug'),)
+# 	class Meta:
+# 		ordering = ('name',)
+# 		verbose_name = 'Услуга'
+# 		verbose_name_plural = 'Услуги'
+# 		index_together = (('id', 'slug'),)
 
-	def __str__(self):
-		return self.name
+# 	def __str__(self):
+# 		return self.name
 
-	def get_absolute_url(self):
-		return (self.category.get_absolute_url()+'/'+self.slug)
+# 	def get_absolute_url(self):
+# 		return (self.category.get_absolute_url()+'/'+self.slug)
 
 
 class ProductStock(models.Model):

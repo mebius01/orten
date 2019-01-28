@@ -227,3 +227,7 @@ Product.objects.annotate(search=SearchVector('vendor_code', 'name', 'description
 
 
 http://127.0.0.1:8000/product_list/?page=10&search=%D1%84%D0%BE%D1%82%D0%BE%D0%B1%D0%B0%D1%80%D0%B0%D0%B1%D0%B0%D0%BD&price__gt=&price__lt=&category=&vendor=%D0%95%D0%A1%D0%9A%D0%9E&type_product=
+
+
+
+https://books.agiliq.com/projects/django-orm-cookbook/en/latest/
