@@ -4,7 +4,7 @@ from taggit.managers import TaggableManager
 from shop.models import Product
 
 # Create your models here.
-class Category_Services(MPTTModel):
+class CategoryService(MPTTModel):
 	name = models.CharField(max_length=50, unique=True)
 	slug = models.SlugField(max_length=200, db_index=True, unique=True)
 	image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
@@ -34,7 +34,7 @@ class Category_Services(MPTTModel):
 		return self.name
 
 class Services(models.Model):
-	category = models.ForeignKey(Category_Services,related_name='services', on_delete=models.CASCADE) #коталог продукта связь
+	category = models.ForeignKey(CategoryService,related_name='services', on_delete=models.CASCADE) #коталог продукта связь
 	name = models.CharField(max_length=400, db_index=True) #имя продукта
 	accessories = models.ManyToManyField(Product, related_name="services_acces", blank=True)
 	vendor_code = models.CharField(max_length=200, blank=True) #артикул или парт-номер
