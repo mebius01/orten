@@ -76,7 +76,7 @@ class Category(MPTTModel):
 
 
 class Product(models.Model):
-	category = models.ForeignKey(Category, on_delete=models.CASCADE, help_text='Каталог товара (расходные материалы, компьютеры и комплетующие и т д)') #коталог продукта связь m2m
+	category = models.ForeignKey(Category,related_name='product', on_delete=models.CASCADE, help_text='Каталог товара (расходные материалы, компьютеры и комплетующие и т д)') #коталог продукта связь m2m
 	name = models.CharField(max_length=400, db_index=True, help_text='Название товара') #имя продукта
 	# name_f_k = models.ForeignKey(Product.name, on_delete=models.CASCADE, help_text='Каталог товара (расходные материалы, компьютеры и комплетующие и т д)')
 	# saler =  models.CharField(max_length=25, choices=SALER_CHOICES, blank=True, help_text='Поставщик')
@@ -141,7 +141,7 @@ class Product(models.Model):
 
 
 class Services(models.Model):
-	category = models.ForeignKey(Category, on_delete=models.CASCADE) #коталог продукта связь m2m
+	category = models.ForeignKey(Category,related_name='services', on_delete=models.CASCADE) #коталог продукта связь
 	name = models.CharField(max_length=400, db_index=True) #имя продукта
 	accessories = models.ManyToManyField(Product, blank=True)
 	vendor_code = models.CharField(max_length=200, blank=True) #артикул или парт-номер

@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from shop.models import Category, Product, ProductStock
+from shop.models import Category, Product, Services, ProductStock
 from cart.forms import CartAddProductForm
 from taggit.models import Tag
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -7,6 +7,8 @@ from shop.filters import ProductFilter
 from django.db.models import Q
 from django.contrib.postgres.search import SearchVector
 from django.contrib.postgres.search import TrigramSimilarity
+from django.http import Http404
+
 
 def home(request):
 	product_stok = ProductStock.objects.all()
@@ -39,15 +41,20 @@ def show_category(request, hierarchy=None):
 		parent = category_all.get(parent=parent, slug = slug)
 	try:
 		instance = Category.objects.get(parent=parent, slug=category_slug[-1])
+		print('AAAAAAA', instance)
 	except:
 		instance = get_object_or_404(Product, slug = category_slug[-1])
 		category = Category.objects.get(product=instance)
-		# filter_tag=Product.objects.filter(tags=instance.tags.all()[0].id)
-		return render(request, "shop/product_detail.html", {'instance':instance, 'category':category, 'cart_product_form': cart_product_form})
+		print('BBBBBBB', instance)
+		return render( request, "shop/product_detail.html", {'instance':instance, 'category':category, 'cart_product_form': cart_product_form})
 	else:
 		category = Category.objects.get(slug=category_slug[-1])
 		products = Product.objects.filter(category=category)
+		print('CCCCC', category)
 		return render(request, 'shop/categories.html', {'instance':instance, 'category':category, 'products': products, 'category_all':category_all, 'cart_product_form': cart_product_form})
+
+
+
 
 def search(request):
 	products = Product.objects.all()
