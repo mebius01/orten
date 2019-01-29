@@ -6,7 +6,7 @@
             {% block breadcrumbs %}
             {{ block.super }}
             <li><a href="{% url 'shop:category' %}">Категории</a><i class="fas fa-chevron-right pl-1"></i></li>
-            {% for i in category.get_anc %}
+            {% for i in instance.get_anc %}
             <li><a href="{% url 'shop:list_category' i.get_absolute_url %}">{{ i.name }}</a><i class="fas fa-chevron-right pl-1"></i></li>
             {% endfor %}
             {% endblock %}
