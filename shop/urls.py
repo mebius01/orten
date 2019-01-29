@@ -27,9 +27,9 @@ urlpatterns = [
     path('test', views._test),
 	path('shop/product/', views.product_list, name ='product_list'),
     # path('search/', views.search, name='search'),
-    path('tag/<tag_id>/', views.product_list, name='list_product_by_tag'),
     path('shop/category/', views.category, name ='category'),
-    path('<slug>/', views.product_detail, name='product_detail'),
+    path('tag/<tag_id>/', views.product_list, name='list_product_by_tag'),
+    path('shop/<slug>/', views.product_detail, name='product_detail'),
     re_path(r'^shop/category/(?P<hierarchy>.+)/$', views.list_category, name='list_category'),
 
 	]

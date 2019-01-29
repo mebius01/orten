@@ -22,7 +22,7 @@
         </th>
         <td>{{ product.vendor }}</td>
         <td>
-            <a href="{% url 'shop:list_category' product.get_absolute_url %}">{{ product.name }}
+            <a href="{% url 'shop:product_detail' product.slug %}">{{ product.name }}
         </td>
         <td>{{ product.vendor_code }}</td>
         <td><i class="fas fa-check"></i></td>

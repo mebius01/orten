@@ -45,6 +45,30 @@ def list_category(request, hierarchy=None):
 
 	return render(request, 'shop/list_category.html', {'instance':instance, 'category':category, 'products': products, 'category_all':category_all})
 
+# def product_detail(reuest, slug):
+# 	# Форма корзины
+# 	cart_product_form = CartAddProductForm()
+# 	instance = get_object_or_404(Product, slug=slug)
+# 	return render(request, 'shop/product_detail', {'instance':instance, 'cart_product_form': cart_product_form})
+
+def product_detail(request, slug):
+	# cart_product_form = CartAddProductForm()
+	# product = get_object_or_404(Product, slug=slug)
+	# category = Category.objects.get(product=product)
+	# return render(request, 'shop/product_detail.html', {'product': product, 'cart_product_form': cart_product_form, 'category':category,})
+	instance = get_object_or_404(Product, slug=slug)
+	# category = Category.objects.get(product=instance)
+	cart_product_form = CartAddProductForm()
+
+	print('BBBBBBB', instance)
+	return render( request, "shop/product_detail.html", {'instance':instance, 'cart_product_form': cart_product_form})
+
+# def read_post(request, slug):
+# 	post = Post.objects.get(slug=slug)
+# 	tag = post.tags.all()
+# 	comment_all = Comments.objects.filter(post_id=post)
+# 	return render(request, 'blog/read_post', {'tag': tag, 'post': post, 'comment_all': comment_all})
+
 
 # def list_category(request, hierarchy=None):
 # 	# Раззделяет строку УРЛа на список [категория, подкатегория, подкатегорияПодкатегории, итд]
@@ -104,8 +128,4 @@ def product_list(request):
 
 
 
-def product_detail(request, slug):
-	cart_product_form = CartAddProductForm()
-	product = get_object_or_404(Product, slug=slug)
-	category = Category.objects.get(product=product)
-	return render(request, 'shop/product_detail.html', {'product': product, 'cart_product_form': cart_product_form, 'category':category,})
+
