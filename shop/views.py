@@ -25,9 +25,9 @@ def _test(request):
 
 def category(request):
 	category_all = Category.objects.all()
-	return render(request, 'shop/list_category.html', {'category_all': category_all})
+	return render(request, 'shop/category.html', {'category_all': category_all})
 
-def show_category(request, hierarchy=None):
+def list_category(request, hierarchy=None):
 	# Раззделяет строку УРЛа на список [категория, подкатегория, подкатегорияПодкатегории, итд]
 	category_slug = hierarchy.split('/')
 
@@ -51,7 +51,7 @@ def show_category(request, hierarchy=None):
 		category = Category.objects.get(slug=category_slug[-1])
 		products = Product.objects.filter(category=category)
 		print('CCCCC', category)
-		return render(request, 'shop/categories.html', {'instance':instance, 'category':category, 'products': products, 'category_all':category_all, 'cart_product_form': cart_product_form})
+		return render(request, 'shop/list_category.html', {'instance':instance, 'category':category, 'products': products, 'category_all':category_all, 'cart_product_form': cart_product_form})
 
 
 

@@ -79,7 +79,7 @@ a:hover > .ico {
                 <h4>{{item.product.name}}</h4>
 
                 <p>Цена: {{item.product.price}}</p>
-                <p><a href="{% url 'shop:show_category' item.product.get_absolute_url %}"> Купить по акции {{item.discount}}</a></p>
+                <p><a href="{% url 'shop:list_category' item.product.get_absolute_url %}"> Купить по акции {{item.discount}}</a></p>
               </div>
               {% endfor %}
             </div>
@@ -91,7 +91,7 @@ a:hover > .ico {
               <div class="carousel-caption text-dark text-right">
                 <h4>{{item.product.name}}</h4>
                 <p>Цена: {{item.product.price}}</p>
-                <p><a href="{% url 'shop:show_category' item.product.get_absolute_url %}"> Купить по акции {{item.discount}}</a></p>
+                <p><a href="{% url 'shop:list_category' item.product.get_absolute_url %}"> Купить по акции {{item.discount}}</a></p>
               </div>
             </div>
           </div>
@@ -127,7 +127,7 @@ a:hover > .ico {
                     </header>
 
                     <div class="card-body p-0">
-                        {% include "include/include_category_list.html" %}
+                        {% include "include/include_list_category.html" %}
                     </div>
                 </article>
             </div>
@@ -152,7 +152,7 @@ a:hover > .ico {
                                             <img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="Card image cap" width="230" height="230">
 
                                             <div class="card-body">
-                                                <h6 class="card-title"><a href="{% url 'shop:show_category' item.get_absolute_url %}" title="View Product">{{item.name}}</a></h6>
+                                                <h6 class="card-title"><a href="{% url 'shop:list_category' item.get_absolute_url %}" title="View Product">{{item.name}}</a></h6>
                                                 <p class="card-text"> </p>
                                                 <ul class="list-group list-group-flush">
                                                     <p>
@@ -208,7 +208,7 @@ a:hover > .ico {
                                         <div class="card h-100">
                                             <img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="Card image cap" width="230" height="230">
                                             <div class="card-body">
-                                                <h6 class="card-title"><a href="{% url 'shop:show_category' item.get_absolute_url %}" title="View Product">{{item.name}}</a></h6>
+                                                <h6 class="card-title"><a href="{% url 'shop:list_category' item.get_absolute_url %}" title="View Product">{{item.name}}</a></h6>
                                                 <ul class="list-group list-group-flush">
                                                   <p>
                                                   {{item.vendor}}

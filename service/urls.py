@@ -23,6 +23,7 @@ from django.conf.urls.static import static
 app_name = 'service'
 
 urlpatterns = [
-    re_path(r'^category/(?P<hierarchy>.+)/$', views.category_servise, name='service_category'),
+    path('category/', views.category, name ='category'),
+    re_path(r'^category/(?P<hierarchy>.+)/$', views.list_category, name='list_category'),
 
 	]

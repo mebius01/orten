@@ -3,6 +3,7 @@ from django.db.models import F
 from decimal import *
 import django_filters
 
+
 # Create your models here.
 
 from mptt.models import MPTTModel, TreeForeignKey

@@ -5,10 +5,7 @@
         <div class="col-12">
             {% block breadcrumbs %}
             {{ block.super }}
-            <li><a href="{% url 'shop:category' %}">Категории</a><i class="fas fa-chevron-right pl-1"></i></li>
-            {% for i in category.get_anc %}
-            <li><a href="{% url 'shop:list_category' i.get_absolute_url %}">{{ i.name }}</a><i class="fas fa-chevron-right pl-1"></i></li>
-            {% endfor %}
+            <li><a href="{% url 'service:category' %}">Категории</a></li>
             {% endblock %}
         </div>
     </div>
@@ -29,51 +26,64 @@
                     </header>
 
                     <div class="card-body p-0">
-                        {% include "include/include_list_category.html" %}
+
+
+<div class="accordion" id="accordionCategory">
+ {% for item in category_all.get_cached_trees %}
+        {% if item.is_root_node %}
+        <div class="card-header" id="heading-{{item.slug}}">
+            <ul class="list-group text-white" data-toggle="collapse" data-target="#collapse-{{item.slug}}" aria-expanded="true" aria-controls="collapse-{{item.slug}}">{{item.name}}
+            </ul>
+        </div>
+        <div id="collapse-{{item.slug}}" class="collapse show" aria-labelledby="heading-{{item.slug}}" data-parent="#accordionCategory">
+            <div class="card-list-groub">
+                <ul class="list-group-flush">
+                    {% for item_children in item.get_descendants %}
+                    <li class="list-group-item bg-light"><a class="text-muted" href="{% url 'service:category' %}{{ item_children.get_absolute_url }}">{{item_children.name}}<span class="badge ml-2">{{ item_children.services.count }}</span></a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+    {% endfor %}
+</div>
+
+
                     </div>
                 </article>
             </div>
         </div>
 
 <!-- Блок Карт категорий  -->
- <div class="col-12 col-sm-9">
+        <div class="col-12 col-sm-9">
             <div class="card bg-light">
                 <article class="card-group-item">
                     <header class="card-header text-bleck text-uppercase">
-                        <h6 class="title"><i class="fa fa-list pr-3"></i>сисок категорий</h6>
+                        <h6 class="title"><i class="fas fa-list pr-3"></i>сисок Категорий</h6>
                     </header>
-                    <div class="card-group">
-                    {% if products %}
-                    
-                                        <meta http-equiv="REFRESH" content="0;url={% url 'shop:product_list' %}?category={{instance.id}}">
+                        <div class="card-group">
 
-                    {% comment %}
-                    {% include "include/include_product_list.html" %}
-                    <meta http-equiv="REFRESH" content="0;url={% url 'shop:product_list' %}?category={{instance.id}}">
-                    {% endcomment %}
-                    {% else %}
-                    {% for i in instance.children.all %}
-                    <div class="col-sm-4 p-2">
-                        <div class="card h-100">
-                            <img class="card-img-top" src="{% if i.image %}{{ i.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{i.name}}" width="230" height="230">
-                            <div class="card-footer bg-transparent">
-                                <div class="row">
-                                    <a class="text-muted" href="{% url 'shop:list_category' i.get_absolute_url %}" title="{{i.name}}">{{i.name}}<span class="badgebadge-light ml-3">{{ i.product.count }}</span></a>
+                            {% for item in category_all %}
+                            {% if item.is_root_node %}
+                            <div class="col-sm-4 p-2">
+                                <div class="card  h-100">
+                                    <img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{item.name}}" width="230" height="230">
+                                    <div class="card-footer bg-transparent">
+                                        <div class="row">
+                                            <a class="text-muted" href="{% url 'service:list_category' item.get_absolute_url %}" title="{{item.name}}">{{item.name}}<span class="badge badge-light ml-3">{{ item.services.count }}</span></a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    
-                    {% endfor %}
-                    {% endif %}
+                            {% endif %}
+                            {% endfor %}
 
-                    </div>
+                        </div>
                 </article>
             </div>
         </div>
     </div>
 </div>
-
 
 
 

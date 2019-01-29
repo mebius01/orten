@@ -36,7 +36,9 @@ class CategoryService(MPTTModel):
 class Services(models.Model):
 	category = models.ForeignKey(CategoryService,related_name='services', on_delete=models.CASCADE) #коталог продукта связь
 	name = models.CharField(max_length=400, db_index=True) #имя продукта
+	model = models.CharField(max_length=200, blank=True, help_text='Модель товара')
 	accessories = models.ManyToManyField(Product, related_name="services_acces", blank=True)
+	vendor = models.CharField(max_length=200, blank=True, help_text='Производитель') # Производитель
 	vendor_code = models.CharField(max_length=200, blank=True) #артикул или парт-номер
 	slug = models.SlugField(max_length=400, db_index=True)
 	image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True) #картинка

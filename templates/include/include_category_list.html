@@ -1,48 +1,78 @@
-<div class="accordion" id="accordionCategory">
- {% for item in category_all.get_cached_trees %}
-        {% if item.is_root_node %}
-        <div class="card-header" id="heading-{{item.slug}}">
-            <ul class="list-group text-white" data-toggle="collapse" data-target="#collapse-{{item.slug}}" aria-expanded="true" aria-controls="collapse-{{item.slug}}">{{item.name}}
-            </ul>
-        </div>
-        <div id="collapse-{{item.slug}}" class="collapse show" aria-labelledby="heading-{{item.slug}}" data-parent="#accordionCategory">
-            <div class="card-list-groub">
-                <ul class="list-group-flush">
-                    {% for item_children in item.get_descendants %}
-                    <li class="list-group-item bg-light"><a class="text-muted" href="/category/{{ item_children.get_absolute_url }}">{{item_children.name}}<span class="badge ml-2">{{ item_children.product_set.count }}</span></a></li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-    {% endif %}
+{% load static %}
+{% load bootstrap4 %}
+
+<div class="table-responsive-sm">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Фото</th>
+        <th scope="col">Бренд</th>
+        <th scope="col">Имя</th>
+        <th scope="col">Артикул</th>
+        <th scope="col">Ниаличие</th>
+        <th scope="col">Цена</th>
+        <th colspan="2">В корзину</th>
+      </tr>
+    </thead>
+    {% for product in products %}
+    <tbody>
+      <tr>
+        <th scope="row">
+            <a class="item_img"><img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt=".">
+        </th>
+        <td>{{ product.vendor }}</td>
+        <td>
+            <a href="{% url 'shop:list_category' product.get_absolute_url %}">{{ product.name }}
+        </td>
+        <td>{{ product.vendor_code }}</td>
+        <td><i class="fas fa-check"></i></td>
+        <td>{{ product.price }}</td>
+        <td>
+          ---
+         </td>
+      </tr>
+    </tbody>
     {% endfor %}
+  </table>
 </div>
 
-{% comment %}
-    
-
-
-        {% for item in category_all.get_cached_trees %}
-        {% if item.is_root_node %}
-        <div class="card-header" id="heading-{{item.slug}}">
-            <ul class="list-group text-white" data-toggle="collapse" data-target="#collapse-{{item.slug}}" aria-expanded="true" aria-controls="collapse-{{item.slug}}">{{item.name}}
-            </ul>
-        </div>
-        <div id="collapse-{{item.slug}}" class="collapse show" aria-labelledby="heading-{{item.slug}}" data-parent="#accordionExample">
-            <div class="card-body">
-                <ul class="list-group list-group-flush">
-                    {% for item_children in item.get_descendants %}
-                    <li class="list-group-item bg-light"><a class="text-muted" href="/category/{{ item_children.get_absolute_url }}">{{item_children.name}}<span class="badge ml-2">{{ item_children.product_set.count }}</span></a></li>
-                    {% endfor %}
-                </ul>
+<div class="row mb-2">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <img src="http://eskimo.egemenerd.com/wp-content/uploads/2018/05/product14-600x600.jpg"  width="230" height="230">
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="card-body">
+                                        <div class="news-content">
+                                            <a href="#"><h2>A crowd walks on a New York street  </h2></a>
+                                            <p>Hub because the aformentioned trio already offers its customers protections when dealing with the virtual currency.</p>
+                                        
+                                        </div>
+                                        <div class="news-footer">
+                                        <div class="news-author">
+                                            <ul class="list-inline list-unstyled">
+                                                <li class="list-inline-item text-secondary">
+                                                    <i class="fa fa-user"></i>
+                                                    Prashant Singh
+                                                </li>
+                                                <li class="list-inline-item text-secondary">
+                                                    <i class="fa fa-eye"></i>
+                                                    110 Views
+                                                </li>
+                                                <li class="list-inline-item text-secondary">
+                                                    <i class="fa fa-calendar"></i>
+                                                    26 June 2018
+                                                </li>
+                                            </ul>
+                                        </div>   
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-
-    {% endif %}
-    {% endfor %}
-
-
-{% endcomment %}
-
-

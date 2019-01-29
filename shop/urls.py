@@ -25,11 +25,11 @@ app_name = 'shop'
 urlpatterns = [
     path('', views.home, name='home'),
     path('test', views._test),
-	path('product_list/', views.product_list, name ='product_list'),
-    path('search/', views.search, name='search'),
+	path('shop/product/', views.product_list, name ='product_list'),
+    # path('search/', views.search, name='search'),
     path('tag/<tag_id>/', views.product_list, name='list_product_by_tag'),
-    path('category/', views.category, name ='list_category'),
+    path('shop/category/', views.category, name ='category'),
     path('<slug>/', views.product_detail, name='product_detail'),
-    re_path(r'^category/(?P<hierarchy>.+)/$', views.show_category, name='show_category'),
+    re_path(r'^shop/category/(?P<hierarchy>.+)/$', views.list_category, name='list_category'),
 
 	]
