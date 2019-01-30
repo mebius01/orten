@@ -22,13 +22,13 @@
     <tbody class="border">
       <tr>
         <th scope="row">
-          <a class="thumbnail pull-left" href="{% url 'shop:show_category' product.get_absolute_url %}"> <img src="{% if product.image %}{{ product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" style="width: 72px; height: 72px;"></a>
+          <a class="thumbnail pull-left" href="{% url 'shop:product_detail' product.slug %}"> <img src="{% if product.image %}{{ product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" style="width: 72px; height: 72px;"></a>
         </th>
         <td>
            {{ product.vendor }}
         </td>
         <td>
-          <a href="{% url 'shop:show_category' product.get_absolute_url %}">{{ product.name }}
+          <a href="{% url 'shop:product_detail' product.slug %}">{{ product.name }}
         </td>
         <td>
           {{ product.vendor_code }}

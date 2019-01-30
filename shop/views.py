@@ -41,9 +41,10 @@ def list_category(request, hierarchy=None):
 	instance = Category.objects.get(parent=parent, slug=category_slug[-1])
 	print(4, instance, category_slug[-1])
 	products = Product.objects.filter(category=instance)
+	services = Services.objects.filter(category=instance)
 	print(5, products)
 
-	return render(request, 'shop/list_category.html', {'instance':instance, 'category':category, 'products': products, 'category_all':category_all})
+	return render(request, 'shop/list_category.html', {'instance':instance, 'category':category, 'services':services, 'products': products, 'category_all':category_all})
 
 # def product_detail(reuest, slug):
 # 	# Форма корзины

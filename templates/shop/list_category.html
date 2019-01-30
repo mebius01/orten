@@ -44,13 +44,10 @@
                     </header>
                     <div class="card-group">
                     {% if products %}
-                    
-                                        <meta http-equiv="REFRESH" content="0;url={% url 'shop:product_list' %}?category={{instance.id}}">
-                   
-
-    
-                    {% comment %}
                     {% include "include/include_product_list.html" %}
+                    {% elif services %}
+                    {% include "include/include_service_list.html" %}
+                    {% comment %}
                     <meta http-equiv="REFRESH" content="0;url={% url 'shop:product_list' %}?category={{instance.id}}">
                     {% endcomment %}
                     {% else %}

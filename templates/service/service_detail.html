@@ -1,40 +1,335 @@
-<div class="row mb-2">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img src="http://eskimo.egemenerd.com/wp-content/uploads/2018/05/product14-600x600.jpg"  width="230" height="230">
+{% extends 'shop/list_category.html' %}
+{% load bootstrap4 %}
+
+{% block breadcrumbs %}
+{{ block.super }}
+{% for i in instance.category.get_anc %}
+<li><a href="{% url 'shop:list_category' i.get_absolute_url %}">{{ i.name }}</a><i class="fas fa-chevron-right pl-1"></i></li>
+{% endfor %}
+<li><a href="#">{{instance.name}}</a></li>
+
+{% endblock %}
+
+{% load static %}
+{% block content %}
+<title>{{ instance.name }}</title>
+
+
+
+<style>
+    /*
+** Style Simple Ecommerce Theme for Bootstrap 4
+** Created by T-PHP https://t-php.fr/43-theme-ecommerce-bootstrap-4.html
+
+<p class="product_tags">Tags: 
+                        {% for tag in instance.tags.all %}
+                            <a href="/tag/{{tag.id}}">{{ tag.name }}</a> |
+                        {% endfor %}
+                    </span>
+                    <hr>
+                    <p class="product_name">{{ instance.name }}</p>
+                    <hr>
+                    <p class="product_vendor">{{ instance.vendor }}</p>
+                    <hr>
+                    <p class="product_vendor_code">{{ instance.vendor_code }}</p>
+*/
+/*
+.price {
+    color: #c01508;
+    text-align: center;
+    font-weight: bold;
+    font-size: 100%;
+}
+
+.product_tags {
+    color: #c01508;
+    text-align: center;
+    font-weight: bold;
+    font-size: 150%;
+}
+
+.product_name {
+    color: #c01508;
+    text-align: center;
+    font-weight: bold;
+    font-size: 150%;
+}
+
+.product_vendor {
+    color: #c01508;
+    text-align: center;
+    font-weight: bold;
+    font-size: 150%;
+}
+
+.product_vendor_code {
+    color: #c01508;
+    text-align: center;
+    font-weight: bold;
+    font-size: 150%;
+}
+*/
+
+
+.category_block li:hover {
+    background-color: #007bff;
+}
+.category_block li:hover a {
+    color: #ffffff;
+}
+.category_block li a {
+    color: #343a40;
+}
+.add_to_cart_block .price_discounted {
+    color: #343a40;
+    text-align: center;
+    text-decoration: line-through;
+    font-size: 140%;
+}
+.product_rassurance {
+    padding: 10px;
+    margin-top: 15px;
+    background: #ffffff;
+    border: 1px solid #6c757d;
+    color: #6c757d;
+}
+.product_rassurance .list-inline {
+    margin-bottom: 0;
+    text-transform: uppercase;
+    text-align: center;
+}
+.product_rassurance .list-inline li:hover {
+    color: #343a40;
+}
+
+.add_to_cart_block .product_price {
+    color: #f0301e;
+    font-weight: bold;
+    font-size: 120%;
+    margin-bottom: 0;
+}
+
+
+.leftstr, .rightstr {
+    float: left; /* Обтекание справа */ 
+    width: 50%; /* Ширина текстового блока */ 
+}
+.rightstr {
+    text-align: right; /* Выравнивание по правому краю */ 
+}
+
+</style>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Image -->
+        <div class="col-12 col-lg-6">
+            <div class="card bg-light mb-3">
+                <div class="card-body">
+                    <a href="" data-toggle="modal" data-target="#productModal">
+                        <img style="max-width:100%;" src="{% if instance.image %}{{ instance.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}"></a>
+                </div>
+            </div>
+<div class="card-heder">
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">DESCRIPTION</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">INFO</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">REVIEWS</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"> {{ instance.description|linebreaks }}</div>
+
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur ea, quos at, delectus dolorum, molestiae vero debitis iste itaque maiores velit ducimus quis? Quas sequi, accusamus praesentium quam aperiam numquam.
+</div>
+
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae doloribus fugit ab excepturi, ut doloremque, itaque expedita tenetur laborum eos et, necessitatibus natus! Harum laudantium, adipisci quisquam quas nulla delectus.</div>
+</div>
+</div>
+</div>
+
+        <!-- Add to cart -->
+        <div class="col-12 col-lg-6">
+            <div class="card bg-light mb-3">
+                <div class="card-body">
+                    <span class="product_name">{{ instance.name }}</span>
+
+                    
+                    <hr>
+                    <span class="leftstr">Вендор:</span><span class="rightstr product_vendor">
+                        <a class="text-muted" href="{% url 'shop:product_list' %}?vendor={{ instance.vendor }}">{{ instance.vendor }}</a></span><div style="clear: left"></div>
+                    <hr>
+                    <span class="leftstr">Артикул:</span><span class="rightstr product_vendor_code">{{ instance.vendor_code }}</span><div style="clear: left"></div>
+                    <hr>
+                    <span class="leftstr">Цена:</span><span class="rightstr product_price">{{ instance.price }}</span><div style="clear: left"></div>
+
+
+<!-- Modal -->
+<div class="product_rassurance">
+    <ul class="list-inline">
+        <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#deliveryModalCenter"><i class="fa fa-truck fa-2x"></a></i><br/>Доставка</li>
+
+        <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#paymentModalCenter"><i class="fa fa-credit-card fa-2x"></a></i><br/>Оплата</li>
+        <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#contactsModalCenter"><i class="fa fa-phone fa-2x"></i></a><br/>Контакты</li>
+    </ul>
+<!-- Modal  delivery-->
+<div class="modal fade" id="deliveryModalCenter" tabindex="-1" role="dialog" aria-labelledby="deliveryModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h7 class="modal-title" id="deliveryModalLongTitle">Доставка:</h7>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Доставка у нас есть, но нам лень возить, так шо звыняйте :(
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal  payment-->
+<div class="modal fade" id="paymentModalCenter" tabindex="-1" role="dialog" aria-labelledby="paymentModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h7 class="modal-title" id="paymentModalLongTitle">Оплата:</h7>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Деньги мы любим, они прекрасны и оплату принимаем в любом виде
+        Хоть золотыми слитками третего рейха :)
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal  contacts-->
+<div class="modal fade" id="contactsModalCenter" tabindex="-1" role="dialog" aria-labelledby="contactsModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h7 class="modal-title" id="contactsModalLongTitle">Контакты:</h7>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Ето.. в общем все шо вам надо знать это все в шапке сайта :)
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+    </div>
+  </div>
+</div>
+</div>
+<div class="container-fluid">
+<div class="row">
+    <div class="card card bg-light">
+            <div class="card-header text-bleck text-uppercase"><i class="fab fa-connectdevelop pr-3"></i>Связи</div>
+            <div class="card-body">
+                <div class="card-group">
+
+{% comment %}
+   {% with filter_tag|slice:"1:" as products %}     
+{% include "include/include_product_list.html" %}
+{% endwith %} 
+{% endcomment %}
+
+{% with instance.accessories.get_queryset as products %}     
+{% include "include/include_product_list.html" %}
+{% endwith %} 
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+{% endblock %}
+
+
+                    {% comment %}
+
+
+                            <div class="form-group">
+                            <label>Quantity :</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <button type="button" class="quantity-left-minus btn btn-danger btn-number"  data-type="minus" data-field="">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
                                 </div>
-                                <div class="col-md-9">
-                                    <div class="card-body">
-                                        <div class="news-content">
-                                            <a href="#"><h2>A crowd walks on a New York street  </h2></a>
-                                            <p>Hub because the aformentioned trio already offers its customers protections when dealing with the virtual currency.</p>
-                                        
-                                        </div>
-                                        <div class="news-footer">
-                                        <div class="news-author">
-                                            <ul class="list-inline list-unstyled">
-                                                <li class="list-inline-item text-secondary">
-                                                    <i class="fa fa-user"></i>
-                                                    Prashant Singh
-                                                </li>
-                                                <li class="list-inline-item text-secondary">
-                                                    <i class="fa fa-eye"></i>
-                                                    110 Views
-                                                </li>
-                                                <li class="list-inline-item text-secondary">
-                                                    <i class="fa fa-calendar"></i>
-                                                    26 June 2018
-                                                </li>
-                                            </ul>
-                                        </div>   
-                                        </div>
-                                    </div>
+                                <input type="text" class="form-control"  id="quantity" name="quantity" min="1" max="100" value="1">
+                                <div class="input-group-append">
+                                    <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
+                        <a href="#" class="btn btn-success btn-lg btn-block text-uppercase">
+                            <i class="fa fa-shopping-cart"></i> Add To Cart
+                        </a>
+                    </form>
+
+
+                        <div class="reviews_product p-3 mb-2 ">
+                        3 reviews
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        (4/5)
+                        <a class="pull-right" href="#reviews">View all reviews</a>
+                    </div>
+                    <div class="datasheet p-3 mb-2 bg-info text-white">
+                        <a href="" class="text-white"><i class="fa fa-file-text"></i> Download DataSheet</a>
                     </div>
                 </div>
-            </div>
+
+
+
+                <script>
+    
+
+    $(document).ready(function(){
+        var quantity = 1;
+
+        $('.quantity-right-plus').click(function(e){
+            e.preventDefault();
+            var quantity = parseInt($('#quantity').val());
+            $('#quantity').val(quantity + 1);
+        });
+
+        $('.quantity-left-minus').click(function(e){
+            e.preventDefault();
+            var quantity = parseInt($('#quantity').val());
+            if(quantity > 1){
+                $('#quantity').val(quantity - 1);
+            }
+        });
+
+    });
+
+</script>
+
+                    {% endcomment %}
