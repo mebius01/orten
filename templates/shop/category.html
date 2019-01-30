@@ -44,7 +44,7 @@
                                     <img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{item.name}}" width="230" height="230">
                                     <div class="card-footer bg-transparent">
                                         <div class="row">
-                                            <a class="text-muted" href="{% url 'shop:list_category' item.get_absolute_url %}" title="{{item.name}}">{{item.name}}<span class="badge badge-light ml-3">{{ item.product.count }}</span></a>
+                                            <a class="text-muted" href="{% url 'shop:list_category' item.get_absolute_url %}" title="{{item.name}}">{{item.name}}<span class="badge badge-light ml-3">{% firstof item_children.product.count item_children.services.count %}</span></a>
                                         </div>
                                     </div>
                                 </div>

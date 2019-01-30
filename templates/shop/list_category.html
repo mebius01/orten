@@ -46,7 +46,9 @@
                     {% if products %}
                     
                                         <meta http-equiv="REFRESH" content="0;url={% url 'shop:product_list' %}?category={{instance.id}}">
+                   
 
+    
                     {% comment %}
                     {% include "include/include_product_list.html" %}
                     <meta http-equiv="REFRESH" content="0;url={% url 'shop:product_list' %}?category={{instance.id}}">
@@ -58,7 +60,7 @@
                             <img class="card-img-top" src="{% if i.image %}{{ i.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{i.name}}" width="230" height="230">
                             <div class="card-footer bg-transparent">
                                 <div class="row">
-                                    <a class="text-muted" href="{% url 'shop:list_category' i.get_absolute_url %}" title="{{i.name}}">{{i.name}}<span class="badgebadge-light ml-3">{{ i.product.count }}</span></a>
+                                    <a class="text-muted" href="{% url 'shop:list_category' i.get_absolute_url %}" title="{{i.name}}">{{i.name}}<span class="badgebadge-light ml-3">{% firstof i.product.count i.services.count %}</span></a>
                                 </div>
                             </div>
                         </div>
@@ -66,7 +68,7 @@
                     
                     {% endfor %}
                     {% endif %}
-
+                   
                     </div>
                 </article>
             </div>

@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from shop.models import Category, Product, ProductStock
+from shop.models import Category, Product, ProductStock, Services
 from cart.forms import CartAddProductForm
 from taggit.models import Tag
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -62,6 +62,11 @@ def product_detail(request, slug):
 
 	print('BBBBBBB', instance)
 	return render( request, "shop/product_detail.html", {'instance':instance, 'cart_product_form': cart_product_form})
+
+def service_detail(request, slug):
+	instance = get_object_or_404(Services, slug=slug)
+	return render( request, "service/service_detail.html", {'instance':instance})
+
 
 # def read_post(request, slug):
 # 	post = Post.objects.get(slug=slug)

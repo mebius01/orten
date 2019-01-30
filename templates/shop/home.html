@@ -152,7 +152,7 @@ a:hover > .ico {
                                             <img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="Card image cap" width="230" height="230">
 
                                             <div class="card-body">
-                                                <h6 class="card-title"><a href="{% url 'shop:list_category' item.get_absolute_url %}" title="View Product">{{item.name}}</a></h6>
+                                                <h6 class="card-title"><a href="{% url 'shop:product_detail' item.slug %}" title="View Product">{{item.name}}</a></h6>
                                                 <p class="card-text"> </p>
                                                 <ul class="list-group list-group-flush">
                                                     <p>

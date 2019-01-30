@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product, ProductStock #Rates, Services,
+from .models import Category, Product, ProductStock, Services #Rates, 
 from mptt.admin import MPTTModelAdmin
 from import_export.admin import ImportExportModelAdmin
 # Register your models here.
@@ -20,10 +20,10 @@ class CategoryAdmin(MPTTModelAdmin):
 	prepopulated_fields = {'slug': ('name',)}
 	mptt_level_indent = 30
 
-# class ServicesAdmin(admin.ModelAdmin):
-# 	list_display = ['name', 'slug', 'price']
-# 	list_filter = ['name', 'price']
-# 	prepopulated_fields = {'slug': ('name',)}
+class ServicesAdmin(admin.ModelAdmin):
+	list_display = ['name', 'slug', 'price']
+	list_filter = ['name', 'price']
+	prepopulated_fields = {'slug': ('name',)}
 
 class ProductStockAdmin(admin.ModelAdmin):
 	list_display = ['id', 'stock_start', 'stock_end', 'product', 'slug', 'available', 'description',]
@@ -40,7 +40,7 @@ class ProductAdmin(ImportExportModelAdmin):
 
 admin.site.register(Category, CategoryAdmin,)
 admin.site.register(Product, ProductAdmin,)
-# admin.site.register(Services, ServicesAdmin,)
+admin.site.register(Services, ServicesAdmin,)
 # admin.site.register(Rates, RatesAdmin,)
 admin.site.register(ProductStock, ProductStockAdmin,)
 # admin.site.register(ProductResource,)

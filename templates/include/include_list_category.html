@@ -9,7 +9,13 @@
             <div class="card-list-groub">
                 <ul class="list-group-flush">
                     {% for item_children in item.get_descendants %}
-                    <li class="list-group-item bg-light"><a class="text-muted" href="{% url 'shop:category' %}{{ item_children.get_absolute_url }}">{{item_children.name}}<span class="badge ml-2">{{ item_children.product.count }}</span></a></li>
+                    <li class="list-group-item bg-light"><a class="text-muted" href="{% url 'shop:category' %}{{ item_children.get_absolute_url }}">
+                        
+                        {{item_children.name}}
+
+                        <span class="badge ml-2">{% firstof item_children.product.count item_children.services.count %}</span></a></li>
+
+
                     {% endfor %}
                 </ul>
             </div>
