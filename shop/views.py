@@ -30,20 +30,14 @@ def category(request):
 def list_category(request, hierarchy=None):
 	# Раззделяет строку УРЛа на список [категория, подкатегория, подкатегорияПодкатегории, итд]
 	category_slug = hierarchy.split('/')
-	print(1, category_slug)
 	parent = None
 	category_all = Category.objects.all() # передать в контестный процессор
 
 	for slug in category_slug[:-1]:
-		print(2, slug, parent)
 		parent = category_all.get(parent=parent, slug = slug)
-		print(3, parent)
 	instance = Category.objects.get(parent=parent, slug=category_slug[-1])
-	print(4, instance, category_slug[-1])
 	products = Product.objects.filter(category=instance)
 	services = Services.objects.filter(category=instance)
-	print(5, products)
-
 	return render(request, 'shop/list_category.html', {'instance':instance, 'category':category, 'services':services, 'products': products, 'category_all':category_all})
 
 # def product_detail(reuest, slug):
@@ -58,22 +52,14 @@ def product_detail(request, slug):
 	# category = Category.objects.get(product=product)
 	# return render(request, 'shop/product_detail.html', {'product': product, 'cart_product_form': cart_product_form, 'category':category,})
 	instance = get_object_or_404(Product, slug=slug)
-	# category = Category.objects.get(product=instance)
 	cart_product_form = CartAddProductForm()
-
-	print('BBBBBBB', instance)
 	return render( request, "shop/product_detail.html", {'instance':instance, 'cart_product_form': cart_product_form})
 
 def service_detail(request, slug):
 	instance = get_object_or_404(Services, slug=slug)
-	return render( request, "service/service_detail.html", {'instance':instance})
-
-
-# def read_post(request, slug):
-# 	post = Post.objects.get(slug=slug)
-# 	tag = post.tags.all()
-# 	comment_all = Comments.objects.filter(post_id=post)
-# 	return render(request, 'blog/read_post', {'tag': tag, 'post': post, 'comment_all': comment_all})
+	cart_product_form = CartAddProductForm()
+	
+	return render( request, "service/service_detail.html", {'instance':instance, 'cart_product_form': cart_product_form})
 
 
 # def list_category(request, hierarchy=None):

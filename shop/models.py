@@ -146,6 +146,8 @@ class Services(models.Model):
 	name = models.CharField(max_length=400, db_index=True) #имя продукта
 	accessories = models.ManyToManyField(Product, blank=True)
 	vendor_code = models.CharField(max_length=200, blank=True) #артикул или парт-номер
+	vendor = models.CharField(max_length=200, blank=True, help_text='Производитель') # Производитель
+	vendor_model = models.CharField(max_length=200, blank=True, help_text='Модель')
 	slug = models.SlugField(max_length=400, db_index=True)
 	image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True) #картинка
 	description = models.TextField(blank=True) #описание продукта
