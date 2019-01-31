@@ -147,38 +147,11 @@ a:hover > .ico {
                             <div class="row">
                                 <div class="card-group">
                                 {% for item in products %}
-                                    <div class="col-sm-4 p-2">
-                                        <div class="card  h-100">
-                                            <img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="Card image cap" width="230" height="230">
+                                    
 
-                                            <div class="card-body">
-                                                <h6 class="card-title"><a href="{% url 'shop:product_detail' item.slug %}" title="View Product">{{item.name}}</a></h6>
-                                                <p class="card-text"> </p>
-                                                <ul class="list-group list-group-flush">
-                                                    <p>
-                                                    {{item.vendor}}
-                                                    <br>
-                                                    {{item.vendor_code}}
-                                                    </p>
-                                                </ul>
-                                            </div>
+{% include "include/include_product_card.html" %}
 
-                                            <div class="card-footer bg-transparent">
-                                                <div class="row">
-                                                    <div class="col">
-                                                        <form action="{% url "cart:cart_add" item.id %}" method="post">
-                                                        {% csrf_token %}
-                                                        {% bootstrap_field cart_product_form.quantity show_label=False %}
-                                                    </div>
-                                                    <div class="col">
-                                                        <button type="submit" class="btn btn-outline-primary"><i class="fas fa-shopping-basket"></i></i> {{item.price}}</button>
-                                                    </div>
-                                                        </form>
-                                                </div>
-                                            </div>
 
-                                        </div>
-                                    </div>
                                 {% endfor %}
                                 </div>
                             </div>
