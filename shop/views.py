@@ -18,6 +18,8 @@ def home(request):
 	return render(request, 'shop/home.html', {'cart_product_form':cart_product_form, 'products':products, 'product_stok':product_stok, 'category_all':category_all})
 
 
+def delivery_payment(request):
+	return render(request, 'delivery_payment.html')
 
 # тестовый шаблон
 def _test(request):
