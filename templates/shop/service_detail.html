@@ -147,19 +147,17 @@
                     <span class="leftstr">Производитель:</span><span class="rightstr product_vendor">
                         <a class="text-muted" href="{% url 'shop:product_list' %}?vendor={{ instance.vendor }}">{{ instance.vendor }}</a></span><div style="clear: left"></div>
                     <hr>
-                   <span class="leftstr">Тип товара:</span><span class="rightstr product_vendor">
-                        <a class="text-muted" href="{% url 'shop:product_list' %}?type_product={{ instance.type_product }}">{{ instance.type_product }}</a></span><div style="clear: left"></div>
+                   <span class="leftstr">Модель:</span><span class="rightstr product_vendor">
+                        <a class="text-muted" href="{% url 'shop:product_list' %}?vendor_model={{ instance.vendor_model }}">{{ instance.vendor_model }}</a></span><div style="clear: left"></div>
                     <hr>
                     <span class="leftstr">Цена:</span><span class="rightstr product_price"><h4>{{ instance.price }}</h4></span><div style="clear: left"></div>
                     <hr>
-                    
-                    <form action="{% url "cart:cart_add" instance.id %}" method="post">
-                       {% csrf_token %}
-                      {% bootstrap_field cart_product_form.quantity show_label=False %}
-                      {% bootstrap_field cart_product_form.update show_label=False %}
-                      <button type="submit" class="btn btn-success btn-lg btn-block text-uppercase">
-                       <i class="fa fa-shopping-cart pr-3"></i>Купить</button>
-                    </form>
+<form>
+  <div class="form-group">
+    <label for="formGroupExampleInput2">У вас вопросы? Оставьте свой телефон и мы свяжимся с вами</label>
+    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Phone">
+  </div>
+</form>
                 </div>
              </div>
         </div>
@@ -196,9 +194,6 @@
         <div class="row">
         <div class="card bg-light">
             <article class="card-group-item">
-                <header class="card-header text-bleck text-uppercase">
-                    <h6 class="title"><i class="fab fa-connectdevelop pr-3"></i>Связи</h6>
-                </header>
                 <div class="card-group">
 
                     {% for item in instance.accessories.get_queryset %}
