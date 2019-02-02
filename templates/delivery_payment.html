@@ -2,22 +2,15 @@
 {% load static %}
 {% load bootstrap4 %}
 {% load mptt_tags %}
-
 {% block breadcrumbs %}
 {{ block.super }}
-<li><a href="{% url 'shop:delivery_payment' %}">Доставка и оплата</a><i class="fas fa-chevron-right pl-1"></i></li>
+	<li><a href="{% url 'shop:delivery_payment' %}">Доставка и оплата</a><i class="fas fa-chevron-right pl-1"></i></li>
 {% endblock %}
 
-
 {% block content %}
-
-
 <title>Доставка и оплата</title>
-
-
 <div class="container-fluid">
     <div class="row">
-
 <!-- Блок Категорий -->
         <div class="col-12 col-sm-3">
             <div class="card bg-light">
@@ -32,8 +25,6 @@
                 </article>
             </div>
         </div>
-
-
 <!-- Блок Доставки и оплаты -->
         <div class="col-12 col-sm-9">
             <div class="card bg-light">
@@ -102,7 +93,4 @@
         </div>
     </div>
 </div>
-
-
-
 {% endblock %}

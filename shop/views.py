@@ -48,7 +48,7 @@ def service_detail(request, slug):
 	instance = get_object_or_404(Services, slug=slug)
 	cart_product_form = CartAddProductForm()
 	
-	return render( request, "service/service_detail.html", {'instance':instance, 'cart_product_form': cart_product_form})
+	return render( request, "shop/service_detail.html", {'instance':instance, 'cart_product_form': cart_product_form})
 
 def product_list(request):
 	search = request.GET.get('search', '')
@@ -69,7 +69,7 @@ def product_list(request):
 		products = paginator.page(paginator.num_pages)
 
 	cart_product_form = CartAddProductForm()
-	return render(request, 'shop/list.html', {'paginator':paginator, 'filter': products_filter, 'products': products, 'cart_product_form': cart_product_form})
+	return render(request, 'shop/list_product.html', {'paginator':paginator, 'filter': products_filter, 'products': products, 'cart_product_form': cart_product_form})
 
 # def search(request):
 # 	products = Product.objects.all()

@@ -4,474 +4,390 @@
 {% load bootstrap4 %}
 {% load paginator_filter %}
 <html lang="ru">
-
-<head>
-<link rel="shortcut icon" type="image/png" href="{% static "img/favicon.png" %}">
-
-  <!-- <link rel="stylesheet" href="{% static "shop/css/main.css" %}" type="text/css">
-  Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="{% static 'shop/css/w3.css' %}" type="text/css">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-<style>
-@import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&subset=cyrillic,cyrillic-ext,latin-ext');
-</style> 
-<style>
-
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-        /*
-    ** Style Simple Ecommerce Theme for Bootstrap 4
-    ** Created by T-PHP https://t-php.fr/43-theme-ecommerce-bootstrap-4.html
-    */
-
-
-    .thead-color {
-        background: #6cbbcb;
-    }
-    .card-header {
-        background: #6cbbcb;
-    }
-    .navbar {
-        background: #56B397;
-        /*background: transparent;*/
-         /*height: 35px !important;*/
-    }
-    .navbar a {
-        color: #22262A!important
-
-    }
-    .bloc_left_price {
-        color: #c01508;
-        text-align: center;
-        font-weight: bold;
-        font-size: 150%;
-    }
-    .category_block li:hover {
-        background-color: #007bff;
-    }
-    .category_block li:hover a {
-        color: #ffffff;
-    }
-    .category_block li a {
-        color: #343a40;
-    }
-    .add_to_cart_block .price {
-        color: #c01508;
-        text-align: center;
-        font-weight: bold;
-        font-size: 200%;
-        margin-bottom: 0;
-    }
-    .add_to_cart_block .price_discounted {
-        color: #343a40;
-        text-align: center;
-        text-decoration: line-through;
-        font-size: 140%;
-    }
-    .product_rassurance {
-        padding: 10px;
-        margin-top: 15px;
-        background: #ffffff;
-        border: 1px solid #6c757d;
-        color: #6c757d;
-    }
-    .product_rassurance .list-inline {
-        margin-bottom: 0;
-        text-transform: uppercase;
-        text-align: center;
-    }
-    .product_rassurance .list-inline li:hover {
-        color: #343a40;
-    }
-    .reviews_product .fa-star {
-        color: gold;
-    }
-
-    footer {
-        
-        padding: 10px;
-         background: #56B397;
-
-    }
-
-    footer a {
-        color: #22262A!important
-    }
-
-    li {
-        margin-bottom: 10px;
-
-    }
-
-    .cool-link {
-        display: inline-block;
-        color: #000;
-        text-decoration: none;
-    }
-
-/*Пагинатор*/
-
-    .pagination {
-      display: inline-block;
-    }
-
-    .pagination a {
-      color: black;
-      float: left;
-      padding: 8px 16px;
-      text-decoration: none;
-      transition: background-color .3s;
-    }
-
-    .pagination a.active {
-      background-color: #4CAF50;
-      color: white;
-    }
-
-    .pagination a:hover:not(.active) {background-color: #ddd;}
-
-/*Крошки*/
-
-    ul.breadcrumb {
-      padding: 8px 16px;
-      list-style: none;
-      background-color: #fff;
-    }
-
-    ul.breadcrumb li {
-        display: inline;
-    }
-
-
-    ul.breadcrumb li a {
-        color: #56B397;
-        padding: 6px;
-    }
-
-/*Карусель*/
-.carousel-control-next-icon {
-
-    height: 0;
-    border-top: 50px solid transparent;
-    border-left: 50px solid red;
-    border-bottom: 50px solid transparent;
-    opacity:0.2;
-}
-
-.carousel-control-prev-icon{
-    width: 0;
-    height: 0;
-    border-top: 50px solid transparent;
-    border-right: 50px solid red;
-    border-bottom: 50px solid transparent;
-    opacity:0.2;
-}
-
-.card {
-  margin: 0 auto;
-}
-.card .carousel-item {
-  height: 200px;
-}
-.card .carousel-caption {
-  padding: 0;
-  right: 0;
-  left: 0;
-  color: #3d3d3d;
-}
-.card .carousel-caption h3 {
-  color: #3d3d3d;
-}
-.card .carousel-caption p {
-  line-height: 30px;
-}
-.card .carousel-caption .col-sm-3 {
-  display: flex;
-  align-items: center;
-}
-.card .carousel-caption .col-sm-9 {
-  text-align: left;
-}
-.navi a {
-    text-decoration:none;
-}
-a > .ico {
-    background-color: grey;
-    padding: 10px;
-
-}
-a:hover > .ico {
-    background-color: #666;
-}
-
-/*GO TO TOP*/
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
-}
-
-#myBtn {
-  display: none;
-  position: fixed;
-  bottom: 20px;
-  right: 30px;
-  z-index: 99;
-  font-size: 18px;
-  border: none;
-  outline: none;
-  background-color: red;
-  opacity:0.2;
-  color: white;
-  cursor: pointer;
-  padding: 15px;
-  border-radius: 4px;
-}
-
-#myBtn:hover {
-  background-color: #55555;
-}
-
-</style>
-
-
- <div class="container-fluid">
-      <header class="blog-header py-3">
-        <div class="row">
-          <div class="col-xs-12 col-sm-2 col-md-2">
-            <div class="row">
-        
-                <a  href="{% url 'shop:home' %}"><img src="{% static "shop/img/logo.jpg" %}"></a>
-        
-            </div>
-          </div>
-          <div class="col-xs-12 col-sm-5 col-md-5">
-            <div class="row">
-
-          </div>
-          </div>
-
-          <div class="col-xs-12 col-sm-2 col-md-2">
-            <div class="row">
-            <p>
-            <i class="fas fa-door-open text-muted mr-2"></i> Ми открыты
-            <br>
-            <i class="fas fa-clock text-muted  mr-3"></i>Пн-Пт:<time> 9:00 - 18:00</time> 
-            <br>
-            <i class="fas fa-clock text-muted  mr-3"></i>Сб:<time>9:00 - 14:00</time>
-           </p>
-            </div>
-          </div>
-
-         <div class="col-xs-12 col-sm-3 col-md-3">
-            <div class="row">
-                <p>
-                <a class="cool-link text-muted" href="https://www.google.com/maps/place/%D0%9E%D1%80%D1%82%D1%8D%D0%BD,+%D0%9E%D0%9E%D0%9E/@46.952503,32.040273,15z/data=!4m2!3m1!1s0x0:0x4784e49173525ad2?ved=2ahUKEwiLnpXuiPLfAhXNqIsKHWxSBAYQ_BIwCnoECAUQCA" target="_blank"><i class="fa fa-home mr-2"></i> г. Николаев пр. Мира, 5</a>
-                <br>
-                <a class="cool-link text-muted" href="mailto:orten_office@ukr.net"><i class="fas fa-envelope mr-3"></i>orten_office@ukr.net</a>
-                <br>
-                <i class="fas fa-phone text-muted mr-2"></i> (0512) 56-65-39
-                <br> 
-                <i class="fas fa-mobile text-muted mr-3"></i> (050) 318-40-64
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- <link rel="stylesheet" href="{% static "shop/css/main.css" %}" type="text/css">-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="{% static 'shop/css/w3.css' %}" type="text/css">
+        <link rel="shortcut icon" type="image/png" href="{% static "img/favicon.png" %}">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <style>
+            .thead-color {
+                background: #6cbbcb;
+            }
+            .card-header {
+                background: #6cbbcb;
+                opacity:0.8;
+            }
+            .navbar {
+                background: #56B397;
+                /*background: transparent;*/
+                 /*height: 35px !important;*/
+            }
+            .navbar a {
+                color: #22262A!important
+            }
+            .bloc_left_price {
+                color: #c01508;
+                text-align: center;
+                font-weight: bold;
+                font-size: 150%;
+            }
+            .category_block li:hover {
+                background-color: #007bff;
+            }
+            .category_block li:hover a {
+                color: #ffffff;
+            }
+            .category_block li a {
+                color: #343a40;
+            }
+            .add_to_cart_block .price {
+                color: #c01508;
+                text-align: center;
+                font-weight: bold;
+                font-size: 200%;
+                margin-bottom: 0;
+            }
+            .add_to_cart_block .price_discounted {
+                color: #343a40;
+                text-align: center;
+                text-decoration: line-through;
+                font-size: 140%;
+            }
+            .product_rassurance {
+                padding: 10px;
+                margin-top: 15px;
+                background: #ffffff;
+                border: 1px solid #6c757d;
+                color: #6c757d;
+            }
+            .product_rassurance .list-inline {
+                margin-bottom: 0;
+                text-transform: uppercase;
+                text-align: center;
+            }
+            .product_rassurance .list-inline li:hover {
+                color: #343a40;
+            }
+            .reviews_product .fa-star {
+                color: gold;
+            }
+            footer {
                 
-            </p>
-            </div>
-          </div>
+                padding: 10px;
+                 background: #56B397;
+            }
+            footer a {
+                color: #22262A!important
+            }
+            li {
+                margin-bottom: 10px;
+            }
+            .cool-link {
+                display: inline-block;
+                color: #000;
+                text-decoration: none;
+            }
+
+            /*Пагинатор*/
+            .pagination {
+              display: inline-block;
+            }
+            .pagination a {
+              color: black;
+              float: left;
+              padding: 8px 16px;
+              text-decoration: none;
+              transition: background-color .3s;
+            }
+            .pagination a.active {
+              background-color: #4CAF50;
+              opacity:0.8;
+              color: white;
+            }
+            .pagination a:hover:not(.active) {background-color: #ddd;}
+
+            /*Крошки*/
+            ul.breadcrumb {
+              padding: 8px 16px;
+              list-style: none;
+              background-color: #fff;
+            }
+            ul.breadcrumb li {
+                display: inline;
+            }
+
+            ul.breadcrumb li a {
+                color: #56B397;
+                padding: 6px;
+            }
+            /*Карусель*/
+            .carousel-control-next-icon {
+
+                height: 0;
+                border-top: 50px solid transparent;
+                border-left: 50px solid red;
+                border-bottom: 50px solid transparent;
+                opacity:0.2;
+            }
+            .carousel-control-prev-icon{
+                width: 0;
+                height: 0;
+                border-top: 50px solid transparent;
+                border-right: 50px solid red;
+                border-bottom: 50px solid transparent;
+                opacity:0.2;
+            }
+            .card {
+              margin: 0 auto;
+            }
+            .card .carousel-item {
+              height: 200px;
+            }
+            .card .carousel-caption {
+              padding: 0;
+              right: 0;
+              left: 0;
+              color: #3d3d3d;
+            }
+            .card .carousel-caption h3 {
+              color: #3d3d3d;
+            }
+            .card .carousel-caption p {
+              line-height: 30px;
+            }
+            .card .carousel-caption .col-sm-3 {
+              display: flex;
+              align-items: center;
+            }
+            .card .carousel-caption .col-sm-9 {
+              text-align: left;
+            }
+            .navi a {
+                text-decoration:none;
+            }
+            a > .ico {
+                background-color: grey;
+                padding: 10px;
+            }
+            a:hover > .ico {
+                background-color: #666;
+            }
+            /*GO TO TOP*/
+            #myBtn {
+                display: none;
+                position: fixed;
+                bottom: 20px;
+                right: 30px;
+                z-index: 99;
+                font-size: 18px;
+                border: none;
+                outline: none;
+                background-color: red;
+                opacity:0.2;
+                color: white;
+                cursor: pointer;
+                padding: 15px;
+                border-radius: 4px;
+            }
+            #myBtn:hover {
+                background-color: #55555;
+            }
+        </style>
+    </head>
+        <div class="container-fluid">
+            <header class="blog-header py-3">
+                <div class="row">
+                    <!-- LOGO -->
+                    <div class="col-xs-12 col-sm-2 col-md-2">
+                        <div class="row">
+                            <a  href="{% url 'shop:home' %}"><img src="{% static "shop/img/logo.jpg" %}"></a>
+                        </div>
+                    </div>
+                    <!-- Пустой на кол-5 -->
+                    <div class="col-xs-12 col-sm-5 col-md-5">
+                        <div class="row">
+
+                        </div>
+                    </div>
+                    <!-- График -->
+                    <div class="col-xs-12 col-sm-2 col-md-2">
+                        <div class="row">
+                            <p>
+                                <i class="fas fa-door-open text-muted mr-2"></i> Ми открыты
+                                <br>
+                                <i class="fas fa-clock text-muted  mr-3"></i>Пн-Пт:<time> 9:00 - 18:00</time> 
+                                <br>
+                                <i class="fas fa-clock text-muted  mr-3"></i>Сб:<time>9:00 - 14:00</time>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Контакты  -->
+                    <div class="col-xs-12 col-sm-3 col-md-3">
+                        <div class="row">
+                            <p>
+                                <a class="cool-link text-muted" href="https://www.google.com/maps/place/%D0%9E%D1%80%D1%82%D1%8D%D0%BD,+%D0%9E%D0%9E%D0%9E/@46.952503,32.040273,15z/data=!4m2!3m1!1s0x0:0x4784e49173525ad2?ved=2ahUKEwiLnpXuiPLfAhXNqIsKHWxSBAYQ_BIwCnoECAUQCA" target="_blank"><i class="fa fa-home mr-2"></i> г. Николаев пр. Мира, 5</a>
+                                <br>
+                                <a class="cool-link text-muted" href="mailto:orten_office@ukr.net"><i class="fas fa-envelope mr-3"></i>orten_office@ukr.net</a>
+                                <br>
+                                <i class="fas fa-phone text-muted mr-2"></i> (0512) 56-65-39
+                                <br> 
+                                <i class="fas fa-mobile text-muted mr-3"></i> (050) 318-40-64
+                            </p>
+                        </div>
+                    </div>
+                    <!--  -->
+                </div>
+                <!-- Верхние линки -->
+                <div class="nav-scroller py-1 mb-2">
+                    <nav class="nav d-flex justify-content-between">
+                        <a class="cool-link text-muted" href="#">LINK</a>
+                        <a class="cool-link text-muted" href="#">LINK</a>
+                        <a class="cool-link text-muted" href="#">LINK</a>
+                        <a class="cool-link text-muted" href="#">LINK</a>
+                        <a class="cool-link text-muted" href="#">LINK</a>
+                        <a class="cool-link text-muted" href="#">LINK</a>
+                        <a class="cool-link text-muted" href="#">LINK</a>
+                        <a class="cool-link text-muted" href="#">LINK</a>
+                        <a class="cool-link text-muted" href="#">LINK</a>
+                        <a class="cool-link text-muted" href="#">LINK</a>
+                        <a class="cool-link text-muted" href="#">LINK</a>
+                        <a class="cool-link text-muted" href="#">LINK</a>
+                        <a class="cool-link text-muted" href="#">LINK</a>
+                        <a class="cool-link text-muted" href="#">LINK</a>
+                        <a class="cool-link text-muted" href="#">LINK</a>
+                        <a class="cool-link text-muted" href="#">LINK</a>
+                    </nav>
+                </div>
+            </header>
         </div>
+        <nav class="navbar navbar-expand-md navbar-light">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
+                </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
+                        <ul class="navbar-nav m-auto">
+                            <a class="nav-link" href="{% url 'shop:home' %}">Дом</a>
+                            <a class="nav-link" href="{% url 'shop:category' %}">Категории</a>
+                            <a class="nav-link" href="{% url 'shop:product_list' %}">Товары</a>
+                            <a class="nav-link" href="{% url 'shop:list_category' 'polygraphy' %}">Полиграфия</a>
+                            <a class="nav-link" href="{% url 'shop:list_category' 'servisnyj-centr' %}">Сервисный центр</a>
+                            <a class="nav-link"  href="{% url 'shop:delivery_payment' %}">Доставка и оплата</a>
+                            <!-- <a class="nav-link" href="#"># Контакты</a>  -->
+                        </ul>
+                        <!-- Search -->
+                        <form class="form-inline my-2 my-lg-0 mr-2" role="search" action="{% url 'shop:product_list' %}">
+                            <div class="form-group">
+                                <input type="text" class="search-query" placeholder="Search..." name="search">
+                            </div>
+                        </form>
+                       {% with total_items=cart|length %}
+                            {% if cart|length > 0 %}
+                                <a href="{% url "cart:cart_detail" %}">
+                                    <i class="fa fa-shopping-cart mr-2"></i>Cart
+                                    <span class="badge badge-light ml-1">{{ total_items }}</span>
+                                </a>
+                            {% else %}
+                                <a href="{% url "cart:cart_detail" %}">
+                                    <i class="fa fa-shopping-cart mr-2"></i>Cart
+                                    <span class="badge badge-light ml-1">0</span>
+                                </a>
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                </div>
+            </nav>
+        <ul class="breadcrumb">
+        {% block breadcrumbs %}
+            <li><a href="/"><i class="fas fa-home"></i></a><i class="fas fa-chevron-right pl-1"></i></li>
+        {% endblock %}
+        </ul>
+    <body>
+            <!-- CONTENT -->
+            {% block content %}
+                {{content}}
+            {% endblock %}
+            <!-- CONTENT END-->
+            <!-- GO TO TOP -->
+            <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+            <script>
+                // When the user scrolls down 20px from the top of the document, show the button
+                window.onscroll = function() {scrollFunction()};
 
+                function scrollFunction() {
+                  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    document.getElementById("myBtn").style.display = "block";
+                  } else {
+                    document.getElementById("myBtn").style.display = "none";
+                  }
+                }
 
-      <div class="nav-scroller py-1 mb-2">
-        <nav class="nav d-flex justify-content-between">
+                // When the user clicks on the button, scroll to the top of the document
+                function topFunction() {
+                  document.body.scrollTop = 0;
+                  document.documentElement.scrollTop = 0;
+                }
+            </script>
+    <!-- Footer -->
+        <footer class="text-bleck">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3 p-0 m-0">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5446.935101617827!2d32.040273!3d46.952503!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4784e49173525ad2!2z0J7RgNGC0Y3QvSwg0J7QntCe!5e0!3m2!1sru!2sua!4v1547893952458" frameborder="0" style="border:0" allowfullscreen></iframe>
 
+                    </div>
 
-          <a class="cool-link text-muted" href="#">LINK</a>
-          <a class="cool-link text-muted" href="#">LINK</a>
-          <a class="cool-link text-muted" href="#">LINK</a>
-          <a class="cool-link text-muted" href="#">LINK</a>
-          <a class="cool-link text-muted" href="#">LINK</a>
-          <a class="cool-link text-muted" href="#">LINK</a>
-          <a class="cool-link text-muted" href="#">LINK</a>
-          <a class="cool-link text-muted" href="#">LINK</a>
-          <a class="cool-link text-muted" href="#">LINK</a>
-          <a class="cool-link text-muted" href="#">LINK</a>
-          <a class="cool-link text-muted" href="#">LINK</a>
-          <a class="cool-link text-muted" href="#">LINK</a>
-          <a class="cool-link text-muted" href="#">LINK</a>
-          <a class="cool-link text-muted" href="#">LINK</a>
-          <a class="cool-link text-muted" href="#">LINK</a>
-          <a class="cool-link text-muted" href="#">LINK</a>
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto">
+                        <h5>Informations</h5>
+                        <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
+                        <ul class="list-unstyled">
+                            <li><a href="">Link 1</a></li>
+                            <li><a href="">Link 2</a></li>
+                            <li><a href="">Link 3</a></li>
+                            <li><a href="">Link 4</a></li>
+                        </ul>
+                    </div>
 
-        </nav>
-      </div>
-</div>
-  </head>
+                    <div class="col-md-3 col-lg-2 col-xl-3 ">
+                        <h5>График работы</h5>
+                        <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-clock mr-2"></i>Пн-Пт:<time> 9:00 - 18:00</time></li>
+                            <li><i class="fas fa-clock mr-2"></i>Сб:<time> 9:00 - 14:00</time></li>
+                            <li><a href="">Link 3</a></li>
+                            <li><a href="">Link 4</a></li>
+                        </ul>
+                    </div>
 
-<nav class="navbar navbar-expand-md navbar-light">
-    <div class="container-fluid">
-<!--
-<div class="input-sm mb-2 mr-sm-2">
-    <form action="">
-<select class="custom-select" id="inlineFormCustomSelectPref">
-    <option value="ru">RU</option>
-    <option value="ua">UA</option>
-  </select>
-  </form>
-</div>
--->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-        <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
-            <ul class="navbar-nav m-auto">
-                
-                    <a class="nav-link" href="{% url 'shop:home' %}">Дом</a>
-                    <a class="nav-link" href="{% url 'shop:category' %}">Категории</a>
-                    <a class="nav-link" href="{% url 'shop:product_list' %}">Товары</a>
-                    <a class="nav-link" href="{% url 'shop:list_category' 'poligraficheskie-uslugi' %}">Полиграфические услуги</a>
-                    <a class="nav-link" href="{% url 'shop:list_category' 'servisnyj-centr' %}">Сервисный центр</a>
-                    <a class="nav-link"  href="{% url 'shop:delivery_payment' %}">Доставка и оплата</a>
-                    <a class="nav-link" href="#"># Контакты</a>
-            </ul>   
-
-          
-
-
-{% comment %}
-    <form class="navbar-form navbar-left" role="search" action="{% url 'shop:product_list' %}">
-        <div class="form-group">
-          <input type="text" class="search-query" placeholder="Search" name="search">
-        </div>
-      </form>
-
-{% endcomment %}
-
-       <form class="form-inline my-2 my-lg-0 mr-2" role="search" action="{% url 'shop:product_list' %}">
-        <div class="form-group">
-          <input type="text" class="search-query" placeholder="Search..." name="search">
-        </div>
-      </form>
-               {% with total_items=cart|length %}
-                {% if cart|length > 0 %}
-                <a href="{% url "cart:cart_detail" %}">
-                    <i class="fa fa-shopping-cart mr-2"></i>Cart
-
-                    <span class="badge badge-light ml-1">{{ total_items }}</span>
-                </a>
-                    {% else %}
-                <a href="{% url "cart:cart_detail" %}">
-                    <i class="fa fa-shopping-cart mr-2"></i>Cart
-                    <span class="badge badge-light ml-1">0</span>
-                    {% endif %}
-                    {% endwith %}
-                </a>
-            
-        </div>
-    </div>
-</nav>
-
-
-<body>
-
-<ul class="breadcrumb">
-
-{% block breadcrumbs %}
-    <li><a href="/"><i class="fas fa-home"></i></a><i class="fas fa-chevron-right pl-1"></i></li>
-
-{% endblock %}
-</ul>
-
-
-
-    <!-- ------------------------------------Section 2 4 5 6 START-->
-
-    {% block content %}
-    {{content}}
-    {% endblock %}
-
-    <!-- -------------------------------------Sectcion 2 4 5 6 END-->
-
-
-<!-- GO TO TOP -->
-<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-
-<script>
-// When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
-
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    document.getElementById("myBtn").style.display = "block";
-  } else {
-    document.getElementById("myBtn").style.display = "none";
-  }
-}
-
-// When the user clicks on the button, scroll to the top of the document
-function topFunction() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
-}
-</script>
-<!-- Footer -->
-<footer class="text-bleck">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3 p-0 m-0">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5446.935101617827!2d32.040273!3d46.952503!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4784e49173525ad2!2z0J7RgNGC0Y3QvSwg0J7QntCe!5e0!3m2!1sru!2sua!4v1547893952458" frameborder="0" style="border:0" allowfullscreen></iframe>
-
+                    <div class="col-md-3 col-lg-3 col-xl-3 ">
+                        <h5>Контакты</h5>
+                        <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
+                        <ul class="list-unstyled">
+                            <li><i class="fa fa-home mr-2"></i>г. Николаев пр. Мира, 5</li>
+                            <li><a href="mailto:orten_office@ukr.net"><i class="fas fa-envelope mr-2"></i>orten_office@ukr.net</a></li>
+                            <li><i class="fas fa-phone mr-2"></i>(0512) 56-65-39</li>
+                            <li><i class="fas fa-mobile mr-3"></i>(050) 318-40-64</li>
+                        </ul>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-12 copyright">
+                        <p class="text-left text-muted">created with <i class="fa fa-heart"></i> by <a href="#"><i>my</i></a></p>
+                    </div>
+                </div>
             </div>
-
-            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto">
-                <h5>Informations</h5>
-                <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
-                <ul class="list-unstyled">
-                    <li><a href="">Link 1</a></li>
-                    <li><a href="">Link 2</a></li>
-                    <li><a href="">Link 3</a></li>
-                    <li><a href="">Link 4</a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-3 col-lg-2 col-xl-3 ">
-                <h5>График работы</h5>
-                <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
-                <ul class="list-unstyled">
-                    <li><i class="fas fa-clock mr-2"></i>Пн-Пт:<time> 9:00 - 18:00</time></li>
-                    <li><i class="fas fa-clock mr-2"></i>Сб:<time> 9:00 - 14:00</time></li>
-                    <li><a href="">Link 3</a></li>
-                    <li><a href="">Link 4</a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-3 col-lg-3 col-xl-3 ">
-                <h5>Контакты</h5>
-                <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
-                <ul class="list-unstyled">
-                    <li><i class="fa fa-home mr-2"></i>г. Николаев пр. Мира, 5</li>
-                    <li><a href="mailto:orten_office@ukr.net"><i class="fas fa-envelope mr-2"></i>orten_office@ukr.net</a></li>
-                    <li><i class="fas fa-phone mr-2"></i>(0512) 56-65-39</li>
-                    <li><i class="fas fa-mobile mr-3"></i>(050) 318-40-64</li>
-                </ul>
-            </div>
-            
-        </div>
-        <div class="row">
-            <div class="col-12 copyright">
-                <p class="text-left text-muted">created with <i class="fa fa-heart"></i> by <a href="#"><i>my</i></a></p>
-            </div>
-        </div>
-    </div>
-</footer>
-</body>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="{% static 'shop/js/main.js' %}"></script>
+        </footer>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'shop/js/main.js' %}"></script>
 </html>
