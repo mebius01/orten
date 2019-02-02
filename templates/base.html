@@ -3,21 +3,6 @@
 {% load mptt_tags %}
 {% load bootstrap4 %}
 {% load paginator_filter %}
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-1">1</div>
-    <div class="col-1">2</div>
-    <div class="col-1">3</div>
-    <div class="col-1">4</div>
-    <div class="col-1">5</div>
-    <div class="col-1">6</div>
-    <div class="col-1">7</div>
-    <div class="col-1">8</div>
-    <div class="col-1">9</div>
-    <div class="col-1">10</div>
-    <div class="col-1">11</div>
-    <div class="col-1">12</div>
-  </div>
 <html lang="ru">
 
 <head>
@@ -44,6 +29,7 @@
     ** Style Simple Ecommerce Theme for Bootstrap 4
     ** Created by T-PHP https://t-php.fr/43-theme-ecommerce-bootstrap-4.html
     */
+
 
     .thead-color {
         background: #6cbbcb;
@@ -168,6 +154,88 @@
         padding: 6px;
     }
 
+/*Карусель*/
+.carousel-control-next-icon {
+
+    height: 0;
+    border-top: 50px solid transparent;
+    border-left: 50px solid red;
+    border-bottom: 50px solid transparent;
+    opacity:0.2;
+}
+
+.carousel-control-prev-icon{
+    width: 0;
+    height: 0;
+    border-top: 50px solid transparent;
+    border-right: 50px solid red;
+    border-bottom: 50px solid transparent;
+    opacity:0.2;
+}
+
+.card {
+  margin: 0 auto;
+}
+.card .carousel-item {
+  height: 200px;
+}
+.card .carousel-caption {
+  padding: 0;
+  right: 0;
+  left: 0;
+  color: #3d3d3d;
+}
+.card .carousel-caption h3 {
+  color: #3d3d3d;
+}
+.card .carousel-caption p {
+  line-height: 30px;
+}
+.card .carousel-caption .col-sm-3 {
+  display: flex;
+  align-items: center;
+}
+.card .carousel-caption .col-sm-9 {
+  text-align: left;
+}
+.navi a {
+    text-decoration:none;
+}
+a > .ico {
+    background-color: grey;
+    padding: 10px;
+
+}
+a:hover > .ico {
+    background-color: #666;
+}
+
+/*GO TO TOP*/
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: red;
+  opacity:0.2;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #55555;
+}
 
 </style>
 
@@ -184,7 +252,7 @@
           </div>
           <div class="col-xs-12 col-sm-5 col-md-5">
             <div class="row">
-              ... col-5
+
           </div>
           </div>
 
@@ -309,30 +377,7 @@
 </nav>
 
 
-  <body>
-
-
-
-
-{% comment %}
-
-
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    {% block breadcrumbs %}
-                    <li class="breadcrumb-item"><a href="/">Shop</a></li>
-                    {% endblock %}
-                </ol>
-            </nav>
-        </div>
-    </div>
-</div>
-{% endcomment %}
-
-
+<body>
 
 <ul class="breadcrumb">
 
@@ -352,23 +397,28 @@
 
     <!-- -------------------------------------Sectcion 2 4 5 6 END-->
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-1">1</div>
-    <div class="col-1">2</div>
-    <div class="col-1">3</div>
-    <div class="col-1">4</div>
-    <div class="col-1">5</div>
-    <div class="col-1">6</div>
-    <div class="col-1">7</div>
-    <div class="col-1">8</div>
-    <div class="col-1">9</div>
-    <div class="col-1">10</div>
-    <div class="col-1">11</div>
-    <div class="col-1">12</div>
-  </div>
-</div>
 
+<!-- GO TO TOP -->
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script>
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("myBtn").style.display = "block";
+  } else {
+    document.getElementById("myBtn").style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
 <!-- Footer -->
 <footer class="text-bleck">
     <div class="container-fluid">
@@ -414,9 +464,6 @@
         </div>
         <div class="row">
             <div class="col-12 copyright">
-                <p class="float-right">
-                    <a href="#">Back to top</a>
-                </p>
                 <p class="text-left text-muted">created with <i class="fa fa-heart"></i> by <a href="#"><i>my</i></a></p>
             </div>
         </div>

@@ -12,11 +12,9 @@ from django.http import Http404
 
 def home(request):
 	product_stok = ProductStock.objects.all()
-	category_all = Category.objects.all()
 	products = Product.objects.all().order_by()[:9]
 	cart_product_form = CartAddProductForm()
-	return render(request, 'shop/home.html', {'cart_product_form':cart_product_form, 'products':products, 'product_stok':product_stok, 'category_all':category_all})
-
+	return render(request, 'shop/home.html', {'cart_product_form':cart_product_form, 'products':products, 'product_stok':product_stok})
 
 def delivery_payment(request):
 	return render(request, 'delivery_payment.html')
@@ -26,8 +24,7 @@ def _test(request):
 	return render(request, 'base-test.html')
 
 def category(request):
-	category_all = Category.objects.all()
-	return render(request, 'shop/category.html', {'category_all': category_all})
+	return render(request, 'shop/category.html')
 
 def list_category(request, hierarchy=None):
 	# Раззделяет строку УРЛа на список [категория, подкатегория, подкатегорияПодкатегории, итд]
@@ -40,19 +37,9 @@ def list_category(request, hierarchy=None):
 	instance = Category.objects.get(parent=parent, slug=category_slug[-1])
 	products = Product.objects.filter(category=instance)
 	services = Services.objects.filter(category=instance)
-	return render(request, 'shop/list_category.html', {'instance':instance, 'category':category, 'services':services, 'products': products, 'category_all':category_all})
-
-# def product_detail(reuest, slug):
-# 	# Форма корзины
-# 	cart_product_form = CartAddProductForm()
-# 	instance = get_object_or_404(Product, slug=slug)
-# 	return render(request, 'shop/product_detail', {'instance':instance, 'cart_product_form': cart_product_form})
+	return render(request, 'shop/list_category.html', {'instance':instance, 'category':category, 'services':services, 'products': products})
 
 def product_detail(request, slug):
-	# cart_product_form = CartAddProductForm()
-	# product = get_object_or_404(Product, slug=slug)
-	# category = Category.objects.get(product=product)
-	# return render(request, 'shop/product_detail.html', {'product': product, 'cart_product_form': cart_product_form, 'category':category,})
 	instance = get_object_or_404(Product, slug=slug)
 	cart_product_form = CartAddProductForm()
 	return render( request, "shop/product_detail.html", {'instance':instance, 'cart_product_form': cart_product_form})
@@ -62,6 +49,40 @@ def service_detail(request, slug):
 	cart_product_form = CartAddProductForm()
 	
 	return render( request, "service/service_detail.html", {'instance':instance, 'cart_product_form': cart_product_form})
+
+def product_list(request):
+	search = request.GET.get('search', '')
+	if search:
+		product_list_all = Product.objects.annotate(search=SearchVector('vendor_code', 'name', 'description'),).filter(search=search)
+	else:
+		product_list_all = Product.objects.all().order_by('-updated')
+	products_filter = ProductFilter(request.GET, queryset=product_list_all)
+	page = request.GET.get('page', 1)
+	paginator = Paginator(products_filter.qs, 2)
+	try:
+		products = paginator.page(page)
+	except PageNotAnInteger:
+		# Если страница не является целым числом, показать первую страницу.
+		products = paginator.page(1)
+	except EmptyPage:
+		# Если страница выходит за пределы допустимого диапазона (например, 9999), казать последнюю страницу результатов
+		products = paginator.page(paginator.num_pages)
+
+	cart_product_form = CartAddProductForm()
+	return render(request, 'shop/list.html', {'paginator':paginator, 'filter': products_filter, 'products': products, 'cart_product_form': cart_product_form})
+
+# def search(request):
+# 	products = Product.objects.all()
+# 	products_filter = ProductFilter(request.GET, queryset=products)
+# 	return render(request, 'shop/list.html', {'filter': products_filter, 'products':products})
+
+
+# def product_detail(reuest, slug):
+# 	# Форма корзины
+# 	cart_product_form = CartAddProductForm()
+# 	instance = get_object_or_404(Product, slug=slug)
+# 	return render(request, 'shop/product_detail', {'instance':instance, 'cart_product_form': cart_product_form})
+
 
 
 # def list_category(request, hierarchy=None):
@@ -92,33 +113,6 @@ def service_detail(request, slug):
 # 		products = Product.objects.filter(category=category)
 # 		print('CCCCC', category)
 # 		return render(request, 'shop/list_category.html', {'instance':instance, 'category':category, 'products': products, 'category_all':category_all, 'cart_product_form': cart_product_form})
-
-
-def search(request):
-	products = Product.objects.all()
-	products_filter = ProductFilter(request.GET, queryset=products)
-	return render(request, 'shop/list.html', {'filter': products_filter, 'products':products})
-
-def product_list(request):
-	search = request.GET.get('search', '')
-	if search:
-		product_list_all = Product.objects.annotate(search=SearchVector('vendor_code', 'name', 'description'),).filter(search=search)
-	else:
-		product_list_all = Product.objects.all().order_by('-updated')
-	products_filter = ProductFilter(request.GET, queryset=product_list_all)
-	page = request.GET.get('page', 1)
-	paginator = Paginator(products_filter.qs, 2)
-	try:
-		products = paginator.page(page)
-	except PageNotAnInteger:
-		# Если страница не является целым числом, показать первую страницу.
-		products = paginator.page(1)
-	except EmptyPage:
-		# Если страница выходит за пределы допустимого диапазона (например, 9999), казать последнюю страницу результатов
-		products = paginator.page(paginator.num_pages)
-
-	cart_product_form = CartAddProductForm()
-	return render(request, 'shop/list.html', {'paginator':paginator, 'filter': products_filter, 'products': products, 'cart_product_form': cart_product_form})
 
 
 
