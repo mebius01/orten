@@ -19,6 +19,9 @@ def home(request):
 def delivery_payment(request):
 	return render(request, 'delivery_payment.html')
 
+def contact(request):
+	return render(request, 'contact.html')
+
 # тестовый шаблон
 def _test(request):
 	return render(request, 'base-test.html')
