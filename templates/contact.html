@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load static %}
+{% load bootstrap4 %}
+{% load mptt_tags %}
+{% block breadcrumbs %}
+{{ block.super }}
+	<li><a href="{% url 'shop:contact' %}">Контакты</a><i class="fas fa-chevron-right pl-1"></i></li>
+{% endblock %}
+
+{% block content %}
+  <style>
+   .leftstr, .rightstr {
+    float: left; /* Обтекание справа */ 
+    width: 50%; /* Ширина текстового блока */ 
+   }
+   .rightstr {
+    text-align: right; /* Выравнивание по правому краю */ 
+   }
+  </style>
+<title>Контакты</title>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-6">
+			<p class="text-justify text-center text-uppercase h2">Контакты</p>
+			<hr>
+			<p class="leftstr text-uppercase"><i class="fa fa-home pr-3"></i>Наш Адрес:</p>
+			<p class="rightstr">г. Николаев пр. Мира, 5</p>
+			<div style="clear: left"></div>
+
+			<p class="leftstr text-uppercase"><i class="fas fa-phone pr-3"></i></i>Связаться с нами:</p>
+			<p class="rightstr">(0512) 56-65-39</p>
+			<div style="clear: left"></div>
+
+			<p class="leftstr text-uppercase"></p>
+			<p class="rightstr">(050) 318-40-64</p>
+			<div style="clear: left"></div>
+
+			<p class="leftstr text-uppercase"><i class="fas fa-envelope pr-3"></i>Мылко:</p>
+			<p class="rightstr">
+				<a class="cool-link text-muted" href="mailto:orten_office@ukr.net">orten_office@ukr.net</a>
+			</p>
+
+			<p class="leftstr text-uppercase"><i class="fas fa-clock pr-2"></i>С понидельника по пятницу</p>
+			<p class="rightstr">9:00 - 18:00</p>
+			<div style="clear: left"></div>
+
+			<p class="leftstr text-uppercase"><i class="fas fa-clock pr-2"></i>Суббота</p>
+			<p class="rightstr">9:00 - 14:00</p>
+			<div style="clear: left"></div>
+
+			<div style="clear: left"></div>
+			<hr>
+			<p class="text-justify text-center text-uppercase h2">Почему именно мы вам нужны</p>
+			<hr>
+			<p class="h3">Не хочется хвастаться, но мы реально потрясные!</p>
+			<p class="h3">Удобная работа с бюджетными организациями!</p> 
+			<p class="h3">Отсрочка платежей!</p>
+			<p class="h3">Выполнения условий контракта даже в МИНУС себе((</p>
+			<p class="h3">Мы работаем для вас! Всегда!</p>
+			<p class="h3">Приемлемые и конкурентные цены, а в некоторых категориях ниже вы не найдете.</p>
+			<p class="h3">Для постоянных клиентов, удобная система скидок.</p>
+			<p class="h3"></p>
+			<p class="h3"></p>
+			<p class="h3"></p>
+
+		</div>
+		<div class="col-6">
+			<p class="text-justify text-center text-uppercase h2">Где мы</p>
+			<hr>
+			<p>
+				<div style="overflow:hidden;width: 700px;height: 440px;"><iframe width="700" height="440" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5446.935101617827!2d32.040273!3d46.952503!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4784e49173525ad2!2z0J7RgNGC0Y3QvSwg0J7QntCe!5e0!3m2!1sru!2sua!4v1547893952458" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><br />
+				<iframe  frameborder="0" style="border:0" allowfullscreen></iframe>
+			</p>
+
+		</div>
+
+	</div>
+</div>
+<hr>
+{% endblock %}
