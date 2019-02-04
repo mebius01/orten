@@ -79,7 +79,6 @@ class Category(MPTTModel):
 class Product(models.Model):
 	category = models.ForeignKey(Category,related_name='product', on_delete=models.CASCADE, help_text='Каталог товара (расходные материалы, компьютеры и комплетующие и т д)') #коталог продукта связь m2m
 	name = models.CharField(max_length=400, db_index=True, help_text='Название товара') #имя продукта
-	# name_f_k = models.ForeignKey(Product.name, on_delete=models.CASCADE, help_text='Каталог товара (расходные материалы, компьютеры и комплетующие и т д)')
 	# saler =  models.CharField(max_length=25, choices=SALER_CHOICES, blank=True, help_text='Поставщик')
 	accessories = models.ManyToManyField("self", blank=True)
 	vendor_code = models.CharField(max_length=200, db_index=True, help_text='Артикул, парт номер') #артикул или парт-номер

@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from shop.models import Category, Product, ProductStock, Services
+from shop.models import Category, ProductStock, Services, Product
 from cart.forms import CartAddProductForm
 from taggit.models import Tag
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -18,6 +18,9 @@ def home(request):
 
 def delivery_payment(request):
 	return render(request, 'delivery_payment.html')
+
+def contact(request):
+	return render(request, 'contact.html')
 
 # тестовый шаблон
 def _test(request):

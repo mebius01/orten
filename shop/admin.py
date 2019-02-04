@@ -38,6 +38,11 @@ class ProductAdmin(ImportExportModelAdmin):
 	list_editable = ['price', 'interest', 'stock', 'available']
 	prepopulated_fields = {'slug': ('name',)}
 
+class ProductResource(resources.ModelResource):
+	class Meta:
+		model = Product
+
+
 admin.site.register(Category, CategoryAdmin,)
 admin.site.register(Product, ProductAdmin,)
 admin.site.register(Services, ServicesAdmin,)

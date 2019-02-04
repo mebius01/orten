@@ -1,20 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 from slugify import slugify
 import datetime 
 
 price_file = open('esko.csv', 'r')
 product_file=open('product_esko.csv', 'w')
 data = price_file.readlines()
-counter=7
+counter=4
 for i in data:
 	i=str(i).split(';')
 	#~ for a in i:
 	product_file.writelines(str(counter)+',1,'+'"'+i[1]+'"'+',esko,'+i[0]+','+i[2]+','+i[3]+','+slugify(i[1])+','+','+','+',usd,'+i[5]+',0.30'+',1'+',1,'+str(datetime.datetime.today().strftime("%Y-%m-%d %H:%M:%S"))+','+'\n')
 	#~ print(str(counter)+',6,'+i[3]+',baden,'+i[0]+','+i[1]+','+slugify(i[3])+',products/2018/12/29/foo.jpg'+','+','+',uah,'+i[4]+',0.15'+',1'+',1,'+str(datetime.datetime.today().strftime("%Y-%m-%d %H.%M.%S"))+','+str(datetime.datetime.today().strftime("%Y-%m-%d %H.%M.%S"))+',')
+	print(counter)
 	counter+=1
 
 """

@@ -8,59 +8,42 @@
 {% block title %}
 {% endblock %}
 
-
 {% block content %}
 <title>Мусарок</title>
-
 <div class="container-fluid">
     <div class="row">
-
-    <div class="col-sm-3">
-      <div class="card">
-       <div class="card-header text-bleck text-uppercase"><i class="fab fa-wpforms pr-3"></i>Полезная Информация</div>
-        <div class="card-body bg-light">
-
-<ul>
-  <li>Доставка</li>
-  <br>
-  <li>Оплата</li>
-  <br>
-  <li>Контакты</li>
-</ul>
-
-
+      <div class="col-sm-3">
+        <div class="card">
+         <div class="card-header text-bleck text-uppercase"><i class="fab fa-wpforms pr-3"></i>Информация</div>
+          <div class="card-body bg-light">
+            {% include "include/include_elivery_pay_contact.html" %}
+          </div>
         </div>
       </div>
+      <div class="col-sm-9">
+          <div class="card bg-light">
+           <div class="card-header text-bleck text-uppercase"><i class="fas fa-truck pr-3"></i>Ваш Заказ</div>
+            <div class="card-body bg-light">
+              {%include 'include/include_cart_list.html' %}
+            </div>
+          </div>
+       </div>
     </div>
-  
-
-<div class="col-sm-9">
-    <div class="card bg-light">
-     <div class="card-header text-bleck text-uppercase"><i class="fas fa-truck pr-3"></i>Ваш Заказ</div>
-      <div class="card-body bg-light">
-
-
-{%include 'include/include_cart_list.html' %}
-
+    <hr>
+    <div class="row">
+      <div class="col-6">
+          <a href="{% url "shop:product_list" %}" class="btn btn-block btn-outline-primary">Shoping<role="button" ></a>
+        </div>
+        <div class="col-6">
+          <a href="{% url "order:order_create" %}" class="btn btn-block btn-outline-success">{{ cart.get_total_price }}<role="button"></a>
+        </div>
+      </div>
+      <hr>
       </div>
     </div>
   </div>
-
-
-
 </div>
-      <div class="row">
-                <div class="col-6">
-                  <a href="{% url "shop:product_list" %}" class="btn btn-block btn-outline-primary">Shoping<role="button" ></a>
-                </div>
-                <div class="col-6">
-                    <a href="{% url "order:order_create" %}" class="btn btn-block btn-outline-success">{{ cart.get_total_price }}<role="button"></a>
-                </div>
-            </div>
-        </div>
-        </div>
-    </div>
-</div>
+{% endblock %}
 
 {% comment %}
   
@@ -136,4 +119,3 @@
 {% endcomment %}
 
 
-{% endblock %}

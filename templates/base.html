@@ -22,10 +22,12 @@
             }
             .card-header {
                 background: #6cbbcb;
+                height: 40px;
                 opacity:0.8;
             }
             .navbar {
                 background: #56B397;
+
                 /*background: transparent;*/
                  /*height: 35px !important;*/
             }
@@ -81,7 +83,7 @@
             footer {
                 
                 padding: 10px;
-                 background: #56B397;
+                background: #56B397;
             }
             footer a {
                 color: #22262A!important
@@ -247,15 +249,15 @@
                 <!-- Верхние линки -->
                 <div class="nav-scroller py-1 mb-2">
                     <nav class="nav d-flex justify-content-between">
-                        <a class="cool-link text-muted" href="#">LINK</a>
-                        <a class="cool-link text-muted" href="#">LINK</a>
-                        <a class="cool-link text-muted" href="#">LINK</a>
-                        <a class="cool-link text-muted" href="#">LINK</a>
-                        <a class="cool-link text-muted" href="#">LINK</a>
-                        <a class="cool-link text-muted" href="#">LINK</a>
-                        <a class="cool-link text-muted" href="#">LINK</a>
-                        <a class="cool-link text-muted" href="#">LINK</a>
-                        <a class="cool-link text-muted" href="#">LINK</a>
+                        <a class="cool-link text-muted" href="{% url 'shop:list_category' 'ricoh' %}">Ricoh</a>
+                        <a class="cool-link text-muted" href="{% url 'shop:list_category' 'konica-minolta' %}">Konica Minolta</a>
+                        <a class="cool-link text-muted" href="{% url 'shop:list_category' 'duplo' %}">Duplo</a>
+                        <a class="cool-link text-muted" href="{% url 'shop:list_category' 'colorway' %}">ColorWay</a>
+                        <a class="cool-link text-muted" href="{% url 'shop:list_category' 'toshiba' %}">Toshiba</a>
+                        <a class="cool-link text-muted" href="{% url 'shop:list_category' 'poligrafiya' %}">Полиграфия</a>
+                        <a class="cool-link text-muted" href="{% url 'shop:list_category' 'avtorizovannyj-servisnyj-centr-ricoh' %}">Сервис Ricoh</a>
+                        <a class="cool-link text-muted" href="{% url 'shop:list_category' 'avtorizovannyj-servisnyj-centr-konica-minolta' %}">Сервис Konica Minolta</a>
+                        <a class="cool-link text-muted" href="{% url 'shop:list_category' 'licenzionnye-rashodnye-materialy' %}">Все для Принтеров и МФУ</a>
                         <a class="cool-link text-muted" href="#">LINK</a>
                         <a class="cool-link text-muted" href="#">LINK</a>
                         <a class="cool-link text-muted" href="#">LINK</a>
@@ -276,10 +278,10 @@
                             <a class="nav-link" href="{% url 'shop:home' %}">Дом</a>
                             <a class="nav-link" href="{% url 'shop:category' %}">Категории</a>
                             <a class="nav-link" href="{% url 'shop:product_list' %}">Товары</a>
-                            <a class="nav-link" href="{% url 'shop:list_category' 'polygraphy' %}">Полиграфия</a>
+                            <a class="nav-link" href="{% url 'shop:list_category' 'poligrafiya' %}">Полиграфия</a>
                             <a class="nav-link" href="{% url 'shop:list_category' 'servisnyj-centr' %}">Сервисный центр</a>
-                            <a class="nav-link"  href="{% url 'shop:delivery_payment' %}">Доставка и оплата</a>
-                            <!-- <a class="nav-link" href="#"># Контакты</a>  -->
+                            <a class="nav-link" href="{% url 'shop:delivery_payment' %}">Доставка и оплата</a>
+                            <a class="nav-link" href="{% url 'shop:contact' %}">Контакты</a>
                         </ul>
                         <!-- Search -->
                         <form class="form-inline my-2 my-lg-0 mr-2" role="search" action="{% url 'shop:product_list' %}">
@@ -343,14 +345,14 @@
 
                     </div>
 
-                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto">
-                        <h5>Informations</h5>
+                    <div class="col-md-3 col-lg-2 col-xl-3 mx-auto">
+                        <h5>Что мы можем</h5>
                         <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
                         <ul class="list-unstyled">
-                            <li><a href="">Link 1</a></li>
-                            <li><a href="">Link 2</a></li>
-                            <li><a href="">Link 3</a></li>
-                            <li><a href="">Link 4</a></li>
+                            <li><a href="{% url 'shop:product_list' %}">Что мы продаем</a></li>
+                            <li><a href="{% url 'shop:category' %}">Категории</a></li>
+                            <li><a href="{% url 'shop:list_category' 'servisnyj-centr' %}">Сервисный центр</a></li>
+                            <li><a href="{% url 'shop:list_category' 'poligrafiya' %}">Полиграфия</a></li>
                         </ul>
                     </div>
 
@@ -360,8 +362,8 @@
                         <ul class="list-unstyled">
                             <li><i class="fas fa-clock mr-2"></i>Пн-Пт:<time> 9:00 - 18:00</time></li>
                             <li><i class="fas fa-clock mr-2"></i>Сб:<time> 9:00 - 14:00</time></li>
-                            <li><a href="">Link 3</a></li>
-                            <li><a href="">Link 4</a></li>
+                            <!--<li><a href="">Link 3</a></li>
+                            <li><a href="">Link 4</a></li>-->
                         </ul>
                     </div>
 
@@ -379,8 +381,9 @@
                 </div>
                 <div class="row">
                     <div class="col-12 copyright">
-                        <p class="text-left text-muted">created with <i class="fa fa-heart"></i> by <a href="#"><i>my</i></a></p>
+                        <p class="text-left text-muted"><i>Copyright © 2008 - 2019 orten.in.ua</i></p>
                     </div>
+
                 </div>
             </div>
         </footer>
