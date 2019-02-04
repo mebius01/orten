@@ -30,6 +30,11 @@ class ProductStockAdmin(admin.ModelAdmin):
 	list_filter = ['stock_start', 'stock_end', 'product',]
 	prepopulated_fields = {'slug': ('product',)}
 
+class ProductResource(resources.ModelResource):
+	class Meta:
+		model = Product
+		fields = ('id','category','name','vendor_code','vendor','slug','price','stock','available')
+
 class ProductAdmin(ImportExportModelAdmin):
 	# resource_class = ProductResource
 	search_fields = ['name',]
@@ -37,10 +42,7 @@ class ProductAdmin(ImportExportModelAdmin):
 	list_filter = ['available', 'created', 'updated']
 	list_editable = ['price', 'interest', 'stock', 'available']
 	prepopulated_fields = {'slug': ('name',)}
-
-class ProductResource(resources.ModelResource):
-	class Meta:
-		model = Product
+	resource_class = ProductResource
 
 
 admin.site.register(Category, CategoryAdmin,)

@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from slugify import slugify
+# from shop.models import Product
 import datetime 
 
 price_file = open('esko.csv', 'r')
@@ -10,8 +11,8 @@ counter=4
 for i in data:
 	i=str(i).split(';')
 	#~ for a in i:
-	product_file.writelines(str(counter)+',1,'+'"'+i[1]+'"'+',esko,'+i[0]+','+i[2]+','+i[3]+','+slugify(i[1])+','+','+','+',usd,'+i[5]+',0.30'+',1'+',1,'+str(datetime.datetime.today().strftime("%Y-%m-%d %H:%M:%S"))+','+'\n')
-	#~ print(str(counter)+',6,'+i[3]+',baden,'+i[0]+','+i[1]+','+slugify(i[3])+',products/2018/12/29/foo.jpg'+','+','+',uah,'+i[4]+',0.15'+',1'+',1,'+str(datetime.datetime.today().strftime("%Y-%m-%d %H.%M.%S"))+','+str(datetime.datetime.today().strftime("%Y-%m-%d %H.%M.%S"))+',')
+	# product_file.writelines(str(counter)+',79,'+'"'+i[1]+'"'+',esko,'+i[0]+','+i[2]+','+i[3]+','+slugify(i[1])+','+','+','+',usd,'+i[5]+',0.30'+',1'+',1,'+str(datetime.datetime.today().strftime("%Y-%m-%d %H:%M:%S"))+','+'\n')
+	print(str(counter)+',79,'+i[3]+',baden,'+i[0]+','+i[1]+','+slugify(i[3])+',products/2018/12/29/foo.jpg'+','+','+',uah,'+i[4]+',0.15'+',1'+',1,'+str(datetime.datetime.today().strftime("%Y-%m-%d %H.%M.%S"))+','+str(datetime.datetime.today().strftime("%Y-%m-%d %H.%M.%S"))+',')
 	print(counter)
 	counter+=1
 
@@ -19,6 +20,7 @@ for i in data:
 id, str(counter)
 category, 1
 name, i[1]
+accessories, 
 saler, 'esko'
 vendor_code, i[0]
 vendor, i[2]

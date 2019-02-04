@@ -6,14 +6,18 @@ import datetime
 price_file = open('diweave.csv', 'r')
 product_file=open('product_diweave.csv', 'w')
 data = price_file.readlines()
-counter=7
+counter=3
 for i in data:
 	i=str(i).split(';')
-	product_file.writelines(str(counter)+',6,'+i[3]+',baden,'+i[0]+','+i[1]+','+','+slugify(i[3])+','+','+','+',uah,'+i[4]+',0.15'+',1'+',1,'+str(datetime.datetime.today().strftime("%Y-%m-%d %H:%M:%S"))+','+'\n')
+	price=((float(i[4])*0.25)+float(i[4]))*28
+	product_file.writelines(str(counter)+',72,'+i[3]+','+i[0]+','+i[1]+','+slugify(i[3])+','+str(round(price, 1))+',1'+',1'+'\n')
 	counter+=1
 
-
 """
+id,category,name,vendor_code,vendor,slug,price,stock,available
+
+a = ((self.price_purchase*self.interest)+self.price_purchase)*rates_usd
+
 #~ 0 M1 (VS17337)
 #~ 1 ViewSonic
 #~ 2 766907000658
@@ -22,6 +26,47 @@ for i in data:
 #~ 5 10999,08
 #~ 6 8528610000
 #~ 7 N
+
+
+Компьютерная и офисная техника	66	kompyuternaya-i-ofisnaya-tehnika
+	Акустика, наушники	72	akustika-naushniki
+	Внешние жесткие диски	70	vneshnie-zhestkie-diski
+	ИБП и аккумуляторы	75	ibp-i-akkumulyatory
+	Кабеля, переходники, батарейки, диски, мелочь	76	kabelya-perehodniki-raznaya-meloch
+	Карты памяти и флешки	68	karty-pamyati-i-fleshki
+	Комплектующие	67	komplektuyushie
+	Манипуляторы и мультимедиа	71	manipulyatory-i-multimedia
+	Принтеры и МФУ	73	printery-i-mfu
+	Проекторы и все для них	74	proektory-i-vse-dlya-nih
+	Сетевое оборудование	77	setevoe-oborudovanie
+	Софт	69	soft
+	Телефония	78	telefoniya
+
+
+
+	product_file.writelines(str(counter)+',72,'+i[3]+','+','+i[0]+','+i[1]+','+','+slugify(i[3])+','+','+','+','+i[4]+',0.15'+',1'+',1,'+str(datetime.datetime.today().strftime("%Y-%m-%d %H:%M:%S"))+','+','+'\n')
+id,category,name,accessories,vendor_code,vendor,type_product,slug,image,keywords,description,price,interest,stock,available,created,updated,tags
+
+id, str(counter)
+category, 1
+name, i[1]
+accessories, 
+saler, 'esko'
+vendor_code, i[0]
+vendor, i[2]
+type_product, i[3]
+slug,
+image,
+keywords,
+description,
+currency, 'usd'
+price_purchase, i[5]
+interest,
+stock,
+available,
+created,
+updated
+
 
 
 Эта строка:
