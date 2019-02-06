@@ -10,17 +10,37 @@ data = price_file.readlines()
 counter=56
 for i in data:
 	i=str(i).split(';')
-	a=str(i[5])
-	price=((float(a.replace(",","."))*0.25)+float(a.replace(",",".")))*28
-	if len(i[1]) <= 80:
-		product_file.writelines(str(counter)+',128,'+i[1]+','+i[0]+','+i[2]+','+slugify(i[0])+','+str(round(price, 1))+',1'+',1'+'\n')
+	id_product=str(counter)
+	category="CATEGORY_ID"
+	name=i[1]
+	vendor_code=i[0]
+	vendor=i[2]
+	type_product=i[3]
+	slug=slugify(i[1]+'-'+i[0])
+	price=str(i[5]); price=((float(price.replace(",","."))*0.25)+float(price.replace(",",".")))*28; price=str(price)
+	stock="1"
+	available="1"
+	if len(i[1]) <= 190:
+		product_file.writelines(id_product+','+category+','+name+','+vendor_code+','+vendor+','+type_product+','+slug+','+price+','+stock+','+available+'\n')
 		counter+=1
-	elif len(i[1]) > 80:
-		product_file_long.writelines(str(counter)+',128,'+i[1]+','+i[0]+','+i[2]+','+slugify(i[0])+','+str(round(price, 1))+',1'+',1'+'\n')
+	elif len(i[1]) > 190:
+		product_file_long.writelines(id_product+','+category+','+name+','+vendor_code+','+vendor+','+type_product+','+slug+','+price+','+stock+','+available+'\n')
 		counter+=1
 
+
+
+	# a=str(i[5])
+	# price=((float(a.replace(",","."))*0.25)+float(a.replace(",",".")))*28
+	# if len(i[1]) <= 190:
+	# 	product_file.writelines(str(counter)+',"CATEGORY_ID",'+i[1]+','+i[2]+','+i[2]+','+slugify(i[0])+','+str(round(price, 1))+',1'+',1'+'\n')
+	# 	counter+=1
+	# elif len(i[1]) > 190:
+	# 	product_file_long.writelines(str(counter)+',"CATEGORY_ID",'+i[1]+','+i[2]+','+i[2]+','+slugify(i[0])+','+str(round(price, 1))+',1'+',1'+'\n')
+	# 	counter+=1
+
 """
-id,category,name,vendor_code,vendor,slug,price,stock,available
+id,category,name,vendor_code,vendor,type_product,slug,price,stock,available
+
 id, str(counter)
 category, 1
 name, i[1]
