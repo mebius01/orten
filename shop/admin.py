@@ -41,7 +41,7 @@ class ProductAdmin(ImportExportModelAdmin):
 	list_display = ['name', 'id', 'slug', 'price', 'interest', 'stock', 'available', 'updated']
 	list_filter = ['available', 'created', 'updated']
 	list_editable = ['price', 'interest', 'stock', 'available']
-	prepopulated_fields = {'slug': ('name',)}
+	prepopulated_fields = {'slug': ('vendor_code',)}
 	resource_class = ProductResource
 
 

@@ -61,7 +61,7 @@ def product_list(request):
 		product_list_all = Product.objects.all().order_by('-updated')
 	products_filter = ProductFilter(request.GET, queryset=product_list_all)
 	page = request.GET.get('page', 1)
-	paginator = Paginator(products_filter.qs, 2)
+	paginator = Paginator(products_filter.qs, 48)
 	try:
 		products = paginator.page(page)
 	except PageNotAnInteger:
