@@ -47,7 +47,7 @@ INTEREST_CHOICES = (
 
 
 class Category(MPTTModel):
-	name = models.CharField(max_length=50, unique=True)
+	name = models.CharField(max_length=200, unique=True)
 	slug = models.SlugField(max_length=200, db_index=True, unique=True)
 	image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
 	description = models.TextField(blank=True) #описание Категории

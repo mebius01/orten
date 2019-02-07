@@ -33,7 +33,7 @@ class ProductStockAdmin(admin.ModelAdmin):
 class ProductResource(resources.ModelResource):
 	class Meta:
 		model = Product
-		fields = ('id','category','name','vendor_code','vendor','slug','price','stock','available')
+		fields = ('id','category','name', 'vendor', 'vendor_code', 'type_product', 'slug','price','stock','available')
 
 class ProductAdmin(ImportExportModelAdmin):
 	# resource_class = ProductResource
@@ -41,7 +41,7 @@ class ProductAdmin(ImportExportModelAdmin):
 	list_display = ['name', 'id', 'slug', 'price', 'interest', 'stock', 'available', 'updated']
 	list_filter = ['available', 'created', 'updated']
 	list_editable = ['price', 'interest', 'stock', 'available']
-	prepopulated_fields = {'slug': ('name',)}
+	prepopulated_fields = {'slug': ('name','vendor_code')}
 	resource_class = ProductResource
 
 

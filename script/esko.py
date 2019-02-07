@@ -1,22 +1,46 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from slugify import slugify
-# from shop.models import Product
 import datetime 
 
 price_file = open('esko.csv', 'r')
 product_file=open('product_esko.csv', 'w')
+product_file_long=open('product_file_long.csv', 'w')
 data = price_file.readlines()
-counter=4
+counter=56
 for i in data:
 	i=str(i).split(';')
-	#~ for a in i:
-	# product_file.writelines(str(counter)+',79,'+'"'+i[1]+'"'+',esko,'+i[0]+','+i[2]+','+i[3]+','+slugify(i[1])+','+','+','+',usd,'+i[5]+',0.30'+',1'+',1,'+str(datetime.datetime.today().strftime("%Y-%m-%d %H:%M:%S"))+','+'\n')
-	print(str(counter)+',79,'+i[3]+',baden,'+i[0]+','+i[1]+','+slugify(i[3])+',products/2018/12/29/foo.jpg'+','+','+',uah,'+i[4]+',0.15'+',1'+',1,'+str(datetime.datetime.today().strftime("%Y-%m-%d %H.%M.%S"))+','+str(datetime.datetime.today().strftime("%Y-%m-%d %H.%M.%S"))+',')
-	print(counter)
-	counter+=1
+	id_product=str(counter)
+	category="CATEGORY_ID"
+	name=i[1]
+	vendor_code=i[0]
+	vendor=i[2]
+	type_product=i[3]
+	slug=slugify(i[1]+'-'+i[0])
+	price=str(i[5]); price=((float(price.replace(",","."))*0.30)+float(price.replace(",",".")))*28; price=str(price)
+	stock="1"
+	available="1"
+	if len(i[1]) <= 390:
+		product_file.writelines(id_product+','+category+','+name+','+vendor_code+','+vendor+','+type_product+','+slug+','+price+','+stock+','+available+'\n')
+		counter+=1
+	elif len(i[1]) > 390:
+		product_file_long.writelines(id_product+','+category+','+name+','+vendor_code+','+vendor+','+type_product+','+slug+','+price+','+stock+','+available+'\n')
+		counter+=1
+
+
+
+	# a=str(i[5])
+	# price=((float(a.replace(",","."))*0.25)+float(a.replace(",",".")))*28
+	# if len(i[1]) <= 190:
+	# 	product_file.writelines(str(counter)+',"CATEGORY_ID",'+i[1]+','+i[2]+','+i[2]+','+slugify(i[0])+','+str(round(price, 1))+',1'+',1'+'\n')
+	# 	counter+=1
+	# elif len(i[1]) > 190:
+	# 	product_file_long.writelines(str(counter)+',"CATEGORY_ID",'+i[1]+','+i[2]+','+i[2]+','+slugify(i[0])+','+str(round(price, 1))+',1'+',1'+'\n')
+	# 	counter+=1
 
 """
+id,category,name,vendor_code,vendor,type_product,slug,price,stock,available
+
 id, str(counter)
 category, 1
 name, i[1]
@@ -36,8 +60,6 @@ stock,
 available,
 created,
 updated
-
-
 
 0 PartNumber;
 1 Название товара;

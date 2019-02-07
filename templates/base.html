@@ -201,6 +201,14 @@
             #myBtn:hover {
                 background-color: #55555;
             }
+            /*left right for product_ditail*/
+            .leftstr, .rightstr {
+                float: left; /* Обтекание справа */ 
+                width: 50%; /* Ширина текстового блока */ 
+            }
+            .rightstr {
+                text-align: right; /* Выравнивание по правому краю */ 
+            }
         </style>
     </head>
         <div class="container-fluid">
@@ -258,13 +266,13 @@
                         <a class="cool-link text-muted" href="{% url 'shop:list_category' 'avtorizovannyj-servisnyj-centr-ricoh' %}">Сервис Ricoh</a>
                         <a class="cool-link text-muted" href="{% url 'shop:list_category' 'avtorizovannyj-servisnyj-centr-konica-minolta' %}">Сервис Konica Minolta</a>
                         <a class="cool-link text-muted" href="{% url 'shop:list_category' 'licenzionnye-rashodnye-materialy' %}">Все для Принтеров и МФУ</a>
+                       <!-- <a class="cool-link text-muted" href="#">LINK</a>
                         <a class="cool-link text-muted" href="#">LINK</a>
                         <a class="cool-link text-muted" href="#">LINK</a>
                         <a class="cool-link text-muted" href="#">LINK</a>
                         <a class="cool-link text-muted" href="#">LINK</a>
                         <a class="cool-link text-muted" href="#">LINK</a>
-                        <a class="cool-link text-muted" href="#">LINK</a>
-                        <a class="cool-link text-muted" href="#">LINK</a>
+                        <a class="cool-link text-muted" href="#">LINK</a> -->
                     </nav>
                 </div>
             </header>
