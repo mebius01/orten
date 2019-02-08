@@ -9,20 +9,20 @@ import django_filters
 from mptt.models import MPTTModel, TreeForeignKey
 from taggit.managers import TaggableManager
 
-CURRENCY_CHOICES = (
-	('eur','EUR'),
-	('usd','USD'),
-	('uah', 'UAH'),
-	)
+# CURRENCY_CHOICES = (
+# 	('eur','EUR'),
+# 	('usd','USD'),
+# 	('uah', 'UAH'),
+# 	)
 
-SALER_CHOICES = (
-	('esko','esko'),
-	('softcom','softcom'),
-	('megateid', 'megateid'),
-	('baden', 'baden'),
-	('Konica', 'Konica'),
+# SALER_CHOICES = (
+# 	('esko','esko'),
+# 	('softcom','softcom'),
+# 	('megateid', 'megateid'),
+# 	('baden', 'baden'),
+# 	('Konica', 'Konica'),
 
-	)
+# 	)
 
 
 INTEREST_CHOICES = (
@@ -31,9 +31,6 @@ INTEREST_CHOICES = (
 	(Decimal("0.20"), '20%'),
 	(Decimal("0.25"), '25%'),
 	(Decimal("0.30"), '30%'),
-
-
-
 	)
 
 # class Rates(models.Model): #курс валют
@@ -83,6 +80,8 @@ class Product(models.Model):
 	accessories = models.ManyToManyField("self", blank=True)
 	vendor_code = models.CharField(max_length=200, db_index=True, help_text='Артикул, парт номер') #артикул или парт-номер
 	vendor = models.CharField(max_length=200, blank=True, help_text='Производитель') # Производитель
+	# format_fild = models.CharField(max_length=50, blank=True, help_text='A3,A4')
+	# color_fild = models.CharField(max_length=50, blank=True, help_text='BW, Color')
 	type_product = models.CharField(max_length=200, blank=True, help_text='Тип товара')
 	
 	slug = models.SlugField(max_length=400, help_text='')
@@ -95,7 +94,7 @@ class Product(models.Model):
 
 	# currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES, blank=True, help_text='Валюта входа') #валюта
 	price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, help_text='Цена входящая') #цена Закупки
-	interest = models.DecimalField(max_digits=5, decimal_places=2, blank=True, choices=INTEREST_CHOICES, null=True, help_text='Процент, накрутка') #Процент
+	# discount = models.DecimalField(max_digits=10, decimal_places=2, blank=True, help_text='Процент, накрутка') #Процент
 	
 	stock = models.PositiveIntegerField(blank=True, help_text='Остатоки') # Остатки
 	available = models.BooleanField(default=True, help_text='Доступен ли к заказу') # булево значение, указывающее, доступен ли продукт или нет
@@ -183,8 +182,6 @@ class ProductStock(models.Model):
 		product_price_uah=float(self.product.price)
 		discount_percent=float(self.discount_percent)
 		return product_price_uah - (product_price_uah*discount_percent)
-
-
 
 	class Meta:
 		ordering = ('product',)

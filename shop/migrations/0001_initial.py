@@ -51,6 +51,7 @@ class Migration(migrations.Migration):
                 ('price', models.DecimalField(blank=True, decimal_places=2, help_text='Цена входящая', max_digits=10)),
                 ('interest', models.DecimalField(blank=True, choices=[(Decimal('0.07'), '7%'), (Decimal('0.15'), '15%'), (Decimal('0.20'), '20%'), (Decimal('0.25'), '25%'), (Decimal('0.30'), '30%')], decimal_places=2, help_text='Процент, накрутка', max_digits=5, null=True)),
                 ('stock', models.PositiveIntegerField(blank=True, help_text='Остатоки')),
+                ('discount', models.DecimalField(decimal_places=2, blank=True, help_text='Процент, накрутка')),
                 ('available', models.BooleanField(default=True, help_text='Доступен ли к заказу')),
                 ('created', models.DateTimeField(auto_now_add=True, help_text='дата создания')),
                 ('updated', models.DateTimeField(auto_now=True, help_text='дата обновления')),

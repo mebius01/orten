@@ -49,8 +49,16 @@ INSTALLED_APPS = [
     'bootstrap4',
     'django_filters',
     'haystack',
+    'django_elasticsearch_dsl',
+    'search',
     
 ]
+
+ELASTICSEARCH_DSL = {
+    'default': {
+        'hosts': 'localhost:9200'
+    },
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -216,3 +224,4 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_IMPORTS = ('shop.tasks',)
 CELERY_IMPORTS = ('order.tasks',)
+
