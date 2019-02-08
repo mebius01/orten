@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'bootstrap4',
     'django_filters',
-    'haystack',
+    # 'haystack',
     'django_elasticsearch_dsl',
     'search',
     
@@ -209,12 +209,12 @@ DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.redirects.RedirectsPanel',
 ]
 
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
-        'URL': 'http://127.0.0.1:8983/solr'
-    },
-}
+# HAYSTACK_CONNECTIONS = {
+#     'default': {
+#         'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
+#         'URL': 'http://127.0.0.1:8983/solr'
+#     },
+# }
 
 # CELERY STUFF
 BROKER_URL = 'redis://localhost:6379'
