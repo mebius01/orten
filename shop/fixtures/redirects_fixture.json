@@ -1,0 +1,18 @@
+[
+   {
+      "model":"redirects.redirect",
+      "fields":{
+         "site":1,
+         "old_path":"/index.html",
+         "new_path":"/"
+      }
+   },
+   {
+      "model":"redirects.redirect",
+      "fields":{
+         "site":1,
+         "old_path":"/ricoh-aficio-mp2014ad-kopir-gdi-printer-tsvetnoi-skaner-ardf-dupleks-startovyi-toner-na-4k/",
+         "new_path":"/shop/ricoh-aficio-mp2014ad-kopir-gdi-printer-tsvetnoi-skaner-ardf-dupleks-startovyi-toner-na-4k/"
+      }
+   }
+]
