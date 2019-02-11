@@ -7,12 +7,11 @@ class ProductFilter(django_filters.FilterSet):
 	# price=django_filters.AllValuesFilter(widget=django_filters.widgets.RangeWidget)
 	price__gt = django_filters.NumberFilter(field_name='price', lookup_expr='gt', label='min')
 	price__lt = django_filters.NumberFilter(field_name='price', lookup_expr='lt', label='max')
-	
+
 	l=[]
 	for i in Product.objects.all():
 		l.append((i.vendor, i.vendor))
 	vendor=django_filters.ChoiceFilter(choices=set(l), empty_label='Вендор')
-	
 
 	l=[]
 	for i in Product.objects.all():

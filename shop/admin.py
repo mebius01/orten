@@ -1,19 +1,9 @@
 from django.contrib import admin
-from .models import Category, Product, ProductStock, Services #Rates, 
+from .models import Category, Product, ProductStock, Services 
 from mptt.admin import MPTTModelAdmin
 from import_export.admin import ImportExportModelAdmin
-# Register your models here.
 from import_export import resources
 
-# class ProductResource(resources.ModelResource):
-
-# 	class Meta:
-# 		model = Product
-		# fields = ['id', 'category', 'name', 'vendor', 'vendor_code', 'slug', 'price', 'stock', 'available',]
-
-# class RatesAdmin(admin.ModelAdmin):
-# 	list_display = ['id', 'usd', 'eur',]
-# 	list_editable = ['usd', 'eur']
 
 class CategoryAdmin(MPTTModelAdmin):
 	list_display = ['name', 'id', 'slug']
@@ -36,7 +26,6 @@ class ProductResource(resources.ModelResource):
 		fields = ('id','category','name', 'vendor', 'vendor_code', 'type_product', 'slug','price','stock','available')
 
 class ProductAdmin(ImportExportModelAdmin):
-	# resource_class = ProductResource
 	search_fields = ['name',]
 	list_display = ['name', 'id', 'slug', 'price', 'stock', 'available', 'updated']
 	list_filter = ['available', 'created', 'updated']
@@ -48,6 +37,4 @@ class ProductAdmin(ImportExportModelAdmin):
 admin.site.register(Category, CategoryAdmin,)
 admin.site.register(Product, ProductAdmin,)
 admin.site.register(Services, ServicesAdmin,)
-# admin.site.register(Rates, RatesAdmin,)
 admin.site.register(ProductStock, ProductStockAdmin,)
-# admin.site.register(ProductResource,)

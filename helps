@@ -234,8 +234,35 @@ https://books.agiliq.com/projects/django-orm-cookbook/en/latest/
 
 Django - Fast Search With Elasticsearch (Tutorial)
 https://www.youtube.com/watch?v=cXYVE28igkE https://samulinatri.com/blog/django-elasticsearch/
-
 https://medium.com/@giopag81/how-to-create-a-django-search-only-app-for-elasticsearch-part-1-e1dc84da482f
-https://medium.com/@harshvb7/managing-elasticsearch-in-django-like-a-pro-adfcd984920d
 https://techstricks.com/django-haystack-and-elasticsearch-tutorial/
 https://habr.com/ru/company/digdes/blog/351002/
+https://www.quora.com/How-do-I-retrieve-more-than-10000-records-in-elastic-search How do I retrieve more than 10000 records in elastic search?
+https://tryolabs.com/blog/2015/02/17/python-elasticsearch-first-steps/ Python + Elasticsearch. First steps.
+https://medium.com/@harshvb7/managing-elasticsearch-in-django-like-a-pro-adfcd984920d Managing Elasticsearch in Django like a pro
+https://towardsdatascience.com/getting-started-with-elasticsearch-in-python-c3598e718380 Getting started with Elasticsearch in Python
+https://www.codementor.io/samueljames/using-django-with-elasticsearch-logstash-and-kibana-elk-stack-9l4fwx138 Using Django with Elasticsearch, Logstash, and Kibana (ELK Stack)
+https://www.merixstudio.com/blog/elasticsearch-django-rest-framework/ How to use Elasticsearch with Django and REST Framework
+https://djangotricks.blogspot.com/2018/06/data-filtering-in-a-django-website-using-elasticsearch.html Data Filtering in a Django Website using Elasticsearch
+towardsdatascience.com/getting-started-with-elasticsearch-in-python-c3598e718380 Getting started with Elasticsearch in Python
+
+https://medium.com/@ruhshan_ahmed/django-watson-search-made-easy-ee8c986d9f2 This is why you should use Django-Watson
+
+http://blog.lotech.org/postgres-full-text-search-with-django.html Postgres Full-Text Search With Django
+
+
+
+КЕШ
+https://docs.djangoproject.com/en/2.1/topics/cache/
+https://hashedin.com/blog/caching-for-your-django-application-using-django-redis/
+https://code.tutsplus.com/ru/tutorials/how-to-cache-using-redis-in-django-applications--cms-30178
+http://www.ilian.io/caching-websites-with-django-and-memcached/
+
+
+Редирект oldUrls
+https://docs.djangoproject.com/en/2.1/ref/contrib/redirects/
+https://simpleisbetterthancomplex.com/tips/2017/08/11/django-tip-21-redirects-app.html!!!
+
+https://books.google.com.ua/books?id=cuh1DwAAQBAJ&pg=PA74&lpg=PA74&dq=meta-tags+mixin+django&source=bl&ots=uf1MdjuMa_&sig=ACfU3U0GtHWcVyBwHJfq5-3tRcrCAMQdgg&hl=ru&sa=X&ved=2ahUKEwiLzu_up7HgAhWmp4sKHfg0DGMQ6AEwCHoECAAQAQ#v=onepage&q=meta-tags%20mixin%20django&f=false
+
+https://micropyramid.com/blog/handling-custom-error-pages-in-django/ HANDLING CUSTOM ERROR PAGES(404, 500) IN DJANGO

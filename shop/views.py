@@ -8,7 +8,9 @@ from django.db.models import Q
 from django.contrib.postgres.search import SearchVector
 from django.contrib.postgres.search import TrigramSimilarity
 from django.http import Http404
-
+from watson import search as watson
+# from search.documents import ProductDocument
+# from elasticsearch_dsl import Search, Q
 
 def home(request):
 	product_stok = ProductStock.objects.all()
@@ -56,7 +58,7 @@ def service_detail(request, slug):
 def product_list(request):
 	search = request.GET.get('search', '')
 	if search:
-		product_list_all = Product.objects.annotate(search=SearchVector('vendor_code', 'name', 'description'),).filter(search=search)
+		product_list_all = watson.filter(Product, search, ranking=True)
 	else:
 		product_list_all = Product.objects.all().order_by('-updated')
 	products_filter = ProductFilter(request.GET, queryset=product_list_all)
@@ -74,6 +76,19 @@ def product_list(request):
 	cart_product_form = CartAddProductForm()
 	return render(request, 'shop/list_product.html', {'paginator':paginator, 'filter': products_filter, 'products': products, 'cart_product_form': cart_product_form})
 
+# product_list_all = Product.objects.annotate(search=SearchVector('vendor_code', 'name', 'description'),).filter(search=search)
+
+	# search = request.GET.get('search', '')
+	# if search:
+	# 	products = ProductDocument.search().query("match", name=search)
+	# else:
+	# 	products = Product.objects.all()
+
+	# search = request.GET.get('search', '')
+	# if search:
+	# 	products = ProductDocument.search().query("match", name=search)
+	# else:
+	# 	products = ''
 # def search(request):
 # 	products = Product.objects.all()
 # 	products_filter = ProductFilter(request.GET, queryset=products)
