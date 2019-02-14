@@ -74,9 +74,9 @@ MIDDLEWARE = [
     # django-debug-toolbar
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     # CACHES
-    # 'django.middleware.cache.UpdateCacheMiddleware',
-    # 'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.cache.FetchFromCacheMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
     # The Django Redirects App
     'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
 ]

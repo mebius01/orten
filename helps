@@ -266,3 +266,18 @@ https://simpleisbetterthancomplex.com/tips/2017/08/11/django-tip-21-redirects-ap
 https://books.google.com.ua/books?id=cuh1DwAAQBAJ&pg=PA74&lpg=PA74&dq=meta-tags+mixin+django&source=bl&ots=uf1MdjuMa_&sig=ACfU3U0GtHWcVyBwHJfq5-3tRcrCAMQdgg&hl=ru&sa=X&ved=2ahUKEwiLzu_up7HgAhWmp4sKHfg0DGMQ6AEwCHoECAAQAQ#v=onepage&q=meta-tags%20mixin%20django&f=false
 
 https://micropyramid.com/blog/handling-custom-error-pages-in-django/ HANDLING CUSTOM ERROR PAGES(404, 500) IN DJANGO
+
+DEPLOI
+https://habr.com/ru/post/226419/ Django на production. uWSGI + nginx. Подробное руководство
+https://www.8host.com/blog/ustanovka-i-nastrojka-django-s-postgres-nginx-i-gunicorn/ Установка и настройка Django с Postgres, Nginx и Gunicorn
+https://dzone.com/articles/a-performance-analysis-of-python-wsgi-servers-part A Performance Analysis of Python WSGI Servers: Part 2
+https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-centos-7 How To Set Up Django with Postgres, Nginx, and Gunicorn on CentOS 7
+https://djbook.ru/forum/topic/2416/  Django + Python3 + Nginx + Gunicorn + DO
+
+Security
+https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/web_application_security
+https://docs.djangoproject.com/en/2.1/topics/security/
+https://hackernoon.com/5-ways-to-make-django-admin-safer-eb7753698ac8
+http://www.marinamele.com/2014/09/security-on-django-app-https-everywhere.html
+https://hackernoon.com/securing-your-linux-web-server-2be683c223eb Securing your Linux web server
+https://dzone.com/articles/protect-your-django-web-application-from-security-1
