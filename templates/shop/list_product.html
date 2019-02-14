@@ -36,6 +36,11 @@
                       {% bootstrap_field filter.form.vendor show_label=False%}
                     <!-- Typ_Product filter -->
                       {% bootstrap_field filter.form.type_product placeholder="Type Product" show_label=False%}
+                      
+                      {% bootstrap_field filter.form.format_fild placeholder="Format" show_label=False%}
+                      <hr>
+                      {{ filter.form.color_fild }}
+
                       <!-- Search for PN -->
                       {% comment %}
                            {% bootstrap_field filter.form.vendor_code placeholder="Поиск по Артикль" show_label=False%}

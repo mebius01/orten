@@ -10,16 +10,6 @@ class CategoryAdmin(MPTTModelAdmin):
 	prepopulated_fields = {'slug': ('name',)}
 	mptt_level_indent = 30
 
-class ServicesAdmin(admin.ModelAdmin):
-	list_display = ['name', 'slug', 'price']
-	list_filter = ['name', 'price']
-	prepopulated_fields = {'slug': ('name',)}
-
-class ProductStockAdmin(admin.ModelAdmin):
-	list_display = ['id', 'stock_start', 'stock_end', 'product', 'slug', 'available', 'description',]
-	list_filter = ['stock_start', 'stock_end', 'product',]
-	prepopulated_fields = {'slug': ('product',)}
-
 class ProductResource(resources.ModelResource):
 	class Meta:
 		model = Product
@@ -33,6 +23,15 @@ class ProductAdmin(ImportExportModelAdmin):
 	prepopulated_fields = {'slug': ('name','vendor_code')}
 	resource_class = ProductResource
 
+class ServicesAdmin(admin.ModelAdmin):
+	list_display = ['name', 'slug', 'price']
+	list_filter = ['name', 'price']
+	prepopulated_fields = {'slug': ('name',)}
+
+class ProductStockAdmin(admin.ModelAdmin):
+	list_display = ['id', 'stock_start', 'stock_end', 'product', 'slug', 'available', 'description',]
+	list_filter = ['stock_start', 'stock_end', 'product',]
+	prepopulated_fields = {'slug': ('product',)}
 
 admin.site.register(Category, CategoryAdmin,)
 admin.site.register(Product, ProductAdmin,)

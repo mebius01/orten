@@ -33,6 +33,11 @@ SITE_ID = 1
 # Application definition
 
 INSTALLED_APPS = [
+    # django-admin-tools
+    'admin_tools' ,
+    'admin_tools.theming' ,
+    'admin_tools.menu' ,
+    'admin_tools.dashboard' ,
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -51,6 +56,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'django_redis',
     'bootstrap4',
+    'ckeditor',
     'watson',
     'shop',
     'cart',
@@ -68,9 +74,9 @@ MIDDLEWARE = [
     # django-debug-toolbar
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     # CACHES
-    # 'django.middleware.cache.UpdateCacheMiddleware',
-    # 'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.cache.FetchFromCacheMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
     # The Django Redirects App
     'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
 ]
@@ -83,7 +89,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [TEMPLATE_DIR],
-        'APP_DIRS': True,
+        # 'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -92,6 +98,11 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'context_processors.cart.cart',
                 'context_processors.category.category',
+            ],
+            'loaders': [
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
+                'admin_tools.template_loaders.Loader',
             ],
         },
     },
@@ -217,6 +228,15 @@ DEBUG_TOOLBAR_PANELS = [
 # Activate Django-Heroku.
 django_heroku.settings(locals())
 
+# CKEDITOR_CONFIGS = {
+#     'default': {
+#         'toolbar': 'full',
+#         'extraPlugins': ','.join(
+#             [
+#                 'codesnippet',
+#             ]),
+#     },
+# }
 
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 

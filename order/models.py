@@ -1,7 +1,4 @@
 from django.db import models
-
-# Create your models here.
-from django.db import models
 from shop.models import Product
 
 PAY_CHOICES = (
@@ -22,6 +19,7 @@ class Order(models.Model):
 	first_name = models.CharField(verbose_name='Имя', max_length=50)
 	sur_name = models.CharField(verbose_name='Отчесво', max_length=50)
 	city = models.CharField(verbose_name='Город', max_length=100)
+	department_np = models.CharField(verbose_name='НП №', max_length=300)
 
 	mobile_phone = models.CharField(max_length=15, verbose_name='Телефон')
 	email = models.EmailField(verbose_name='Email')
