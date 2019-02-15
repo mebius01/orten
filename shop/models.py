@@ -5,6 +5,7 @@ import django_filters
 from mptt.models import MPTTModel, TreeForeignKey
 from taggit.managers import TaggableManager
 from ckeditor.fields import RichTextField
+from meta.models import ModelMeta
 
 class Category(MPTTModel):
 	name = models.CharField(max_length=200, unique=True)
@@ -51,7 +52,7 @@ COLOR_CHOICES = (
 	('color', 'Color'),
 	)
 
-class Product(models.Model):
+class Product(ModelMeta, models.Model):
 	category = models.ForeignKey(Category,related_name='product', on_delete=models.CASCADE, help_text='Каталог товара (расходные материалы, компьютеры и комплетующие и т д)') #коталог продукта связь m2m
 	name = models.CharField(max_length=400, db_index=True, help_text='Название товара') #имя продукта
 	slug = models.SlugField(max_length=400, help_text='')
@@ -76,6 +77,8 @@ class Product(models.Model):
 	available = models.BooleanField(default=True, help_text='Доступен ли к заказу') # булево значение, указывающее, доступен ли продукт или нет
 	created = models.DateTimeField(auto_now_add=True, help_text='дата создания') # дата создания
 	updated = models.DateTimeField(auto_now=True, help_text='дата обновления') #дата обновления
+
+	_metadata = {'title': 'name', 'description': 'description', 'keywords': 'keywords',}
 
 	class Meta:
 		ordering = ('name',)
