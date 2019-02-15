@@ -18,6 +18,13 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import RedirectView
+from django.contrib.sitemaps.views import sitemap
+from .sitemaps import ProductSitemap, CategorySitemap, ServicesSitemap
+
+sitemaps = {'product': ProductSitemap, 'category': CategorySitemap, 'services': ServicesSitemap}
+
+
+
 
 if settings.DEBUG:
     import debug_toolbar
@@ -25,6 +32,8 @@ urlpatterns = [
     path('__debug__/', include(debug_toolbar.urls)),
     path('admin_tools/', include('admin_tools.urls')),
     path('admin/', admin.site.urls),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
+    name='django.contrib.sitemaps.views.sitemap'),
     # path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico'), name='favicon'),
     path('', include('shop.urls')),
     path('cart/', include('cart.urls')),

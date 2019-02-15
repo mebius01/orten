@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     # The Django Redirects App
     'django.contrib.sites',
+    'django.contrib.sitemaps',
     'django.contrib.redirects',
     'django_filters',
     'taggit',
