@@ -1,0 +1,12 @@
+ File "/home/iv/project/virtshop/lib/python3.7/site-packages/celery/backends/redis.py", line 22
+    from . import async, base
+                      ^
+SyntaxError: invalid syntax
+
+------------------------
+
+redis.exceptions.ConnectionError: Error while reading from socket: ('Connection closed by server.',)
+
+-----------------------
+
+MultipleObjectsReturned 

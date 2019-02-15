@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1',]
 SITE_ID = 1
+APPEND_SLASH = True
 
 
 # Application definition
@@ -75,9 +76,9 @@ MIDDLEWARE = [
     # django-debug-toolbar
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     # CACHES
-    'django.middleware.cache.UpdateCacheMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware',
+    # 'django.middleware.cache.UpdateCacheMiddleware',
+    # 'django.middleware.common.CommonMiddleware',
+    # 'django.middleware.cache.FetchFromCacheMiddleware',
     # The Django Redirects App
     'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
 ]
@@ -205,7 +206,7 @@ CACHES = {
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         },
-        'TIMEOUT': None,
+        'TIMEOUT': 60*10,
     }
 }
 

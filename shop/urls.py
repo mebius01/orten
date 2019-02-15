@@ -27,10 +27,10 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('delivery_payment/', views.delivery_payment, name='delivery_payment'),
     path('shop/product/', views.product_list, name ='product_list'),
-    path('shop/category/', views.category, name ='category'),
+    path('category/', views.category, name ='category'),
     path('service/<slug>', views.service_detail, name='service_detail'),
     path('shop/<slug>/', views.product_detail, name='product_detail'),
-    re_path(r'^shop/category/(?P<hierarchy>.+)/$', views.list_category, name='list_category'),
+    re_path(r'^(?P<hierarchy>.+)/$', views.list_category, name='list_category'),
     ]
 
  #    path('tag/<tag_id>/', views.product_list, name='list_product_by_tag'),

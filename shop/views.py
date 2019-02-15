@@ -6,6 +6,9 @@ from .filters import ProductFilter # ОСОБОЕ ВНИМЕНИЕ!!! При pyt
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from watson import search as watson
 
+def robots(request):
+	return render_to_response('robots.txt', mimetype="text/plain")
+
 def delivery_payment(request):
 	return render(request, 'delivery_payment.html')
 
@@ -25,7 +28,7 @@ def list_category(request, hierarchy=None):
 	# Раззделяет строку УРЛа на список [категория, подкатегория, подкатегорияПодкатегории, итд]
 	category_slug = hierarchy.split('/')
 	parent = None
-
+	category_all = Category.objects.all() # передать в контестный процессор
 	for slug in category_slug[:-1]:
 		parent = category_all.get(parent=parent, slug = slug)
 	instance = Category.objects.get(parent=parent, slug=category_slug[-1])

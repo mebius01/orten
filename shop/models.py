@@ -85,7 +85,7 @@ class Product(models.Model):
 	def __str__(self):
 		return self.name
 	def get_absolute_url(self):
-		return (self.category.get_absolute_url()+'/'+self.slug)
+		return ('shop/'+self.slug)
 
 class Services(models.Model):
 	category = models.ForeignKey(Category,related_name='services', on_delete=models.CASCADE) #коталог продукта связь
@@ -112,7 +112,7 @@ class Services(models.Model):
 		return self.name
 
 	def get_absolute_url(self):
-		return (self.category.get_absolute_url()+'/'+self.slug)
+		return ('service/'+self.slug)
 
 
 
