@@ -2,10 +2,6 @@
 {% load bootstrap4 %}
 {% load static %}
 
-        {% block keywords %}
-            <meta name="keywords" content="{{ instance.name }}" />
-        {% endblock %}
-
 {% block breadcrumbs %}
     {{ block.super }}
     {% for i in instance.category.get_anc %}

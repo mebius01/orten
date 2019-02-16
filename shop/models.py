@@ -24,6 +24,8 @@ class Category(MPTTModel):
 		verbose_name_plural = 'Категории'
 
 	def get_absolute_url(self):
+		# a='/'.join([x['slug'] for x in self.get_ancestors(include_self=True).values()])
+		# return 'category/'+a
 		return '/'.join([x['slug'] for x in self.get_ancestors(include_self=True).values()])
 	def get_anc(self):
 		return self.get_ancestors(include_self=True)
@@ -77,8 +79,6 @@ class Product(ModelMeta, models.Model):
 	available = models.BooleanField(default=True, help_text='Доступен ли к заказу') # булево значение, указывающее, доступен ли продукт или нет
 	created = models.DateTimeField(auto_now_add=True, help_text='дата создания') # дата создания
 	updated = models.DateTimeField(auto_now=True, help_text='дата обновления') #дата обновления
-
-	_metadata = {'title': 'name', 'description': 'description', 'keywords': 'keywords',}
 
 	class Meta:
 		ordering = ('name',)

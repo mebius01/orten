@@ -59,7 +59,7 @@ INSTALLED_APPS = [
     'django_redis',
     'bootstrap4',
     'ckeditor',
-    'meta',
+    # 'meta',
     'watson',
     'shop',
     'cart',

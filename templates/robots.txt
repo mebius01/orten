@@ -3,20 +3,18 @@ Disallow: /*cart*
 Disallow: /*order*
 Disallow: /order*
 Disallow: /cart*
-https://orten.herokuapp.com/sitemap.xml
 
 User-agent: Googlebot
 Disallow: /*cart*
 Disallow: /*order*
 Disallow: /order*
 Disallow: /cart*
-https://orten.herokuapp.com/sitemap.xml
 
 User-Agent: Yandex
 Disallow: /*cart*
 Disallow: /*order*
 Disallow: /order*
 Disallow: /cart*
-https://orten.herokuapp.com/sitemap.xml
 
-Host: https://orten.herokuapp.com/sitemap.xml
+Host: https://orten.herokuapp.com/
+Sitemap: https://orten.herokuapp.com/sitemap.xml

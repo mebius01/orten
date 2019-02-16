@@ -30,7 +30,7 @@ urlpatterns = [
     path('category/', views.category, name ='category'),
     path('service/<slug>', views.service_detail, name='service_detail'),
     path('shop/<slug>/', views.product_detail, name='product_detail'),
-    re_path(r'^(?P<hierarchy>.+)/$', views.list_category, name='list_category'),
+    re_path(r'^category/(?P<hierarchy>.+)/$', views.list_category, name='list_category'),
     ]
 
  #    path('tag/<tag_id>/', views.product_list, name='list_product_by_tag'),
