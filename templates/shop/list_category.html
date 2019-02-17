@@ -42,7 +42,7 @@
                                 {% include "include/include_product_list.html" %}
                                 {% endcomment %}
                             {% else %}
-                                {% for i in instance.children.all %}
+                                {% for i in instance.children.all|dictsort:"id" %}
                                     <div class="col-sm-4 p-2">
                                         <div class="card h-100">
                                             <img class="card-img-top" src="{% if i.image %}{{ i.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{i.name}}" width="230" height="230">
