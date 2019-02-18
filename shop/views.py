@@ -16,6 +16,7 @@ def delivery_payment(request):
 def contact(request):
 	return render(request, 'contact.html')
 
+# @cache_page(60 * 15)
 def category(request):
 	return render(request, 'shop/category.html')
 
@@ -25,6 +26,7 @@ def home(request):
 	cart_product_form = CartAddProductForm()
 	return render(request, 'shop/home.html', {'cart_product_form':cart_product_form, 'products':products, 'product_stok':product_stok})
 
+# @cache_page(60 * 15)
 def list_category(request, hierarchy=None):
 	# Раззделяет строку УРЛа на список [категория, подкатегория, подкатегорияПодкатегории, итд]
 	category_slug = hierarchy.split('/')

@@ -8,10 +8,10 @@ from ckeditor.fields import RichTextField
 from meta.models import ModelMeta
 
 class Category(MPTTModel):
-	name = models.CharField(max_length=200, unique=True)
+	name = models.CharField(max_length=200, db_index=True, unique=True)
 	slug = models.SlugField(max_length=200, db_index=True, unique=True)
 	image = models.ImageField(upload_to='category/%Y/%m/%d', blank=True)
-	description = models.TextField(blank=True) #описание Категории
+	description = models.TextField(blank=True)
 	parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
 
 	class MPTTMeta:
@@ -24,8 +24,6 @@ class Category(MPTTModel):
 		verbose_name_plural = 'Категории'
 
 	def get_absolute_url(self):
-		# a='/'.join([x['slug'] for x in self.get_ancestors(include_self=True).values()])
-		# return 'category/'+a
 		return '/'.join([x['slug'] for x in self.get_ancestors(include_self=True).values()])
 
 	def get_anc(self):
