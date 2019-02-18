@@ -22,7 +22,7 @@ def category(request):
 
 def home(request):
 	product_stok = ProductStock.objects.all()
-	products = Product.objects.all().order_by()[:9]
+	products = Product.objects.all().order_by('-updated')[:12]
 	cart_product_form = CartAddProductForm()
 	return render(request, 'shop/home.html', {'cart_product_form':cart_product_form, 'products':products, 'product_stok':product_stok})
 

@@ -25,7 +25,11 @@
                     {% bootstrap_field cart_product_form.quantity show_label=False %}
                 </div>
                 <div class="col">
-                    <button type="submit" class="btn btn-outline-primary"><i class="fas fa-shopping-basket"></i></i> {{item.price}}</button>
+                    {% if item.action %}
+                    <button type="submit" class="btn btn-outline-danger"><i class="fas fa-shopping-basket"></i></i>{{item.price}}</button>
+                    {% else %}
+                    <button type="submit" class="btn btn-outline-primary"><i class="fas fa-shopping-basket"></i></i>{{item.price}}</button>
+                    {% endif %}
                 </div>
                     </form>
             </div>

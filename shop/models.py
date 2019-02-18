@@ -53,6 +53,36 @@ COLOR_CHOICES = (
 	('color', 'Color'),
 	)
 
+INTEREST_CHOICES = (
+	(Decimal("0.03"), '3%'),
+	(Decimal("0.04"), '4%'),
+	(Decimal("0.05"), '5%'),
+	(Decimal("0.06"), '6%'),
+	(Decimal("0.07"), '7%'),
+	(Decimal("0.08"), '8%'),
+	(Decimal("0.09"), '9%'),
+	(Decimal("0.10"), '10%'),
+	(Decimal("0.11"), '11%'),
+	(Decimal("0.12"), '12%'),
+	(Decimal("0.13"), '13%'),
+	(Decimal("0.14"), '14%'),
+	(Decimal("0.15"), '15%'),
+	(Decimal("0.16"), '16%'),
+	(Decimal("0.17"), '17%'),
+	(Decimal("0.18"), '18%'),
+	(Decimal("0.19"), '19%'),
+	(Decimal("0.20"), '20%'),
+	(Decimal("0.21"), '21%'),
+	(Decimal("0.22"), '22%'),
+	(Decimal("0.23"), '23%'),
+	(Decimal("0.24"), '24%'),
+	(Decimal("0.25"), '25%'),
+	(Decimal("0.26"), '26%'),
+	(Decimal("0.27"), '27%'),
+	(Decimal("0.28"), '28%'),
+	(Decimal("0.30"), '30%'),
+	)
+
 class Product(ModelMeta, models.Model):
 	category = models.ForeignKey(Category,related_name='product', on_delete=models.CASCADE, help_text='Каталог товара (расходные материалы, компьютеры и комплетующие и т д)') #коталог продукта связь m2m
 	name = models.CharField(max_length=400, db_index=True, help_text='Название товара') #имя продукта
@@ -70,12 +100,12 @@ class Product(ModelMeta, models.Model):
 	keywords =  models.TextField(blank=True, help_text='Ключивые слова')#краткое описание продукта
 	description = models.TextField(blank=True, help_text='Описание товара') #описание продукта
 	tags = TaggableManager(through=None, blank=True, help_text = 'Список тегов, разделенных запятыми')
-	
 	# test_fild = models.CharField(max_length=200, blank=True, help_text='Тстовое поле на ошибку') # django.db.utils.ProgrammingError: ОШИБКА:  столбец shop_product.test_fild не существует
-
 	price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, help_text='Цена входящая') #цена Закупки
 	stock = models.PositiveIntegerField(blank=True, help_text='Остатоки') # Остатки
 	available = models.BooleanField(default=True, help_text='Доступен ли к заказу') # булево значение, указывающее, доступен ли продукт или нет
+	action = models.BooleanField(default=False, help_text='Акции')
+	discount =  models.DecimalField(max_digits=10, decimal_places=2, blank=True, help_text='Процент скидка') #Процент)
 	created = models.DateTimeField(auto_now_add=True, help_text='дата создания') # дата создания
 	updated = models.DateTimeField(auto_now=True, help_text='дата обновления') #дата обновления
 
@@ -116,30 +146,22 @@ class Services(models.Model):
 	def get_absolute_url(self):
 		return ('service/'+self.slug)
 
-
-
-INTEREST_CHOICES = (
-	(Decimal("0.07"), '7%'),
-	(Decimal("0.15"), '15%'),
-	(Decimal("0.20"), '20%'),
-	(Decimal("0.25"), '25%'),
-	(Decimal("0.30"), '30%'),
-	)
+# l=[]
+# for i in Product.objects.filter(action=True):
+# 	l.append((i.action, i.action))
 
 class ProductStock(models.Model):
 	product = models.ForeignKey(Product, on_delete=models.CASCADE)
-	discount_percent =  models.DecimalField(max_digits=5, decimal_places=2, blank=True, choices=INTEREST_CHOICES, null=True, help_text='Процент скидка') #Процент)
-	available = models.BooleanField(default=True)
 	slug = models.SlugField(max_length=400, db_index=True)	
 	description = models.TextField(blank=True) #описание акции
-	stock_start = models.DateTimeField(auto_now=False, auto_now_add=False,) # дата создания
-	stock_end = models.DateTimeField(auto_now=False, auto_now_add=False,) # дата окончания
+	stock_start = models.DateTimeField(auto_now=False, blank=True, auto_now_add=False,) # дата создания
+	stock_end = models.DateTimeField(auto_now=False, blank=True, auto_now_add=False,) # дата окончания
 
-	@property
-	def discount(self):
-		product_price_uah=float(self.product.price)
-		discount_percent=float(self.discount_percent)
-		return product_price_uah - (product_price_uah*discount_percent)
+	# @property
+	# def discount(self):
+	# 	product_price_uah=float(self.product.price)
+	# 	discount_percent=float(self.discount_percent)
+	# 	return product_price_uah - (product_price_uah*discount_percent)
 
 	class Meta:
 		ordering = ('product',)

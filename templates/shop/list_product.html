@@ -31,7 +31,9 @@
                         {% bootstrap_field filter.form.price__lt placeholder="10000" show_label=False %}
                     </div>
                     <div class="form-group col-md-12">
-                      {% bootstrap_field filter.form.category show_label=False%}
+                      {% comment %}
+                        {% bootstrap_field filter.form.category show_label=False%}
+                      {% endcomment %}
                     <!-- Vendor filter -->
                       {% bootstrap_field filter.form.vendor show_label=False%}
                     <!-- Typ_Product filter -->

@@ -28,7 +28,17 @@
         </td>
         <td>{{ product.vendor_code }}</td>
         <!--<td><i class="fas fa-check"></i></td>-->
-        <td>{{ product.price }}</td>
+        <td>
+          {% if product.action %}
+          <span style="text-decoration: line-through">{{ product.price }}</span>
+          <br>
+          <span style="color: red">{{ product.discount }}</span>
+          {% else %}
+          {{ product.price }}
+          {% endif %}
+
+
+        </td>
         <td>
 
             <form action="{% url "cart:cart_add" product.id %}" method="post">

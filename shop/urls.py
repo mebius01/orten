@@ -23,7 +23,7 @@ from django.views.decorators.cache import cache_page
 app_name = 'shop'
 
 urlpatterns = [
-    path('', cache_page(60 * 15)(views.home), name='home'),
+    path('', views.home, name='home'),
     path('contact/', views.contact, name='contact'),
     path('delivery_payment/', views.delivery_payment, name='delivery_payment'),
     path('shop/product/', views.product_list, name ='product_list'),

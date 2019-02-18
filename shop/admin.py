@@ -13,12 +13,12 @@ class CategoryAdmin(MPTTModelAdmin):
 class ProductResource(resources.ModelResource):
 	class Meta:
 		model = Product
-		fields = ('id','category','name', 'vendor', 'vendor_code', 'type_product', 'slug','price','stock','available')
+		fields = ('id', 'category','name', 'vendor', 'vendor_code', 'type_product', 'slug','price','stock','available')
 
 class ProductAdmin(ImportExportModelAdmin):
 	search_fields = ['name',]
-	list_display = ['name', 'id', 'slug', 'price', 'stock', 'available', 'updated']
-	list_filter = ['available', 'created', 'updated']
+	list_display = ['name', 'id', 'action', 'slug', 'price', 'stock', 'available', 'updated']
+	list_filter = ['available', 'action', 'created', 'updated']
 	list_editable = ['price', 'stock', 'available']
 	prepopulated_fields = {'slug': ('name','vendor_code')}
 	resource_class = ProductResource
@@ -29,7 +29,7 @@ class ServicesAdmin(admin.ModelAdmin):
 	prepopulated_fields = {'slug': ('name',)}
 
 class ProductStockAdmin(admin.ModelAdmin):
-	list_display = ['id', 'stock_start', 'stock_end', 'product', 'slug', 'available', 'description',]
+	list_display = ['id', 'stock_start', 'stock_end', 'product', 'slug', 'description',]
 	list_filter = ['stock_start', 'stock_end', 'product',]
 	prepopulated_fields = {'slug': ('product',)}
 
