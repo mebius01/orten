@@ -16,18 +16,15 @@ def delivery_payment(request):
 def contact(request):
 	return render(request, 'contact.html')
 
-@cache_page(60 * 15)
 def category(request):
 	return render(request, 'shop/category.html')
 
-@cache_page(60 * 15)
 def home(request):
 	product_stok = ProductStock.objects.all()
 	products = Product.objects.all().order_by()[:9]
 	cart_product_form = CartAddProductForm()
 	return render(request, 'shop/home.html', {'cart_product_form':cart_product_form, 'products':products, 'product_stok':product_stok})
 
-@cache_page(60 * 15)
 def list_category(request, hierarchy=None):
 	# Раззделяет строку УРЛа на список [категория, подкатегория, подкатегорияПодкатегории, итд]
 	category_slug = hierarchy.split('/')
@@ -40,7 +37,6 @@ def list_category(request, hierarchy=None):
 	services = Services.objects.filter(category=instance)
 	return render(request, 'shop/list_category.html', {'instance':instance, 'category':category, 'services':services, 'products': products})
 
-@cache_page(60 * 15)
 def product_list(request):
 	search = request.GET.get('search', '')
 	if search:
