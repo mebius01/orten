@@ -47,6 +47,37 @@ print(vendor_code_list)
 	# 	product_file_long.writelines(str(counter)+',"CATEGORY_ID",'+i[1]+','+i[2]+','+i[2]+','+slugify(i[0])+','+str(round(price, 1))+',1'+',1'+'\n')
 	# 	counter+=1
 
+# Все таки Python динамичен и выразителен. Этого у него не отнять.
+
+# Там некоторые логические и арифметические операторы перегружены для множеств.
+
+# Вот Ваш однострочник:
+
+# result=list(set(Ans) & set(Word))
+# Это даст пересечение обоих списков:
+
+# ['red', 'white']
+# Если нужен список уникальных элементов в объединении двух списков:
+
+# ['red', 'white', 'green', 'blue']
+
+# result = list(set(Ans + Word))
+# Симметричная разность:
+
+# ['green','blue']
+
+# result=list(set(Ans) ^ set(Word))
+# Обычная разность(Множество из Ans не входящее в Word):
+
+# ['green','blue']
+
+# result=list(set(Ans) - set(Word))
+# Вариант, сохраняющий порядок с меньшим количеством конверсий типов:
+
+# sbuf = set(Word)
+# result = [x for x in Ans if x in sbuf)]
+
+
 """
 id,category,name,vendor_code,vendor,type_product,slug,price,stock,available
 
