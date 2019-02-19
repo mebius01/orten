@@ -21,7 +21,7 @@ from django.views.generic import TemplateView
 from django.views.generic import RedirectView
 from django.contrib.sitemaps.views import sitemap
 from .sitemaps import ProductSitemap, CategorySitemap, ServicesSitemap
-from django.conf.urls import handler404, handler500
+# from django.conf.urls import handler404, handler500
 from shop.views import handler404, handler500
 
 
@@ -40,6 +40,6 @@ urlpatterns = [
     path('', include('shop.urls')),
     path('cart/', include('cart.urls')),
     path('order/', include('order.urls')),
-    ]
-# handler404('shop.views.handler404')
-# handler500('shop.views.handler500')
+    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+handler404='shop.views.handler404'
+handler500='shop.views.handler500'

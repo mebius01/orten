@@ -2,19 +2,21 @@
 {% load static %}
 {% load bootstrap4 %}
 {% load mptt_tags %}
+{% block breadcrumbs %}
+    {{ block.super }}<li><a href="">ERROR 404</a></li>
+{% endblock %}
 {% block content %}
 <title>Orten - ERROR 404</title>
+<hr>
+<div class="d-flex justify-content-center">
+<div class="overlay"></div>
+<div class="terminal">
+  <h1>Error <span class="errorcode">404</span></h1>
+  <p class="output">Возможно, страница, которую вы ищете, не сущесвует, изменилось ее имя или временно недоступна из-за работ на сервере.</p>
+  <p class="output">Можно венуться <a href="{% url 'shop:home' %}">На главную</a></p>
+  <p class="output">Возвращайтесь к нам :)</p>
+</div>
+</div>
+<hr>
 
-
-
-<html>
-  <head>
-  </head>
-  <body>
-    <h1> This is a custom 404 error page which will 
-         be shown instead of default 404 error page of Django everytime
-         incorrect urls is entered in browser.
-    </h1>
-  </body>
-</html>
 {% endblock %}

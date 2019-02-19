@@ -1,8 +1,9 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 from slugify import slugify
 import datetime 
 
+vendor_code_list=[]
 price_file = open('esko.csv', 'r')
 product_file=open('product_esko.csv', 'w')
 product_file_long=open('product_file_long.csv', 'w')
@@ -14,19 +15,27 @@ for i in data:
 	category="CATEGORY_ID"
 	name=i[1]
 	vendor_code=i[0]
+	vendor_code_list.append(i[0])
 	vendor=i[2]
 	type_product=i[3]
-	slug=slugify(i[1]+'-'+i[0])
+	slug=slugify(i[1],i[0])
+
+	# расчет стоимости 
 	price=str(i[5]); price=((float(price.replace(",","."))*0.30)+float(price.replace(",",".")))*28; price=str(price)
-	stock="1"
-	available="1"
+
+	# если в прайсе есть сток до наличе == 1
+	if i[9] == 'Нет':
+		available, stock = "0", "0"
+	elif i[9] == "Да":
+		available, stock = "1", "1"
+
 	if len(i[1]) <= 390:
 		product_file.writelines(id_product+','+category+','+name+','+vendor_code+','+vendor+','+type_product+','+slug+','+price+','+stock+','+available+'\n')
 		counter+=1
 	elif len(i[1]) > 390:
 		product_file_long.writelines(id_product+','+category+','+name+','+vendor_code+','+vendor+','+type_product+','+slug+','+price+','+stock+','+available+'\n')
 		counter+=1
-
+print(vendor_code_list)
 
 
 	# a=str(i[5])
@@ -70,7 +79,7 @@ updated
 6 Тенденция;
 7 Рекоменд. цена;
 8 "Мин. партия";
-9 Наличие;
+9 Наличие; Да Нет
 10 Адрес изображения;
 11 GoodsNameID
 

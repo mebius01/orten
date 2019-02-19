@@ -18,7 +18,7 @@ class ProductResource(resources.ModelResource):
 class ProductAdmin(ImportExportModelAdmin):
 	search_fields = ['name',]
 	list_display = ['name', 'id', 'action', 'slug', 'price', 'stock', 'available', 'updated']
-	list_filter = ['available', 'action', 'created', 'updated']
+	list_filter = ['available', 'id', 'action', 'created', 'updated']
 	list_editable = ['price', 'stock', 'available']
 	prepopulated_fields = {'slug': ('name','vendor_code')}
 	resource_class = ProductResource
