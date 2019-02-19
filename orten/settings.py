@@ -25,6 +25,7 @@ SECRET_KEY = 'c&mlje%w2+@m7cij8@t%9zny4%5y-enw(uxs+u*nulp)2s@*8$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1',]
 SITE_ID = 1
@@ -49,8 +50,8 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     # The Django Redirects App
     'django.contrib.sites',
-    'django.contrib.sitemaps',
     'django.contrib.redirects',
+    'django.contrib.sitemaps',
     'django_filters',
     'taggit',
     'mptt',
