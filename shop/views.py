@@ -21,6 +21,9 @@ def delivery_payment(request):
 def contact(request):
 	return render(request, 'contact.html')
 
+def about(request):
+	return render(request, 'about.html')
+
 # @cache_page(60 * 15)
 def category(request):
 	return render(request, 'shop/category.html')

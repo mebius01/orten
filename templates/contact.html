@@ -8,30 +8,24 @@
 {% endblock %}
 
 {% block content %}
-  <style>
-   .leftstr, .rightstr {
-    float: left; /* Обтекание справа */ 
-    width: 50%; /* Ширина текстового блока */ 
-   }
-   .rightstr {
-    text-align: right; /* Выравнивание по правому краю */ 
-   }
-  </style>
 <title>Контакты</title>
 
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-6">
+		<div class="col-md-6 col-lg-2 col-xl-6">
 			<p class="text-justify text-center text-uppercase h2">Контакты</p>
 			<hr>
-			<p class="text-justify text-center text-uppercase">продажи и сервис</p>
-			<hr>
-			<p class="leftstr text-uppercase"><i class="fa fa-home pr-3"></i>Наш Адрес:</p>
+			<!-- <p class="text-justify text-center text-uppercase">Продажи</p> -->
+			<p class="leftstr text-uppercase"><i class="fa fa-home pr-3"></i>Адрес:</p>
 			<p class="rightstr">г. Николаев пр. Мира, 5</p>
 			<div style="clear: left"></div>
 
-			<p class="leftstr text-uppercase"><i class="fas fa-phone pr-3"></i></i>Связаться с нами:</p>
+			<p class="leftstr text-uppercase"><i class="fas fa-phone pr-3"></i></i>продажи:</p>
 			<p class="rightstr">(0512) 56-65-39</p>
+			<div style="clear: left"></div>
+
+			<p class="leftstr text-uppercase"></p>
+			<p class="rightstr">(0512) 58-32-60</p>
 			<div style="clear: left"></div>
 
 			<p class="leftstr text-uppercase"></p>
@@ -42,10 +36,16 @@
 			<p class="rightstr">
 				<a class="cool-link text-muted" href="mailto:orten_office@ukr.net">orten_office@ukr.net</a>
 			</p>
-			
-			<p class="text-justify text-center text-uppercase">Наша Полиграфия</p>
+			<br>
+			<!--<p class="text-justify text-center text-uppercase">Сервис</p>-->
 			<hr>
-			<p class="leftstr text-uppercase"><i class="fas fa-phone pr-3"></i></i>Связаться с отделом полиграфия:</p>
+			<p class="leftstr text-uppercase"><i class="fas fa-phone pr-3"></i></i>Сервис:</p>
+			<p class="rightstr">(0512) 56-65-51</p>
+			<div style="clear: left"></div>
+
+			<!--<p class="text-justify text-center text-uppercase">Полиграфия</p>-->
+			<hr>
+			<p class="leftstr text-uppercase"><i class="fas fa-phone pr-3"></i></i>полиграфия:</p>
 			<p class="rightstr">(0512) 56-64-98</p>
 			<div style="clear: left"></div>
 
@@ -59,7 +59,7 @@
 			</p>
 			<p class="text-justify text-center text-uppercase">ТрудоГрафик</p>
 			<hr>
-			<p class="leftstr text-uppercase"><i class="fas fa-clock pr-2"></i>С понидельника по пятницу</p>
+			<p class="leftstr text-uppercase"><i class="fas fa-clock pr-2"></i>Понедельник - Пятница</p>
 			<p class="rightstr">9:00 - 18:00</p>
 			<div style="clear: left"></div>
 
@@ -68,31 +68,13 @@
 			<div style="clear: left"></div>
 
 			<div style="clear: left"></div>
-			<hr>
-			<p class="text-justify text-center text-uppercase h2">Почему именно мы вам нужны</p>
-			<hr>
-			<p class="h6">Не хочется хвастаться, но мы реально потрясные!</p>
-			<p class="h6">Удобная работа с бюджетными организациями!</p> 
-			<p class="h6">Отсрочка платежей!</p>
-			<p class="h6">Выполнения условий контракта даже в МИНУС себе((</p>
-			<p class="h6">Мы работаем для вас! Всегда!</p>
-			<p class="h6">Приемлемые и конкурентные цены, а в некоторых категориях ниже вы не найдете.</p>
-			<p class="h6">Для постоянных клиентов, удобная система скидок.</p>
-			<p class="h6"></p>
-			<p class="h6"></p>
-			<p class="h6"></p>
-
 		</div>
-		<div class="col-6">
+		<div class="col-md-6 col-lg-2 col-xl-6 ">
 			<p class="text-justify text-center text-uppercase h2">Где мы</p>
 			<hr>
-			<p>
-				<div style="overflow:hidden;width: 700px;height: 440px;"><iframe width="700" height="440" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5446.935101617827!2d32.040273!3d46.952503!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4784e49173525ad2!2z0J7RgNGC0Y3QvSwg0J7QntCe!5e0!3m2!1sru!2sua!4v1547893952458" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><br />
-				<iframe  frameborder="0" style="border:0" allowfullscreen></iframe>
-			</p>
-
-		</div>
-
+				<div class="map-responsive">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5446.935101617827!2d32.040273!3d46.952503!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4784e49173525ad2!2z0J7RgNGC0Y3QvSwg0J7QntCe!5e0!3m2!1sru!2sua!4v1547893952458" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+				</div>
 	</div>
 </div>
 <hr>
