@@ -15,7 +15,7 @@
 <div class="container-fluid">
     <div class="row">
 
-    <div class="col-sm-3">
+    <div class="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3">
       <div class="card">
        <div class="card-header text-bleck text-uppercase"><i class="fab fa-wpforms pr-3"></i>Заполнить Форму</div>
         <div class="card-body bg-light">
@@ -31,7 +31,7 @@
     </div>
  
 
-<div class="col-sm-9">
+<div class="col-12 col-sm-6 col-md-7 col-lg-8 col-xl-9">
     <div class="card bg-light">
      <div class="card-header text-bleck text-uppercase"><i class="fas fa-truck pr-3"></i>Ваш Заказ</div>
       <div class="card-body bg-light">
@@ -42,8 +42,9 @@
 {% endcomment %}
 
 
-
+<div class="row">
   <table class="table-responsive-sm">
+      <table class="table">
     <thead>
       <tr>
         <th scope="col">Фото</th>
@@ -58,17 +59,17 @@
     </thead>
 {% for item in cart %}
 {% with product=item.product %}
-
-    <tbody class="border">
+<tbody>
+      <div class="table-responsive-sm">
       <tr>
         <th scope="row">
-          <a class="thumbnail pull-left" href="{% url 'shop:product_detail' product.slug %}"> <img src="{% if product.image %}{{ product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" style="width: 72px; height: 72px;"></a>
+            <a class="item_img"><img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt="."></a>
         </th>
         <td>
            {{ product.vendor }}
         </td>
         <td>
-          <a href="{% url 'shop:product_detail' product.slug %}">{{ product.name }}
+          <a href="{% url 'shop:product_detail' product.slug %}">{{ product.name }}</a>
         </td>
         <td>
           {{ product.vendor_code }}
@@ -83,9 +84,11 @@
            {{ item.total_price }}
         </td>
         <td>
-          <a href="{% url "cart:cart_remove" product.id %}" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i><role="button" aria-pressed="true">
+          <a href="{% url "cart:cart_remove" product.id %}" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i><role="button" aria-pressed="true"></role="button"></a>
         </td>
-    </tbody>
+      </tr>
+    </div>
+</tbody>
     {% endwith %}
     {% endfor %}
 

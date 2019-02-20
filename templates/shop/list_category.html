@@ -14,7 +14,7 @@
     <div class="container-fluid">
         <div class="row">
             <!-- Блок Категорий -->
-            <div class="col-12 col-sm-3">
+            <div class="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3">
                 <div class="card bg-light">
                     <article class="card-group-item">
                         <header class="card-header text-bleck text-uppercase">
@@ -27,7 +27,7 @@
                 </div>
             </div>
              <!-- Блок СубКатегорий  -->
-            <div class="col-12 col-sm-9">
+            <div class="col-12 col-sm-6 col-md-7 col-lg-8 col-xl-9">
                 <div class="card bg-light">
                     <article class="card-group-item">
                         <header class="card-header text-bleck text-uppercase">
@@ -43,7 +43,7 @@
                                 {% endcomment %}
                             {% else %}
                                 {% for i in instance.children.all|dictsort:"id" %}
-                                    <div class="col-sm-4 p-2">
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 p-2">
                                         <div class="card h-100">
                                             <img class="card-img-top" src="{% if i.image %}{{ i.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{i.name}}" width="230" height="230">
                                             <div class="card-footer bg-transparent">
