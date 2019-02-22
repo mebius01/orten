@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 import django_heroku
+import redis
+
+r = redis.from_url(os.environ.get("REDIS_URL"))
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -209,15 +212,22 @@ CELERY_IMPORTS = ('shop.tasks',)
 CELERY_IMPORTS = ('order.tasks',)
 
 CACHES = {
-    'default':{
-        'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://127.0.0.1:6379/',
-        'OPTIONS': {
-            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-        },
-        'TIMEOUT': 60*10,
+    "default": {
+         "BACKEND": "redis_cache.RedisCache",
+         "LOCATION": os.environ.get('REDIS_URL'),
     }
 }
+
+# CACHES = {
+#     'default':{
+#         'BACKEND': 'django_redis.cache.RedisCache',
+#         'LOCATION': 'redis://127.0.0.1:6379/',
+#         'OPTIONS': {
+#             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+#         },
+#         'TIMEOUT': 60*10,
+#     }
+# }
 
 # django-debug-toolbar
 INTERNAL_IPS = ('127.0.0.1',)
