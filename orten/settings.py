@@ -116,21 +116,14 @@ WSGI_APPLICATION = 'orten.wsgi.application'
 
 
 # Database
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'orten_db',
-#         'USER' : 'iv',
-#         'PASSWORD' : '1234',
-#         'HOST' : '127.0.0.1',
-#         'PORT' : '5432',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'orten_db',
+        'USER' : 'iv',
+        'PASSWORD' : '1234',
+        'HOST' : '127.0.0.1',
+        'PORT' : '5432',
     }
 }
 
@@ -208,16 +201,16 @@ CELERY_RESULT_SERIALIZER = 'json'
 CELERY_IMPORTS = ('shop.tasks',)
 CELERY_IMPORTS = ('order.tasks',)
 
-# CACHES = {
-#     'default':{
-#         'BACKEND': 'django_redis.cache.RedisCache',
-#         'LOCATION': 'redis://127.0.0.1:6379/',
-#         'OPTIONS': {
-#             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-#         },
-#         'TIMEOUT': 60*10,
-#     }
-# }
+CACHES = {
+    'default':{
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        },
+        'TIMEOUT': 60*10,
+    }
+}
 
 # django-debug-toolbar
 INTERNAL_IPS = ('127.0.0.1',)
@@ -250,6 +243,13 @@ django_heroku.settings(locals())
 # }
 
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 
 # Static files (CSS, JavaScript, Images)

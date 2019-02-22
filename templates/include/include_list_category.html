@@ -1,4 +1,5 @@
-
+{% load cache %}
+{% cache 900 sidebar %}
 <div class="accordion" id="accordionCategory">
  {% for item in category_all.get_cached_trees %}
         {% if item.is_root_node %}
@@ -24,7 +25,7 @@
     {% endif %}
     {% endfor %}
 </div>
-
+{% endcache %}
 {% comment %}
     
 
