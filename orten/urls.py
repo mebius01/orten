@@ -38,6 +38,7 @@ urlpatterns = [
     path('robots.txt/', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
     # path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico'), name='favicon'),
     path('', include('shop.urls')),
+    # path('polygraphy/', include('django.contrib.flatpages.urls')),
     path('cart/', include('cart.urls')),
     path('order/', include('order.urls')),
     ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

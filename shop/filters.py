@@ -1,14 +1,16 @@
 import django_filters
 from django_filters.widgets import LinkWidget
-from shop.models import Category, Product
+from shop.models import Category, Product, Services
 
 class ProductFilter(django_filters.FilterSet):
 	price__gt = django_filters.NumberFilter(field_name='price', lookup_expr='gt', label='min')
 	price__lt = django_filters.NumberFilter(field_name='price', lookup_expr='lt', label='max')
 
-	l=[]
+	l=[]; s=[]; p=[]
 	for i in Product.objects.all():
 		l.append((i.vendor, i.vendor))
+	# for i in Services.objects.all():
+	# 	l.append((i.vendor, i.vendor))
 	vendor=django_filters.ChoiceFilter(choices=set(l), empty_label='Производитель')
 
 	l=[]

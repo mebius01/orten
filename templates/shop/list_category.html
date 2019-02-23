@@ -3,6 +3,7 @@
 {% load static %}
 {% load mptt_tags %}
 {% block breadcrumbs %}
+{% load flatpages %}
     {{ block.super }}<li><a href="{% url 'shop:category' %}">Категории</a><i class="fas fa-chevron-right pl-1"></i></li>
         {% for i in instance.get_anc %}
             <li><a href="{% url 'shop:list_category' i.get_absolute_url %}">{{ i.name }}</a><i class="fas fa-chevron-right pl-1"></i></li>
@@ -41,6 +42,8 @@
                                 {% comment %}
                                 {% include "include/include_product_list.html" %}
                                 {% endcomment %}
+                            {% elif polygraphy %}
+                                <meta http-equiv="REFRESH" content="0;url={% url 'shop:polygraphy_detail' '1' %}">
                             {% else %}
                                 {% for i in instance.children.all|dictsort:"id" %}
                                     <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 p-2">
@@ -48,7 +51,7 @@
                                             <img class="card-img-top" src="{% if i.image %}{{ i.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{i.name}}" width="230" height="230">
                                             <div class="card-footer bg-transparent">
                                                 <div class="row">
-                                                    <a class="text-muted" href="{% url 'shop:list_category' i.get_absolute_url %}" title="{{i.name}}">{{i.name}}<span class="badgebadge-light ml-3">{% firstof i.product.count i.services.count %}</span></a>
+                                                    <a class="text-muted" href="{% url 'shop:list_category' i.get_absolute_url %}" title="{{i.name}}">{{i.name}}<span class="badgebadge-light ml-3">{% firstof i.product.count i.services.count i.polygraphy.count %}</span></a>
                                                 </div>
                                             </div>
                                         </div>

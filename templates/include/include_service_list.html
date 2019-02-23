@@ -9,9 +9,10 @@
         <th scope="col">Бренд</th>
         <th scope="col">Имя</th>
         <th scope="col">Артикул</th>
-        <th scope="col">Ниаличие</th>
         <th scope="col">Цена</th>
-        <th colspan="2">В корзину</th>
+       {% comment %}
+          <th colspan="2">В корзину</th>
+       {% endcomment %}
       </tr>
     </thead>
     {% for service in services %}
@@ -20,16 +21,12 @@
         <th scope="row">
             <a class="item_img"><img src="{% if service.image %}{{ service.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt=".">
         </th>
-        <td>----------</td>
+        <td>{{ service.vendor }}</td>
         <td>
-            <a href="{% url 'shop:service_detail' service.slug %}">{{ service.name }}
+              <a href="{% url 'shop:service_detail' service.slug %}">{{ service.name }}
         </td>
         <td>{{ service.vendor_code }}</td>
-        <td><i class="fas fa-check"></i></td>
         <td>{{ service.price }}</td>
-        <td>
--------
-         </td>
       </tr>
     </tbody>
     {% endfor %}

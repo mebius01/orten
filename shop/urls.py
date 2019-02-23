@@ -20,6 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.views.decorators.cache import cache_page
 
+
 app_name = 'shop'
 
 urlpatterns = [
@@ -29,9 +30,17 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('shop/product/', views.product_list, name ='product_list'),
     path('category/', views.category, name ='category'),
+    # path('polygraphy/<slug>', views.polygraphy_detail, name='polygraphy_detail'),
     path('service/<slug>', views.service_detail, name='service_detail'),
     path('shop/<slug>/', views.product_detail, name='product_detail'),
+    path('polygraphy/<flatpage_id>/', views.polygraphy_detail, name='polygraphy_detail'),
     re_path(r'^category/(?P<hierarchy>.+)/$', views.list_category, name='list_category'),
     ]
+# from django.contrib.flatpages import views
 
+# urlpatterns += [
+#     path('polygraphy/vizitka/', views.flatpage, {'url': '/vizitka/'}, name='polygraphy'),
+#     path('polygraphy/kalendari/', views.flatpage, {'url': '/kalendari/'}, name='k'),
+
+# ]
  #    path('tag/<tag_id>/', views.product_list, name='list_product_by_tag'),

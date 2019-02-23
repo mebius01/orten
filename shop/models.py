@@ -6,6 +6,7 @@ from mptt.models import MPTTModel, TreeForeignKey
 from taggit.managers import TaggableManager
 from ckeditor.fields import RichTextField
 from meta.models import ModelMeta
+from django.contrib.flatpages.models import FlatPage
 
 class Category(MPTTModel):
 	name = models.CharField(max_length=200, db_index=True, unique=True)
@@ -145,6 +146,21 @@ class Services(models.Model):
 
 	def get_absolute_url(self):
 		return ('service/'+self.slug)
+
+class Polygraphy(models.Model):
+	category = models.ForeignKey(Category,related_name='polygraphy', on_delete=models.CASCADE) #коталог продукта связь
+	flatpage = models.OneToOneField(FlatPage, on_delete=models.CASCADE)
+	image = models.ImageField(upload_to='polygraphy/%Y/%m/%d', blank=True) #картинка
+	description = models.TextField(blank=True)
+	keywords= models.TextField(blank=True, help_text='Ключивые слова')
+
+	class Meta:
+		verbose_name = 'Полиграфия'
+		verbose_name_plural = 'Полиграфия'
+
+	def __str__(self):
+		return self.flatpage.title
+
 
 # l=[]
 # for i in Product.objects.filter(action=True):

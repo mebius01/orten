@@ -1,0 +1,23 @@
+{% extends 'shop/list_category.html' %}
+{% load bootstrap4 %}
+{% load static %}
+{% block breadcrumbs %}
+    {{ block.super }}
+    {% for i in instance.category.get_anc %}
+        <li><a href="{% url 'shop:list_category' i.get_absolute_url %}">{{ i.name }}</a><i class="fas fa-chevron-right pl-1"></i></li>
+    {% endfor %}
+        <li><a href="#">{{instance.name}}</a></li>
+{% endblock %}
+
+{% block content %}
+{{ instance.flatpage.content|safe }}
+
+
+{% load flatpages %}
+{% get_flatpages as flatpages %}
+<ul>
+    {% for page in flatpages %}
+        <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

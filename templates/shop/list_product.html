@@ -4,7 +4,10 @@
 {% load bootstrap4 %}
 {% load paginator_filter %}
 {% block breadcrumbs %}
-    {{ block.super }}<li><a href="{% url 'shop:product_list' %}">Товары</a></li>
+    {{ block.super }}<li><a href="{% url 'shop:product_list' %}">Товары</a><i class="fas fa-chevron-right pl-1"></i></li>
+      {% for i in instance.get_anc %}
+          <li><a href="{% url 'shop:list_category' i.get_absolute_url %}">{{ i.name }}</a><i class="fas fa-chevron-right pl-1"></i></li>
+      {% endfor %}
 {% endblock %}
 {% block content %}
 <title>Orten - Product List</title>
@@ -31,9 +34,11 @@
                         {% bootstrap_field filter.form.price__lt placeholder="10000" show_label=False %}
                     </div>
                     <div class="form-group col-md-12">
-                      {% comment %}
-                        {% bootstrap_field filter.form.category show_label=False%}
-                      {% endcomment %}
+                    <!-- Category filter -->
+                    {% comment %}
+                        {% bootstrap_field filter.form.category placeholder="Категория" show_label=False%}
+                      
+                    {% endcomment %}
                     <!-- Vendor filter -->
                       {% bootstrap_field filter.form.vendor show_label=False%}
                     <!-- Typ_Product filter -->

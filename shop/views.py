@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
-from .models import Category, Services, Product, ProductStock
+from .models import Category, Services, Product, Polygraphy, ProductStock
 from cart.forms import CartAddProductForm
 from .filters import ProductFilter # ОСОБОЕ ВНИМЕНИЕ!!! При python manage.py makemigrations && python manage.py migrate КОМЕНТИРОВАТЬ ЭТУ СТРОКУ
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -51,6 +51,9 @@ def product_list(request):
 	search = request.GET.get('search', '')
 	if search:
 		product_list_all = watson.filter(Product, search, ranking=True)
+	category = request.GET.get('category', '')
+	if category:
+		product_list_all = Product.objects.filter(category=category)
 	else:
 		product_list_all = Product.objects.all().order_by('-updated')
 	products_filter = ProductFilter(request.GET, queryset=product_list_all)
@@ -65,7 +68,11 @@ def product_list(request):
 		# Если страница выходит за пределы допустимого диапазона (например, 9999), казать последнюю страницу результатов
 		products = paginator.page(paginator.num_pages)
 	cart_product_form = CartAddProductForm()
-	return render(request, 'shop/list_product.html', {'paginator':paginator, 'filter': products_filter, 'products': products, 'cart_product_form': cart_product_form})
+	if len(category)>1:
+		instance = Category.objects.get(id=category)
+	else:
+		instance = Category.objects.all()
+	return render(request, 'shop/list_product.html', {'instance': instance, 'paginator':paginator, 'filter': products_filter, 'products': products, 'cart_product_form': cart_product_form})
 
 def product_detail(request, slug):
 	instance = get_object_or_404(Product, slug=slug)
@@ -76,3 +83,7 @@ def service_detail(request, slug):
 	instance = get_object_or_404(Services, slug=slug)
 	cart_product_form = CartAddProductForm()
 	return render( request, "shop/service_detail.html", {'instance':instance, 'cart_product_form': cart_product_form})
+
+def polygraphy_detail(request, flatpage_id):
+	instance = get_object_or_404(Polygraphy, flatpage_id=flatpage_id)
+	return render( request, "shop/polygraphy_detail.html", {'instance':instance})
