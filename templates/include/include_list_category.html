@@ -1,17 +1,22 @@
-
+{% load flatpages %}
 <div class="accordion" id="accordionCategory">
 <div class="card-header p-0" id="heading-polygraphy">
             <ul class="list-group text-white text-left pl-3 btn btn-link collapsed" data-toggle="collapse" data-target="#collapse-polygraphy" aria-expanded="true" aria-controls="collapse-polygraphy">Полиграфия
             </ul>
         </div>
 
+
  <div id="collapse-polygraphy" class="collapse" aria-labelledby="heading-polygraphy" data-parent="#accordionCategory">
             <div class="card-list-groub">
                 <ul class="list-group-flush">
-                    <li class="list-group-item bg-light"><a class="text-muted" href="{% url 'shop:polygraphy_detail' 1%}">Визитки</li>
+                    {% get_flatpages as flatpages %}
+{% for item in flatpages|dictsort:"id" %}
+                    <li class="list-group-item bg-light"><a class="text-muted" href="{% url 'shop:polygraphy_detail' item.id%}">{{ item.title }}</li></a>
+                        {% endfor %}
                 </ul>
             </div>
         </div>
+
 
  {% for item in category_all.get_cached_trees %}
         {% if item.is_root_node %}

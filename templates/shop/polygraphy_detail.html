@@ -1,15 +1,21 @@
-{% extends 'shop/list_category.html' %}
+{% extends 'base.html' %}
 {% load bootstrap4 %}
 {% load static %}
+{% load flatpages %}
 {% block breadcrumbs %}
     {{ block.super }}
-    {% for i in instance.category.get_anc %}
-        <li><a href="{% url 'shop:list_category' i.get_absolute_url %}">{{ i.name }}</a><i class="fas fa-chevron-right pl-1"></i></li>
-    {% endfor %}
-        <li><a href="#">{{instance.name}}</a></li>
+    <li><a href="{% url 'shop:category' %}">Категории</a><i class="fas fa-chevron-right pl-1"></i></li>
+        <li><a href="{% url 'shop:polygraphy' %}">Полиграфия</a><i class="fas fa-chevron-right pl-1"></i></li>
+        <li><a href="#">{{instance.flatpage.title}}</a></li>
 {% endblock %}
 
 {% block content %}
 {{ instance.flatpage.content|safe }}
 
 {% endblock %}
+
+
+{% comment %}
+	<li><a href="{% url 'shop:polygraphy_detail' instance.flatpage.id%}">{{ instance.flatpage.title }}</a><i class="fas fa-chevron-right pl-1"></i></li>
+        <li><a href="#">{{instance.flatpage.title}}</a></li>
+{% endcomment %}

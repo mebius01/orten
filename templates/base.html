@@ -298,7 +298,8 @@
              
             }
         </style>
-        <script type='application/ld+json'> 
+        {% comment %}
+          <script type='application/ld+json'> 
             {
               "@context": "http://www.schema.org",
               "@type": "ElectronicsStore",
@@ -328,6 +329,7 @@
               "description": "{{ instance.description}}",
             }
              </script>
+        {% endcomment %}
     </head>
     {% endblock %}
         <div class="container-fluid">
@@ -380,10 +382,9 @@
                         <a class="cool-link text-muted" href="{% url 'shop:list_category' 'konica-minolta' %}">Konica Minolta</a>
                         <a class="cool-link text-muted" href="{% url 'shop:list_category' 'duplo' %}">Duplo</a>
                         <a class="cool-link text-muted" href="{% url 'shop:list_category' 'colorway' %}">ColorWay</a>
-                        <a class="cool-link text-muted" href="{% url 'shop:list_category' 'toshiba' %}">Toshiba</a>
-                        <a class="cool-link text-muted" href="{% url 'shop:list_category' 'poligrafiya' %}">Полиграфия</a>
-                        <a class="cool-link text-muted" href="{% url 'shop:list_category' 'avtorizovannyj-servisnyj-centr-ricoh' %}">Сервис Ricoh</a>
-                        <a class="cool-link text-muted" href="{% url 'shop:list_category' 'avtorizovannyj-servisnyj-centr-konica-minolta' %}">Сервис Konica Minolta</a>
+                        <a class="cool-link text-muted" href="{% url 'shop:polygraphy' %}">Полиграфия</a>
+                        <a class="cool-link text-muted" href="{% url 'shop:list_category' 'servisnyj-centr/avtorizovannyj-servisnyj-centr-ricoh' %}">Сервис Ricoh</a>
+                        <a class="cool-link text-muted" href="{% url 'shop:list_category' 'servisnyj-centr/avtorizovannyj-servisnyj-centr-konica-minolta' %}">Сервис Konica Minolta</a>
                         <a class="cool-link text-muted" href="{% url 'shop:list_category' 'licenzionnye-rashodnye-materialy' %}">Все для Принтеров и МФУ</a>
                        <!-- <a class="cool-link text-muted" href="#">LINK</a>
                         <a class="cool-link text-muted" href="#">LINK</a>
@@ -405,7 +406,7 @@
                             <a class="nav-link" href="{% url 'shop:home' %}">Дом</a>
                             <a class="nav-link" href="{% url 'shop:category' %}">Категории</a>
                             <a class="nav-link" href="{% url 'shop:product_list' %}">Товары</a>
-                            <a class="nav-link" href="{% url 'shop:list_category' 'poligrafiya' %}">Полиграфия</a>
+                            <a class="nav-link" href="{% url 'shop:polygraphy' %}">Полиграфия</a>
                             <a class="nav-link" href="{% url 'shop:list_category' 'servisnyj-centr' %}">Сервисный центр</a>
                             <a class="nav-link" href="{% url 'shop:delivery_payment' %}">Доставка и оплата</a>
                             <a class="nav-link" href="{% url 'shop:about' %}">Кто мы</a>

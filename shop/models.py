@@ -11,7 +11,7 @@ from django.contrib.flatpages.models import FlatPage
 class Category(MPTTModel):
 	name = models.CharField(max_length=200, db_index=True, unique=True)
 	slug = models.SlugField(max_length=200, db_index=True, unique=True)
-	image = models.ImageField(upload_to='category/%Y/%m/%d', blank=True)
+	image = models.ImageField(upload_to='category/', blank=True)
 	description = models.TextField(blank=True)
 	parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
 
@@ -92,7 +92,7 @@ class Product(ModelMeta, models.Model):
 	accessories = models.ManyToManyField("self", blank=True)
 	vendor_code = models.CharField(max_length=200, db_index=True, help_text='Артикул, парт номер') #артикул или парт-номер
 	vendor = models.CharField(max_length=200, blank=True, help_text='Производитель') # Производитель
-	image = models.ImageField(upload_to='product/%Y/%m/%d', blank=True, help_text='') #картинка
+	image = models.ImageField(upload_to='product/', blank=True, help_text='') #картинка
 
 	format_fild = models.CharField(max_length=50, blank=True, choices=FORMAT_CHOICES, help_text='A3,A4')
 	color_fild = models.CharField(max_length=50, blank=True, choices=COLOR_CHOICES, help_text='BW, Color')
@@ -128,7 +128,7 @@ class Services(models.Model):
 	vendor_code = models.CharField(max_length=200, blank=True) #артикул или парт-номер
 	vendor = models.CharField(max_length=200, blank=True, help_text='Производитель') # Производитель
 	vendor_model = models.CharField(max_length=200, blank=True, help_text='Модель')
-	image = models.ImageField(upload_to='service/%Y/%m/%d', blank=True) #картинка
+	image = models.ImageField(upload_to='service/', blank=True) #картинка
 	description = models.TextField(blank=True)
 	keywords= models.TextField(blank=True, help_text='Ключивые слова')
 	price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -148,9 +148,9 @@ class Services(models.Model):
 		return ('service/'+self.slug)
 
 class Polygraphy(models.Model):
-	category = models.ForeignKey(Category,related_name='polygraphy', on_delete=models.CASCADE) #коталог продукта связь
+	# category = models.ForeignKey(Category,related_name='polygraphy', on_delete=models.CASCADE) #коталог продукта связь
 	flatpage = models.OneToOneField(FlatPage, on_delete=models.CASCADE)
-	image = models.ImageField(upload_to='polygraphy/%Y/%m/%d', blank=True) #картинка
+	image = models.ImageField(upload_to='polygraphy/', blank=True) #картинка
 	description = models.TextField(blank=True)
 	keywords= models.TextField(blank=True, help_text='Ключивые слова')
 
