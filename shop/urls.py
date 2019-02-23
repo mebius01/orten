@@ -28,6 +28,7 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('delivery_payment/', views.delivery_payment, name='delivery_payment'),
     path('about/', views.about, name='about'),
+    path('polygraphy/', views.polygraphy, name='polygraphy'),
     path('shop/product/', views.product_list, name ='product_list'),
     path('category/', views.category, name ='category'),
     # path('polygraphy/<slug>', views.polygraphy_detail, name='polygraphy_detail'),

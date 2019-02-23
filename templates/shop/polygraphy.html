@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+{% load flatpages %}
+{% block breadcrumbs %}
+    {{ block.super }}
+    {% for i in instance.category.get_anc %}
+        <li><a href="{% url 'shop:list_category' i.get_absolute_url %}">{{ i.name }}</a><i class="fas fa-chevron-right pl-1"></i></li>
+    {% endfor %}
+        <li><a href="#">{{instance.name}}</a></li>
+{% endblock %}
+
+{% block content %}
+
+<title>Orten - Все Категории</title>
+<div class="container-fluid">
+    <div class="row">
+        <!-- Блок Категорий -->
+        <div class="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3">
+            <div class="card bg-light">
+                <article class="card-group-item">
+                    <header class="card-header text-bleck text-uppercase">
+                        <h6 class="title"><i class="fa fa-list pr-3"></i>Категории</h6>
+                    </header>
+                    <div class="card-body p-0">
+                        {% include "include/include_list_category.html" %}
+                    </div>
+                </article>
+            </div>
+        </div>
+        <!-- Блок Карт категорий  -->
+        <div class="col-12 col-sm-6 col-md-7 col-lg-8 col-xl-9">
+            <div class="card bg-light">
+                <article class="card-group-item">
+                    <header class="card-header text-bleck text-uppercase">
+                        <h6 class="title"><i class="fas fa-list pr-3"></i>список Категорий</h6>
+                    </header>
+                        <div class="card-group">
+                            {% comment %}
+                            	{% for item in category_all %}
+                                {% if item.is_root_node %}
+                            {% endcomment %}
+                            {% get_flatpages as flatpages %}
+                            {% for item in flatpages %}
+                                     <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 p-2">
+                                        <div class="card  h-100">
+                                            <img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{item.name}}" width="230" height="230">
+                                                <div class="card-footer bg-transparent">
+                                                    <div class="row">
+                                                        <a class="text-muted" href="{% url 'shop:polygraphy_detail' item.id %}" title="{{item.title}}">{{item.title}}<span class="badge badge-light ml-3">{% firstof item_children.product.count item_children.services.count %}</span></a>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                            {% comment %}
+                            	    {% endif %}
+                            {% endfor %}
+                            {% endcomment %}
+                        </div>
+                </article>
+            </div>
+        </div>
+    </div>
+    <hr>
+</div>
+
+{% endblock %}
+
+
+
+
+<ul>
+    
+        <li><a href="{% url 'shop:polygraphy_detail' page.id %}">{{ page.title }}</a></li>
+        {{ page. }}
+    
+</ul>

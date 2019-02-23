@@ -6,6 +6,7 @@ from .filters import ProductFilter # ОСОБОЕ ВНИМЕНИЕ!!! При pyt
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from watson import search as watson
 from django.views.decorators.cache import cache_page
+from django.db.models import Q
 
 def handler404(request):
 	return render(request, '404.html', status=404)
@@ -49,13 +50,17 @@ def list_category(request, hierarchy=None):
 
 def product_list(request):
 	search = request.GET.get('search', '')
+	category = request.GET.get('category', '')
+
 	if search:
 		product_list_all = watson.filter(Product, search, ranking=True)
-	category = request.GET.get('category', '')
-	if category:
+	
+	elif category:
 		product_list_all = Product.objects.filter(category=category)
+	
 	else:
 		product_list_all = Product.objects.all().order_by('-updated')
+	
 	products_filter = ProductFilter(request.GET, queryset=product_list_all)
 	page = request.GET.get('page', 1)
 	paginator = Paginator(products_filter.qs, 48)
@@ -87,3 +92,6 @@ def service_detail(request, slug):
 def polygraphy_detail(request, flatpage_id):
 	instance = get_object_or_404(Polygraphy, flatpage_id=flatpage_id)
 	return render( request, "shop/polygraphy_detail.html", {'instance':instance})
+
+def polygraphy(request):
+	return render( request, "shop/polygraphy.html")

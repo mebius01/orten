@@ -162,10 +162,6 @@ class Polygraphy(models.Model):
 		return self.flatpage.title
 
 
-# l=[]
-# for i in Product.objects.filter(action=True):
-# 	l.append((i.action, i.action))
-
 class ProductStock(models.Model):
 	product = models.ForeignKey(Product, on_delete=models.CASCADE)
 	slug = models.SlugField(max_length=400, db_index=True)	

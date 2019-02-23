@@ -43,7 +43,10 @@
                                 {% include "include/include_product_list.html" %}
                                 {% endcomment %}
                             {% elif polygraphy %}
-                                <meta http-equiv="REFRESH" content="0;url={% url 'shop:polygraphy_detail' '1' %}">
+                            {% comment %}
+                                <meta http-equiv="REFRESH" content="0;url={% url 'shop:polygraphy_detail '%}?category={{instance.id}}">
+                            {% endcomment %}
+                             <meta http-equiv="REFRESH" content="0;url={% url 'shop:polygraphy_detail'%}/1/">
                             {% else %}
                                 {% for i in instance.children.all|dictsort:"id" %}
                                     <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 p-2">

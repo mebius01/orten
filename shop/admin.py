@@ -43,7 +43,7 @@ class NewFlatpageInline(admin.StackedInline):
 
 class FlatPageNewAdmin(FlatPageAdmin):
 	inlines = [NewFlatpageInline]
-	fieldsets = ((None, {'fields': ('url', 'title', 'sites')}),(('Advanced options'), {'fields': ('template_name',),}),)
+	fieldsets = ((None, {'fields': ('url', 'title', 'sites', 'content',)}),(('Advanced options'), {'fields': ('template_name',),}),)
 	list_display = ('url', 'title',)
 	list_filter = ('sites', 'registration_required')
 	search_fields = ('url', 'title')
