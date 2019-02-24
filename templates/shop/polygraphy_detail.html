@@ -8,11 +8,43 @@
         <li><a href="{% url 'shop:polygraphy' %}">Полиграфия</a><i class="fas fa-chevron-right pl-1"></i></li>
         <li><a href="#">{{instance.flatpage.title}}</a></li>
 {% endblock %}
-
 {% block content %}
-{{ instance.flatpage.content|safe }}
+<title>Orten - Все Категории</title>
+<div class="container-fluid">
+    <div class="row">
+        <!-- Блок Категорий -->
+        <div class="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3">
+            <div class="card bg-light">
+                <article class="card-group-item">
+                    <header class="card-header text-bleck text-uppercase">
+                        <h6 class="title"><i class="fa fa-list pr-3"></i>Категории</h6>
+                    </header>
+                    <div class="card-body p-0">
+                        {% include "include/include_list_category.html" %}
+                    </div>
+                </article>
+            </div>
+        </div>
+        <!-- Блок Карт категорий  -->
+        <div class="col-12 col-sm-6 col-md-7 col-lg-8 col-xl-9">
+            <div class="card bg-light">
+                <article class="card-group-item">
+                    <header class="card-header text-bleck text-uppercase">
+                        <h6 class="title"><i class="fas fa-list pr-3"></i>{{ instance.flatpage.title }}</h6>
+                    </header>
+                        <div class="card-group">
+                        	<img src="{% static "shop/img/vizitki.jpg" %}"  style="width: 100%;" hspace="16"></a>
+                          {{ instance.flatpage.content|safe }}
+                        </div>
+                </article>
+            </div>
+        </div>
+    </div>
+    <hr>
+</div>
 
 {% endblock %}
+
 
 
 {% comment %}
