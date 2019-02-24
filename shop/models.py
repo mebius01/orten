@@ -149,6 +149,7 @@ class Services(models.Model):
 
 class Polygraphy(models.Model):
 	# category = models.ForeignKey(Category,related_name='polygraphy', on_delete=models.CASCADE) #коталог продукта связь
+	slug = models.SlugField(max_length=400, default='True', help_text='')
 	flatpage = models.OneToOneField(FlatPage, on_delete=models.CASCADE)
 	image = models.ImageField(upload_to='polygraphy/', blank=True) #картинка
 	description = models.TextField(blank=True)
