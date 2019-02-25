@@ -34,7 +34,6 @@ class Category(MPTTModel):
 		return self.name
 
 FORMAT_CHOICES = (
-	('', ''),
 	('A0', 'A0'),
 	('A1', 'A1'),
 	('A2', 'A2'),
@@ -49,9 +48,8 @@ FORMAT_CHOICES = (
 	)
 
 COLOR_CHOICES = (
-	('', ''),
 	('BW', 'BW'),
-	('color', 'Color'),
+	('Color', 'Color'),
 	)
 
 INTEREST_CHOICES = (

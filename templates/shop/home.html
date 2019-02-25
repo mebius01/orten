@@ -16,10 +16,13 @@
                         <div class="carousel-item active">
                             <img class="second-slide" src="{% if item.product.image %}{{ item.product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="Card image cap" width="330" height="230">
                                 <div class="container">
-                                    <div class="carousel-caption text-dark text-right">
+                                    <div class="carousel-caption text-right">
                                         <h4>{{item.product.name}}</h4>
-                                        <p>Цена: {{item.product.price}}</p>
-                                        <p><a href="{% url 'shop:product_detail' item.product.slug %}" class="text-danger"> Купить по акции {{item.product.discount}}</a></p>
+                                        <br>
+                                        Цена: {{item.product.price}}
+                                        <br>
+                                        <a href="{% url 'shop:product_detail' item.product.slug %}" class="text-danger">Купить по акции {{item.product.discount}}</a>
+                                        <br>
                                     </div>
                                 </div>
                             </div>
@@ -28,10 +31,12 @@
                         <div class="carousel-item">
                             <img class="second-slide" src="{% if item.product.image %}{{ item.product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="Card image cap" width="330" height="230">
                                 <div class="container">
-                                    <div class="carousel-caption text-dark text-right">
+                                    <div class="carousel-caption text-right">
                                         <h4>{{item.product.name}}</h4>
-                                        <p>Цена: {{item.product.price}}</p>
-                                        <p><a href="{% url 'shop:product_detail' item.product.slug %}" class="text-danger"> Купить по акции {{item.product.discount}}</a></p>
+                                        <br>
+                                       Цена: {{item.product.price}}
+                                        <br>
+                                        <a href="{% url 'shop:product_detail' item.product.slug %}" class="text-danger"> Купить по акции {{item.product.discount}}</a></p>
                                     </div>
                                 </div>
                             </div>

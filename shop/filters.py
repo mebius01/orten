@@ -9,6 +9,8 @@ class ProductFilter(django_filters.FilterSet):
 	l=[]; s=[]; p=[]
 	for i in Product.objects.all():
 		l.append((i.vendor, i.vendor))
+		if ('', '') in l:
+			l.remove(('', ''))
 	# for i in Services.objects.all():
 	# 	l.append((i.vendor, i.vendor))
 	vendor=django_filters.ChoiceFilter(choices=set(l), empty_label='Производитель')
@@ -16,14 +18,23 @@ class ProductFilter(django_filters.FilterSet):
 	l=[]
 	for i in Product.objects.all():
 		l.append((i.type_product, i.type_product))
+		if ('', '') in l:
+			l.remove(('', ''))
 	type_product=django_filters.ChoiceFilter(choices=set(l), empty_label='Тип Товара')
 
 	l=[]
 	for i in Product.objects.all():
 		l.append((i.format_fild, i.format_fild))
+		if ('', '') in l:
+			l.remove(('', ''))
 	format_fild = django_filters.ChoiceFilter(choices=set(l), empty_label='Формат A0-A10')
 
-	color_fild = django_filters.AllValuesFilter(widget=LinkWidget())
+	l=[]
+	for i in Product.objects.all():
+		l.append((i.color_fild, i.color_fild))
+		if ('', '') in l:
+			l.remove(('', ''))
+	color_fild = django_filters.ChoiceFilter(choices=set(l), empty_label='BW/Color')
 
 	class Meta:
 		model = Product
