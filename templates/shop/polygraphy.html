@@ -34,15 +34,11 @@
                         <h6 class="title"><i class="fas fa-list pr-3"></i>список Категорий</h6>
                     </header>
                         <div class="card-group">
-                            {% comment %}
-                            	{% for item in category_all %}
-                                {% if item.is_root_node %}
-                            {% endcomment %}
                             {% get_flatpages as flatpages %}
                             {% for item in flatpages|dictsort:"id" %}
                                      <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-3 p-2">
                                         <div class="card  h-100">
-                                            <img class="card-img-top" src="{% if item.polygraphy.image %}{{ item.polygraphy.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{item.name}}" width="230" height="230">
+                                            <a href="{% url 'shop:polygraphy_detail' item.id %}"><img class="card-img-top" src="{% if item.polygraphy.image %}{{ item.polygraphy.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{item.name}}" width="230" height="230"></a>
                                                 <div class="card-footer d-flex justify-content-center bg-transparent">
                                                     <div class="row">
                                                         <a class="text-muted" href="{% url 'shop:polygraphy_detail' item.id %}" title="{{item.title}}">{{item.title}}

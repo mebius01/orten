@@ -20,11 +20,11 @@
       <div class="table-responsive-sm">
       <tr>
         <th scope="row">
-            <a class="item_img"><img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt=".">
+            <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt="{{ product.name }}">
         </th>
         <td>{{ product.vendor }}</td>
         <td>
-            <a href="{% url 'shop:product_detail' product.slug %}">{{ product.name }}
+            <a href="{% url 'shop:product_detail' product.slug %}">{{ product.name }}</a>
         </td>
         <td>{{ product.vendor_code }}</td>
         <!--<td><i class="fas fa-check"></i></td>-->

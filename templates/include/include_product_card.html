@@ -2,11 +2,16 @@
 {% load bootstrap4 %}
 
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-3 p-2">
-    <div class="card  h-100">
-        <img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="Card image cap" width="230" height="230">
+    <div class="card h-100">
+        {% if item.action %}
+          <div class="card-action">Акция</div>
+        {% else %}
+        <div class="card-head"></div>
+        {% endif %}
+        <a href="{% url 'shop:product_detail' item.slug %}" title="{{item.name}}"><img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{item.name}}" width="230" height="230"></a>
 
         <div class="card-body">
-            <h6 class="card-title"><a href="{% url 'shop:product_detail' item.slug %}" title="View Product">{{item.name}}</a></h6>
+            <h6 class="card-title"><a href="{% url 'shop:product_detail' item.slug %}" title="{{item.name}}">{{item.name}}</a></h6>
             <p class="card-text"> </p>
             <ul class="list-group list-group-flush">
                 <p>
@@ -26,7 +31,7 @@
                 </div>
                 <div class="col">
                     {% if item.action %}
-                    <button type="submit" class="btn btn-outline-danger"><i class="fas fa-shopping-basket"></i></i>{{item.price}}</button>
+                    <button type="submit" class="btn btn-outline-danger"><i class="fas fa-shopping-basket"></i></i>{{item.discount}}</button>
                     {% else %}
                     <button type="submit" class="btn btn-outline-primary"><i class="fas fa-shopping-basket"></i></i>{{item.price}}</button>
                     {% endif %}

@@ -20,8 +20,7 @@
         <div class="col-12 col-lg-4">
             <div class="card bg-light mb-3">
                 <div class="card-body">
-                    <a href="" data-toggle="modal" data-target="#productModal">
-                    <img style="max-width:100%;" src="{% if instance.image %}{{ instance.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}"></a>
+                    <img style="max-width:100%;" src="{% if instance.image %}{{ instance.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{instance.name}}" title="{{instance.name}}">
                     {% include "include/include_elivery_pay_contact.html" %}
                 </div>
             </div>
@@ -38,7 +37,12 @@
                         <span class="leftstr">Тип товара:</span><span class="rightstr product_vendor">
                         <a class="text-muted" href="{% url 'shop:product_list' %}?type_product={{ instance.type_product }}">{{ instance.type_product }}</a></span><div style="clear: left"></div>
                     <hr>
-                        <span class="leftstr">Цена:</span><span class="rightstr product_price"><h4>{{ instance.price }}</h4></span><div style="clear: left"></div>
+                    {% if instance.action %}
+                        <span class="leftstr">Цена:</span><span class="rightstr product_price"><h4><span style="text-decoration: line-through">{{ instance.price }}</h4></span><div style="clear: left"></div>
+                        <span class="leftstr">Супер Цена:</span><span class="rightstr product_price"><h4><span style="color: red">{{ instance.discount }}</span></h4></span><div style="clear: left"></div>
+                    {% else %}
+                    <span class="leftstr">Цена:</span><span class="rightstr product_price"><h4>{{ instance.price }}</h4></span><div style="clear: left"></div>
+                    {% endif %}
                     <hr>
                     <form action="{% url "cart:cart_add" instance.id %}" method="post">
                        {% csrf_token %}
