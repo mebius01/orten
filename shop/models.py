@@ -86,7 +86,7 @@ class Product(ModelMeta, models.Model):
 	category = models.ForeignKey(Category,related_name='product', on_delete=models.CASCADE, help_text='Каталог товара (расходные материалы, компьютеры и комплетующие и т д)') #коталог продукта связь m2m
 	name = models.CharField(max_length=400, db_index=True, help_text='Название товара') #имя продукта
 	slug = models.SlugField(max_length=400, help_text='')
-
+	provider = models.CharField(max_length=20, help_text='Поставщик')
 	accessories = models.ManyToManyField("self", blank=True)
 	vendor_code = models.CharField(max_length=200, db_index=True, help_text='Артикул, парт номер') #артикул или парт-номер
 	vendor = models.CharField(max_length=200, blank=True, help_text='Производитель') # Производитель
@@ -104,7 +104,7 @@ class Product(ModelMeta, models.Model):
 	stock = models.PositiveIntegerField(blank=True, help_text='Остатоки') # Остатки
 	available = models.BooleanField(default=True, help_text='Доступен ли к заказу') # булево значение, указывающее, доступен ли продукт или нет
 	action = models.BooleanField(default=False, help_text='Акции')
-	discount =  models.DecimalField(max_digits=10,default=Decimal("0.06"), decimal_places=2, blank=True,  help_text='Процент скидка') #Процент)
+	discount =  models.DecimalField(max_digits=10,default=Decimal("0.00"), decimal_places=2, blank=True,  help_text='Процент скидка') #Процент)
 	created = models.DateTimeField(auto_now_add=True, help_text='дата создания') # дата создания
 	updated = models.DateTimeField(auto_now=True, help_text='дата обновления') #дата обновления
 

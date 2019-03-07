@@ -1,34 +1,45 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from slugify import slugify
-import datetime 
+import pickle
 
-price_file = open('baden.csv', 'r')
-product_file=open('product_baden.csv', 'w')
-product_file_long=open('product_baden_long.csv', 'w')
+vendor=input("Вендор: ") or "lamiMARK"; vendor=str(vendor)
+category=input("id Категории: ") or "CATEGORY"; category=str(category)
+type_product=input("Тип продукта: ") or "Постпечатные расходные материалы"; type_product=str(type_product)
+
+int_counter = open('counter_id.pkl', 'rb')
+counter = pickle.load(int_counter)
+int_counter.close()
+counter=input("последнее id Продукта в BD: ") or counter; counter=int(counter)
+
+provider = "baden"
+
+print(counter)
+
+price_file = open('raw_product.csv', 'r')
+product_file=open('sorted_product.csv', 'w')
+product_file_long=open('long_sorted_product.csv', 'w')
 data = price_file.readlines()
-counter=384
+product_file.write('id,category,name,slug,provider,vendor_code,vendor,type_product,price,stock,available'+'\n')
+
 for i in data:
 	i=str(i).split(';')
 	id_product=str(counter)
-	category="CATEGORY_ID"
 	name=i[1]
 	vendor_code=i[0]
-	vendor="VENDOR"
-	type_product="PRODUCT_TYPE"
-	slug=slugify(i[1]+'-'+i[0])
-	price=str(i[3]); price=float(price.replace(",",".")); price=str(price)
-	stock="1"
-	available="1"
-	if len(i[1]) <= 190:
-		product_file.writelines(id_product+','+category+','+name+','+vendor_code+','+vendor+','+type_product+','+slug+','+price+','+stock+','+available+'\n')
+	slug=slugify(name+'-'+vendor_code)
+	price=str(i[2]); price=float(price.replace(",",".")); price=str(price)
+	available, stock = "1", "1"
+
+	if len(i[1]) <= 390:
+		product_file.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
 		counter+=1
-	elif len(i[1]) > 190:
-		product_file_long.writelines(id_product+','+category+','+name+','+vendor_code+','+vendor+','+type_product+','+slug+','+price+','+stock+','+available+'\n')
+	elif len(i[1]) > 390:
+		product_file_long.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+slug+','+price+','+stock+','+available+'\n')
 		counter+=1
 
-"""
-id,category,name,vendor_code,vendor,type_product,slug,price,stock,available
+print(counter)
 
-20130;Ламинатор конвертный Royal Sovereign ES 1315 (А3) (шт.);2332,40;3332,00;Есть
-"""
+out_counter = open('counter_id.pkl', 'wb')
+pickle.dump(counter, out_counter)
+out_counter.close()

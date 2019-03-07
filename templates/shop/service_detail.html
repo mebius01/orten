@@ -91,16 +91,22 @@
                     <a class="text-muted" href="{% url 'shop:product_list' %}?vendor={{ instance.vendor }}">{{ instance.vendor }}</a></span><div style="clear: left"></div>
                     <hr>
                    <span class="leftstr">Модель:</span><span class="rightstr product_vendor">
-                    <a class="text-muted" href="{% url 'shop:product_list' %}?vendor_model={{ instance.vendor_model }}">{{ instance.vendor_model }}</a></span><div style="clear: left"></div>
+                    {% comment %}
+                      <a class="text-muted" href="{% url 'shop:product_list' %}?vendor_model={{ instance.vendor_model }}">
+                    {% endcomment %}
+                    {{ instance.vendor_model }}</a></span><div style="clear: left"></div>
                     <hr>
                     <span class="leftstr">Цена:</span><span class="rightstr product_price"><h4>{{ instance.price }}</h4></span><div style="clear: left"></div>
-                    <hr>
+                    {% comment %}
+                      <hr>
                     <form>
                       <div class="form-group">
                         <label for="formGroupExampleInput2">У вас вопросы? Оставьте свой телефон и мы свяжимся с вами</label>
                         <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Phone">
                       </div>
                     </form>
+                    {% endcomment %}
+                    
                 </div>
              </div>
         </div>
@@ -110,22 +116,27 @@
                 <div class="card-body">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                       <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Описание</a>
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Описание услуги</a>
                       </li>
-                      <li class="nav-item">
+                      {% comment %}
+                        <li class="nav-item">
                         <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">INFO</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">REVIEWS</a>
                       </li>
+                      {% endcomment %}
+                      
                     </ul>
                     <div class="tab-content" id="myTabContent">
                       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"> {{ instance.description|linebreaks }}</div>
-                      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                      {% comment %}
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur ea, quos at, delectus dolorum, molestiae vero debitis iste itaque maiores velit ducimus quis? Quas sequi, accusamus praesentium quam aperiam numquam.</div>
 
                       <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae doloribus fugit ab excepturi, ut doloremque, itaque expedita tenetur laborum eos et, necessitatibus natus! Harum laudantium, adipisci quisquam quas nulla delectus.</div>
                     </div>
+                      {% endcomment %}
                 </div>
             </div>
         </div>
