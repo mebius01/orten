@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.redirects',
     'django.contrib.sitemaps',
-     'django.contrib.flatpages',
+    'django.contrib.flatpages',
     'django_filters',
     'taggit',
     'mptt',
