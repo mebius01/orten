@@ -6,3 +6,5 @@ class ShopConfig(AppConfig):
     def ready(self):
         Product = self.get_model("Product")
         watson.register(Product)
+        Services = self.get_model("Services")
+        watson.register(Services)

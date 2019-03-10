@@ -36,7 +36,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/3/virtuemart_category_id/1/",
-         "new_path":"http://127.0.0.1:8000/shop/ricoh-mp-2001sp-20-stor-khv-merezhevii-printer-kopir-skaner-dupleks-416450/"
+         "new_path":"/shop/ricoh-mp-2001sp-20-stor-khv-merezhevii-printer-kopir-skaner-dupleks-416450/"
       }
    },
    {
@@ -44,7 +44,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/213/virtuemart_category_id/1/",
-         "new_path":"http://127.0.0.1:8000/shop/ricoh-mp-2014d-20-stor-khv-gdi-printer-kopir-skaner-dupleks-krishka-skla-eksponuvannia-417373/"
+         "new_path":"/shop/ricoh-mp-2014d-20-stor-khv-gdi-printer-kopir-skaner-dupleks-krishka-skla-eksponuvannia-417373/"
       }
    },
    {
@@ -52,7 +52,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/214/virtuemart_category_id/1/",
-         "new_path":"http://127.0.0.1:8000/shop/ricoh-mp-2501sp-25-stor-khv-merezhevii-printer-kopir-skaner-dupleks-416447/"
+         "new_path":"/shop/ricoh-mp-2501sp-25-stor-khv-merezhevii-printer-kopir-skaner-dupleks-416447/"
       }
    },
    {
@@ -60,7 +60,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/296/virtuemart_category_id/1/",
-         "new_path":"http://127.0.0.1:8000/shop/ricoh-mp-2014d-20-stor-khv-gdi-printer-kopir-skaner-dupleks-krishka-skla-eksponuvannia-417373/"
+         "new_path":"/shop/ricoh-mp-2014d-20-stor-khv-gdi-printer-kopir-skaner-dupleks-krishka-skla-eksponuvannia-417373/"
       }
    },
    {
@@ -76,23 +76,23 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/1/virtuemart_category_id/2/",
-         "new_path":"http://127.0.0.1:8000/shop/ineo-227-a798127/"
+         "new_path":"/shop/ineo-227-a798127/"
       }
    },
    {
       "model":"redirects.redirect",
       "fields":{
          "site":1,
-         "old_path":"/view/productdetails/virtuemart_product_id/215/virtuemart_category_id/2/",-----------------
-         "new_path":""
+         "old_path":"/view/productdetails/virtuemart_product_id/215/virtuemart_category_id/2/",
+         "new_path":"/shop/develop-ineo-227-in227set17/"
       }
    },
    {
       "model":"redirects.redirect",
       "fields":{
          "site":1,
-         "old_path":"/view/productdetails/virtuemart_product_id/293/virtuemart_category_id/2/",----------------
-         "new_path":""
+         "old_path":"/view/productdetails/virtuemart_product_id/293/virtuemart_category_id/2/",
+         "new_path":"/shop/develop-ineo-226-in226set03/"
       }
    },
    {
@@ -108,7 +108,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/4/virtuemart_category_id/3/",
-         "new_path":"http://127.0.0.1:8000/shop/rezak-sabelnyi-kw-trio-13921-335-mm-10-listov-sht-22328/"
+         "new_path":"/shop/rezak-sabelnyi-kw-trio-13921-335-mm-10-listov-sht-22328/"
       }
    },
    {
@@ -116,7 +116,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/17/virtuemart_category_id/3/",
-         "new_path":"http://127.0.0.1:8000/shop/rezak-dc-20-sht-22100/"
+         "new_path":"/shop/rezak-dc-20-sht-22100/"
       }
    },
    {
@@ -124,39 +124,39 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/19/virtuemart_category_id/3/",
-         "new_path":"http://127.0.0.1:8000/shop/rezak-gt-4c-sht-22105/"
+         "new_path":"/shop/rezak-gt-4c-sht-22105/"
       }
    },
    {
       "model":"redirects.redirect",
       "fields":{
          "site":1,
-         "old_path":"/view/productdetails/virtuemart_product_id/20/virtuemart_category_id/3/",--------------
-         "new_path":""
+         "old_path":"/view/productdetails/virtuemart_product_id/20/virtuemart_category_id/3/",
+         "new_path":"/shop/gilotina-bw-868-a3-22144/"
       }
    },
    {
       "model":"redirects.redirect",
       "fields":{
          "site":1,
-         "old_path":"/view/productdetails/virtuemart_product_id/21/virtuemart_category_id/3/",-------------
-         "new_path":""
+         "old_path":"/view/productdetails/virtuemart_product_id/21/virtuemart_category_id/3/",
+         "new_path":"/shop/gilotina-898-a3-sht-22146/"
       }
    },
    {
       "model":"redirects.redirect",
       "fields":{
          "site":1,
-         "old_path":"/view/productdetails/virtuemart_product_id/22/virtuemart_category_id/3/",-------------
-         "new_path":""
+         "old_path":"/view/productdetails/virtuemart_product_id/22/virtuemart_category_id/3/",
+         "new_path":"/shop/rezak-sabelnyi-kw-trio-13925-310-mm-15-listov-sht-22301/"
       }
    },
    {
       "model":"redirects.redirect",
       "fields":{
          "site":1,
-         "old_path":"/view/productdetails/virtuemart_product_id/23/virtuemart_category_id/3/",---------------
-         "new_path":""
+         "old_path":"/view/productdetails/virtuemart_product_id/23/virtuemart_category_id/3/",
+         "new_path":"/shop/rezak-sabelnyi-kw-trio-13912-335-mm-20-listov-sht-22302/"
       }
    },
    {
@@ -164,7 +164,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/24/virtuemart_category_id/3/",
-         "new_path":"http://127.0.0.1:8000/shop/rezak-sabelnyi-kw-trio-13902-448-mm-15-listov-sht-22303/"
+         "new_path":"/shop/rezak-sabelnyi-kw-trio-13902-448-mm-15-listov-sht-22303/"
       }
    },
    {
@@ -172,7 +172,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/25/virtuemart_category_id/3/",
-         "new_path":"http://127.0.0.1:8000/shop/rezak-sabelnyi-kw-trio-13903-546-mm-15-listov-sht-22306/"
+         "new_path":"/shop/rezak-sabelnyi-kw-trio-13903-546-mm-15-listov-sht-22306/"
       }
    },
    {
@@ -180,23 +180,23 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/26/virtuemart_category_id/3/",
-         "new_path":"http://127.0.0.1:8000/shop/rezak-sabelnyi-kw-trio-13040-360-mm-40-listov-avtoprizhim-sht-22307/"
+         "new_path":"/shop/rezak-sabelnyi-kw-trio-13040-360-mm-40-listov-avtoprizhim-sht-22307/"
       }
    },
    {
       "model":"redirects.redirect",
       "fields":{
          "site":1,
-         "old_path":"/view/productdetails/virtuemart_product_id/81/virtuemart_category_id/3/",-----------
-         "new_path":""
+         "old_path":"/view/productdetails/virtuemart_product_id/81/virtuemart_category_id/3/",
+         "new_path":"/shop/gilotina-kw-trio-13942-430-mm-400-listov-so-stolom-sht-22311/"
       }
    },
    {
       "model":"redirects.redirect",
       "fields":{
          "site":1,
-         "old_path":"/view/productdetails/virtuemart_product_id/82/virtuemart_category_id/3/",-----------
-         "new_path":""
+         "old_path":"/view/productdetails/virtuemart_product_id/82/virtuemart_category_id/3/",
+         "new_path":"/shop/rezak-rolikovyi-kw-trio-13018-360-mm-15-listov-sht-22341/"
       }
    },
    {
@@ -204,15 +204,15 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/180/virtuemart_category_id/3/",
-         "new_path":"http://127.0.0.1:8000/shop/rezak-rolikovyi-kw-trio-13033-450-mm-10-listov-sht-22338/"
+         "new_path":"/shop/rezak-rolikovyi-kw-trio-13033-450-mm-10-listov-sht-22338/"
       }
    },
    {
       "model":"redirects.redirect",
       "fields":{
          "site":1,
-         "old_path":"/view/productdetails/virtuemart_product_id/181/virtuemart_category_id/3/",-------
-         "new_path":""
+         "old_path":"/view/productdetails/virtuemart_product_id/181/virtuemart_category_id/3/",
+         "new_path":"/shop/gilotina-bw-868-a4-bw-868/"
       }
    },
    {
@@ -220,7 +220,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/236/virtuemart_category_id/3/",
-         "new_path":"http://127.0.0.1:8000/shop/trimmer-cutmark-villen-5-v-1-sht-22409/"
+         "new_path":"/shop/trimmer-cutmark-villen-5-v-1-sht-22409/"
       }
    },
    {
@@ -228,7 +228,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/240/virtuemart_category_id/3/",
-         "new_path":"http://127.0.0.1:8000/shop/rezak-sabelnyi-kw-trio-13300-306-mm-7-listov-sht-22325/"
+         "new_path":"/shop/rezak-sabelnyi-kw-trio-13300-306-mm-7-listov-sht-22325/"
       }
    },
    {
@@ -236,15 +236,15 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/241/virtuemart_category_id/3/",
-         "new_path":"http://127.0.0.1:8000/shop/zakruglitel-uglov-kw-trio-09521-nastolnyi-s-nozhami-r35-6-10-priamoi-d6-vysechka-pod-rigel-d21-sht-10218/"
+         "new_path":"/shop/zakruglitel-uglov-kw-trio-09521-nastolnyi-s-nozhami-r35-6-10-priamoi-d6-vysechka-pod-rigel-d21-sht-10218/"
       }
    },
    {
       "model":"redirects.redirect",
       "fields":{
          "site":1,
-         "old_path":"/view/productdetails/virtuemart_product_id/242/virtuemart_category_id/3/",------
-         "new_path":""
+         "old_path":"/view/productdetails/virtuemart_product_id/242/virtuemart_category_id/3/",
+         "new_path":"/shop/vernutsya-k-rezaki-trimmery-gilotiny-gilotina-kw-trio-3943-370-mm-150-listovvernutsya-k-rezaki-trimmery-gilotiny-gilotina-kw-trio-3943-370-mm-22310/"
       }
    },
    {
@@ -252,7 +252,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/243/virtuemart_category_id/3/",
-         "new_path":"http://127.0.0.1:8000/shop/rezak-rolikovyi-kw-trio-13034-318-mm-10-listov-sht-22337/"
+         "new_path":"/shop/rezak-rolikovyi-kw-trio-13034-318-mm-10-listov-sht-22337/"
       }
    },
    {
@@ -260,7 +260,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/244/virtuemart_category_id/3/",
-         "new_path":"http://127.0.0.1:8000/shop/rezak-rolikovyi-kw-trio-13021-960-mm-10-listov-s-podstavkoi-sht-22344/"
+         "new_path":"/shop/rezak-rolikovyi-kw-trio-13021-960-mm-10-listov-s-podstavkoi-sht-22344/"
       }
    },
    {
@@ -268,7 +268,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/262/virtuemart_category_id/3/",
-         "new_path":"http://127.0.0.1:8000/shop/rezak-yide-6014-1-a4-metallicheskoe-osnovanie-sht-22133/"
+         "new_path":"/shop/rezak-yide-6014-1-a4-metallicheskoe-osnovanie-sht-22133/"
       }
    },
    {
@@ -276,7 +276,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/263/virtuemart_category_id/3/",
-         "new_path":"http://127.0.0.1:8000/shop/rezak-yide-6012-a3-metallicheskoe-osnovanie-sht-22134/"
+         "new_path":"/shop/rezak-yide-6012-a3-metallicheskoe-osnovanie-sht-22134/"
       }
    },
    {
@@ -284,7 +284,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/264/virtuemart_category_id/3/",
-         "new_path":"http://127.0.0.1:8000/shop/gilotina-yide-858-a3-sht-22138/"
+         "new_path":"/shop/gilotina-yide-858-a3-sht-22138/"
       }
    },
    {
@@ -292,7 +292,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/265/virtuemart_category_id/3/",
-         "new_path":"http://127.0.0.1:8000/shop/gilotina-yide-858-a3-sht-22138/"
+         "new_path":"/shop/gilotina-yide-858-a3-sht-22138/"
       }
    },
    {
@@ -316,7 +316,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/28/virtuemart_category_id/24/",
-         "new_path":"http://127.0.0.1:8000/shop/binder-na-plastikovuiu-pruzhinu-bindmark-bm10-sht-21737/"
+         "new_path":"/shop/binder-na-plastikovuiu-pruzhinu-bindmark-bm10-sht-21737/"
       }
    },
    {
@@ -324,7 +324,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/46/virtuemart_category_id/24/",
-         "new_path":"http://127.0.0.1:8000/shop/binder-na-plastikovuyu-pruzhinu-dsb-cb-122-21604/"
+         "new_path":"/shop/binder-na-plastikovuyu-pruzhinu-dsb-cb-122-21604/"
       }
    },
    {
@@ -332,7 +332,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/47/virtuemart_category_id/24/",
-         "new_path":"http://127.0.0.1:8000/shop/binder-na-plastikovuyu-pruzhinu-dsb-cb-180-21605/"
+         "new_path":"/shop/binder-na-plastikovuyu-pruzhinu-dsb-cb-180-21605/"
       }
    },
    {
@@ -340,7 +340,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/48/virtuemart_category_id/24/",
-         "new_path":"http://127.0.0.1:8000/shop/elektricheskij-binder-dsb-cb-200e-21606/"
+         "new_path":"/shop/elektricheskij-binder-dsb-cb-200e-21606/"
       }
    },
    {
@@ -348,7 +348,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/80/virtuemart_category_id/24/",
-         "new_path":"http://127.0.0.1:8000/shop/binder-na-plastikovuiu-pruzhinu-bindmark-bm12-sht-21837/"
+         "new_path":"/shop/binder-na-plastikovuiu-pruzhinu-bindmark-bm12-sht-21837/"
       }
    },
    {
@@ -356,7 +356,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/198/virtuemart_category_id/24/",
-         "new_path":"http://127.0.0.1:8000/shop/binder-na-plastikovuiu-pruzhinu-bindmark-bm8-duo-sht-21841/"
+         "new_path":"/shop/binder-na-plastikovuiu-pruzhinu-bindmark-bm8-duo-sht-21841/"
       }
    },
    {
@@ -364,7 +364,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/199/virtuemart_category_id/24/",
-         "new_path":"http://127.0.0.1:8000/shop/binder-na-plastikovuiu-pruzhinu-bindmark-bm11-sht-21738/"
+         "new_path":"/shop/binder-na-plastikovuiu-pruzhinu-bindmark-bm11-sht-21738/"
       }
    },
    {
@@ -372,7 +372,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/200/virtuemart_category_id/24/",
-         "new_path":"http://127.0.0.1:8000/shop/binder-na-plastikovuiu-pruzhinu-bindmark-bm15-sht-21838/"
+         "new_path":"/shop/binder-na-plastikovuiu-pruzhinu-bindmark-bm15-sht-21838/"
       }
    },
    {
@@ -380,7 +380,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/261/virtuemart_category_id/24/",
-         "new_path":"http://127.0.0.1:8000/shop/binder-na-plastikovuiu-pruzhinu-bindmark-sb280-sht-21750/"
+         "new_path":"/shop/binder-na-plastikovuiu-pruzhinu-bindmark-sb280-sht-21750/"
       }
    },
    {
@@ -388,7 +388,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/313/virtuemart_category_id/24/",
-         "new_path":"http://127.0.0.1:8000/shop/binder-na-plastikovuiu-pruzhinu-bindmark-super-21-plus-professionalnyi-sht-21733/"
+         "new_path":"/shop/binder-na-plastikovuiu-pruzhinu-bindmark-super-21-plus-professionalnyi-sht-21733/"
       }
    },
    {
@@ -404,7 +404,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/27/virtuemart_category_id/25/",
-         "new_path":"http://127.0.0.1:8000/shop/binder-na-metal-pruzhinu-dsb-wr150-3-1-sht-21633/"
+         "new_path":"/shop/binder-na-metal-pruzhinu-dsb-wr150-3-1-sht-21633/"
       }
    },
    {
@@ -412,7 +412,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/35/virtuemart_category_id/25/",
-         "new_path":"http://127.0.0.1:8000/shop/binder-na-metallicheskuiu-pruzhinu-bindmark-t970r-3-1-kruglye-otverstiia-sht-21741/"
+         "new_path":"/shop/binder-na-metallicheskuiu-pruzhinu-bindmark-t970r-3-1-kruglye-otverstiia-sht-21741/"
       }
    },
    {
@@ -420,23 +420,23 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/260/virtuemart_category_id/25/",
-         "new_path":"http://127.0.0.1:8000/shop/binder-na-metallicheskuiu-pruzhinu-bindmark-cw330t-2-1-professionalnyi-sht-21762/"
+         "new_path":"/shop/binder-na-metallicheskuiu-pruzhinu-bindmark-cw330t-2-1-professionalnyi-sht-21762/"
       }
    },
    {
       "model":"redirects.redirect",
       "fields":{
          "site":1,
-         "old_path":"/view/productdetails/virtuemart_product_id/267/virtuemart_category_id/25/",----
-         "new_path":""
+         "old_path":"/view/productdetails/virtuemart_product_id/267/virtuemart_category_id/25/",
+         "new_path":"/shop/binder-na-metallicheskoj-pruzhiny-mc430-plus-21767/"
       }
    },
    {
       "model":"redirects.redirect",
       "fields":{
          "site":1,
-         "old_path":"/view/productdetails/virtuemart_product_id/276/virtuemart_category_id/25/",----
-         "new_path":""
+         "old_path":"/view/productdetails/virtuemart_product_id/276/virtuemart_category_id/25/",
+         "new_path":"/shop/elektricheskij-binder-na-plastikmetall-pruzhiny-dsb-cw150e-21631/"
       }
    },
    {
@@ -444,7 +444,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/279/virtuemart_category_id/25/",
-         "new_path":"http://127.0.0.1:8000/shop/binder-na-metallicheskuiu-pruzhinu-bindmark-cw430-3-1-professionalnyi-a3-sht-21764/"
+         "new_path":"/shop/binder-na-metallicheskuiu-pruzhinu-bindmark-cw430-3-1-professionalnyi-a3-sht-21764/"
       }
    },
    {
@@ -452,7 +452,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/298/virtuemart_category_id/25/",
-         "new_path":"http://127.0.0.1:8000/shop/binder-na-metallicheskuiu-pruzhinu-bindmark-u618-3-1-sht-21770/"
+         "new_path":"/shop/binder-na-metallicheskuiu-pruzhinu-bindmark-u618-3-1-sht-21770/"
       }
    },
    {
@@ -460,7 +460,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/299/virtuemart_category_id/25/",
-         "new_path":"http://127.0.0.1:8000/shop/binder-na-metallicheskuiu-pruzhinu-bindmark-u619-3-1-sht-21771/"
+         "new_path":"/shop/binder-na-metallicheskuiu-pruzhinu-bindmark-u619-3-1-sht-21771/"
       }
    },
    {
@@ -468,7 +468,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/300/virtuemart_category_id/25/",
-         "new_path":"http://127.0.0.1:8000/shop/binder-na-metallicheskuiu-pruzhinu-bindmark-t9029a-3-1-sht-21772/"
+         "new_path":"/shop/binder-na-metallicheskuiu-pruzhinu-bindmark-t9029a-3-1-sht-21772/"
       }
    },
    {
@@ -476,7 +476,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/312/virtuemart_category_id/25/",
-         "new_path":"http://127.0.0.1:8000/shop/binder-na-metallicheskuiu-pruzhinu-bindmark-cw234-plus-3-1-sht-21735/"
+         "new_path":"/shop/binder-na-metallicheskuiu-pruzhinu-bindmark-cw234-plus-3-1-sht-21735/"
       }
    },
    {
@@ -492,7 +492,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/37/virtuemart_category_id/26/",
-         "new_path":"http://127.0.0.1:8000/shop/nitkoshvejnyj-apparat-bindmark-168-ps-sht-21840/"
+         "new_path":"/shop/nitkoshvejnyj-apparat-bindmark-168-ps-sht-21840/"
       }
    },
    {
@@ -516,15 +516,15 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/255/virtuemart_category_id/27/",
-         "new_path":"http://127.0.0.1:8000/shop/termokleevoi-binder-boway-bw-976v6-sht-21807/"
+         "new_path":"/shop/termokleevoi-binder-boway-bw-976v6-sht-21807/"
       }
    },
    {
       "model":"redirects.redirect",
       "fields":{
          "site":1,
-         "old_path":"/view/productdetails/virtuemart_product_id/281/virtuemart_category_id/27/",-----
-         "new_path":""
+         "old_path":"/view/productdetails/virtuemart_product_id/281/virtuemart_category_id/27/",
+         "new_path":"/shop/termobinder-dsb-tb200e-21651/"
       }
    },
    {
@@ -548,7 +548,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/6/virtuemart_category_id/22/",
-         "new_path":"http://127.0.0.1:8000/shop/laminator-konvertnyi-royal-sovereign-pl-910-a4-sht-20158/"
+         "new_path":"/shop/laminator-konvertnyi-royal-sovereign-pl-910-a4-sht-20158/"
       }
    },
    {
@@ -556,15 +556,15 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/8/virtuemart_category_id/22/",
-         "new_path":"http://127.0.0.1:8000/shop/laminator-lamimark-senator-230-a4-sht-20251/"
+         "new_path":"/shop/laminator-lamimark-senator-230-a4-sht-20251/"
       }
    },
    {
       "model":"redirects.redirect",
       "fields":{
          "site":1,
-         "old_path":"/view/productdetails/virtuemart_product_id/9/virtuemart_category_id/22/",-----
-         "new_path":""
+         "old_path":"/view/productdetails/virtuemart_product_id/9/virtuemart_category_id/22/",
+         "new_path":"/shop/laminator-lamimark-sompanion-230-a4-sht-20253/"
       }
    },
    {
@@ -572,15 +572,15 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/10/virtuemart_category_id/22/",
-         "new_path":"http://127.0.0.1:8000/shop/laminator-lamimark-senator-330-a3-sht-20252/"
+         "new_path":"/shop/laminator-lamimark-senator-330-a3-sht-20252/"
       }
    },
    {
       "model":"redirects.redirect",
       "fields":{
          "site":1,
-         "old_path":"/view/productdetails/virtuemart_product_id/11/virtuemart_category_id/22/",---lamiMARK companion 330
-         "new_path":""
+         "old_path":"/view/productdetails/virtuemart_product_id/11/virtuemart_category_id/22/",
+         "new_path":"/shop/laminator-lamimark-sompanion-330-a3-sht-20254/"
       }
    },
    {
@@ -588,7 +588,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/12/virtuemart_category_id/22/",
-         "new_path":"http://127.0.0.1:8000/shop/laminator-lamimark-premier-230-a4-sht-20257/"
+         "new_path":"/shop/laminator-lamimark-premier-230-a4-sht-20257/"
       }
    },
    {
@@ -596,15 +596,15 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/13/virtuemart_category_id/22/",
-         "new_path":"http://127.0.0.1:8000/shop/laminator-lamimark-premier-330-a3-sht-20258/"
+         "new_path":"/shop/laminator-lamimark-premier-330-a3-sht-20258/"
       }
    },
    {
       "model":"redirects.redirect",
       "fields":{
          "site":1,
-         "old_path":"/view/productdetails/virtuemart_product_id/14/virtuemart_category_id/22/",---lamiMARK FGK 220
-         "new_path":""
+         "old_path":"/view/productdetails/virtuemart_product_id/14/virtuemart_category_id/22/",
+         "new_path":"/shop/laminator-lamimark-fgk-220-20351/"
       }
    },
    {
@@ -612,7 +612,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/15/virtuemart_category_id/22/",
-         "new_path":"http://127.0.0.1:8000/shop/laminator-konvertnyi-lamimark-pd230-1-a4-sht-20354/"
+         "new_path":"/shop/laminator-konvertnyi-lamimark-pd230-1-a4-sht-20354/"
       }
    },
    {
@@ -620,15 +620,15 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/16/virtuemart_category_id/22/",
-         "new_path":"http://127.0.0.1:8000/shop/laminator-konvertnyi-lamimark-pda4-230cn-a4-sht-20357/"
+         "new_path":"/shop/laminator-konvertnyi-lamimark-pda4-230cn-a4-sht-20357/"
       }
    },
    {
       "model":"redirects.redirect",
       "fields":{
          "site":1,
-         "old_path":"/view/productdetails/virtuemart_product_id/39/virtuemart_category_id/22/",---- lamiMARK FGK 320
-         "new_path":""
+         "old_path":"/view/productdetails/virtuemart_product_id/39/virtuemart_category_id/22/",
+         "new_path":"/shop/laminator-lamimark-fgk-320-20352/"
       }
    },
    {
@@ -636,7 +636,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/40/virtuemart_category_id/22/",
-         "new_path":"http://127.0.0.1:8000/shop/laminator-konvertnyi-lamimark-pda3-330cn-a3-sht-20358/"
+         "new_path":"/shop/laminator-konvertnyi-lamimark-pda3-330cn-a3-sht-20358/"
       }
    },
    {
@@ -644,15 +644,15 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/41/virtuemart_category_id/22/",
-         "new_path":"http://127.0.0.1:8000/shop/laminator-konvertnyi-lamimark-pda3-330sl-a3-sht-20362/"
+         "new_path":"/shop/laminator-konvertnyi-lamimark-pda3-330sl-a3-sht-20362/"
       }
    },
    {
       "model":"redirects.redirect",
       "fields":{
          "site":1,
-         "old_path":"/view/productdetails/virtuemart_product_id/42/virtuemart_category_id/22/",---lamiMARK PDA3-330R 
-         "new_path":""
+         "old_path":"/view/productdetails/virtuemart_product_id/42/virtuemart_category_id/22/",
+         "new_path":"/shop/laminator-lamimark-pda3-330r-a3-20368/"
       }
    },
    {
@@ -660,7 +660,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/44/virtuemart_category_id/22/",
-         "new_path":"http://127.0.0.1:8000/shop/laminator-konvertnyi-royal-sovereign-nr-1201-a3-sht-20135/"
+         "new_path":"/shop/laminator-konvertnyi-royal-sovereign-nr-1201-a3-sht-20135/"
       }
    },
    {
@@ -668,7 +668,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/78/virtuemart_category_id/22/",
-         "new_path":"http://127.0.0.1:8000/shop/laminator-konvertnyi-royal-sovereign-es-915-a4-sht-20129/"
+         "new_path":"/shop/laminator-konvertnyi-royal-sovereign-es-915-a4-sht-20129/"
       }
    },
    {
@@ -676,7 +676,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/79/virtuemart_category_id/22/",
-         "new_path":"http://127.0.0.1:8000/shop/laminator-konvertnyi-royal-sovereign-pl-1310-a3-sht-20159/"
+         "new_path":"/shop/laminator-konvertnyi-royal-sovereign-pl-1310-a3-sht-20159/"
       }
    },
    {
@@ -684,7 +684,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/217/virtuemart_category_id/22/",
-         "new_path":"http://127.0.0.1:8000/shop/laminator-konvertnyi-lamimark-pda3-330x-a3-sht-20360/"
+         "new_path":"/shop/laminator-konvertnyi-lamimark-pda3-330x-a3-sht-20360/"
       }
    },
    {
@@ -692,7 +692,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/237/virtuemart_category_id/22/",
-         "new_path":"http://127.0.0.1:8000/shop/laminator-konvertnyi-royal-sovereign-nr-901-a4-sht-20134/"
+         "new_path":"/shop/laminator-konvertnyi-royal-sovereign-nr-901-a4-sht-20134/"
       }
    },
    {
@@ -700,7 +700,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/294/virtuemart_category_id/22/",
-         "new_path":"http://127.0.0.1:8000/shop/laminator-konvertnyi-royal-sovereign-hsh-340-a3-professionalnyi-sht-20170/"
+         "new_path":"/shop/laminator-konvertnyi-royal-sovereign-hsh-340-a3-professionalnyi-sht-20170/"
       }
    },
    {
@@ -708,7 +708,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/311/virtuemart_category_id/22/",
-         "new_path":"http://127.0.0.1:8000/shop/laminator-konvertnyi-lamimark-eco-12-a3-sht-20353/"
+         "new_path":"/shop/laminator-konvertnyi-lamimark-eco-12-a3-sht-20353/"
       }
    },
    {
@@ -724,7 +724,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/179/virtuemart_category_id/23/",
-         "new_path":"http://127.0.0.1:8000/shop/laminator-rulonnyi-lamimark-pdfm360-sht-20371/"
+         "new_path":"/shop/laminator-rulonnyi-lamimark-pdfm360-sht-20371/"
       }
    },
    {
@@ -732,7 +732,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/216/virtuemart_category_id/23/",
-         "new_path":"http://127.0.0.1:8000/shop/laminator-rulonnyi-royal-sovereign-rsh-380sl-sht-20177/"
+         "new_path":"/shop/laminator-rulonnyi-royal-sovereign-rsh-380sl-sht-20177/"
       }
    },
    {
@@ -740,7 +740,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/238/virtuemart_category_id/23/",
-         "new_path":"http://127.0.0.1:8000/shop/laminator-rulonnyi-royal-sovereign-rsh-685sl-sht-20178/"
+         "new_path":"/shop/laminator-rulonnyi-royal-sovereign-rsh-685sl-sht-20178/"
       }
    },
    {
@@ -748,7 +748,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/258/virtuemart_category_id/23/",
-         "new_path":"http://127.0.0.1:8000/shop/rulonnyi-laminator-lamimark-lbs-1600d-sht-20410/"
+         "new_path":"/shop/rulonnyi-laminator-lamimark-lbs-1600d-sht-20410/"
       }
    },
    {
@@ -756,7 +756,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/271/virtuemart_category_id/23/",
-         "new_path":"http://127.0.0.1:8000/shop/laminator-rulonnyi-boway-f650-a-sht-20396/"
+         "new_path":"/shop/laminator-rulonnyi-boway-f650-a-sht-20396/"
       }
    },
    {
@@ -772,7 +772,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/95/virtuemart_category_id/19/",
-         "new_path":"http://127.0.0.1:8000/shop/numerator-kw-trio-20700-7-tsifr-sht-14007/"
+         "new_path":"/shop/numerator-kw-trio-20700-7-tsifr-sht-14007/"
       }
    },
    {
@@ -780,7 +780,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/256/virtuemart_category_id/19/",
-         "new_path":"http://127.0.0.1:8000/shop/numerator-kw-trio-20600-6-tsifr-sht-14006/"
+         "new_path":"/shop/numerator-kw-trio-20600-6-tsifr-sht-14006/"
       }
    },
    {
@@ -788,7 +788,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/257/virtuemart_category_id/19/",
-         "new_path":"http://127.0.0.1:8000/shop/numerator-kw-trio-20800-8-tsifr-sht-14008/"
+         "new_path":"/shop/numerator-kw-trio-20800-8-tsifr-sht-14008/"
       }
    },
    {
@@ -803,16 +803,16 @@
       "model":"redirects.redirect",
       "fields":{
          "site":1,
-         "old_path":"/view/productdetails/virtuemart_product_id/297/virtuemart_category_id/46/",----Epson L132
-         "new_path":""
+         "old_path":"/view/productdetails/virtuemart_product_id/297/virtuemart_category_id/46/",
+         "new_path":"/shop/printer-epson-l132-c11ce58403/"
       }
    },
    {
       "model":"redirects.redirect",
       "fields":{
          "site":1,
-         "old_path":"/view/productdetails/virtuemart_product_id/309/virtuemart_category_id/46/",---Canon PIXMA E414
-         "new_path":""
+         "old_path":"/view/productdetails/virtuemart_product_id/309/virtuemart_category_id/46/",
+         "new_path":"/shop/canon-pixma-ink-efficiency-e414-1366c009/"
       }
    },
    {
@@ -828,7 +828,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/96/virtuemart_category_id/20/",
-         "new_path":"http://127.0.0.1:8000/shop/stepler-kw-trio-5900-do-20-listov-otstup-317-mm-sht-23020/"
+         "new_path":"/shop/stepler-kw-trio-5900-do-20-listov-otstup-317-mm-sht-23020/"
       }
    },
    {
@@ -836,7 +836,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/97/virtuemart_category_id/20/",
-         "new_path":"http://127.0.0.1:8000/shop/stepler-kw-trio-50lan-do-210-listov-otstup-70-mm-sht-23023/"
+         "new_path":"/shop/stepler-kw-trio-50lan-do-210-listov-otstup-70-mm-sht-23023/"
       }
    },
    {
@@ -844,7 +844,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/98/virtuemart_category_id/20/",
-         "new_path":"http://127.0.0.1:8000/shop/stepler-yf-9993-do-210-listov-otstup-250-mm-sht-23027/"
+         "new_path":"/shop/stepler-yf-9993-do-210-listov-otstup-250-mm-sht-23027/"
       }
    },
    {
@@ -852,7 +852,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/226/virtuemart_category_id/20/",
-         "new_path":"http://127.0.0.1:8000/shop/stepler-kw-trio-5000-do-210-listov-otstup-250-mm-sht-23025/"
+         "new_path":"/shop/stepler-kw-trio-5000-do-210-listov-otstup-250-mm-sht-23025/"
       }
    },
    {
@@ -876,7 +876,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/50/virtuemart_category_id/12/",
-         "new_path":"http://127.0.0.1:8000/shop/schetchik-banknot-mbc-1000-sht-25051/"
+         "new_path":"/shop/schetchik-banknot-mbc-1000-sht-25051/"
       }
    },
    {
@@ -884,7 +884,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/202/virtuemart_category_id/12/",
-         "new_path":"http://127.0.0.1:8000/shop/schetchik-banknot-mbc-1003-sht-25052/"
+         "new_path":"/shop/schetchik-banknot-mbc-1003-sht-25052/"
       }
    },
    {
@@ -892,7 +892,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/305/virtuemart_category_id/12/",
-         "new_path":"http://127.0.0.1:8000/shop/schetchik-banknot-mbc-100-sht-25050/"
+         "new_path":"/shop/schetchik-banknot-mbc-100-sht-25050/"
       }
    },
    {
@@ -900,7 +900,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/306/virtuemart_category_id/12/",
-         "new_path":"http://127.0.0.1:8000/shop/schetchik-banknot-mbc-1100cl-s-kalkuliatsiei-sht-25053/"
+         "new_path":"/shop/schetchik-banknot-mbc-1100cl-s-kalkuliatsiei-sht-25053/"
       }
    },
    {
@@ -916,7 +916,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/7/virtuemart_category_id/7/",
-         "new_path":"http://127.0.0.1:8000/shop/unichtozhitel-dokumentov-shredmark-501x-sht-24302/"
+         "new_path":"/shop/unichtozhitel-dokumentov-shredmark-501x-sht-24302/"
       }
    },
    {
@@ -924,7 +924,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/29/virtuemart_category_id/7/",
-         "new_path":"http://127.0.0.1:8000/shop/unichtozhitel-dokumentov-shredmark-502x-sht-24304/"
+         "new_path":"/shop/unichtozhitel-dokumentov-shredmark-502x-sht-24304/"
       }
    },
    {
@@ -932,7 +932,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/30/virtuemart_category_id/7/",
-         "new_path":"http://127.0.0.1:8000/shop/unichtozhitel-dokumentov-shredmark-702x-sht-24305/"
+         "new_path":"/shop/unichtozhitel-dokumentov-shredmark-702x-sht-24305/"
       }
    },
    {
@@ -940,7 +940,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/36/virtuemart_category_id/7/",
-         "new_path":"http://127.0.0.1:8000/shop/unichtozhitel-dokumentov-shredmark-2560c-ofisnyi-sht-24371/"
+         "new_path":"/shop/unichtozhitel-dokumentov-shredmark-2560c-ofisnyi-sht-24371/"
       }
    },
    {
@@ -948,7 +948,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/49/virtuemart_category_id/7/",
-         "new_path":"http://127.0.0.1:8000/shop/unichtozhitel-dokumentov-shredmark-2001x-sht-24314/"
+         "new_path":"/shop/unichtozhitel-dokumentov-shredmark-2001x-sht-24314/"
       }
    },
    {
@@ -956,7 +956,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/83/virtuemart_category_id/7/",
-         "new_path":"http://127.0.0.1:8000/shop/unichtozhitel-dokumentov-shredmark-1002x-sht-24306/"
+         "new_path":"/shop/unichtozhitel-dokumentov-shredmark-1002x-sht-24306/"
       }
    },
    {
@@ -964,7 +964,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/84/virtuemart_category_id/7/",
-         "new_path":"http://127.0.0.1:8000/shop/unichtozhitel-dokumentov-shredmark-1001xx-sht-24308/"
+         "new_path":"/shop/unichtozhitel-dokumentov-shredmark-1001xx-sht-24308/"
       }
    },
    {
@@ -972,7 +972,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/176/virtuemart_category_id/7/",
-         "new_path":"http://127.0.0.1:8000/shop/unichtozhitel-dokumentov-shredmark-1501x-sht-24307/"
+         "new_path":"/shop/unichtozhitel-dokumentov-shredmark-1501x-sht-24307/"
       }
    },
    {
@@ -980,7 +980,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/177/virtuemart_category_id/7/",
-         "new_path":"http://127.0.0.1:8000/shop/unichtozhitel-dokumentov-shredmark-c-22cc-sht-24328/"
+         "new_path":"/shop/unichtozhitel-dokumentov-shredmark-c-22cc-sht-24328/"
       }
    },
    {
@@ -988,7 +988,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/218/virtuemart_category_id/7/",
-         "new_path":"http://127.0.0.1:8000/shop/unichtozhitel-dokumentov-shredmark-814s-sht-24301/"
+         "new_path":"/shop/unichtozhitel-dokumentov-shredmark-814s-sht-24301/"
       }
    },
    {
@@ -996,7 +996,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/239/virtuemart_category_id/7/",
-         "new_path":"http://127.0.0.1:8000/shop/unichtozhitel-dokumentov-dsb-af75-sht-24330/"
+         "new_path":"/shop/unichtozhitel-dokumentov-dsb-af75-sht-24330/"
       }
    },
    {
@@ -1004,7 +1004,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/268/virtuemart_category_id/7/",
-         "new_path":"http://127.0.0.1:8000/shop/unichtozhitel-dokumentov-shredmark-703xx-sht-24321/"
+         "new_path":"/shop/unichtozhitel-dokumentov-shredmark-703xx-sht-24321/"
       }
    },
    {
@@ -1012,7 +1012,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/269/virtuemart_category_id/7/",
-         "new_path":"http://127.0.0.1:8000/shop/unichtozhitel-dokumentov-shredmark-1235m-sht-24343/"
+         "new_path":"/shop/unichtozhitel-dokumentov-shredmark-1235m-sht-24343/"
       }
    },
    {
@@ -1020,7 +1020,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/273/virtuemart_category_id/7/",
-         "new_path":"http://127.0.0.1:8000/shop/unichtozhitel-dokumentov-shredmark-2880c-ofisnyi-sht-24376/"
+         "new_path":"/shop/unichtozhitel-dokumentov-shredmark-2880c-ofisnyi-sht-24376/"
       }
    },
    {
@@ -1028,7 +1028,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/282/virtuemart_category_id/7/",
-         "new_path":"http://127.0.0.1:8000/shop/unichtozhitel-dokumentov-shredmark-2401s-sht-24313/"
+         "new_path":"/shop/unichtozhitel-dokumentov-shredmark-2401s-sht-24313/"
       }
    },
    {
@@ -1036,7 +1036,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/286/virtuemart_category_id/7/",
-         "new_path":"http://127.0.0.1:8000/shop/unichtozhitel-dokumentov-shredmark-rs215c-sht-24356/"
+         "new_path":"/shop/unichtozhitel-dokumentov-shredmark-rs215c-sht-24356/"
       }
    },
    {
@@ -1044,7 +1044,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/290/virtuemart_category_id/7/",
-         "new_path":"http://127.0.0.1:8000/shop/unichtozhitel-dokumentov-shredmark-1203x-sht-24323/"
+         "new_path":"/shop/unichtozhitel-dokumentov-shredmark-1203x-sht-24323/"
       }
    },
    {
@@ -1052,7 +1052,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/291/virtuemart_category_id/7/",
-         "new_path":"http://127.0.0.1:8000/shop/unichtozhitel-dokumentov-shredmark-715m-sht-24309/"
+         "new_path":"/shop/unichtozhitel-dokumentov-shredmark-715m-sht-24309/"
       }
    },
    {
@@ -1060,15 +1060,15 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/292/virtuemart_category_id/7/",
-         "new_path":"http://127.0.0.1:8000/shop/unichtozhitel-dokumentov-shredmark-2435s-sht-24341/"
+         "new_path":"/shop/unichtozhitel-dokumentov-shredmark-2435s-sht-24341/"
       }
    },
    {
       "model":"redirects.redirect",
       "fields":{
          "site":1,
-         "old_path":"/consum/",----????
-         "new_path":"/category/epson/"
+         "old_path":"/consum/",
+         "new_path":"/category/licenzionnye-rashodnye-materialy/rashodnye-materialy/"
       }
    },
    {
@@ -1084,7 +1084,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/136/virtuemart_category_id/9/",
-         "new_path":"http://127.0.0.1:8000/shop/toner-kartridzh-mp-5002-chornii-jp-842239/"
+         "new_path":"/shop/toner-kartridzh-mp-5002-chornii-jp-842239/"
       }
    },
    {
@@ -1092,7 +1092,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/137/virtuemart_category_id/9/",
-         "new_path":"http://127.0.0.1:8000/shop/toner-kartridzh-mp-2000-chornii-842015/"
+         "new_path":"/shop/toner-kartridzh-mp-2000-chornii-842015/"
       }
    },
    {
@@ -1100,7 +1100,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/138/virtuemart_category_id/9/",
-         "new_path":"http://127.0.0.1:8000/shop/toner-kartridzh-mp-2501-chornii-842009/"
+         "new_path":"/shop/toner-kartridzh-mp-2501-chornii-842009/"
       }
    },
    {
@@ -1108,7 +1108,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/139/virtuemart_category_id/9/",
-         "new_path":"http://127.0.0.1:8000/shop/toner-kartridzh-mp-301-chornii-842025/"
+         "new_path":"/shop/toner-kartridzh-mp-301-chornii-842025/"
       }
    },
    {
@@ -1116,23 +1116,23 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/140/virtuemart_category_id/9/",
-         "new_path":"http://127.0.0.1:8000/shop/toner-kartridzh-mp-201-chornii-842024/"
+         "new_path":"/shop/toner-kartridzh-mp-201-chornii-842024/"
       }
    },
    {
       "model":"redirects.redirect",
       "fields":{
          "site":1,
-         "old_path":"/view/productdetails/virtuemart_product_id/141/virtuemart_category_id/9/",----Тонер-Картридж KATUN MP 1500
-         "new_path":""
+         "old_path":"/view/productdetails/virtuemart_product_id/141/virtuemart_category_id/9/",
+         "new_path":"/shop/toner-kartridzh-katun-ricoh-aficio-dt42blk-type-1130d-1230d-dlia-2015-2016-2018-2020-gestetner-dsm-615-616-618-620-716s-721d-mp-1500-1600-2000-perfomance-37035-25030/"
       }
    },
    {
       "model":"redirects.redirect",
       "fields":{
          "site":1,
-         "old_path":"/view/productdetails/virtuemart_product_id/142/virtuemart_category_id/9/",----MP 161/171
-         "new_path":""
+         "old_path":"/view/productdetails/virtuemart_product_id/142/virtuemart_category_id/9/",
+         "new_path":"/shop/toner-kartridzh-katun-ricoh-aficio-1515-dsm-415-mp161-mp171-mp201-type-1170d-1270d-dt415blk-230-g-25632-37034/"
       }
    },
    {
@@ -1140,7 +1140,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/143/virtuemart_category_id/9/",
-         "new_path":"http://127.0.0.1:8000/shop/toner-kartridzh-mp-3045-842078/"
+         "new_path":"/shop/toner-kartridzh-mp-3045-842078/"
       }
    },
    {
@@ -1148,7 +1148,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/245/virtuemart_category_id/9/",
-         "new_path":"http://127.0.0.1:8000/shop/shesternia-b0393060/"
+         "new_path":"/shop/shesternia-b0393060/"
       }
    },
    {
@@ -1156,7 +1156,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/246/virtuemart_category_id/9/",
-         "new_path":"http://127.0.0.1:8000/shop/shesternia-b0393062/"
+         "new_path":"/shop/shesternia-b0393062/"
       }
    },
    {
@@ -1164,7 +1164,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/247/virtuemart_category_id/9/",
-         "new_path":"http://127.0.0.1:8000/shop/shesternia-b0393245/"
+         "new_path":"/shop/shesternia-b0393245/"
       }
    },
    {
@@ -1172,7 +1172,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/248/virtuemart_category_id/9/",
-         "new_path":"http://127.0.0.1:8000/shop/developer-tip-28-chornii-b1219645/"
+         "new_path":"/shop/developer-tip-28-chornii-b1219645/"
       }
    },
    {
@@ -1180,7 +1180,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/249/virtuemart_category_id/9/",
-         "new_path":"http://127.0.0.1:8000/shop/pruzhina-separatora-aa066637/"
+         "new_path":"/shop/pruzhina-separatora-aa066637/"
       }
    },
    {
@@ -1188,7 +1188,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/250/virtuemart_category_id/9/",
-         "new_path":"http://127.0.0.1:8000/shop/val-perenosu-b0393820/"
+         "new_path":"/shop/val-perenosu-b0393820/"
       }
    },
    {
@@ -1196,7 +1196,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/251/virtuemart_category_id/9/",
-         "new_path":"http://127.0.0.1:8000/shop/blok-proiavki-nizhnii-b0393170/"
+         "new_path":"/shop/blok-proiavki-nizhnii-b0393170/"
       }
    },
    {
@@ -1204,7 +1204,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/252/virtuemart_category_id/9/",
-         "new_path":"http://127.0.0.1:8000/shop/fotobaraban-b0399510/"
+         "new_path":"/shop/fotobaraban-b0399510/"
       }
    },
    {
@@ -1212,7 +1212,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/253/virtuemart_category_id/9/",
-         "new_path":"http://127.0.0.1:8000/shop/val-nagrivacha-ae011113/"
+         "new_path":"/shop/val-nagrivacha-ae011113/"
       }
    },
    {
@@ -1220,7 +1220,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/254/virtuemart_category_id/9/",
-         "new_path":"http://127.0.0.1:8000/shop/lezo-ochistki-ad042059/"
+         "new_path":"/shop/lezo-ochistki-ad042059/"
       }
    },
    {
@@ -1228,7 +1228,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/278/virtuemart_category_id/9/",
-         "new_path":"http://127.0.0.1:8000/shop/toner-kartridzh-cl7200-7300-tip-260-chornii-888446/"
+         "new_path":"/shop/toner-kartridzh-cl7200-7300-tip-260-chornii-888446/"
       }
    },
    {
@@ -1236,7 +1236,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/310/virtuemart_category_id/9/",
-         "new_path":"http://127.0.0.1:8000/shop/toner-kartridzh-cl7200-7300-tip-260-chornii-888446/"
+         "new_path":"/shop/toner-kartridzh-cl7200-7300-tip-260-chornii-888446/"
       }
    },
    {
@@ -1252,7 +1252,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/38/virtuemart_category_id/10/",
-         "new_path":"http://127.0.0.1:8000/shop/tn-116-toner-kit-dlia-ineo-164-165-2-tubi-x-13-200-kopii-5-a1uc0d0/"
+         "new_path":"/shop/tn-116-toner-kit-dlia-ineo-164-165-2-tubi-x-13-200-kopii-5-a1uc0d0/"
       }
    },
    {
@@ -1260,7 +1260,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/220/virtuemart_category_id/10/",
-         "new_path":"http://127.0.0.1:8000/shop/fototsilindr-dr114-do-161-163-210-213-4021029801/"
+         "new_path":"/shop/fototsilindr-dr114-do-161-163-210-213-4021029801/"
       }
    },
    {
@@ -1268,7 +1268,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/221/virtuemart_category_id/10/",
-         "new_path":"http://127.0.0.1:8000/shop/dv-116-developer-ineo-164-165-185-215-226-266-306-a1uc5d0/"
+         "new_path":"/shop/dv-116-developer-ineo-164-165-185-215-226-266-306-a1uc5d0/"
       }
    },
    {
@@ -1276,7 +1276,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/283/virtuemart_category_id/10/",
-         "new_path":"http://127.0.0.1:8000/shop/toner-kit-tn114-do-ineo-161-163-210-213-2-tubi-5-8937786/"
+         "new_path":"/shop/toner-kit-tn114-do-ineo-161-163-210-213-2-tubi-5-8937786/"
       }
    },
    {
@@ -1284,7 +1284,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/284/virtuemart_category_id/10/",
-         "new_path":"http://127.0.0.1:8000/shop/tn-321k-toner-black-chornii-resurs-27000-5-a33k1d0/"
+         "new_path":"/shop/tn-321k-toner-black-chornii-resurs-27000-5-a33k1d0/"
       }
    },
    {
@@ -1292,7 +1292,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/285/virtuemart_category_id/10/",
-         "new_path":"http://127.0.0.1:8000/shop/tn-321y-toner-yellow-zhovtii-resurs-25000-5-a33k2d0/"
+         "new_path":"/shop/tn-321y-toner-yellow-zhovtii-resurs-25000-5-a33k2d0/"
       }
    },
    {
@@ -1300,7 +1300,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/287/virtuemart_category_id/10/",
-         "new_path":"http://127.0.0.1:8000/shop/tn-312m-toner-magenta-purpurnii-resurs-25000-5-a33k3d0/"
+         "new_path":"/shop/tn-312m-toner-magenta-purpurnii-resurs-25000-5-a33k3d0/"
       }
    },
    {
@@ -1308,7 +1308,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/288/virtuemart_category_id/10/",
-         "new_path":"http://127.0.0.1:8000/shop/tn-321c-toner-cyan-blakitnii-resurs-25000-5-a33k4d0/"
+         "new_path":"/shop/tn-321c-toner-cyan-blakitnii-resurs-25000-5-a33k4d0/"
       }
    },
    {
@@ -1324,7 +1324,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/77/virtuemart_category_id/13/",
-         "new_path":"http://127.0.0.1:8000/shop/oblozhki-kantri-golubye-up-41723/"
+         "new_path":"/shop/oblozhki-kantri-golubye-up-41723/"
       }
    },
    {
@@ -1332,7 +1332,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/85/virtuemart_category_id/13/",
-         "new_path":"http://127.0.0.1:8000/shop/oblozhki-kapital-zelenye-up-41605/"
+         "new_path":"/shop/oblozhki-kapital-zelenye-up-41605/"
       }
    },
    {
@@ -1340,7 +1340,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/87/virtuemart_category_id/13/",
-         "new_path":"http://127.0.0.1:8000/shop/oblozhki-kristal-150-bestsvetnye-100-sht-v-up-up-40190/"
+         "new_path":"/shop/oblozhki-kristal-150-bestsvetnye-100-sht-v-up-up-40190/"
       }
    },
    {
@@ -1348,7 +1348,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/88/virtuemart_category_id/13/",
-         "new_path":"http://127.0.0.1:8000/shop/oblozhki-kristal-180-sinie-100-sht-v-up-up-40023/"
+         "new_path":"/shop/oblozhki-kristal-180-sinie-100-sht-v-up-up-40023/"
       }
    },
    {
@@ -1356,7 +1356,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/89/virtuemart_category_id/13/",
-         "new_path":"http://127.0.0.1:8000/shop/oblozhki-a3-kristal-180-bestsvetnye-100-sht-v-up-up-40196/"
+         "new_path":"/shop/oblozhki-a3-kristal-180-bestsvetnye-100-sht-v-up-up-40196/"
       }
    },
    {
@@ -1364,7 +1364,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/90/virtuemart_category_id/13/",
-         "new_path":"http://127.0.0.1:8000/shop/oblozhki-kantri-belye-a3-up-41731/"
+         "new_path":"/shop/oblozhki-kantri-belye-a3-up-41731/"
       }
    },
    {
@@ -1372,7 +1372,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/91/virtuemart_category_id/13/",
-         "new_path":"http://127.0.0.1:8000/shop/pruzhiny-plastikovye-10-mm-belye-100-sht-up-43251/"
+         "new_path":"/shop/pruzhiny-plastikovye-10-mm-belye-100-sht-up-43251/"
       }
    },
    {
@@ -1380,7 +1380,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/92/virtuemart_category_id/13/",
-         "new_path":"http://127.0.0.1:8000/shop/pruzhiny-plastikovye-12-mm-belye-100-sht-up-43311/"
+         "new_path":"/shop/pruzhiny-plastikovye-12-mm-belye-100-sht-up-43311/"
       }
    },
    {
@@ -1388,7 +1388,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/93/virtuemart_category_id/13/",
-         "new_path":"http://127.0.0.1:8000/shop/pruzhiny-plastikovye-14-mm-belye-100-sht-up-43361/"
+         "new_path":"/shop/pruzhiny-plastikovye-14-mm-belye-100-sht-up-43361/"
       }
    },
    {
@@ -1396,7 +1396,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/94/virtuemart_category_id/13/",
-         "new_path":"http://127.0.0.1:8000/shop/pruzhiny-plastikovye-16-mm-belye-100-sht-up-43411/"
+         "new_path":"/shop/pruzhiny-plastikovye-16-mm-belye-100-sht-up-43411/"
       }
    },
    {
@@ -1404,7 +1404,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/99/virtuemart_category_id/13/",
-         "new_path":"http://127.0.0.1:8000/shop/pruzhiny-plastikovye-19-mm-belye-100-sht-up-43471/"
+         "new_path":"/shop/pruzhiny-plastikovye-19-mm-belye-100-sht-up-43471/"
       }
    },
    {
@@ -1412,7 +1412,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/102/virtuemart_category_id/13/",
-         "new_path":"http://127.0.0.1:8000/shop/pruzhiny-plastikovye-22-mm-belye-50-sht-up-43551/"
+         "new_path":"/shop/pruzhiny-plastikovye-22-mm-belye-50-sht-up-43551/"
       }
    },
    {
@@ -1420,7 +1420,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/103/virtuemart_category_id/13/",
-         "new_path":"http://127.0.0.1:8000/shop/pruzhiny-plastikovye-25-mm-belye-50-sht-up-43601/"
+         "new_path":"/shop/pruzhiny-plastikovye-25-mm-belye-50-sht-up-43601/"
       }
    },
    {
@@ -1428,7 +1428,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/104/virtuemart_category_id/13/",
-         "new_path":"http://127.0.0.1:8000/shop/pruzhiny-plastikovye-28-mm-belye-50-sht-up-43651/"
+         "new_path":"/shop/pruzhiny-plastikovye-28-mm-belye-50-sht-up-43651/"
       }
    },
    {
@@ -1436,7 +1436,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/105/virtuemart_category_id/13/",
-         "new_path":"http://127.0.0.1:8000/shop/pruzhiny-plastikovye-32-mm-belye-50-sht-up-43751/"
+         "new_path":"/shop/pruzhiny-plastikovye-32-mm-belye-50-sht-up-43751/"
       }
    },
    {
@@ -1444,7 +1444,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/106/virtuemart_category_id/13/",
-         "new_path":"http://127.0.0.1:8000/shop/pruzhiny-plastikovye-51-mm-belye-50-sht-up-43901/"
+         "new_path":"/shop/pruzhiny-plastikovye-51-mm-belye-50-sht-up-43901/"
       }
    },
    {
@@ -1452,7 +1452,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/108/virtuemart_category_id/13/",
-         "new_path":"http://127.0.0.1:8000/shop/pruzhiny-plastikovye-45-mm-belye-50-sht-up-43851/"
+         "new_path":"/shop/pruzhiny-plastikovye-45-mm-belye-50-sht-up-43851/"
       }
    },
    {
@@ -1460,7 +1460,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/144/virtuemart_category_id/13/",
-         "new_path":"http://127.0.0.1:8000/shop/11-1-mm-belye-100-sht-up-47241/"
+         "new_path":"/shop/11-1-mm-belye-100-sht-up-47241/"
       }
    },
    {
@@ -1468,7 +1468,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/145/virtuemart_category_id/13/",
-         "new_path":"http://127.0.0.1:8000/shop/12-7-mm-belye-100-sht-up-47251/"
+         "new_path":"/shop/12-7-mm-belye-100-sht-up-47251/"
       }
    },
    {
@@ -1476,7 +1476,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/146/virtuemart_category_id/13/",
-         "new_path":"http://127.0.0.1:8000/shop/14-3-mm-belye-100-sht-up-47261/"
+         "new_path":"/shop/14-3-mm-belye-100-sht-up-47261/"
       }
    },
    {
@@ -1484,7 +1484,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/147/virtuemart_category_id/13/",
-         "new_path":"http://127.0.0.1:8000/shop/6-4-mm-belye-100-sht-up-47211/"
+         "new_path":"/shop/6-4-mm-belye-100-sht-up-47211/"
       }
    },
    {
@@ -1492,7 +1492,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/148/virtuemart_category_id/13/",
-         "new_path":"http://127.0.0.1:8000/shop/7-9-mm-belye-100-sht-up-47221/"
+         "new_path":"/shop/7-9-mm-belye-100-sht-up-47221/"
       }
    },
    {
@@ -1500,7 +1500,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/149/virtuemart_category_id/13/",
-         "new_path":"http://127.0.0.1:8000/shop/9-5-mm-belye-100-sht-up-47231/"
+         "new_path":"/shop/9-5-mm-belye-100-sht-up-47231/"
       }
    },
    {
@@ -1508,7 +1508,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/307/virtuemart_category_id/13/",
-         "new_path":"http://127.0.0.1:8000/shop/pruzhiny-plastikovye-6-mm-belye-100-sht-up-43151/"
+         "new_path":"/shop/pruzhiny-plastikovye-6-mm-belye-100-sht-up-43151/"
       }
    },
    {
@@ -1523,8 +1523,8 @@
       "model":"redirects.redirect",
       "fields":{
          "site":1,
-         "old_path":"/view/productdetails/virtuemart_product_id/191/virtuemart_category_id/14/",----Тонер SCC для HP 1005/ 1200/ 1220/ 3300/ 3320 Артикул HP12-150B
-         "new_path":""
+         "old_path":"/view/productdetails/virtuemart_product_id/191/virtuemart_category_id/14/",
+         "new_path":"/shop/toner-scc-hp-1000-1005-1200-1220-3300-3310-3320-3330-150g-hp12-150b/"
       }
    },
    {
@@ -1532,7 +1532,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/192/virtuemart_category_id/14/",
-         "new_path":"http://127.0.0.1:8000/shop/toner-scc-dlia-xerox-p8e-385-lexmark-e310-312-samsung-ml-1210-1250-5000-5050-160-g-p8e-160b/"
+         "new_path":"/shop/toner-scc-dlia-xerox-p8e-385-lexmark-e310-312-samsung-ml-1210-1250-5000-5050-160-g-p8e-160b/"
       }
    },
    {
@@ -1540,7 +1540,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/193/virtuemart_category_id/14/",
-         "new_path":"http://127.0.0.1:8000/shop/toner-colorway-hp-lj-1200-150g-th-1200-th-1200/"
+         "new_path":"/shop/toner-colorway-hp-lj-1200-150g-th-1200-th-1200/"
       }
    },
    {
@@ -1548,23 +1548,23 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/194/virtuemart_category_id/14/",
-         "new_path":"http://127.0.0.1:8000/shop/toner-colorway-brother-hl-2040-5250-7010-100g-tb-2030-tb-2030/"
+         "new_path":"/shop/toner-colorway-brother-hl-2040-5250-7010-100g-tb-2030-tb-2030/"
       }
    },
    {
       "model":"redirects.redirect",
       "fields":{
          "site":1,
-         "old_path":"/view/productdetails/virtuemart_product_id/195/virtuemart_category_id/14/", ---Тонер KATUN для Samsung ML 1210/ 1710/ SCX 4016/ 4216/ Xerox P16eАртикул U32398-160
-         "new_path":""
+         "old_path":"/view/productdetails/virtuemart_product_id/195/virtuemart_category_id/14/",
+         "new_path":"/shop/toner-katun-samsung-ml-1010-1210-1510-1710-1750-6060-scx-4016-4116-4216-xerox-pe16-5416-m15-ricoh-aficio-sp-3400-3410-3500-3510-160gr-bottle-packed-in-ukraine-u32398-160/"
       }
    },
    {
       "model":"redirects.redirect",
       "fields":{
          "site":1,
-         "old_path":"/view/productdetails/virtuemart_product_id/196/virtuemart_category_id/14/", ----U32401-150
-         "new_path":""
+         "old_path":"/view/productdetails/virtuemart_product_id/196/virtuemart_category_id/14/",
+         "new_path":"/shop/toner-katun-hp-1010-1050-1150-1200-1300-2100-2200-4000-4100-5000-5100-performance-150gr-bottle-packed-in-ua-u32401-150/"
       }
    },
    {
@@ -1580,7 +1580,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/150/virtuemart_category_id/15/",
-         "new_path":"http://127.0.0.1:8000/shop/chernila-cw-canon-pg-510-pgi520-100ml-black-cw520bk-cw-cw520bk01/"
+         "new_path":"/shop/chernila-cw-canon-pg-510-pgi520-100ml-black-cw520bk-cw-cw520bk01/"
       }
    },
    {
@@ -1588,7 +1588,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/151/virtuemart_category_id/15/",
-         "new_path":"http://127.0.0.1:8000/shop/chernila-cw-canon-cl-38-cli-521-100ml-cyan-cw521c-cw-cw521c01/"
+         "new_path":"/shop/chernila-cw-canon-cl-38-cli-521-100ml-cyan-cw521c-cw-cw521c01/"
       }
    },
    {
@@ -1596,7 +1596,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/152/virtuemart_category_id/15/",
-         "new_path":"http://127.0.0.1:8000/shop/chernila-cw-canon-cl-38-cli-521-100ml-magen-cw521m-cw-cw521m01/"
+         "new_path":"/shop/chernila-cw-canon-cl-38-cli-521-100ml-magen-cw521m-cw-cw521m01/"
       }
    },
    {
@@ -1604,7 +1604,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/153/virtuemart_category_id/15/",
-         "new_path":"http://127.0.0.1:8000/shop/chernila-cw-canon-cl-38-cli-521-100ml-yellow-cw521y-cw-cw521y01/"
+         "new_path":"/shop/chernila-cw-canon-cl-38-cli-521-100ml-yellow-cw521y-cw-cw521y01/"
       }
    },
    {
@@ -1612,7 +1612,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/154/virtuemart_category_id/15/",
-         "new_path":"http://127.0.0.1:8000/shop/chernila-cw-canon-pg-510-pgi520-200ml-black-cw520bk-cw-cw520bk02/"
+         "new_path":"/shop/chernila-cw-canon-pg-510-pgi520-200ml-black-cw520bk-cw-cw520bk02/"
       }
    },
    {
@@ -1620,7 +1620,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/155/virtuemart_category_id/15/",
-         "new_path":"http://127.0.0.1:8000/shop/chernila-cw-canon-cl-38-cli-521-200ml-cyan-cw521c-cw-cw521c02/"
+         "new_path":"/shop/chernila-cw-canon-cl-38-cli-521-200ml-cyan-cw521c-cw-cw521c02/"
       }
    },
    {
@@ -1628,7 +1628,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/156/virtuemart_category_id/15/",
-         "new_path":"http://127.0.0.1:8000/shop/chernila-cw-canon-cl-38-cli-521-200ml-magen-cw521m-cw-cw521m02/"
+         "new_path":"/shop/chernila-cw-canon-cl-38-cli-521-200ml-magen-cw521m-cw-cw521m02/"
       }
    },
    {
@@ -1636,7 +1636,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/157/virtuemart_category_id/15/",
-         "new_path":"http://127.0.0.1:8000/shop/chernila-cw-canon-cl-38-cli-521-200ml-yellow-cw521y-cw-cw521y02/"
+         "new_path":"/shop/chernila-cw-canon-cl-38-cli-521-200ml-yellow-cw521y-cw-cw521y02/"
       }
    },
    {
@@ -1644,7 +1644,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/159/virtuemart_category_id/15/",
-         "new_path":"http://127.0.0.1:8000/shop/chernila-cw-epson-tx650-100ml-black-ew650bk-cw-ew650bk01/"
+         "new_path":"/shop/chernila-cw-epson-tx650-100ml-black-ew650bk-cw-ew650bk01/"
       }
    },
    {
@@ -1652,7 +1652,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/161/virtuemart_category_id/15/",
-         "new_path":"http://127.0.0.1:8000/shop/chernila-cw-epson-tx650-100ml-cyan-ew650c-cw-ew650c01/"
+         "new_path":"/shop/chernila-cw-epson-tx650-100ml-cyan-ew650c-cw-ew650c01/"
       }
    },
    {
@@ -1660,7 +1660,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/162/virtuemart_category_id/15/",
-         "new_path":"http://127.0.0.1:8000/shop/chernila-cw-epson-tx650-100ml-ph-cyan-ew650lc-cw-ew650lc01/"
+         "new_path":"/shop/chernila-cw-epson-tx650-100ml-ph-cyan-ew650lc-cw-ew650lc01/"
       }
    },
    {
@@ -1668,7 +1668,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/163/virtuemart_category_id/15/",
-         "new_path":"http://127.0.0.1:8000/shop/chernila-cw-epson-tx650-100ml-ph-magen-ew650lm-cw-ew650lm01/"
+         "new_path":"/shop/chernila-cw-epson-tx650-100ml-ph-magen-ew650lm-cw-ew650lm01/"
       }
    },
    {
@@ -1676,7 +1676,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/164/virtuemart_category_id/15/",
-         "new_path":"http://127.0.0.1:8000/shop/chernila-cw-epson-tx650-100ml-magenta-ew650m-cw-ew650m01/"
+         "new_path":"/shop/chernila-cw-epson-tx650-100ml-magenta-ew650m-cw-ew650m01/"
       }
    },
    {
@@ -1684,7 +1684,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/165/virtuemart_category_id/15/",
-         "new_path":"http://127.0.0.1:8000/shop/chernila-cw-epson-tx650-100ml-yellow-ew650y-cw-ew650y01/"
+         "new_path":"/shop/chernila-cw-epson-tx650-100ml-yellow-ew650y-cw-ew650y01/"
       }
    },
    {
@@ -1692,7 +1692,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/166/virtuemart_category_id/15/",
-         "new_path":"http://127.0.0.1:8000/shop/chernila-cw-epson-t26-c91-100ml-black-ew400bk-cw-ew400bk01/"
+         "new_path":"/shop/chernila-cw-epson-t26-c91-100ml-black-ew400bk-cw-ew400bk01/"
       }
    },
    {
@@ -1700,7 +1700,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/167/virtuemart_category_id/15/",
-         "new_path":"http://127.0.0.1:8000/shop/chernila-cw-epson-t26-c91-100ml-cyan-ew400c-cw-ew400c01/"
+         "new_path":"/shop/chernila-cw-epson-t26-c91-100ml-cyan-ew400c-cw-ew400c01/"
       }
    },
    {
@@ -1708,7 +1708,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/168/virtuemart_category_id/15/",
-         "new_path":"http://127.0.0.1:8000/shop/chernila-cw-epson-t26-c91-100ml-magenta-ew400m-cw-ew400m01/"
+         "new_path":"/shop/chernila-cw-epson-t26-c91-100ml-magenta-ew400m-cw-ew400m01/"
       }
    },
    {
@@ -1716,7 +1716,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/169/virtuemart_category_id/15/",
-         "new_path":"http://127.0.0.1:8000/shop/chernila-cw-epson-t26-c91-100ml-yellow-ew400y-cw-ew400y01/"
+         "new_path":"/shop/chernila-cw-epson-t26-c91-100ml-yellow-ew400y-cw-ew400y01/"
       }
    },
    {
@@ -1724,7 +1724,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/171/virtuemart_category_id/15/",
-         "new_path":"http://127.0.0.1:8000/shop/chernila-cw-epson-l-100-200-series-100ml-black-ew101bk-cw-ew101bk01/"
+         "new_path":"/shop/chernila-cw-epson-l-100-200-series-100ml-black-ew101bk-cw-ew101bk01/"
       }
    },
    {
@@ -1732,7 +1732,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/172/virtuemart_category_id/15/",
-         "new_path":"http://127.0.0.1:8000/shop/chernila-cw-epson-l-100-200-series-100ml-cyan-ew101c-cw-ew101c01/"
+         "new_path":"/shop/chernila-cw-epson-l-100-200-series-100ml-cyan-ew101c-cw-ew101c01/"
       }
    },
    {
@@ -1740,7 +1740,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/173/virtuemart_category_id/15/",
-         "new_path":"http://127.0.0.1:8000/shop/chernila-cw-epson-l-100-200-series-100ml-magenta-ew101m-cw-ew101m01/"
+         "new_path":"/shop/chernila-cw-epson-l-100-200-series-100ml-magenta-ew101m-cw-ew101m01/"
       }
    },
    {
@@ -1748,7 +1748,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/174/virtuemart_category_id/15/",
-         "new_path":"http://127.0.0.1:8000/shop/chernila-cw-epson-l-100-200-series-100ml-yellow-ew101y-cw-ew101y01/"
+         "new_path":"/shop/chernila-cw-epson-l-100-200-series-100ml-yellow-ew101y-cw-ew101y01/"
       }
    },
    {
@@ -1756,7 +1756,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/182/virtuemart_category_id/15/",
-         "new_path":"http://127.0.0.1:8000/shop/chernila-cw-canon-uv-cli-426-100ml-black-cu426bk-cw-cu426bk01/"
+         "new_path":"/shop/chernila-cw-canon-uv-cli-426-100ml-black-cu426bk-cw-cu426bk01/"
       }
    },
    {
@@ -1764,7 +1764,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/183/virtuemart_category_id/15/",
-         "new_path":"http://127.0.0.1:8000/shop/chernila-cw-canon-uv-cli-426-100ml-cyan-cu426c-cw-cu426c01/"
+         "new_path":"/shop/chernila-cw-canon-uv-cli-426-100ml-cyan-cu426c-cw-cu426c01/"
       }
    },
    {
@@ -1780,7 +1780,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/197/virtuemart_category_id/16/",
-         "new_path":"http://127.0.0.1:8000/shop/master-plenka-a3-k-dp-403543s-dr-650rl-220-kadrov-dp-4035-43s/"
+         "new_path":"/shop/master-plenka-a3-k-dp-403543s-dr-650rl-220-kadrov-dp-4035-43s/"
       }
    },
    {
@@ -1788,7 +1788,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/204/virtuemart_category_id/16/",
-         "new_path":"http://127.0.0.1:8000/shop/master-plenka-a3-k-dp-430e-dr43-220-kadrov-dr43/"
+         "new_path":"/shop/master-plenka-a3-k-dp-430e-dr43-220-kadrov-dr43/"
       }
    },
    {
@@ -1796,7 +1796,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/205/virtuemart_category_id/16/",
-         "new_path":"http://127.0.0.1:8000/shop/master-plenka-a3-k-dp-j450dp-s550dp-u550-drs55dru55-220-kadrov-dp-j450/"
+         "new_path":"/shop/master-plenka-a3-k-dp-j450dp-s550dp-u550-drs55dru55-220-kadrov-dp-j450/"
       }
    },
    {
@@ -1804,7 +1804,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/206/virtuemart_category_id/16/",
-         "new_path":"http://127.0.0.1:8000/shop/master-plenka-a3-k-dp-460e460n-dr46-220-kadrov-dr46/"
+         "new_path":"/shop/master-plenka-a3-k-dp-460e460n-dr46-220-kadrov-dr46/"
       }
    },
    {
@@ -1812,7 +1812,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/207/virtuemart_category_id/16/",
-         "new_path":"http://127.0.0.1:8000/shop/master-plenka-vision-dlya-duplo-a3-dp-43s-310mm-x-113m-dp-a3-650s/"
+         "new_path":"/shop/master-plenka-vision-dlya-duplo-a3-dp-43s-310mm-x-113m-dp-a3-650s/"
       }
    },
    {
@@ -1820,7 +1820,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/209/virtuemart_category_id/16/",
-         "new_path":"http://127.0.0.1:8000/shop/master-plenka-vision-dlya-duplo-a3-dp-550s-j450-306-x-113m-dp-a3-s55/"
+         "new_path":"/shop/master-plenka-vision-dlya-duplo-a3-dp-550s-j450-306-x-113m-dp-a3-s55/"
       }
    },
    {
@@ -1828,7 +1828,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/210/virtuemart_category_id/16/",
-         "new_path":"http://127.0.0.1:8000/shop/chernila-duplo-du04lh-chernyj-k-dp-j450dp-s550dp-u550dp-s850dp-u850-1000-ml-du04lh/"
+         "new_path":"/shop/chernila-duplo-du04lh-chernyj-k-dp-j450dp-s550dp-u550dp-s850dp-u850-1000-ml-du04lh/"
       }
    },
    {
@@ -1836,7 +1836,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/211/virtuemart_category_id/16/",
-         "new_path":"http://127.0.0.1:8000/shop/chernila-duplo-chernyj-514-k-dp-4035-21s22s43s2030-31s210le220le210e220e-600-ml-514/"
+         "new_path":"/shop/chernila-duplo-chernyj-514-k-dp-4035-21s22s43s2030-31s210le220le210e220e-600-ml-514/"
       }
    },
    {
@@ -1844,7 +1844,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/212/virtuemart_category_id/16/",
-         "new_path":"http://127.0.0.1:8000/shop/chernila-duplo-nd-24-chernyj-k-dp-430e-600-ml-dp-430e/"
+         "new_path":"/shop/chernila-duplo-nd-24-chernyj-k-dp-430e-600-ml-dp-430e/"
       }
    },
    {
@@ -1860,7 +1860,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/109/virtuemart_category_id/17/",
-         "new_path":"http://127.0.0.1:8000/shop/astrosilver-cannete-220-g-m2/"
+         "new_path":"/shop/astrosilver-cannete-220-g-m2/"
       }
    },
    {
@@ -1868,7 +1868,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/110/virtuemart_category_id/17/",
-         "new_path":"http://127.0.0.1:8000/shop/astrosilver-orion-220-g-m2/"
+         "new_path":"/shop/astrosilver-orion-220-g-m2/"
       }
    },
    {
@@ -1876,7 +1876,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/111/virtuemart_category_id/17/",
-         "new_path":"http://127.0.0.1:8000/shop/astrosilver-seta-220-g-m2/"
+         "new_path":"/shop/astrosilver-seta-220-g-m2/"
       }
    },
    {
@@ -1884,7 +1884,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/112/virtuemart_category_id/17/",
-         "new_path":"http://127.0.0.1:8000/shop/constellation-jade-riccio-215-g-m2/"
+         "new_path":"/shop/constellation-jade-riccio-215-g-m2/"
       }
    },
    {
@@ -1892,7 +1892,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/113/virtuemart_category_id/17/",
-         "new_path":"http://127.0.0.1:8000/shop/constellation-snow-raster-280-g-m2/"
+         "new_path":"/shop/constellation-snow-raster-280-g-m2/"
       }
    },
    {
@@ -1900,7 +1900,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/114/virtuemart_category_id/17/",
-         "new_path":"http://127.0.0.1:8000/shop/gsk-ew-200-g-m2/"
+         "new_path":"/shop/gsk-ew-200-g-m2/"
       }
    },
    {
@@ -1908,7 +1908,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/115/virtuemart_category_id/17/",
-         "new_path":"http://127.0.0.1:8000/shop/icelite-285-g-m2/"
+         "new_path":"/shop/icelite-285-g-m2/"
       }
    },
    {
@@ -1916,7 +1916,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/116/virtuemart_category_id/17/",
-         "new_path":"http://127.0.0.1:8000/shop/splendorlux-laser-argento-250-g-m2/"
+         "new_path":"/shop/splendorlux-laser-argento-250-g-m2/"
       }
    },
    {
@@ -1924,7 +1924,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/117/virtuemart_category_id/17/",
-         "new_path":"http://127.0.0.1:8000/shop/splendorlux-laser-extra-white-250-g-m2/"
+         "new_path":"/shop/splendorlux-laser-extra-white-250-g-m2/"
       }
    },
    {
@@ -1932,7 +1932,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/118/virtuemart_category_id/17/",
-         "new_path":"http://127.0.0.1:8000/shop/splendorlux-laser-oro-250-g-m2/"
+         "new_path":"/shop/splendorlux-laser-oro-250-g-m2/"
       }
    },
    {
@@ -1940,7 +1940,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/119/virtuemart_category_id/17/",
-         "new_path":"http://127.0.0.1:8000/shop/splendorlux-metal-argento-250-g-m2/"
+         "new_path":"/shop/splendorlux-metal-argento-250-g-m2/"
       }
    },
    {
@@ -1948,7 +1948,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/120/virtuemart_category_id/17/",
-         "new_path":"http://127.0.0.1:8000/shop/splendorlux-pearl-champagne-250-g-m2/"
+         "new_path":"/shop/splendorlux-pearl-champagne-250-g-m2/"
       }
    },
    {
@@ -1956,7 +1956,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/121/virtuemart_category_id/17/",
-         "new_path":"http://127.0.0.1:8000/shop/stardream-acquamarine-285-g-m2/"
+         "new_path":"/shop/stardream-acquamarine-285-g-m2/"
       }
    },
    {
@@ -1964,7 +1964,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/122/virtuemart_category_id/17/",
-         "new_path":"http://127.0.0.1:8000/shop/stardream-citrine-285-g-m2/"
+         "new_path":"/shop/stardream-citrine-285-g-m2/"
       }
    },
    {
@@ -1972,7 +1972,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/124/virtuemart_category_id/17/",
-         "new_path":"http://127.0.0.1:8000/shop/stardream-kunzite-285-g-m2/"
+         "new_path":"/shop/stardream-kunzite-285-g-m2/"
       }
    },
    {
@@ -1980,7 +1980,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/125/virtuemart_category_id/17/",
-         "new_path":"http://127.0.0.1:8000/shop/stardream-lagoon-285-g-m2/"
+         "new_path":"/shop/stardream-lagoon-285-g-m2/"
       }
    },
    {
@@ -1988,7 +1988,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/126/virtuemart_category_id/17/",
-         "new_path":"http://127.0.0.1:8000/shop/stardream-moonstone-285-g-m2/"
+         "new_path":"/shop/stardream-moonstone-285-g-m2/"
       }
    },
    {
@@ -1996,7 +1996,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/127/virtuemart_category_id/17/",
-         "new_path":"http://127.0.0.1:8000/shop/stardream-opal-240-g-m2/"
+         "new_path":"/shop/stardream-opal-240-g-m2/"
       }
    },
    {
@@ -2004,7 +2004,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/128/virtuemart_category_id/17/",
-         "new_path":"http://127.0.0.1:8000/shop/stardream-quartz-240-g-m2/"
+         "new_path":"/shop/stardream-quartz-240-g-m2/"
       }
    },
    {
@@ -2012,7 +2012,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/129/virtuemart_category_id/17/",
-         "new_path":"http://127.0.0.1:8000/shop/stardream-silver-240-g-m2/"
+         "new_path":"/shop/stardream-silver-240-g-m2/"
       }
    },
    {
@@ -2020,7 +2020,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/130/virtuemart_category_id/17/",
-         "new_path":"http://127.0.0.1:8000/shop/venicelux-1s-extra-white-250-g-m2/"
+         "new_path":"/shop/venicelux-1s-extra-white-250-g-m2/"
       }
    },
    {
@@ -2028,7 +2028,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/131/virtuemart_category_id/17/",
-         "new_path":"http://127.0.0.1:8000/shop/venicelux-clay-250-g-m2/"
+         "new_path":"/shop/venicelux-clay-250-g-m2/"
       }
    },
    {
@@ -2036,7 +2036,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/132/virtuemart_category_id/17/",
-         "new_path":"http://127.0.0.1:8000/shop/venicelux-gold-250-g-m2/"
+         "new_path":"/shop/venicelux-gold-250-g-m2/"
       }
    },
    {
@@ -2044,7 +2044,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/133/virtuemart_category_id/17/",
-         "new_path":"http://127.0.0.1:8000/shop/venicelux-red-250-g-m2/"
+         "new_path":"/shop/venicelux-red-250-g-m2/"
       }
    },
    {
@@ -2060,7 +2060,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/227/virtuemart_category_id/18/",
-         "new_path":"http://127.0.0.1:8000/shop/bumvinil-odnotonnyj-sinij-bumvinil-blue/"
+         "new_path":"/shop/bumvinil-odnotonnyj-sinij-bumvinil-blue/"
       }
    },
    {
@@ -2068,7 +2068,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/228/virtuemart_category_id/18/",
-         "new_path":"http://127.0.0.1:8000/shop/bumvinil-s-muarom-sinij-bumvinil-blue/"
+         "new_path":"/shop/bumvinil-s-muarom-sinij-bumvinil-blue/"
       }
    },
    {
@@ -2076,7 +2076,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/229/virtuemart_category_id/18/",
-         "new_path":"http://127.0.0.1:8000/shop/bumvinil-s-muarom-bordo-bumvinil-mr/"
+         "new_path":"/shop/bumvinil-s-muarom-bordo-bumvinil-mr/"
       }
    },
    {
@@ -2084,7 +2084,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/230/virtuemart_category_id/18/",
-         "new_path":"http://127.0.0.1:8000/shop/bumvinil-odnotonnyj-zelenyj-bumvinil-green/"
+         "new_path":"/shop/bumvinil-odnotonnyj-zelenyj-bumvinil-green/"
       }
    },
    {
@@ -2092,7 +2092,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/231/virtuemart_category_id/18/",
-         "new_path":"http://127.0.0.1:8000/shop/bumvinil-odnotonnyj-chernyj-bumvinil-b/"
+         "new_path":"/shop/bumvinil-odnotonnyj-chernyj-bumvinil-b/"
       }
    },
    {
@@ -2100,7 +2100,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/232/virtuemart_category_id/18/",
-         "new_path":"http://127.0.0.1:8000/shop/bumvinil-odnotonnyj-bordo-bumvinil-red/"
+         "new_path":"/shop/bumvinil-odnotonnyj-bordo-bumvinil-red/"
       }
    },
    {
@@ -2108,7 +2108,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/233/virtuemart_category_id/18/",
-         "new_path":"http://127.0.0.1:8000/shop/bumvinil-s-muarom-zelenyj-bumvinil-mg/"
+         "new_path":"/shop/bumvinil-s-muarom-zelenyj-bumvinil-mg/"
       }
    },
    {
@@ -2116,7 +2116,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/234/virtuemart_category_id/18/",
-         "new_path":"http://127.0.0.1:8000/shop/iskusstvennaya-kozha-s-poliuretanovym-pokrytiem-dlya-perepleta-bumvinil-k/"
+         "new_path":"/shop/iskusstvennaya-kozha-s-poliuretanovym-pokrytiem-dlya-perepleta-bumvinil-k/"
       }
    },
    {
@@ -2132,7 +2132,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/51/virtuemart_category_id/11/",
-         "new_path":"http://127.0.0.1:8000/shop/plenka-lamimark-65-kh-95-100-up-50163/"
+         "new_path":"/shop/plenka-lamimark-65-kh-95-100-up-50163/"
       }
    },
    {
@@ -2140,7 +2140,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/52/virtuemart_category_id/11/",
-         "new_path":"http://127.0.0.1:8000/shop/plenka-lamimark-65-kh-95-125-up-50164/"
+         "new_path":"/shop/plenka-lamimark-65-kh-95-125-up-50164/"
       }
    },
    {
@@ -2148,7 +2148,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/53/virtuemart_category_id/11/",
-         "new_path":"http://127.0.0.1:8000/shop/plenka-lamimark-65-kh-95-75-up-50161/"
+         "new_path":"/shop/plenka-lamimark-65-kh-95-75-up-50161/"
       }
    },
    {
@@ -2156,7 +2156,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/54/virtuemart_category_id/11/",
-         "new_path":"http://127.0.0.1:8000/shop/plenka-lamimark-80-x-111-80-up-50252/"
+         "new_path":"/shop/plenka-lamimark-80-x-111-80-up-50252/"
       }
    },
    {
@@ -2164,7 +2164,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/55/virtuemart_category_id/11/",
-         "new_path":"http://127.0.0.1:8000/shop/plenka-lamimark-80-x-111-100-up-50253/"
+         "new_path":"/shop/plenka-lamimark-80-x-111-100-up-50253/"
       }
    },
    {
@@ -2172,7 +2172,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/56/virtuemart_category_id/11/",
-         "new_path":"http://127.0.0.1:8000/shop/plenka-lamimark-85-kh-120-100-up-50313/"
+         "new_path":"/shop/plenka-lamimark-85-kh-120-100-up-50313/"
       }
    },
    {
@@ -2180,7 +2180,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/57/virtuemart_category_id/11/",
-         "new_path":"http://127.0.0.1:8000/shop/plenka-lamimark-a3-100-up-50653/"
+         "new_path":"/shop/plenka-lamimark-a3-100-up-50653/"
       }
    },
    {
@@ -2188,7 +2188,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/58/virtuemart_category_id/11/",
-         "new_path":"http://127.0.0.1:8000/shop/plenka-lamimark-a3-125-up-50654/"
+         "new_path":"/shop/plenka-lamimark-a3-125-up-50654/"
       }
    },
    {
@@ -2196,7 +2196,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/59/virtuemart_category_id/11/",
-         "new_path":"http://127.0.0.1:8000/shop/plenka-lamimark-a3-75-up-50651/"
+         "new_path":"/shop/plenka-lamimark-a3-75-up-50651/"
       }
    },
    {
@@ -2204,7 +2204,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/60/virtuemart_category_id/11/",
-         "new_path":"http://127.0.0.1:8000/shop/plenka-lamimark-a4-100-up-50603/"
+         "new_path":"/shop/plenka-lamimark-a4-100-up-50603/"
       }
    },
    {
@@ -2212,7 +2212,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/61/virtuemart_category_id/11/",
-         "new_path":"http://127.0.0.1:8000/shop/plenka-lamimark-a4-125-up-50604/"
+         "new_path":"/shop/plenka-lamimark-a4-125-up-50604/"
       }
    },
    {
@@ -2220,7 +2220,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/62/virtuemart_category_id/11/",
-         "new_path":"http://127.0.0.1:8000/shop/plenka-lamimark-a4-150-up-50605/"
+         "new_path":"/shop/plenka-lamimark-a4-150-up-50605/"
       }
    },
    {
@@ -2228,7 +2228,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/63/virtuemart_category_id/11/",
-         "new_path":"http://127.0.0.1:8000/shop/plenka-lamimark-a4-250-up-50608/"
+         "new_path":"/shop/plenka-lamimark-a4-250-up-50608/"
       }
    },
    {
@@ -2236,7 +2236,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/64/virtuemart_category_id/11/",
-         "new_path":"http://127.0.0.1:8000/shop/plenka-lamimark-a4-75-up-50601/"
+         "new_path":"/shop/plenka-lamimark-a4-75-up-50601/"
       }
    },
    {
@@ -2244,7 +2244,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/65/virtuemart_category_id/11/",
-         "new_path":"http://127.0.0.1:8000/shop/plenka-lamimark-a4-80-up-50602/"
+         "new_path":"/shop/plenka-lamimark-a4-80-up-50602/"
       }
    },
    {
@@ -2252,7 +2252,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/66/virtuemart_category_id/11/",
-         "new_path":"http://127.0.0.1:8000/shop/plenka-lamimark-a5-100-up-50563/"
+         "new_path":"/shop/plenka-lamimark-a5-100-up-50563/"
       }
    },
    {
@@ -2260,7 +2260,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/67/virtuemart_category_id/11/",
-         "new_path":"http://127.0.0.1:8000/shop/plenka-lamimark-a5-125-up-50564/"
+         "new_path":"/shop/plenka-lamimark-a5-125-up-50564/"
       }
    },
    {
@@ -2268,7 +2268,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/68/virtuemart_category_id/11/",
-         "new_path":"http://127.0.0.1:8000/shop/plenka-lamimark-a5-75-up-50561/"
+         "new_path":"/shop/plenka-lamimark-a5-75-up-50561/"
       }
    },
    {
@@ -2276,7 +2276,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/69/virtuemart_category_id/11/",
-         "new_path":"http://127.0.0.1:8000/shop/plenka-lamimark-a6-100-up-50503/"
+         "new_path":"/shop/plenka-lamimark-a6-100-up-50503/"
       }
    },
    {
@@ -2284,7 +2284,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/70/virtuemart_category_id/11/",
-         "new_path":"http://127.0.0.1:8000/shop/plenka-lamimark-a6-125-up-50504/"
+         "new_path":"/shop/plenka-lamimark-a6-125-up-50504/"
       }
    },
    {
@@ -2292,7 +2292,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/71/virtuemart_category_id/11/",
-         "new_path":"http://127.0.0.1:8000/shop/plenka-lamimark-a3-100-mik-mat-mat-up-50813/"
+         "new_path":"/shop/plenka-lamimark-a3-100-mik-mat-mat-up-50813/"
       }
    },
    {
@@ -2300,7 +2300,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/72/virtuemart_category_id/11/",
-         "new_path":"http://127.0.0.1:8000/shop/plenka-lamimark-a4-100-mik-mat-mat-up-50803/"
+         "new_path":"/shop/plenka-lamimark-a4-100-mik-mat-mat-up-50803/"
       }
    },
    {
@@ -2308,7 +2308,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/73/virtuemart_category_id/11/",
-         "new_path":"http://127.0.0.1:8000/shop/plenka-lamimark-a4-80-mik-mat-mat-up-50802/"
+         "new_path":"/shop/plenka-lamimark-a4-80-mik-mat-mat-up-50802/"
       }
    },
    {
@@ -2316,7 +2316,7 @@
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/74/virtuemart_category_id/11/",
-         "new_path":"http://127.0.0.1:8000/shop/plenka-rulonnaia-lamimark-320-mm-200-m-32-mik-rul-52107/"
+         "new_path":"/shop/plenka-rulonnaia-lamimark-320-mm-200-m-32-mik-rul-52107/"
       }
    },
    {

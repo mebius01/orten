@@ -81,8 +81,34 @@
 </div>
 
 <!-- Пагинатор  -->
-
+<hr>
 <div class="d-flex justify-content-center">
+  <ul class="pagination">
+    
+    {% if products.has_previous %}
+    <a href="?{% param_replace page=1 %}" title="1">First</a>
+      <a href="?{% param_replace page=products.previous_page_number %}">&laquo;</a></li>
+      <a href="?{%param_replace page=products.previous_page_number %}">{{ products.previous_page_number }}</a>
+    {% endif %}
+
+    {% for i in paginator.page_range %}
+      {% if products.number == i %}
+        <a class="active" href="#">{{ i }}</a>
+      {% endif %}
+    {% endfor %}
+   
+    {% if products.has_next %}
+     <a href="?{%param_replace page=products.next_page_number %}">{{ products.next_page_number }}</a>
+      <a href="?{% param_replace page=products.next_page_number %}">&raquo;</a>
+      <a href="?{% param_replace page=paginator.num_pages %}" title="{{paginator.num_pages}}">Last</a>
+    {% endif %}
+      
+  </ul>
+</div>
+{% endblock %}
+
+{% comment %}
+  <div class="d-flex justify-content-center">
   <ul class="pagination">
     <a href="?{% param_replace page=1 %}">First</a>
     {% if products.has_previous %}
@@ -101,5 +127,11 @@
       <a href="?{% param_replace page=paginator.num_pages %}">Last</a>
   </ul>
 </div>
-{% endblock %}
 
+Первая: {{products.start_index}} 
+Пеоедидущая: {{products.previous_page_number}}
+Текущаяя: {{products.number}}
+Следующая: {{products.next_page_number}}
+Последняя: {{products.end_index}}
+
+{% endcomment %}
