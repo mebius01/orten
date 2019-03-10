@@ -18,6 +18,10 @@
                 <a class="text-muted" href="{% url 'shop:product_list' %}?vendor={{ item.vendor }}">{{ item.vendor }}</a>
                 <br>
                 {{item.vendor_code}}
+                <br>
+{% if item.action %}
+          Цена: <span style="text-decoration: line-through">{{item.price}}</span>
+              {% endif %}
                 </p>
             </ul>
         </div>

@@ -104,7 +104,7 @@ class Product(ModelMeta, models.Model):
 	stock = models.PositiveIntegerField(blank=True, help_text='Остатоки') # Остатки
 	available = models.BooleanField(default=True, help_text='Доступен ли к заказу') # булево значение, указывающее, доступен ли продукт или нет
 	action = models.BooleanField(default=False, help_text='Акции')
-	discount =  models.DecimalField(max_digits=10,default=Decimal("0.00"), decimal_places=2, blank=True,  help_text='Процент скидка') #Процент)
+	discount =  models.DecimalField(max_digits=10,default=Decimal("0.00"), decimal_places=2, blank=True,  help_text='Цена со скидкой') #Процент)
 	created = models.DateTimeField(auto_now_add=True, help_text='дата создания') # дата создания
 	updated = models.DateTimeField(auto_now=True, help_text='дата обновления') #дата обновления
 
@@ -161,12 +161,12 @@ class Polygraphy(models.Model):
 		return self.flatpage.title
 
 
-class ProductStock(models.Model):
-	product = models.ForeignKey(Product, on_delete=models.CASCADE)
-	slug = models.SlugField(max_length=400, db_index=True)	
-	description = models.TextField(blank=True) #описание акции
-	stock_start = models.DateTimeField(auto_now=False, blank=True, auto_now_add=False,) # дата создания
-	stock_end = models.DateTimeField(auto_now=False, blank=True, auto_now_add=False,) # дата окончания
+# class ProductStock(models.Model):
+# 	product = models.ForeignKey(Product, on_delete=models.CASCADE)
+# 	slug = models.SlugField(max_length=400, db_index=True)	
+# 	description = models.TextField(blank=True) #описание акции
+# 	stock_start = models.DateTimeField(auto_now=False, blank=True, auto_now_add=False,) # дата создания
+# 	stock_end = models.DateTimeField(auto_now=False, blank=True, auto_now_add=False,) # дата окончания
 
 	# @property
 	# def discount(self):
@@ -174,7 +174,7 @@ class ProductStock(models.Model):
 	# 	discount_percent=float(self.discount_percent)
 	# 	return product_price_uah - (product_price_uah*discount_percent)
 
-	class Meta:
-		ordering = ('product',)
-		verbose_name = 'Акция'
-		verbose_name_plural = 'Акции'
+	# class Meta:
+	# 	ordering = ('product',)
+	# 	verbose_name = 'Акция'
+	# 	verbose_name_plural = 'Акции'

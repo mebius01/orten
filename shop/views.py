@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
-from .models import Category, Services, Product, Polygraphy, ProductStock
+from .models import Category, Services, Product, Polygraphy #, ProductStock
 from cart.forms import CartAddProductForm
 from .filters import ProductFilter # ОСОБОЕ ВНИМЕНИЕ!!! При python manage.py makemigrations && python manage.py migrate КОМЕНТИРОВАТЬ ЭТУ СТРОКУ
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -30,8 +30,8 @@ def category(request):
 	return render(request, 'shop/category.html')
 
 def home(request):
-	product_stok = ProductStock.objects.all()
-	products = Product.objects.all().order_by('-updated')[:12]
+	product_stok = Product.objects.filter(action=True)
+	products = Product.objects.all().order_by('-action')[:12]
 	cart_product_form = CartAddProductForm()
 	return render(request, 'shop/home.html', {'cart_product_form':cart_product_form, 'products':products, 'product_stok':product_stok})
 
@@ -59,7 +59,7 @@ def product_list(request):
 		product_list_all = Product.objects.filter(category=category)
 	
 	else:
-		product_list_all = Product.objects.all().order_by('-updated')
+		product_list_all = Product.objects.all().order_by('-action')
 	
 	products_filter = ProductFilter(request.GET, queryset=product_list_all)
 	page = request.GET.get('page', 1)

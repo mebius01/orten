@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product, ProductStock, Services, Polygraphy
+from .models import Category, Product, Services, Polygraphy # ProductStock,
 from mptt.admin import MPTTModelAdmin
 from import_export.admin import ImportExportModelAdmin
 from import_export import resources
@@ -48,14 +48,14 @@ class FlatPageNewAdmin(FlatPageAdmin):
 	list_filter = ('sites', 'registration_required')
 	search_fields = ('url', 'title')
 
-class ProductStockAdmin(admin.ModelAdmin):
-	list_display = ['id', 'stock_start', 'stock_end', 'product', 'slug', 'description',]
-	list_filter = ['stock_start', 'stock_end', 'product',]
-	prepopulated_fields = {'slug': ('product',)}
+# class ProductStockAdmin(admin.ModelAdmin):
+# 	list_display = ['id', 'stock_start', 'stock_end', 'product', 'slug', 'description',]
+# 	list_filter = ['stock_start', 'stock_end', 'product',]
+# 	prepopulated_fields = {'slug': ('product',)}
 
 admin.site.register(Category, CategoryAdmin,)
 admin.site.register(Product, ProductAdmin,)
 admin.site.register(Services, ServicesAdmin,)
-admin.site.register(ProductStock, ProductStockAdmin,)
+# admin.site.register(ProductStock, ProductStockAdmin,)
 admin.site.unregister(FlatPage)
 admin.site.register(FlatPage, FlatPageNewAdmin)

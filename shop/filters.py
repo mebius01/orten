@@ -38,7 +38,7 @@ class ProductFilter(django_filters.FilterSet):
 
 	class Meta:
 		model = Product
-		fields = ['vendor', 'type_product', 'price__gt', 'price__lt', 'category', 'format_fild', 'color_fild',]
+		fields = ['vendor', 'type_product', 'price__gt', 'price__lt', 'category', 'format_fild', 'color_fild']
 
 
 

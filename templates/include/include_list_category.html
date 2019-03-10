@@ -1,4 +1,6 @@
 {% load flatpages %}
+{% load cache %}
+{% cache 900 sidebar %}
 <div class="accordion" id="accordionCategory">
 <div class="card-header p-0" id="heading-polygraphy">
             <ul class="list-group text-white text-left pl-3 btn btn-link collapsed" data-toggle="collapse" data-target="#collapse-polygraphy" aria-expanded="true" aria-controls="collapse-polygraphy">Полиграфия
@@ -45,7 +47,7 @@
     {% endif %}
     {% endfor %}
 </div>
-
+{% endcache %}
 {% comment %}
     
 {% load cache %}

@@ -14,3 +14,4 @@ def order_created(order_id):
 	message = render_to_string('email/order_mail.html', {'order': order})
 	mail_send = send_mail(subject, message, 'consmebius@gmail.com', [order.email], html_message=message)
 	return mail_send
+
