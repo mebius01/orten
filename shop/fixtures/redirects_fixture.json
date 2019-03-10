@@ -1,6 +1,7 @@
 [
    {
       "model":"redirects.redirect",
+      "pk": 1,
       "fields":{
          "site":1,
          "old_path":"/shop/",
@@ -9,6 +10,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 2,
       "fields":{
          "site":1,
          "old_path":"/orten/",
@@ -17,6 +19,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 3,
       "fields":{
          "site":1,
          "old_path":"/oborudovaniye/",
@@ -25,6 +28,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 4,
       "fields":{
          "site":1,
          "old_path":"/view/category/virtuemart_category_id/1/start/0/",
@@ -33,6 +37,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 5,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/3/virtuemart_category_id/1/",
@@ -41,6 +46,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 6,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/213/virtuemart_category_id/1/",
@@ -49,6 +55,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 7,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/214/virtuemart_category_id/1/",
@@ -57,6 +64,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 8,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/296/virtuemart_category_id/1/",
@@ -65,6 +73,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 9,
       "fields":{
          "site":1,
          "old_path":"/view/category/virtuemart_category_id/2/start/0/",
@@ -73,6 +82,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 10,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/1/virtuemart_category_id/2/",
@@ -81,6 +91,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 10,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/215/virtuemart_category_id/2/",
@@ -89,6 +100,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 11,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/293/virtuemart_category_id/2/",
@@ -97,6 +109,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 12,
       "fields":{
          "site":1,
          "old_path":"/view/category/virtuemart_category_id/3/start/0/",
@@ -105,6 +118,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 13,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/4/virtuemart_category_id/3/",
@@ -113,6 +127,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 14,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/17/virtuemart_category_id/3/",
@@ -121,6 +136,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 15,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/19/virtuemart_category_id/3/",
@@ -129,6 +145,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 16,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/20/virtuemart_category_id/3/",
@@ -137,6 +154,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 17,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/21/virtuemart_category_id/3/",
@@ -145,6 +163,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 18,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/22/virtuemart_category_id/3/",
@@ -153,6 +172,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 19,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/23/virtuemart_category_id/3/",
@@ -161,6 +181,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 20,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/24/virtuemart_category_id/3/",
@@ -169,6 +190,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 21,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/25/virtuemart_category_id/3/",
@@ -177,6 +199,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 22,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/26/virtuemart_category_id/3/",
@@ -185,6 +208,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 23,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/81/virtuemart_category_id/3/",
@@ -193,6 +217,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 24,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/82/virtuemart_category_id/3/",
@@ -201,6 +226,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 25,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/180/virtuemart_category_id/3/",
@@ -209,6 +235,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 26,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/181/virtuemart_category_id/3/",
@@ -217,6 +244,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 27,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/236/virtuemart_category_id/3/",
@@ -225,6 +253,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 28,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/240/virtuemart_category_id/3/",
@@ -233,6 +262,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 29,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/241/virtuemart_category_id/3/",
@@ -241,6 +271,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 30,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/242/virtuemart_category_id/3/",
@@ -249,6 +280,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 31,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/243/virtuemart_category_id/3/",
@@ -257,6 +289,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 32,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/244/virtuemart_category_id/3/",
@@ -265,6 +298,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 33,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/262/virtuemart_category_id/3/",
@@ -273,6 +307,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 34,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/263/virtuemart_category_id/3/",
@@ -281,6 +316,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 35,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/264/virtuemart_category_id/3/",
@@ -289,6 +325,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 36,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/265/virtuemart_category_id/3/",
@@ -297,6 +334,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 37,
       "fields":{
          "site":1,
          "old_path":"/view/category/virtuemart_category_id/4/start/0/",
@@ -305,6 +343,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 38,
       "fields":{
          "site":1,
          "old_path":"/view/category/virtuemart_category_id/24/start/0/",
@@ -313,6 +352,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 39,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/28/virtuemart_category_id/24/",
@@ -321,6 +361,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 40,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/46/virtuemart_category_id/24/",
@@ -329,6 +370,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 41,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/47/virtuemart_category_id/24/",
@@ -337,6 +379,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 42,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/48/virtuemart_category_id/24/",
@@ -345,6 +388,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 43,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/80/virtuemart_category_id/24/",
@@ -353,6 +397,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 44,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/198/virtuemart_category_id/24/",
@@ -361,6 +406,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 45,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/199/virtuemart_category_id/24/",
@@ -369,6 +415,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 46,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/200/virtuemart_category_id/24/",
@@ -377,6 +424,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 47,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/261/virtuemart_category_id/24/",
@@ -385,6 +433,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 48,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/313/virtuemart_category_id/24/",
@@ -393,6 +442,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 49,
       "fields":{
          "site":1,
          "old_path":"/view/category/virtuemart_category_id/25/start/0/",
@@ -401,6 +451,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 50,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/27/virtuemart_category_id/25/",
@@ -409,6 +460,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 51,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/35/virtuemart_category_id/25/",
@@ -417,6 +469,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 52,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/260/virtuemart_category_id/25/",
@@ -425,6 +478,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 53,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/267/virtuemart_category_id/25/",
@@ -433,6 +487,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 54,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/276/virtuemart_category_id/25/",
@@ -441,6 +496,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 55,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/279/virtuemart_category_id/25/",
@@ -449,6 +505,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 56,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/298/virtuemart_category_id/25/",
@@ -457,6 +514,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 57,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/299/virtuemart_category_id/25/",
@@ -465,6 +523,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 58,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/300/virtuemart_category_id/25/",
@@ -473,6 +532,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 59,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/312/virtuemart_category_id/25/",
@@ -481,6 +541,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 60,
       "fields":{
          "site":1,
          "old_path":"/view/category/virtuemart_category_id/26/start/0/",
@@ -489,6 +550,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 61,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/37/virtuemart_category_id/26/",
@@ -497,14 +559,16 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 62,
       "fields":{
          "site":1,
          "old_path":"/view/category/virtuemart_category_id/27/start/0/",
-         "new_path":"/category/perepletnoe-oborudovanie/termobindery/
+         "new_path":"/category/perepletnoe-oborudovanie/termobindery/"
       }
    },
    {
       "model":"redirects.redirect",
+      "pk": 63,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/201/virtuemart_category_id/27/",
@@ -513,6 +577,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 64,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/255/virtuemart_category_id/27/",
@@ -521,6 +586,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 65,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/281/virtuemart_category_id/27/",
@@ -529,6 +595,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 66,
       "fields":{
          "site":1,
          "old_path":"/view/category/virtuemart_category_id/5/start/0/",
@@ -537,6 +604,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 67,
       "fields":{
          "site":1,
          "old_path":"/view/category/virtuemart_category_id/22/start/0/",
@@ -545,6 +613,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 68,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/6/virtuemart_category_id/22/",
@@ -553,6 +622,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 69,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/8/virtuemart_category_id/22/",
@@ -561,6 +631,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 70,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/9/virtuemart_category_id/22/",
@@ -569,6 +640,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 71,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/10/virtuemart_category_id/22/",
@@ -577,6 +649,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 72,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/11/virtuemart_category_id/22/",
@@ -585,6 +658,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 73,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/12/virtuemart_category_id/22/",
@@ -593,6 +667,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 74,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/13/virtuemart_category_id/22/",
@@ -601,6 +676,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 75,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/14/virtuemart_category_id/22/",
@@ -609,6 +685,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 76,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/15/virtuemart_category_id/22/",
@@ -617,6 +694,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 77,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/16/virtuemart_category_id/22/",
@@ -625,6 +703,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 78,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/39/virtuemart_category_id/22/",
@@ -633,6 +712,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 79,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/40/virtuemart_category_id/22/",
@@ -641,6 +721,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 80,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/41/virtuemart_category_id/22/",
@@ -649,6 +730,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 81,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/42/virtuemart_category_id/22/",
@@ -657,6 +739,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 82,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/44/virtuemart_category_id/22/",
@@ -665,6 +748,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 83,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/78/virtuemart_category_id/22/",
@@ -673,6 +757,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 84,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/79/virtuemart_category_id/22/",
@@ -681,6 +766,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 85,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/217/virtuemart_category_id/22/",
@@ -689,6 +775,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 86,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/237/virtuemart_category_id/22/",
@@ -697,6 +784,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 87,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/294/virtuemart_category_id/22/",
@@ -705,6 +793,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 88,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/311/virtuemart_category_id/22/",
@@ -713,6 +802,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 89,
       "fields":{
          "site":1,
          "old_path":"/view/category/virtuemart_category_id/23/start/0/",
@@ -721,6 +811,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 90,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/179/virtuemart_category_id/23/",
@@ -729,6 +820,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 91,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/216/virtuemart_category_id/23/",
@@ -737,6 +829,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 92,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/238/virtuemart_category_id/23/",
@@ -745,6 +838,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 93,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/258/virtuemart_category_id/23/",
@@ -753,6 +847,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 94,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/271/virtuemart_category_id/23/",
@@ -761,6 +856,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 95,
       "fields":{
          "site":1,
          "old_path":"/view/category/virtuemart_category_id/19/start/0/",
@@ -769,6 +865,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 96,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/95/virtuemart_category_id/19/",
@@ -777,6 +874,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 97,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/256/virtuemart_category_id/19/",
@@ -785,6 +883,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 98,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/257/virtuemart_category_id/19/",
@@ -793,6 +892,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 99,
       "fields":{
          "site":1,
          "old_path":"/view/category/virtuemart_category_id/46/start/0/",
@@ -801,6 +901,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 100,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/297/virtuemart_category_id/46/",
@@ -809,6 +910,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 101,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/309/virtuemart_category_id/46/",
@@ -817,6 +919,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 102,
       "fields":{
          "site":1,
          "old_path":"/view/category/virtuemart_category_id/20/start/0/",
@@ -825,6 +928,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 103,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/96/virtuemart_category_id/20/",
@@ -833,6 +937,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 104,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/97/virtuemart_category_id/20/",
@@ -841,6 +946,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 105,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/98/virtuemart_category_id/20/",
@@ -849,6 +955,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 106,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/226/virtuemart_category_id/20/",
@@ -857,6 +964,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 107,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/274/virtuemart_category_id/20/",
@@ -865,6 +973,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 108,
       "fields":{
          "site":1,
          "old_path":"/view/category/virtuemart_category_id/12/start/0/",
@@ -873,6 +982,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 109,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/50/virtuemart_category_id/12/",
@@ -881,6 +991,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 110,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/202/virtuemart_category_id/12/",
@@ -889,6 +1000,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 111,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/305/virtuemart_category_id/12/",
@@ -897,6 +1009,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 112,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/306/virtuemart_category_id/12/",
@@ -905,6 +1018,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 113,
       "fields":{
          "site":1,
          "old_path":"/view/category/virtuemart_category_id/7/start/0/",
@@ -913,6 +1027,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 114,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/7/virtuemart_category_id/7/",
@@ -921,6 +1036,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 115,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/29/virtuemart_category_id/7/",
@@ -929,6 +1045,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 116,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/30/virtuemart_category_id/7/",
@@ -937,6 +1054,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 117,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/36/virtuemart_category_id/7/",
@@ -945,6 +1063,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 118,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/49/virtuemart_category_id/7/",
@@ -953,6 +1072,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 119,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/83/virtuemart_category_id/7/",
@@ -961,6 +1081,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 120,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/84/virtuemart_category_id/7/",
@@ -969,6 +1090,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 121,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/176/virtuemart_category_id/7/",
@@ -977,6 +1099,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 122,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/177/virtuemart_category_id/7/",
@@ -985,6 +1108,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 123,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/218/virtuemart_category_id/7/",
@@ -993,6 +1117,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 124,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/239/virtuemart_category_id/7/",
@@ -1001,6 +1126,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 125,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/268/virtuemart_category_id/7/",
@@ -1009,6 +1135,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 126,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/269/virtuemart_category_id/7/",
@@ -1017,6 +1144,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 127,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/273/virtuemart_category_id/7/",
@@ -1025,6 +1153,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 128,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/282/virtuemart_category_id/7/",
@@ -1033,6 +1162,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 129,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/286/virtuemart_category_id/7/",
@@ -1041,6 +1171,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 130,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/290/virtuemart_category_id/7/",
@@ -1049,6 +1180,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 131,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/291/virtuemart_category_id/7/",
@@ -1057,6 +1189,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 132,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/292/virtuemart_category_id/7/",
@@ -1065,6 +1198,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 133,
       "fields":{
          "site":1,
          "old_path":"/consum/",
@@ -1073,6 +1207,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 134,
       "fields":{
          "site":1,
          "old_path":"/view/category/virtuemart_category_id/9/start/0/",
@@ -1081,6 +1216,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 135,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/136/virtuemart_category_id/9/",
@@ -1089,6 +1225,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 136,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/137/virtuemart_category_id/9/",
@@ -1097,6 +1234,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 137,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/138/virtuemart_category_id/9/",
@@ -1105,6 +1243,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 138,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/139/virtuemart_category_id/9/",
@@ -1113,6 +1252,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 139,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/140/virtuemart_category_id/9/",
@@ -1121,6 +1261,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 140,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/141/virtuemart_category_id/9/",
@@ -1129,6 +1270,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 141,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/142/virtuemart_category_id/9/",
@@ -1137,6 +1279,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 142,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/143/virtuemart_category_id/9/",
@@ -1145,6 +1288,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 143,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/245/virtuemart_category_id/9/",
@@ -1153,6 +1297,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 144,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/246/virtuemart_category_id/9/",
@@ -1161,6 +1306,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 145,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/247/virtuemart_category_id/9/",
@@ -1169,6 +1315,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 146,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/248/virtuemart_category_id/9/",
@@ -1177,6 +1324,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 147,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/249/virtuemart_category_id/9/",
@@ -1185,6 +1333,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 148,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/250/virtuemart_category_id/9/",
@@ -1193,6 +1342,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 149,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/251/virtuemart_category_id/9/",
@@ -1201,6 +1351,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 150,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/252/virtuemart_category_id/9/",
@@ -1209,6 +1360,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 151,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/253/virtuemart_category_id/9/",
@@ -1217,6 +1369,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 152,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/254/virtuemart_category_id/9/",
@@ -1225,6 +1378,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 153,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/278/virtuemart_category_id/9/",
@@ -1233,6 +1387,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 154,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/310/virtuemart_category_id/9/",
@@ -1241,6 +1396,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 155,
       "fields":{
          "site":1,
          "old_path":"/view/category/virtuemart_category_id/10/start/0/",
@@ -1249,6 +1405,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 156,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/38/virtuemart_category_id/10/",
@@ -1257,6 +1414,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 157,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/220/virtuemart_category_id/10/",
@@ -1265,6 +1423,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 158,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/221/virtuemart_category_id/10/",
@@ -1273,6 +1432,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 159,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/283/virtuemart_category_id/10/",
@@ -1281,6 +1441,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 160,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/284/virtuemart_category_id/10/",
@@ -1289,6 +1450,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 161,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/285/virtuemart_category_id/10/",
@@ -1297,6 +1459,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 162,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/287/virtuemart_category_id/10/",
@@ -1305,6 +1468,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 163,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/288/virtuemart_category_id/10/",
@@ -1313,6 +1477,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 164,
       "fields":{
          "site":1,
          "old_path":"/view/category/virtuemart_category_id/13/start/0/",
@@ -1321,6 +1486,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 165,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/77/virtuemart_category_id/13/",
@@ -1329,6 +1495,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 166,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/85/virtuemart_category_id/13/",
@@ -1337,6 +1504,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 167,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/87/virtuemart_category_id/13/",
@@ -1345,6 +1513,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 168,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/88/virtuemart_category_id/13/",
@@ -1353,6 +1522,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 169,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/89/virtuemart_category_id/13/",
@@ -1361,6 +1531,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 170,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/90/virtuemart_category_id/13/",
@@ -1369,6 +1540,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 171,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/91/virtuemart_category_id/13/",
@@ -1377,6 +1549,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 172,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/92/virtuemart_category_id/13/",
@@ -1385,6 +1558,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 173,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/93/virtuemart_category_id/13/",
@@ -1393,6 +1567,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 174,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/94/virtuemart_category_id/13/",
@@ -1401,6 +1576,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 175,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/99/virtuemart_category_id/13/",
@@ -1409,6 +1585,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 176,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/102/virtuemart_category_id/13/",
@@ -1417,6 +1594,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 177,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/103/virtuemart_category_id/13/",
@@ -1425,6 +1603,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 178,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/104/virtuemart_category_id/13/",
@@ -1433,6 +1612,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 179,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/105/virtuemart_category_id/13/",
@@ -1441,6 +1621,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 180,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/106/virtuemart_category_id/13/",
@@ -1449,6 +1630,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 181,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/108/virtuemart_category_id/13/",
@@ -1457,6 +1639,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 182,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/144/virtuemart_category_id/13/",
@@ -1465,6 +1648,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 183,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/145/virtuemart_category_id/13/",
@@ -1473,6 +1657,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 184,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/146/virtuemart_category_id/13/",
@@ -1481,6 +1666,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 185,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/147/virtuemart_category_id/13/",
@@ -1489,6 +1675,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 186,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/148/virtuemart_category_id/13/",
@@ -1497,6 +1684,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 190,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/149/virtuemart_category_id/13/",
@@ -1505,6 +1693,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 191,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/307/virtuemart_category_id/13/",
@@ -1513,6 +1702,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 192,
       "fields":{
          "site":1,
          "old_path":"/view/category/virtuemart_category_id/14/start/0/",
@@ -1521,6 +1711,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 193,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/191/virtuemart_category_id/14/",
@@ -1529,6 +1720,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 194,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/192/virtuemart_category_id/14/",
@@ -1537,6 +1729,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 195,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/193/virtuemart_category_id/14/",
@@ -1545,6 +1738,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 196,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/194/virtuemart_category_id/14/",
@@ -1553,6 +1747,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 197,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/195/virtuemart_category_id/14/",
@@ -1561,6 +1756,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 198,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/196/virtuemart_category_id/14/",
@@ -1569,6 +1765,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 199,
       "fields":{
          "site":1,
          "old_path":"/view/category/virtuemart_category_id/15/start/0/",
@@ -1577,6 +1774,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 200,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/150/virtuemart_category_id/15/",
@@ -1585,6 +1783,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 201,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/151/virtuemart_category_id/15/",
@@ -1593,6 +1792,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 202,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/152/virtuemart_category_id/15/",
@@ -1601,6 +1801,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 203,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/153/virtuemart_category_id/15/",
@@ -1609,6 +1810,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 204,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/154/virtuemart_category_id/15/",
@@ -1617,6 +1819,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 205,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/155/virtuemart_category_id/15/",
@@ -1625,6 +1828,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 206,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/156/virtuemart_category_id/15/",
@@ -1633,6 +1837,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 207,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/157/virtuemart_category_id/15/",
@@ -1641,6 +1846,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 208,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/159/virtuemart_category_id/15/",
@@ -1649,6 +1855,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 209,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/161/virtuemart_category_id/15/",
@@ -1657,6 +1864,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 210,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/162/virtuemart_category_id/15/",
@@ -1665,6 +1873,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 211,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/163/virtuemart_category_id/15/",
@@ -1673,6 +1882,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 212,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/164/virtuemart_category_id/15/",
@@ -1681,6 +1891,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 213,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/165/virtuemart_category_id/15/",
@@ -1689,6 +1900,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 214,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/166/virtuemart_category_id/15/",
@@ -1697,6 +1909,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 215,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/167/virtuemart_category_id/15/",
@@ -1705,6 +1918,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 216,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/168/virtuemart_category_id/15/",
@@ -1713,6 +1927,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 217,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/169/virtuemart_category_id/15/",
@@ -1721,6 +1936,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 218,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/171/virtuemart_category_id/15/",
@@ -1729,6 +1945,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 219,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/172/virtuemart_category_id/15/",
@@ -1737,6 +1954,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 220,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/173/virtuemart_category_id/15/",
@@ -1745,6 +1963,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 221,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/174/virtuemart_category_id/15/",
@@ -1753,6 +1972,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 222,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/182/virtuemart_category_id/15/",
@@ -1761,6 +1981,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 223,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/183/virtuemart_category_id/15/",
@@ -1769,6 +1990,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 224,
       "fields":{
          "site":1,
          "old_path":"/view/category/virtuemart_category_id/16/start/0/",
@@ -1777,6 +1999,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 225,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/197/virtuemart_category_id/16/",
@@ -1785,6 +2008,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 226,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/204/virtuemart_category_id/16/",
@@ -1793,6 +2017,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 227,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/205/virtuemart_category_id/16/",
@@ -1801,6 +2026,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 228,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/206/virtuemart_category_id/16/",
@@ -1809,6 +2035,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 229,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/207/virtuemart_category_id/16/",
@@ -1817,6 +2044,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 230,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/209/virtuemart_category_id/16/",
@@ -1825,6 +2053,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 231,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/210/virtuemart_category_id/16/",
@@ -1833,6 +2062,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 232,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/211/virtuemart_category_id/16/",
@@ -1841,6 +2071,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 233,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/212/virtuemart_category_id/16/",
@@ -1849,6 +2080,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 234,
       "fields":{
          "site":1,
          "old_path":"/view/category/virtuemart_category_id/17/start/0/",
@@ -1857,6 +2089,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 235,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/109/virtuemart_category_id/17/",
@@ -1865,6 +2098,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 236,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/110/virtuemart_category_id/17/",
@@ -1873,6 +2107,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 237,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/111/virtuemart_category_id/17/",
@@ -1881,6 +2116,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 238,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/112/virtuemart_category_id/17/",
@@ -1889,6 +2125,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 239,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/113/virtuemart_category_id/17/",
@@ -1897,6 +2134,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 240,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/114/virtuemart_category_id/17/",
@@ -1905,6 +2143,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 241,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/115/virtuemart_category_id/17/",
@@ -1913,6 +2152,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 242,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/116/virtuemart_category_id/17/",
@@ -1921,6 +2161,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 243,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/117/virtuemart_category_id/17/",
@@ -1929,6 +2170,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 244,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/118/virtuemart_category_id/17/",
@@ -1937,6 +2179,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 245,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/119/virtuemart_category_id/17/",
@@ -1945,6 +2188,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 246,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/120/virtuemart_category_id/17/",
@@ -1953,6 +2197,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 247,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/121/virtuemart_category_id/17/",
@@ -1961,6 +2206,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 248,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/122/virtuemart_category_id/17/",
@@ -1969,6 +2215,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 249,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/124/virtuemart_category_id/17/",
@@ -1977,6 +2224,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 250,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/125/virtuemart_category_id/17/",
@@ -1985,6 +2233,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 251,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/126/virtuemart_category_id/17/",
@@ -1993,6 +2242,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 252,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/127/virtuemart_category_id/17/",
@@ -2001,6 +2251,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 253,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/128/virtuemart_category_id/17/",
@@ -2009,6 +2260,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 254,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/129/virtuemart_category_id/17/",
@@ -2017,6 +2269,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 255,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/130/virtuemart_category_id/17/",
@@ -2025,6 +2278,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 256,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/131/virtuemart_category_id/17/",
@@ -2033,6 +2287,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 257,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/132/virtuemart_category_id/17/",
@@ -2041,6 +2296,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 258,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/133/virtuemart_category_id/17/",
@@ -2049,6 +2305,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 259,
       "fields":{
          "site":1,
          "old_path":"/view/category/virtuemart_category_id/18/start/0/",
@@ -2057,6 +2314,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 260,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/227/virtuemart_category_id/18/",
@@ -2065,6 +2323,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 261,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/228/virtuemart_category_id/18/",
@@ -2073,6 +2332,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 262,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/229/virtuemart_category_id/18/",
@@ -2081,6 +2341,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 263,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/230/virtuemart_category_id/18/",
@@ -2089,6 +2350,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 264,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/231/virtuemart_category_id/18/",
@@ -2097,6 +2359,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 265,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/232/virtuemart_category_id/18/",
@@ -2105,6 +2368,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 266,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/233/virtuemart_category_id/18/",
@@ -2113,6 +2377,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 267,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/234/virtuemart_category_id/18/",
@@ -2121,6 +2386,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 268,
       "fields":{
          "site":1,
          "old_path":"/view/category/virtuemart_category_id/11/start/0/",
@@ -2129,6 +2395,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 269,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/51/virtuemart_category_id/11/",
@@ -2137,6 +2404,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 270,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/52/virtuemart_category_id/11/",
@@ -2145,6 +2413,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 271,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/53/virtuemart_category_id/11/",
@@ -2153,6 +2422,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 272,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/54/virtuemart_category_id/11/",
@@ -2161,6 +2431,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 273,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/55/virtuemart_category_id/11/",
@@ -2169,6 +2440,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 274,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/56/virtuemart_category_id/11/",
@@ -2177,6 +2449,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 275,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/57/virtuemart_category_id/11/",
@@ -2185,6 +2458,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 276,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/58/virtuemart_category_id/11/",
@@ -2193,6 +2467,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 277,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/59/virtuemart_category_id/11/",
@@ -2201,6 +2476,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 278,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/60/virtuemart_category_id/11/",
@@ -2209,6 +2485,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 279,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/61/virtuemart_category_id/11/",
@@ -2217,6 +2494,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 280,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/62/virtuemart_category_id/11/",
@@ -2225,6 +2503,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 281,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/63/virtuemart_category_id/11/",
@@ -2233,6 +2512,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 282,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/64/virtuemart_category_id/11/",
@@ -2241,6 +2521,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 283,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/65/virtuemart_category_id/11/",
@@ -2249,6 +2530,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 284,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/66/virtuemart_category_id/11/",
@@ -2257,6 +2539,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 285,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/67/virtuemart_category_id/11/",
@@ -2265,6 +2548,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 286,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/68/virtuemart_category_id/11/",
@@ -2273,6 +2557,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 287,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/69/virtuemart_category_id/11/",
@@ -2281,6 +2566,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 288,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/70/virtuemart_category_id/11/",
@@ -2289,6 +2575,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 289,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/71/virtuemart_category_id/11/",
@@ -2297,6 +2584,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 290,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/72/virtuemart_category_id/11/",
@@ -2305,6 +2593,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 291,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/73/virtuemart_category_id/11/",
@@ -2313,6 +2602,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 292,
       "fields":{
          "site":1,
          "old_path":"/view/productdetails/virtuemart_product_id/74/virtuemart_category_id/11/",
@@ -2321,6 +2611,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 293,
       "fields":{
          "site":1,
          "old_path":"/polygraphy-service/",
@@ -2329,6 +2620,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 294,
       "fields":{
          "site":1,
          "old_path":"/tirazhirovanie-na-rizografe/",
@@ -2337,6 +2629,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 295,
       "fields":{
          "site":1,
          "old_path":"/tsifrovaya-pechat/",
@@ -2345,6 +2638,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 296,
       "fields":{
          "site":1,
          "old_path":"/vizitki/",
@@ -2353,6 +2647,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 297,
       "fields":{
          "site":1,
          "old_path":"/kalendari/",
@@ -2361,6 +2656,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 298,
       "fields":{
          "site":1,
          "old_path":"/listovki/",
@@ -2369,6 +2665,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 299,
       "fields":{
          "site":1,
          "old_path":"/buklety/",
@@ -2377,6 +2674,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 300,
       "fields":{
          "site":1,
          "old_path":"/naklejki/",
@@ -2385,6 +2683,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 301,
       "fields":{
          "site":1,
          "old_path":"/diskontnye-karty/",
@@ -2393,6 +2692,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 302,
       "fields":{
          "site":1,
          "old_path":"/plakaty/",
@@ -2401,6 +2701,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 303,
       "fields":{
          "site":1,
          "old_path":"/papki/",
@@ -2409,6 +2710,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 304,
       "fields":{
          "site":1,
          "old_path":"/konverty/",
@@ -2417,6 +2719,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 305,
       "fields":{
          "site":1,
          "old_path":"/bloknoty/",
@@ -2425,6 +2728,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 306,
       "fields":{
          "site":1,
          "old_path":"/khengery/",
@@ -2433,6 +2737,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 307,
       "fields":{
          "site":1,
          "old_path":"/flaera/",
@@ -2441,6 +2746,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 308,
       "fields":{
          "site":1,
          "old_path":"/brochure/",
@@ -2449,6 +2755,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 309,
       "fields":{
          "site":1,
          "old_path":"/services-center/",
@@ -2457,6 +2764,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 310,
       "fields":{
          "site":1,
          "old_path":"/avtorizovannyj-servisnyj-tsentr-ricoh-gestetner/",
@@ -2465,6 +2773,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 311,
       "fields":{
          "site":1,
          "old_path":"/zapravka-kartridzhej/",
@@ -2473,6 +2782,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 312,
       "fields":{
          "site":1,
          "old_path":"/servisnyj-tsentr-develop-konica-minolta/",
@@ -2481,6 +2791,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 313,
       "fields":{
          "site":1,
          "old_path":"/servisnyj-tsentr-po-remontu-printerov-i-mfu/",
@@ -2489,6 +2800,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 314,
       "fields":{
          "site":1,
          "old_path":"/abonentskoe-obsluzhivanie/",
@@ -2497,6 +2809,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 315,
       "fields":{
          "site":1,
          "old_path":"/oplata-i-dostavka/",
@@ -2505,6 +2818,7 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 316,
       "fields":{
          "site":1,
          "old_path":"/korzina/",
@@ -2513,10 +2827,11 @@
    },
    {
       "model":"redirects.redirect",
+      "pk": 317,
       "fields":{
          "site":1,
          "old_path":"/Наши-контакты/",
          "new_path":"/contact/"
       }
-   },
+   }
 ]

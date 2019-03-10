@@ -27,7 +27,7 @@ SECRET_KEY = 'c&mlje%w2+@m7cij8@t%9zny4%5y-enw(uxs+u*nulp)2s@*8$'
 DEBUG = True
 # DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1',]
+ALLOWED_HOSTS = ['127.0.0.1',]
 # ALLOWED_HOSTS = ['*',]
 SITE_ID = 1
 APPEND_SLASH = True
