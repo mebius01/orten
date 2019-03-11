@@ -16,6 +16,30 @@
       </tr>
     </thead>
     {% for product in products %}
+
+
+<div itemtype="http://schema.org/Product" itemscope>
+   <link itemprop="image" href="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt="{{ product.name }}"/>
+    <meta itemprop="mpn" content="{{ product.vendor_code }}"/>
+    <meta itemprop="name" content="{{product.name}}"/>
+    <div itemprop="offers" itemtype="http://schema.org/Offer" itemscope>
+        <link itemprop="url" href="{% url 'shop:product_detail' product.slug %}" /> 
+        {% comment %} "{% url 'shop:product_detail' product.slug %}" {% endcomment %}
+        <meta itemprop="availability" content="https://schema.org/InStock" />
+        <meta itemprop="priceCurrency" content="UAH" />
+        <meta itemprop="itemCondition" content="https://schema.org/UsedCondition" />
+        <meta itemprop="price" content="{{ product.price }}" />
+          {% comment %}
+              <meta itemprop="priceValidUntil" content="2020-11-05" />
+          {% endcomment %}
+        <meta itemprop="sku" content="{{ product.vendor_code }}" />
+    </div>
+    <div itemprop="brand" itemtype="http://schema.org/Thing" itemscope>
+      <meta itemprop="name" content="{{ product.vendor }}" />
+    </div>
+</div>
+
+
     <tbody>
       <div class="table-responsive-sm">
       <tr>
