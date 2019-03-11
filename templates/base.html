@@ -7,7 +7,6 @@
 
 <html lang="ru">
     <head>
-
        <meta charset="utf-8">
        <meta name="title" content="Компания Ортен електроника, расходные материалы">
        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,9 +21,6 @@
        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-       {% block head %}
-          {{ head }}
-       {% endblock %}
         <style>
             /*Аккции*/
            .card-action{
@@ -37,6 +33,7 @@
               line-height: 50px;
               letter-spacing: 1px;
               color: #f0f0f0;
+              opacity:0.5;
               transform: rotate(-45deg);
               -webkit-transform: rotate(-45deg);
             }
@@ -352,13 +349,6 @@
                         <a class="cool-link text-muted" href="{% url 'shop:list_category' 'servisnyj-centr/avtorizovannyj-servisnyj-centr-ricoh' %}">Сервис Ricoh</a>
                         <a class="cool-link text-muted" href="{% url 'shop:list_category' 'servisnyj-centr/avtorizovannyj-servisnyj-centr-konica-minolta' %}">Сервис Konica Minolta</a>
                         <a class="cool-link text-muted" href="{% url 'shop:list_category' 'licenzionnye-rashodnye-materialy' %}">Все для Принтеров и МФУ</a>
-                       <!-- <a class="cool-link text-muted" href="#">LINK</a>
-                        <a class="cool-link text-muted" href="#">LINK</a>
-                        <a class="cool-link text-muted" href="#">LINK</a>
-                        <a class="cool-link text-muted" href="#">LINK</a>
-                        <a class="cool-link text-muted" href="#">LINK</a>
-                        <a class="cool-link text-muted" href="#">LINK</a>
-                        <a class="cool-link text-muted" href="#">LINK</a> -->
                     </nav>
                 </div>
             </header>
