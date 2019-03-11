@@ -7,6 +7,7 @@ dj-database-url==0.5.0
 Django==2.1.4
 django-admin-tools==0.8.1
 django-bootstrap4==0.0.7
+django-celery==3.2.2
 django-ckeditor==5.6.1
 django-debug-toolbar==1.11
 django-filter==2.1.0
@@ -17,7 +18,7 @@ django-js-asset==1.2.1
 django-meta==1.4.1
 django-mptt==0.9.1
 django-redis==4.10.0
-django-redis-cache==2.0.0
+django-static-sitemaps==4.6.0
 django-taggit==0.23.0
 django-watson==1.5.2
 et-xmlfile==1.0.1
@@ -32,6 +33,7 @@ psycopg2-binary==2.7.7
 pytz==2018.9
 PyYAML==3.13
 redis==3.1.0
+six==1.12.0
 sqlparse==0.2.4
 tablib==0.12.1
 unicodecsv==0.14.1
