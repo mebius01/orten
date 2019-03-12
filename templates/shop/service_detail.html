@@ -1,6 +1,11 @@
 {% extends 'shop/list_category.html' %}
 {% load bootstrap4 %}
 {% load static %}
+{% block head %}
+    <title>{{ instance.name }}</title>
+    <meta name="title" content="{{instance.name}} - Ремонт и обслуживание в Николаеве">
+    <meta name="description" content="{{instance.name}} - {{instance.price}} грн. - обслуживание  в Николаеве ★ {{instance.description}} ★ Ортен более 20 лет рынке копировальной техники и сервисного обслуживания">
+{% endblock %}
 {% block breadcrumbs %}
     {{ block.super }}
     {% for i in instance.category.get_anc %}

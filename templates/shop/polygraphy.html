@@ -2,6 +2,12 @@
 {% load bootstrap4 %}
 {% load static %}
 {% load flatpages %}
+{% block head %}
+    <title>Ортен - Полиграфические услуги в Николаеве</title>
+    <meta name="title" content="Ортен - Полиграфические услуги в Николаеве">
+    <meta name="description" content="Печать в Николаеве ★ Визитки ★ Календари ★ Флаера ★ Листовки ★ Буклеты Хенгеры ★ Плакаты ★ Папки  ★ Брошюры и каталоги ★ Блокноты ★ Конверты ★ Наклейки ★ Дисконтные карты ★ Тиражирование на ризографе ★ Цифровая печать
+ ★ Ортен более 20 лет опыта в производстве печатной продукции">
+{% endblock %}
 {% block breadcrumbs %}
     {{ block.super }}
     <li><a href="{% url 'shop:category' %}">Категории</a><i class="fas fa-chevron-right pl-1"></i></li>
@@ -9,8 +15,6 @@
 {% endblock %}
 
 {% block content %}
-
-<title>Orten - Все Категории</title>
 <div class="container-fluid">
     <div class="row">
         <!-- Блок Категорий -->

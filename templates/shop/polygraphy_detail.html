@@ -2,6 +2,11 @@
 {% load bootstrap4 %}
 {% load static %}
 {% load flatpages %}
+{% block head %}
+    <title>{{ instance.flatpage.title }} - Печать в Николаеве</title>
+    <meta name="title" content="{{instance.name}} - Печать в Николаеве">
+    <meta name="description" content="{{ instance.flatpage.title }} - Печать в Николаеве ★ {{instance.description}} ★ Ортен более 20 лет опыта в производстве печатной продукции">
+{% endblock %}
 {% block breadcrumbs %}
     {{ block.super }}
     <li><a href="{% url 'shop:category' %}">Категории</a><i class="fas fa-chevron-right pl-1"></i></li>
@@ -9,7 +14,6 @@
         <li><a href="#">{{instance.flatpage.title}}</a></li>
 {% endblock %}
 {% block content %}
-<title>Orten - Все Категории</title>
 <div class="container-fluid">
     <div class="row">
         <!-- Блок Категорий -->

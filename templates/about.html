@@ -2,6 +2,9 @@
 {% load static %}
 {% load bootstrap4 %}
 {% load mptt_tags %}
+{% block head %}
+    {{head}}
+{% endblock %}
 {% block breadcrumbs %}
 {{ block.super }}
 	<li><a href="#">Кто мы</a></li>

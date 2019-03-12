@@ -4,6 +4,11 @@
 {% load mptt_tags %}
 {% block breadcrumbs %}
 {% load flatpages %}
+{% block head %}
+    <title>{{instance.name}}</title>
+    <meta name="title" content="{{instance.name}} - купить в Николаеве и Украине">
+    <meta name="description" content="{{instance.name}} - Купить в Николаеве, интернет-магазин Ортен ★ Ортен более 20 лет рынке копировальной техники и сервисного обслуживания">
+{% endblock %}
     {{ block.super }}<li><a href="{% url 'shop:category' %}">Категории</a><i class="fas fa-chevron-right pl-1"></i></li>
         {% for i in instance.get_anc %}
             <li><a href="{% url 'shop:list_category' i.get_absolute_url %}">{{ i.name }}</a><i class="fas fa-chevron-right pl-1"></i></li>
@@ -43,7 +48,7 @@
                                 {% for i in instance.children.all|dictsort:"id" %}
                                     <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-3 p-2">
                                         <div class="card h-100">
-                                            <img class="card-img-top" src="{% if i.image %}{{ i.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{i.name}}" width="230" height="230">
+                                            <a href="{% url 'shop:list_category' i.get_absolute_url %}"><img class="card-img-top" src="{% if i.image %}{{ i.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{i.name}}" width="230" height="230" title="{{i.name}}" alt="{{i.name}}"></a>
                                             <div class="card-footer d-flex justify-content-center bg-transparent">
                                                 <div class="row">
                                                     <a class="text-muted" href="{% url 'shop:list_category' i.get_absolute_url %}" title="{{i.name}}">{{i.name}}<span class="badgebadge-light ml-3">{% firstof i.product.count i.services.count i.polygraphy.count %}</span></a>

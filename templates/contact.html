@@ -2,11 +2,13 @@
 {% load static %}
 {% load bootstrap4 %}
 {% load mptt_tags %}
+{% block head %}
+    {{head}}
+{% endblock %}
 {% block breadcrumbs %}
 {{ block.super }}
 	<li><a href="{% url 'shop:contact' %}">Контакты</a><i class="fas fa-chevron-right pl-1"></i></li>
 {% endblock %}
-
 {% block content %}
 <title>Контакты</title>
 
