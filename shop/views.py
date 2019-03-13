@@ -7,6 +7,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from watson import search as watson
 from django.views.decorators.cache import cache_page
 from django.db.models import Q
+from .forms import FilterForm
+
 
 def handler404(request):
 	return render(request, '404.html', status=404)
@@ -51,7 +53,7 @@ def list_category(request, hierarchy=None):
 def product_list(request):
 	search = request.GET.get('search', '')
 	category = request.GET.get('category', '')
-
+	form = FilterForm()
 	if search:
 		product_list_all = watson.filter(Product, search, ranking=True)
 	
@@ -77,7 +79,7 @@ def product_list(request):
 		instance = Category.objects.get(id=category)
 	else:
 		instance = Category.objects.all()
-	return render(request, 'shop/list_product.html', {'instance': instance, 'paginator':paginator, 'filter': products_filter, 'products': products, 'cart_product_form': cart_product_form})
+	return render(request, 'shop/list_product.html', {'form': form, 'instance': instance, 'paginator':paginator, 'filter': products_filter, 'products': products, 'cart_product_form': cart_product_form})
 
 def product_detail(request, slug):
 	instance = get_object_or_404(Product, slug=slug)
