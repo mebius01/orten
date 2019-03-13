@@ -36,6 +36,13 @@ class ProductFilter(django_filters.FilterSet):
 			l.remove(('', ''))
 	color_fild = django_filters.ChoiceFilter(choices=set(l), empty_label='BW/Color')
 
+	l=[]
+	for i in Product.objects.all():
+		l.append((i.category_id, i.category))
+		if ('', '') in l:
+			l.remove(('', ''))
+	category = django_filters.ChoiceFilter(choices=set(l), empty_label='Категории')
+
 	class Meta:
 		model = Product
 		fields = ['vendor', 'type_product', 'price__gt', 'price__lt', 'category', 'format_fild', 'color_fild']

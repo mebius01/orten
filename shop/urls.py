@@ -24,6 +24,7 @@ from django.views.decorators.cache import cache_page
 app_name = 'shop'
 
 urlpatterns = [
+    path('test/', views.test, name='test'),
     path('', views.home, name='home'),
     path('contact/', views.contact, name='contact'),
     path('delivery_payment/', views.delivery_payment, name='delivery_payment'),

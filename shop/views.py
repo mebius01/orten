@@ -81,6 +81,37 @@ def product_list(request):
 		instance = Category.objects.all()
 	return render(request, 'shop/list_product.html', {'form': form, 'instance': instance, 'paginator':paginator, 'filter': products_filter, 'products': products, 'cart_product_form': cart_product_form})
 
+def test(request):
+	search = request.GET.get('search', '')
+	category = request.GET.get('category', '')
+	form = FilterForm()
+	if search:
+		product_list_all = watson.filter(Product, search, ranking=True)
+	
+	elif category:
+		product_list_all = Product.objects.filter(category=category)
+	
+	else:
+		product_list_all = Product.objects.all().order_by('-action')
+	
+	products_filter = ProductFilter(request.GET, queryset=product_list_all)
+	page = request.GET.get('page', 1)
+	paginator = Paginator(products_filter.qs, 48)
+	try:
+		products = paginator.page(page)
+	except PageNotAnInteger:
+		# Если страница не является целым числом, показать первую страницу.
+		products = paginator.page(1)
+	except EmptyPage:
+		# Если страница выходит за пределы допустимого диапазона (например, 9999), казать последнюю страницу результатов
+		products = paginator.page(paginator.num_pages)
+	cart_product_form = CartAddProductForm()
+	if len(category)>1:
+		instance = Category.objects.get(id=category)
+	else:
+		instance = Category.objects.all()
+	return render(request, 'shop/test.html', {'form': form, 'instance': instance, 'paginator':paginator, 'filter': products_filter, 'products': products, 'cart_product_form': cart_product_form})
+
 def product_detail(request, slug):
 	instance = get_object_or_404(Product, slug=slug)
 	cart_product_form = CartAddProductForm()
