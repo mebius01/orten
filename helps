@@ -263,7 +263,7 @@ https://docs.djangoproject.com/en/2.1/topics/cache/
 https://hashedin.com/blog/caching-for-your-django-application-using-django-redis/
 https://code.tutsplus.com/ru/tutorials/how-to-cache-using-redis-in-django-applications--cms-30178
 http://www.ilian.io/caching-websites-with-django-and-memcached/
-
+https://djangobook.com/low-level-cache-api/
 
 Редирект oldUrls
 https://docs.djangoproject.com/en/2.1/ref/contrib/redirects/
@@ -294,3 +294,10 @@ https://stackoverflow.com/questions/17944503/how-to-add-meta-keyword-with-django
 
 ДУБЛИ в БД
 http://qaru.site/questions/256863/remove-duplicates-in-a-django-query
+
+НАСТРОЙКА setings.py
+https://www.agileleaf.com/blog/a-better-way-to-manage-settings-py-in-your-django-projects/
+https://django-configurations.readthedocs.io/en/latest/
+https://habr.com/ru/post/104686/
+
+
