@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
-from .tasks import order_created
+# from .tasks import order_created # for celery
+from . tasks import email_customer # for dramatiq
 # Create your views here.
 
 
@@ -19,7 +20,8 @@ def order_create(request):
 			for item in cart:
 				OrderItem.objects.create(order=order, product=item['product'], price=item['price'], quantity=item['quantity'])
 			cart.clear()
-			order_created.delay(order.id)
+			# order_created.delay(order.id) # for celery
+			email_customer(order.id) # for dramatiq
 			return render(request, 'order/created.html', {'order': order})
 	else:
 		form = OrderCreateForm()

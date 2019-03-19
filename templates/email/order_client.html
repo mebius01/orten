@@ -22,7 +22,7 @@
     <tr>
 
         <td>
-         <a href="http://127.0.0.1:8000/category/{{ item.product.get_absolute_url }}" id="name"> {{ item.product.name }}
+         <a href="http://127.0.0.1:8000{% url 'shop:product_detail' item.product.slug %}">{{ item.product.name }}</a>
         </td>
 
         <td>

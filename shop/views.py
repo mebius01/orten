@@ -8,7 +8,7 @@ from watson import search as watson
 from django.views.decorators.cache import cache_page
 from django.db.models import Q
 from .forms import FilterForm
-
+from django.core.cache import cache
 
 def handler404(request):
 	return render(request, '404.html', status=404)

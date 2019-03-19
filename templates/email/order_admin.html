@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+{% load static %}
+<body>
+<table class="table">
+  <thead>
+    <tr>
+        <th>Клиент</th>
+        <th>Телефон</th>
+        <th>EMail</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+
+        <td>
+		 {{order.first_name}} <br> {{ order.last_name }} <br> {{order.sur_name}} 
+        </td>
+
+        <td>
+          {{ order.mobile_phone }}
+        </td>
+
+        <td>
+          {{order.email }}
+        </td>
+
+  </tbody>
+</table>
+
+<hr>
+
+<table class="table">
+  <thead>
+    <tr>
+        <th>Продукт</th>
+        <th>Цена</th>
+        <th>Количесво</th>
+        <th>Сумма</th>
+    </tr>
+  </thead>
+
+{% for item in order.items.all %}
+  <tbody>
+    <tr>
+
+        <td>
+         <a href="http://127.0.0.1:8000{% url 'shop:product_detail' item.product.slug %}">{{ item.product.name }}</a>
+        </td>
+
+        <td>
+          {{ item.price }}
+        </td>
+
+        <td>
+          {{item.quantity }}
+        </td>
+
+        <td>
+          {{ item.get_cost }}
+        </td>
+    </tr>
+{% endfor %}
+<hr>
+    <tr class="total">
+          <td>
+            Total
+          </td>
+
+          <td
+             class="num">{{ order.get_total_cost }}
+          </td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+</body>
+</html>

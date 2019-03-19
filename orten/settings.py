@@ -22,7 +22,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'c&mlje%w2+@m7cij8@t%9zny4%5y-enw(uxs+u*nulp)2s@*8$'
-
+# SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cg#p$g+j9tax!#a3cup@1$8obt2_+&k3q+pmu)5%asj6yjpkag')
+SECURE_BROWSER_XSS_FILTER=True
+SECURE_SSL_REDIRECT=False
+SESSION_COOKIE_SECURE=True
+CSRF_COOKIE_SECURE=True
+X_FRAME_OPTIONS='DENY'
+#SSL / HTTPS
+# SECURE_SSL_REDIRECT=True
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 # DEBUG = False
@@ -54,6 +61,7 @@ INSTALLED_APPS = [
     'django.contrib.redirects',
     'django.contrib.sitemaps',
     'django.contrib.flatpages',
+    'django_dramatiq',
     'django_filters',
     'taggit',
     'mptt',
@@ -115,7 +123,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'orten.wsgi.application'
 
-
+# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -189,36 +197,57 @@ IMPORT_EXPORT_USE_TRANSACTIONS = True
 CART_SESSION_ID = 'cart'
 
 # Email
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # 'send_email.apps.SendEmailConfig'
 
-# EMAIL_USE_TLS = True
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
-# EMAIL_HOST_USER = '@gmail.com'
-# EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = '@gmail.com'
+EMAIL_HOST_PASSWORD = 'pass'
 # DEFAULT_FROM_EMAIL = ''
 # DEFAULT_TO_EMAIL = ''
 
+#Асинхронность
 # CELERY STUFF
 BROKER_URL = 'redis://localhost:6379'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/'
-CELERY_ACCEPT_CONTENT = ['application/json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = TIME_ZONE
 CELERY_IMPORTS = ('shop.tasks',)
 CELERY_IMPORTS = ('order.tasks',)
+# CELERY_RESULT_BACKEND = 'redis://localhost:6379/'
+# CELERY_ACCEPT_CONTENT = ['application/json']
+# CELERY_TASK_SERIALIZER = 'json'
+# CELERY_RESULT_SERIALIZER = 'json'
 
-CACHES = {
-    'default':{
-        'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://127.0.0.1:6379/',
-        'OPTIONS': {
-            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-        },
-        'TIMEOUT': 60*10,
+DRAMATIQ_RESULT_BACKEND = {
+    "BACKEND": "dramatiq.results.backends.redis.RedisBackend",
+    "BACKEND_OPTIONS": {
+        "url": "redis://localhost:6379",
+    },
+    "MIDDLEWARE_OPTIONS": {
+        "result_ttl": 60000
     }
 }
+
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            # Время ожидания сокета
+            "SOCKET_CONNECT_TIMEOUT": 5,  # in seconds
+            "SOCKET_TIMEOUT": 5,  # in seconds
+            # исключения поведения
+            "IGNORE_EXCEPTIONS": True,
+            # пул соединений
+            "CONNECTION_POOL_KWARGS": {"max_connections": 128}
+        }
+    }
+}
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
 
 # django-debug-toolbar
 INTERNAL_IPS = ('127.0.0.1',)
@@ -239,18 +268,6 @@ DEBUG_TOOLBAR_PANELS = [
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
-
-# CKEDITOR_CONFIGS = {
-#     'default': {
-#         'toolbar': 'full',
-#         'extraPlugins': ','.join(
-#             [
-#                 'codesnippet',
-#             ]),
-#     },
-# }
-
-# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 
 # Static files (CSS, JavaScript, Images)

@@ -62,8 +62,6 @@ https://itchief.ru/bootstrap/images Bootstrap - CSS классы для изоб
 https://djangosnippets.org/snippets/362/
 
 
-Использование Celery с Django для обработки фоновых задач
-https://code.tutsplus.com/ru/tutorials/using-celery-with-django-for-background-task-processing--cms-28732
 
 Продающий интернет магазин
 https://poltor.com/stati/sekrety-sozdaniya-prodayushhego-internet-magazina.html
@@ -281,12 +279,13 @@ https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postg
 https://djbook.ru/forum/topic/2416/  Django + Python3 + Nginx + Gunicorn + DO
 
 Security
-https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/web_application_security
-https://docs.djangoproject.com/en/2.1/topics/security/
-https://hackernoon.com/5-ways-to-make-django-admin-safer-eb7753698ac8
+https://hackernoon.com/5-ways-to-make-django-admin-safer-eb7753698ac8 !!ДвухФакторная авторизация
 http://www.marinamele.com/2014/09/security-on-django-app-https-everywhere.html
 https://hackernoon.com/securing-your-linux-web-server-2be683c223eb Securing your Linux web server
 https://dzone.com/articles/protect-your-django-web-application-from-security-1
+
+https://docs.djangoproject.com/en/2.1/ref/settings/
+https://docs.djangoproject.com/en/2.1/topics/security/
 
 SEO
 https://hallanalysis.com/json-ld-generator/
@@ -300,4 +299,6 @@ https://www.agileleaf.com/blog/a-better-way-to-manage-settings-py-in-your-django
 https://django-configurations.readthedocs.io/en/latest/
 https://habr.com/ru/post/104686/
 
-
+Домонизация Celery
+http://docs.celeryproject.org/en/latest/userguide/daemonizing.html
+https://code.tutsplus.com/ru/tutorials/using-celery-with-django-for-background-task-processing--cms-28732
