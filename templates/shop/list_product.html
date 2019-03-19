@@ -40,7 +40,7 @@
                     <div class="form-group col-md-12">
                     <!-- Category filter -->
                    
-                        {% bootstrap_field filter.form.category placeholder="Категория" show_label=False%}
+                        {% bootstrap_field filter.form.category placeholder="Категория" show_label="Категория" %}
                       
                    
                     <!-- Vendor filter -->
@@ -48,11 +48,10 @@
                     <!-- Typ_Product filter -->
                       {% bootstrap_field filter.form.type_product placeholder="Type Product" show_label=False%}
                       
-                      {% bootstrap_field filter.form.format_fild placeholder="Format" show_label=False%}
+                      {% bootstrap_field filter.form.format_fild placeholder="Format" show_label=True%}
 
-                      {% bootstrap_field filter.form.color_fild show_label=False%}
+                      {% bootstrap_field filter.form.color_fild placeholder="Color" show_label=True%}
 
-                      {% bootstrap_field filter.form.color_fild show_label=False%}
                       <!-- Search for PN -->
                       {% comment %}
                            {% bootstrap_field filter.form.vendor_code placeholder="Поиск по Артикль" show_label=False%}
@@ -63,10 +62,6 @@
                         </a>
                     </div>
                   </form>
-                  <form action="{% url 'shop:product_list' %}" method="get">
-    {{ form }}
-    <input type="submit" value="Submit">
-</form>
               </div>
             </div>
         </article>

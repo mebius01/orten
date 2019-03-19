@@ -1,18 +1,16 @@
 import django_filters
 from django_filters.widgets import LinkWidget
-from shop.models import Category, Product, Services
+from shop.models import Category, Product
 
 class ProductFilter(django_filters.FilterSet):
 	price__gt = django_filters.NumberFilter(field_name='price', lookup_expr='gt', label='min')
 	price__lt = django_filters.NumberFilter(field_name='price', lookup_expr='lt', label='max')
 
-	l=[]; s=[]; p=[]
+	l=[]
 	for i in Product.objects.all():
 		l.append((i.vendor, i.vendor))
 		if ('', '') in l:
 			l.remove(('', ''))
-	# for i in Services.objects.all():
-	# 	l.append((i.vendor, i.vendor))
 	vendor=django_filters.ChoiceFilter(choices=set(l), empty_label='Производитель')
 
 	l=[]
@@ -22,26 +20,27 @@ class ProductFilter(django_filters.FilterSet):
 			l.remove(('', ''))
 	type_product=django_filters.ChoiceFilter(choices=set(l), empty_label='Тип Товара')
 
-	l=[]
-	for i in Product.objects.all():
-		l.append((i.format_fild, i.format_fild))
-		if ('', '') in l:
-			l.remove(('', ''))
-	format_fild = django_filters.ChoiceFilter(choices=set(l), empty_label='Формат A0-A10')
+	# l=[]
+	# for i in Product.objects.all():
+	# 	l.append((i.format_fild, i.format_fild))
+	# 	if ('', '') in l:
+	# 		l.remove(('', ''))
+	# format_fild = django_filters.ChoiceFilter(choices=set(l), empty_label='Формат A0-A10')
+	# format_fild = django_filters.ModelChoiceFilter(label="Фильтр по Формату")
 
-	l=[]
-	for i in Product.objects.all():
-		l.append((i.color_fild, i.color_fild))
-		if ('', '') in l:
-			l.remove(('', ''))
-	color_fild = django_filters.ChoiceFilter(choices=set(l), empty_label='BW/Color')
+	# l=[]
+	# for i in Product.objects.all():
+	# 	l.append((i.color_fild, i.color_fild))
+	# 	if ('', '') in l:
+	# 		l.remove(('', ''))
+	# color_fild = django_filters.ChoiceFilter(choices=set(l), empty_label='BW/Color')
 
-	l=[]
-	for i in Product.objects.all():
-		l.append((i.category_id, i.category))
-		if ('', '') in l:
-			l.remove(('', ''))
-	category = django_filters.ChoiceFilter(choices=set(l), empty_label='Категории')
+	# l=[]
+	# for i in Product.objects.all():
+	# 	l.append((i.category_id, i.category))
+	# 	if ('', '') in l:
+	# 		l.remove(('', ''))
+	category = django_filters.ModelMultipleChoiceFilter(queryset=Category.objects.all().get_descendants(), conjoined=True, label="Фильтр по категориям")
 
 	class Meta:
 		model = Product
