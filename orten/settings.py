@@ -25,12 +25,13 @@ SECRET_KEY = 'c&mlje%w2+@m7cij8@t%9zny4%5y-enw(uxs+u*nulp)2s@*8$'
 # SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cg#p$g+j9tax!#a3cup@1$8obt2_+&k3q+pmu)5%asj6yjpkag')
 SECURE_BROWSER_XSS_FILTER=True
 SECURE_SSL_REDIRECT=False
-SESSION_COOKIE_SECURE=True
+# SESSION_COOKIE_SECURE=True
 CSRF_COOKIE_SECURE=True
 X_FRAME_OPTIONS='DENY'
 #SSL / HTTPS
 # SECURE_SSL_REDIRECT=True
 # SECURITY WARNING: don't run with debug turned on in production!
+ADMINS=[('Ivan', 'consmebius@gmail.com'),]
 DEBUG = True
 # DEBUG = False
 
@@ -194,26 +195,24 @@ MEDIA_URL = '/media/'
 
 IMPORT_EXPORT_USE_TRANSACTIONS = True
 
-CART_SESSION_ID = 'cart'
-
 # Email
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # 'send_email.apps.SendEmailConfig'
 
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = '@gmail.com'
-EMAIL_HOST_PASSWORD = 'pass'
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = '@gmail.com'
+# EMAIL_HOST_PASSWORD = 'pass'
 # DEFAULT_FROM_EMAIL = ''
 # DEFAULT_TO_EMAIL = ''
 
 #Асинхронность
 # CELERY STUFF
-BROKER_URL = 'redis://localhost:6379'
-CELERY_TIMEZONE = TIME_ZONE
-CELERY_IMPORTS = ('shop.tasks',)
-CELERY_IMPORTS = ('order.tasks',)
+# BROKER_URL = 'redis://localhost:6379'
+# CELERY_TIMEZONE = TIME_ZONE
+# CELERY_IMPORTS = ('shop.tasks',)
+# CELERY_IMPORTS = ('order.tasks',)
 # CELERY_RESULT_BACKEND = 'redis://localhost:6379/'
 # CELERY_ACCEPT_CONTENT = ['application/json']
 # CELERY_TASK_SERIALIZER = 'json'
@@ -248,6 +247,7 @@ CACHES = {
 }
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "default"
+CART_SESSION_ID = 'cart'
 
 # django-debug-toolbar
 INTERNAL_IPS = ('127.0.0.1',)

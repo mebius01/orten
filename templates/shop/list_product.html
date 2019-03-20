@@ -39,18 +39,15 @@
                     </div>
                     <div class="form-group col-md-12">
                     <!-- Category filter -->
-                   
-                        {% bootstrap_field filter.form.category placeholder="Категория" show_label="Категория" %}
-                      
-                   
+                      {% bootstrap_field filter.form.category placeholder="Категория" show_label=False %}
                     <!-- Vendor filter -->
                       {% bootstrap_field filter.form.vendor show_label=False%}
                     <!-- Typ_Product filter -->
                       {% bootstrap_field filter.form.type_product placeholder="Type Product" show_label=False%}
                       
-                      {% bootstrap_field filter.form.format_fild placeholder="Format" show_label=True%}
+                      {% bootstrap_field filter.form.format_fild placeholder="Format" show_label=False%}
 
-                      {% bootstrap_field filter.form.color_fild placeholder="Color" show_label=True%}
+                      {% bootstrap_field filter.form.color_fild placeholder="Color" show_label=False%}
 
                       <!-- Search for PN -->
                       {% comment %}

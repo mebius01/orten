@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 # from .tasks import order_created # for celery
-from . tasks import email_customer # for dramatiq
+from .tasks import email_customer # for dramatiq
 # Create your views here.
 
 

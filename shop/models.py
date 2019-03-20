@@ -92,8 +92,8 @@ class Product(ModelMeta, models.Model):
 	vendor = models.CharField(max_length=200, blank=True, help_text='Производитель') # Производитель
 	image = models.ImageField(upload_to='product/', blank=True, help_text='') #картинка
 
-	format_fild = models.CharField(max_length=50, blank=True, choices=FORMAT_CHOICES, help_text='A3,A4', verbose_name='Формат A0-A10')
-	color_fild = models.CharField(max_length=50, blank=True, choices=COLOR_CHOICES, help_text='BW, Color', verbose_name='Тип печати ЧБ/Цвет')
+	format_fild = models.CharField(max_length=50, blank=True, choices=FORMAT_CHOICES, help_text='A3,A4')
+	color_fild = models.CharField(max_length=50, blank=True, choices=COLOR_CHOICES, help_text='BW, Color')
 	specifications = RichTextField(blank=True, help_text='Характеристики товара')
 	type_product = models.CharField(max_length=200, blank=True, help_text='Тип товара')
 	keywords =  models.TextField(blank=True, help_text='Ключивые слова')#краткое описание продукта
