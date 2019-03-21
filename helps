@@ -302,3 +302,11 @@ https://habr.com/ru/post/104686/
 Домонизация Celery
 http://docs.celeryproject.org/en/latest/userguide/daemonizing.html
 https://code.tutsplus.com/ru/tutorials/using-celery-with-django-for-background-task-processing--cms-28732
+
+
+>>> p=Product._meta.get_field('color_fild')
+>>> p.get_choices()
+[('', '---------'), ('BW', 'BW'), ('Color', 'Color')]
+>>> 
+
+

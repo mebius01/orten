@@ -46,7 +46,7 @@
                 background: #6cbbcb;
             }
             .card-header {
-                background: #a3c8e0; /*#97c652*  #6cbbcb */
+                background: #85c987; /*#97c652*  #6cbbcb #a3c8e0*/
                 height: 40px;
                 /*opacity:0.8;*/
             }
@@ -373,17 +373,17 @@
                             <a class="nav-link" href="{% url 'shop:contact' %}">Контакты</a>
                         </ul>
                         <!-- SEO Оптимизация -->
-                        <script type="application/ld+json">
-                        {
-                          "@context": "http://schema.org",
-                          "@type": "WebSite",
-                          "url": "https://orten.in.ua/",
-                          "potentialAction": {
-                                "@type": "SearchAction",
-                                "target": "https://orten.in.ua/shop/product/?search={search_term_string}",
-                                "query-input": "required name=search_term_string"
-                          }
-                        }
+                         <script type="application/ld+json">
+                        // {
+                        //   "@context": "http://schema.org",
+                        //   "@type": "WebSite",
+                        //   "url": "https://orten.in.ua/",
+                        //   "potentialAction": {
+                        //         "@type": "SearchAction",
+                        //         "target": "https://orten.in.ua/shop/product/?search={search_term_string}",
+                        //         "query-input": "required name=search_term_string"
+                        //   }
+                        // }
                         </script>
                         <!-- Search -->
                         <form class="form-inline mr-2" role="search" action="{% url 'shop:product_list' %}">
@@ -397,7 +397,7 @@
                        {% with total_items=cart|length %}
                             {% if cart|length > 0 %}
                                 <a href="{% url "cart:cart_detail" %}">
-                                    <i class="fa fa-shopping-cart mr-2"></i>Cart
+                                    <i class="fa fa-shopping-cart mr-2"></i>Корзина
                                     <span class="badge badge-light ml-1">{{ total_items }}</span>
                                 </a>
                             {% else %}
@@ -408,6 +408,18 @@
                             {% endif %}
                         {% endwith %}
                     </div>
+                </div>
+                <!-- Modal for Cart -->
+                <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-body">
+                         {% with total_items=cart|length %}
+                            <h5>В корзине {{ total_items|add:1 }} товаров</h5>
+                         {% endwith %}
+                      </div>
+                    </div>
+                  </div>
                 </div>
             </nav>
         <ul class="breadcrumb">

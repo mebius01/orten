@@ -26,7 +26,6 @@ from .models import Order
 from django.conf import settings
 
 admin = str(settings.ADMINS[0][1])
-print(admin)
 
 @dramatiq.actor
 def email_customer(order_id):
