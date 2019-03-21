@@ -247,6 +247,7 @@ CACHES = {
 # SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 # SESSION_CACHE_ALIAS = "default"
 CART_SESSION_ID = 'cart'
+SESSION_COOKIE_AGE = 5 * 60
 
 # django-debug-toolbar
 INTERNAL_IPS = ('127.0.0.1',)
