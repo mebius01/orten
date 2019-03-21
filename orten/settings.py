@@ -31,7 +31,6 @@ X_FRAME_OPTIONS='DENY'
 #SSL / HTTPS
 # SECURE_SSL_REDIRECT=True
 # SECURITY WARNING: don't run with debug turned on in production!
-ADMINS=[('Ivan', 'consmebius@gmail.com'),]
 DEBUG = True
 # DEBUG = False
 
@@ -198,7 +197,7 @@ IMPORT_EXPORT_USE_TRANSACTIONS = True
 # Email
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # 'send_email.apps.SendEmailConfig'
-
+ADMINS=[('Ivan', 'consmebius@gmail.com'),]
 # EMAIL_USE_TLS = True
 # EMAIL_HOST = 'smtp.gmail.com'
 # EMAIL_PORT = 587

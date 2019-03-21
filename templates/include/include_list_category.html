@@ -3,7 +3,7 @@
 {% cache 900 sidebar %}
 <div class="accordion" id="accordionCategory">
 <div class="card-header p-0" id="heading-polygraphy">
-            <ul class="list-group text-white text-left pl-3 btn btn-link collapsed" data-toggle="collapse" data-target="#collapse-polygraphy" aria-expanded="true" aria-controls="collapse-polygraphy">Полиграфия
+            <ul class="list-group text-dark text-left pl-3 btn btn-link collapsed" data-toggle="collapse" data-target="#collapse-polygraphy" aria-expanded="true" aria-controls="collapse-polygraphy">Полиграфия
             </ul>
         </div>
 
@@ -23,7 +23,7 @@
  {% for item in category_all.get_cached_trees %}
         {% if item.is_root_node %}
         <div class="card-header p-0" id="heading-{{item.slug}}">
-            <ul class="list-group text-white text-left pl-3 btn btn-link collapsed" data-toggle="collapse" data-target="#collapse-{{item.slug}}" aria-expanded="true" aria-controls="collapse-{{item.slug}}">{{item.name}}
+            <ul class="list-group text-dark text-left pl-3 btn btn-link collapsed" data-toggle="collapse" data-target="#collapse-{{item.slug}}" aria-expanded="true" aria-controls="collapse-{{item.slug}}">{{item.name}}
             </ul>
         </div>
 
