@@ -21,7 +21,15 @@
         <div class="card-body bg-light">
 
 <form class="order-form" action="." method="post">
-{% bootstrap_form form show_label=False show_help=False %}
+{% bootstrap_field form.delivery_method show_label=False%}
+{% bootstrap_field form.pay_method show_label=False%}
+{% bootstrap_field form.city show_label=False%}
+{% bootstrap_field form.first_name show_label=False%}
+{% bootstrap_field form.last_name alert_type='warning' show_label=False%}
+{% bootstrap_field form.sur_name show_label=False%}
+{% bootstrap_field form.email show_label=False%}
+{% bootstrap_field form.mobile_phone show_label=False%}
+{% bootstrap_field form.note_text show_label=False%}
 {% csrf_token %}
 <button type="submit" class="btn btn-block btn-outline-success">Отправить<i class="fab fa-get-pocket pl-2"></i></button>
 </form>

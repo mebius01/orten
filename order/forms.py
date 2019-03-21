@@ -4,8 +4,8 @@ from .models import Order
 
 class OrderCreateForm(forms.ModelForm):
 
-	sur_name = forms.CharField(required=False)
-	note_text =  forms.CharField(required=False)
+	# sur_name = forms.CharField(required=False)
+	# note_text =  forms.CharField(required=False)
 
 	class Meta:
 		model = Order
