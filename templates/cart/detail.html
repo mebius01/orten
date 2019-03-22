@@ -32,10 +32,10 @@
     <hr>
     <div class="row">
       <div class="col-6">
-          <a href="{% url "shop:product_list" %}" class="btn btn-block btn-outline-primary">Shoping<role="button" ></a>
+          <a href="{% url "shop:product_list" %}" class="btn btn-block btn-outline-primary">Продолжить покупки<role="button" ></a>
         </div>
         <div class="col-6">
-          <a href="{% url "order:order_create" %}" class="btn btn-block btn-outline-success">{{ cart.get_total_price }}<role="button"></a>
+          <a href="{% url "order:order_create" %}" class="btn btn-block btn-outline-success">Оформить заказ на сумму: {{ cart.get_total_price }}<role="button"></a>
         </div>
       </div>
       <hr>

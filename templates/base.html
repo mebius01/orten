@@ -349,7 +349,7 @@
                         <a class="cool-link text-muted" title="Epson лидер в качесвенной струйной печати.Картриджи, фотобумага, расходные материалы для плоттеров" href="{% url 'shop:list_category' 'epson' %}">Epson</a>
                         <a class="cool-link text-muted" title="ColorWay, лицензионные расходные материалы для лазерной и струйной печати, фотобумага, СНПЧ и КПК" href="{% url 'shop:list_category' 'colorway' %}">ColorWay</a>
                         <a class="cool-link text-muted" title="Полиграфические услуги в Николаеве. Визитки, календари, флаера.. Тиражирование на ризографе" href="{% url 'shop:polygraphy' %}">Полиграфия</a>
-                        <a class="cool-link text-muted" title="Ремонт Принтеров и МФУ, заправка картриджей, реставрация картриджей. Все возможные и невозможные ремонты" href="{% url 'shop:list_category' 'servisnyj-centr/remont-printerov-i-mfu/' %}">Сервис Центр</a>
+                        <a class="cool-link text-muted" title="Ремонт Принтеров и МФУ, заправка картриджей, реставрация картриджей. Все возможные и невозможные ремонты" href="{% url 'shop:list_category' 'servisnyj-centr/remont-printerov-i-mfu' %}">Ремонт принтеров и МФУ</a>
                         <a class="cool-link text-muted" title="Все возможные и не возможные услуги по ремонту и техническому сопровождению техники Ricoh" href="{% url 'shop:list_category' 'servisnyj-centr/avtorizovannyj-servisnyj-centr-ricoh' %}">Сервис Ricoh</a>
                         <a class="cool-link text-muted" title="Покопийное обслуживание Konica Minolta, ремон, ввод в эксплуатацию" href="{% url 'shop:list_category' 'servisnyj-centr/avtorizovannyj-servisnyj-centr-konica-minolta' %}">Сервис Konica Minolta</a>
                         <a class="cool-link text-muted" title="Тонера, фотобарабаны, вали, ролики, картриджи мировых брендов Toshiba, Erus, Static Control, Vision, Xerox, HP, Samsung" href="{% url 'shop:list_category' 'licenzionnye-rashodnye-materialy' %}">Все для Принтеров и МФУ</a>
@@ -374,16 +374,16 @@
                         </ul>
                         <!-- SEO Оптимизация -->
                          <script type="application/ld+json">
-                        // {
-                        //   "@context": "http://schema.org",
-                        //   "@type": "WebSite",
-                        //   "url": "https://orten.in.ua/",
-                        //   "potentialAction": {
-                        //         "@type": "SearchAction",
-                        //         "target": "https://orten.in.ua/shop/product/?search={search_term_string}",
-                        //         "query-input": "required name=search_term_string"
-                        //   }
-                        // }
+                        {
+                          "@context": "http://schema.org",
+                          "@type": "WebSite",
+                          "url": "https://orten.in.ua/",
+                          "potentialAction": {
+                                "@type": "SearchAction",
+                                "target": "https://orten.in.ua/shop/product/?search={search_term_string}",
+                                "query-input": "required name=search_term_string"
+                          }
+                        }
                         </script>
                         <!-- Search -->
                         <form class="form-inline mr-2" role="search" action="{% url 'shop:product_list' %}">
@@ -409,18 +409,20 @@
                         {% endwith %}
                     </div>
                 </div>
-                <!-- Modal for Cart -->
-                <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-body">
-                         {% with total_items=cart|length %}
-                            <h5>В корзине {{ total_items|add:1 }} товаров</h5>
-                         {% endwith %}
-                      </div>
-                    </div>
-                  </div>
-                </div>
+{% comment %}
+<!-- Modal for Cart -->
+  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+         {% with total_items=cart|length %}
+            <h5>В корзине {{ total_items|add:1 }} товаров</h5>
+         {% endwith %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endcomment %}
             </nav>
         <ul class="breadcrumb">
         {% block breadcrumbs %}

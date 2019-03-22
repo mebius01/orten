@@ -3,15 +3,15 @@
 {% load bootstrap4 %}
 {% load mptt_tags %}
 {% block head %}
-    {{head}}
+    <title>Контакты компании Ортен</title>
+    <meta name="title" content="Контакты компании Ортен">
+    <meta name="description" content="Richo, Duplo, Konica Minolta, ColorWay - Купить в Николаеве, интернет-магазин Ортен ★ Ортен более 20 лет рынке копировальной техники и сервисного обслуживания">
 {% endblock %}
 {% block breadcrumbs %}
 {{ block.super }}
 	<li><a href="{% url 'shop:contact' %}">Контакты</a><i class="fas fa-chevron-right pl-1"></i></li>
 {% endblock %}
 {% block content %}
-<title>Контакты</title>
-
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">

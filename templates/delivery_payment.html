@@ -3,15 +3,15 @@
 {% load bootstrap4 %}
 {% load mptt_tags %}
 {% block head %}
-    {{head}}
+    <title>Доставка и оплата товаров и услуг от компании Ортен</title>
+    <meta name="title" content="Доставка и оплата товаров и услуг от компании Ортен">
+    <meta name="description" content="Richo, Duplo, Konica Minolta, ColorWay - Купить в Николаеве, интернет-магазин Ортен ★ Ортен более 20 лет рынке копировальной техники и сервисного обслуживания">
 {% endblock %}
 {% block breadcrumbs %}
 {{ block.super }}
 	<li><a href="{% url 'shop:delivery_payment' %}">Доставка и оплата</a></li>
 {% endblock %}
-
 {% block content %}
-<title>Доставка и оплата</title>
 <div class="container-fluid">
     <div class="row">
 <!-- Блок Категорий -->

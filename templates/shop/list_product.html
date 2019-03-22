@@ -4,7 +4,7 @@
 {% load bootstrap4 %}
 {% load paginator_filter %}
 {% block head %}
-        <title>{{instance.name}}</title>
+    <title>{{instance.name}} Список товаров</title>
     <meta name="title" content="{{instance.name}} - купить в Николаеве и Украине">
     <meta name="description" content="{{instance.name}} - Купить в Николаеве, интернет-магазин Ортен ★ Ортен более 20 лет рынке копировальной техники и сервисного обслуживания">
 {% endblock %}
@@ -80,7 +80,6 @@
   </div>
 <hr>
 </div>
-
 <!-- Пагинатор  -->
 <hr>
 <div class="d-flex justify-content-center">
@@ -107,32 +106,3 @@
   </ul>
 </div>
 {% endblock %}
-
-{% comment %}
-  <div class="d-flex justify-content-center">
-  <ul class="pagination">
-    <a href="?{% param_replace page=1 %}">First</a>
-    {% if products.has_previous %}
-      <a href="?{% param_replace page=products.previous_page_number %}">&laquo;</a></li>
-    {% endif %}
-    {% for i in paginator.page_range %}
-      {% if products.number == i %}
-        <a class="active" href="#">{{ i }}</a>
-      {% else %}
-        <a href="?{%param_replace page=i %}">{{ i }}</a>
-      {% endif %}
-    {% endfor %}
-    {% if products.has_next %}
-      <a href="?{% param_replace page=products.next_page_number %}">&raquo;</a>
-    {% endif %}
-      <a href="?{% param_replace page=paginator.num_pages %}">Last</a>
-  </ul>
-</div>
-
-Первая: {{products.start_index}} 
-Пеоедидущая: {{products.previous_page_number}}
-Текущаяя: {{products.number}}
-Следующая: {{products.next_page_number}}
-Последняя: {{products.end_index}}
-
-{% endcomment %}

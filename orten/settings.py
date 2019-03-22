@@ -207,16 +207,6 @@ ADMINS=[('Ivan', 'consmebius@gmail.com'),]
 # DEFAULT_TO_EMAIL = ''
 
 #Асинхронность
-# CELERY STUFF
-# BROKER_URL = 'redis://localhost:6379'
-# CELERY_TIMEZONE = TIME_ZONE
-# CELERY_IMPORTS = ('shop.tasks',)
-# CELERY_IMPORTS = ('order.tasks',)
-# CELERY_RESULT_BACKEND = 'redis://localhost:6379/'
-# CELERY_ACCEPT_CONTENT = ['application/json']
-# CELERY_TASK_SERIALIZER = 'json'
-# CELERY_RESULT_SERIALIZER = 'json'
-
 DRAMATIQ_RESULT_BACKEND = {
     "BACKEND": "dramatiq.results.backends.redis.RedisBackend",
     "BACKEND_OPTIONS": {
@@ -227,7 +217,7 @@ DRAMATIQ_RESULT_BACKEND = {
     }
 }
 
-
+# Кєш и сессии
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
@@ -244,13 +234,17 @@ CACHES = {
         }
     }
 }
+CART_SESSION_ID = 'cart'
+# SESSION_COOKIE_AGE = 20 * 60 #Время жизни сессии
 # SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 # SESSION_CACHE_ALIAS = "default"
-CART_SESSION_ID = 'cart'
-SESSION_COOKIE_AGE = 5 * 60
+# SESSION_COOKIE_AGE : Длительность сессии "cookie" в секундах. Значение по умолчанию — 1209600 (2 недели).
+# SESSION_COOKIE_DOMAIN : Этот домен используется для сеансов "cookie". Установите это значение . mydomain.com для включения междоменных файлов cookie.
+# SESSION_COOKIE_SECURE : Логическое значение, указывающее, что файл cookie должен быть отправлен только в том случае, если соединение является соединением HTTPS.
+# SESSION_EXPIRE_AT_BROWSER_CLOSE : Это булево значение, указывающее, что сессия должна истечь при закрытии браузера.
+# SESSION_SAVE_EVERY_REQUEST : Это логическое значение, которое, в случае True, сохранит сессию в базе данных по каждому запросу. Срок действия сессии также обновляется каждый раз.
 
 # django-debug-toolbar
-INTERNAL_IPS = ('127.0.0.1',)
 DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.versions.VersionsPanel',
     'debug_toolbar.panels.timer.TimerPanel',
@@ -279,3 +273,13 @@ django_heroku.settings(locals())
 # STATIC_URL = '/static/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
+
+# CELERY STUFF
+# BROKER_URL = 'redis://localhost:6379'
+# CELERY_TIMEZONE = TIME_ZONE
+# CELERY_IMPORTS = ('shop.tasks',)
+# CELERY_IMPORTS = ('order.tasks',)
+# CELERY_RESULT_BACKEND = 'redis://localhost:6379/'
+# CELERY_ACCEPT_CONTENT = ['application/json']
+# CELERY_TASK_SERIALIZER = 'json'
+# CELERY_RESULT_SERIALIZER = 'json'
