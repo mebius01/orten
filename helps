@@ -308,5 +308,19 @@ https://code.tutsplus.com/ru/tutorials/using-celery-with-django-for-background-t
 >>> p.get_choices()
 [('', '---------'), ('BW', 'BW'), ('Color', 'Color')]
 >>> 
+------------------
+<bound method MultiValueDict.get of <QueryDict: {'search': ['MP']}>>
+[22/Mar/2019 14:08:31] "GET /shop/product/?search=MP HTTP/1.1" 200 166887
+
+<bound method MultiValueDict.get of <QueryDict: {'category': ['90']}>>
+[22/Mar/2019 14:10:47] "GET /shop/product/?category=90 HTTP/1.1" 200 177643
+
+<bound method MultiValueDict.get of <QueryDict: {'price__gt': [''], 'price__lt': [''], 'category': ['90'], 'vendor': ['RICOH'], 'type_product': [''], 'format_fild': [''], 'color_fild': ['']}>>
+[22/Mar/2019 14:11:23] "GET /shop/product/?price__gt=&price__lt=&category=90&vendor=RICOH&type_product=&format_fild=&color_fild= HTTP/1.1" 200 177694
 
 
+<bound method MultiValueDict.get of <QueryDict: {'price__gt': [''], 'price__lt': [''], 'category': ['90'], 'vendor': [''], 'type_product': [''], 'format_fild': [''], 'color_fild': ['']}>>
+[22/Mar/2019 14:09:13] "GET /shop/product/?price__gt=&price__lt=&category=90&vendor=&type_product=&format_fild=&color_fild= HTTP/1.1" 200 177643
+
+<bound method MultiValueDict.get of <QueryDict: {'price__gt': [''], 'price__lt': [''], 'category': ['90'], 'vendor': [''], 'type_product': [''], 'format_fild': [''], 'color_fild': [''], 'search': ['MP']}>>
+[22/Mar/2019 14:10:14] "GET /shop/product/?price__gt=&price__lt=&category=90&vendor=&type_product=&format_fild=&color_fild=&search=MP HTTP/1.1" 200 84838
