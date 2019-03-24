@@ -96,7 +96,6 @@ class Product(ModelMeta, models.Model):
 	color_fild = models.CharField(max_length=50, blank=True, choices=COLOR_CHOICES, help_text='BW, Color')
 	specifications = RichTextField(blank=True, help_text='Характеристики товара')
 	type_product = models.CharField(max_length=200, blank=True, help_text='Тип товара')
-	keywords =  models.TextField(blank=True, help_text='Ключивые слова')#краткое описание продукта
 	description = models.TextField(blank=True, help_text='Описание товара') #описание продукта
 	tags = TaggableManager(through=None, blank=True, help_text = 'Список тегов, разделенных запятыми')
 	# test_fild = models.CharField(max_length=200, blank=True, help_text='Тстовое поле на ошибку') # django.db.utils.ProgrammingError: ОШИБКА:  столбец shop_product.test_fild не существует
