@@ -124,23 +124,23 @@ TEMPLATES = [
 WSGI_APPLICATION = 'orten.wsgi.application'
 
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'orten_db',
-#         'USER' : 'iv',
-#         'PASSWORD' : '1234',
-#         'HOST' : '127.0.0.1',
-#         'PORT' : '5432',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'orten_db',
+        'USER' : 'iv',
+        'PASSWORD' : '1234',
+        'HOST' : '127.0.0.1',
+        'PORT' : '5432',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 
 # Password validation
@@ -217,23 +217,23 @@ ADMINS=[('Ivan', 'consmebius@gmail.com'),]
 #     }
 # }
 
-# Кєш и сессии
-CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/1",
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-            # Время ожидания сокета
-            "SOCKET_CONNECT_TIMEOUT": 5,  # in seconds
-            "SOCKET_TIMEOUT": 5,  # in seconds
-            # исключения поведения
-            "IGNORE_EXCEPTIONS": True,
-            # пул соединений
-            "CONNECTION_POOL_KWARGS": {"max_connections": 128}
-        }
-    }
-}
+# # Кєш и сессии
+# CACHES = {
+#     "default": {
+#         "BACKEND": "django_redis.cache.RedisCache",
+#         "LOCATION": "redis://127.0.0.1:6379/1",
+#         "OPTIONS": {
+#             "CLIENT_CLASS": "django_redis.client.DefaultClient",
+#             # Время ожидания сокета
+#             "SOCKET_CONNECT_TIMEOUT": 5,  # in seconds
+#             "SOCKET_TIMEOUT": 5,  # in seconds
+#             # исключения поведения
+#             "IGNORE_EXCEPTIONS": True,
+#             # пул соединений
+#             "CONNECTION_POOL_KWARGS": {"max_connections": 128}
+#         }
+#     }
+# }
 CART_SESSION_ID = 'cart'
 # SESSION_COOKIE_AGE = 20 * 60 #Время жизни сессии
 # SESSION_ENGINE = "django.contrib.sessions.backends.cache"
