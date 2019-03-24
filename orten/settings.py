@@ -61,7 +61,6 @@ INSTALLED_APPS = [
     'django.contrib.redirects',
     'django.contrib.sitemaps',
     'django.contrib.flatpages',
-    'django_dramatiq',
     'django_filters',
     'taggit',
     'mptt',
