@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'django.contrib.redirects',
     'django.contrib.sitemaps',
     'django.contrib.flatpages',
+    'django_dramatiq',
     'django_filters',
     'taggit',
     'mptt',
@@ -206,33 +207,33 @@ ADMINS=[('Ivan', 'consmebius@gmail.com'),]
 # DEFAULT_TO_EMAIL = ''
 
 #Асинхронность
-# DRAMATIQ_RESULT_BACKEND = {
-#     "BACKEND": "dramatiq.results.backends.redis.RedisBackend",
-#     "BACKEND_OPTIONS": {
-#         "url": "redis://localhost:6379",
-#     },
-#     "MIDDLEWARE_OPTIONS": {
-#         "result_ttl": 60000
-#     }
-# }
+DRAMATIQ_RESULT_BACKEND = {
+    "BACKEND": "dramatiq.results.backends.redis.RedisBackend",
+    "BACKEND_OPTIONS": {
+        "url": "redis://localhost:6379",
+    },
+    "MIDDLEWARE_OPTIONS": {
+        "result_ttl": 60000
+    }
+}
 
-# # Кєш и сессии
-# CACHES = {
-#     "default": {
-#         "BACKEND": "django_redis.cache.RedisCache",
-#         "LOCATION": "redis://127.0.0.1:6379/1",
-#         "OPTIONS": {
-#             "CLIENT_CLASS": "django_redis.client.DefaultClient",
-#             # Время ожидания сокета
-#             "SOCKET_CONNECT_TIMEOUT": 5,  # in seconds
-#             "SOCKET_TIMEOUT": 5,  # in seconds
-#             # исключения поведения
-#             "IGNORE_EXCEPTIONS": True,
-#             # пул соединений
-#             "CONNECTION_POOL_KWARGS": {"max_connections": 128}
-#         }
-#     }
-# }
+# Кєш и сессии
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            # Время ожидания сокета
+            "SOCKET_CONNECT_TIMEOUT": 5,  # in seconds
+            "SOCKET_TIMEOUT": 5,  # in seconds
+            # исключения поведения
+            "IGNORE_EXCEPTIONS": True,
+            # пул соединений
+            "CONNECTION_POOL_KWARGS": {"max_connections": 128}
+        }
+    }
+}
 CART_SESSION_ID = 'cart'
 # SESSION_COOKIE_AGE = 20 * 60 #Время жизни сессии
 # SESSION_ENGINE = "django.contrib.sessions.backends.cache"
