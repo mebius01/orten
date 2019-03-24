@@ -6,6 +6,13 @@
 {% load cache %}
 <html lang="ru">
     <head>
+      <!-- Google Tag Manager -->
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-56KXN4');</script>
+      <!-- End Google Tag Manager -->
       {% block head %}
           {{head}}
       {% endblock %}
@@ -293,6 +300,11 @@
              */
              
             }
+            img {
+              display: block;
+              height: auto;
+              max-width: 100%;
+            }
         </style>
     </head>
         <div class="container-fluid">
@@ -409,20 +421,6 @@
                         {% endwith %}
                     </div>
                 </div>
-{% comment %}
-<!-- Modal for Cart -->
-  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-         {% with total_items=cart|length %}
-            <h5>В корзине {{ total_items|add:1 }} товаров</h5>
-         {% endwith %}
-      </div>
-    </div>
-  </div>
-</div>
-{% endcomment %}
             </nav>
         <ul class="breadcrumb">
         {% block breadcrumbs %}
@@ -430,6 +428,10 @@
         {% endblock %}
         </ul>
     <body>
+              <!-- Google Tag Manager (noscript) -->
+              <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-56KXN4"
+              height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+              <!-- End Google Tag Manager (noscript) -->
             <!-- CONTENT -->
             {% block content %}
                 {{content}}
