@@ -27,10 +27,7 @@ from shop.views import handler404, handler500
 
 sitemaps = {'product': ProductSitemap, 'category': CategorySitemap, 'services': ServicesSitemap}
 
-if settings.DEBUG:
-    import debug_toolbar
 urlpatterns = [
-    path('__debug__/', include(debug_toolbar.urls)),
     path('admin_tools/', include('admin_tools.urls')),
     path('admin/', admin.site.urls),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
@@ -44,3 +41,9 @@ urlpatterns = [
     ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 handler404='shop.views.handler404'
 handler500='shop.views.handler500'
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+    path('__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns

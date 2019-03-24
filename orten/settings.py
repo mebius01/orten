@@ -245,6 +245,7 @@ CART_SESSION_ID = 'cart'
 # SESSION_SAVE_EVERY_REQUEST : Это логическое значение, которое, в случае True, сохранит сессию в базе данных по каждому запросу. Срок действия сессии также обновляется каждый раз.
 
 # django-debug-toolbar
+INTERNAL_IPS = ('127.0.0.1',)
 DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.versions.VersionsPanel',
     'debug_toolbar.panels.timer.TimerPanel',

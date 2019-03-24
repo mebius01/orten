@@ -49,6 +49,10 @@
 
                       {% bootstrap_field filter.form.color_fild placeholder="Color" show_label=False%}
 
+
+                      <div class="form-group is-valid"><label class="sr-only" for="search"></label>
+                        <input type="text" autocomplete="on" value="{{search}}" name="search" class="form-control is-valid" placeholder="Search.." id="search">
+                      </div>
                       <!-- Search for PN -->
                       {% comment %}
                            {% bootstrap_field filter.form.vendor_code placeholder="Поиск по Артикль" show_label=False%}
