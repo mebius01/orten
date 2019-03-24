@@ -10,19 +10,20 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
+from environs import Env
 import os
 import django_heroku
+
+env = Env()
+env.read_env()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'c&mlje%w2+@m7cij8@t%9zny4%5y-enw(uxs+u*nulp)2s@*8$'
-# SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cg#p$g+j9tax!#a3cup@1$8obt2_+&k3q+pmu)5%asj6yjpkag')
+SECRET_KEY = env.str("SECRET_KEY")
 SECURE_BROWSER_XSS_FILTER=True
 SECURE_SSL_REDIRECT=False
 # SESSION_COOKIE_SECURE=True
@@ -31,7 +32,7 @@ X_FRAME_OPTIONS='DENY'
 #SSL / HTTPS
 # SECURE_SSL_REDIRECT=True
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool("DEBUG", default=False)
 # DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1',]
@@ -124,16 +125,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'orten.wsgi.application'
 
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'orten_db',
-        'USER' : 'iv',
-        'PASSWORD' : '1234',
-        'HOST' : '127.0.0.1',
-        'PORT' : '5432',
-    }
-}
+DATABASES = {"default": env.dj_db_url("DATABASE_URL")}
 
 # DATABASES = {
 #     'default': {
@@ -195,16 +187,15 @@ MEDIA_URL = '/media/'
 IMPORT_EXPORT_USE_TRANSACTIONS = True
 
 # Email
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # 'send_email.apps.SendEmailConfig'
 ADMINS=[('Ivan', 'consmebius@gmail.com'),]
-# EMAIL_USE_TLS = True
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
-# EMAIL_HOST_USER = '@gmail.com'
-# EMAIL_HOST_PASSWORD = 'pass'
-# DEFAULT_FROM_EMAIL = ''
-# DEFAULT_TO_EMAIL = ''
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = env.str("EMAIL_HOST")
+EMAIL_PORT = env.int("EMAIL_PORT")
+EMAIL_HOST_PASSWORD = env.str("EMAIL_HOST_PASSWORD")
+EMAIL_HOST_USER = env.str("EMAIL_HOST_USER")
+EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS")
 
 #Асинхронность
 DRAMATIQ_RESULT_BACKEND = {
