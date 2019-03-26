@@ -125,7 +125,18 @@ TEMPLATES = [
 WSGI_APPLICATION = 'orten.wsgi.application'
 
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-DATABASES = {"default": env.dj_db_url("DATABASE_URL")}
+# DATABASES = {"default": env.dj_db_url("DATABASE_URL")}
+
+DATABASES = {
+    'default': {
+        'ENGINE': env.str("DB_ENGINE"),
+        'NAME': env.str("DB_NAME"),
+        'USER': env.str("DB_USER"),
+        'PASSWORD': env.str("DB_PASSWORD"),
+        'HOST': env.str("DB_HOST"),
+        'PORT': env.str("DB_PORT"),
+    }
+}
 
 # DATABASES = {
 #     'default': {
@@ -226,7 +237,7 @@ CACHES = {
     }
 }
 CART_SESSION_ID = 'cart'
-# SESSION_COOKIE_AGE = 20 * 60 #Время жизни сессии
+SESSION_COOKIE_AGE = 7200 #Время жизни сессии секундах
 # SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 # SESSION_CACHE_ALIAS = "default"
 # SESSION_COOKIE_AGE : Длительность сессии "cookie" в секундах. Значение по умолчанию — 1209600 (2 недели).

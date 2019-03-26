@@ -55,7 +55,6 @@
             .card-header {
                 background: #85c987; /*#97c652*  #6cbbcb #a3c8e0*/
                 height: 40px;
-                /*opacity:0.8;*/
             }
 
             .navbar {
@@ -361,7 +360,7 @@
                         <a class="cool-link text-muted" title="Epson лидер в качесвенной струйной печати.Картриджи, фотобумага, расходные материалы для плоттеров" href="{% url 'shop:list_category' 'epson' %}">Epson</a>
                         <a class="cool-link text-muted" title="ColorWay, лицензионные расходные материалы для лазерной и струйной печати, фотобумага, СНПЧ и КПК" href="{% url 'shop:list_category' 'colorway' %}">ColorWay</a>
                         <a class="cool-link text-muted" title="Полиграфические услуги в Николаеве. Визитки, календари, флаера.. Тиражирование на ризографе" href="{% url 'shop:polygraphy' %}">Полиграфия</a>
-                        <a class="cool-link text-muted" title="Ремонт Принтеров и МФУ, заправка картриджей, реставрация картриджей. Все возможные и невозможные ремонты" href="{% url 'shop:list_category' 'servisnyj-centr/remont-printerov-i-mfu' %}">Ремонт принтеров и МФУ</a>
+                        <a class="cool-link text-muted" title="Ремонт Принтеров, МФУ, компьютеров, заправка и реставрация картриджей. Все возможные и невозможные ремонты" href="{% url 'shop:list_category' 'servisnyj-centr' %}">Сервисный Центр</a>
                         <a class="cool-link text-muted" title="Все возможные и не возможные услуги по ремонту и техническому сопровождению техники Ricoh" href="{% url 'shop:list_category' 'servisnyj-centr/avtorizovannyj-servisnyj-centr-ricoh' %}">Сервис Ricoh</a>
                         <a class="cool-link text-muted" title="Покопийное обслуживание Konica Minolta, ремон, ввод в эксплуатацию" href="{% url 'shop:list_category' 'servisnyj-centr/avtorizovannyj-servisnyj-centr-konica-minolta' %}">Сервис Konica Minolta</a>
                         <a class="cool-link text-muted" title="Тонера, фотобарабаны, вали, ролики, картриджи мировых брендов Toshiba, Erus, Static Control, Vision, Xerox, HP, Samsung" href="{% url 'shop:list_category' 'licenzionnye-rashodnye-materialy' %}">Все для Принтеров и МФУ</a>
@@ -513,35 +512,3 @@
     </body>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </html>
-        {% comment %}
-          <script type='application/ld+json'> 
-            {
-              "@context": "http://www.schema.org",
-              "@type": "ElectronicsStore",
-              "name": "Ортен",
-              "url": "http://orten.in.ua",
-              "logo": "http://127.0.0.1:8000/static/shop/img/logo.jpg",
-              "description": "Магазин электроники офисной расходный материалов.",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "ул. Мира 5",
-                "addressLocality": "Николаев",
-                "addressRegion": "Николаевская",
-                "postalCode": "54034",
-                "addressCountry": "Украина"
-              }
-              {
-              "openingHours": "Mo, Tu, We, Th, Fr 09:00-18:00 Sa 09:00-14:00",
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "+380512566539 ",
-              }
-            {
-              "@context": "http://www.schema.org",
-              "@type": "product",
-              "brand": "{{ instance.vendor}}",
-              "name": "{{ instance.name}}",
-              "description": "{{ instance.description}}",
-            }
-             </script>
-        {% endcomment %}
