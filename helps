@@ -305,6 +305,14 @@ https://code.tutsplus.com/ru/tutorials/using-celery-with-django-for-background-t
 
 DEPLOY
 https://habr.com/ru/post/226419/
+https://uwsgi-docs.readthedocs.io/en/latest/tutorials/Django_and_nginx.html
+https://ruhighload.com/%D0%9A%D1%8D%D1%88%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5+%D1%81+nginx
+https://habr.com/ru/post/112908/
+
+
+
+
+
 
 >>> p=Product._meta.get_field('color_fild')
 >>> p.get_choices()
