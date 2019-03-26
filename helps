@@ -304,10 +304,7 @@ http://docs.celeryproject.org/en/latest/userguide/daemonizing.html
 https://code.tutsplus.com/ru/tutorials/using-celery-with-django-for-background-task-processing--cms-28732
 
 DEPLOY
-https://hackernoon.com/deploy-django-app-with-nginx-gunicorn-postgresql-supervisor-9c6d556a25ac  Deploy Django app with Nginx, Gunicorn, PostgreSQL & Supervisor ++--
-https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-django-with-postgres-nginx-and-gunicorn How To Install and Configure Django with Postgres, Nginx, and Gunicorn +++--
-https://linuxconfig.org/how-to-host-django-with-nginx-on-ubuntu-18-04-bionic-beaver-linux  How to host Django With Nginx On Ubuntu 18.04 Bionic Beaver Linux ??
-
+https://habr.com/ru/post/226419/
 
 >>> p=Product._meta.get_field('color_fild')
 >>> p.get_choices()
