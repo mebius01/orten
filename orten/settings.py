@@ -39,7 +39,7 @@ X_FRAME_OPTIONS='DENY'
 DEBUG = env.bool("DEBUG", default=False)
 # DEBUG = False
 
-ALLOWED_HOSTS = ['185.25.118.101',]
+ALLOWED_HOSTS = ['127.0.0.1',]
 # ALLOWED_HOSTS = ['*',]
 SITE_ID = 1
 APPEND_SLASH = True
