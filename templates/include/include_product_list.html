@@ -63,8 +63,7 @@
         </td>
         <td>
 
-            <form action="{% url "cart:cart_add" product.id %}" method="post">
-            {% csrf_token %}
+            <form action="{% url "cart:cart_add" product.id %}" method="post">{% csrf_token %}
             {% bootstrap_field cart_product_form.quantity show_label=False %}
           </td>
           <td>

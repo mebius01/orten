@@ -3,14 +3,14 @@ from django.shortcuts import redirect
 # from .tasks import order_created # for celery
 from .tasks import email_customer # for dramatiq
 # Create your views here.
-
+from django.views.decorators.csrf import csrf_exempt
 
 from django.shortcuts import render
 from .models import OrderItem, Order
 from .forms import OrderCreateForm
 from cart.cart import Cart
 
-
+@csrf_exempt
 def order_create(request):
 	cart = Cart(request)
 	if request.method == 'POST':

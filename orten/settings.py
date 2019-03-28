@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 from environs import Env
 import os
-import django_heroku
 
 env = Env()
 env.read_env()
@@ -27,15 +26,20 @@ SECRET_KEY = env.str("SECRET_KEY")
 SECURE_BROWSER_XSS_FILTER=True
 SECURE_SSL_REDIRECT=False
 # SESSION_COOKIE_SECURE=True
-CSRF_COOKIE_SECURE=True
+#CSRF_COOKIE_SECURE=True
 X_FRAME_OPTIONS='DENY'
 #SSL / HTTPS
 # SECURE_SSL_REDIRECT=True
+
+# Сохранять ли токен CSRF в сеансе пользователя, а не в файле cookie.
+# CSRF_USE_SESSIONS=True
+
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", default=False)
 # DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1',]
+ALLOWED_HOSTS = ['185.25.118.101',]
 # ALLOWED_HOSTS = ['*',]
 SITE_ID = 1
 APPEND_SLASH = True
@@ -183,7 +187,7 @@ DECIMAL_SEPARATOR = "."
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
@@ -247,7 +251,7 @@ SESSION_COOKIE_AGE = 7200 #Время жизни сессии секундах
 # SESSION_SAVE_EVERY_REQUEST : Это логическое значение, которое, в случае True, сохранит сессию в базе данных по каждому запросу. Срок действия сессии также обновляется каждый раз.
 
 # django-debug-toolbar
-INTERNAL_IPS = ('127.0.0.1',)
+INTERNAL_IPS = ('185.25.118.101',)
 DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.versions.VersionsPanel',
     'debug_toolbar.panels.timer.TimerPanel',
@@ -263,8 +267,7 @@ DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.redirects.RedirectsPanel',
 ]
 
-# Activate Django-Heroku.
-django_heroku.settings(locals())
+
 
 
 # Static files (CSS, JavaScript, Images)

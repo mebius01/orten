@@ -6,6 +6,7 @@
 {% load cache %}
 <html lang="ru">
     <head>
+      {% comment %}
       <!-- Google Tag Manager -->
       <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -13,6 +14,7 @@
       'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-56KXN4');</script>
       <!-- End Google Tag Manager -->
+      {% endcomment %}
       {% block head %}
           {{head}}
       {% endblock %}
@@ -413,7 +415,7 @@
                                 </a>
                             {% else %}
                                 <a href="{% url "cart:cart_detail" %}">
-                                    <i class="fa fa-shopping-cart mr-2"></i>Cart
+                                    <i class="fa fa-shopping-cart mr-2"></i>Корзина
                                     <span class="badge badge-light ml-1">0</span>
                                 </a>
                             {% endif %}
@@ -427,10 +429,14 @@
         {% endblock %}
         </ul>
     <body>
+
+              {% comment %}
               <!-- Google Tag Manager (noscript) -->
               <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-56KXN4"
               height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <!-- End Google Tag Manager (noscript) -->
+              {% endcomment %}
+
             <!-- CONTENT -->
             {% block content %}
                 {{content}}
@@ -462,11 +468,10 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-3 p-0 m-0">
-                    <div class="map-responsive">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5446.935101617827!2d32.040273!3d46.952503!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4784e49173525ad2!2z0J7RgNGC0Y3QvSwg0J7QntCe!5e0!3m2!1sru!2sua!4v1547893952458" frameborder="0" style="border:0" allowfullscreen></iframe>
+                      <div class="map-responsive">
+                          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5446.935101617827!2d32.040273!3d46.952503!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4784e49173525ad2!2z0J7RgNGC0Y3QvSwg0J7QntCe!5e0!3m2!1sru!2sua!4v1547893952458" frameborder="0" style="border:0" allowfullscreen></iframe>
+                      </div>
                     </div>
-                    </div>
-
                     <div class="col-md-3 col-lg-2 col-xl-3 mx-auto">
                         <h5>Что мы можем</h5>
                         <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
@@ -474,7 +479,7 @@
                             <li><a href="{% url 'shop:product_list' %}">Что мы продаем</a></li>
                             <li><a href="{% url 'shop:category' %}">Категории</a></li>
                             <li><a href="{% url 'shop:list_category' 'servisnyj-centr' %}">Сервисный центр</a></li>
-                            <li><a href="{% url 'shop:list_category' 'poligrafiya' %}">Полиграфия</a></li>
+                            <li><a href="{% url 'shop:polygraphy' %}">Полиграфия</a></li>
                         </ul>
                     </div>
 
@@ -502,10 +507,9 @@
                     
                 </div>
                 <div class="row">
-                    <div class="col-12 copyright">
+                    <div class="col-12">
                         <p class="text-left text-muted"><i>Copyright © 2008 - 2019 orten.in.ua</i></p>
                     </div>
-
                 </div>
             </div>
         </footer>

@@ -74,7 +74,6 @@ def product_list(request):
 		instance = Category.objects.get(id=category)
 	else:
 		instance = Category.objects.all()
-	print(request)
 	return render(request, 'shop/list_product.html', {'search': search, 'instance': instance, 'paginator':paginator, 'filter': products_filter, 'products': products, 'cart_product_form': cart_product_form})
 
 def test(request):

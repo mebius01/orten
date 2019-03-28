@@ -32,7 +32,7 @@ def email_customer(order_id):
 	order = Order.objects.get(id=order_id)
 	subject = 'Заказ c номером {}'.format(order.id)
 	message = render_to_string('email/order_client.html', {'order': order})
-	send_mail(subject, message, admin , [order.email], html_message=message)
+	send_mail(subject, message, admin, [order.email], html_message=message)
 	order = Order.objects.get(id=order_id)
 	subject = 'ЗАКАЗ НА САЙТЕ №{}'.format(order.id)
 	message = render_to_string('email/order_admin.html', {'order': order})

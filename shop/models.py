@@ -5,7 +5,6 @@ import django_filters
 from mptt.models import MPTTModel, TreeForeignKey
 from taggit.managers import TaggableManager
 from ckeditor.fields import RichTextField
-from meta.models import ModelMeta
 from django.contrib.flatpages.models import FlatPage
 
 class Category(MPTTModel):
@@ -82,7 +81,7 @@ INTEREST_CHOICES = (
 	(Decimal("0.30"), '30%'),
 	)
 
-class Product(ModelMeta, models.Model):
+class Product(models.Model):
 	category = models.ForeignKey(Category,related_name='product', on_delete=models.CASCADE, help_text='Каталог товара (расходные материалы, компьютеры и комплетующие и т д)') #коталог продукта связь m2m
 	name = models.CharField(max_length=400, db_index=True, help_text='Название товара') #имя продукта
 	slug = models.SlugField(max_length=400, help_text='')
@@ -103,6 +102,7 @@ class Product(ModelMeta, models.Model):
 	stock = models.PositiveIntegerField(blank=True, help_text='Остатоки') # Остатки
 	available = models.BooleanField(default=True, help_text='Доступен ли к заказу') # булево значение, указывающее, доступен ли продукт или нет
 	action = models.BooleanField(default=False, help_text='Акции')
+	# action_end = models.DateTimeField(auto_now=False, auto_now_add=False, help_text='Дата окончания акции',) # дата окончания
 	discount =  models.DecimalField(max_digits=10,default=Decimal("0.00"), decimal_places=2, blank=True,  help_text='Цена со скидкой') #Процент)
 	created = models.DateTimeField(auto_now_add=True, help_text='дата создания') # дата создания
 	updated = models.DateTimeField(auto_now=True, help_text='дата обновления') #дата обновления

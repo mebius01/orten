@@ -3,8 +3,9 @@ from django.views.decorators.http import require_POST
 from shop.models import Product
 from .cart import Cart
 from .forms import CartAddProductForm
+from django.views.decorators.csrf import csrf_exempt
 
-
+@csrf_exempt
 @require_POST
 def cart_add(request, product_id):
 	cart = Cart(request)
@@ -16,12 +17,14 @@ def cart_add(request, product_id):
 		return redirect('cart:cart_detail') # перенаправление на картт Здесь нужно візвать модальное окно
 		# return redirect('shop:product_list') # перенаправление на картт Здесь нужно візвать модальное окно
 
+@csrf_exempt
 def cart_remove(request, product_id):
 	cart = Cart(request)
 	product = get_object_or_404(Product, id=product_id)
 	cart.remove(product)
 	return redirect('cart:cart_detail')
 
+@csrf_exempt
 def cart_detail(request):
 	cart = Cart(request)
 	for item in cart:
