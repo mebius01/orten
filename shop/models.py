@@ -103,21 +103,14 @@ class Product(models.Model):
 	stock = models.PositiveIntegerField(blank=True, help_text='Остатоки') # Остатки
 	available = models.BooleanField(default=True, help_text='Доступен ли к заказу') # булево значение, указывающее, доступен ли продукт или нет
 
-	date_start_action = models.DateTimeField(auto_now=False, blank=True, auto_now_add=False,) # дата создания
-	date_end_action = models.DateTimeField(auto_now=False, blank=True, auto_now_add=False,) # дата окончания
+	start_action = models.DateTimeField(auto_now=False, blank=True, auto_now_add=False,)
+	end_action = models.DateTimeField(auto_now=False, blank=True, auto_now_add=False,)
 	action = models.BooleanField(default=False, help_text='Акции')
-	# action_end = models.DateTimeField(auto_now=False, auto_now_add=False, help_text='Дата окончания акции',) # дата окончания
 	discount =  models.DecimalField(max_digits=10,default=Decimal("0.00"), decimal_places=2, blank=True,  help_text='Цена со скидкой') #Процент)
+
 	created = models.DateTimeField(auto_now_add=True, help_text='дата создания') # дата создания
 	updated = models.DateTimeField(auto_now=True, help_text='дата обновления') #дата обновления
-	def end_action(self):
-		if self.action:
-			if datetime.now() > self.date_end_action:
-				self.action = False
 
-
-	# date_start_action = models.DateTimeField(auto_now=False, blank=True, auto_now_add=False,) # дата создания
-	# date_end_action = models.DateTimeField(auto_now=False, blank=True, auto_now_add=False,) # дата окончания
 
 	class Meta:
 		ordering = ('name',)

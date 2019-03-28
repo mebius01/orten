@@ -33,7 +33,7 @@ X_FRAME_OPTIONS='DENY'
 
 # Сохранять ли токен CSRF в сеансе пользователя, а не в файле cookie.
 # CSRF_USE_SESSIONS=True
-
+DATE_INPUT_FORMATS = ['%d.%m.%Y']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", default=False)
