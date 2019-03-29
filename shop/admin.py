@@ -20,7 +20,7 @@ class ProductResource(resources.ModelResource):
 		fields = ('id', 'category','name', 'provider', 'vendor', 'vendor_code', 'specifications', 'type_product', 'slug','price','stock','available')
 
 class ProductAdmin(ImportExportModelAdmin):
-	search_fields = ['name',]
+	search_fields = ['name', 'vendor_code',]
 	list_display = ['name', 'id', 'action', 'color_fild', 'format_fild', 'price', 'stock', 'available', 'updated']
 	list_filter = ['provider', 'type_product','category', 'action', 'created', 'updated', 'vendor', 'available']
 	list_editable = ['price', 'stock', 'available', 'action', 'color_fild', 'format_fild']
