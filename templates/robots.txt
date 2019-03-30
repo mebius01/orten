@@ -16,5 +16,5 @@ Disallow: /*order*
 Disallow: /order*
 Disallow: /cart*
 
-Host: https://orten.herokuapp.com/
-Sitemap: https://orten.herokuapp.com/sitemap.xml
+Host: https://orten.in.ua/
+Sitemap: https://orten.in.ua/sitemap.xml
