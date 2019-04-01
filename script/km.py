@@ -5,7 +5,7 @@ import pickle
 
 vendor=input("Вендор: ") or "Konica Minolta"; vendor=str(vendor)
 category=input("id Категории: ") or "CATEGORY"; category=str(category)
-# type_product=input("Тип продукта: ") or "TYPE_PRODUCT"; type_product=str(type_product)
+type_product=input("Тип продукта: ") or "TYPE_PRODUCT"; type_product=str(type_product)
 
 int_counter = open('counter_id.pkl', 'rb')
 counter = pickle.load(int_counter)
@@ -20,7 +20,7 @@ raw_product = open('raw_product.csv', 'r+')
 sorted_product=open('sorted_product.csv', 'w')
 
 data = list(set(raw_product.readlines()))
-
+unique_data={}
 sorted_product.write('id,category,name,slug,provider,vendor_code,vendor,specifications,type_product,price,stock,available'+'\n')
 for i in data:
 	i=str(i).split(';')
@@ -29,12 +29,20 @@ for i in data:
 	vendor_code=i[0]
 	specifications=i[2]
 	slug=slugify(name+'-'+vendor_code)
-	# расчет стоимости 
-	price=i[6]; price=str(price); price=price.replace(",",".");
+	# расчет стоимости
+	price=str(i[7]); price=float(price.replace(",","."))*31; price=str(price);
 	available, stock = "1", "1"
-	sorted_product.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+specifications+','+type_product+','+price+','+stock+','+available+'\n')
+	if vendor_code in unique_data:
+		pass
+	elif vendor_code == '':
+		pass
+	else:
+		# unique_data.update({i[0]:str(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+specifications+','+type_product+','+price+','+stock+','+available)})
+		sorted_product.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+specifications+','+type_product+','+price+','+stock+','+available+'\n')
 	counter+=1
-
+	# for i in unique_data:
+	# 	sorted_product.writelines(unique_data.get(i))
+print(len(unique_data))
 print(counter)
 
 out_counter = open('counter_id.pkl', 'wb')

@@ -1,12 +1,12 @@
 from django.db import models
-# from django.db.models import F
 from decimal import *
 import django_filters
 from mptt.models import MPTTModel, TreeForeignKey
 from taggit.managers import TaggableManager
 from ckeditor.fields import RichTextField
 from django.contrib.flatpages.models import FlatPage
-from datetime import datetime 
+from datetime import datetime
+from django.utils import timezone
 
 class Category(MPTTModel):
 	name = models.CharField(max_length=200, db_index=True, unique=True)
@@ -87,24 +87,24 @@ class Product(models.Model):
 	name = models.CharField(max_length=400, db_index=True, help_text='Название товара') #имя продукта
 	slug = models.SlugField(max_length=400, help_text='')
 	provider = models.CharField(max_length=20, help_text='Поставщик')
-	accessories = models.ManyToManyField("self", blank=True)
-	vendor_code = models.CharField(max_length=200, db_index=True, help_text='Артикул, парт номер') #артикул или парт-номер
+	accessories = models.ManyToManyField("self", editable=False, blank=True)
+	vendor_code = models.CharField(max_length=200, unique=True, help_text='Артикул, парт номер') #артикул или парт-номер
 	vendor = models.CharField(max_length=200, blank=True, help_text='Производитель') # Производитель
+	type_product = models.CharField(max_length=200, blank=True, help_text='Тип товара')
 	image = models.ImageField(upload_to='product/', blank=True, help_text='') #картинка
 
 	format_fild = models.CharField(max_length=50, blank=True, choices=FORMAT_CHOICES, help_text='A3,A4')
 	color_fild = models.CharField(max_length=50, blank=True, choices=COLOR_CHOICES, help_text='BW, Color')
 	specifications = RichTextField(blank=True, help_text='Характеристики товара')
-	type_product = models.CharField(max_length=200, blank=True, help_text='Тип товара')
 	description = models.TextField(blank=True, help_text='Описание товара') #описание продукта
 	tags = TaggableManager(through=None, blank=True, help_text = 'Список тегов, разделенных запятыми')
 	# test_fild = models.CharField(max_length=200, blank=True, help_text='Тстовое поле на ошибку') # django.db.utils.ProgrammingError: ОШИБКА:  столбец shop_product.test_fild не существует
 	price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, help_text='Цена входящая') #цена Закупки
-	stock = models.PositiveIntegerField(blank=True, help_text='Остатоки') # Остатки
+	stock = models.PositiveIntegerField(blank=True, help_text='Остатоки', default=1) # Остатки
 	available = models.BooleanField(default=True, help_text='Доступен ли к заказу') # булево значение, указывающее, доступен ли продукт или нет
 
-	start_action = models.DateTimeField(auto_now=False, blank=True, auto_now_add=False,)
-	end_action = models.DateTimeField(auto_now=False, blank=True, auto_now_add=False,)
+	start_action = models.DateField(null = True, blank=True, default=timezone.now,)
+	end_action = models.DateField(null = True, blank=True, default=timezone.now,)
 	action = models.BooleanField(default=False, help_text='Акции')
 	discount =  models.DecimalField(max_digits=10,default=Decimal("0.00"), decimal_places=2, blank=True,  help_text='Цена со скидкой') #Процент)
 
@@ -182,3 +182,15 @@ class Polygraphy(models.Model):
 	# 	ordering = ('product',)
 	# 	verbose_name = 'Акция'
 	# 	verbose_name_plural = 'Акции'
+#  from django import forms 
+#  class RelationForm(forms.ModelForm): 
+#  	parent = forms.ChoiceField(required=False, choices=Relation.objects.values_list('id', 'name')) 
+#  	particle = forms.ChoiceField(required=False, choices=Particle.objects.values_list('id', 'content')) 
+#  	media = forms.ChoiceField(required=False, choices=Media.objects.values_list('id', 'name')) 
+#  	class Meta: 
+#  		model = Relation 
+
+# from django.contrib import admin 
+# class RelationAdmin(admin.ModelAdmin): 
+# 	raw_id_fields = ('Media','Particle',) 
+# 	admin.site.register(Relation, RelationAdmin) 
