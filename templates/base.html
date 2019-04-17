@@ -6,7 +6,6 @@
 {% load cache %}
 <html lang="ru">
     <head>
-      {% comment %}
       <!-- Google Tag Manager -->
       <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -14,7 +13,6 @@
       'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-56KXN4');</script>
       <!-- End Google Tag Manager -->
-      {% endcomment %}
       {% block head %}
           {{head}}
       {% endblock %}
@@ -28,9 +26,9 @@
        <link rel="stylesheet" href="{% static 'shop/css/mine.css' %}" type="text/css">
        <link rel="shortcut icon" type="image/png" href="{% static "img/favicon.png" %}">
         <!-- Bootstrap CSS -->
-       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-       <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <style>
             /*Аккции*/
@@ -327,7 +325,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
                         <div class="row">
                             <p>
-                                <i class="fas fa-door-open text-muted mr-2 pl-3"></i>Ми открыты
+                                <i class="fas fa-door-open text-muted mr-2 pl-3"></i>Мы открыты
                                 <br>
                                 <i class="fas fa-clock text-muted  mr-2 pl-3"></i>Пн-Пт: <time> 9:00 - 18:00</time> 
                                 <br>
@@ -361,11 +359,11 @@
                         <a class="cool-link text-muted" title="Цифровые дупликаторы, чернила и мастер-пленки от японской компании Duplo и других" href="{% url 'shop:list_category' 'cifrovye-duplikatory' %}">Цифровые дупликаторы</a>
                         <a class="cool-link text-muted" title="Epson лидер в качесвенной струйной печати.Картриджи, фотобумага, расходные материалы для плоттеров" href="{% url 'shop:list_category' 'epson' %}">Epson</a>
                         <a class="cool-link text-muted" title="ColorWay, лицензионные расходные материалы для лазерной и струйной печати, фотобумага, СНПЧ и КПК" href="{% url 'shop:list_category' 'colorway' %}">ColorWay</a>
-                        <a class="cool-link text-muted" title="Полиграфические услуги в Николаеве. Визитки, календари, флаера.. Тиражирование на ризографе" href="{% url 'shop:polygraphy' %}">Полиграфия</a>
                         <a class="cool-link text-muted" title="Ремонт Принтеров, МФУ, компьютеров, заправка и реставрация картриджей. Все возможные и невозможные ремонты" href="{% url 'shop:list_category' 'servisnyj-centr' %}">Сервисный Центр</a>
                         <a class="cool-link text-muted" title="Все возможные и не возможные услуги по ремонту и техническому сопровождению техники Ricoh" href="{% url 'shop:list_category' 'servisnyj-centr/avtorizovannyj-servisnyj-centr-ricoh' %}">Сервис Ricoh</a>
                         <a class="cool-link text-muted" title="Покопийное обслуживание Konica Minolta, ремон, ввод в эксплуатацию" href="{% url 'shop:list_category' 'servisnyj-centr/avtorizovannyj-servisnyj-centr-konica-minolta' %}">Сервис Konica Minolta</a>
                         <a class="cool-link text-muted" title="Тонера, фотобарабаны, вали, ролики, картриджи мировых брендов Toshiba, Erus, Static Control, Vision, Xerox, HP, Samsung" href="{% url 'shop:list_category' 'licenzionnye-rashodnye-materialy' %}">Все для Принтеров и МФУ</a>
+                        <a class="cool-link text-muted" title="Полиграфические услуги в Николаеве. Визитки, календари, флаера.. Тиражирование на ризографе" href="{% url 'shop:polygraphy' %}">Полиграфия</a>
                     </nav>
                 </div>
             </header>
@@ -430,12 +428,10 @@
         </ul>
     <body>
 
-              {% comment %}
               <!-- Google Tag Manager (noscript) -->
               <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-56KXN4"
               height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <!-- End Google Tag Manager (noscript) -->
-              {% endcomment %}
 
             <!-- CONTENT -->
             {% block content %}

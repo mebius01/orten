@@ -4,7 +4,7 @@
 <body>
 
 Уважаемый <strong>{{order.first_name}}</strong> 
-<p> Вы успешно сделали заказ на нашем сайте <a href="http://127.0.0.1:8000/" id="name"> orten.in.ua </a>
+<p> Вы успешно сделали заказ на нашем сайте <a href="https://orten.in.ua/" id="name"> orten.in.ua </a>
 <p>Номер вашего заказа {{order.id}} </p>
 
 <table class="table">
@@ -22,7 +22,7 @@
     <tr>
 
         <td>
-         <a href="http://127.0.0.1:8000{% url 'shop:product_detail' item.product.slug %}">{{ item.product.name }}</a>
+         <a href="http://orten.in.ua{% url 'shop:product_detail' item.product.slug %}">{{ item.product.name }}</a>
         </td>
 
         <td>

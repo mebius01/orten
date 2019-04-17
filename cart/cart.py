@@ -51,7 +51,6 @@ class Cart(object):
 		products = Product.objects.filter(id__in=product_ids)
 		for product in products:
 			self.cart[str(product.id)]['product'] = product
-
 		for item in self.cart.values():
 			item['price'] = Decimal(item['price'])
 			item['quantity'] = int(item['quantity'])

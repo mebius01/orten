@@ -6,8 +6,8 @@
 {% load flatpages %}
 {% block head %}
     <title>{{instance.name}}</title>
-    <meta name="title" content="{{instance.name}} - купить в Николаеве и Украине">
-    <meta name="description" content="{{instance.name}} - Купить в Николаеве, интернет-магазин Ортен ★ Ортен более 20 лет рынке копировальной техники и сервисного обслуживания">
+    <meta name="title" content="{{instance.name}} - Заказать в Николаеве">
+    <meta name="description" content="{{instance.name}} - Заказать в Николаеве ★ Интернет-магазин Ортен более 20 лет рынке копировальной техники и сервисного обслуживания">
 {% endblock %}
     {{ block.super }}<li><a href="{% url 'shop:category' %}">Категории</a><i class="fas fa-chevron-right pl-1"></i></li>
         {% for i in instance.get_anc %}
@@ -39,6 +39,7 @@
                         <header class="card-header text-bleck text-uppercase">
                             <h6 class="title"><i class="fa fa-list pr-3"></i>{{instance.name}}</h6>
                         </header>
+                        {{instance.description|linebreaks}}
                         <div class="card-group">
                             {% if products %}
                                 <meta http-equiv="REFRESH" content="0;url={% url 'shop:product_list' %}?category={{instance.id}}">

@@ -2,20 +2,23 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from .models import Category, Services, Product, Polygraphy #, ProductStock
 from cart.forms import CartAddProductForm
-# from .filters import ProductFilter # ОСОБОЕ ВНИМЕНИЕ!!! При python manage.py makemigrations && python manage.py migrate КОМЕНТИРОВАТЬ ЭТУ СТРОКУ
+from .filters import ProductFilter # ОСОБОЕ ВНИМЕНИЕ!!! При python manage.py makemigrations && python manage.py migrate КОМЕНТИРОВАТЬ ЭТУ СТРОКУ
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from watson import search as watson
 from django.views.decorators.cache import cache_page
 from django.db.models import Q
 from django.core.cache import cache
 
-def handler404(request):
+def handler404(request, exception):
 	return render(request, '404.html', status=404)
-def handler500(request):
+def handler500(request, exception):
 	return render(request, '500.html', status=500)
 
 def robots(request):
 	return render_to_response('robots.txt', mimetype="text/plain")
+
+def search_console(request):
+	return render(request, 'googledd11b6ee42c918f5.html')
 
 def delivery_payment(request):
 	return render(request, 'delivery_payment.html')

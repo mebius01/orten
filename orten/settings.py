@@ -23,30 +23,32 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env.str("SECRET_KEY")
-SECURE_BROWSER_XSS_FILTER=True
-SECURE_SSL_REDIRECT=False
-# SESSION_COOKIE_SECURE=True
-#CSRF_COOKIE_SECURE=True
-X_FRAME_OPTIONS='DENY'
-#SSL / HTTPS
-# SECURE_SSL_REDIRECT=True
 
-# Сохранять ли токен CSRF в сеансе пользователя, а не в файле cookie.
-# CSRF_USE_SESSIONS=True
-DATE_INPUT_FORMATS = ['%d.%m.%Y']
+# # Security
+# SECURE_HSTS_SECONDS = 3600
+# # добавляет preloadдирективу в заголовок
+# SECURE_HSTS_PRELOAD = True
+# # добавляет includeSubDomainsдирективу в заголовок
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# SECURE_CONTENT_TYPE_NOSNIFF = True
+# SECURE_BROWSER_XSS_FILTER = True
+# # все не-HTTPS запросы на HTTPS
+# SECURE_SSL_REDIRECT = True
+# # Указывает использовать ли безопасные куки для сессии
+# SESSION_COOKIE_SECURE = True
+# # Указывает, использовать ли безопасные куки для CSRF.
+# CSRF_COOKIE_SECURE = True
 
+# X_FRAME_OPTIONS='DENY'
+
+# Если URL удовлетворяет регулярному выражению из этого списка, запрос не будет перенаправлен По умолчанию: [] SECURE_SSL_REDIRECT=False
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", default=False)
-# DEBUG = False
-
-ALLOWED_HOSTS = ['127.0.0.1',]
-# ALLOWED_HOSTS = ['*',]
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 SITE_ID = 1
 APPEND_SLASH = True
 
-
 # Application definition
-
 INSTALLED_APPS = [
     # django-admin-tools
     'admin_tools' ,
@@ -59,9 +61,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Этот необязательный модуль содержит поля модели и поля формы для ряда специфических типов данных PostgreSQL.
     'django.contrib.postgres',
-    # The Django Redirects App
     'django.contrib.sites',
     'django.contrib.redirects',
     'django.contrib.sitemaps',
@@ -91,23 +91,16 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # django-debug-toolbar
     'debug_toolbar.middleware.DebugToolbarMiddleware',
-    # CACHES
-    # 'django.middleware.cache.UpdateCacheMiddleware',
-    # 'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.cache.FetchFromCacheMiddleware',
     # The Django Redirects App
     'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
 ]
 
-
 ROOT_URLCONF = 'orten.urls'
 TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [TEMPLATE_DIR],
-        # 'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -126,11 +119,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'orten.wsgi.application'
-
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 # DATABASES = {"default": env.dj_db_url("DATABASE_URL")}
-
 DATABASES = {
     'default': {
         'ENGINE': env.str("DB_ENGINE"),
@@ -142,17 +132,8 @@ DATABASES = {
     }
 }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -171,52 +152,39 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
-
 LANGUAGE_CODE = 'ru'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = False
-
 USE_TZ = True
-
 DECIMAL_SEPARATOR = "."
-
-# Simplified static file serving.
-# https://warehouse.python.org/project/whitenoise/
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
-STATIC_URL = '/static/'
+DATE_INPUT_FORMATS = ['%d.%m.%Y']
+IMPORT_EXPORT_USE_TRANSACTIONS = True
+WSGI_APPLICATION = 'orten.wsgi.application'
 
 # Extra places for collectstatic to find static files.
+STATIC_ROOT = env.str("STATIC_ROOT")
+STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = env.str("MEDIA_ROOT")
 MEDIA_URL = '/media/'
 
-IMPORT_EXPORT_USE_TRANSACTIONS = True
-
 # Email
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# 'send_email.apps.SendEmailConfig'
-ADMINS=[('Ivan', 'consmebius@gmail.com'),]
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = env.str("EMAIL_HOST")
 EMAIL_PORT = env.int("EMAIL_PORT")
 EMAIL_HOST_PASSWORD = env.str("EMAIL_HOST_PASSWORD")
 EMAIL_HOST_USER = env.str("EMAIL_HOST_USER")
 EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS")
-
-#Асинхронность
+ADMINS=[('Ivan', 'orten.in.ua@gmail.com'),]
+DEFAULT_FROM_EMAIL = env.str("DEFAULT_FROM_EMAIL")
+# Асинхронность
 DRAMATIQ_RESULT_BACKEND = {
     "BACKEND": "dramatiq.results.backends.redis.RedisBackend",
     "BACKEND_OPTIONS": {
-        "url": "redis://localhost:6379",
+        "url": "redis://127.0.0.1:6379",
     },
     "MIDDLEWARE_OPTIONS": {
         "result_ttl": 60000
@@ -242,16 +210,9 @@ CACHES = {
 }
 CART_SESSION_ID = 'cart'
 SESSION_COOKIE_AGE = 7200 #Время жизни сессии секундах
-# SESSION_ENGINE = "django.contrib.sessions.backends.cache"
-# SESSION_CACHE_ALIAS = "default"
-# SESSION_COOKIE_AGE : Длительность сессии "cookie" в секундах. Значение по умолчанию — 1209600 (2 недели).
-# SESSION_COOKIE_DOMAIN : Этот домен используется для сеансов "cookie". Установите это значение . mydomain.com для включения междоменных файлов cookie.
-# SESSION_COOKIE_SECURE : Логическое значение, указывающее, что файл cookie должен быть отправлен только в том случае, если соединение является соединением HTTPS.
-# SESSION_EXPIRE_AT_BROWSER_CLOSE : Это булево значение, указывающее, что сессия должна истечь при закрытии браузера.
-# SESSION_SAVE_EVERY_REQUEST : Это логическое значение, которое, в случае True, сохранит сессию в базе данных по каждому запросу. Срок действия сессии также обновляется каждый раз.
 
 # django-debug-toolbar
-INTERNAL_IPS = ('185.25.118.101',)
+INTERNAL_IPS = ('127.0.0.1',)
 DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.versions.VersionsPanel',
     'debug_toolbar.panels.timer.TimerPanel',
@@ -266,26 +227,3 @@ DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.logging.LoggingPanel',
     'debug_toolbar.panels.redirects.RedirectsPanel',
 ]
-
-
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.1/howto/static-files/
-# STATIC_ROOT = 'static_root'
-# MEDIA_URL = '/media/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static/'),]
-# STATIC_URL = '/static/'
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
-
-# CELERY STUFF
-# BROKER_URL = 'redis://localhost:6379'
-# CELERY_TIMEZONE = TIME_ZONE
-# CELERY_IMPORTS = ('shop.tasks',)
-# CELERY_IMPORTS = ('order.tasks',)
-# CELERY_RESULT_BACKEND = 'redis://localhost:6379/'
-# CELERY_ACCEPT_CONTENT = ['application/json']
-# CELERY_TASK_SERIALIZER = 'json'
-# CELERY_RESULT_SERIALIZER = 'json'

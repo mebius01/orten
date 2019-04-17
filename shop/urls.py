@@ -26,6 +26,7 @@ app_name = 'shop'
 urlpatterns = [
     path('test/', views.test, name='test'),
     path('', views.home, name='home'),
+    path('googledd11b6ee42c918f5.html', views.search_console, name='search_console'),
     path('contact/', views.contact, name='contact'),
     path('delivery_payment/', views.delivery_payment, name='delivery_payment'),
     path('about/', views.about, name='about'),
