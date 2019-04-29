@@ -82,7 +82,11 @@
           {{ product.vendor_code }}
         </td>
         <td>
-          {{ product.price }}
+          {% if product.action %}
+            {{ product.discount }}
+          {% else %}
+            {{ product.price }}
+          {% endif %}
         </td>
         <td>
           <span class="badge badge-secondary p-2">{{ item.quantity }}</span>
