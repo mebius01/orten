@@ -36,7 +36,11 @@
           {{ product.vendor_code }}
         </td>
         <td>
+          {% if product.action %}
+          <span style="color: red">{{ product.discount }}</span>
+          {% else %}
           {{ product.price }}
+          {% endif %}
         </td>
         <td>
          <form action="{% url "cart:cart_add" product.id %}" method="post" class="add">
