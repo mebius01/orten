@@ -1,66 +1,138 @@
 <!DOCTYPE html>
-<html lang="ru">
-{% load static %}
-<body>
-<table class="table">
-  <thead>
-    <tr>
-        <th>Клиент</th>
-        <th>Телефон</th>
-        <th>EMail</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-        <td>
-        {{order.first_name}}  {{ order.last_name }}  {{order.sur_name}} 
-        </td>
-        <td>
-          {{ order.mobile_phone }}
-        </td>
-        <td>
-          {{order.email }}
-        </td>
-  </tbody>
-</table>
-<table class="table">
-  <thead>
-    <tr>
-        <th>Продукт</th>
-        <th>Цена</th>
-        <th>Количесво</th>
-        <th>Сумма</th>
-    </tr>
-  </thead>
-{% for item in order.items.all %}
-  <tbody>
-    <tr>
-        <td>
-         <a href="http://orten.in.ua{% url 'shop:product_detail' item.product.slug %}">{{ item.product.name }}</a>
-        </td>
-        <td>
-          {{ item.price }}
-        </td>
-        <td>
-          {{item.quantity }}
-        </td>
-        <td>
-          {{ item.get_cost }}
-        </td>
-    </tr>
-{% endfor %}
-<hr>
-    <tr class="total">
-          <td>
-            Total:
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Ортен - Заказ {{order.id}}</title>
+</head>
+<body style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #000000;">
+<div>
+  <table style="border-collapse: collapse; width: 100%; border-top: 1px solid #dddddd; border-left: 1px solid #dddddd; margin-bottom: 20px;">
+    <thead>
+      <tr>
+        <td style="font-size: 12px; border-right: 1px solid #dddddd; border-bottom: 1px solid #dddddd; background-color: #85c987; font-weight: bold; text-align: left; padding: 7px; color: #222222;">Детали заказа</td>
+        <td style="font-size: 12px; border-right: 1px solid #dddddd; border-bottom: 1px solid #dddddd; background-color: #85c987; font-weight: bold; text-align: left; padding: 7px; color: #222222;">Клиент</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="font-size: 12px; border-right: 1px solid #dddddd; border-bottom: 1px solid #dddddd; text-align: left; padding: 7px;">
+          <b>№ заказа:</b> {{order.id}}
+          <br>
+          <b>Спопсоб доставки:</b> {{order.delivery_method}}
+          <br>
+          <b>Город:</b> {{order.city}}
+          <br>
+          <b>Спопсоб оплаты:</b> {{order.pay_method}}
           </td>
-          <td
-             class="num">{{ order.get_total_cost }}
-          </td>
-    </tr>
-  </tbody>
-</table>
-<hr>
-Note Text: <b>{{order.note_text}}</b>
+        <td style="font-size: 12px; border-right: 1px solid #dddddd; border-bottom: 1px solid #dddddd; text-align: left; padding: 7px;">
+            <b>Клиент:</b> {{order.last_name}} {{order.first_name}} {{order.sur_name}}
+            <br>
+            <b>Телефон:</b> {{order.mobile_phone}}
+            <br>
+            <b>EMail:</b> {{order.email}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table style="border-collapse: collapse; width: 100%; border-top: 1px solid #dddddd; border-left: 1px solid #dddddd; margin-bottom: 20px;">
+    <thead>
+      <tr>
+        <td style="font-size: 12px; border-right: 1px solid #dddddd; border-bottom: 1px solid #dddddd; background-color: #85c987; font-weight: bold; text-align: left; padding: 7px; color: #222222;">Примечание</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="font-size: 12px; border-right: 1px solid #dddddd; border-bottom: 1px solid #dddddd; text-align: left; padding: 7px;">
+        {{order.note_text}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <table style="border-collapse: collapse; width: 100%; border-top: 1px solid #dddddd; border-left: 1px solid #dddddd; margin-bottom: 20px;">
+    <thead>
+      <tr>
+        <td style="font-size: 12px; border-right: 1px solid #dddddd; border-bottom: 1px solid #dddddd; background-color: #85c987; font-weight: bold; text-align: left; padding: 7px; color: #222222;">Товар</td>
+        <td style="font-size: 12px; border-right: 1px solid #dddddd; border-bottom: 1px solid #dddddd; background-color: #85c987; font-weight: bold; text-align: left; padding: 7px; color: #222222;">Модель</td>
+        <td style="font-size: 12px; border-right: 1px solid #dddddd; border-bottom: 1px solid #dddddd; background-color: #85c987; font-weight: bold; text-align: right; padding: 7px; color: #222222;">Количество</td>
+        <td style="font-size: 12px; border-right: 1px solid #dddddd; border-bottom: 1px solid #dddddd; background-color: #85c987; font-weight: bold; text-align: right; padding: 7px; color: #222222;">Цена</td>
+        <td style="font-size: 12px; border-right: 1px solid #dddddd; border-bottom: 1px solid #dddddd; background-color: #85c987; font-weight: bold; text-align: right; padding: 7px; color: #222222;">Итого:</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in order.items.all %}
+      <tr>
+        <td style="font-size: 12px; border-right: 1px solid #dddddd; border-bottom: 1px solid #dddddd; text-align: left; padding: 7px;">
+          <a href="http://orten.in.ua{% url 'shop:product_detail' item.product.slug %}">{{ item.product.name }}</a></td>
+        <td style="font-size: 12px; border-right: 1px solid #dddddd; border-bottom: 1px solid #dddddd; text-align: left; padding: 7px;">
+        {{ item.product.vendor_code }}</td>
+        <td style="font-size: 12px; border-right: 1px solid #dddddd; border-bottom: 1px solid #dddddd; text-align: right; padding: 7px;">
+        {{item.quantity }}шт.</td>
+        <td style="font-size: 12px; border-right: 1px solid #dddddd; border-bottom: 1px solid #dddddd; text-align: right; padding: 7px;">
+        {{ item.price }}грн.</td>
+        <td style="font-size: 12px; border-right: 1px solid #dddddd; border-bottom: 1px solid #dddddd; text-align: right; padding: 7px;">{{ item.get_cost }}грн.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot>
+      <tr>
+        <td style="font-size: 12px; border-right: 1px solid #dddddd; border-bottom: 1px solid #dddddd; text-align: right; padding: 7px;" colspan="4">
+          <b>Сумма:</b></td>
+        <td style="font-size: 12px; border-right: 1px solid #dddddd; border-bottom: 1px solid #dddddd; text-align: right; padding: 7px;">{{ order.get_total_cost }}грн.</td>
+      </tr>
+{% comment %}
+         <tr>
+        <td style="font-size: 12px; border-right: 1px solid #dddddd; border-bottom: 1px solid #dddddd; text-align: right; padding: 7px;" colspan="4"><b>Доставка в отделение:</b></td>
+        <td style="font-size: 12px; border-right: 1px solid #dddddd; border-bottom: 1px solid #dddddd; text-align: right; padding: 7px;">0.00грн.</td>
+      </tr>
+            <tr>
+        <td style="font-size: 12px; border-right: 1px solid #dddddd; border-bottom: 1px solid #dddddd; text-align: right; padding: 7px;" colspan="4"><b>Итого:</b></td>
+        <td style="font-size: 12px; border-right: 1px solid #dddddd; border-bottom: 1px solid #dddddd; text-align: right; padding: 7px;">{{ order.get_total_cost }}грн.</td>
+      </tr>
+{% endcomment %}
+    </tfoot>
+  </table>
+{% comment %}
+   <p style="margin-top: 0px; margin-bottom: 20px;">Если у Вас есть какие-либо вопросы, ответьте на это сообщение.</p>
+{% endcomment %}
+</div>
 </body>
 </html>
+
+
+{% comment %}
+    <p style="margin-top: 0px; margin-bottom: 20px;">Благодарим за интерес к товарам &quot;Експерт сервис Запад&quot; -  интернет магазин картриджей  . Ваш заказ получен и поступит в обработку в ближайшее время</p>
+    <p style="margin-top: 0px; margin-bottom: 20px;">Для просмотра Вашего заказа перейдите по ссылке:</p>
+  <p style="margin-top: 0px; margin-bottom: 20px;"><a href="http://shop.es-te.com.ua/index.php?route=account/order/info&order_id=4794">http://shop.es-te.com.ua/index.php?route=account/order/info&order_id=4794</a></p>
+      <table style="border-collapse: collapse; width: 100%; border-top: 1px solid #DDDDDD; border-left: 1px solid #DDDDDD; margin-bottom: 20px;">
+    <thead>
+      <tr>
+        <td style="font-size: 12px; border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; background-color: #85c987; font-weight: bold; text-align: left; padding: 7px; color: #222222;" colspan="2">Детализация заказа</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="font-size: 12px; border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: left; padding: 7px;"><b>№ заказа:</b> 4794<br />
+          <b>Дата заказа:</b> 17.04.2019<br />
+          <b>Способ оплаты:</b> Оплата на р/с ФОП без НДС<br />
+                    <b>Способ доставки:</b> Доставка в отделение          </td>
+        <td style="font-size: 12px; border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: left; padding: 7px;"><b>E-mail:</b> orten_office@ukr.net<br />
+          <b>Телефон:</b> +38(050)418-58-40<br />
+          <b>IP-адрес:</b> 81.24.215.2<br />
+          <b>Состояние заказа:</b> Ожидает обработку<br /></td>
+      </tr>
+    </tbody>
+  </table>
+    <table style="border-collapse: collapse; width: 100%; border-top: 1px solid #DDDDDD; border-left: 1px solid #DDDDDD; margin-bottom: 20px;">
+    <thead>
+      <tr>
+        <td style="font-size: 12px; border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; background-color: #85c987; font-weight: bold; text-align: left; padding: 7px; color: #222222;">Адрес плательщика</td>
+                <td style="font-size: 12px; border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; background-color: #85c987; font-weight: bold; text-align: left; padding: 7px; color: #222222;">Адрес доставки</td>
+              </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="font-size: 12px; border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: left; padding: 7px;">Іван Карачевський<br />Отделение №11 (до 30 кг на одно место): просп.Мира, 13<br />Николаев<br />Николаевская область<br />Украина</td>
+                <td style="font-size: 12px; border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: left; padding: 7px;">Іван Карачевський<br />Отделение №11 (до 30 кг на одно место): просп.Мира, 13<br />Николаев<br />Николаевская область<br />Украина</td>
+              </tr>
+    </tbody>
+  </table>
+{% endcomment %}
