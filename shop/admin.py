@@ -28,15 +28,17 @@ class ProductAdmin(ImportExportModelAdmin):
 	prepopulated_fields = {'slug': ('name','vendor_code')}
 	resource_class = ProductResource
 
-class ServicesAdmin(admin.ModelAdmin):
+class ServicesResource(resources.ModelResource):
+	class Meta:
+		model = Services
+		fields = ('id', 'category','name', 'slug', 'vendor', 'vendor_code', 'vendor_model', 'description', 'price')
+
+class ServicesAdmin(ImportExportModelAdmin):
+	search_fields = ['name',]
 	list_display = ['name', 'slug', 'price']
 	list_filter = ['name', 'price']
-	prepopulated_fields = {'slug': ('name',)}
-
-# class PolygraphyAdmin(admin.ModelAdmin):
-# 	list_display = ['name', 'slug',]
-# 	list_filter = ['name', ]
-# 	prepopulated_fields = {'slug': ('name',)}
+	prepopulated_fields = {'slug': ('name', 'vendor_code')}
+	resource_class = ServicesResource
 
 class NewFlatpageInline(admin.StackedInline):
 	model = Polygraphy
@@ -49,14 +51,8 @@ class FlatPageNewAdmin(FlatPageAdmin):
 	list_filter = ('sites', 'registration_required')
 	search_fields = ('url', 'title')
 
-# class ProductStockAdmin(admin.ModelAdmin):
-# 	list_display = ['id', 'stock_start', 'stock_end', 'product', 'slug', 'description',]
-# 	list_filter = ['stock_start', 'stock_end', 'product',]
-# 	prepopulated_fields = {'slug': ('product',)}
-
 admin.site.register(Category, CategoryAdmin,)
 admin.site.register(Product, ProductAdmin,)
 admin.site.register(Services, ServicesAdmin,)
-# admin.site.register(ProductStock, ProductStockAdmin,)
 admin.site.unregister(FlatPage)
 admin.site.register(FlatPage, FlatPageNewAdmin)

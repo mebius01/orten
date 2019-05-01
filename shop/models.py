@@ -98,7 +98,7 @@ class Product(models.Model):
 	specifications = RichTextField(blank=True, help_text='Характеристики товара')
 	description = models.TextField(blank=True, help_text='Описание товара') #описание продукта
 	tags = TaggableManager(through=None, blank=True, help_text = 'Список тегов, разделенных запятыми')
-	# test_fild = models.CharField(max_length=200, blank=True, help_text='Тстовое поле на ошибку') # django.db.utils.ProgrammingError: ОШИБКА:  столбец shop_product.test_fild не существует
+
 	price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, help_text='Цена входящая') #цена Закупки
 	stock = models.PositiveIntegerField(blank=True, help_text='Остатоки', default=1) # Остатки
 	available = models.BooleanField(default=True, help_text='Доступен ли к заказу') # булево значение, указывающее, доступен ли продукт или нет
@@ -127,13 +127,16 @@ class Services(models.Model):
 	name = models.CharField(max_length=400, db_index=True) #имя продукта
 	slug = models.SlugField(max_length=400, db_index=True)
 	accessories = models.ManyToManyField(Product, blank=True)
+	
 	vendor_code = models.CharField(max_length=200, blank=True) #артикул или парт-номер
 	vendor = models.CharField(max_length=200, blank=True, help_text='Производитель') # Производитель
 	vendor_model = models.CharField(max_length=200, blank=True, help_text='Модель')
+	
 	image = models.ImageField(upload_to='service/', blank=True) #картинка
 	description = models.TextField(blank=True)
 	keywords= models.TextField(blank=True, help_text='Ключивые слова')
 	price = models.DecimalField(max_digits=10, decimal_places=2)
+	
 	created = models.DateTimeField(auto_now_add=True) # дата создания
 	updated = models.DateTimeField(auto_now=True) #дата обновления
 
