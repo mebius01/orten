@@ -26,63 +26,7 @@
                 <div class="card-body">
                     <a href="" data-toggle="modal" data-target="#productModal">
                     <img style="max-width:100%;" src="{% if instance.image %}{{ instance.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}"></a>
-                    <div class="product_rassurance">
-                            <ul class="list-inline">
-                                <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#deliveryModalCenter"><i class="fa fa-truck fa-2x"></a></i><br/>Доставка</li>
-
-                                <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#paymentModalCenter"><i class="fa fa-credit-card fa-2x"></a></i><br/>Оплата</li>
-                                <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#contactsModalCenter"><i class="fa fa-phone fa-2x"></i></a><br/>Контакты</li>
-                            </ul>
-                            <!-- Modal  delivery-->
-                            <div class="modal fade" id="deliveryModalCenter" tabindex="-1" role="dialog" aria-labelledby="deliveryModalCenterTitle" aria-hidden="true">
-                              <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h7 class="modal-title" id="deliveryModalLongTitle">Доставка:</h7>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                  </div>
-                                  <div class="modal-body">
-                                    Доставка у нас есть, но нам лень возить, так шо звыняйте :(
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <!-- Modal  payment-->
-                            <div class="modal fade" id="paymentModalCenter" tabindex="-1" role="dialog" aria-labelledby="paymentModalCenterTitle" aria-hidden="true">
-                              <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h7 class="modal-title" id="paymentModalLongTitle">Оплата:</h7>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                  </div>
-                                  <div class="modal-body">
-                                    Деньги мы любим, они прекрасны и оплату принимаем в любом виде
-                                    Хоть золотыми слитками третего рейха :)
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <!-- Modal  contacts-->
-                            <div class="modal fade" id="contactsModalCenter" tabindex="-1" role="dialog" aria-labelledby="contactsModalCenterTitle" aria-hidden="true">
-                              <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h7 class="modal-title" id="contactsModalLongTitle">Контакты:</h7>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                  </div>
-                                  <div class="modal-body">
-                                    Ето.. в общем все шо вам надо знать это все в шапке сайта :)
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                    </div>
+                    {% include "include/include_elivery_pay_contact.html" %}
                 </div>
             </div>
         </div>
