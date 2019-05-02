@@ -35,7 +35,7 @@ def category(request):
 
 def home(request):
 	product_stok = Product.objects.filter(action=True)
-	products = Product.objects.all().order_by('-action')[:12]
+	products = Product.objects.all().order_by('-action', '-image')[:12]
 	cart_product_form = CartAddProductForm()
 	return render(request, 'shop/home.html', {'cart_product_form':cart_product_form, 'products':products, 'product_stok':product_stok})
 
@@ -60,7 +60,7 @@ def product_list(request):
 	elif category:
 		product_list_all = Product.objects.filter(category=category)
 	else:
-		product_list_all = Product.objects.all().order_by('-action')
+		product_list_all = Product.objects.all().order_by('-action', '-image')
 	products_filter = ProductFilter(request.GET, queryset=product_list_all)
 	page = request.GET.get('page', 1)
 	paginator = Paginator(products_filter.qs, 24)
