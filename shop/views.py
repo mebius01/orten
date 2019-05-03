@@ -58,7 +58,7 @@ def product_list(request):
 	if search:
 		product_list_all = watson.filter(Product, search, ranking=True)
 	elif category:
-		product_list_all = Product.objects.filter(category=category)
+		product_list_all = Product.objects.filter(category=category).order_by('-action', '-image')
 	else:
 		product_list_all = Product.objects.all().order_by('-action', '-image')
 	products_filter = ProductFilter(request.GET, queryset=product_list_all)
