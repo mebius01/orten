@@ -41,7 +41,7 @@
                                 
                                 {% for item in category_all %}
                                     {% if item.is_root_node %}
-                                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-3 p-2">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-3 p-2">
                                             <div class="card h-100">
                                                 <a href="{% url 'shop:list_category' item.get_absolute_url %}"><img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{item.name}}" width="230" height="230" title="{{item.name}}" alt="{{item.name}}"></a>
                                                     <div class="card-footer d-flex justify-content-center bg-transparent">

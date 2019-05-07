@@ -1,18 +1,12 @@
 User-Agent: *
-Disallow: /*cart*
-Disallow: /*order*
 Disallow: /order*
 Disallow: /cart*
 
 User-agent: Googlebot
-Disallow: /*cart*
-Disallow: /*order*
 Disallow: /order*
 Disallow: /cart*
 
 User-Agent: Yandex
-Disallow: /*cart*
-Disallow: /*order*
 Disallow: /order*
 Disallow: /cart*
 
