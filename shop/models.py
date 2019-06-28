@@ -126,7 +126,7 @@ class Services(models.Model):
 	category = models.ForeignKey(Category,related_name='services', on_delete=models.CASCADE) #коталог продукта связь
 	name = models.CharField(max_length=400, db_index=True) #имя продукта
 	slug = models.SlugField(max_length=400, db_index=True)
-	accessories = models.ManyToManyField(Product, blank=True)
+	accessories = models.ManyToManyField(Product, editable=False, blank=True)
 	
 	vendor_code = models.CharField(max_length=200, blank=True) #артикул или парт-номер
 	vendor = models.CharField(max_length=200, blank=True, help_text='Производитель') # Производитель
