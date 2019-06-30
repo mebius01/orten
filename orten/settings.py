@@ -76,6 +76,8 @@ INSTALLED_APPS = [
     'bootstrap4',
     'ckeditor',
     'watson',
+    'modeltranslation',
+    # 'modeltranslation_xliff',
     'shop',
     'cart',
     'order',
@@ -89,6 +91,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     # django-debug-toolbar
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     # The Django Redirects App
@@ -153,6 +156,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 LANGUAGE_CODE = 'ru'
+# LANGUAGE_CODE = 'uk'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = False
@@ -161,6 +165,22 @@ DECIMAL_SEPARATOR = "."
 DATE_INPUT_FORMATS = ['%d.%m.%Y']
 IMPORT_EXPORT_USE_TRANSACTIONS = True
 WSGI_APPLICATION = 'orten.wsgi.application'
+
+gettext = lambda s: s
+LANGUAGES = (
+    ('ru', gettext('Russian')),
+    ('uk', gettext('Ukrainian')),
+)
+
+# LANGUAGES = (
+#     ('ru', 'Russian'),
+#     ('uk', 'Ukrainian'),
+# )
+
+ # указываем, где лежат файлы перевода
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
 
 # Extra places for collectstatic to find static files.
 STATIC_ROOT = env.str("STATIC_ROOT")
