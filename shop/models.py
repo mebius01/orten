@@ -7,6 +7,7 @@ from ckeditor.fields import RichTextField
 from django.contrib.flatpages.models import FlatPage
 from datetime import datetime
 from django.utils import timezone
+from django.utils.translation import gettext as _
 
 class Category(MPTTModel):
 	name = models.CharField(max_length=200, db_index=True, unique=True)
@@ -22,7 +23,7 @@ class Category(MPTTModel):
 		unique_together = ('parent', 'slug',)
 		ordering = ('tree_id', 'name',)
 		verbose_name = 'Категория'
-		verbose_name_plural = 'Категории'
+		verbose_name_plural = _('Категории')
 
 	def get_absolute_url(self):
 		return '/'.join([x['slug'] for x in self.get_ancestors(include_self=True).values()])
@@ -126,7 +127,7 @@ class Services(models.Model):
 	category = models.ForeignKey(Category,related_name='services', on_delete=models.CASCADE) #коталог продукта связь
 	name = models.CharField(max_length=400, db_index=True) #имя продукта
 	slug = models.SlugField(max_length=400, db_index=True)
-	accessories = models.ManyToManyField(Product, blank=True)
+	accessories = models.ManyToManyField(Product, editable=False, blank=True)
 	
 	vendor_code = models.CharField(max_length=200, blank=True) #артикул или парт-номер
 	vendor = models.CharField(max_length=200, blank=True, help_text='Производитель') # Производитель
@@ -168,32 +169,32 @@ class Polygraphy(models.Model):
 		return self.flatpage.title
 
 
-# class ProductStock(models.Model):
-# 	product = models.ForeignKey(Product, on_delete=models.CASCADE)
-# 	slug = models.SlugField(max_length=400, db_index=True)	
-# 	description = models.TextField(blank=True) #описание акции
-# 	stock_start = models.DateTimeField(auto_now=False, blank=True, auto_now_add=False,) # дата создания
-# 	stock_end = models.DateTimeField(auto_now=False, blank=True, auto_now_add=False,) # дата окончания
+# # class ProductStock(models.Model):
+# # 	product = models.ForeignKey(Product, on_delete=models.CASCADE)
+# # 	slug = models.SlugField(max_length=400, db_index=True)	
+# # 	description = models.TextField(blank=True) #описание акции
+# # 	stock_start = models.DateTimeField(auto_now=False, blank=True, auto_now_add=False,) # дата создания
+# # 	stock_end = models.DateTimeField(auto_now=False, blank=True, auto_now_add=False,) # дата окончания
 
-	# @property
-	# def discount(self):
-	# 	product_price_uah=float(self.product.price)
-	# 	discount_percent=float(self.discount_percent)
-	# 	return product_price_uah - (product_price_uah*discount_percent)
+# 	# @property
+# 	# def discount(self):
+# 	# 	product_price_uah=float(self.product.price)
+# 	# 	discount_percent=float(self.discount_percent)
+# 	# 	return product_price_uah - (product_price_uah*discount_percent)
 
-	# class Meta:
-	# 	ordering = ('product',)
-	# 	verbose_name = 'Акция'
-	# 	verbose_name_plural = 'Акции'
-#  from django import forms 
-#  class RelationForm(forms.ModelForm): 
-#  	parent = forms.ChoiceField(required=False, choices=Relation.objects.values_list('id', 'name')) 
-#  	particle = forms.ChoiceField(required=False, choices=Particle.objects.values_list('id', 'content')) 
-#  	media = forms.ChoiceField(required=False, choices=Media.objects.values_list('id', 'name')) 
-#  	class Meta: 
-#  		model = Relation 
+# 	# class Meta:
+# 	# 	ordering = ('product',)
+# 	# 	verbose_name = 'Акция'
+# 	# 	verbose_name_plural = 'Акции'
+# #  from django import forms 
+# #  class RelationForm(forms.ModelForm): 
+# #  	parent = forms.ChoiceField(required=False, choices=Relation.objects.values_list('id', 'name')) 
+# #  	particle = forms.ChoiceField(required=False, choices=Particle.objects.values_list('id', 'content')) 
+# #  	media = forms.ChoiceField(required=False, choices=Media.objects.values_list('id', 'name')) 
+# #  	class Meta: 
+# #  		model = Relation 
 
-# from django.contrib import admin 
-# class RelationAdmin(admin.ModelAdmin): 
-# 	raw_id_fields = ('Media','Particle',) 
-# 	admin.site.register(Relation, RelationAdmin) 
+# # from django.contrib import admin 
+# # class RelationAdmin(admin.ModelAdmin): 
+# # 	raw_id_fields = ('Media','Particle',) 
+# # 	admin.site.register(Relation, RelationAdmin) 

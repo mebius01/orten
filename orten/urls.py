@@ -24,26 +24,43 @@ from .sitemaps import ProductSitemap, CategorySitemap, ServicesSitemap
 # from django.conf.urls import handler404, handler500
 from shop.views import handler404, handler500
 
+from django.conf.urls.i18n import i18n_patterns
+
 
 sitemaps = {'product': ProductSitemap, 'category': CategorySitemap, 'services': ServicesSitemap}
 
 urlpatterns = [
+    path('i18n/', include('django.conf.urls.i18n')),
     path('admin_tools/', include('admin_tools.urls')),
     path('admin/', admin.site.urls),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
     name='django.contrib.sitemaps.views.sitemap'),
     path('robots.txt/', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
     # path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico'), name='favicon'),
+]
+urlpatterns += i18n_patterns(
     path('', include('shop.urls')),
-    # path('polygraphy/', include('django.contrib.flatpages.urls')),
     path('cart/', include('cart.urls')),
     path('order/', include('order.urls')),
-    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    # path('polygraphy/', include('django.contrib.flatpages.urls')),
+    prefix_default_language=False,) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 handler404='shop.views.handler404'
 handler500='shop.views.handler500'
-
 if settings.DEBUG:
     import debug_toolbar
     urlpatterns = [
     path('__debug__/', include(debug_toolbar.urls)),
     ] + urlpatterns
+
+# urlpatterns = [
+#     path('admin_tools/', include('admin_tools.urls')),
+#     path('admin/', admin.site.urls),
+#     path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
+#     name='django.contrib.sitemaps.views.sitemap'),
+#     path('robots.txt/', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
+#     # path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico'), name='favicon'),
+#     path('', include('shop.urls')),
+#     # path('polygraphy/', include('django.contrib.flatpages.urls')),
+#     path('cart/', include('cart.urls')),
+#     path('order/', include('order.urls')),
+#     ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -18,7 +18,7 @@ class CategoryAdmin(MPTTModelAdmin):
 class ProductResource(resources.ModelResource):
 	class Meta:
 		model = Product
-		fields = ('id', 'category','name', 'provider', 'vendor', 'vendor_code', 'specifications', 'type_product', 'slug','price','stock','available')
+		fields = ('id', 'category','name', 'name_ru', 'name_uk', 'provider', 'vendor', 'vendor_code', 'specifications', 'type_product', 'slug','price','stock','available')
 
 class ProductAdmin(ImportExportModelAdmin):
 	search_fields = ['name', 'vendor_code',]
@@ -34,9 +34,9 @@ class ServicesResource(resources.ModelResource):
 		fields = ('id', 'category','name', 'slug', 'vendor', 'vendor_code', 'vendor_model', 'description', 'price')
 
 class ServicesAdmin(ImportExportModelAdmin):
-	search_fields = ['name',]
-	list_display = ['name', 'slug', 'price']
-	list_filter = ['name', 'price']
+	search_fields = ['name','vendor_code','vendor_model']
+	list_display = ['vendor','name','vendor_code','price','updated','created']
+	list_filter = ['name', 'price','vendor']
 	prepopulated_fields = {'slug': ('name', 'vendor_code')}
 	resource_class = ServicesResource
 

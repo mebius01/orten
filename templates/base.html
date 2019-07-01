@@ -4,6 +4,58 @@
 {% load bootstrap4 %}
 {% load paginator_filter %}
 {% load cache %}
+{% load i18n %}
+
+{% comment %}
+  <div class="lang">
+<form id='lang_uk' action='/i18n/setlang/' method='POST'>{% csrf_token %}
+<input type='hidden' name='language' value='uk'/>
+<a href='#' title='Ukrine' onclick="document.getElementById('lang_uk').submit()">
+<img src="{% static 'img/flag/uk.png' %}" width="30" height="30"/>
+</a>
+</form>
+<form id='lang_ru' action='/i18n/setlang/' method='POST'>{% csrf_token %}
+<input type='hidden' name='language' value='ru'/>
+<a href='#' title='Russian' onclick="document.getElementById('lang_ru').submit()">
+<img src="{% static 'img/flag/ru.png' %}" width="30" height="30"/>
+</a>
+</form>
+</div>
+----------
+<form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+    <input name="next" type="hidden" value="{{ redirect_to }}" >
+    <select name="language">
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+        {% for language in languages %}
+            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                {{ language.name_local }} ({{ language.code }})
+            </option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Go" />
+</form>
+----------
+<form class="form-inline mr-2" action="{% url 'set_language' %}" method="post">{% csrf_token %}
+<div class="form-row">
+    <div class="col-12">
+      <input name="next" type="hidden" value="{{ redirect_to }}" >
+      <select class="custom-select mr-sm-2" name="language">
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+        {% for language in languages %}
+            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                {{ language.name_local }} ({{ language.code }})
+            </option>
+        {% endfor %}
+      </select>
+      <input class="btn btn-outline-link" type="submit" value="Input">
+    </div>
+  </div>
+</form>
+{% endcomment %}
 <html lang="ru">
     <head>
       <!-- Google Tag Manager -->
@@ -356,7 +408,7 @@
                     <nav class="nav d-flex justify-content-between">
                         <a class="cool-link text-muted" title="Принтеры, МФУ, Дупликаторы японской компании Ricoh. Тонера, фотобарабаны, рессурсные детали" href="{% url 'shop:list_category' 'ricoh' %}">Ricoh</a>
                         <a class="cool-link text-muted" title="Konica Minolta - японский холдинг, один из ведущих мировых производителей. МФУ, принтеры, инженерные печатные системы. Расходные материалы, дополнительное оборудование, рессурсные детали" href="{% url 'shop:list_category' 'konica-minolta' %}">Konica Minolta</a>
-                        <a class="cool-link text-muted" title="Цифровые дупликаторы, чернила и мастер-пленки от японской компании Duplo и других" href="{% url 'shop:list_category' 'cifrovye-duplikatory' %}">Цифровые дупликаторы</a>
+                        <a class="cool-link text-muted" title="Цифровые дупликаторы, чернила и мастер-пленки от японской компании Duplo и других" href="{% url 'shop:list_category' 'cifrovye-duplikatory' %}">{% trans 'Цифровые дупликаторы' %}</a>
                         <a class="cool-link text-muted" title="Epson лидер в качесвенной струйной печати.Картриджи, фотобумага, расходные материалы для плоттеров" href="{% url 'shop:list_category' 'epson' %}">Epson</a>
                         <a class="cool-link text-muted" title="ColorWay, лицензионные расходные материалы для лазерной и струйной печати, фотобумага, СНПЧ и КПК" href="{% url 'shop:list_category' 'colorway' %}">ColorWay</a>
                         <a class="cool-link text-muted" title="Ремонт Принтеров, МФУ, компьютеров, заправка и реставрация картриджей. Все возможные и невозможные ремонты" href="{% url 'shop:list_category' 'servisnyj-centr' %}">Сервисный Центр</a>
