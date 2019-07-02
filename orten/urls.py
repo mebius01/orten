@@ -23,9 +23,7 @@ from django.contrib.sitemaps.views import sitemap
 from .sitemaps import ProductSitemap, CategorySitemap, ServicesSitemap
 # from django.conf.urls import handler404, handler500
 from shop.views import handler404, handler500
-
 from django.conf.urls.i18n import i18n_patterns
-
 
 sitemaps = {'product': ProductSitemap, 'category': CategorySitemap, 'services': ServicesSitemap}
 
@@ -43,9 +41,11 @@ urlpatterns += i18n_patterns(
     path('cart/', include('cart.urls')),
     path('order/', include('order.urls')),
     # path('polygraphy/', include('django.contrib.flatpages.urls')),
-    prefix_default_language=False,) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    prefix_default_language=True,) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 handler404='shop.views.handler404'
 handler500='shop.views.handler500'
+
 if settings.DEBUG:
     import debug_toolbar
     urlpatterns = [

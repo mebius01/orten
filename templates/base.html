@@ -6,6 +6,130 @@
 {% load cache %}
 {% load i18n %}
 
+
+{% comment %}
+  <style>
+  @import url('https://fonts.googleapis.com/css?family=Muli');
+body {
+  font-family: Arial;
+  font-family: 'Muli', sans-serif;
+}
+.nav-wrapper {
+  width: 300px;
+  margin: 100px auto;
+  text-align: center;
+}
+  .sl-nav {
+  display: inline;
+}
+.sl-nav ul {
+  margin:0;
+  padding:0;
+  list-style: none;
+  position: relative;
+  display: inline-block;
+}
+.sl-nav li {
+  cursor: pointer;
+  padding-bottom:10px;
+}
+.sl-nav li ul {
+  display: none;
+}
+.sl-nav li:hover ul {
+  position: absolute;
+  top:29px;
+  right:-15px;
+  display: block;
+  background: #fff;
+  width: 120px;
+  padding-top: 0px;
+  z-index: 1;
+  border-radius:5px;
+  box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
+}
+.sl-nav li:hover .triangle {
+  position: absolute;
+  top: 15px;
+  right: -10px;
+  z-index:10;
+  height: 14px;
+  overflow:hidden;
+  width: 30px;
+  background: transparent;
+}
+.sl-nav li:hover .triangle:after {
+  content: '';
+  display: block;
+  z-index: 20;
+  width: 15px;
+  transform: rotate(45deg) translateY(0px) translatex(10px);
+  height: 15px;
+  background: #fff;
+  border-radius:2px 0px 0px 0px;
+  box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
+}
+.sl-nav li ul li {
+  position: relative;
+  text-align: left;
+  background: transparent;
+  padding: 15px 15px;
+  padding-bottom:0;
+  z-index: 2;
+  font-size: 15px;
+  color: #3c3c3c;
+}
+.sl-nav li ul li:last-of-type {
+  padding-bottom: 15px;
+}
+.sl-nav li ul li span {
+  padding-left: 5px;
+}
+.sl-nav li ul li span:hover, .sl-nav li ul li span.active {
+  color: #146c78;
+}
+.sl-flag {
+  display: inline-block;
+  box-shadow: 0px 0px 3px rgba(0,0,0,0.4);
+  width: 15px;
+  height: 15px;
+  background: #aaa;
+  border-radius: 50%;
+  position: relative;
+  top: 2px;
+  overflow: hidden;
+}
+.flag-de {
+background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuMTM0A1t6AAAAPUlEQVQ4T+3HMQ0AIBTE0NOHM8x9B7hgh71bIWGieUvze1m7kHGBr/AVvsJX+EpmP5dV5/gKX+ErfIUvVDYcX2NMxQC8PAAAAABJRU5ErkJggg==');
+  background-size: cover;
+  background-position: center center;
+}
+.flag-usa {
+  background-size: cover;
+  background-position: center center;
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuMTM0A1t6AAABhUlEQVQ4T2Ows82PjGixsc4LD2tysC/09Kjw8622tyuICG8u0w/cpGSCBzF4e1VmZkzw9anOzOj38a4KCW4IC22ECHYk1l9tn4gHMeTlTnZxLikvm+XiUpKW2hvgX+vnV5OVOQEoOGfOtv94AYOzU3Fd7XxHh6Lq6rlurqUx0W0J8Z1AnbW18yotonaYuOJBDBXls4A+bGpaBCTz86YEBtQCvVBSPAPIbY0oP1/aiAcxABU1Ny+2tclvbFjo5FgUF9uenNwNDLnmpkWEnV1TPRcY1O1tS4H6i4umA/0MDK2K8tlAwRqHpP1uoXgQKKraWpcClTY3LQZaCLQ5NaUX5OaWJY3++SeTC/AgBmA4AXUClUJs9ver8fKsAAYEUJCws4G21dXNB1oFdD/Qz8DQTk4C+bm2dn6DZ9bRiDQ8iAEYt8CoBpK5YBIYw0AEEZwSXX4oMB4PYoC6gCzAcDqrjGzEsMfen2xEmbMv1rSTjRi26dqRjShz9o2+6WQjBrSShQSkZAIADvW/HLrLY6cAAAAASUVORK5CYII=');
+}
+</style>
+
+<div class="nav-wrapper">
+  <div class="sl-nav">
+    Sprache:
+    <ul>
+      <li><b>Deutsch</b> <i class="fa fa-angle-down" aria-hidden="true"></i>
+        <div class="triangle"></div>
+        <ul>
+          <li><i class="sl-flag flag-de"><div id="germany"></div></i> <span class="active">Deutsch</span></li>
+          <li><i class="sl-flag flag-usa"><div id="germany"></div></i> <span>Englisch</span></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+{% endcomment %}
+
+
+
+
 {% comment %}
   <div class="lang">
 <form id='lang_uk' action='/i18n/setlang/' method='POST'>{% csrf_token %}
@@ -76,6 +200,7 @@
        <meta name="author" content="#">
        <link rel="stylesheet" href="{% static 'shop/css/w3.css' %}" type="text/css">
        <link rel="stylesheet" href="{% static 'shop/css/mine.css' %}" type="text/css">
+       <link rel="stylesheet" href="{% static 'shop/css/flags.css' %}" type="text/css">
        <link rel="shortcut icon" type="image/png" href="{% static "img/favicon.png" %}">
         <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -434,6 +559,58 @@
                             <a class="nav-link" href="{% url 'shop:delivery_payment' %}">Доставка и оплата</a>
                             <a class="nav-link" href="{% url 'shop:about' %}">Кто мы</a>
                             <a class="nav-link" href="{% url 'shop:contact' %}">Контакты</a>
+                            <li class="nav-item dropdown">
+                              
+                              <a class="nav-link dropdown-toggle" href="https://flag-sprites.com" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="flag flag-ua"> </span>  Ukraina</a>
+                              <div class="dropdown-menu" aria-labelledby="dropdown09">
+
+                                <form id='lang_uk' action='/i18n/setlang/' method='POST'>{% csrf_token %}
+                                <input type='hidden' name='language' value='uk'/>
+                                <a class="dropdown-item" href='#' title='Ukrine' onclick="document.getElementById('lang_uk').submit()"><span class="flag flag-ua"></span>  Ukrine
+                                </a>
+                                </form>
+
+                                <form id='lang_ru' action='/i18n/setlang/' method='POST'>{% csrf_token %}
+                                <input type='hidden' name='language' value='ru'/>
+                                <a class="dropdown-item" href='#' title='Russian' onclick="document.getElementById('lang_ru').submit()"><span class="flag flag-ru"></span>  Russian
+                                </a>
+                                </form>
+                              </div>
+                            </li>
+                            <form class="form-inline mr-2" action="{% url 'set_language' %}" method="post">{% csrf_token %}
+<div class="form-row">
+    <div class="col-12">
+      <input name="next" type="hidden" value="{{ redirect_to }}" >
+      <select class="custom-select mr-sm-2" name="language">
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+        {% for language in languages %}
+            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                {{ language.name_local }} ({{ language.code }})
+            </option>
+        {% endfor %}
+      </select>
+      <input class="btn btn-outline-link" type="submit" value="Input">
+    </div>
+  </div>
+</form>
+
+<div class="lang">
+<form id='lang_uk' action='/i18n/setlang/' method='POST'>{% csrf_token %}
+<input type='hidden' name='language' value='uk'/>
+<a href='#' title='Ukrine' onclick="document.getElementById('lang_uk').submit()">
+<img src="{% static 'img/flag/uk.png' %}" width="30" height="30"/>
+</a>
+</form>
+<form id='lang_ru' action='/i18n/setlang/' method='POST'>{% csrf_token %}
+<input type='hidden' name='language' value='ru'/>
+<a href='#' title='Russian' onclick="document.getElementById('lang_ru').submit()">
+<img src="{% static 'img/flag/ru.png' %}" width="30" height="30"/>
+</a>
+</form>
+</div>
+
                         </ul>
                         <!-- SEO Оптимизация -->
                          <script type="application/ld+json">
@@ -563,4 +740,7 @@
         </footer>
     </body>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </html>
