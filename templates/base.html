@@ -377,7 +377,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
                         <div class="row">
                             <p>
-                                <i class="fas fa-door-open text-muted mr-2 pl-3"></i>Мы открыты
+                                <i class="fas fa-door-open text-muted mr-2 pl-3"></i>{% trans 'Мы открыты' %}
                                 <br>
                                 <i class="fas fa-clock text-muted  mr-2 pl-3"></i>Пн-Пт: <time> 9:00 - 18:00</time> 
                                 <br>
@@ -390,7 +390,7 @@
                       <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
                         <div class="row">
                             <p>
-                                <a class="cool-link text-muted" href="https://www.google.com/maps/place/%D0%9E%D1%80%D1%82%D1%8D%D0%BD,+%D0%9E%D0%9E%D0%9E/@46.952503,32.040273,15z/data=!4m2!3m1!1s0x0:0x4784e49173525ad2?ved=2ahUKEwiLnpXuiPLfAhXNqIsKHWxSBAYQ_BIwCnoECAUQCA" target="_blank"><i class="fa fa-home mr-3 pl-3"></i><span itemprop="addressLocality">г. Николаев</span> <span itemprop="streetAddress">пр. Мира, 5</span></a>
+                                <a class="cool-link text-muted" href="https://www.google.com/maps/place/%D0%9E%D1%80%D1%82%D1%8D%D0%BD,+%D0%9E%D0%9E%D0%9E/@46.952503,32.040273,15z/data=!4m2!3m1!1s0x0:0x4784e49173525ad2?ved=2ahUKEwiLnpXuiPLfAhXNqIsKHWxSBAYQ_BIwCnoECAUQCA" target="_blank"><i class="fa fa-home mr-3 pl-3"></i><span itemprop="addressLocality">{% trans 'г. Николаев' %}</span> <span itemprop="streetAddress">{% trans 'пр. Мира, 5' %}</span></a>
                                 <br>
                                 <a class="cool-link text-muted" href="mailto:orten_office@ukr.net"><i class="fas fa-envelope mr-3 pl-3"></i>orten_office@ukr.net</a>
                                 <br>
@@ -411,11 +411,11 @@
                         <a class="cool-link text-muted" title="Цифровые дупликаторы, чернила и мастер-пленки от японской компании Duplo и других" href="{% url 'shop:list_category' 'cifrovye-duplikatory' %}">{% trans 'Цифровые дупликаторы' %}</a>
                         <a class="cool-link text-muted" title="Epson лидер в качесвенной струйной печати.Картриджи, фотобумага, расходные материалы для плоттеров" href="{% url 'shop:list_category' 'epson' %}">Epson</a>
                         <a class="cool-link text-muted" title="ColorWay, лицензионные расходные материалы для лазерной и струйной печати, фотобумага, СНПЧ и КПК" href="{% url 'shop:list_category' 'colorway' %}">ColorWay</a>
-                        <a class="cool-link text-muted" title="Ремонт Принтеров, МФУ, компьютеров, заправка и реставрация картриджей. Все возможные и невозможные ремонты" href="{% url 'shop:list_category' 'servisnyj-centr' %}">Сервисный Центр</a>
-                        <a class="cool-link text-muted" title="Все возможные и не возможные услуги по ремонту и техническому сопровождению техники Ricoh" href="{% url 'shop:list_category' 'servisnyj-centr/avtorizovannyj-servisnyj-centr-ricoh' %}">Сервис Ricoh</a>
-                        <a class="cool-link text-muted" title="Покопийное обслуживание Konica Minolta, ремон, ввод в эксплуатацию" href="{% url 'shop:list_category' 'servisnyj-centr/avtorizovannyj-servisnyj-centr-konica-minolta' %}">Сервис Konica Minolta</a>
-                        <a class="cool-link text-muted" title="Тонера, фотобарабаны, вали, ролики, картриджи мировых брендов Toshiba, Erus, Static Control, Vision, Xerox, HP, Samsung" href="{% url 'shop:list_category' 'licenzionnye-rashodnye-materialy' %}">Все для Принтеров и МФУ</a>
-                        <a class="cool-link text-muted" title="Полиграфические услуги в Николаеве. Визитки, календари, флаера.. Тиражирование на ризографе" href="{% url 'shop:polygraphy' %}">Полиграфия</a>
+                        <a class="cool-link text-muted" title="Ремонт Принтеров, МФУ, компьютеров, заправка и реставрация картриджей. Все возможные и невозможные ремонты" href="{% url 'shop:list_category' 'servisnyj-centr' %}">{% trans 'Сервисный Центр' %}</a>
+                        <a class="cool-link text-muted" title="Все возможные и не возможные услуги по ремонту и техническому сопровождению техники Ricoh" href="{% url 'shop:list_category' 'servisnyj-centr/avtorizovannyj-servisnyj-centr-ricoh' %}">{% trans 'Сервис' %} Ricoh</a>
+                        <a class="cool-link text-muted" title="Покопийное обслуживание Konica Minolta, ремон, ввод в эксплуатацию" href="{% url 'shop:list_category' 'servisnyj-centr/avtorizovannyj-servisnyj-centr-konica-minolta' %}">{% trans 'Сервис' %} Konica Minolta</a>
+                        <a class="cool-link text-muted" title="Тонера, фотобарабаны, вали, ролики, картриджи мировых брендов Toshiba, Erus, Static Control, Vision, Xerox, HP, Samsung" href="{% url 'shop:list_category' 'licenzionnye-rashodnye-materialy' %}">{% trans 'Все для Принтеров и МФУ' %}</a>
+                        <a class="cool-link text-muted" title="Полиграфические услуги в Николаеве. Визитки, календари, флаера.. Тиражирование на ризографе" href="{% url 'shop:polygraphy' %}">{% trans 'Полиграфия' %}</a>
                     </nav>
                 </div>
             </header>
@@ -426,14 +426,14 @@
                 </button>
                     <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
                         <ul class="navbar-nav m-auto">
-                            <a class="nav-link" href="{% url 'shop:home' %}">Дом</a>
-                            <a class="nav-link" href="{% url 'shop:category' %}">Категории</a>
-                            <a class="nav-link" href="{% url 'shop:product_list' %}">Товары</a>
-                            <a class="nav-link" href="{% url 'shop:polygraphy' %}">Полиграфия</a>
-                            <a class="nav-link" href="{% url 'shop:list_category' 'servisnyj-centr' %}">Сервисный центр</a>
-                            <a class="nav-link" href="{% url 'shop:delivery_payment' %}">Доставка и оплата</a>
-                            <a class="nav-link" href="{% url 'shop:about' %}">Кто мы</a>
-                            <a class="nav-link" href="{% url 'shop:contact' %}">Контакты</a>
+                            <a class="nav-link" href="{% url 'shop:home' %}">{% trans 'Дом' %}</a>
+                            <a class="nav-link" href="{% url 'shop:category' %}">{% trans 'Категории' %}</a>
+                            <a class="nav-link" href="{% url 'shop:product_list' %}">{% trans 'Товары' %}</a>
+                            <a class="nav-link" href="{% url 'shop:polygraphy' %}">{% trans 'Полиграфия' %}</a>
+                            <a class="nav-link" href="{% url 'shop:list_category' 'servisnyj-centr' %}">{% trans 'Сервисный центр' %}</a>
+                            <a class="nav-link" href="{% url 'shop:delivery_payment' %}">{% trans 'Доставка и оплата' %}</a>
+                            <a class="nav-link" href="{% url 'shop:about' %}">{% trans 'Кто мы' %}</a>
+                            <a class="nav-link" href="{% url 'shop:contact' %}">{% trans 'Контакты' %}</a>
                         </ul>
                         <!-- SEO Оптимизация -->
                          <script type="application/ld+json">
@@ -460,12 +460,12 @@
                        {% with total_items=cart|length %}
                             {% if cart|length > 0 %}
                                 <a href="{% url "cart:cart_detail" %}">
-                                    <i class="fa fa-shopping-cart mr-2"></i>Корзина
+                                    <i class="fa fa-shopping-cart mr-2"></i>{% trans 'Корзина' %}
                                     <span class="badge badge-light ml-1">{{ total_items }}</span>
                                 </a>
                             {% else %}
                                 <a href="{% url "cart:cart_detail" %}">
-                                    <i class="fa fa-shopping-cart mr-2"></i>Корзина
+                                    <i class="fa fa-shopping-cart mr-2"></i>{% trans 'Корзина' %}
                                     <span class="badge badge-light ml-1">0</span>
                                 </a>
                             {% endif %}
@@ -521,18 +521,18 @@
                       </div>
                     </div>
                     <div class="col-md-3 col-lg-2 col-xl-3 mx-auto">
-                        <h5>Что мы можем</h5>
+                        <h5>{% trans 'Что мы можем' %}</h5>
                         <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
                         <ul class="list-unstyled">
-                            <li><a href="{% url 'shop:product_list' %}">Что мы продаем</a></li>
-                            <li><a href="{% url 'shop:category' %}">Категории</a></li>
-                            <li><a href="{% url 'shop:list_category' 'servisnyj-centr' %}">Сервисный центр</a></li>
-                            <li><a href="{% url 'shop:polygraphy' %}">Полиграфия</a></li>
+                            <li><a href="{% url 'shop:product_list' %}">{% trans 'Что мы продаем' %}</a></li>
+                            <li><a href="{% url 'shop:category' %}">{% trans 'Категории' %}</a></li>
+                            <li><a href="{% url 'shop:list_category' 'servisnyj-centr' %}">{% trans 'Сервисный центр' %}</a></li>
+                            <li><a href="{% url 'shop:polygraphy' %}">{% trans 'Полиграфия' %}</a></li>
                         </ul>
                     </div>
 
                     <div class="col-md-3 col-lg-2 col-xl-3 ">
-                        <h5>График работы</h5>
+                        <h5>{% trans 'График работы' %}</h5>
                         <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
                         <ul class="list-unstyled">
                             <li><i class="fas fa-clock mr-2"></i>Пн-Пт:<time> 9:00 - 18:00</time></li>
@@ -543,10 +543,10 @@
                     </div>
 
                     <div class="col-md-3 col-lg-3 col-xl-3 ">
-                        <h5>Контакты</h5>
+                        <h5>{% trans 'Контакты' %}</h5>
                         <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
                         <ul class="list-unstyled">
-                            <li><i class="fa fa-home mr-2"></i>г. Николаев пр. Мира, 5</li>
+                            <li><i class="fa fa-home mr-2"></i>{% trans 'г. Николаев пр. Мира, 5' %}</li>
                             <li><a href="mailto:orten_office@ukr.net"><i class="fas fa-envelope mr-2"></i>orten_office@ukr.net</a></li>
                             <li><i class="fas fa-phone mr-2"></i>(0512) 56-65-39</li>
                             <li><i class="fas fa-mobile mr-3"></i>(050) 318-40-64</li>

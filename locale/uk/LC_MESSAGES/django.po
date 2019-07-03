@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 14:04+0300\n"
+"POT-Creation-Date: 2019-07-01 12:45+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,14 +21,90 @@ msgstr ""
 "100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
 "(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 
-#: shop/models.py:26
+#: orten/settings.py:171
+msgid "Russian"
+msgstr ""
+
+#: orten/settings.py:172
+msgid "Ukrainian"
+msgstr ""
+
+#: shop/models.py:26 templates/base.html:430 templates/base.html:528
 msgid "Категории"
 msgstr "Категорiя"
 
-#: templates/base.html:21
-msgid "Change"
+#: templates/base.html:380
+msgid "Мы открыты"
 msgstr ""
 
-#: templates/base.html:377
+#: templates/base.html:393
+msgid "г. Николаев"
+msgstr ""
+
+#: templates/base.html:393
+msgid "пр. Мира, 5"
+msgstr ""
+
+#: templates/base.html:411
 msgid "Цифровые дупликаторы"
 msgstr "Цiфровi дуплiкатори"
+
+#: templates/base.html:414
+msgid "Сервисный Центр"
+msgstr ""
+
+#: templates/base.html:415 templates/base.html:416
+msgid "Сервис"
+msgstr ""
+
+#: templates/base.html:417
+msgid "Все для Принтеров и МФУ"
+msgstr ""
+
+#: templates/base.html:418 templates/base.html:432 templates/base.html:530
+msgid "Полиграфия"
+msgstr ""
+
+#: templates/base.html:429
+msgid "Дом"
+msgstr ""
+
+#: templates/base.html:431
+msgid "Товары"
+msgstr ""
+
+#: templates/base.html:433 templates/base.html:529
+msgid "Сервисный центр"
+msgstr ""
+
+#: templates/base.html:434
+msgid "Доставка и оплата"
+msgstr ""
+
+#: templates/base.html:435
+msgid "Кто мы"
+msgstr ""
+
+#: templates/base.html:436 templates/base.html:546
+msgid "Контакты"
+msgstr ""
+
+#: templates/base.html:463 templates/base.html:468
+msgid "Корзина"
+msgstr ""
+
+#: templates/base.html:524
+msgid "Что мы можем"
+msgstr ""
+
+#: templates/base.html:527
+msgid "Что мы продаем"
+msgstr ""
+
+#: templates/base.html:535
+msgid "График работы"
+msgstr ""
+
+#: templates/base.html:549
+msgid "г. Николаев пр. Мира, 5"
+msgstr ""
