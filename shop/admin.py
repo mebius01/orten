@@ -18,7 +18,7 @@ class CategoryAdmin(MPTTModelAdmin):
 class ProductResource(resources.ModelResource):
 	class Meta:
 		model = Product
-		fields = ('id', 'category','name', 'name_ru', 'name_uk', 'provider', 'vendor', 'vendor_code', 'specifications', 'type_product', 'slug','price','stock','available')
+		fields = ('id', 'category','name', 'name_ru', 'name_uk', 'provider', 'vendor', 'vendor_code', 'type_product', 'slug','price','stock','available')
 
 class ProductAdmin(ImportExportModelAdmin):
 	search_fields = ['name', 'vendor_code',]

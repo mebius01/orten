@@ -40,7 +40,7 @@ urlpatterns += i18n_patterns(
     path('', include('shop.urls')),
     path('cart/', include('cart.urls')),
     path('order/', include('order.urls')),
-    # path('polygraphy/', include('django.contrib.flatpages.urls')),
+    path('polygraphy/', include('django.contrib.flatpages.urls')),
     prefix_default_language=True,) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404='shop.views.handler404'
