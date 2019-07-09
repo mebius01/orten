@@ -26,18 +26,54 @@ for r in data_raw:
 		r=r.split(';')
 		raw_list[r[0][1:-1]]=r
 
-# print(raw_list)
+print(len(raw_list))
 print(len(db_list))
 
-for d in enumerate(db_list):
+for d in db_list:
 	if d not in raw_list:
 		print('part number', d, 'not in raw_product') # если нет значение ("stock";"available") выстовить в ноль
+		db_list.get(d)[2]=db_list.get(d)[2][1:-1]
+		db_list.get(d)[3]=db_list.get(d)[3][1:-1]
+		db_list.get(d)[4]=db_list.get(d)[4][1:-1]
+		db_list.get(d)[5]=db_list.get(d)[5][1:-1]
+		db_list.get(d)[6]=db_list.get(d)[6][1:-1]
+		db_list.get(d)[7]=db_list.get(d)[7][1:-1]
+		db_list.get(d)[10]=db_list.get(d)[10][1:-2]
 	elif d in raw_list:
 		if db_list.get(d)[8].split(',')[0] != raw_list.get(d)[3].split(',')[0]:
-			for num_db in db_list.get(d):
-				print('the is befor', db_list.get(d)[8].split(',')[0], raw_list.get(d)[3].split(',')[0])
-				db_list.get(d)[num_db] = raw_list.get(d)[3]
-				print('the is after', db_list.get(d)[8].split(',')[0], raw_list.get(d)[3].split(',')[0])
+			db_list.get(d)[2]=db_list.get(d)[2][1:-1]
+			db_list.get(d)[3]=db_list.get(d)[3][1:-1]
+			db_list.get(d)[4]=db_list.get(d)[4][1:-1]
+			db_list.get(d)[5]=db_list.get(d)[5][1:-1]
+			db_list.get(d)[6]=db_list.get(d)[6][1:-1]
+			db_list.get(d)[7]=db_list.get(d)[7][1:-1]
+			db_list.get(d)[10]=db_list.get(d)[10][1:-2]
+			db_list.get(d)[8]=raw_list.get(d)[3]
+			print(db_list.get(d), db_list.get(d)[8], raw_list.get(d)[3])
+
+for i in db_list.get('24330'):
+	print(i, type(i))
+# print(db_list)
+"""
+3935 <class 'str'>0
+157 <class 'str'>1
+"Шредер DSB AF75" <class 'str'>2
+"unichtozhitel-dokumentov-dsb-af75-sht-24330" <class 'str'>3
+"baden" <class 'str'>4
+"24330" <class 'str'>5
+"DSB" <class 'str'>6
+"Уничтожитель документов" <class 'str'>7
+6860,00 <class 'str'>8
+1 <class 'str'>9
+"1" <class 'str'>10
+"""
+
+
+			# for num_db, i in enumerate(db_list.get(d)):
+			# 	print(i,[num_db], db_list.get(d)[8].split(',')[0], raw_list.get(d)[3].split(',')[0])
+				# print('the is befor', db_list.get(d)[8].split(',')[0], raw_list.get(d)[3].split(',')[0])
+				# db_list.get(d)[num_db] = raw_list.get(d)[3]
+				# print('the is after', db_list.get(d)[8].split(',')[0], raw_list.get(d)[3].split(',')[0])
 		# if list(r.keys())[0] == list(d.keys())[0]:
 			# print(r.get(list(r.keys())[0])[3], '---', d.get(list(d.keys())[0])[8], '\n') #price
 			# print(r.get(list(r.keys())[0])[3], '---', d.get(list(d.keys())[0])[8], '\n')
