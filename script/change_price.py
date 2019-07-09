@@ -13,10 +13,48 @@ counter=1
 
 # for r in data_raw:
 # 	print({str(r).split(';')[0][1:-1]:r})
+db_list={}
+raw_list={}
+
 
 for d in data_db:
 	d=d.split(';')
-	print(str({d[5][1:-1]:d}.keys()))
+	db_list[d[5][1:-1]]=d
+
+for r in data_raw:
+	if str(r).split(';')[0] != '':
+		r=r.split(';')
+		raw_list[r[0][1:-1]]=r
+
+# print(raw_list)
+print(len(db_list))
+
+for d in enumerate(db_list):
+	if d not in raw_list:
+		print('part number', d, 'not in raw_product') # если нет значение ("stock";"available") выстовить в ноль
+	elif d in raw_list:
+		if db_list.get(d)[8].split(',')[0] != raw_list.get(d)[3].split(',')[0]:
+			for num_db in db_list.get(d):
+				print('the is befor', db_list.get(d)[8].split(',')[0], raw_list.get(d)[3].split(',')[0])
+				db_list.get(d)[num_db] = raw_list.get(d)[3]
+				print('the is after', db_list.get(d)[8].split(',')[0], raw_list.get(d)[3].split(',')[0])
+		# if list(r.keys())[0] == list(d.keys())[0]:
+			# print(r.get(list(r.keys())[0])[3], '---', d.get(list(d.keys())[0])[8], '\n') #price
+			# print(r.get(list(r.keys())[0])[3], '---', d.get(list(d.keys())[0])[8], '\n')
+
+# >>> a= [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1]
+# >>> for n, i in enumerate(a):
+# ...   if i == 1:
+# ...      a[n] = 10
+# ...
+# >>> a
+# [10, 2, 3, 4, 5, 10, 2, 3, 4, 5, 10]
+
+# print(db_list[1]) #{'21767': ['14898', '47', '"Обжимное устройство для металлической пружины MC430 PLUS"', '"binder-na-metallicheskoj-pruzhiny-mc430-plus-21767"', '"baden"', '"21767"', '"lamiMARK"', '', '10360', '0', '"1"\n']}
+
+# print(db_list[1])
+# print(raw_list[1])
+	# print(list({d[5][1:-1]:d}.keys())[0], {d[5][1:-1]:d}.get(list({d[5][1:-1]:d}.keys())[0]))
 	# print(d[5])
 
 	# print(str(r).split(';')[0][1:-1]) == 47602 (vendor_code)
