@@ -1,1 +1,51 @@
-id,category,name,slug,provider,vendor_code,vendor,specifications,type_product,price,stock,available
+id,category,name,slug,provider,vendor_code,vendor,type_product,price,stock,available
+14903,60,"Ламинатор конвертный Royal Sovereign ES 1315 (А3) (шт.)",laminator-konvertnyi-royal-sovereign-es-1315-a3-sht-20130,baden,20130,TEST-vendor,TEST-type_product,3332.00,1,1
+14904,60,"Ламинатор рулонный DRAGON FMY-920B (шт.)",laminator-rulonnyi-dragon-fmy-920b-sht-20305,baden,20305,TEST-vendor,TEST-type_product," ",1,1
+14905,60,"Ламинатор рулонный DRAGON SAFM800 (шт.)",laminator-rulonnyi-dragon-safm800-sht-20310,baden,20310,TEST-vendor,TEST-type_product," ",1,1
+14906,60,"Ламинатор рулонный Royal Sovereign RSC 1651LSH (шт.)",laminator-rulonnyi-royal-sovereign-rsc-1651lsh-sht-20197,baden,20197,TEST-vendor,TEST-type_product,115780.00,1,1
+14907,60,"Calendar 55A (шт.)",calendar-55a-sht-21901,baden,21901,TEST-vendor,TEST-type_product,999320.00,1,1
+14908,60,"Calendar 80A (шт.)",calendar-80a-sht-21902,baden,21902,TEST-vendor,TEST-type_product," ",1,1
+14909,60,"Shark 80 (шт.)",shark-80-sht-21922,baden,21922,TEST-vendor,TEST-type_product,535920.00,1,1
+14910,60,"Автоподатчик ригеля для  55A/80A (шт.)",avtopodatchik-rigelia-dlia-55a-80a-sht-21904,baden,21904,TEST-vendor,TEST-type_product," ",1,1
+14911,60,"Инструмент закрывающий 1/4"" для  55A/80A (шт.)",instrument-zakryvaiushchii-1-4-dlia-55a-80a-sht-21908,baden,21908,TEST-vendor,TEST-type_product," ",1,1
+14912,60,"Инструмент закрывающий 5/16"" для  55A/80A (шт.)",instrument-zakryvaiushchii-5-16-dlia-55a-80a-sht-21909,baden,21909,TEST-vendor,TEST-type_product," ",1,1
+14913,60,"Клеемазательная машина bindMARK JS500 (шт.)",kleemazatelnaia-mashina-bindmark-js500-sht-21850,baden,21850,TEST-vendor,TEST-type_product,52976.00,1,1
+14914,60,"Комплекс для изготовления фотокниг bindMARK PBS18 (шт.)",kompleks-dlia-izgotovleniia-fotoknig-bindmark-pbs18-sht-21851,baden,21851,TEST-vendor,TEST-type_product,139160.00,1,1
+14915,60,"Стол для фотокниг bindMARK DC100L (шт.)",stol-dlia-fotoknig-bindmark-dc100l-sht-21812,baden,21812,TEST-vendor,TEST-type_product,8400.00,1,1
+14916,60,"Стол для фотокниг bindMARK DC100P (шт.)",stol-dlia-fotoknig-bindmark-dc100p-sht-21813,baden,21813,TEST-vendor,TEST-type_product,28000.00,1,1
+14917,60,"Инструмент закрывающий 1/4"" для WB-520 (шт.)",instrument-zakryvaiushchii-1-4-dlia-wb-520-sht-21705,baden,21705,TEST-vendor,TEST-type_product,19012.00,1,1
+14918,60,"Инструмент закрывающий 5/16"" для WB-520 (шт.)",instrument-zakryvaiushchii-5-16-dlia-wb-520-sht-21706,baden,21706,TEST-vendor,TEST-type_product,19600.00,1,1
+14919,60,"Перфорационный нож 3:1 4х4 мм для CK-600/CKD-600 HF301 (шт.)",perforatsionnyi-nozh-3-1-4kh4-mm-dlia-ck-600-ckd-600-hf301-sht-21725,baden,21725,TEST-vendor,TEST-type_product,28000.00,1,1
+14920,60,"Перфорационный нож 3:1 4х4 мм с вырубкой под ригель для CK-600/CKD-600 HF303 (шт.)",perforatsionnyi-nozh-3-1-4kh4-mm-s-vyrubkoi-pod-rigel-dlia-ck-600-ckd-600-hf303-sht-21723,baden,21723,TEST-vendor,TEST-type_product,28000.00,1,1
+14921,60,"Перфорационный нож 3:1, круглые отверстия 4 мм для CK-600/CKD-600 (шт.)",perforatsionnyi-nozh-3-1-kruglye-otverstiia-4-mm-dlia-ck-600-ckd-600-sht-21724,baden,21724,TEST-vendor,TEST-type_product,28000.00,1,1
+14922,60,"Полуавтоматический обжим bindMARK HB-520A (1/4"",5/16"",3/8"", податчик ригеля и стол) (шт.)",poluavtomaticheskii-obzhim-bindmark-hb-520a-1-4-5-16-3-8-podatchik-rigelia-i-stol-sht-21712,baden,21712,TEST-vendor,TEST-type_product,383600.00,1,1
+14923,60,"Электрический перфоратор bindMARK CK-600 с набором ножей - квадратные 4х4,5 мм (шт.)",elektricheskii-perforator-bindmark-ck-600-s-naborom-nozhei-kvadratnye-4kh45-mm-sht-21718,baden,21718,TEST-vendor,TEST-type_product,87360.00,1,1
+14924,60,"Электрический перфоратор bindMARK CKD-600 с набором ножей - квадратные 4х4,5 мм (шт.)",elektricheskii-perforator-bindmark-ckd-600-s-naborom-nozhei-kvadratnye-4kh45-mm-sht-21719,baden,21719,TEST-vendor,TEST-type_product,136500.00,1,1
+14925,60,"Электрический перфоратор bindMARK PB-600, 3:1 и 2:1/обжим, универсальный (шт.)",elektricheskii-perforator-bindmark-pb-600-3-1-i-2-1-obzhim-universalnyi-sht-21746,baden,21746,TEST-vendor,TEST-type_product,138600.00,1,1
+14926,60,"Электрический перфоратор bindMARK SUPER450,  3:1/обжим, 4х4мм квадратные отверстия (шт.)",elektricheskii-perforator-bindmark-super450-3-1-obzhim-4kh4mm-kvadratnye-otverstiia-sht-21748,baden,21748,TEST-vendor,TEST-type_product,86800.00,1,1
+14927,60,"Электрическое обжимное устройство bindMARK JYH-600 (шт.)",elektricheskoe-obzhimnoe-ustroistvo-bindmark-jyh-600-sht-21722,baden,21722,TEST-vendor,TEST-type_product,56560.00,1,1
+14928,60,"Термоклеевой биндер BOWAY K3 (шт.)",termokleevoi-binder-boway-k3-sht-21816,baden,21816,TEST-vendor,TEST-type_product,89600.00,1,1
+14929,60,"Термоклеевой биндер BOWAY K5 (шт.)",termokleevoi-binder-boway-k5-sht-21817,baden,21817,TEST-vendor,TEST-type_product,107800.00,1,1
+14930,60,"Термоклеевой биндер BOWAY K7 (шт.)",termokleevoi-binder-boway-k7-sht-21819,baden,21819,TEST-vendor,TEST-type_product,151200.00,1,1
+14931,60,"Сменные ножи и марзаны для дыроколов KW-Trio 09520 (шт.)",smennye-nozhi-i-marzany-dlia-dyrokolov-kw-trio-09520-sht-21163,baden,21163,TEST-vendor,TEST-type_product,616.00,1,1
+14932,60,"Гильотина электрическая BOWAY BW-4606 V8.2, с подставкой (шт.)",gilotina-elektricheskaia-boway-bw-4606-v8-2-s-podstavkoi-sht-22118,baden,22118,TEST-vendor,TEST-type_product,63560.00,1,1
+14933,60,"Гильотина электрическая BOWAY BW-4908 V9.2, с подставкой (шт.)",gilotina-elektricheskaia-boway-bw-4908-v9-2-s-podstavkoi-sht-22120,baden,22120,TEST-vendor,TEST-type_product,84000.00,1,1
+14934,60,"Нож BOWAY для BW-4908 (ADC-72-703) (шт.)",nozh-boway-dlia-bw-4908-adc-72-703-sht-22847,baden,22847,TEST-vendor,TEST-type_product,4760.00,1,1
+14935,60,"Марзан для YIDE 858 (a3) (шт.)",marzan-dlia-yide-858-a3-sht-22162,baden,22162,TEST-vendor,TEST-type_product,322.00,1,1
+14936,60,"Марзан для YIDE 858 (a4) (шт.)",marzan-dlia-yide-858-a4-sht-22161,baden,22161,TEST-vendor,TEST-type_product,243.60,1,1
+14937,60,"Марзан для YIDE S898 (шт.)",marzan-dlia-yide-s898-sht-22163,baden,22163,TEST-vendor,TEST-type_product,182.00,1,1
+14938,60,"22.3 мм, черные wireMARK LIGHT (5 000 петель) (боб.)",22-3-mm-chernye-wiremark-light-5-000-petel-bob-47722,baden,47722,TEST-vendor,TEST-type_product,1225.28,1,1
+14939,60,"25.4 мм, черные wireMARK LIGHT (4 500 петель) (боб.)",25-4-mm-chernye-wiremark-light-4-500-petel-bob-47732,baden,47732,TEST-vendor,TEST-type_product,1225.28,1,1
+14940,60,"7.9 мм, зеленые (100 шт.) (уп.)",7-9-mm-zelenye-100-sht-up-47225,baden,47225,TEST-vendor,TEST-type_product,259.56,1,1
+14941,60,"14.3 мм, бронзовые wireMARK (19 300 петель) (боб.)",14-3-mm-bronzovye-wiremark-19-300-petel-bob-47567,baden,47567,TEST-vendor,TEST-type_product,2304.12,1,1
+14942,60,"14,3 мм, серебро wireMARK LIGHT (19 300 петель) (шт.)",143-mm-serebro-wiremark-light-19-300-petel-sht-47869,baden,47869,TEST-vendor,TEST-type_product,1882.72,1,1
+14943,60,"6.4 мм, золото wireMARK LIGHT (84 000 петель) (шт.)",6-4-mm-zoloto-wiremark-light-84-000-petel-sht-47818,baden,47818,TEST-vendor,TEST-type_product,2520.00,1,1
+14944,60,"6.4 мм, красные wireMARK LIGHT (84 000 петель) (шт.)",6-4-mm-krasnye-wiremark-light-84-000-petel-sht-47814,baden,47814,TEST-vendor,TEST-type_product,2380.00,1,1
+14945,60,"7.9 мм, синие wireMARK LIGHT (60 000 петель) (шт.)",7-9-mm-sinie-wiremark-light-60-000-petel-sht-47823,baden,47823,TEST-vendor,TEST-type_product,2285.08,1,1
+14946,60,"9,5 мм, золото wireMARK LIGHT (43 000 петель) (шт.)",95-mm-zoloto-wiremark-light-43-000-petel-sht-47838,baden,47838,TEST-vendor,TEST-type_product,2043.72,1,1
+14947,60,"9,5 мм, красные wireMARK LIGHT (43 000 петель) (шт.)",95-mm-krasnye-wiremark-light-43-000-petel-sht-47834,baden,47834,TEST-vendor,TEST-type_product,1876.00,1,1
+14948,60,"9,5 мм, синие wireMARK LIGHT (43 000 петель) (шт.)",95-mm-sinie-wiremark-light-43-000-petel-sht-47833,baden,47833,TEST-vendor,TEST-type_product,1876.00,1,1
+14949,60,"Пружины пластиковые 12 мм, белые (100 шт.) (уп.)",pruzhiny-plastikovye-12-mm-belye-100-sht-up-43311,baden,43311,TEST-vendor,TEST-type_product,134.12,1,1
+14950,60,"Пружины пластиковые 12 мм, черные (100 шт.) (уп.)",pruzhiny-plastikovye-12-mm-chernye-100-sht-up-43312,baden,43312,TEST-vendor,TEST-type_product,134.12,1,1
+14951,60,"Пружины пластиковые 14 мм, желтые (100 шт.) (уп.)",pruzhiny-plastikovye-14-mm-zheltye-100-sht-up-43366,baden,43366,TEST-vendor,TEST-type_product,157.92,1,1
+14952,60,"Пружины пластиковые 28 мм, прозрачные (50 шт.) (уп.)",pruzhiny-plastikovye-28-mm-prozrachnye-50-sht-up-43657,baden,43657,TEST-vendor,TEST-type_product,239.68,1,1

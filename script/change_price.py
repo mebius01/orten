@@ -1,18 +1,22 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+from slugify import slugify
+import sys, os, django
+sys.path.append("/home/iv/project/virtshop/orten") #here store is root folder(means parent).
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orten.settings")
+django.setup()
+from shop.models import Product
+
+last_id = Product.objects.latest('id').id # последние id в BD
 
 raw_product = open('raw_product.csv', 'r')
-sorted_product=open('sorted_product.csv', 'w')
+sorted_product=open('sorted_product.csv', 'a')
 db_product=open('db_product.csv', 'r+')
-sorted_product.write('id,category,name,slug,provider,vendor_code,vendor,specifications,type_product,price,stock,available'+'\n')
+sorted_product.write('id,category,name,slug,provider,vendor_code,vendor,type_product,price,stock,available'+'\n')
 
 data_db = db_product.readlines()
 data_raw = raw_product.readlines()
 
-counter=1
-
-# for r in data_raw:
-# 	print({str(r).split(';')[0][1:-1]:r})
 db_list={}
 raw_list={}
 
@@ -20,41 +24,83 @@ raw_list={}
 for d in data_db:
 	d=d.split(';')
 	db_list[d[5][1:-1]]=d
-
 for r in data_raw:
 	if str(r).split(';')[0] != '':
 		r=r.split(';')
 		raw_list[r[0][1:-1]]=r
 
-print(len(raw_list))
-print(len(db_list))
+########## рабочий код
+# for d in db_list:
+# 	if d in raw_list:
+# 		if db_list.get(d)[8].split(',')[0] != raw_list.get(d)[3].split(',')[0]:
+# 			db_list.get(d)[3]=db_list.get(d)[3][1:-1]
+# 			db_list.get(d)[4]=db_list.get(d)[4][1:-1]
+# 			db_list.get(d)[5]=db_list.get(d)[5][1:-1]
+# 			db_list.get(d)[6]=db_list.get(d)[6][1:-1]
+# 			db_list.get(d)[7]=db_list.get(d)[7][1:-1]
+# 			db_list.get(d)[8]=raw_list.get(d)[3].replace(",",".")
+# 			db_list.get(d)[9]='1'
+# 			db_list.get(d)[10]='1'+'\n'
+# 			sorted_product.write(','.join(db_list.get(d)))
+# 	if d not in raw_list:
+# 		db_list.get(d)[3]=db_list.get(d)[3][1:-1]
+# 		db_list.get(d)[4]=db_list.get(d)[4][1:-1]
+# 		db_list.get(d)[5]=db_list.get(d)[5][1:-1]
+# 		db_list.get(d)[6]=db_list.get(d)[6][1:-1]
+# 		db_list.get(d)[7]=db_list.get(d)[7][1:-1]
+# 		db_list.get(d)[8]=db_list.get(d)[8].replace(",",".")  #price замена , на .
+# 		db_list.get(d)[9]='0'
+# 		db_list.get(d)[10]='0'+'\n'
+# 		sorted_product.write(','.join(db_list.get(d)))
 
-for d in db_list:
-	if d not in raw_list:
-		print('part number', d, 'not in raw_product') # если нет значение ("stock";"available") выстовить в ноль
-		db_list.get(d)[2]=db_list.get(d)[2][1:-1]
-		db_list.get(d)[3]=db_list.get(d)[3][1:-1]
-		db_list.get(d)[4]=db_list.get(d)[4][1:-1]
-		db_list.get(d)[5]=db_list.get(d)[5][1:-1]
-		db_list.get(d)[6]=db_list.get(d)[6][1:-1]
-		db_list.get(d)[7]=db_list.get(d)[7][1:-1]
-		db_list.get(d)[10]=db_list.get(d)[10][1:-2]
-	elif d in raw_list:
-		if db_list.get(d)[8].split(',')[0] != raw_list.get(d)[3].split(',')[0]:
-			db_list.get(d)[2]=db_list.get(d)[2][1:-1]
-			db_list.get(d)[3]=db_list.get(d)[3][1:-1]
-			db_list.get(d)[4]=db_list.get(d)[4][1:-1]
-			db_list.get(d)[5]=db_list.get(d)[5][1:-1]
-			db_list.get(d)[6]=db_list.get(d)[6][1:-1]
-			db_list.get(d)[7]=db_list.get(d)[7][1:-1]
-			db_list.get(d)[10]=db_list.get(d)[10][1:-2]
-			db_list.get(d)[8]=raw_list.get(d)[3]
-			print(db_list.get(d), db_list.get(d)[8], raw_list.get(d)[3])
 
-for i in db_list.get('24330'):
-	print(i, type(i))
+######### рабочий код 
+for r in raw_list:
+	if r not in db_list:
+		last_id+=1
+		id_product=str(last_id)
+		category="60"
+		provider="baden"
+		vendor="TEST-vendor"
+		type_product="TEST-type_product"
+		name=raw_list.get(r)[1]
+		vendor_code=raw_list.get(r)[0][1:-1]
+		slug=slugify(name+'-'+vendor_code)
+		price=raw_list.get(r)[3].replace(",",".")
+		available, stock = "1", "1"
+		sorted_product.write(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
+
+
+
+
+# print(raw_list.get(r), r, 'not in db_list')
+# 14952,TEST-category,"Пружины пластиковые 28 мм, прозрачные (50 шт.) (уп.)",pruzhiny-plastikovye-28-mm-prozrachnye-50-sht-up-43657,baden,"43657",TEST-vendor,TEST-type_product,239,68,1,1
+
+# "26102"
+# "Держатель баннера XY2-F2 типа ""паук"" 600x1600 (пласт.крепление) (шт.)"
+# 318,64
+# 455,00
+# "Есть"
+# [1:-1]
+
+
+		# print(db_list.get(d),d, 'not in raw_product') # если нет значение ("stock";"available") а файле DB_LIST выстовить в ноль
+# print(raw_list.get('14050'))
+# print(Product.objects.latest('id'), Product.objects.latest('id').id, type(Product.objects.latest('id').id))
+# c=0
+# for i in db_list:
+# 	c+=1
+# 	print(c)
 # print(db_list)
 """
+		# db_list.get(d)[2]=db_list.get(d)[2][1:-1]
+		# db_list.get(d)[3]=db_list.get(d)[3][1:-1]
+		# db_list.get(d)[4]=db_list.get(d)[4][1:-1]
+		# db_list.get(d)[5]=db_list.get(d)[5][1:-1]
+		# db_list.get(d)[6]=db_list.get(d)[6][1:-1]
+		# db_list.get(d)[7]=db_list.get(d)[7][1:-1]
+		# db_list.get(d)[10]=db_list.get(d)[10][1:-2]
+
 3935 <class 'str'>0
 157 <class 'str'>1
 "Шредер DSB AF75" <class 'str'>2
