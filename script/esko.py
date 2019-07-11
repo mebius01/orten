@@ -132,3 +132,13 @@ print(counter)
 out_counter = open('counter_id.pkl', 'wb')
 pickle.dump(counter, out_counter)
 out_counter.close()
+
+"""
+prod=Product.objects.get(vendor_code='DRS55-A')
+>>> prod
+<Product: Мастер-пленка AEBO Duplo A3 DP 550S/ J 450/ 306 x 113 m/ DRS55>
+>>> prod.image
+<ImageFieldFile: None>
+>>> prod.image = 'product/77356.JPG'
+>>> prod.save()
+"""

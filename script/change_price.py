@@ -55,20 +55,20 @@ for r in data_raw:
 
 
 ######### рабочий код 
-for r in raw_list:
-	if r not in db_list:
-		last_id+=1
-		id_product=str(last_id)
-		category="60"
-		provider="baden"
-		vendor="TEST-vendor"
-		type_product="TEST-type_product"
-		name=raw_list.get(r)[1]
-		vendor_code=raw_list.get(r)[0][1:-1]
-		slug=slugify(name+'-'+vendor_code)
-		price=raw_list.get(r)[3].replace(",",".")
-		available, stock = "1", "1"
-		sorted_product.write(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
+# for r in raw_list:
+# 	if r not in db_list:
+# 		last_id+=1
+# 		id_product=str(last_id)
+# 		category="60"
+# 		provider="baden"
+# 		vendor="TEST-vendor"
+# 		type_product="TEST-type_product"
+# 		name=raw_list.get(r)[1]
+# 		vendor_code=raw_list.get(r)[0][1:-1]
+# 		slug=slugify(name+'-'+vendor_code)
+# 		price=raw_list.get(r)[3].replace(",",".")
+# 		available, stock = "1", "1"
+# 		sorted_product.write(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
 
 
 
