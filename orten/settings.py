@@ -22,24 +22,23 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 # SECURITY WARNING: keep the secret key used in production secret!
+# Security
 SECRET_KEY = env.str("SECRET_KEY")
+SECURE_HSTS_SECONDS = env.int('SECURE_HSTS_SECONDS', default=True)
+# добавляет preload директиву в заголовок
+SECURE_HSTS_PRELOAD = env.bool('SECURE_HSTS_PRELOAD', default=True)
+# добавляет includeSubDomains директиву в заголовок
+SECURE_HSTS_INCLUDE_SUBDOMAINS = env.bool('SECURE_HSTS_INCLUDE_SUBDOMAINS', default=True)
+SECURE_CONTENT_TYPE_NOSNIFF = env.bool('SECURE_CONTENT_TYPE_NOSNIFF', default=True)
+SECURE_BROWSER_XSS_FILTER = env.bool('SECURE_BROWSER_XSS_FILTER', default=True)
+# все не-HTTPS запросы на HTTPS
+SECURE_SSL_REDIRECT = env.bool('SECURE_SSL_REDIRECT', default=True)
+# Указывает использовать ли безопасные куки для сессии
+SESSION_COOKIE_SECURE = env.bool('SESSION_COOKIE_SECURE', default=True)
+# Указывает, использовать ли безопасные куки для CSRF.
+CSRF_COOKIE_SECURE = env.bool('CSRF_COOKIE_SECURE', default=True)
 
-# # Security
-# SECURE_HSTS_SECONDS = 3600
-# # добавляет preloadдирективу в заголовок
-# SECURE_HSTS_PRELOAD = True
-# # добавляет includeSubDomainsдирективу в заголовок
-# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-# SECURE_CONTENT_TYPE_NOSNIFF = True
-# SECURE_BROWSER_XSS_FILTER = True
-# # все не-HTTPS запросы на HTTPS
-# SECURE_SSL_REDIRECT = True
-# # Указывает использовать ли безопасные куки для сессии
-# SESSION_COOKIE_SECURE = True
-# # Указывает, использовать ли безопасные куки для CSRF.
-# CSRF_COOKIE_SECURE = True
-
-# X_FRAME_OPTIONS='DENY'
+X_FRAME_OPTIONS=env.str('X_FRAME_OPTIONS', default=True)
 
 # Если URL удовлетворяет регулярному выражению из этого списка, запрос не будет перенаправлен По умолчанию: [] SECURE_SSL_REDIRECT=False
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -134,6 +133,13 @@ DATABASES = {
         'PORT': env.str("DB_PORT"),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': 'db.sqlite3',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -247,3 +253,8 @@ DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.logging.LoggingPanel',
     'debug_toolbar.panels.redirects.RedirectsPanel',
 ]
+
+DEBUG_TOOLBAR_CONFIG = {
+    'RESULTS_CACHE_SIZE': 100,
+    'SQL_WARNING_THRESHOLD': 2000
+}
