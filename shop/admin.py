@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product, Services, Polygraphy # ProductStock,
+from .models import Rates, Category, Product, Services, Polygraphy # ProductStock,
 from mptt.admin import MPTTModelAdmin
 from import_export.admin import ImportExportModelAdmin
 from import_export import resources
@@ -9,6 +9,8 @@ from django.contrib.flatpages.admin import FlatPageAdmin
 from django.contrib.flatpages.forms import FlatpageForm
 from django.contrib.flatpages.models import FlatPage
 
+class RatesAdmin(admin.ModelAdmin):
+	list_display = ['id','created', 'usd', 'eur']
 
 class CategoryAdmin(MPTTModelAdmin):
 	list_display = ['name', 'id', 'slug']
@@ -51,6 +53,7 @@ class FlatPageNewAdmin(FlatPageAdmin):
 	list_filter = ('sites', 'registration_required')
 	search_fields = ('url', 'title')
 
+admin.site.register(Rates, RatesAdmin)
 admin.site.register(Category, CategoryAdmin,)
 admin.site.register(Product, ProductAdmin,)
 admin.site.register(Services, ServicesAdmin,)

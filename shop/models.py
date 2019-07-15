@@ -9,6 +9,15 @@ from datetime import datetime
 from django.utils import timezone
 from django.utils.translation import gettext as _
 
+class Rates(models.Model):
+	created = models.DateTimeField(auto_now_add=True, help_text='дата создания')
+	usd = models.DecimalField(max_digits=4, decimal_places=2, blank=True, help_text='Курс USD')
+	eur = models.DecimalField(max_digits=4, decimal_places=2, blank=True, help_text='Курс EUR')
+
+	class Meta:
+		verbose_name = 'Курс валют'
+		verbose_name_plural = 'Курсы валют'
+
 class Category(MPTTModel):
 	name = models.CharField(max_length=200, db_index=True, unique=True)
 	slug = models.SlugField(max_length=200, db_index=True, unique=True)
