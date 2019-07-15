@@ -5,6 +5,7 @@
 *.jpg
 *.jpg
 *.png
+fixtures/
 __pycache__/
 migrations/
 local_settings.py
