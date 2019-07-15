@@ -15,14 +15,10 @@
       })(window,document,'script','dataLayer','GTM-56KXN4');</script>
       <!-- End Google Tag Manager -->
       {% block head %}
-          {{head}}
+        {{ head }}
       {% endblock %}
-       <meta charset="utf-8">
-       <meta name="title" content="Компания Ортен електроника, расходные материалы">
        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-       <meta name="description" content="{{ instance.description }}">
-       <meta name="keywords" content="{{ instance.keywords }}">
-       <meta name="author" content="#">
+       <meta charset="utf-8">
        <link rel="stylesheet" href="{% static 'shop/css/w3.css' %}" type="text/css">
        <link rel="stylesheet" href="{% static 'shop/css/mine.css' %}" type="text/css">
        <link rel="stylesheet" href="{% static 'shop/css/flags.css' %}" type="text/css">
@@ -409,6 +405,7 @@
                           </form>
                         </div>
                       <!-- Language -->
+                      {% comment %}
                         <div class="dropdown">
                           <a class="btn btn-link nav-link dropdown-toggle"  href="http://#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {% get_current_language as LANGUAGE_CODE %}
@@ -427,6 +424,7 @@
                               </form>
                           </div>
                         </div>
+                      {% endcomment %}
                         <!-- Cart -->
                         <div>
                           {% with total_items=cart|length %}
