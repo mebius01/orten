@@ -5,29 +5,61 @@ import sys, os, django
 sys.path.append("/home/iv/project/virtshop/orten") #here store is root folder(means parent).
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orten.settings")
 django.setup()
-from shop.models import Product
 
-last_id = Product.objects.latest('id').id # последние id в BD
+from django.db.models import Q
+from shop.models import Product, Rates
+from decimal import Decimal
 
-raw_product = open('raw_product.csv', 'r')
-sorted_product=open('sorted_product.csv', 'a')
-db_product=open('db_product.csv', 'r+')
-sorted_product.write('id,category,name,slug,provider,vendor_code,vendor,type_product,price,stock,available'+'\n')
+new_rates_usd=input("Текущий курс USD. Вводить число с плавающей точкой! Пример 28.03: ")
+new_rates_usd=Decimal(new_rates_usd)
+new_rates_eur=input("Текущий курс EUR. Вводить число с плавающей точкой! Пример 29.23: ")
+new_rates_eur=Decimal(new_rates_eur)
+print(new_rates_eur, new_rates_usd) # 29 28
 
-data_db = db_product.readlines()
-data_raw = raw_product.readlines()
+product_usd = Product.objects.filter(
+									Q(provider='cw') |
+									Q(provider='ecko') |
+									Q(provider='megatrade') |
+									Q(provider='printsys') |
+									Q(provider='softcom')
+									)
+product_eur = Product.objects.filter(provider='KonicaMinolta')
 
-db_list={}
-raw_list={}
+for i in product_eur:
+	i.price=round(((i.price/old_rates.eur)*new_rates_eur), 2)
+	i.save()
+for i in product_usd:
+	i.price=round(((i.price/old_rates.usd)*new_rates_usd), 2)
+	i.save()
+
+new_rates = Rates.objects.create(usd=new_rates_usd, eur=new_rates_eur)
+new_rates.save()
 
 
-for d in data_db:
-	d=d.split(';')
-	db_list[d[5][1:-1]]=d
-for r in data_raw:
-	if str(r).split(';')[0] != '':
-		r=r.split(';')
-		raw_list[r[0][1:-1]]=r
+########## рабочий код
+# old_rates = Rates.objects.latest('created')
+
+# last_id = Product.objects.latest('id').id # последние id в BD
+# raw_product = open('raw_product.csv', 'r')
+# sorted_product=open('sorted_product.csv', 'a')
+# db_product=open('db_product.csv', 'r+')
+# sorted_product.write('id,category,name,slug,provider,vendor_code,vendor,type_product,price,stock,available'+'\n')
+
+# data_db = db_product.readlines()
+# data_raw = raw_product.readlines()
+
+# db_list={}
+# raw_list={}
+
+
+# for d in data_db:
+# 	d=d.split(';')
+# 	db_list[d[5][1:-1]]=d
+# for r in data_raw:
+# 	if str(r).split(';')[0] != '':
+# 		r=r.split(';')
+# 		raw_list[r[0][1:-1]]=r
+##########
 
 ########## рабочий код
 # for d in db_list:
@@ -52,9 +84,9 @@ for r in data_raw:
 # 		db_list.get(d)[9]='0'
 # 		db_list.get(d)[10]='0'+'\n'
 # 		sorted_product.write(','.join(db_list.get(d)))
+##########
 
-
-######### рабочий код 
+########## рабочий код
 # for r in raw_list:
 # 	if r not in db_list:
 # 		last_id+=1
@@ -69,7 +101,7 @@ for r in data_raw:
 # 		price=raw_list.get(r)[3].replace(",",".")
 # 		available, stock = "1", "1"
 # 		sorted_product.write(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
-
+##########
 
 
 

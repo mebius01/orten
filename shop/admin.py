@@ -10,7 +10,7 @@ from django.contrib.flatpages.forms import FlatpageForm
 from django.contrib.flatpages.models import FlatPage
 
 class RatesAdmin(admin.ModelAdmin):
-	list_display = ['id','created', 'usd', 'eur']
+	list_display = ['created', 'usd', 'eur']
 
 class CategoryAdmin(MPTTModelAdmin):
 	list_display = ['name', 'id', 'slug']
