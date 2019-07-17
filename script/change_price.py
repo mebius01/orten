@@ -1,39 +1,82 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from slugify import slugify
+
+import wget
 import sys, os, django
-sys.path.append("/home/iv/project/virtshop/orten") #here store is root folder(means parent).
+import pandas as pd
+
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orten.settings")
+sys.path.append("/home/iv/project/virtshop/orten") #here store is root folder(means parent).
 django.setup()
 
+from orten import settings
 from django.db.models import Q
 from shop.models import Product, Rates
 from decimal import Decimal
+from slugify import slugify
 
-new_rates_usd=input("Текущий курс USD. Вводить число с плавающей точкой! Пример 28.03: ")
-new_rates_usd=Decimal(new_rates_usd)
-new_rates_eur=input("Текущий курс EUR. Вводить число с плавающей точкой! Пример 29.23: ")
-new_rates_eur=Decimal(new_rates_eur)
-print(new_rates_eur, new_rates_usd) # 29 28
 
-product_usd = Product.objects.filter(
-									Q(provider='cw') |
-									Q(provider='ecko') |
-									Q(provider='megatrade') |
-									Q(provider='printsys') |
-									Q(provider='softcom')
-									)
-product_eur = Product.objects.filter(provider='KonicaMinolta')
+########## Добавления изображения ecko Рабочий код
 
-for i in product_eur:
-	i.price=round(((i.price/old_rates.eur)*new_rates_eur), 2)
-	i.save()
-for i in product_usd:
-	i.price=round(((i.price/old_rates.usd)*new_rates_usd), 2)
-	i.save()
+# row_product = pd.read_excel('ecko.xlsx')
+# row_product.dropna(inplace = True)
 
-new_rates = Rates.objects.create(usd=new_rates_usd, eur=new_rates_eur)
-new_rates.save()
+# movies = row_product[["PartNumber", "Адрес изображения"]]
+# row_dict = movies.head(66).to_dict()
+
+# list_keys = list(row_dict.get("PartNumber").keys())
+# c=0
+# jpg_dir = os.path.join(settings.BASE_DIR, 'media', 'product')
+# db_product = Product.objects.filter(provider='ecko')
+
+# while c < len(list_keys):
+# 	for i in db_product:
+# 		if i.vendor_code == row_dict.get("PartNumber").get(list_keys[c]):
+# 			url = row_dict.get("Адрес изображения").get(list_keys[c])
+# 			filename = wget.download(url, jpg_dir)
+# 			os.rename(filename, jpg_dir+"/"+slugify(row_dict.get("PartNumber").get(list_keys[c]))+'.jpg')
+# 			i.image = 'product/'+slugify(row_dict.get("PartNumber").get(list_keys[c]))+'.jpg'
+# 			i.save()
+# 	c+=1
+
+##########
+
+
+########## Обновление цен Рабочий код
+
+# new_rates_usd=input("Текущий курс USD. Вводить число с плавающей точкой! Пример 28.03: ")
+# new_rates_usd=Decimal(new_rates_usd)
+# new_rates_eur=input("Текущий курс EUR. Вводить число с плавающей точкой! Пример 29.23: ")
+# new_rates_eur=Decimal(new_rates_eur)
+# print(new_rates_eur, new_rates_usd) # 29 28
+
+# product_usd = Product.objects.filter(
+# 									Q(provider='cw') |
+# 									Q(provider='ecko') |
+# 									Q(provider='megatrade') |
+# 									Q(provider='printsys') |
+# 									Q(provider='softcom')
+# 									)
+# product_eur = Product.objects.filter(provider='KonicaMinolta')
+
+# for i in product_eur:
+# 	i.price=round(((i.price/old_rates.eur)*new_rates_eur), 2)
+# 	i.save()
+# for i in product_usd:
+# 	i.price=round(((i.price/old_rates.usd)*new_rates_usd), 2)
+# 	i.save()
+
+# new_rates = Rates.objects.create(usd=new_rates_usd, eur=new_rates_eur)
+# new_rates.save()
+
+##########
+
+
+
+
+
+
+
 
 
 ########## рабочий код

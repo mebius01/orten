@@ -189,12 +189,12 @@ LOCALE_PATHS = (
 )
 
 # Extra places for collectstatic to find static files.
-STATIC_ROOT = env.str("STATIC_ROOT")
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfile')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-MEDIA_ROOT = env.str("MEDIA_ROOT")
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 # Email
