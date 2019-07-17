@@ -11,10 +11,42 @@ django.setup()
 
 from orten import settings
 from django.db.models import Q
-from shop.models import Product, Rates
+from shop.models import Product, Rates, Category
 from decimal import Decimal
 from slugify import slugify
 
+########## Dump Product
+
+# from django.core.management import call_command
+# output = open('dump_product.json','w')
+# call_command('dumpdata', 'shop.Product', format='json', indent=3, stdout=output)
+# output.close()
+
+##########
+
+########## Обновление полей available
+
+row_product = pd.read_excel('ecko.xlsx')
+row_product.dropna(inplace = True)
+
+movies = row_product[["PartNumber", "Наличие"]]
+row_dict = movies.head(66).to_dict()
+
+list_keys = list(row_dict.get("PartNumber").keys())
+c=0
+db_product = Product.objects.filter(provider='ecko')
+
+while c < len(list_keys):
+	for i in db_product:
+		if i.vendor_code == row_dict.get("PartNumber").get(list_keys[c]):
+			if row_dict.get("Наличие").get(list_keys[c]) == "Да":
+				i.available = True
+			elif row_dict.get("Наличие").get(list_keys[c]) == "Нет":
+				i.available = False
+			i.save()
+	c+=1
+
+##########
 
 ########## Добавления изображения ecko Рабочий код
 
