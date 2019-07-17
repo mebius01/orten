@@ -26,25 +26,62 @@ from slugify import slugify
 
 ########## Обновление полей available
 
-row_product = pd.read_excel('ecko.xlsx')
-row_product.dropna(inplace = True)
+# e=input("ecko = 1: ")
+# s=input("softcom = 2: ")
+# m=input("megatrade = 3: ")
+# b=input("baden = 4: ")
 
-movies = row_product[["PartNumber", "Наличие"]]
-row_dict = movies.head(66).to_dict()
+e_r=["PartNumber", "Наличие"]; e_prov='ecko'
+s_r=["Номенклатура.Артикул"]
+m_r=["Артикул ", "Залишок"]; m_prov='megatrade'
+b_r=["Код товара"]
 
-list_keys = list(row_dict.get("PartNumber").keys())
-c=0
-db_product = Product.objects.filter(provider='ecko')
+def t(x_price, y_list, prov):
+	row_product = pd.read_excel(x_price)
+	row_product.dropna(inplace = True)
+	movies = row_product[y_list]
+	row_dict = movies.head(66).to_dict()
+	list_keys = list(row_dict.get(y_list[0]).keys())
+	db_product = Product.objects.filter(provider=prov)
+	c=0
+	while c < len(list_keys):
+		for i in db_product:
+			if i.vendor_code == row_dict.get(y_list[0]).get(list_keys[c]):
+				if row_dict.get(y_list[1]).get(list_keys[c]) == ("Да" or "В наявності"):
+					# i.available = True
+					print("ДА", c)
+				elif row_dict.get(y_list[1]).get(list_keys[c]) == ("Нет" or "Під замовлення"):
+					print("НЕТ", c)
+					# i.available = False
+ 				# i.save()
+		c+=1
 
-while c < len(list_keys):
-	for i in db_product:
-		if i.vendor_code == row_dict.get("PartNumber").get(list_keys[c]):
-			if row_dict.get("Наличие").get(list_keys[c]) == "Да":
-				i.available = True
-			elif row_dict.get("Наличие").get(list_keys[c]) == "Нет":
-				i.available = False
-			i.save()
-	c+=1
+# t('ecko.xlsx', e_r, e_prov)
+
+t('megatrade.xlsx', m_r, m_prov)
+
+
+
+
+# row_product = pd.read_excel('ecko.xlsx')
+# row_product.dropna(inplace = True)
+
+# movies = row_product[["PartNumber", "Наличие"]]
+# row_dict = movies.head(66).to_dict()
+
+# list_keys = list(row_dict.get("PartNumber").keys())
+# db_product = Product.objects.filter(provider='ecko')
+# c=0
+
+# while c < len(list_keys):
+# 	for i in db_product:
+# 		if i.vendor_code == row_dict.get("PartNumber").get(list_keys[c]):
+# 			if row_dict.get("Наличие").get(list_keys[c]) == "Да":
+# 				i.available = True
+# 			elif row_dict.get("Наличие").get(list_keys[c]) == "Нет":
+# 				i.available = False
+# 			i.save()
+# 	c+=1
 
 ##########
 
