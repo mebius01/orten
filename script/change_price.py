@@ -4,16 +4,17 @@
 import wget
 import sys, os, django
 import pandas as pd
+import numpy as np
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orten.settings")
-sys.path.append("/home/iv/project/virtshop/orten") #here store is root folder(means parent).
-django.setup()
+# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orten.settings")
+# sys.path.append("/home/iv/project/virtshop/orten") #here store is root folder(means parent).
+# django.setup()
 
-from orten import settings
-from django.db.models import Q
-from shop.models import Product, Rates, Category
-from decimal import Decimal
-from slugify import slugify
+# from orten import settings
+# from django.db.models import Q
+# from shop.models import Product, Rates, Category
+# from decimal import Decimal
+# from slugify import slugify
 
 ########## Dump Product
 
@@ -32,33 +33,78 @@ from slugify import slugify
 # b=input("baden = 4: ")
 
 e_r=["PartNumber", "Наличие"]; e_prov='ecko'
-s_r=["Номенклатура.Артикул"]
+s_r=["PartNumber"]; s_prov='softcom'
 m_r=["Артикул ", "Залишок"]; m_prov='megatrade'
-b_r=["Код товара"]
+b_r=["Код товара", "Остаток"]; b_prov='baden'
 
-def t(x_price, y_list, prov):
-	row_product = pd.read_excel(x_price)
-	row_product.dropna(inplace = True)
-	movies = row_product[y_list]
-	row_dict = movies.head(66).to_dict()
-	list_keys = list(row_dict.get(y_list[0]).keys())
-	db_product = Product.objects.filter(provider=prov)
-	c=0
-	while c < len(list_keys):
-		for i in db_product:
-			if i.vendor_code == row_dict.get(y_list[0]).get(list_keys[c]):
-				if row_dict.get(y_list[1]).get(list_keys[c]) == ("Да" or "В наявності"):
-					# i.available = True
-					print("ДА", c)
-				elif row_dict.get(y_list[1]).get(list_keys[c]) == ("Нет" or "Під замовлення"):
-					print("НЕТ", c)
-					# i.available = False
- 				# i.save()
-		c+=1
 
-# t('ecko.xlsx', e_r, e_prov)
+df = pd.read_excel('megatrade.xlsx')
+df=df.dropna() # Скріть все с NaN
+# print(df.head(20))
+print(df.iloc[:, 1:8]) # 2476 404836  Вузол B широкоформатного кольорового БФП  Rico 1104.19 NaN
 
-t('megatrade.xlsx', m_r, m_prov)
+df = pd.read_excel('baden.xlsx')
+df=df.dropna() # Скріть все с NaN
+# print(df.head(20))
+print(df.iloc[:, 0:4]) # 962 14050.0 Чернила KW-triO для нумераторов, 20 мл, черные  52     86.58
+
+
+df = pd.read_excel('softcom.xls')
+# df=df.dropna() # Скріть все с NaN
+# print(df.head(20))
+print(df.iloc[:, [2,4,5,7]]) # 2354  MR.JQU11.001 Проектор Acer S1386WH (MR.JQU11.001) NaN  NaN
+
+df = pd.read_excel('ecko.xlsx')
+# df=df.dropna() # Скріть все с NaN
+# print(df.head(20))
+print(df.iloc[:, [0,1,5,9]]) # 5 DRS55-A  Мастер-пленка AEBO Duplo A3 DP 550S/ J 450/ 30. 24.7  Да
+
+
+
+# def t(x_price, y_list, prov):
+# 	row_product = pd.read_excel(x_price)
+# 	row_product.dropna(inplace = True)
+# 	movies = row_product[y_list]
+# 	row_dict = movies.head(60).to_dict()
+# 	# row_product = pd.read_excel(x_price)
+# 	# row_product.dropna(inplace = True)
+# 	# # movies = row_product[y_list]
+# 	# row_dict = row_product.to_dict()
+
+# 	print(row_dict)
+
+# 	list_keys = list(row_dict.get(y_list[0]).keys())
+# 	db_product = Product.objects.filter(provider=prov)
+# 	c=0
+# 	if len(y_list) == 2:
+# 		while c < len(list_keys):
+# 			for i in db_product:
+# 				if i.vendor_code == row_dict.get(y_list[0]).get(list_keys[c]):
+# 					if row_dict.get(y_list[1]).get(list_keys[c]) == ("Да" or "Есть" or "В наявності"):
+# 						# i.available = True
+# 						print("ДА", c)
+# 					elif row_dict.get(y_list[1]).get(list_keys[c]) == ("Нет" or " " or "Під замовлення"):
+# 						print("НЕТ", c)
+# 						# i.available = False
+# 	 				# i.save()
+# 			c+=1
+# 	print(prov*20)
+
+# 	# elif len(y_list) == 1:
+# 	# 	while c < len(list_keys):
+# 	# 		for i in db_product:
+# 	# 			if i.vendor_code == row_dict.get(y_list[0]).get(list_keys[c]):
+# 	# 				# i.available = True
+# 	# 				print("ДА", c)
+
+# 	# 		c+=1
+# # t('ecko.xlsx', e_r, e_prov)
+
+# # t('megatrade.xlsx', m_r, m_prov)
+
+# # t('1.xlsx', s_r, s_prov)
+
+# t('2.xlsx', b_r, b_prov)
 
 
 
