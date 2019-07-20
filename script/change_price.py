@@ -6,15 +6,15 @@ import sys, os, django
 import pandas as pd
 import numpy as np
 
-# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orten.settings")
-# sys.path.append("/home/iv/project/virtshop/orten") #here store is root folder(means parent).
-# django.setup()
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orten.settings")
+sys.path.append("/home/iv/project/virtshop/orten") #here store is root folder(means parent).
+django.setup()
 
-# from orten import settings
-# from django.db.models import Q
-# from shop.models import Product, Rates, Category
-# from decimal import Decimal
-# from slugify import slugify
+from orten import settings
+from django.db.models import Q
+from shop.models import Product, Rates, Category
+from decimal import Decimal
+from slugify import slugify
 
 ########## Dump Product
 
@@ -38,26 +38,126 @@ m_r=["Артикул ", "Залишок"]; m_prov='megatrade'
 b_r=["Код товара", "Остаток"]; b_prov='baden'
 
 
-df = pd.read_excel('megatrade.xlsx')
-df=df.dropna() # Скріть все с NaN
-# print(df.head(20))
-print(df.iloc[:, 1:8]) # 2476 404836  Вузол B широкоформатного кольорового БФП  Rico 1104.19 NaN
+# df = pd.read_excel('work_price/megatrade.xlsx')
+# # df=df.dropna() # Скріть все с NaN
+# # print(df.head(20))
+# d=df.iloc[2420, :]
+# print(d) # 2476 404836  Вузол B широкоформатного кольорового БФП  Rico 1104.19 NaN
 
-df = pd.read_excel('baden.xlsx')
-df=df.dropna() # Скріть все с NaN
-# print(df.head(20))
-print(df.iloc[:, 0:4]) # 962 14050.0 Чернила KW-triO для нумераторов, 20 мл, черные  52     86.58
+rates = Rates.objects.latest('created')
+
+########## Обновление полей available megatrade
+
+row_product = pd.read_excel('work_price/megatrade.xlsx')
+movies = row_product[m_r]
+row_dict = movies.to_dict()
+
+list_keys = list(row_dict.get(m_r[0]).keys())
+db_product = Product.objects.filter(provider=m_prov)
+c=0
+cc=0
+
+product_file=open('sorted_product.csv', 'w')
+product_file.write('id,category,name,slug,provider,vendor_code,vendor,type_product,price,stock,available'+'\n')
+itd=Product.objects.latest('id').id+1
+
+while c < len(list_keys):
+	try:
+		p = Product.objects.get(vendor_code=row_dict.get(m_r[0]).get(list_keys[c]))
+		# print(row_dict.get(m_r[0]).get(list_keys[c]), "in bd")
+		if row_dict.get(m_r[1]).get(list_keys[c]) == "В наявності":
+			pass
+			# print("Yes")
+			# p.available = True; p.save()
+		elif row_dict.get(m_r[1]).get(list_keys[c]) == "Під замовлення":
+			pass
+			# print("No")
+			# p.available = False; p.save()
+	except Product.DoesNotExist:
+		# print(row_dict.get(m_r[0]).get(list_keys[c]), "Not in bd")
+		try:
+			r = row_product.dropna(thresh=4).iloc[c, :]
+			itd+=1
+			id_product=str(itd)
+			vendor="Ricoh"
+			category="CATEGORY"
+			type_product="TYPE_PRODUCT"
+			name=r[2];name=str(name);name='"'+name+'"'
+			vendor_code=r[1];vendor_code=str(vendor_code)
+			slug=slugify(name+'-'+vendor_code) #name + vendor_code
+			# расчет стоимости 
+			price=r[5];price=str(price)
+			price=round(Decimal(price.replace(",","."))*rates.usd); price=str(price)
+			provider=m_prov
+			available, stock = "1", "1"
+			product_file.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
+			print(r, '----------\n')
+		except IndexError:
+			pass
+	c+=1
+
+##########
 
 
-df = pd.read_excel('softcom.xls')
-# df=df.dropna() # Скріть все с NaN
-# print(df.head(20))
-print(df.iloc[:, [2,4,5,7]]) # 2354  MR.JQU11.001 Проектор Acer S1386WH (MR.JQU11.001) NaN  NaN
 
-df = pd.read_excel('ecko.xlsx')
-# df=df.dropna() # Скріть все с NaN
-# print(df.head(20))
-print(df.iloc[:, [0,1,5,9]]) # 5 DRS55-A  Мастер-пленка AEBO Duplo A3 DP 550S/ J 450/ 30. 24.7  Да
+# while c < len(list_keys):
+# 	for i in db_product:
+# 		if row_dict.get(m_r[0]).get(list_keys[c]) == i.vendor_code:
+# 			if row_dict.get(m_r[1]).get(list_keys[c]) == "В наявності":
+# 				print("Yes"); yes+=1
+# 				# i.available = True
+# 			elif row_dict.get(m_r[1]).get(list_keys[c]) == "Під замовлення":
+# 				print("No"); no+=1
+# 				# i.available = False
+# 			# i.save()
+# 		elif row_dict.get(m_r[0]).get(list_keys[c]) != i.vendor_code:
+# 			print(row_dict.get(m_r[0]).get(list_keys[c]))
+# 	c+=1
+# print("Yes = ", yes, "No = ", no, "общие количесво объектов = ", c)
+
+
+# row_product = pd.read_excel('ecko.xlsx')
+# # row_product.dropna(inplace = True)
+
+# movies = row_product[["PartNumber", "Наличие"]]
+# row_dict = movies.head(66).to_dict()
+
+# list_keys = list(row_dict.get("PartNumber").keys())
+# db_product = Product.objects.filter(provider='ecko')
+# c=0
+
+# while c < len(list_keys):
+# 	for i in db_product:
+# 		if i.vendor_code == row_dict.get("PartNumber").get(list_keys[c]):
+# 			if row_dict.get("Наличие").get(list_keys[c]) == "Да":
+# 				print("Yes")
+# 				# i.available = True
+# 			elif row_dict.get("Наличие").get(list_keys[c]) == "Нет":
+# 				print("No")
+# 				i.available = False
+# 			i.save()
+# 	c+=1
+
+
+
+
+
+
+
+# df = pd.read_excel('work_price/baden.xlsx')
+# # df=df.dropna() # Скріть все с NaN
+# # print(df.head(20))
+# print(df.iloc[:, 0:4]) # 962 14050.0 Чернила KW-triO для нумераторов, 20 мл, черные  52     86.58
+
+# df = pd.read_excel('work_price/softcom.xls')
+# # df=df.dropna() # Скріть все с NaN
+# # print(df.head(20))
+# print(df.iloc[:, [2,4,5,7]]) # 2354  MR.JQU11.001 Проектор Acer S1386WH (MR.JQU11.001) NaN  NaN
+
+# df = pd.read_excel('work_price/ecko.xlsx')
+# # df=df.dropna() # Скріть все с NaN
+# # print(df.head(20))
+# print(df.iloc[:, [0,1,5,9]]) # 5 DRS55-A  Мастер-пленка AEBO Duplo A3 DP 550S/ J 450/ 30. 24.7  Да
 
 
 
