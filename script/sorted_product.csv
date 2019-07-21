@@ -1,0 +1,113 @@
+id,category,name,slug,provider,vendor_code,vendor,type_product,price,stock,available
+14904,CATEGORY,"Блок фотобарабана MP 402SPF",blok-fotobarabana-mp-402spf-m9060130,megatrade,M9060130,Ricoh,TYPE_PRODUCT,6541,1,1
+14905,CATEGORY,"Вузол закріплення",vuzol-zakriplennia-m1604028,megatrade,M1604028,Ricoh,TYPE_PRODUCT,10512,1,1
+14906,CATEGORY,"Вузол переносу",vuzol-perenosu-m1606250,megatrade,M1606250,Ricoh,TYPE_PRODUCT,405,1,1
+14907,CATEGORY,"Картридж SP 330H чорний великої ємності",kartridzh-sp-330h-chornii-velikoyi-iemnosti-408281,megatrade,408281,Ricoh,TYPE_PRODUCT,8007,1,1
+14908,CATEGORY,"Картридж SP C220E жовтий",kartridzh-sp-c220e-zhovtii-407643,megatrade,407643,Ricoh,TYPE_PRODUCT,3028,1,1
+14909,CATEGORY,"Картридж SP C220E чорний",kartridzh-sp-c220e-chornii-407642,megatrade,407642,Ricoh,TYPE_PRODUCT,2883,1,1
+14910,CATEGORY,"Картридж SP277HE чорний великої ємності",kartridzh-sp277he-chornii-velikoyi-iemnosti-408160,megatrade,408160,Ricoh,TYPE_PRODUCT,2460,1,1
+14911,CATEGORY,"Тонер-картридж MP 2000 чорний",toner-kartridzh-mp-2000-chornii-842340,megatrade,842340,Ricoh,TYPE_PRODUCT,766,1,1
+14912,CATEGORY,"Тонер-картридж MP 201 чорний",toner-kartridzh-mp-201-chornii-842338,megatrade,842338,Ricoh,TYPE_PRODUCT,680,1,1
+14913,CATEGORY,"Тонер-картридж MP 2501 чорний",toner-kartridzh-mp-2501-chornii-842341,megatrade,842341,Ricoh,TYPE_PRODUCT,687,1,1
+14914,CATEGORY,"Тонер-картридж MP 301 чорний",toner-kartridzh-mp-301-chornii-842339,megatrade,842339,Ricoh,TYPE_PRODUCT,769,1,1
+14915,CATEGORY,"Тонер-картридж MP 9002 чорний",toner-kartridzh-mp-9002-chornii-842346,megatrade,842346,Ricoh,TYPE_PRODUCT,2335,1,1
+14916,CATEGORY,"Тонер-картридж PRO 1357 чорний",toner-kartridzh-pro-1357-chornii-828550,megatrade,828550,Ricoh,TYPE_PRODUCT,2938,1,1
+14917,CATEGORY,"Блок зображення",blok-zobrazhennia-m9550127,megatrade,M9550127,Ricoh,TYPE_PRODUCT,23883,1,1
+14918,CATEGORY,"Блок проявки малиновий",blok-proiavki-malinovii-d2423087,megatrade,D2423087,Ricoh,TYPE_PRODUCT,6041,1,1
+14919,CATEGORY,"Блок проявки чорний",blok-proiavki-chornii-d2423085,megatrade,D2423085,Ricoh,TYPE_PRODUCT,7149,1,1
+14920,CATEGORY,"Блок фотобарабана кольоровий",blok-fotobarabana-kolorovii-d2422244,megatrade,D2422244,Ricoh,TYPE_PRODUCT,37747,1,1
+14921,CATEGORY,"Вузол заряду",vuzol-zariadu-m2813051,megatrade,M2813051,Ricoh,TYPE_PRODUCT,16358,1,1
+14922,CATEGORY,"Вузол переносу",vuzol-perenosu-g1596200,megatrade,G1596200,Ricoh,TYPE_PRODUCT,5654,1,1
+14923,CATEGORY,"Палець відокремлювання",palets-vidokremliuvannia-ae044045,megatrade,AE044045,Ricoh,TYPE_PRODUCT,80,1,1
+14924,CATEGORY,"Підшипник кульковий 50х65х7 мм",pidshipnik-kulkovii-50kh65kh7-mm-ae030075,megatrade,AE030075,Ricoh,TYPE_PRODUCT,2276,1,1
+14925,CATEGORY,"Пластина нижня",plastina-nizhnia-b0392628,megatrade,B0392628,Ricoh,TYPE_PRODUCT,76,1,1
+14926,CATEGORY,"Ролик вертикального транспорту",rolik-vertikalnogo-transportu-d0392909,megatrade,D0392909,Ricoh,TYPE_PRODUCT,333,1,1
+14927,CATEGORY,"Ролик вертикального транспорту",rolik-vertikalnogo-transportu-d0392912,megatrade,D0392912,Ricoh,TYPE_PRODUCT,550,1,1
+14928,CATEGORY,"Ролик вертикального транспорту",rolik-vertikalnogo-transportu-d0392910,megatrade,D0392910,Ricoh,TYPE_PRODUCT,333,1,1
+14929,CATEGORY,"Ролик подачі паперу",rolik-podachi-paperu-af031068,megatrade,AF031068,Ricoh,TYPE_PRODUCT,267,1,1
+14930,CATEGORY,"Термістор",termistor-aw100154,megatrade,AW100154,Ricoh,TYPE_PRODUCT,492,1,1
+14931,CATEGORY,"Термістор",termistor-aw100156,megatrade,AW100156,Ricoh,TYPE_PRODUCT,768,1,1
+14932,CATEGORY,"Фотодатчик",fotodatchik-aw010129,megatrade,AW010129,Ricoh,TYPE_PRODUCT,2116,1,1
+14933,CATEGORY,"Фрікціон",friktsion-m1602620,megatrade,M1602620,Ricoh,TYPE_PRODUCT,345,1,1
+14934,CATEGORY,"Фрікціон",friktsion-b0392596,megatrade,B0392596,Ricoh,TYPE_PRODUCT,912,1,1
+14935,CATEGORY,"Шестерня вала притискного",shesternia-vala-pritisknogo-ab014317,megatrade,AB014317,Ricoh,TYPE_PRODUCT,413,1,1
+14936,CATEGORY,"Важіль",vazhil-d0396230,megatrade,D0396230,Ricoh,TYPE_PRODUCT,164,1,1
+14937,CATEGORY,"Вал знімання майсте-плівки",val-znimannia-maiste-plivki-c2793455,megatrade,C2793455,Ricoh,TYPE_PRODUCT,3203,1,1
+14938,CATEGORY,"Вісь",vis-a8592112,megatrade,A8592112,Ricoh,TYPE_PRODUCT,36,1,1
+14939,CATEGORY,"Вісь вузла проявлення",vis-vuzla-proiavlennia-aa143719,megatrade,AA143719,Ricoh,TYPE_PRODUCT,73,1,1
+14940,CATEGORY,"Втулка",vtulka-d0192823,megatrade,D0192823,Ricoh,TYPE_PRODUCT,164,1,1
+14941,CATEGORY,"Вузол накачки тонера чорний",vuzol-nakachki-tonera-chornii-m0263207,megatrade,M0263207,Ricoh,TYPE_PRODUCT,3656,1,1
+14942,CATEGORY,"Вузол подачі тонера",vuzol-podachi-tonera-d0193501,megatrade,D0193501,Ricoh,TYPE_PRODUCT,2493,1,1
+14943,CATEGORY,"Датчик закінчення тонеру",datchik-zakinchennia-toneru-aw310009,megatrade,AW310009,Ricoh,TYPE_PRODUCT,1939,1,1
+14944,CATEGORY,"Двигун кроковий постійного струму 24V 20W",dvigun-krokovii-postiinogo-strumu-24v-20w-ax060322,megatrade,AX060322,Ricoh,TYPE_PRODUCT,3573,1,1
+14945,CATEGORY,"Екран барабана В4  в зборі",ekran-barabana-v4-v-zbori-c2522340,megatrade,C2522340,Ricoh,TYPE_PRODUCT,7475,1,1
+14946,CATEGORY,"Енергонезалежна пам'ять",energonezalezhna-pam-iat-14077677,megatrade,14077677,Ricoh,TYPE_PRODUCT,630,1,1
+14947,CATEGORY,"Ємність для відпрацьованого тонера",emnist-dlia-vidpratsovanogo-tonera-m0an6412,megatrade,M0AN6412,Ricoh,TYPE_PRODUCT,2325,1,1
+14948,CATEGORY,"Зубчастий привідний пас :2M:40X426 діаметром 135 мм",zubchastii-prividnii-pas-2m-40x426-diametrom-135-mm-aa043315,megatrade,AA043315,Ricoh,TYPE_PRODUCT,237,1,1
+14949,CATEGORY,"Зубчастий привідний пас B60S3M471 діаметром 150 мм",zubchastii-prividnii-pas-b60s3m471-diametrom-150-mm-aa043654,megatrade,AA043654,Ricoh,TYPE_PRODUCT,313,1,1
+14950,CATEGORY,"Корпус вузла закріплення",korpus-vuzla-zakriplennia-b2594103,megatrade,B2594103,Ricoh,TYPE_PRODUCT,1860,1,1
+14951,CATEGORY,"Лампа флюоресцентна 140V/26W",lampa-fliuorestsentna-140v-26w-ax500105,megatrade,AX500105,Ricoh,TYPE_PRODUCT,24138,1,1
+14952,CATEGORY,"Муфта магнітна 0.5NM:Z35",mufta-magnitna-0-5nm-z35-d0191188,megatrade,D0191188,Ricoh,TYPE_PRODUCT,1446,1,1
+14953,CATEGORY,"Направляюча ліва",napravliaiucha-liva-b2864497,megatrade,B2864497,Ricoh,TYPE_PRODUCT,413,1,1
+14954,CATEGORY,"Направляюча права",napravliaiucha-prava-b2864498,megatrade,B2864498,Ricoh,TYPE_PRODUCT,513,1,1
+14955,CATEGORY,"Прапорець",praporets-d6421454,megatrade,D6421454,Ricoh,TYPE_PRODUCT,135,1,1
+14956,CATEGORY,"Пружина",pruzhina-aa066285,megatrade,AA066285,Ricoh,TYPE_PRODUCT,36,1,1
+14957,CATEGORY,"Пружина",pruzhina-d0396231,megatrade,D0396231,Ricoh,TYPE_PRODUCT,81,1,1
+14958,CATEGORY,"Пружина",pruzhina-d0092636,megatrade,D0092636,Ricoh,TYPE_PRODUCT,81,1,1
+14959,CATEGORY,"Світлонепроникний екран",svitloneproniknii-ekran-b2864755,megatrade,B2864755,Ricoh,TYPE_PRODUCT,881,1,1
+14960,CATEGORY,"Скребок видалення паперового пилу",skrebok-vidalennia-paperovogo-pilu-d0092638,megatrade,D0092638,Ricoh,TYPE_PRODUCT,217,1,1
+14961,CATEGORY,"Упор боковий тильний",upor-bokovii-tilnii-b0392731,megatrade,B0392731,Ricoh,TYPE_PRODUCT,647,1,1
+14962,CATEGORY,"Упор боковий фронтальний",upor-bokovii-frontalnii-b0392734,megatrade,B0392734,Ricoh,TYPE_PRODUCT,514,1,1
+14963,CATEGORY,"Ущільнювач верхній",ushchilniuvach-verkhnii-aa151961,megatrade,AA151961,Ricoh,TYPE_PRODUCT,674,1,1
+14964,CATEGORY,"Шестерня",shesternia-d1494754,megatrade,D1494754,Ricoh,TYPE_PRODUCT,118,1,1
+14965,CATEGORY,"Шестерня",shesternia-d1494652,megatrade,D1494652,Ricoh,TYPE_PRODUCT,118,1,1
+14966,CATEGORY,"Шестерня 28Z",shesternia-28z-a1741162,megatrade,A1741162,Ricoh,TYPE_PRODUCT,73,1,1
+14967,CATEGORY,"Шестерня Z37/T25",shesternia-z37-t25-d0491131,megatrade,D0491131,Ricoh,TYPE_PRODUCT,164,1,1
+14968,CATEGORY,"Шестерня приводу вузла закріплення №4",shesternia-privodu-vuzla-zakriplennia-4-m0a11121,megatrade,M0A11121,Ricoh,TYPE_PRODUCT,166,1,1
+14969,CATEGORY,"Інструкція користувача російська",instruktsiia-koristuvacha-rosiiska-985506,megatrade,985506,Ricoh,TYPE_PRODUCT,401,1,1
+14970,CATEGORY,"Інструкція користувача російська",instruktsiia-koristuvacha-rosiiska-971604,megatrade,971604,Ricoh,TYPE_PRODUCT,393,1,1
+14971,CATEGORY,"Інструкція користувача російська",instruktsiia-koristuvacha-rosiiska-974886,megatrade,974886,Ricoh,TYPE_PRODUCT,402,1,1
+14972,CATEGORY,"Інструкція користувача російська",instruktsiia-koristuvacha-rosiiska-972000,megatrade,972000,Ricoh,TYPE_PRODUCT,383,1,1
+14973,CATEGORY,"Інструкція користувача російською мовою для SP 5200DN/5210DN",instruktsiia-koristuvacha-rosiiskoiu-movoiu-dlia-sp-5200dn-5210dn-973154,megatrade,973154,Ricoh,TYPE_PRODUCT,655,1,1
+14974,CATEGORY,"Інструкція користувача російською мовою для MP 402SPF",instruktsiia-koristuvacha-rosiiskoiu-movoiu-dlia-mp-402spf-914,megatrade,914,Ricoh,TYPE_PRODUCT,328,1,1
+14975,CATEGORY,"Інструкція користувача англійською мовою",instruktsiia-koristuvacha-angliiskoiu-movoiu-911927,megatrade,911927,Ricoh,TYPE_PRODUCT,675,1,1
+14976,CATEGORY,"Інструкція користувача англійською мовою",instruktsiia-koristuvacha-angliiskoiu-movoiu-971986,megatrade,971986,Ricoh,TYPE_PRODUCT,449,1,1
+14977,CATEGORY,"Інструкція користувача англійською мовою на CD диску в комплекті з брошурою для DD 6650P",instruktsiia-koristuvacha-angliiskoiu-movoiu-na-cd-disku-v-komplekti-z-broshuroiu-dlia-dd-6650p-985022,megatrade,985022,Ricoh,TYPE_PRODUCT,369,1,1
+14978,CATEGORY,"Інструкція користувача російська",instruktsiia-koristuvacha-rosiiska-983746,megatrade,983746,Ricoh,TYPE_PRODUCT,348,1,1
+14979,CATEGORY,"Інструкція користувача російська",instruktsiia-koristuvacha-rosiiska-913787,megatrade,913787,Ricoh,TYPE_PRODUCT,343,1,1
+14980,CATEGORY,"Інструкція користувача російська",instruktsiia-koristuvacha-rosiiska-976799,megatrade,976799,Ricoh,TYPE_PRODUCT,271,1,1
+14981,CATEGORY,"Інструкція користувача російською мовою на CD диску в комплекті з брошурою",instruktsiia-koristuvacha-rosiiskoiu-movoiu-na-cd-disku-v-komplekti-z-broshuroiu-992566,megatrade,992566,Ricoh,TYPE_PRODUCT,766,1,1
+14982,CATEGORY,"Інструкція користувача російською мовою на CD диску в комплекті з брошурою",instruktsiia-koristuvacha-rosiiskoiu-movoiu-na-cd-disku-v-komplekti-z-broshuroiu-915289,megatrade,915289,Ricoh,TYPE_PRODUCT,383,1,1
+14983,CATEGORY,"Інструкція користувача російською мовою на CD диску в комплекті з брошурою",instruktsiia-koristuvacha-rosiiskoiu-movoiu-na-cd-disku-v-komplekti-z-broshuroiu-972000,megatrade,972000,Ricoh,TYPE_PRODUCT,449,1,1
+14984,CATEGORY,"Інструкція користувача російською мовою на CD диску в комплекті з брошурою",instruktsiia-koristuvacha-rosiiskoiu-movoiu-na-cd-disku-v-komplekti-z-broshuroiu-974886,megatrade,974886,Ricoh,TYPE_PRODUCT,471,1,1
+14985,CATEGORY,"Інструкція користувача російською мовою на CD диску в комплекті з брошурою",instruktsiia-koristuvacha-rosiiskoiu-movoiu-na-cd-disku-v-komplekti-z-broshuroiu-913787,megatrade,913787,Ricoh,TYPE_PRODUCT,337,1,1
+14986,CATEGORY,"Інструкція користувача російською мовою на CD диску в комплекті з брошурою",instruktsiia-koristuvacha-rosiiskoiu-movoiu-na-cd-disku-v-komplekti-z-broshuroiu-916908,megatrade,916908,Ricoh,TYPE_PRODUCT,368,1,1
+14987,CATEGORY,"Інструкція користувача російською мовою на CD диску в комплекті з брошурою для  DX 2430/DX 2330",instruktsiia-koristuvacha-rosiiskoiu-movoiu-na-cd-disku-v-komplekti-z-broshuroiu-dlia-dx-2430-dx-2330-971604,megatrade,971604,Ricoh,TYPE_PRODUCT,401,1,1
+14988,CATEGORY,"Інструкція користувача російською мовою на CD диску в комплекті з брошурою для  серії MPCXXX4EXSP",instruktsiia-koristuvacha-rosiiskoiu-movoiu-na-cd-disku-v-komplekti-z-broshuroiu-dlia-seriyi-mpcxxx4exsp-930070,megatrade,930070,Ricoh,TYPE_PRODUCT,690,1,1
+14989,CATEGORY,"Інструкція користувача російською мовою на CD диску в комплекті з брошурою для DD 5450",instruktsiia-koristuvacha-rosiiskoiu-movoiu-na-cd-disku-v-komplekti-z-broshuroiu-dlia-dd-5450-917201,megatrade,917201,Ricoh,TYPE_PRODUCT,810,1,1
+14990,CATEGORY,"Інструкція користувача російською мовою на CD диску в комплекті з брошурою для DD3324/DD3344",instruktsiia-koristuvacha-rosiiskoiu-movoiu-na-cd-disku-v-komplekti-z-broshuroiu-dlia-dd3324-dd3344-906654,megatrade,906654,Ricoh,TYPE_PRODUCT,708,1,1
+14991,CATEGORY,"Інструкція користувача російською мовою на CD диску в комплекті з брошурою для IM CXX00 Series",instruktsiia-koristuvacha-rosiiskoiu-movoiu-na-cd-disku-v-komplekti-z-broshuroiu-dlia-im-cxx00-series-938989,megatrade,938989,Ricoh,TYPE_PRODUCT,557,1,1
+14992,CATEGORY,"Інструкція користувача російською мовою на CD диску в комплекті з брошурою для MP 2001SP/MP 2501SP",instruktsiia-koristuvacha-rosiiskoiu-movoiu-na-cd-disku-v-komplekti-z-broshuroiu-dlia-mp-2001sp-mp-2501sp-983490,megatrade,983490,Ricoh,TYPE_PRODUCT,658,1,1
+14993,CATEGORY,"Інструкція користувача російською мовою на CD диску в комплекті з брошурою для MP 402SPF",instruktsiia-koristuvacha-rosiiskoiu-movoiu-na-cd-disku-v-komplekti-z-broshuroiu-dlia-mp-402spf-914288,megatrade,914288,Ricoh,TYPE_PRODUCT,335,1,1
+14994,CATEGORY,"Інструкція користувача російською мовою на CD диску в комплекті з брошурою для MP C305",instruktsiia-koristuvacha-rosiiskoiu-movoiu-na-cd-disku-v-komplekti-z-broshuroiu-dlia-mp-c305-974941,megatrade,974941,Ricoh,TYPE_PRODUCT,471,1,1
+14995,CATEGORY,"Інструкція користувача російською мовою на CD диску в комплекті з брошурою для MP W6700",instruktsiia-koristuvacha-rosiiskoiu-movoiu-na-cd-disku-v-komplekti-z-broshuroiu-dlia-mp-w6700-912690,megatrade,912690,Ricoh,TYPE_PRODUCT,645,1,1
+14996,CATEGORY,"Інструкція користувача російською мовою на CD диску в комплекті з брошурою для MP W840SP",instruktsiia-koristuvacha-rosiiskoiu-movoiu-na-cd-disku-v-komplekti-z-broshuroiu-dlia-mp-w840sp-904648,megatrade,904648,Ricoh,TYPE_PRODUCT,675,1,1
+14997,CATEGORY,"Інструкція користувача російською мовою на CD диску в комплекті з брошурою для SP 4510SF",instruktsiia-koristuvacha-rosiiskoiu-movoiu-na-cd-disku-v-komplekti-z-broshuroiu-dlia-sp-4510sf-992001,megatrade,992001,Ricoh,TYPE_PRODUCT,323,1,1
+14998,CATEGORY,"Інструкція користувача російською мовою на CD диску в комплекті з брошурою для SP 5200DN/5210DN",instruktsiia-koristuvacha-rosiiskoiu-movoiu-na-cd-disku-v-komplekti-z-broshuroiu-dlia-sp-5200dn-5210dn-973154,megatrade,973154,Ricoh,TYPE_PRODUCT,667,1,1
+14999,CATEGORY,"Інструкція користувача російською мовою на CD диску в комплекті з брошурою для серії MP 2014",instruktsiia-koristuvacha-rosiiskoiu-movoiu-na-cd-disku-v-komplekti-z-broshuroiu-dlia-seriyi-mp-2014-906702,megatrade,906702,Ricoh,TYPE_PRODUCT,252,1,1
+15000,CATEGORY,"Інструкція користувача російською мовою на CD диску в комплекті з брошурою",instruktsiia-koristuvacha-rosiiskoiu-movoiu-na-cd-disku-v-komplekti-z-broshuroiu-903688,megatrade,903688,Ricoh,TYPE_PRODUCT,548,1,1
+15001,CATEGORY,"Інструкція користувача російською мовою на CD диску в комплекті з брошурою ",instruktsiia-koristuvacha-rosiiskoiu-movoiu-na-cd-disku-v-komplekti-z-broshuroiu-917516,megatrade,917516,Ricoh,TYPE_PRODUCT,570,1,1
+15002,CATEGORY,"Інструкція користувача російською мовою на CD диску в комплекті з брошурою для серії SP 3600",instruktsiia-koristuvacha-rosiiskoiu-movoiu-na-cd-disku-v-komplekti-z-broshuroiu-dlia-seriyi-sp-3600-903669,megatrade,903669,Ricoh,TYPE_PRODUCT,519,1,1
+15003,CATEGORY,"Інструкція користувача російською мовою",instruktsiia-koristuvacha-rosiiskoiu-movoiu-904308,megatrade,904308,Ricoh,TYPE_PRODUCT,556,1,1
+15004,CATEGORY,"Покажчик моделі Ricoh DD 5450",pokazhchik-modeli-ricoh-dd-5450-914158,megatrade,914158,Ricoh,TYPE_PRODUCT,954,1,1
+15005,CATEGORY,"Покажчик моделі Ricoh DD 6650P",pokazhchik-modeli-ricoh-dd-6650p-985195,megatrade,985195,Ricoh,TYPE_PRODUCT,483,1,1
+15006,CATEGORY,"Покажчик моделі Ricoh DX2430",pokazhchik-modeli-ricoh-dx2430-965854,megatrade,965854,Ricoh,TYPE_PRODUCT,81,1,1
+15007,CATEGORY,"Покажчик моделі Ricoh MP C401SP",pokazhchik-modeli-ricoh-mp-c401sp-995166,megatrade,995166,Ricoh,TYPE_PRODUCT,136,1,1
+15008,CATEGORY,"Покажчик моделі Ricoh Pro™ C5200S",pokazhchik-modeli-ricoh-protm-c5200s-404513,megatrade,404513,Ricoh,TYPE_PRODUCT,61,1,1
+15009,CATEGORY,"Додатковий боковий лоток Ricoh RT3040 на 1100 л. А4",dodatkovii-bokovii-lotok-ricoh-rt3040-na-1100-l-a4-418411,megatrade,418411,Ricoh,TYPE_PRODUCT,27230,1,1
+15010,CATEGORY,"Додатковий лоток Ricoh PB3290 на 2000 л. А4",dodatkovii-lotok-ricoh-pb3290-na-2000-l-a4-418412,megatrade,418412,Ricoh,TYPE_PRODUCT,30671,1,1
+15011,CATEGORY,"Модуль PostScript 3 тип M26",modul-postscript-3-tip-m26-417680,megatrade,417680 ,Ricoh,TYPE_PRODUCT,44252,1,1
+15012,CATEGORY,"Опція оригінального PS3 Ricoh Тип M37",optsiia-originalnogo-ps3-ricoh-tip-m37-418407,megatrade,418407,Ricoh,TYPE_PRODUCT,16690,1,1
+15013,CATEGORY,"Роликова платформа Ricoh Тип 52",rolikova-platforma-ricoh-tip-52-914439,megatrade,914439,Ricoh,TYPE_PRODUCT,2946,1,1
+15014,CATEGORY,"Ricoh SP C260DNw, 20 стор./хв., повнокольоровий мережевий принтер, дуплекс",ricoh-sp-c260dnw-20-stor-khv-povnokolorovii-merezhevii-printer-dupleks-408140,megatrade,408140,Ricoh,TYPE_PRODUCT,6188,1,1
+15015,CATEGORY,"Ricoh SP C261DNw, 20 стор./хв., повнокольоровий мережевий принтер, дуплекс",ricoh-sp-c261dnw-20-stor-khv-povnokolorovii-merezhevii-printer-dupleks-408236,megatrade,408236,Ricoh,TYPE_PRODUCT,7140,1,1
