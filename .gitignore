@@ -1,5 +1,5 @@
 ### Django ###
-*.csv
+script/*.csv
 *.log
 *.pot
 *.pyc
