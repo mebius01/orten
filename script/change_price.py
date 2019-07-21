@@ -32,8 +32,14 @@ from slugify import slugify
 # m=input("megatrade = 3: ")
 # b=input("baden = 4: ")
 
-e_r=["PartNumber", "Наличие"]; e_prov='ecko'
-s_r=["PartNumber"]; s_prov='softcom'
+e_r=["PartNumber", 
+	"Название товара", 
+	"Производитель", 
+	"Тип", 
+	"Цена", 
+	"Наличие", 
+	"Адрес изображения"]; e_prov='ecko'
+
 m_r=["Артикул ", 
 	"Номенклатура", 
 	"Залишок",
@@ -42,8 +48,14 @@ m_r=["Артикул ",
 	"Стандартна партнерська ціна",
 	"Спеціальна ціна",
 	"Опис"]; m_prov='megatrade'
-b_r=["Код товара", "Остаток"]; b_prov='baden'
 
+b_r=["Код товара",
+	"Остаток",
+	"Наименование товаров",
+	"Партнер",
+	"Розничная"]; b_prov='baden'
+
+s_r=["PartNumber"]; s_prov='softcom'
 
 # df = pd.read_excel('work_price/megatrade.xlsx')
 # # df=df.dropna() # Скріть все с NaN
@@ -53,76 +65,307 @@ b_r=["Код товара", "Остаток"]; b_prov='baden'
 
 rates = Rates.objects.latest('created')
 
-########## Обновление полей available megatrade
+########## Обновление полей available baden
 
-row_product = pd.read_excel('work_price/megatrade.xlsx')
-movies = row_product[m_r]
-row_dict = movies.dropna(subset=['Артикул ',
-	'Номенклатура',
-	'Стандартна роздрібна ціна',
-	'Стандартна партнерська ціна']).to_dict() # Если один из этих столбцов имет NaN строка удаляется
+# row_product = pd.read_excel('work_price/baden.xls')
+# movies = row_product[b_r]
+# # Если один из этих столбцов имет NaN строка удаляется
+# row_dict = movies.dropna(subset=["Код товара"]).to_dict()
 
-list_keys = list(row_dict.get(m_r[0]).keys()) # формирует словарь из DataFrame
-db_product = Product.objects.filter(provider=m_prov) # Получить queryset
-c=0
+# list_keys = list(row_dict.get(b_r[0]).keys()) # формирует словарь из DataFrame
+# db_product = Product.objects.filter(provider=b_prov) # Получить queryset
+# c=0
 
-product_file=open('sorted_product.csv', 'w')
-product_file.write('id,category,name,slug,provider,vendor_code,vendor,type_product,price,stock,available'+'\n')
-itd=Product.objects.latest('id').id+1 # Получить последний id + 1
+# product_file=open('sorted_product.csv', 'w')
+# product_file.write('id,category,name,slug,provider,vendor_code,vendor,type_product,price,stock,available'+'\n')
+# itd=Product.objects.latest('id').id+1 # Получить последний id + 1
 
-while c < len(list_keys):
-	try:
-		p = Product.objects.get(vendor_code=row_dict.get(m_r[0]).get(list_keys[c])) # Попытаться получить объект по vender_code
-		# print(row_dict.get(m_r[0]).get(list_keys[c]), "in bd")
-		if row_dict.get(m_r[1]).get(list_keys[c]) == "В наявності":
-			pass
-			# print("Yes")
-			# p.available = True; p.save() # Присвоить значение True если в прайсе "В наявності"
-		elif row_dict.get(m_r[1]).get(list_keys[c]) == "Під замовлення":
-			pass
-			# print("No")
-			# p.available = False; p.save() # Присвоить значение False если в прайсе "Під замовлення"
-	except Product.DoesNotExist: # Если объеки отсутсвует в БД формируем файл для импорта
-		try:
-			# print(row_dict.get(m_r[0]).get(list_keys[c]), "Not in bd", c)
-			r = row_product.dropna(subset=['Артикул ',
-				'Номенклатура',
-				'Стандартна роздрібна ціна',
-				'Стандартна партнерська ціна']).iloc[c, :] # Если один из этих столбцов имет NaN строка удаляется
-			itd+=1
-			id_product=str(itd)
-			vendor="Ricoh"
-			category="CATEGORY"
-			type_product="TYPE_PRODUCT"
-			name=r[2];name=str(name);name='"'+name+'"'
-			vendor_code=r[1];vendor_code=str(vendor_code)
-			slug=slugify(name+'-'+vendor_code)
-			price=r[5];price=str(price)
-			price=round(Decimal(price.replace(",","."))*rates.usd); price=str(price)
-			provider=m_prov
-			available, stock = "1", "1"
-			product_file.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
-			# print(r, '----------\n')
-		except IndexError:
-			pass
-	c+=1
+# while c < len(list_keys):
+# 	try:
+# 		p = Product.objects.get(vendor_code=str(row_dict.get(b_r[0]).get(list_keys[c])).split('.')[0]) # Попытаться получить объект по vender_code 
+# 		# print(str(row_dict.get(b_r[0]).get(list_keys[c])).split('.')[0], "in bd")
+# 		if str(row_dict.get(b_r[1]).get(list_keys[c])).split('.')[0] == "Есть":
+# 			# pass
+# 			print("Yes")
+# 			# p.available = True; p.save() # Присвоить значение True если в прайсе "В наявності"
+# 	except Product.DoesNotExist: # Если объеки отсутсвует в БД формируем файл для импорта
+# 		try:
+# 			# Если один из этих столбцов имет NaN строка удаляется
+# 			r = row_product.dropna(subset=["Код товара"]).iloc[c, :]
+# 			# print(row_dict.get(b_r[0]).get(list_keys[c]), "Not in bd", c)
+# 			itd+=1
+# 			id_product=str(itd)
+# 			vendor="VENDOR"
+# 			category="CATEGORY"
+# 			type_product="TYPE_PRODUCT"
+# 			name=r[1];name=str(name);name='"'+name+'"'
+# 			vendor_code=r[0];vendor_code=str(vendor_code)
+# 			slug=slugify(name+'-'+vendor_code)
+# 			price=r[3];price=str(price);price=price.replace(",",".")
+# 			provider=b_prov
+# 			available, stock = "1", "1"
+# 			product_file.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
+# 			print(r, '----------\n')
+# 		except IndexError:
+# 			pass
+# 	c+=1
 
 ##########
 
+
+########## Обновление полей available ecko
+
+# type_product_list = [('Фильтры', '128'),
+# ('Мастер-пленки', '99'),
+# ('Зажимы', 'BED_TYPE'),
+# ('Лезвие очистки', '128'),
+# ('Комплекты обслуживания', '128'),
+# ('Коротроны', '128'),
+# ('Крепления', '128'),
+# ('Экраны', 'BED_TYPE'),
+# ('Беспилотные аппараты', 'BED_TYPE'),
+# ('Средства ухода', '130'),
+# ('Доп.оборудование', 'BED_TYPE'),
+# ('Тонер в мешках', '129'),
+# ('Игры', 'BED_TYPE'),
+# ('Переплетчики', 'BED_TYPE'),
+# ('Тонеры', '129'),
+# ('Скобы', 'BED_TYPE'),
+# ('Уничтожители', 'BED_TYPE'),
+# ('Вал заряда', '128'),
+# ('Драм-картридж', '129'),
+# ('Указки', 'BED_TYPE'),
+# ('Термообложки', 'BED_TYPE'),
+# ('Втулки', '128'),
+# ('Носители', 'BED_TYPE'),
+# ('Лезвие дозирующее', '128'),
+# ('Шестерни вала тефлонового', '128'),
+# ('Аксессуары', 'BED_TYPE'),
+# ('Зарядные устройства', 'BED_TYPE'),
+# ('Резаки', 'BED_TYPE'),
+# ('Пружины', '128'),
+# ('Термопленки', '128'),
+# ('Бумага', 'BED_TYPE'),
+# ('Тормозные площадки', '128'),
+# ('Обложки', 'BED_TYPE'),
+# ('Сетевое оборудование', 'BED_TYPE'),
+# ('Валы', '128'),
+# ('Датчики', '128'),
+# ('Нагревательные элементы', '128'),
+# ('Лезвие очистки ремня', '128'),
+# ('Инструмент', 'BED_TYPE'),
+# ('Шестерни редуктора', '128'),
+# ('Тонер-картридж', '129'),
+# ('Сепараторы', '128'),
+# ('Офисная техника', 'BED_TYPE'),
+# ('Платы', '128'),
+# ('Игрушки', 'BED_TYPE'),
+# ('Конвертные пленки', 'BED_TYPE'),
+# ('Шестерня узла закрепления', '128'),
+# ('Шестерни', '128'),
+# ('Вал тефлоновый', '128'),
+# ('Демонстрационное оборудования', 'BED_TYPE'),
+# ('Лампы', '128'),
+# ('Лезвие подбора', '128'),
+# ('Вал чистящий', '128'),
+# ('Другое', 'BED_TYPE'),
+# ('Лезвия', '128'),
+# ('3D-принтеры', 'BED_TYPE'),
+# ('Разное', 'BED_TYPE'),
+# ('Ламинаторы', 'BED_TYPE'),
+# ('Комплектующие', 'BED_TYPE'),
+# ('Металлические пружины', 'BED_TYPE'),
+# ('Комплект тонеров', '129'),
+# ('Флипчарты', 'BED_TYPE'),
+# ('Подшипники', '128'),
+# ('Тонер фасованый', '129'),
+# ('Узлы закрепления', '128'),
+# ('Носимая электроника', 'BED_TYPE'),
+# ('Картриджи', '129'),
+# ('Пластиковые пружины, спирали', 'BED_TYPE'),
+# ('Вал резиновый', '128'),
+# ('Вал магнитный', '128'),
+# ('Девелоперы', '129'),
+# ('Электрооборудование', 'BED_TYPE'),
+# ('Блоки изображения', '129'),
+# ('Рюкзаки', 'BED_TYPE'),
+# ('Лезвие уплотнительное', '128'),
+# ('Кульки и коробки упаковочные', '129'),
+# ('Термоленты', '128'),
+# ('МФУ/Принтеры', 'BED_TYPE'),
+# ('Чипы', '129'),
+# ('Чернила', '99'),
+# ('Фотобарабаны', '129'),
+# ('Ролики', '128'),
+# ('Конверты', 'BED_TYPE'),
+# ('Шлейфы', '128'),
+# ('Шестерни вала резинового', '128'),
+# ('Ремни', '128')]
+
+# row_product = pd.read_excel('work_price/ecko.xlsx')
+# movies = row_product[e_r]
+# row_dict = movies.dropna(subset=["PartNumber","Название товара","Производитель","Тип","Цена"]).to_dict()
+
+# list_keys = list(row_dict.get(e_r[0]).keys())
+# db_product = Product.objects.filter(provider=e_prov)
+# c=0
+
+# product_file=open('sorted_product.csv', 'w')
+# product_file.write('id,category,name,slug,provider,vendor_code,vendor,type_product,price,stock,available'+'\n')
+# itd=Product.objects.latest('id').id+1 # Получить последний id + 1
+
+# while c < len(list_keys):
+# 	try:
+# 		p = Product.objects.get(vendor_code=row_dict.get(e_r[0]).get(list_keys[c])) # Попытаться получить объект по vender_code
+# 		# print(row_dict.get(e_r[0]).get(list_keys[c]), "in bd")
+# 		if row_dict.get(e_r[1]).get(list_keys[c]) == "Да":
+# 			pass
+# 			# print("Yes")
+# 			# p.available = True; p.save() # Присвоить значение True если в прайсе "В наявності"
+# 		elif row_dict.get(e_r[1]).get(list_keys[c]) == "Нет":
+# 			pass
+# 			# print("No")
+# 			# p.available = False; p.save() # Присвоить значение False если в прайсе "Під замовлення"
+# 	except Product.DoesNotExist: # Если объеки отсутсвует в БД формируем файл для импорта
+# 		try:
+# 			# print(row_dict.get(e_r[0]).get(list_keys[c]), "Not in bd", c)
+# 			# Если один из этих столбцов имет NaN строка удаляется
+# 			r = row_product.dropna(subset=["PartNumber","Название товара","Производитель","Тип","Цена"]).iloc[c, :]
+# 			itd+=1
+# 			id_product=str(itd)
+# 			vendor=r[2]; vendor=str(vendor)
+# 			for t in type_product_list:
+# 				if t[0] == str(r[3]):
+# 					type_product ,category = t
+# 			name=r[1];name=str(name);name='"'+name+'"'
+# 			vendor_code=r[0];vendor_code=str(vendor_code)
+# 			slug=slugify(name+'-'+vendor_code)
+			# price=r[5];price=str(price);price=round(Decimal(price.replace(",","."))*rates.usd, 2); price=str(price)
+# 			provider=e_prov
+# 			if str(r[9]) == "Да":
+# 				available, stock = "1", "1"
+# 			elif str(r[9]) == "Нет":
+# 				available, stock = "0", "0"
+# 			product_file.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
+# 			print(r, '----------\n')
+# 		except IndexError:
+# 			pass
+# 	c+=1
+
+##########
+
+########## Обновление полей available megatrade
+
+# row_product = pd.read_excel('work_price/megatrade.xlsx')
+# movies = row_product[m_r]
+# # Если один из этих столбцов имет NaN строка удаляется
+# row_dict = movies.dropna(subset=['Артикул ',
+# 								'Номенклатура',
+# 								'Стандартна роздрібна ціна',
+# 								'Стандартна партнерська ціна']).to_dict()
+
+# list_keys = list(row_dict.get(m_r[0]).keys()) # формирует словарь из DataFrame
+# db_product = Product.objects.filter(provider=m_prov) # Получить queryset
+# c=0
+
+# product_file=open('sorted_product.csv', 'w')
+# product_file.write('id,category,name,slug,provider,vendor_code,vendor,type_product,price,stock,available'+'\n')
+# itd=Product.objects.latest('id').id+1 # Получить последний id + 1
+
+# while c < len(list_keys):
+# 	try:
+# 		p = Product.objects.get(vendor_code=row_dict.get(m_r[0]).get(list_keys[c])) # Попытаться получить объект по vender_code
+# 		# print(row_dict.get(m_r[0]).get(list_keys[c]), "in bd")
+# 		if row_dict.get(m_r[1]).get(list_keys[c]) == "В наявності":
+# 			pass
+# 			# print("Yes")
+# 			# p.available = True; p.save() # Присвоить значение True если в прайсе "В наявності"
+# 		elif row_dict.get(m_r[1]).get(list_keys[c]) == "Під замовлення":
+# 			pass
+# 			# print("No")
+# 			# p.available = False; p.save() # Присвоить значение False если в прайсе "Під замовлення"
+# 	except Product.DoesNotExist: # Если объеки отсутсвует в БД формируем файл для импорта
+# 		try:
+# 			# print(row_dict.get(m_r[0]).get(list_keys[c]), "Not in bd", c)
+# 			# Если один из этих столбцов имет NaN строка удаляется
+# 			r = row_product.dropna(subset=['Артикул ',
+# 										'Номенклатура',
+# 										'Стандартна роздрібна ціна',
+# 										'Стандартна партнерська ціна']).iloc[c, :]
+# 			itd+=1
+# 			id_product=str(itd)
+# 			vendor="Ricoh"
+# 			category="CATEGORY"
+# 			type_product="TYPE_PRODUCT"
+# 			name=r[2];name=str(name);name='"'+name+'"'
+# 			vendor_code=r[1];vendor_code=str(vendor_code)
+# 			slug=slugify(name+'-'+vendor_code)
+# 			price=r[5];price=str(price)
+# 			price=round(Decimal(price.replace(",","."))*rates.usd, 2); price=str(price)
+# 			provider=m_prov
+# 			available, stock = "1", "1"
+# 			product_file.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
+# 			# print(r, '----------\n')
+# 		except IndexError:
+# 			pass
+# 	c+=1
+
+##########
+
+########## Добавления изображения ecko Рабочий код
+
+# row_product = pd.read_excel('ecko.xlsx')
+# row_product.dropna(inplace = True)
+
+# movies = row_product[["PartNumber", "Адрес изображения"]]
+# row_dict = movies.head(66).to_dict()
+
+# list_keys = list(row_dict.get("PartNumber").keys())
+# c=0
+# jpg_dir = os.path.join(settings.BASE_DIR, 'media', 'product')
+# db_product = Product.objects.filter(provider='ecko')
+
 # while c < len(list_keys):
 # 	for i in db_product:
-# 		if row_dict.get(m_r[0]).get(list_keys[c]) == i.vendor_code:
-# 			if row_dict.get(m_r[1]).get(list_keys[c]) == "В наявності":
-# 				print("Yes"); yes+=1
-# 				# i.available = True
-# 			elif row_dict.get(m_r[1]).get(list_keys[c]) == "Під замовлення":
-# 				print("No"); no+=1
-# 				# i.available = False
-# 			# i.save()
-# 		elif row_dict.get(m_r[0]).get(list_keys[c]) != i.vendor_code:
-# 			print(row_dict.get(m_r[0]).get(list_keys[c]))
+# 		if i.vendor_code == row_dict.get("PartNumber").get(list_keys[c]):
+# 			url = row_dict.get("Адрес изображения").get(list_keys[c])
+# 			filename = wget.download(url, jpg_dir)
+# 			os.rename(filename, jpg_dir+"/"+slugify(row_dict.get("PartNumber").get(list_keys[c]))+'.jpg')
+# 			i.image = 'product/'+slugify(row_dict.get("PartNumber").get(list_keys[c]))+'.jpg'
+# 			i.save()
 # 	c+=1
-# print("Yes = ", yes, "No = ", no, "общие количесво объектов = ", c)
+
+##########
+
+
+########## Обновление Цен Рабочий код
+
+# new_rates_usd=input("Текущий курс USD. Вводить число с плавающей точкой! Пример 28.03: ")
+# new_rates_usd=Decimal(new_rates_usd)
+# new_rates_eur=input("Текущий курс EUR. Вводить число с плавающей точкой! Пример 29.23: ")
+# new_rates_eur=Decimal(new_rates_eur)
+# print(new_rates_eur, new_rates_usd) # 29 28
+
+# product_usd = Product.objects.filter(
+# 									Q(provider='cw') |
+# 									Q(provider='ecko') |
+# 									Q(provider='megatrade') |
+# 									Q(provider='printsys') |
+# 									Q(provider='softcom')
+# 									)
+# product_eur = Product.objects.filter(provider='KonicaMinolta')
+
+# for i in product_eur:
+# 	i.price=round(((i.price/old_rates.eur)*new_rates_eur), 2)
+# 	i.save()
+# for i in product_usd:
+# 	i.price=round(((i.price/old_rates.usd)*new_rates_usd), 2)
+# 	i.save()
+
+# new_rates = Rates.objects.create(usd=new_rates_usd, eur=new_rates_eur)
+# new_rates.save()
+
+########################################################################################################################
 
 
 # row_product = pd.read_excel('ecko.xlsx')
@@ -147,12 +390,6 @@ while c < len(list_keys):
 # 			i.save()
 # 	c+=1
 
-
-
-
-
-
-
 # df = pd.read_excel('work_price/baden.xlsx')
 # # df=df.dropna() # Скріть все с NaN
 # # print(df.head(20))
@@ -162,11 +399,6 @@ while c < len(list_keys):
 # # df=df.dropna() # Скріть все с NaN
 # # print(df.head(20))
 # print(df.iloc[:, [2,4,5,7]]) # 2354  MR.JQU11.001 Проектор Acer S1386WH (MR.JQU11.001) NaN  NaN
-
-# df = pd.read_excel('work_price/ecko.xlsx')
-# # df=df.dropna() # Скріть все с NaN
-# # print(df.head(20))
-# print(df.iloc[:, [0,1,5,9]]) # 5 DRS55-A  Мастер-пленка AEBO Duplo A3 DP 550S/ J 450/ 30. 24.7  Да
 
 
 
@@ -215,92 +447,7 @@ while c < len(list_keys):
 
 # t('2.xlsx', b_r, b_prov)
 
-
-
-
-# row_product = pd.read_excel('ecko.xlsx')
-# row_product.dropna(inplace = True)
-
-# movies = row_product[["PartNumber", "Наличие"]]
-# row_dict = movies.head(66).to_dict()
-
-# list_keys = list(row_dict.get("PartNumber").keys())
-# db_product = Product.objects.filter(provider='ecko')
-# c=0
-
-# while c < len(list_keys):
-# 	for i in db_product:
-# 		if i.vendor_code == row_dict.get("PartNumber").get(list_keys[c]):
-# 			if row_dict.get("Наличие").get(list_keys[c]) == "Да":
-# 				i.available = True
-# 			elif row_dict.get("Наличие").get(list_keys[c]) == "Нет":
-# 				i.available = False
-# 			i.save()
-# 	c+=1
-
 ##########
-
-########## Добавления изображения ecko Рабочий код
-
-# row_product = pd.read_excel('ecko.xlsx')
-# row_product.dropna(inplace = True)
-
-# movies = row_product[["PartNumber", "Адрес изображения"]]
-# row_dict = movies.head(66).to_dict()
-
-# list_keys = list(row_dict.get("PartNumber").keys())
-# c=0
-# jpg_dir = os.path.join(settings.BASE_DIR, 'media', 'product')
-# db_product = Product.objects.filter(provider='ecko')
-
-# while c < len(list_keys):
-# 	for i in db_product:
-# 		if i.vendor_code == row_dict.get("PartNumber").get(list_keys[c]):
-# 			url = row_dict.get("Адрес изображения").get(list_keys[c])
-# 			filename = wget.download(url, jpg_dir)
-# 			os.rename(filename, jpg_dir+"/"+slugify(row_dict.get("PartNumber").get(list_keys[c]))+'.jpg')
-# 			i.image = 'product/'+slugify(row_dict.get("PartNumber").get(list_keys[c]))+'.jpg'
-# 			i.save()
-# 	c+=1
-
-##########
-
-
-########## Обновление цен Рабочий код
-
-# new_rates_usd=input("Текущий курс USD. Вводить число с плавающей точкой! Пример 28.03: ")
-# new_rates_usd=Decimal(new_rates_usd)
-# new_rates_eur=input("Текущий курс EUR. Вводить число с плавающей точкой! Пример 29.23: ")
-# new_rates_eur=Decimal(new_rates_eur)
-# print(new_rates_eur, new_rates_usd) # 29 28
-
-# product_usd = Product.objects.filter(
-# 									Q(provider='cw') |
-# 									Q(provider='ecko') |
-# 									Q(provider='megatrade') |
-# 									Q(provider='printsys') |
-# 									Q(provider='softcom')
-# 									)
-# product_eur = Product.objects.filter(provider='KonicaMinolta')
-
-# for i in product_eur:
-# 	i.price=round(((i.price/old_rates.eur)*new_rates_eur), 2)
-# 	i.save()
-# for i in product_usd:
-# 	i.price=round(((i.price/old_rates.usd)*new_rates_usd), 2)
-# 	i.save()
-
-# new_rates = Rates.objects.create(usd=new_rates_usd, eur=new_rates_eur)
-# new_rates.save()
-
-##########
-
-
-
-
-
-
-
 
 
 ########## рабочий код
