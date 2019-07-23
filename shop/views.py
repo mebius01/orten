@@ -35,7 +35,7 @@ def category(request):
 
 def home(request):
 	product_stok = Product.objects.filter(action=True)
-	products = Product.objects.all().order_by('-action', '-image')[:12]
+	products = Product.objects.all().order_by('-action', '-image')[:12] #'-available'
 	cart_product_form = CartAddProductForm()
 	return render(request, 'shop/home.html', {'cart_product_form':cart_product_form, 'products':products, 'product_stok':product_stok})
 

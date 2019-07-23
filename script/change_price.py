@@ -32,36 +32,39 @@ from slugify import slugify
 # m=input("megatrade = 3: ")
 # b=input("baden = 4: ")
 
-e_r=["PartNumber", 
-	"Название товара", 
-	"Производитель", 
-	"Тип", 
-	"Цена", 
-	"Наличие", 
-	"Адрес изображения"]; e_prov='ecko'
+# e_r=["PartNumber", 
+# 	"Название товара", 
+# 	"Производитель", 
+# 	"Тип", 
+# 	"Цена", 
+# 	"Наличие", 
+# 	"Адрес изображения"];
 
-m_r=["Артикул ", 
-	"Номенклатура", 
-	"Залишок",
-	"Валюта",
-	"Стандартна роздрібна ціна",
-	"Стандартна партнерська ціна",
-	"Спеціальна ціна",
-	"Опис"]; m_prov='megatrade'
+# m_r=["Артикул ", 
+# 	"Номенклатура", 
+# 	"Залишок",
+# 	"Валюта",
+# 	"Стандартна роздрібна ціна",
+# 	"Стандартна партнерська ціна",
+# 	"Спеціальна ціна",
+# 	"Опис"]
 
-b_r=["Код товара",
-	"Остаток",
-	"Наименование товаров",
-	"Партнер",
-	"Розничная"]; b_prov='baden'
+# b_r=["Код товара",
+# 	"Остаток",
+# 	"Наименование товаров",
+# 	"Партнер",
+# 	"Розничная"]
 
-s_r=["Номенклатура.Код", 
+
+# prod_r=["Код"] # CW
+
+prod_r = ["Номенклатура.Код", 
 	"Номенклатура.Артикул ", 
 	"Номенклатура", 
 	"Цена", 
-	"+ -"]; s_prov='softcom'
+	"+ -"] 
 
-cw_r=[]; cw_prov='cw' 
+prov='softcom' #'cw' 'softcom' 'baden' 'megatrade' 'ecko'
 
 # Функция расчета цены
 def Create_price(pric, rate, procent):
@@ -73,147 +76,172 @@ def Create_price(pric, rate, procent):
 
 
 rates = Rates.objects.latest('created')
-
-########## Обновление полей available CW
-
-raw_product = pd.read_excel('work_price/cw.xlsx')
-raw_product = raw_product.dropna(subset=["Код"]) # Если один из этих столбцов имет NaN строка удаляется
-
-db_product = Product.objects.filter(provider=cw_prov) # Получить queryset
-
-product_file=open('sorted_product.csv', 'w')
-product_file.write('id,category,name,slug,provider,vendor_code,vendor,type_product,price,stock,available'+'\n')
 itd=Product.objects.latest('id').id+1 # Получить последний id + 1
-c=0
 
-while c < len(raw_product):
-	try:
-		p = Product.objects.get(vendor_code=str(raw_product.iloc[c, 0])) # Попытаться получить объект по vender_code 
-		print(p, "in bd")
-# 		# p.available = True; p.save() # Присвоить значение True если в прайсе "В наявності"
-	except Product.DoesNotExist: # Если объеки отсутсвует в БД формируем файл для импорта
-		pass
-# 		try:
-# # 			# Если один из этих столбцов имет NaN строка удаляется
-# 			r = raw_product.iloc[c, :]
-# 			itd+=1
-# 			id_product=str(itd)
-# 			category="CATEGORY"
-# 			type_product="TYPE_PRODUCT"
-# 			name=raw_product.iloc[c, 1] ;name=str(name);name='"'+name+'"'
-# 			vendor = "ColorWay"
-# 			vendor_code=raw_product.iloc[c, 0];vendor_code=str(vendor_code)
-# 			slug=slugify(name+'-'+vendor_code)
-# 			price=str(raw_product.iloc[c, 3]); price=price.replace(',','.'); price=round(Decimal(price)*rates.usd, 2);price=str(price)
-# 			provider=cw_prov
-# 			available, stock = "1", "1"
-# 			product_file.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
-# 			print(raw_product.iloc[c, :], '----------\n')
-# 		except IndexError:
-# 			pass
-	c+=1
+raw_product = pd.read_excel('work_price/'+prov+'.xlsx')
+db_product = Product.objects.filter(provider=prov) # Получить queryset
+csv_header = 'id,category,name,slug,provider,vendor_code,vendor,type_product,price,stock,available'+'\n'
+product_file_in_db=open('sorted_product_in_db.csv', 'w')
+product_file_not_in_db=open('sorted_product_not_in_db.csv', 'w')
+backup = open('backup_'+prov+'.csv', 'w')
+backup.write(csv_header)
+product_file_in_db.write(csv_header)
+product_file_not_in_db.write(csv_header)
 
-##########
-
-
-
-
+for i in db_product:
+	id_product=str(i.id)
+	category=str(i.category.id)
+	type_product=i.type_product
+	name=str(i.name);name='"'+name.replace(',', '').replace('"','')+'"'
+	vendor='"'+i.vendor+'"'
+	vendor_code='"'+i.vendor_code+'"'
+	slug=i.slug
+	price=str(i.price)
+	provider=i.provider
+	available=str(i.available) 
+	stock=str(i.stock)
+	backup.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
+	i.available = False
+	i.stock = False
+	i.save()
 
 ########## Обновление полей available softcom
 
-# raw_product = pd.read_excel('work_price/softcom.xls')
-# raw_product = raw_product.dropna(subset=["Номенклатура.Артикул ", "Номенклатура", "Цена"]) # Если один из этих столбцов имет NaN строка удаляется
+def softcom(rawproduct,dbproduct, productfileindb, productfilenotindb,id_t,prod_ex):
 
-# db_product = Product.objects.filter(provider=s_prov) # Получить queryset
+	rawproduct = rawproduct.dropna(subset=prod_ex)
 
-# product_file=open('sorted_product.csv', 'w')
-# product_file.write('id,category,name,slug,provider,vendor_code,vendor,type_product,price,stock,available'+'\n')
-# itd=Product.objects.latest('id').id+1 # Получить последний id + 1
-# c=0
+	vendor_list=['F&D','Flyper','Genius','HQ-Tech','SVEN','GOLDEN FIELD','A4-Tech','Gemix','GRESSO','Logitech','SOMIC','SONY','Brother',
+			'Canon','HP','Epson','LogicPower','D-Link','Dynamode','TP-Link','Mercusys','ASUS','TENDA','GEMIX','Ritar','Frime','Must','SUMRY',
+			'MERLION','FrimeCom','Samsung','GOODRAM','Team','TRANSCEND','Kingston','Corsair','STEELSERIES','Rapoo','Logitech','ARESZE',
+			]
+	c=0
+	while c < len(rawproduct):
+		try:
+			p = dbproduct.get(vendor_code=str(rawproduct.iloc[c, 1])) # Попытаться получить объект по vender_code 
+			# print(p, "in bd")
+			id_product=str(p.id)
+			category=str(p.category.id)
+			type_product=p.type_product
+			name=str(p.name);name='"'+name.replace(',', '').replace('"','')+'"'
+			vendor='"'+p.vendor+'"'
+			vendor_code='"'+p.vendor_code+'"'
+			slug=p.slug
+			price=str(p.price)
+			provider=p.provider
+			available, stock = "1", "1"
+			productfileindb.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
+			# p.available = True; p.save() # Присвоить значение True если в прайсе "В наявності"
+		except Product.DoesNotExist: # Если объеки отсутсвует в БД формируем файл для импорта
+			try:
+	# 			# Если один из этих столбцов имет NaN строка удаляется
+				# r = rawproduct.dropna(subset=["Номенклатура.Артикул "]).iloc[c, :]
+				id_t+=1
+				id_product=str(id_t)
+				category="CATEGORY"
+				type_product="TYPE_PRODUCT"
+				name=rawproduct.iloc[c, 3] ;name=str(name);name='"'+name+'"'
 
-# vendor_list=['F&D','Flyper','Genius','HQ-Tech','SVEN','GOLDEN FIELD','A4-Tech','Gemix','GRESSO','Logitech','SOMIC','SONY','Brother',
-# 			'Canon','HP','Epson','LogicPower','D-Link','Dynamode','TP-Link','Mercusys','ASUS','TENDA','GEMIX','Ritar','Frime','Must','SUMRY',
-# 			'MERLION','FrimeCom','Samsung','GOODRAM','Team','TRANSCEND','Kingston','Corsair','STEELSERIES','Rapoo','Logitech','ARESZE',
-# 			]
-
-# while c < len(raw_product):
-# 	try:
-# 		p = Product.objects.get(vendor_code=str(raw_product.iloc[c, 1])) # Попытаться получить объект по vender_code 
-# 		print(p, "in bd")
-# 		# p.available = True; p.save() # Присвоить значение True если в прайсе "В наявності"
-# 	except Product.DoesNotExist: # Если объеки отсутсвует в БД формируем файл для импорта
-# 		try:
-# # 			# Если один из этих столбцов имет NaN строка удаляется
-# 			# r = raw_product.dropna(subset=["Номенклатура.Артикул "]).iloc[c, :]
-# 			itd+=1
-# 			id_product=str(itd)
-# 			category="CATEGORY"
-# 			type_product="TYPE_PRODUCT"
-# 			name=raw_product.iloc[c, 3] ;name=str(name);name='"'+name+'"'
-
-# 			for v in vendor_list:
-# 				if v.lower() in name.lower():
-# 					vendor = v
-# 				# elif v.lower() not in name.lower():
-# 				# 	vendor = "VENDOR"
-# 			vendor_code=raw_product.iloc[c, 1];vendor_code=str(vendor_code)
-# 			slug=slugify(name+'-'+vendor_code)
-# 			price=Create_price(raw_product.iloc[c,5], rates.usd, 0.15)
-# 			provider=s_prov
-# 			available, stock = "1", "1"
-# 			product_file.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
-# 			# print(raw_product.iloc[c, :], '----------\n')
-# 		except IndexError:
-# 			pass
-# 	c+=1
-
+				# for v in vendor_list:
+				# 	if v.lower() in name.lower():
+				# 		vendor = v
+					# elif v.lower() not in name.lower():
+				vendor = "VENDOR"
+				vendor_code=rawproduct.iloc[c, 1];vendor_code=str(vendor_code)
+				slug=slugify(name+'-'+vendor_code)
+				price=Create_price(rawproduct.iloc[c,5], rates.usd, 0.15)
+				provider=prov
+				available, stock = "1", "1"
+				productfilenotindb.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
+				# print(rawproduct.iloc[c, :], '----------\n')
+			except IndexError:
+				pass
+		c+=1
 
 ##########
 
+# softcom(raw_product,db_product,product_file_in_db,product_file_not_in_db,itd,prod_r)
+
+
+########## Обновление полей available CW
+
+def cw(rawproduct,dbproduct, productfileindb, productfilenotindb,id_t, prod_ex):
+	rawproduct = rawproduct.dropna(subset=prod_ex) # Если один из этих столбцов имет NaN строка удаляется
+	c=0
+	while c < len(rawproduct):
+		try:
+			p = dbproduct.get(vendor_code=str(rawproduct.iloc[c, 0])) # Попытаться получить объект по vender_code 
+			# print(p, "in bd")
+			id_product=str(p.id)
+			category=str(p.category.id)
+			type_product=p.type_product
+			name=str(p.name);name='"'+name+'"'
+			vendor = p.vendor
+			vendor_code= p.vendor_code
+			slug=p.slug
+			price=str(p.price)
+			provider=p.provider
+			available, stock = "1", "1"
+			productfileindb.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
+		except Product.DoesNotExist: # Если объеки отсутсвует в БД формируем файл для импорта
+			pass
+			try:
+				r = rawproduct.iloc[c, :]
+				id_t+=1
+				id_product=str(id_t)
+				category="CATEGORY"
+				type_product="TYPE_PRODUCT"
+				name=rawproduct.iloc[c, 1] ;name=str(name);name='"'+name+'"'
+				vendor = "ColorWay"
+				vendor_code=rawproduct.iloc[c, 0];vendor_code=str(vendor_code)
+				slug=slugify(name+'-'+vendor_code)
+				price=str(rawproduct.iloc[c, 3]); price=price.replace(',','.'); price=round(Decimal(price)*rates.usd, 2);price=str(price)
+				provider=prov
+				available, stock = "1", "1"
+				productfilenotindb.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
+				# print(rawproduct.iloc[c, :], '----------\n')
+			except IndexError:
+				pass
+		c+=1
+
+##########
+
+# cw(raw_product,db_product,product_file_in_db,product_file_not_in_db,itd,prod_r)
+
 ########## Обновление полей available baden
 
-# raw_product = pd.read_excel('work_price/baden.xls')
-# movies = raw_product[b_r]
-# # Если один из этих столбцов имет NaN строка удаляется
-# row_dict = movies.dropna(subset=["Код товара"]).to_dict()
-
-# list_keys = list(row_dict.get(b_r[0]).keys()) # формирует словарь из DataFrame
-# db_product = Product.objects.filter(provider=b_prov) # Получить queryset
-# c=0
-
-# product_file=open('sorted_product.csv', 'w')
-# product_file.write('id,category,name,slug,provider,vendor_code,vendor,type_product,price,stock,available'+'\n')
-# itd=Product.objects.latest('id').id+1 # Получить последний id + 1
-
-# while c < len(list_keys):
-# 	try:
-# 		p = Product.objects.get(vendor_code=str(row_dict.get(b_r[0]).get(list_keys[c])).split('.')[0]) # Попытаться получить объект по vender_code 
-# 		# print(str(row_dict.get(b_r[0]).get(list_keys[c])).split('.')[0], "in bd")
-# 		if str(row_dict.get(b_r[1]).get(list_keys[c])).split('.')[0] == "Есть":
-# 			# pass
-# 			print("Yes")
-# 			# p.available = True; p.save() # Присвоить значение True если в прайсе "В наявності"
-# 	except Product.DoesNotExist: # Если объеки отсутсвует в БД формируем файл для импорта
+# def baden(rawproduct,dbproduct, productfileindb, productfilenotindb,id_t):
+# 	rawproduct = rawproduct.dropna(subset=b_r) # Если один из этих столбцов имет NaN строка удаляется
+# 	c=0
+# 	while c < len(list_keys):
 # 		try:
-# 			# Если один из этих столбцов имет NaN строка удаляется
-# 			r = raw_product.dropna(subset=["Код товара"]).iloc[c, :]
-# 			# print(row_dict.get(b_r[0]).get(list_keys[c]), "Not in bd", c)
-# 			itd+=1
-# 			id_product=str(itd)
-# 			vendor="VENDOR"
-# 			category="CATEGORY"
-# 			type_product="TYPE_PRODUCT"
-# 			name=r[1];name=str(name);name='"'+name+'"'
-# 			vendor_code=r[0];vendor_code=str(vendor_code)
-# 			slug=slugify(name+'-'+vendor_code)
-# 			price=r[3];price=str(price);price=price.replace(",",".")
-# 			provider=b_prov
-# 			available, stock = "1", "1"
-# 			product_file.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
-# 			print(r, '----------\n')
-# 		except IndexError:
-# 			pass
-# 	c+=1
+# 			p = db_product.get(vendor_code=str(row_dict.get(b_r[0]).get(list_keys[c])).split('.')[0]) # Попытаться получить объект по vender_code 
+# 			# print(str(row_dict.get(b_r[0]).get(list_keys[c])).split('.')[0], "in bd")
+# 			if str(row_dict.get(b_r[1]).get(list_keys[c])).split('.')[0] == "Есть":
+# 				# pass
+# 				print("Yes")
+# 				# p.available = True; p.save() # Присвоить значение True если в прайсе "В наявності"
+# 		except Product.DoesNotExist: # Если объеки отсутсвует в БД формируем файл для импорта
+# 			try:
+# 				# Если один из этих столбцов имет NaN строка удаляется
+# 				r = raw_product.dropna(subset=["Код товара"]).iloc[c, :]
+# 				# print(row_dict.get(b_r[0]).get(list_keys[c]), "Not in bd", c)
+# 				itd+=1
+# 				id_product=str(itd)
+# 				vendor="VENDOR"
+# 				category="CATEGORY"
+# 				type_product="TYPE_PRODUCT"
+# 				name=r[1];name=str(name);name='"'+name+'"'
+# 				vendor_code=r[0];vendor_code=str(vendor_code)
+# 				slug=slugify(name+'-'+vendor_code)
+# 				price=r[3];price=str(price);price=price.replace(",",".")
+# 				provider=prov
+# 				available, stock = "1", "1"
+# 				product_file.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
+# 				print(r, '----------\n')
+# 			except IndexError:
+# 				pass
+# 		c+=1
 
 ##########
 
@@ -312,7 +340,7 @@ while c < len(raw_product):
 # row_dict = movies.dropna(subset=["PartNumber","Название товара","Производитель","Тип","Цена"]).to_dict()
 
 # list_keys = list(row_dict.get(e_r[0]).keys())
-# db_product = Product.objects.filter(provider=e_prov)
+# db_product = Product.objects.filter(provider=prov)
 # c=0
 
 # product_file=open('sorted_product.csv', 'w')
@@ -321,7 +349,7 @@ while c < len(raw_product):
 
 # while c < len(list_keys):
 # 	try:
-# 		p = Product.objects.get(vendor_code=row_dict.get(e_r[0]).get(list_keys[c])) # Попытаться получить объект по vender_code
+# 		p = db_product.get(vendor_code=row_dict.get(e_r[0]).get(list_keys[c])) # Попытаться получить объект по vender_code
 # 		# print(row_dict.get(e_r[0]).get(list_keys[c]), "in bd")
 # 		if row_dict.get(e_r[1]).get(list_keys[c]) == "Да":
 # 			pass
@@ -346,7 +374,7 @@ while c < len(raw_product):
 # 			vendor_code=r[0];vendor_code=str(vendor_code)
 # 			slug=slugify(name+'-'+vendor_code)
 # 			price = Create_price(price, rates.usd, 0.30)
-# 			provider=e_prov
+# 			provider=prov
 # 			if str(r[9]) == "Да":
 # 				available, stock = "1", "1"
 # 			elif str(r[9]) == "Нет":
@@ -370,7 +398,7 @@ while c < len(raw_product):
 # 								'Стандартна партнерська ціна']).to_dict()
 
 # list_keys = list(row_dict.get(m_r[0]).keys()) # формирует словарь из DataFrame
-# db_product = Product.objects.filter(provider=m_prov) # Получить queryset
+# db_product = Product.objects.filter(provider=prov) # Получить queryset
 # c=0
 
 # product_file=open('sorted_product.csv', 'w')
@@ -379,7 +407,7 @@ while c < len(raw_product):
 
 # while c < len(list_keys):
 # 	try:
-# 		p = Product.objects.get(vendor_code=row_dict.get(m_r[0]).get(list_keys[c])) # Попытаться получить объект по vender_code
+# 		p = db_product.get(vendor_code=row_dict.get(m_r[0]).get(list_keys[c])) # Попытаться получить объект по vender_code
 # 		# print(row_dict.get(m_r[0]).get(list_keys[c]), "in bd")
 # 		if row_dict.get(m_r[1]).get(list_keys[c]) == "В наявності":
 # 			pass
@@ -407,7 +435,7 @@ while c < len(raw_product):
 # 			slug=slugify(name+'-'+vendor_code)
 # 			price=r[5];price=str(price)
 # 			price=round(Decimal(price.replace(",","."))*rates.usd, 2); price=str(price)
-# 			provider=m_prov
+# 			provider=prov
 # 			available, stock = "1", "1"
 # 			product_file.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
 # 			# print(r, '----------\n')
@@ -544,13 +572,13 @@ while c < len(raw_product):
 # 	# 				print("ДА", c)
 
 # 	# 		c+=1
-# # t('ecko.xlsx', e_r, e_prov)
+# # t('ecko.xlsx', e_r, prov)
 
-# # t('megatrade.xlsx', m_r, m_prov)
+# # t('megatrade.xlsx', m_r, prov)
 
-# # t('1.xlsx', s_r, s_prov)
+# # t('1.xlsx', s_r, prov)
 
-# t('2.xlsx', b_r, b_prov)
+# t('2.xlsx', b_r, prov)
 
 ##########
 
