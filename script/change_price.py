@@ -32,31 +32,17 @@ from slugify import slugify
 # m=input("megatrade = 3: ")
 # b=input("baden = 4: ")
 
-# prov_r=["PartNumber", 
-# 	"Название товара", 
-# 	"Производитель", 
-# 	"Тип", 
-# 	"Цена", 
-# 	"Наличие", 
-# 	"Адрес изображения"] # ecko
+prod_r=['Артикул ','Номенклатура','Стандартна роздрібна ціна','Стандартна партнерська ціна'] # megatrade
 
-# prov_r=["Артикул ", 
-# 	"Номенклатура", 
-# 	"Залишок",
-# 	"Валюта",
-# 	"Стандартна роздрібна ціна",
-# 	"Стандартна партнерська ціна",
-# 	"Спеціальна ціна",
-# 	"Опис"] # megatrade
-
-prod_r=["Код товара"] # baden
-
+# prod_r=["Код товара", "Розничная"] # baden
 
 # prod_r=["Код"] # CW
 
 # prod_r = ["Номенклатура.Артикул "] # softcom
 
-prov='baden' #'cw' 'softcom' 'baden' 'megatrade' 'ecko'
+# prod_r=["PartNumber","Название товара","Производитель","Тип","Цена"] # ecko
+
+prov='megatrade' #'cw' 'softcom' 'baden' 'megatrade' 'ecko'
 
 # Функция расчета цены
 def Create_price(pric, rate, procent):
@@ -80,7 +66,7 @@ backup.write(csv_header)
 product_file_in_db.write(csv_header)
 product_file_not_in_db.write(csv_header)
 
-for i in db_product:
+for i in db_product: #backUp
 	id_product=str(i.id)
 	category=str(i.category.id)
 	type_product=i.type_product
@@ -93,6 +79,8 @@ for i in db_product:
 	available=str(i.available) 
 	stock=str(i.stock)
 	backup.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
+
+for i in db_product: # False для всех обрабатываемых товаров
 	i.available = False
 	i.stock = False
 	i.save()
@@ -195,272 +183,287 @@ def baden(rawproduct,dbproduct, productfileindb, productfilenotindb,id_t,prod_ex
 	c=0
 	while c < len(rawproduct):
 		try:
-			p = dbproduct.get(vendor_code=str(rawproduct.iloc[c, 0])) # Попытаться получить объект по vender_code 
-			# print(p, "in bd")
-			id_product=str(p.id)
-			category=str(p.category.id)
-			type_product=p.type_product
-			name=str(p.name);name='"'+name+'"'
-			vendor = p.vendor
-			vendor_code= p.vendor_code
-			slug=p.slug
-			price=str(p.price)
-			provider=p.provider
-			available, stock = "1", "1"
-			productfileindb.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
+			p = dbproduct.get(vendor_code=str(rawproduct.iloc[c, 0]).split('.')[0]) # Попытаться получить объект по vender_code
+			if str(rawproduct.iloc[c, 4]) == "Есть":
+				id_product=str(p.id)
+				category=str(p.category.id)
+				type_product=p.type_product
+				name=str(p.name);name='"'+name.replace(',', '').replace('"','')+'"'
+				vendor='"'+p.vendor+'"'
+				vendor_code='"'+p.vendor_code+'"'
+				slug=p.slug
+				price=str(p.price)
+				provider=p.provider
+				available, stock = "1", "1"
+				productfileindb.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
 		except Product.DoesNotExist: # Если объеки отсутсвует в БД формируем файл для импорта
 			try:
-				r = rawproduct.iloc[c, :]
-				id_t+=1
-				id_product=str(id_t)
-				category="CATEGORY"
-				type_product="TYPE_PRODUCT"
-				name=rawproduct.iloc[c, 1];name=str(name);name='"'+name+'"'
-				vendor = "VENDOR"
-				vendor_code=rawproduct.iloc[c, 0];vendor_code=str(vendor_code)
-				slug=slugify(name+'-'+vendor_code)
-				price=str(rawproduct.iloc[c, 3]);price=price.replace(",",".")
-				provider=prov
-				available, stock = "1", "1"
-				productfilenotindb.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
+				# r = rawproduct.iloc[c, :]
+				if str(rawproduct.iloc[c, 4]) == "Есть":
+					id_t+=1
+					id_product=str(id_t)
+					category="CATEGORY"
+					name=rawproduct.iloc[c, 1];name='"'+name.replace(',', '').replace('"','')+'"'
+					type_product="TYPE_PRODUCT"
+					vendor = "VENDOR"
+					vendor_code=rawproduct.iloc[c, 0];vendor_code=str(vendor_code)
+					slug=slugify(name+'-'+vendor_code)
+					price=str(rawproduct.iloc[c, 3]);price=price.replace(",",".")
+					provider=prov
+					available, stock = "1", "1"
+					productfilenotindb.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
 			except IndexError:
 				pass
 		c+=1
-	# rawproduct = rawproduct.dropna(subset=prod_ex) # Если один из этих столбцов имет NaN строка удаляется
-	# c=0
-	# while c < len(list_keys):
-	# 	try:
-	# 		p = db_product.get(vendor_code=str(row_dict.get(b_r[0]).get(list_keys[c])).split('.')[0]) # Попытаться получить объект по vender_code 
-	# 		# print(str(row_dict.get(b_r[0]).get(list_keys[c])).split('.')[0], "in bd")
-	# 		if str(row_dict.get(b_r[1]).get(list_keys[c])).split('.')[0] == "Есть":
-	# 			# pass
-	# 			print("Yes")
-	# 			# p.available = True; p.save() # Присвоить значение True если в прайсе "В наявності"
-	# 	except Product.DoesNotExist: # Если объеки отсутсвует в БД формируем файл для импорта
-	# 		try:
-	# 			# Если один из этих столбцов имет NaN строка удаляется
-	# 			r = raw_product.dropna(subset=["Код товара"]).iloc[c, :]
-	# 			# print(row_dict.get(b_r[0]).get(list_keys[c]), "Not in bd", c)
-	# 			itd+=1
-	# 			id_product=str(itd)
-	# 			vendor="VENDOR"
-	# 			category="CATEGORY"
-	# 			type_product="TYPE_PRODUCT"
-	# 			name=r[1];name=str(name);name='"'+name+'"'
-	# 			vendor_code=r[0];vendor_code=str(vendor_code)
-	# 			slug=slugify(name+'-'+vendor_code)
-	# 			price=r[3];price=str(price);price=price.replace(",",".")
-	# 			provider=prov
-	# 			available, stock = "1", "1"
-	# 			product_file.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
-	# 			print(r, '----------\n')
-	# 		except IndexError:
-	# 			pass
-	# 	c+=1
+##########
+
+########## Обновление полей available ecko
+def ecko(rawproduct,dbproduct, productfileindb, productfilenotindb,id_t,prod_ex):
+	type_product_list = [('Фильтры', '128'),
+						('Мастер-пленки', '99'),
+						('Зажимы', 'BED_TYPE'),
+						('Лезвие очистки', '128'),
+						('Комплекты обслуживания', '128'),
+						('Коротроны', '128'),
+						('Крепления', '128'),
+						('Экраны', 'BED_TYPE'),
+						('Беспилотные аппараты', 'BED_TYPE'),
+						('Средства ухода', '130'),
+						('Доп.оборудование', 'BED_TYPE'),
+						('Тонер в мешках', '129'),
+						('Игры', 'BED_TYPE'),
+						('Переплетчики', 'BED_TYPE'),
+						('Тонеры', '129'),
+						('Скобы', 'BED_TYPE'),
+						('Уничтожители', 'BED_TYPE'),
+						('Вал заряда', '128'),
+						('Драм-картридж', '129'),
+						('Указки', 'BED_TYPE'),
+						('Термообложки', 'BED_TYPE'),
+						('Втулки', '128'),
+						('Носители', 'BED_TYPE'),
+						('Лезвие дозирующее', '128'),
+						('Шестерни вала тефлонового', '128'),
+						('Аксессуары', 'BED_TYPE'),
+						('Зарядные устройства', 'BED_TYPE'),
+						('Резаки', 'BED_TYPE'),
+						('Пружины', '128'),
+						('Термопленки', '128'),
+						('Бумага', 'BED_TYPE'),
+						('Тормозные площадки', '128'),
+						('Обложки', 'BED_TYPE'),
+						('Сетевое оборудование', 'BED_TYPE'),
+						('Валы', '128'),
+						('Датчики', '128'),
+						('Нагревательные элементы', '128'),
+						('Лезвие очистки ремня', '128'),
+						('Инструмент', 'BED_TYPE'),
+						('Шестерни редуктора', '128'),
+						('Тонер-картридж', '129'),
+						('Сепараторы', '128'),
+						('Офисная техника', 'BED_TYPE'),
+						('Платы', '128'),
+						('Игрушки', 'BED_TYPE'),
+						('Конвертные пленки', 'BED_TYPE'),
+						('Шестерня узла закрепления', '128'),
+						('Шестерни', '128'),
+						('Вал тефлоновый', '128'),
+						('Демонстрационное оборудования', 'BED_TYPE'),
+						('Лампы', '128'),
+						('Лезвие подбора', '128'),
+						('Вал чистящий', '128'),
+						('Другое', 'BED_TYPE'),
+						('Лезвия', '128'),
+						('3D-принтеры', 'BED_TYPE'),
+						('Разное', 'BED_TYPE'),
+						('Ламинаторы', 'BED_TYPE'),
+						('Комплектующие', 'BED_TYPE'),
+						('Металлические пружины', 'BED_TYPE'),
+						('Комплект тонеров', '129'),
+						('Флипчарты', 'BED_TYPE'),
+						('Подшипники', '128'),
+						('Тонер фасованый', '129'),
+						('Узлы закрепления', '128'),
+						('Носимая электроника', 'BED_TYPE'),
+						('Картриджи', '129'),
+						('Пластиковые пружины, спирали', 'BED_TYPE'),
+						('Вал резиновый', '128'),
+						('Вал магнитный', '128'),
+						('Девелоперы', '129'),
+						('Электрооборудование', 'BED_TYPE'),
+						('Блоки изображения', '129'),
+						('Рюкзаки', 'BED_TYPE'),
+						('Лезвие уплотнительное', '128'),
+						('Кульки и коробки упаковочные', '129'),
+						('Термоленты', '128'),
+						('МФУ/Принтеры', 'BED_TYPE'),
+						('Чипы', '129'),
+						('Чернила', '99'),
+						('Фотобарабаны', '129'),
+						('Ролики', '128'),
+						('Конверты', 'BED_TYPE'),
+						('Шлейфы', '128'),
+						('Шестерни вала резинового', '128'),
+						('Ремни', '128')]
+	rates = Rates.objects.latest('created')
+	rawproduct = rawproduct.dropna(subset=prod_ex) # Если один из этих столбцов имет NaN строка удаляется
+	c=0
+
+	while c < len(rawproduct):
+		try:
+			p = dbproduct.get(vendor_code=str(rawproduct.iloc[c, 0])) # Попытаться получить объект по vender_code
+			if str(rawproduct.iloc[c, 9]) == "Да":
+				id_product=str(p.id)
+				category=str(p.category.id)
+				type_product=p.type_product
+				name=str(p.name);name='"'+name.replace(',', '').replace('"','')+'"'
+				vendor='"'+p.vendor+'"'
+				vendor_code='"'+p.vendor_code+'"'
+				slug=p.slug
+				price=str(p.price)
+				provider=p.provider
+				available, stock = "1", "1"
+				productfileindb.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
+				print(p, c)
+			# elif str(rawproduct.iloc[c, 8]) == "Нет":
+			# 	id_product=str(p.id)
+			# 	category=str(p.category.id)
+			# 	type_product=p.type_product
+			# 	name=str(p.name);name='"'+name.replace(',', '').replace('"','')+'"'
+			# 	vendor='"'+p.vendor+'"'
+			# 	vendor_code='"'+p.vendor_code+'"'
+			# 	slug=p.slug
+			# 	price=str(p.price)
+			# 	provider=p.provider
+			# 	available, stock = "1", "1"
+			# 	productfileindb.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
+			# 	print(p, c)
+
+		except Product.DoesNotExist: # Если объеки отсутсвует в БД формируем файл для импорта
+			try:
+				if str(rawproduct.iloc[c, 9]) == "Да":
+					id_t+=1
+					id_product=str(id_t)
+					for t in type_product_list:
+						if t[0] == str(rawproduct.iloc[c, 3]):
+							type_product ,category = t
+					name=rawproduct.iloc[c, 1];name='"'+name.replace(',', '').replace('"','')+'"'
+					vendor = rawproduct.iloc[c, 2]
+					vendor_code=rawproduct.iloc[c, 0];vendor_code=str(vendor_code)
+					slug=slugify(name+'-'+vendor_code)
+					price=Create_price(rawproduct.iloc[c,5], rates.usd, 0.30)
+					provider=prov
+					available, stock = "1", "1"
+					productfilenotindb.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
+					print(rawproduct.iloc[c, :])
+				# elif str(rawproduct.iloc[c, 8]) == "Нет":
+				# 	id_t+=1
+				# 	id_product=str(id_t)
+				# 	for t in type_product_list:
+				# 		if t[0] == str(rawproduct.iloc[c, 3]):
+				# 			type_product ,category = t
+				# 	name=rawproduct.iloc[c, 1];name='"'+name.replace(',', '').replace('"','')+'"'
+				# 	vendor = rawproduct.iloc[c, 2]
+				# 	vendor_code=rawproduct.iloc[c, 0];vendor_code=str(vendor_code)
+				# 	slug=slugify(name+'-'+vendor_code)
+				# 	price=Create_price(rawproduct.iloc[c,5], rates.usd, 0.30)
+				# 	provider=prov
+				# 	available, stock = "0", "0"
+				# 	productfilenotindb.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
+				# 	print(rawproduct.iloc[c, :])
+			except IndexError:
+				pass
+		c+=1
+		# try:
+		# 	p = db_product.get(vendor_code=row_dict.get(e_r[0]).get(list_keys[c])) # Попытаться получить объект по vender_code
+		# 	# print(row_dict.get(e_r[0]).get(list_keys[c]), "in bd")
+		# 	if row_dict.get(e_r[1]).get(list_keys[c]) == "Да":
+		# 		pass
+		# 		# print("Yes")
+		# 		# p.available = True; p.save() # Присвоить значение True если в прайсе "В наявності"
+		# 	elif row_dict.get(e_r[1]).get(list_keys[c]) == "Нет":
+		# 		pass
+		# 		# print("No")
+		# 		# p.available = False; p.save() # Присвоить значение False если в прайсе "Під замовлення"
+		# except Product.DoesNotExist: # Если объеки отсутсвует в БД формируем файл для импорта
+		# 	try:
+		# 		# print(row_dict.get(e_r[0]).get(list_keys[c]), "Not in bd", c)
+		# 		# Если один из этих столбцов имет NaN строка удаляется
+		# 		r = raw_product.dropna(subset=["PartNumber","Название товара","Производитель","Тип","Цена"]).iloc[c, :]
+		# 		itd+=1
+		# 		id_product=str(itd)
+		# 		vendor=r[2]; vendor=str(vendor)
+		# 		for t in type_product_list:
+		# 			if t[0] == str(r[3]):
+		# 				type_product ,category = t
+		# 		name=r[1];name=str(name);name='"'+name+'"'
+		# 		vendor_code=r[0];vendor_code=str(vendor_code)
+		# 		slug=slugify(name+'-'+vendor_code)
+		# 		price = Create_price(price, rates.usd, 0.30)
+		# 		provider=prov
+		# 		if str(r[9]) == "Да":
+		# 			available, stock = "1", "1"
+		# 		elif str(r[9]) == "Нет":
+		# 			available, stock = "0", "0"
+		# 		product_file.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
+		# 		print(r, '----------\n')
+		# 	except IndexError:
+		# 		pass
+		# c+=1
+##########
+
+########## Обновление полей available megatrade
+def megatrade(rawproduct,dbproduct, productfileindb, productfilenotindb,id_t,prod_ex):
+	rates = Rates.objects.latest('created')
+	rawproduct = rawproduct.dropna(subset=prod_ex) # Если один из этих столбцов имет NaN строка удаляется
+	c=0
+	while c < len(rawproduct):
+		try:
+			p = dbproduct.get(vendor_code=str(rawproduct.iloc[c, 0])) # Попытаться получить объект по vender_code
+			if str(rawproduct.iloc[c, 2]) == "В наявності":
+				id_product=str(p.id)
+				category=str(p.category.id)
+				type_product=p.type_product
+				name=str(p.name);name='"'+name.replace(',', '').replace('"','')+'"'
+				vendor='"'+p.vendor+'"'
+				vendor_code='"'+p.vendor_code+'"'
+				slug=p.slug
+				price=str(p.price)
+				provider=p.provider
+				available, stock = "1", "1"
+				productfileindb.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
+				print(p, c) # Попытаться получить объект по vender_code
+		# elif row_dict.get(m_r[1]).get(list_keys[c]) == "Під замовлення":
+		# 	pass
+			# print("No")
+			# p.available = False; p.save() # Присвоить значение False если в прайсе "Під замовлення"
+		except Product.DoesNotExist: # Если объеки отсутсвует в БД формируем файл для импорта
+			try:
+				if str(rawproduct.iloc[c, 2]) == "В наявності":
+					id_t+=1
+					id_product=str(id_t)
+					vendor="Ricoh"
+					category="CATEGORY"
+					type_product="TYPE_PRODUCT"
+					name=str(rawproduct.iloc[c, 1]);name='"'+name.replace(',', '').replace('"','')+'"'
+					vendor_code=str(rawproduct.iloc[c, 0])
+					slug=slugify(name+'-'+vendor_code)
+					price=str(rawproduct.iloc[c,4])
+					price=round(Decimal(price.replace(",","."))*rates.usd, 2); price=str(price)
+					provider=prov
+					available, stock = "1", "1"
+					productfilenotindb.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
+					print(rawproduct.iloc[c,:])
+			except IndexError:
+				pass
+		c+=1
 ##########
 
 # softcom(raw_product,db_product,product_file_in_db,product_file_not_in_db,itd,prod_r)
 # cw(raw_product,db_product,product_file_in_db,product_file_not_in_db,itd,prod_r)
-baden(raw_product,db_product,product_file_in_db,product_file_not_in_db,itd,prod_r)
-
-########## Обновление полей available ecko
-
-# type_product_list = [('Фильтры', '128'),
-# ('Мастер-пленки', '99'),
-# ('Зажимы', 'BED_TYPE'),
-# ('Лезвие очистки', '128'),
-# ('Комплекты обслуживания', '128'),
-# ('Коротроны', '128'),
-# ('Крепления', '128'),
-# ('Экраны', 'BED_TYPE'),
-# ('Беспилотные аппараты', 'BED_TYPE'),
-# ('Средства ухода', '130'),
-# ('Доп.оборудование', 'BED_TYPE'),
-# ('Тонер в мешках', '129'),
-# ('Игры', 'BED_TYPE'),
-# ('Переплетчики', 'BED_TYPE'),
-# ('Тонеры', '129'),
-# ('Скобы', 'BED_TYPE'),
-# ('Уничтожители', 'BED_TYPE'),
-# ('Вал заряда', '128'),
-# ('Драм-картридж', '129'),
-# ('Указки', 'BED_TYPE'),
-# ('Термообложки', 'BED_TYPE'),
-# ('Втулки', '128'),
-# ('Носители', 'BED_TYPE'),
-# ('Лезвие дозирующее', '128'),
-# ('Шестерни вала тефлонового', '128'),
-# ('Аксессуары', 'BED_TYPE'),
-# ('Зарядные устройства', 'BED_TYPE'),
-# ('Резаки', 'BED_TYPE'),
-# ('Пружины', '128'),
-# ('Термопленки', '128'),
-# ('Бумага', 'BED_TYPE'),
-# ('Тормозные площадки', '128'),
-# ('Обложки', 'BED_TYPE'),
-# ('Сетевое оборудование', 'BED_TYPE'),
-# ('Валы', '128'),
-# ('Датчики', '128'),
-# ('Нагревательные элементы', '128'),
-# ('Лезвие очистки ремня', '128'),
-# ('Инструмент', 'BED_TYPE'),
-# ('Шестерни редуктора', '128'),
-# ('Тонер-картридж', '129'),
-# ('Сепараторы', '128'),
-# ('Офисная техника', 'BED_TYPE'),
-# ('Платы', '128'),
-# ('Игрушки', 'BED_TYPE'),
-# ('Конвертные пленки', 'BED_TYPE'),
-# ('Шестерня узла закрепления', '128'),
-# ('Шестерни', '128'),
-# ('Вал тефлоновый', '128'),
-# ('Демонстрационное оборудования', 'BED_TYPE'),
-# ('Лампы', '128'),
-# ('Лезвие подбора', '128'),
-# ('Вал чистящий', '128'),
-# ('Другое', 'BED_TYPE'),
-# ('Лезвия', '128'),
-# ('3D-принтеры', 'BED_TYPE'),
-# ('Разное', 'BED_TYPE'),
-# ('Ламинаторы', 'BED_TYPE'),
-# ('Комплектующие', 'BED_TYPE'),
-# ('Металлические пружины', 'BED_TYPE'),
-# ('Комплект тонеров', '129'),
-# ('Флипчарты', 'BED_TYPE'),
-# ('Подшипники', '128'),
-# ('Тонер фасованый', '129'),
-# ('Узлы закрепления', '128'),
-# ('Носимая электроника', 'BED_TYPE'),
-# ('Картриджи', '129'),
-# ('Пластиковые пружины, спирали', 'BED_TYPE'),
-# ('Вал резиновый', '128'),
-# ('Вал магнитный', '128'),
-# ('Девелоперы', '129'),
-# ('Электрооборудование', 'BED_TYPE'),
-# ('Блоки изображения', '129'),
-# ('Рюкзаки', 'BED_TYPE'),
-# ('Лезвие уплотнительное', '128'),
-# ('Кульки и коробки упаковочные', '129'),
-# ('Термоленты', '128'),
-# ('МФУ/Принтеры', 'BED_TYPE'),
-# ('Чипы', '129'),
-# ('Чернила', '99'),
-# ('Фотобарабаны', '129'),
-# ('Ролики', '128'),
-# ('Конверты', 'BED_TYPE'),
-# ('Шлейфы', '128'),
-# ('Шестерни вала резинового', '128'),
-# ('Ремни', '128')]
-
-# raw_product = pd.read_excel('work_price/ecko.xlsx')
-# movies = raw_product[e_r]
-# row_dict = movies.dropna(subset=["PartNumber","Название товара","Производитель","Тип","Цена"]).to_dict()
-
-# list_keys = list(row_dict.get(e_r[0]).keys())
-# db_product = Product.objects.filter(provider=prov)
-# c=0
-
-# product_file=open('sorted_product.csv', 'w')
-# product_file.write('id,category,name,slug,provider,vendor_code,vendor,type_product,price,stock,available'+'\n')
-# itd=Product.objects.latest('id').id+1 # Получить последний id + 1
-
-# while c < len(list_keys):
-# 	try:
-# 		p = db_product.get(vendor_code=row_dict.get(e_r[0]).get(list_keys[c])) # Попытаться получить объект по vender_code
-# 		# print(row_dict.get(e_r[0]).get(list_keys[c]), "in bd")
-# 		if row_dict.get(e_r[1]).get(list_keys[c]) == "Да":
-# 			pass
-# 			# print("Yes")
-# 			# p.available = True; p.save() # Присвоить значение True если в прайсе "В наявності"
-# 		elif row_dict.get(e_r[1]).get(list_keys[c]) == "Нет":
-# 			pass
-# 			# print("No")
-# 			# p.available = False; p.save() # Присвоить значение False если в прайсе "Під замовлення"
-# 	except Product.DoesNotExist: # Если объеки отсутсвует в БД формируем файл для импорта
-# 		try:
-# 			# print(row_dict.get(e_r[0]).get(list_keys[c]), "Not in bd", c)
-# 			# Если один из этих столбцов имет NaN строка удаляется
-# 			r = raw_product.dropna(subset=["PartNumber","Название товара","Производитель","Тип","Цена"]).iloc[c, :]
-# 			itd+=1
-# 			id_product=str(itd)
-# 			vendor=r[2]; vendor=str(vendor)
-# 			for t in type_product_list:
-# 				if t[0] == str(r[3]):
-# 					type_product ,category = t
-# 			name=r[1];name=str(name);name='"'+name+'"'
-# 			vendor_code=r[0];vendor_code=str(vendor_code)
-# 			slug=slugify(name+'-'+vendor_code)
-# 			price = Create_price(price, rates.usd, 0.30)
-# 			provider=prov
-# 			if str(r[9]) == "Да":
-# 				available, stock = "1", "1"
-# 			elif str(r[9]) == "Нет":
-# 				available, stock = "0", "0"
-# 			product_file.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
-# 			print(r, '----------\n')
-# 		except IndexError:
-# 			pass
-# 	c+=1
-
-##########
-
-########## Обновление полей available megatrade
-
-# raw_product = pd.read_excel('work_price/megatrade.xlsx')
-# movies = raw_product[m_r]
-# # Если один из этих столбцов имет NaN строка удаляется
-# row_dict = movies.dropna(subset=['Артикул ',
-# 								'Номенклатура',
-# 								'Стандартна роздрібна ціна',
-# 								'Стандартна партнерська ціна']).to_dict()
-
-# list_keys = list(row_dict.get(m_r[0]).keys()) # формирует словарь из DataFrame
-# db_product = Product.objects.filter(provider=prov) # Получить queryset
-# c=0
-
-# product_file=open('sorted_product.csv', 'w')
-# product_file.write('id,category,name,slug,provider,vendor_code,vendor,type_product,price,stock,available'+'\n')
-# itd=Product.objects.latest('id').id+1 # Получить последний id + 1
-
-# while c < len(list_keys):
-# 	try:
-# 		p = db_product.get(vendor_code=row_dict.get(m_r[0]).get(list_keys[c])) # Попытаться получить объект по vender_code
-# 		# print(row_dict.get(m_r[0]).get(list_keys[c]), "in bd")
-# 		if row_dict.get(m_r[1]).get(list_keys[c]) == "В наявності":
-# 			pass
-# 			# print("Yes")
-# 			# p.available = True; p.save() # Присвоить значение True если в прайсе "В наявності"
-# 		elif row_dict.get(m_r[1]).get(list_keys[c]) == "Під замовлення":
-# 			pass
-# 			# print("No")
-# 			# p.available = False; p.save() # Присвоить значение False если в прайсе "Під замовлення"
-# 	except Product.DoesNotExist: # Если объеки отсутсвует в БД формируем файл для импорта
-# 		try:
-# 			# print(row_dict.get(m_r[0]).get(list_keys[c]), "Not in bd", c)
-# 			# Если один из этих столбцов имет NaN строка удаляется
-# 			r = raw_product.dropna(subset=['Артикул ',
-# 										'Номенклатура',
-# 										'Стандартна роздрібна ціна',
-# 										'Стандартна партнерська ціна']).iloc[c, :]
-# 			itd+=1
-# 			id_product=str(itd)
-# 			vendor="Ricoh"
-# 			category="CATEGORY"
-# 			type_product="TYPE_PRODUCT"
-# 			name=r[2];name=str(name);name='"'+name+'"'
-# 			vendor_code=r[1];vendor_code=str(vendor_code)
-# 			slug=slugify(name+'-'+vendor_code)
-# 			price=r[5];price=str(price)
-# 			price=round(Decimal(price.replace(",","."))*rates.usd, 2); price=str(price)
-# 			provider=prov
-# 			available, stock = "1", "1"
-# 			product_file.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
-# 			# print(r, '----------\n')
-# 		except IndexError:
-# 			pass
-# 	c+=1
-
-##########
+# baden(raw_product,db_product,product_file_in_db,product_file_not_in_db,itd,prod_r)
+# ecko(raw_product,db_product,product_file_in_db,product_file_not_in_db,itd,prod_r)
+# megatrade(raw_product,db_product,product_file_in_db,product_file_not_in_db,itd,prod_r)
 
 ########## Добавления изображения ecko Рабочий код
 
