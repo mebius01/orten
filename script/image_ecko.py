@@ -22,11 +22,11 @@ raw_product = pd.read_excel('work_price/'+prov+'.xlsx')
 db_product = Product.objects.filter(provider=prov)
 c=0
 raw_product = raw_product.dropna(subset=["Адрес изображения"])
-jpg_dir = os.path.join(settings.BASE_DIR, 'media', 'product')
+# jpg_dir = os.path.join(settings.BASE_DIR, 'media', 'product')
 while c < len(raw_product):
 	try:
 		p = db_product.get(vendor_code=str(raw_product.iloc[c, 0]))
-		url = str(raw_product.iloc[c, 10])
+		# url = str(raw_product.iloc[c, 10])
 		# filename = wget.download(url, jpg_dir)
 		# os.rename(filename, jpg_dir+"/"+slugify(str(raw_product.iloc[c, 0]))+'.jpg')
 		p.image = 'product/'+slugify(str(raw_product.iloc[c, 0]))+'.jpg'
