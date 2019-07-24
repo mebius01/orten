@@ -42,7 +42,7 @@ prod_r=['Артикул ','Номенклатура','Стандартна ро�
 
 # prod_r=["PartNumber","Название товара","Производитель","Тип","Цена"] # ecko
 
-prov='megatrade' #'cw' 'softcom' 'baden' 'megatrade' 'ecko'
+prov='ecko' #'cw' 'softcom' 'baden' 'megatrade' 'ecko'
 
 # Функция расчета цены
 def Create_price(pric, rate, procent):
@@ -66,24 +66,24 @@ backup.write(csv_header)
 product_file_in_db.write(csv_header)
 product_file_not_in_db.write(csv_header)
 
-for i in db_product: #backUp
-	id_product=str(i.id)
-	category=str(i.category.id)
-	type_product=i.type_product
-	name=str(i.name);name='"'+name.replace(',', '').replace('"','')+'"'
-	vendor='"'+i.vendor+'"'
-	vendor_code='"'+i.vendor_code+'"'
-	slug=i.slug
-	price=str(i.price)
-	provider=i.provider
-	available=str(i.available) 
-	stock=str(i.stock)
-	backup.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
+# for i in db_product: #backUp
+# 	id_product=str(i.id)
+# 	category=str(i.category.id)
+# 	type_product=i.type_product
+# 	name=str(i.name);name='"'+name.replace(',', '').replace('"','')+'"'
+# 	vendor='"'+i.vendor+'"'
+# 	vendor_code='"'+i.vendor_code+'"'
+# 	slug=i.slug
+# 	price=str(i.price)
+# 	provider=i.provider
+# 	available=str(i.available) 
+# 	stock=str(i.stock)
+# 	backup.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
 
-for i in db_product: # False для всех обрабатываемых товаров
-	i.available = False
-	i.stock = False
-	i.save()
+# for i in db_product: # False для всех обрабатываемых товаров
+# 	i.available = False
+# 	i.stock = False
+# 	i.save()
 
 ########## Обновление полей available softcom
 def softcom(rawproduct,dbproduct, productfileindb, productfilenotindb,id_t,prod_ex):
@@ -465,29 +465,35 @@ def megatrade(rawproduct,dbproduct, productfileindb, productfilenotindb,id_t,pro
 # ecko(raw_product,db_product,product_file_in_db,product_file_not_in_db,itd,prod_r)
 # megatrade(raw_product,db_product,product_file_in_db,product_file_not_in_db,itd,prod_r)
 
-########## Добавления изображения ecko Рабочий код
-
-# raw_product = pd.read_excel('ecko.xlsx')
-# raw_product.dropna(inplace = True)
-
-# movies = raw_product[["PartNumber", "Адрес изображения"]]
-# row_dict = movies.head(66).to_dict()
-
-# list_keys = list(row_dict.get("PartNumber").keys())
+########## Добавления описания megatrade
 # c=0
-# jpg_dir = os.path.join(settings.BASE_DIR, 'media', 'product')
-# db_product = Product.objects.filter(provider='ecko')
-
-# while c < len(list_keys):
-# 	for i in db_product:
-# 		if i.vendor_code == row_dict.get("PartNumber").get(list_keys[c]):
-# 			url = row_dict.get("Адрес изображения").get(list_keys[c])
-# 			filename = wget.download(url, jpg_dir)
-# 			os.rename(filename, jpg_dir+"/"+slugify(row_dict.get("PartNumber").get(list_keys[c]))+'.jpg')
-# 			i.image = 'product/'+slugify(row_dict.get("PartNumber").get(list_keys[c]))+'.jpg'
-# 			i.save()
+# raw_product = raw_product.dropna(subset=["Опис"])
+# while c < len(raw_product):
+# 	try:
+# 		p = db_product.get(vendor_code=str(raw_product.iloc[c, 0]))
+# 		p.description = str(raw_product.iloc[c,7])
+# 		p.save()
+# 		# print(p.vendor_code, raw_product.iloc[c,7], '------\n',c)
+# 	except Product.DoesNotExist:
+# 		pass
 # 	c+=1
+##########
 
+########## Добавления изображения ecko Рабочий код
+# c=0
+# raw_product = raw_product.dropna(subset=["Адрес изображения"])
+# jpg_dir = os.path.join(settings.BASE_DIR, 'media', 'product')
+# while c < len(raw_product):
+# 	try:
+# 		p = db_product.get(vendor_code=str(raw_product.iloc[c, 0]))
+# 		url = str(raw_product.iloc[c, 10])
+# 		filename = wget.download(url, jpg_dir)
+# 		os.rename(filename, jpg_dir+"/"+slugify(str(raw_product.iloc[c, 0]))+'.jpg')
+# 		p.image = 'product/'+slugify(str(raw_product.iloc[c, 0]))+'.jpg'
+# 		p.save()
+# 	except Product.DoesNotExist:
+# 		pass
+# 	c+=1
 ##########
 
 

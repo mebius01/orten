@@ -10,7 +10,9 @@
         <th scope="col">Бренд</th>
         <th scope="col">Имя</th>
         <th scope="col">Артикул</th>
-        <th scope="col">Ниаличие</th>
+        {% comment %}
+          <th scope="col">Ниаличие</th>
+        {% endcomment %}
         <th scope="col">Цена</th>
         <th colspan="2">В корзину</th>
       </tr>
@@ -52,6 +54,7 @@
         </td>
         <td>{{ product.vendor_code }}</td>
         <!--<td><i class="fas fa-check"></i></td>-->
+        {% comment %}
         <td>
           {% if product.available %}
             <span style="color:green;"><i class="fas fa-check"></i></span>
@@ -59,6 +62,7 @@
             <span style="color:red;"><i class="fas fa-times"></i></span>
           {% endif %}
         </td>
+        {% endcomment %}
         <td>
           {% if product.action %}
           <span style="text-decoration: line-through">{{ product.price }}</span>
