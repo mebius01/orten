@@ -18,7 +18,6 @@ from slugify import slugify
 
 prov='ecko'
 backup = open('backup_'+prov+'.csv', 'w')
-raw_product = pd.read_excel('work_price/'+prov+'.xlsx')
 db_product = Product.objects.filter(provider=prov)
 c=0
 
@@ -36,17 +35,11 @@ for i in db_product: #backUp
 	stock=str(i.stock)
 	backup.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
 
-
-raw_product = raw_product.dropna(subset=["Адрес изображения"])
-# jpg_dir = os.path.join(settings.BASE_DIR, 'media', 'product')
-while c < len(raw_product):
-	try:
-		p = db_product.get(vendor_code=str(raw_product.iloc[c, 0]))
-		# url = str(raw_product.iloc[c, 10])
-		# filename = wget.download(url, jpg_dir)
-		# os.rename(filename, jpg_dir+"/"+slugify(str(raw_product.iloc[c, 0]))+'.jpg')
-		p.image = 'product/'+slugify(str(raw_product.iloc[c, 0]))+'.jpg'
-		p.save()
-	except Product.DoesNotExist:
-		pass
-	c+=1
+for i in db_product:
+	list_name=str(i.name).split("/")
+	new_name=''
+	for l in list_name:
+		new_name=new_name+l.strip()+"/ "
+		i.name, i.name_ru=new_name, new_name
+		i.save()
+		print(i.name, i.name_ru)
