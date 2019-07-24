@@ -27,6 +27,7 @@ while c < len(raw_product):
 		p = db_product.get(vendor_code=str(raw_product.iloc[c, 0]))
 		p.description = str(raw_product.iloc[c,7])
 		p.save()
+		print(p.vendor_code)
 		# print(p.vendor_code, raw_product.iloc[c,7], '------\n',c)
 	except Product.DoesNotExist:
 		pass

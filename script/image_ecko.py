@@ -47,6 +47,7 @@ while c < len(raw_product):
 		# os.rename(filename, jpg_dir+"/"+slugify(str(raw_product.iloc[c, 0]))+'.jpg')
 		p.image = 'product/'+slugify(str(raw_product.iloc[c, 0]))+'.jpg'
 		p.save()
+		print(str(p.image))
 	except Product.DoesNotExist:
 		pass
 	c+=1

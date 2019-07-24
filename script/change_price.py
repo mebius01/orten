@@ -32,17 +32,17 @@ from slugify import slugify
 # m=input("megatrade = 3: ")
 # b=input("baden = 4: ")
 
-prod_r=['Артикул ','Номенклатура','Стандартна роздрібна ціна','Стандартна партнерська ціна'] # megatrade
+# prod_r=['Артикул ','Номенклатура','Стандартна роздрібна ціна','Стандартна партнерська ціна'] # megatrade
 
 # prod_r=["Код товара", "Розничная"] # baden
 
 # prod_r=["Код"] # CW
 
-# prod_r = ["Номенклатура.Артикул "] # softcom
+prod_r = ["Номенклатура.Артикул "] # softcom
 
 # prod_r=["PartNumber","Название товара","Производитель","Тип","Цена"] # ecko
 
-prov='ecko' #'cw' 'softcom' 'baden' 'megatrade' 'ecko'
+prov='softcom' #'cw' 'softcom' 'baden' 'megatrade' 'ecko'
 
 # Функция расчета цены
 def Create_price(pric, rate, procent):
@@ -80,10 +80,10 @@ product_file_not_in_db.write(csv_header)
 # 	stock=str(i.stock)
 # 	backup.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
 
-# for i in db_product: # False для всех обрабатываемых товаров
-# 	i.available = False
-# 	i.stock = False
-# 	i.save()
+for i in db_product: # False для всех обрабатываемых товаров
+	i.available = False
+	i.stock = False
+	i.save()
 
 ########## Обновление полей available softcom
 def softcom(rawproduct,dbproduct, productfileindb, productfilenotindb,id_t,prod_ex):
