@@ -32,26 +32,36 @@ from slugify import slugify
 # m=input("megatrade = 3: ")
 # b=input("baden = 4: ")
 
-# prod_r=['Артикул ','Номенклатура','Стандартна роздрібна ціна','Стандартна партнерська ціна'] # megatrade
+ #'cw' 'softcom' 'baden' 'megatrade' 'ecko'
 
-# prod_r=["Код товара", "Розничная"] # baden
+prod_r=['Артикул ','Номенклатура','Стандартна роздрібна ціна','Стандартна партнерська ціна']; prov='megatrade' # megatrade
 
-# prod_r=["Код"] # CW
+# prod_r=["Код товара", "Розничная"]; prov='baden' # baden
 
-prod_r = ["Номенклатура.Артикул "] # softcom
+# prod_r=["Код"]; prov='cw' # CW
 
-# prod_r=["PartNumber","Название товара","Производитель","Тип","Цена"] # ecko
+# prod_r = ["Номенклатура.Артикул "]; prov='softcom' # softcom
 
-prov='softcom' #'cw' 'softcom' 'baden' 'megatrade' 'ecko'
+# prod_r=["PartNumber","Название товара","Производитель","Тип","Цена"]; prov='ecko' # ecko
+
 
 # Функция расчета цены
-def Create_price(pric, rate, procent):
+def Create_price(pric, rate, procent15, procent30):
+	pric=str(pric)
+	pric=pric.replace(",",".")
+	pric=Decimal(pric)*rate
+	if Decimal(pric) <= Decimal(300):
+		procent = Decimal(procent30)*Decimal(pric)
+	elif Decimal(pric) > Decimal(300):
+		procent = Decimal(procent15)*Decimal(pric)
+	return str(round(pric+procent, 2))
+
+def Create_price_e(pric, rate, procent):
 	pric=str(pric)
 	pric=pric.replace(",",".")
 	pric=Decimal(pric)*rate
 	procent = Decimal(procent)*Decimal(pric)
 	return str(round(pric+procent, 2))
-
 
 rates = Rates.objects.latest('created')
 itd=Product.objects.latest('id').id+1 # Получить последний id + 1
@@ -59,26 +69,26 @@ itd=Product.objects.latest('id').id+1 # Получить последний id +
 raw_product = pd.read_excel('work_price/'+prov+'.xlsx')
 db_product = Product.objects.filter(provider=prov) # Получить queryset
 csv_header = 'id,category,name,slug,provider,vendor_code,vendor,type_product,price,stock,available'+'\n'
-product_file_in_db=open('sorted_product_in_db.csv', 'w')
-product_file_not_in_db=open('sorted_product_not_in_db.csv', 'w')
+product_file_in_db=open('sorted_product_in_db_'+prov+'.csv', 'w')
+product_file_not_in_db=open('sorted_product_not_in_db_'+prov+'.csv', 'w')
 backup = open('backup_'+prov+'.csv', 'w')
 backup.write(csv_header)
 product_file_in_db.write(csv_header)
 product_file_not_in_db.write(csv_header)
 
-# for i in db_product: #backUp
-# 	id_product=str(i.id)
-# 	category=str(i.category.id)
-# 	type_product=i.type_product
-# 	name=str(i.name);name='"'+name.replace(',', '').replace('"','')+'"'
-# 	vendor='"'+i.vendor+'"'
-# 	vendor_code='"'+i.vendor_code+'"'
-# 	slug=i.slug
-# 	price=str(i.price)
-# 	provider=i.provider
-# 	available=str(i.available) 
-# 	stock=str(i.stock)
-# 	backup.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
+for i in db_product: #backUp
+	id_product=str(i.id)
+	category=str(i.category.id)
+	type_product=i.type_product
+	name=str(i.name);name='"'+name.replace(',', '').replace('"','')+'"'
+	vendor='"'+i.vendor+'"'
+	vendor_code='"'+i.vendor_code+'"'
+	slug=i.slug
+	price=str(i.price)
+	provider=i.provider
+	available=str(i.available) 
+	stock=str(i.stock)
+	backup.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
 
 for i in db_product: # False для всех обрабатываемых товаров
 	i.available = False
@@ -105,7 +115,7 @@ def softcom(rawproduct,dbproduct, productfileindb, productfilenotindb,id_t,prod_
 			vendor='"'+p.vendor+'"'
 			vendor_code='"'+p.vendor_code+'"'
 			slug=p.slug
-			price=str(p.price)
+			price=Create_price(rawproduct.iloc[c,5], rates.usd, 0.15, 0.30)
 			provider=p.provider
 			available, stock = "1", "1"
 			productfileindb.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
@@ -118,7 +128,6 @@ def softcom(rawproduct,dbproduct, productfileindb, productfilenotindb,id_t,prod_
 				category="CATEGORY"
 				type_product="TYPE_PRODUCT"
 				name=rawproduct.iloc[c, 3] ;name=str(name);name='"'+name+'"'
-
 				# for v in vendor_list:
 				# 	if v.lower() in name.lower():
 				# 		vendor = v
@@ -126,11 +135,11 @@ def softcom(rawproduct,dbproduct, productfileindb, productfilenotindb,id_t,prod_
 				vendor = "VENDOR"
 				vendor_code=rawproduct.iloc[c, 1];vendor_code=str(vendor_code)
 				slug=slugify(name+'-'+vendor_code)
-				price=Create_price(rawproduct.iloc[c,5], rates.usd, 0.15)
+				price=Create_price(rawproduct.iloc[c,5], rates.usd, 0.15, 0.30)
 				provider=prov
 				available, stock = "1", "1"
 				productfilenotindb.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
-				# print(rawproduct.iloc[c, :], '----------\n')
+				print(rawproduct.iloc[c, :], price)
 			except IndexError:
 				pass
 		c+=1
@@ -351,7 +360,7 @@ def ecko(rawproduct,dbproduct, productfileindb, productfilenotindb,id_t,prod_ex)
 					vendor = rawproduct.iloc[c, 2]
 					vendor_code=rawproduct.iloc[c, 0];vendor_code=str(vendor_code)
 					slug=slugify(name+'-'+vendor_code)
-					price=Create_price(rawproduct.iloc[c,5], rates.usd, 0.30)
+					price=Create_price_e(rawproduct.iloc[c,5], rates.usd, 0.30)
 					provider=prov
 					available, stock = "1", "1"
 					productfilenotindb.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
@@ -428,11 +437,11 @@ def megatrade(rawproduct,dbproduct, productfileindb, productfilenotindb,id_t,pro
 				vendor='"'+p.vendor+'"'
 				vendor_code='"'+p.vendor_code+'"'
 				slug=p.slug
-				price=str(p.price)
+				price=round(Decimal(str(rawproduct.iloc[c,4]).replace(",","."))*rates.usd, 2); price=str(price)
 				provider=p.provider
 				available, stock = "1", "1"
 				productfileindb.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
-				print(p, c) # Попытаться получить объект по vender_code
+				print(p, vendor_code, price) # Попытаться получить объект по vender_code
 		# elif row_dict.get(m_r[1]).get(list_keys[c]) == "Під замовлення":
 		# 	pass
 			# print("No")
@@ -463,8 +472,10 @@ def megatrade(rawproduct,dbproduct, productfileindb, productfilenotindb,id_t,pro
 # cw(raw_product,db_product,product_file_in_db,product_file_not_in_db,itd,prod_r)
 # baden(raw_product,db_product,product_file_in_db,product_file_not_in_db,itd,prod_r)
 # ecko(raw_product,db_product,product_file_in_db,product_file_not_in_db,itd,prod_r)
-# megatrade(raw_product,db_product,product_file_in_db,product_file_not_in_db,itd,prod_r)
+megatrade(raw_product,db_product,product_file_in_db,product_file_not_in_db,itd,prod_r)
 
+
+###################################################################################################################
 ########## Добавления описания megatrade
 # c=0
 # raw_product = raw_product.dropna(subset=["Опис"])

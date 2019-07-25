@@ -24,7 +24,7 @@ class ProductResource(resources.ModelResource):
 
 class ProductAdmin(ImportExportModelAdmin):
 	search_fields = ['name', 'vendor_code',]
-	list_display = ['name', 'id', 'action', 'color_fild', 'format_fild', 'price', 'stock', 'available', 'updated']
+	list_display = ['name', 'available', 'id', 'action', 'color_fild', 'format_fild', 'price', 'stock', 'updated']
 	list_filter = ['provider', 'type_product','category', 'action', 'created', 'updated', 'vendor', 'available']
 	list_editable = ['price', 'stock', 'available', 'action', 'color_fild', 'format_fild']
 	prepopulated_fields = {'slug': ('name','vendor_code')}
