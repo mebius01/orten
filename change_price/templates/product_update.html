@@ -20,7 +20,13 @@
         <fieldset class="module">
             <h1>Тестовая страница в админке</h1>
             <p>Пример показывает, как добавить свою страницу в админку Django</p>
-            <p>Произвольная переменная: {{ data }}</p>
+            {% for i in products %}
+            <p> NAME: {{i.name}}</p>
+            <p>ID in DB: {{i.id}}</p>
+            <p>P/N: {{i.vendor_code}}</p>
+            <p>PRICE: {{i.price}}</p>
+            <p>-------------------</p>
+            {% endfor %}
         </fieldset>
     </div>
 {% endblock %}
