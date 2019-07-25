@@ -80,6 +80,7 @@ INSTALLED_APPS = [
     'shop',
     'cart',
     'order',
+    'change_price',
 ]
 
 MIDDLEWARE = [

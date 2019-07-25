@@ -31,6 +31,7 @@ urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
     path('admin_tools/', include('admin_tools.urls')),
     path('admin/', admin.site.urls),
+    path('', include('change_price.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
     name='django.contrib.sitemaps.views.sitemap'),
     path('robots.txt/', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
