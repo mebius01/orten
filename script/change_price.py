@@ -34,9 +34,9 @@ from slugify import slugify
 
  #'cw' 'softcom' 'baden' 'megatrade' 'ecko'
 
-prod_r=['Артикул ','Номенклатура','Стандартна роздрібна ціна','Стандартна партнерська ціна']; prov='megatrade' # megatrade
+# prod_r=['Артикул ','Номенклатура','Стандартна роздрібна ціна','Стандартна партнерська ціна']; prov='megatrade' # megatrade
 
-# prod_r=["Код товара", "Розничная"]; prov='baden' # baden
+prod_r=["Код товара", "Розничная"]; prov='baden' # baden
 
 # prod_r=["Код"]; prov='cw' # CW
 
@@ -63,15 +63,21 @@ def Create_price_e(pric, rate, procent):
 	procent = Decimal(procent)*Decimal(pric)
 	return str(round(pric+procent, 2))
 
+def Create_price_b(pric_db, pric_in_price):
+	if float(pric_db) > float(pric_in_price):
+		return str(pric_db)
+	elif float(pric_db) < float(pric_in_price):
+		return str(pric_in_price).replace(",",".")
+
 rates = Rates.objects.latest('created')
 itd=Product.objects.latest('id').id+1 # Получить последний id + 1
 
-raw_product = pd.read_excel('work_price/'+prov+'.xlsx')
+raw_product = pd.read_excel('xlsx/'+prov+'.xlsx')
 db_product = Product.objects.filter(provider=prov) # Получить queryset
 csv_header = 'id,category,name,slug,provider,vendor_code,vendor,type_product,price,stock,available'+'\n'
-product_file_in_db=open('sorted_product_in_db_'+prov+'.csv', 'w')
-product_file_not_in_db=open('sorted_product_not_in_db_'+prov+'.csv', 'w')
-backup = open('backup_'+prov+'.csv', 'w')
+product_file_in_db=open('csv/sorted_product_in_db_'+prov+'.csv', 'w')
+product_file_not_in_db=open('csv/sorted_product_not_in_db_'+prov+'.csv', 'w')
+backup = open('csv/backup_'+prov+'.csv', 'w')
 backup.write(csv_header)
 product_file_in_db.write(csv_header)
 product_file_not_in_db.write(csv_header)
@@ -201,10 +207,11 @@ def baden(rawproduct,dbproduct, productfileindb, productfilenotindb,id_t,prod_ex
 				vendor='"'+p.vendor+'"'
 				vendor_code='"'+p.vendor_code+'"'
 				slug=p.slug
-				price=str(p.price)
+				price=Create_price_b(p.price, rawproduct.iloc[c, 3])
 				provider=p.provider
 				available, stock = "1", "1"
 				productfileindb.writelines(id_product+','+category+','+name+','+slug+','+provider+','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
+				print(rawproduct.iloc[c, 4])
 		except Product.DoesNotExist: # Если объеки отсутсвует в БД формируем файл для импорта
 			try:
 				# r = rawproduct.iloc[c, :]
@@ -215,7 +222,7 @@ def baden(rawproduct,dbproduct, productfileindb, productfilenotindb,id_t,prod_ex
 					name=rawproduct.iloc[c, 1];name='"'+name.replace(',', '').replace('"','')+'"'
 					type_product="TYPE_PRODUCT"
 					vendor = "VENDOR"
-					vendor_code=rawproduct.iloc[c, 0];vendor_code=str(vendor_code)
+					vendor_code=rawproduct.iloc[c, 0];vendor_code=str(vendor_code).split('.')[0]
 					slug=slugify(name+'-'+vendor_code)
 					price=str(rawproduct.iloc[c, 3]);price=price.replace(",",".")
 					provider=prov
@@ -470,9 +477,9 @@ def megatrade(rawproduct,dbproduct, productfileindb, productfilenotindb,id_t,pro
 
 # softcom(raw_product,db_product,product_file_in_db,product_file_not_in_db,itd,prod_r)
 # cw(raw_product,db_product,product_file_in_db,product_file_not_in_db,itd,prod_r)
-# baden(raw_product,db_product,product_file_in_db,product_file_not_in_db,itd,prod_r)
+baden(raw_product,db_product,product_file_in_db,product_file_not_in_db,itd,prod_r)
 # ecko(raw_product,db_product,product_file_in_db,product_file_not_in_db,itd,prod_r)
-megatrade(raw_product,db_product,product_file_in_db,product_file_not_in_db,itd,prod_r)
+# megatrade(raw_product,db_product,product_file_in_db,product_file_not_in_db,itd,prod_r)
 
 
 ###################################################################################################################
@@ -560,12 +567,12 @@ megatrade(raw_product,db_product,product_file_in_db,product_file_not_in_db,itd,p
 # 			i.save()
 # 	c+=1
 
-# df = pd.read_excel('work_price/baden.xlsx')
+# df = pd.read_excel('xlsx/baden.xlsx')
 # # df=df.dropna() # Скріть все с NaN
 # # print(df.head(20))
 # print(df.iloc[:, 0:4]) # 962 14050.0 Чернила KW-triO для нумераторов, 20 мл, черные  52     86.58
 
-# df = pd.read_excel('work_price/softcom.xls')
+# df = pd.read_excel('xlsx/softcom.xls')
 # # df=df.dropna() # Скріть все с NaN
 # # print(df.head(20))
 # print(df.iloc[:, [2,4,5,7]]) # 2354  MR.JQU11.001 Проектор Acer S1386WH (MR.JQU11.001) NaN  NaN

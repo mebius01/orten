@@ -138,6 +138,7 @@ class Services(models.Model):
 	slug = models.SlugField(max_length=400, db_index=True)
 	accessories = models.ManyToManyField(Product, editable=False, blank=True)
 	
+	type_service = models.CharField(max_length=200, blank=True, default="Заправка картриджа", help_text='Тип сервиса')
 	vendor_code = models.CharField(max_length=200, blank=True) #артикул или парт-номер
 	vendor = models.CharField(max_length=200, blank=True, help_text='Производитель') # Производитель
 	vendor_model = models.CharField(max_length=200, blank=True, help_text='Модель')

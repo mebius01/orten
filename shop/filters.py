@@ -1,6 +1,6 @@
 import django_filters
 from django_filters.widgets import LinkWidget
-from shop.models import Category, Product
+from shop.models import Category, Product, Services
 from shop import models
 class ProductFilter(django_filters.FilterSet):
 	price__gt = django_filters.NumberFilter(field_name='price', lookup_expr='gt', label='min')
@@ -35,6 +35,39 @@ class ProductFilter(django_filters.FilterSet):
 	class Meta:
 		model = Product
 		fields = ['price__gt', 'price__lt', 'category', 'vendor', 'type_product', 'format_fild', 'color_fild']
+
+
+class ServiceFilter(django_filters.FilterSet):
+
+	price__gt = django_filters.NumberFilter(field_name='price', lookup_expr='gt', label='min')
+	price__lt = django_filters.NumberFilter(field_name='price', lookup_expr='lt', label='max')
+
+	l=[]
+	for i in Services.objects.all():
+		l.append((getattr(i, "type_service"), getattr(i, "type_service")))
+		if ('', '') in l:
+			l.remove(('', ''))
+	l=set(l)
+	type_service=django_filters.ChoiceFilter(choices=sorted(l, key=lambda tup: tup[1]), empty_label='Тип Сервиса')
+
+	l=[]
+	for i in Services.objects.all():
+		l.append((getattr(i, "vendor"), getattr(i, "vendor")))
+		if ('', '') in l:
+			l.remove(('', ''))
+	l=set(l)
+	vendor=django_filters.ChoiceFilter(choices=sorted(l, key=lambda tup: tup[1]), empty_label='Производитель')
+
+	l=[]
+	for i in Category.objects.all():
+		l.append((i.id, i.name))
+		if ('', '') in l:
+			l.remove(('', ''))
+	l=set(l)
+	category=django_filters.ChoiceFilter(choices=sorted(l, key=lambda tup: tup[1]), empty_label='Категория')
+
+
+
 
 
 	# category = django_filters.ModelMultipleChoiceFilter(queryset=Category.objects.all().get_descendants(), conjoined=True, label="Фильтр по категориям")
