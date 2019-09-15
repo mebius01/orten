@@ -445,7 +445,7 @@ article {
 .card .card-action {
     width: 90%;
     height: 30px;
-    background: red;
+    background: #f38d8d;
     position: absolute;
     top: 50px;
     left: -50px;
