@@ -2,81 +2,24 @@
 {% load cache %}
 {% load i18n %}
 {% cache 900 sidebar %}
-<div class="accordion" id="accordionCategory">
-<div class="card-header p-0" id="heading-polygraphy">
-            <ul class="list-group text-dark text-left pl-3 btn btn-link collapsed" data-toggle="collapse" data-target="#collapse-polygraphy" aria-expanded="true" aria-controls="collapse-polygraphy">Полиграфия
-            </ul>
-        </div>
-
-
- <div id="collapse-polygraphy" class="collapse" aria-labelledby="heading-polygraphy" data-parent="#accordionCategory">
-            <div class="card-list-groub">
-                <ul class="list-group-flush">
-                    {% get_flatpages as flatpages %}
-{% for item in flatpages|dictsort:"id" %}
-                    <li class="list-group-item bg-light"><a class="text-muted" href="{% url 'shop:polygraphy_detail' item.id%}">{{ item.title }}</li></a>
-                        {% endfor %}
-                </ul>
-            </div>
-        </div>
-
-
- {% for item in category_all.get_cached_trees %}
-        {% if item.is_root_node %}
-        <div class="card-header p-0" id="heading-{{item.slug}}">
-            <ul class="list-group pl-3 btn btn-link collapsed text-dark text-left" data-toggle="collapse" data-target="#collapse-{{item.slug}}" aria-expanded="true" aria-controls="collapse-{{item.slug}}">{{item.name}}
-            </ul>
-        </div>
-
-
-
-        <div id="collapse-{{item.slug}}" class="collapse" aria-labelledby="heading-{{item.slug}}" data-parent="#accordionCategory">
-            <div class="card-list-groub">
-                <ul class="list-group-flush">
-                    {% for item_children in item.get_descendants %}
-                    <li class="list-group-item bg-light"><a class="text-muted" href="{% url 'shop:list_category' item_children.get_absolute_url %}">
-                        
-                        {{item_children.name}}
-
-                        <span class="badge ml-2">{% firstof item_children.product.count item_children.services.count %}</span></a></li>
-
-
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
+<div class="hd_content"><i class="fas fa-th-list"></i>Категории</div>
+<div class="accordion">
+    <div class="link"><i class="fas fa-bars"></i>Полиграфия</div>
+        <ul class="submenu">
+        {% get_flatpages as flatpages %}
+        {% for item in flatpages|dictsort:"id" %}
+            <li class="cool_link"><a class="text-muted" href="{% url 'shop:polygraphy_detail' item.id%}">{{ item.title }}</a></li>
+        {% endfor %}
+        </ul>
+	 {% for item in category_all.get_cached_trees %}
+	 {% if item.is_root_node %}
+    <div class="link"><i class="fas fa-bars"></i>{{item.name}}</div>
     {% endif %}
+    <ul class="submenu">
+    	{% for item_children in item.get_descendants %}
+        <li class="cool_link"><a href="{% url 'shop:list_category' item_children.get_absolute_url %}">{{item_children.name}}<span>{% firstof item_children.product.count item_children.services.count %}</span></a></li>
+        {% endfor %}
+    </ul>
     {% endfor %}
 </div>
 {% endcache %}
-{% comment %}
-    
-{% load cache %}
-{% cache 900 sidebar %}
-
-{% endcache %}
-
-        {% for item in category_all.get_cached_trees %}
-        {% if item.is_root_node %}
-        <div class="card-header" id="heading-{{item.slug}}">
-            <ul class="list-group text-white" data-toggle="collapse" data-target="#collapse-{{item.slug}}" aria-expanded="true" aria-controls="collapse-{{item.slug}}">{{item.name}}
-            </ul>
-        </div>
-        <div id="collapse-{{item.slug}}" class="collapse show" aria-labelledby="heading-{{item.slug}}" data-parent="#accordionExample">
-            <div class="card-body">
-                <ul class="list-group list-group-flush">
-                    {% for item_children in item.get_descendants %}
-                    <li class="list-group-item bg-light"><a class="text-muted" href="/category/{{ item_children.get_absolute_url }}">{{item_children.name}}<span class="badge ml-2">{{ item_children.product_set.count }}</span></a></li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    {% endif %}
-    {% endfor %}
-
-
-{% endcomment %}
-
-

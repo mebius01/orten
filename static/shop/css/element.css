@@ -1,0 +1,207 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Play', sans-serif;
+}
+:root{
+    --global_geen: #85c987;
+    --global_text_color:#2E4053;
+    --pading_5:5px;
+    --global_12:12px;
+    --global_background_color:#f4f6f6;
+}
+html {
+    height: 100%;
+}
+li {list-style: none;}
+hr{
+    border: none;
+    margin-bottom: 12px;
+    margin-top: 12px;
+    background-color: var(--global_geen);
+    height: 1px;
+}
+input[type=text], input[type=number]{
+    padding-left: 10px;
+}
+select[name=quantity]{
+    height: 31px;
+    width: 41px;
+    text-decoration: none;
+    background-color: white;
+    text-align: center;
+    border:1px var(--global_geen) solid;
+    outline: none;
+}
+
+/* Accordion menu */
+.submenu{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+/* Жмакалки */
+button{
+    width: 96px;
+    height: 32px;
+    border: none;
+    text-decoration: none;
+    outline: none;
+    /* border-radius: 4px; */
+    /* margin: 2px; */
+    cursor: pointer;
+}
+.apply {
+    background-color: white;
+    color: #5cb85c;
+    text-decoration: none;
+    outline: none;
+    border: 1px solid #5cb85c;
+}
+.apply:hover{
+    background-color: #5cb85c;
+    color:white;
+}
+.reset{
+    background-color: white;
+    color: #d9534f;
+    text-decoration: none;
+    outline: none;
+    border: 1px solid #d9534f;
+}
+.reset:hover{
+    background-color: #d9534f;
+    color:white;
+}
+.return{
+    background-color: white;
+    color: #0275d8;
+    text-decoration: none;
+    outline: none;
+    border: 1px solid #0275d8;
+}
+.return:hover{
+    background-color: #0275d8;
+    color:white;
+}
+/* plus - minus input form for card */
+.plas, .minus{
+    height: 31px;
+    width: 31px;
+    text-decoration: none;
+    border: none;
+    text-align: center;
+}
+.foot_card_quantity .quantity{
+    border: 1px solid var(--global_geen);
+    height: 29px;
+    width: 29px;
+    outline: none;
+    text-decoration: none;
+    text-align: center;
+}
+.plas{
+    background-color:#5cb85c;
+}
+.minus{
+    background-color:#d9534f;
+}
+.plas:hover{
+    opacity: 0.5;
+    color: white;
+}
+.minus:hover{
+    opacity: 0.5;
+    color: white;
+}
+.foot_card_quantity{
+    float: left;
+}
+.foot_card_quantity .apply{
+    float: right;
+}
+/* img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+  } */
+.pagination {
+    grid-area: paginator;
+    width:auto;
+    margin: auto;
+    /* height: 40px; */
+    /* margin: 12px; */
+    display: inline-block;
+}
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+.pagination a.active {
+    background-color: var(--global_geen);
+    color: white;
+}
+select[name=pay_method], select[name=delivery_method]{
+    border: 1px solid #5cb85c;
+    background-color: white;
+    padding: 5px;
+    margin-bottom: 12px;
+    /* border-radius: 4px; */
+    width: 100%;
+    height: 32px;
+}
+input[name="city"], input[name=first_name], input[name=last_name], input[name=email], input[name=mobile_phone]{
+    border: 1px solid #5cb85c;
+    background-color: white;
+    width: calc(100% - 6px);
+    height: 35px;
+    padding-left: 5px;
+    margin-bottom: 12px;
+}
+textarea[name=note_text]{
+    border: 1px solid #5cb85c;
+    background-color: white;
+    width: calc(100% - 6px);
+    height: 200px;
+    padding: 5px;
+    margin-bottom: 12px;
+}
+.accordion button{
+    width: 100%;
+    height: 32px;
+    margin-top: 12px;
+    /* float: right; */
+}
+.langdown {
+    float: left;
+ }
+ .langdown .dropbtn {
+    border: none;
+    outline: none;
+    padding: 14px 16px;
+ }
+  .langdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgba(119, 187, 128, 0.219);
+    /* border: 1px solid var(--global_geen); */
+  }
+  /* Links inside the langdown */
+.langdown-content a {
+    float: none;
+    color: black;
+    padding: 1px 12px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+  }
+  
+  /* Add a grey background color to langdown links on hover */
+  .langdown-content a:hover {
+    background-color: var(--global_geen);
+  }
+  .langdown:hover .langdown-content {
+    display: block;
+  }

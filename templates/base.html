@@ -7,7 +7,7 @@
 {% load i18n %}
 <html lang="ru">
     <head>
-      <!-- Google Tag Manager -->
+    <!-- Google Tag Manager -->
       <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -17,416 +17,108 @@
       {% block head %}
         {{ head }}
       {% endblock %}
-       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-       <meta charset="utf-8">
-       <link rel="stylesheet" href="{% static 'shop/css/w3.css' %}" type="text/css">
-       <link rel="stylesheet" href="{% static 'shop/css/mine.css' %}" type="text/css">
-       <link rel="stylesheet" href="{% static 'shop/css/flags.css' %}" type="text/css">
-       <link rel="shortcut icon" type="image/png" href="{% static "img/favicon.png" %}">
-        <!-- Bootstrap CSS -->
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-       <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-        <style>
-            /*Аккции*/
-           .card-action{
-              width: 200px;
-              background: #e43;
-              position: absolute;
-              top: 25px;
-              left: -50px;
-              text-align: center;
-              line-height: 50px;
-              letter-spacing: 1px;
-              color: #f0f0f0;
-              opacity:0.5;
-              transform: rotate(-45deg);
-              -webkit-transform: rotate(-45deg);
-            }
-            .card-head{
-              text-align: center;
-            }
-            .thead-color {
-                background: #6cbbcb;
-            }
-            .card-header {
-                background: #85c987; /*#97c652*  #6cbbcb #a3c8e0*/
-                height: 40px;
-            }
-
-            .navbar {
-                background: #85c987; /*#2bde0a  #56B397 #a3c8e0 */
-                /*opacity: 0.9;*/
-
-                /*background: transparent;*/
-                 /*height: 35px !important;*/
-            }
-            .navbar a {
-                color: #22262A!important
-            }
-            .bloc_left_price {
-                color: #c01508;
-                text-align: center;
-                font-weight: bold;
-                font-size: 150%;
-            }
-            .category_block li:hover {
-                background-color: #007bff;
-            }
-            .category_block li:hover a {
-                color: #ffffff;
-            }
-            .category_block li a {
-                color: #343a40;
-            }
-            .add_to_cart_block .price {
-                color: #c01508;
-                text-align: center;
-                font-weight: bold;
-                font-size: 200%;
-                margin-bottom: 0;
-            }
-            .add_to_cart_block .price_discounted {
-                color: #343a40;
-                text-align: center;
-                text-decoration: line-through;
-                font-size: 140%;
-            }
-            .product_rassurance {
-                padding: 10px;
-                margin-top: 15px;
-                background: #ffffff;
-                border: 1px solid #6c757d;
-                color: #6c757d;
-            }
-            .product_rassurance .list-inline {
-                margin-bottom: 0;
-                text-transform: uppercase;
-                text-align: center;
-            }
-            .product_rassurance .list-inline li:hover {
-                color: #343a40;
-            }
-            .reviews_product .fa-star {
-                color: gold;
-            }
-            footer {
-                padding: 10px;
-                background: #85c987;
-            }
-            footer a {
-                color: #22262A!important
-            }
-            li {
-                margin-bottom: 10px;
-            }
-            .cool-link {
-                display: inline-block;
-                color: #000;
-                text-decoration: none;
-            }
-
-            /*Пагинатор*/
-            .pagination {
-              display: inline-block;
-            }
-            .pagination a {
-              color: black;
-              float: left;
-              padding: 8px 16px;
-              text-decoration: none;
-              transition: background-color .3s;
-            }
-            .pagination a.active {
-              background-color: #4CAF50;
-              opacity:0.8;
-              color: white;
-            }
-            .pagination a:hover:not(.active) {background-color: #ddd;}
-
-            /*Крошки*/
-            ul.breadcrumb {
-              padding: 8px 16px;
-              list-style: none;
-              background-color: #fff;
-            }
-            ul.breadcrumb li {
-                display: inline;
-            }
-
-            ul.breadcrumb li a {
-                color: #4CAF50;  /*#56B397*/
-                padding: 6px;
-            }
-            /*Карусель*/
-            .carousel-control-next-icon {
-
-                height: 0;
-                border-top: 50px solid transparent;
-                border-left: 50px solid red;
-                border-bottom: 50px solid transparent;
-                opacity:0.2;
-            }
-            .carousel-control-prev-icon{
-                width: 0;
-                height: 0;
-                border-top: 50px solid transparent;
-                border-right: 50px solid red;
-                border-bottom: 50px solid transparent;
-                opacity:0.2;
-            }
-            .card {
-              margin: 0 auto;
-            }
-            .card .carousel-item {
-              height: 200px;
-            }
-            .card .carousel-caption {
-              padding: 0;
-              right: 0;
-              left: 0;
-              color: #3d3d3d;
-            }
-            .card .carousel-caption h3 {
-              color: #3d3d3d;
-            }
-            .card .carousel-caption p {
-              line-height: 30px;
-            }
-            .card .carousel-caption .col-sm-3 {
-              display: flex;
-              align-items: center;
-            }
-            .card .carousel-caption .col-sm-9 {
-              text-align: left;
-            }
-            .navi a {
-                text-decoration:none;
-            }
-            a > .ico {
-                background-color: grey;
-                padding: 10px;
-            }
-            a:hover > .ico {
-                background-color: #666;
-            }
-            /*GooglMap*/
-            .map-responsive{
-                overflow:hidden;
-                padding-bottom:56.25%;
-                position:relative;
-                height:0;
-            }
-            .map-responsive iframe{
-                left:0;
-                top:0;
-                height:100%;
-                width:100%;
-                position:absolute;
-            }
-            /*GO TO TOP*/
-            #myBtn {
-                display: none;
-                position: fixed;
-                bottom: 20px;
-                right: 30px;
-                z-index: 99;
-                font-size: 18px;
-                border: none;
-                outline: none;
-                background-color: red;
-                opacity:0.2;
-                color: white;
-                cursor: pointer;
-                padding: 15px;
-                border-radius: 4px;
-            }
-            #myBtn:hover {
-                background-color: #55555;
-            }
-            /*left right for product_ditail*/
-            .leftstr, .rightstr {
-                float: left; /* Обтекание справа */ 
-                width: 50%; /* Ширина текстового блока */ 
-            }
-            .rightstr {
-                text-align: right; /* Выравнивание по правому краю */ 
-            }
-            /*адаптивные таблицы*/
-            table {text-align: center;}
-            @media 
-            only screen and (max-width: 760px),
-            (min-device-width: 768px) and (max-device-width: 1024px)  {
-             
-             /* Force table to not be like tables anymore */
-             table, thead, tbody, th, td, tr { 
-                display: block; 
-             }
-             
-             /* Hide table headers (but not display: none;, for accessibility) */
-             thead tr { 
-                 position: absolute;
-                 top: -9999px;
-                 left: -9999px;
-             }
-             
-             tr { border: 1px solid #ccc; }
-             
-             td { 
-             /* Behave  like a "row" */
-                 border: none!important;
-                        width: 100%!important; 
-                 position: relative;
-                 padding-left: 50%; 
-             }
-             
-             td:before { 
-             /* Now like a table header */
-                 position: absolute;
-                 /* Top/left values mimic padding */
-                 top: 6px;
-                 left: 6px;
-                 width: 45%; 
-                 padding-right: 10px; 
-                 white-space: nowrap;
-             }
-             
-             /*
-             Label the data
-             */
-             
-            }
-            img {
-              display: block;
-              height: auto;
-              max-width: 100%;
-            }
-        </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{% static 'shop/css/base.css' %}" type="text/css">
+         <link rel="stylesheet" href="{% static 'shop/css/flags.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'shop/css/element.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'shop/css/cart.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'shop/css/product.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'shop/css/product_detail.css' %}" type="text/css">
+        <link rel="shortcut icon" type="image/png" href="{% static "img/favicon.png" %}">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     </head>
-        <div class="container-fluid">
-            <header class="blog-header py-3">
-                <div class="row">
-                    <!-- LOGO -->
-                    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                        <div class="row">
-                            <a href="{% url 'shop:home' %}"><img src="{% static "shop/img/logo.png" %}" alt="Ортен - розничный и оптовый интернет-магазин печатной и компьютерной техники в Николаеве" title="Копировальная техника и расходные материалы ★ Компьютеры и комплектующие ★ Полиграфическое оборудование и расходные материалы ★ Оперативная полиграфия ★ Диагностика и ремонт копировальной техники и компьютеров" width="220" height="88"hspace="16"></a>
-                        </div>
-                    </div>
-                    <!-- Пустой на кол-5 -->
-                    <div class="col-xs-12 col-sm-5 col-md-5">
-                        <div class="row">
-
-                        </div>
-                    </div>
-                    <!-- График -->
-                    <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
-                        <div class="row">
-                            <p>
-                                <i class="fas fa-door-open text-muted mr-2 pl-3"></i>Мы открыты
-                                <br>
-                                <i class="fas fa-clock text-muted  mr-2 pl-3"></i>Пн-Пт: <time> 9:00 - 18:00</time> 
-                                <br>
-                                <i class="fas fa-clock text-muted  mr-2 pl-3"></i>Сб: <time>9:00 - 14:00</time>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- Контакты  -->
-                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                      <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-                        <div class="row">
-                            <p>
-                                <a class="cool-link text-muted" href="https://www.google.com/maps/place/%D0%9E%D1%80%D1%82%D1%8D%D0%BD,+%D0%9E%D0%9E%D0%9E/@46.952503,32.040273,15z/data=!4m2!3m1!1s0x0:0x4784e49173525ad2?ved=2ahUKEwiLnpXuiPLfAhXNqIsKHWxSBAYQ_BIwCnoECAUQCA" target="_blank"><i class="fa fa-home mr-3 pl-3"></i><span itemprop="addressLocality">г. Николаев</span> <span itemprop="streetAddress">пр. Мира, 5</span></a>
-                                <br>
-                                <a class="cool-link text-muted" href="mailto:orten_office@ukr.net"><i class="fas fa-envelope mr-3 pl-3"></i>orten_office@ukr.net</a>
-                                <br>
-                                <i class="fas fa-phone text-muted mr-3 pl-3"></i><span itemprop="telephone">(0512) 56-65-39</span>
-                                <br> 
-                                <i class="fas fa-mobile text-muted mr-4 pl-3"></i><span itemprop="telephone">(050) 318-40-64</span>
-                            </p>
-                        </div>
-                    </div>
-                  </div>
-                    <!--  -->
-                </div>
-                <!-- Верхние линки -->
-                <div class="nav-scroller py-1 mb-2">
-                    <nav class="nav d-flex justify-content-between">
-                        <a class="cool-link text-muted" title="Принтеры, МФУ, Дупликаторы японской компании Ricoh. Тонера, фотобарабаны, рессурсные детали" href="{% url 'shop:list_category' 'ricoh' %}">Ricoh</a>
-                        <a class="cool-link text-muted" title="Konica Minolta - японский холдинг, один из ведущих мировых производителей. МФУ, принтеры, инженерные печатные системы. Расходные материалы, дополнительное оборудование, рессурсные детали" href="{% url 'shop:list_category' 'konica-minolta' %}">Konica Minolta</a>
-                        <a class="cool-link text-muted" title="Цифровые дупликаторы, чернила и мастер-пленки от японской компании Duplo и других" href="{% url 'shop:list_category' 'cifrovye-duplikatory' %}">{% trans 'Цифровые дупликаторы' %}</a>
-                        <a class="cool-link text-muted" title="ColorWay, лицензионные расходные материалы для лазерной и струйной печати, фотобумага, СНПЧ и КПК" href="{% url 'shop:list_category' 'colorway' %}">ColorWay</a>
-                        <a class="cool-link text-muted" title="Ремонт Принтеров, МФУ, компьютеров, заправка и реставрация картриджей. Все возможные и невозможные ремонты" href="{% url 'shop:list_category' 'servisnyj-centr' %}">Сервисный Центр</a>
-                        <a class="cool-link text-muted" title="Все возможные и не возможные услуги по ремонту и техническому сопровождению техники Ricoh" href="{% url 'shop:list_category' 'servisnyj-centr/avtorizovannyj-servisnyj-centr-ricoh' %}">Сервис Ricoh</a>
-                        <a class="cool-link text-muted" title="Покопийное обслуживание Konica Minolta, ремон, ввод в эксплуатацию" href="{% url 'shop:list_category' 'servisnyj-centr/avtorizovannyj-servisnyj-centr-konica-minolta' %}">Сервис Konica Minolta</a>
-                        <a class="cool-link text-muted" title="Тонера, фотобарабаны, вали, ролики, картриджи мировых брендов Toshiba, Erus, Static Control, Vision, Xerox, HP, Samsung" href="{% url 'shop:list_category' 'licenzionnye-rashodnye-materialy' %}">Все для Принтеров и МФУ</a>
-                        <a class="cool-link text-muted" title="Полиграфические услуги в Николаеве. Визитки, календари, флаера.. Тиражирование на ризографе" href="{% url 'shop:polygraphy' %}">Полиграфия</a>
-                    </nav>
-                </div>
-            </header>
+<body>
+    <header>
+        <div class="one_header">
+            <div class="hd_1">
+                <a href="{% url 'shop:home' %}"><img src="{% static "shop/img/logo.png" %}" alt="Ортен - розничный и оптовый интернет-магазин печатной и компьютерной техники в Николаеве" title="Копировальная техника и расходные материалы ★ Компьютеры и комплектующие ★ Полиграфическое оборудование и расходные материалы ★ Оперативная полиграфия ★ Диагностика и ремонт копировальной техники и компьютеров" width="200" height="80"hspace="16"></a>
+            </div>
+            <div class="hd_2">
+                <i class="fas fa-door-open"></i>Мы открыты
+                <br>
+                <i class="fas fa-clock"></i>Пн-Пт: 9:00 - 18:00
+                <br>
+                <i class="fas fa-clock"></i>Сб: 9:00 - 14:00
+            </div>
+            <div class="hd_3">
+                <a class="cool-link text-muted" href="https://www.google.com/maps/place/%D0%9E%D1%80%D1%82%D1%8D%D0%BD,+%D0%9E%D0%9E%D0%9E/@46.952503,32.040273,15z/data=!4m2!3m1!1s0x0:0x4784e49173525ad2?ved=2ahUKEwiLnpXuiPLfAhXNqIsKHWxSBAYQ_BIwCnoECAUQCA" target="_blank"><i class="fa fa-home mr-3 pl-3"></i><span itemprop="addressLocality">г. Николаев</span> <span itemprop="streetAddress">пр. Мира, 5</span></a>
+                <br>
+                <a class="cool-link text-muted" href="mailto:orten_office@ukr.net"><i class="fas fa-envelope mr-3 pl-3"></i>orten_office@ukr.net</a>
+                <br>
+                <i class="fas fa-phone text-muted mr-3 pl-3"></i><span itemprop="telephone">(0512) 56-65-39</span>
+                <br> 
+                <i class="fas fa-mobile text-muted mr-4 pl-3"></i><span itemprop="telephone">(050) 318-40-64</span>
+            </div>
         </div>
-        <nav class="navbar navbar-expand-md navbar-light">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
-                </button>
-                    <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
-                        <ul class="navbar-nav m-auto">
-                            <a class="nav-link" href="{% url 'shop:home' %}">Дом</a>
-                            <a class="nav-link" href="{% url 'shop:category' %}">Категории</a>
-                            <a class="nav-link" href="{% url 'shop:product_list' %}">Товары</a>
-                            <a class="nav-link" href="{% url 'shop:polygraphy' %}">Полиграфия</a>
-                            <a class="nav-link" href="{% url 'shop:list_category' 'servisnyj-centr' %}">Сервисный центр</a>
-                            <a class="nav-link" href="{% url 'shop:delivery_payment' %}">Доставка и оплата</a>
-                            <a class="nav-link" href="{% url 'shop:about' %}">Кто мы</a>
-                            <a class="nav-link" href="{% url 'shop:contact' %}">Контакты</a>
-                        </ul>
-                        <!-- SEO Оптимизация -->
-                         <script type="application/ld+json">
-                        {
-                          "@context": "http://schema.org",
-                          "@type": "WebSite",
-                          "url": "https://orten.in.ua/",
-                          "potentialAction": {
-                                "@type": "SearchAction",
-                                "target": "https://orten.in.ua/shop/product/?search={search_term_string}",
-                                "query-input": "required name=search_term_string"
-                          }
-                        }
-                        </script>
-                        <!-- Search -->
-                        <div>
-                          <form class="form-inline mr-2" role="search" action="{% url 'shop:product_list' %}">
-                              <div class="form-row">
-                                  <div class="col-12">
-                                      <input type="text" class="form-control form-control-sm" class="search-query" placeholder="Search..." name="search">
-                                  </div>
-                              </div>
-                          </form>
-                        </div>
-                      <!-- Language -->
-                      {% comment %}
-                        <div class="dropdown">
-                          <a class="btn btn-link nav-link dropdown-toggle"  href="http://#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {% get_current_language as LANGUAGE_CODE %}
-                            {% if LANGUAGE_CODE == 'ru' %} <span class="flag flag-ru"></span> Ru
-                            {% elif LANGUAGE_CODE == 'uk' %} <span class="flag flag-ua"></span> Ua
+        <div class="two_header">
+            <ul>
+                <li class="cool_link"><a title="Принтеры, МФУ, Дупликаторы японской компании Ricoh. Тонера, фотобарабаны, рессурсные детали" href="{% url 'shop:list_category' 'ricoh' %}">Ricoh</a></li>
+                <li class="cool_link"><a title="Konica Minolta - японский холдинг, один из ведущих мировых производителей. МФУ, принтеры, инженерные печатные системы. Расходные материалы, дополнительное оборудование, рессурсные детали" href="{% url 'shop:list_category' 'konica-minolta' %}">Konica Minolta</a></li>
+                <li class="cool_link"><a title="Цифровые дупликаторы, чернила и мастер-пленки от японской компании Duplo и других" href="{% url 'shop:list_category' 'cifrovye-duplikatory' %}">{% trans 'Цифровые дупликаторы' %}</a></li>
+                <li class="cool_link"><a title="ColorWay, лицензионные расходные материалы для лазерной и струйной печати, фотобумага, СНПЧ и КПК" href="{% url 'shop:list_category' 'colorway' %}">ColorWay</a></li>
+                <li class="cool_link"><a title="Ремонт Принтеров, МФУ, компьютеров, заправка и реставрация картриджей. Все возможные и невозможные ремонты" href="{% url 'shop:list_category' 'servisnyj-centr' %}">Сервисный Центр</a></li>
+                <li class="cool_link"><a title="Все возможные и не возможные услуги по ремонту и техническому сопровождению техники Ricoh" href="{% url 'shop:list_category' 'servisnyj-centr/avtorizovannyj-servisnyj-centr-ricoh' %}">Сервис Ricoh</a></li>
+                <li class="cool_link"><a title="Покопийное обслуживание Konica Minolta, ремон, ввод в эксплуатацию" href="{% url 'shop:list_category' 'servisnyj-centr/avtorizovannyj-servisnyj-centr-konica-minolta' %}">Сервис Konica Minolta</a></li>
+                <li class="cool_link"><a title="Тонера, фотобарабаны, вали, ролики, картриджи мировых брендов Toshiba, Erus, Static Control, Vision, Xerox, HP, Samsung" href="{% url 'shop:list_category' 'licenzionnye-rashodnye-materialy' %}">Все для Принтеров и МФУ</a></li>
+                <li class="cool_link"><a title="Полиграфические услуги в Николаеве. Визитки, календари, флаера.. Тиражирование на ризографе" href="{% url 'shop:polygraphy' %}">Полиграфия</a></li>
+            </ul>
+        </div>
+
+        <nav>
+            <div class="toggle">
+                <i class="fa fa-bars menu"></i>
+            </div>
+            <ul>
+                <li><a href="{% url 'shop:home' %}">Дом</a></li>
+                <li><a href="{% url 'shop:category' %}">Категории</a></li>
+                <li><a href="{% url 'shop:product_list' %}">Товары</a></li>
+                <li><a href="{% url 'shop:polygraphy' %}">Полиграфия</a></li>
+                <li><a href="{% url 'shop:list_category' 'servisnyj-centr' %}">Сервисный центр</a></li>
+                <li><a href="{% url 'shop:delivery_payment' %}">Доставка и оплата</a></li>
+                <li><a href="{% url 'shop:about' %}">Кто мы</a></li>
+                <li><a href="{% url 'shop:contact' %}">Контакты</a></li>
+                <div class="d_s_c">
+                    <!-- Language -->
+                    <div class="langdown">
+                        <span class="dropbtn">
+                        {% get_current_language as LANGUAGE_CODE %}
+                            {% if LANGUAGE_CODE == 'ru' %} <span class="flag flag-ru"></span>
+                            {% elif LANGUAGE_CODE == 'uk' %} <span class="flag flag-ua"></span>
                             {% endif %}
-                          </a>
-                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                              <form id='lang_uk' action='/i18n/setlang/' method='POST'>{% csrf_token %}
+                        </span>
+                        <div class="langdown-content">
+                            <form id='lang_uk' action='/i18n/setlang/' method='POST'>{% csrf_token %}
                                 <input type='hidden' name='language' value='uk'/>
-                                <a class="dropdown-item" href='#' title='Ukrine' onclick="document.getElementById('lang_uk').submit()"><span class="flag flag-ua"></span> Ukrine</a>
+                                <a class="langdown-item" href='#' title='Ukrine' onclick="document.getElementById('lang_uk').submit()"><span class="flag flag-ua"></span> Ukrine</a>
                               </form>
-                              <form id='lang_ru' action='/i18n/setlang/' method='POST'>{% csrf_token %}
+
+                            <form id='lang_ru' action='/i18n/setlang/' method='POST'>{% csrf_token %}
                                 <input type='hidden' name='language' value='ru'/>
-                                <a class="dropdown-item" href='#' title='Russian' onclick="document.getElementById('lang_ru').submit()"><span class="flag flag-ru"></span> Russian</a>
+                                <a class="langdown-item" href='#' title='Russian' onclick="document.getElementById('lang_ru').submit()"><span class="flag flag-ru"></span> Russian</a>
                               </form>
-                          </div>
                         </div>
-                      {% endcomment %}
-                        <!-- Cart -->
-                        <div>
-                          {% with total_items=cart|length %}
+                    </div>
+                    <!-- SEO Оптимизация -->
+                    <script type="application/ld+json">
+                    {
+                    "@context": "http://schema.org",
+                    "@type": "WebSite",
+                    "url": "https://orten.in.ua/",
+                    "potentialAction": {
+                            "@type": "SearchAction",
+                            "target": "https://orten.in.ua/shop/product/?search={search_term_string}",
+                            "query-input": "required name=search_term_string"
+                    }
+                    }
+                    </script>
+                    <div class="search_container">
+                        <form role="search" action="{% url 'shop:product_list' %}">
+                            <input type="text" placeholder="Search..." name="search">
+                        </form>
+                    </div>
+                    <div class="card_container">
+                        {% with total_items=cart|length %}
                             {% if cart|length > 0 %}
                                 <a href="{% url "cart:cart_detail" %}">
                                     <i class="fa fa-shopping-cart mr-2"></i>Корзина
@@ -438,154 +130,87 @@
                                     <span class="badge badge-light ml-1">0</span>
                                 </a>
                             {% endif %}
-                          {% endwith %}
-                        </div>
+                        {% endwith %}
                     </div>
                 </div>
-            </nav>
-        <ul class="breadcrumb">
-        {% block breadcrumbs %}
-            <li><a href="/"><i class="fas fa-home"></i></a><i class="fas fa-chevron-right pl-1"></i></li>
-        {% endblock %}
-        </ul>
-    <body>
-
-              <!-- Google Tag Manager (noscript) -->
-              <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-56KXN4"
-              height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-              <!-- End Google Tag Manager (noscript) -->
-
-            <!-- CONTENT -->
-            {% block content %}
-                {{content}}
-            {% endblock %}
-
-            <!-- CONTENT END-->
-            <!-- GO TO TOP -->
-            <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-            <script>
-                // When the user scrolls down 20px from the top of the document, show the button
-                window.onscroll = function() {scrollFunction()};
-
-                function scrollFunction() {
-                  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                    document.getElementById("myBtn").style.display = "block";
-                  } else {
-                    document.getElementById("myBtn").style.display = "none";
-                  }
+            </ul>
+        </nav>
+        <div class="breadcrumbs">
+            <ul>
+                {% block breadcrumbs %}
+                    <li><a href="/"><i class="fas fa-home"></i></a></li>
+                {% endblock %}
+            </ul>
+        </div>
+    </header>
+    <!-- CONTENT -->
+    {% block content %}
+        {{content}}
+    {% endblock %}
+    <footer>
+        <div class="hd_4">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5446.935101617827!2d32.040273!3d46.952503!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4784e49173525ad2!2z0J7RgNGC0Y3QvSwg0J7QntCe!5e0!3m2!1sru!2sua!4v1547893952458" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+        <div class="hd_5">
+            Меню
+            <hr>
+            <ul>
+                <li><a href="">Что мы продаем</a></li>
+                <li><a href="">Категории</a></li>
+                <li><a href="">Сервисный центр</a></li>
+                <li><a href="">Полиграфия</a></li>
+                <li><a href=""></a></li>
+            </ul>
+        </div>
+        <div class="hd_6">
+            Гафик
+            <hr>
+            <i class="fas fa-door-open"></i>Мы открыты
+            <br>
+            <i class="fas fa-clock"></i>Пн-Пт: 9:00 - 18:00
+            <br>
+            <i class="fas fa-clock"></i>Сб: 9:00 - 14:00
+        </div>
+        <div class="hd_7">
+            Контакты
+            <hr>
+            <a class="cool-link text-muted" href="https://www.google.com/maps/place/%D0%9E%D1%80%D1%82%D1%8D%D0%BD,+%D0%9E%D0%9E%D0%9E/@46.952503,32.040273,15z/data=!4m2!3m1!1s0x0:0x4784e49173525ad2?ved=2ahUKEwiLnpXuiPLfAhXNqIsKHWxSBAYQ_BIwCnoECAUQCA" target="_blank"><i class="fa fa-home mr-3 pl-3"></i><span itemprop="addressLocality">г. Николаев</span> <span itemprop="streetAddress">пр. Мира, 5</span></a>
+            <br>
+            <a class="cool-link text-muted" href="mailto:orten_office@ukr.net"><i class="fas fa-envelope mr-3 pl-3"></i>orten_office@ukr.net</a>
+            <br>
+            <i class="fas fa-phone text-muted mr-3 pl-3"></i><span itemprop="telephone">(0512) 56-65-39</span>
+            <br> 
+            <i class="fas fa-mobile text-muted mr-4 pl-3"></i><span itemprop="telephone">(050) 318-40-64</span>
+        </div>
+        <div class="hd_8">
+            Copyright © 2008 - 2019 orten.in.ua
+        </div>
+    </footer>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+  crossorigin="anonymous"></script>
+    <script>
+        var acc = document.getElementsByClassName("link");
+        var i;
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight){
+                panel.style.maxHeight = null;
+                } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
                 }
-
-                // When the user clicks on the button, scroll to the top of the document
-                function topFunction() {
-                  document.body.scrollTop = 0;
-                  document.documentElement.scrollTop = 0;
-                }
-            </script>
-    <!-- Footer -->
-        <footer class="text-bleck">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-3 p-0 m-0">
-                      <div class="map-responsive">
-                          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5446.935101617827!2d32.040273!3d46.952503!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4784e49173525ad2!2z0J7RgNGC0Y3QvSwg0J7QntCe!5e0!3m2!1sru!2sua!4v1547893952458" frameborder="0" style="border:0" allowfullscreen></iframe>
-                      </div>
-                    </div>
-                    <div class="col-md-3 col-lg-2 col-xl-3 mx-auto">
-                        <h5>Что мы можем</h5>
-                        <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
-                        <ul class="list-unstyled">
-                            <li><a href="{% url 'shop:product_list' %}">Что мы продаем</a></li>
-                            <li><a href="{% url 'shop:category' %}">Категории</a></li>
-                            <li><a href="{% url 'shop:list_category' 'servisnyj-centr' %}">Сервисный центр</a></li>
-                            <li><a href="{% url 'shop:polygraphy' %}">Полиграфия</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-md-3 col-lg-2 col-xl-3 ">
-                        <h5>График работы</h5>
-                        <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
-                        <ul class="list-unstyled">
-                            <li><i class="fas fa-clock mr-2"></i>Пн-Пт:<time> 9:00 - 18:00</time></li>
-                            <li><i class="fas fa-clock mr-2"></i>Сб:<time> 9:00 - 14:00</time></li>
-                            <!--<li><a href="">Link 3</a></li>
-                            <li><a href="">Link 4</a></li>-->
-                        </ul>
-                    </div>
-
-                    <div class="col-md-3 col-lg-3 col-xl-3 ">
-                        <h5>Контакты</h5>
-                        <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
-                        <ul class="list-unstyled">
-                            <li><i class="fa fa-home mr-2"></i>г. Николаев пр. Мира, 5</li>
-                            <li><a href="mailto:orten_office@ukr.net"><i class="fas fa-envelope mr-2"></i>orten_office@ukr.net</a></li>
-                            <li><i class="fas fa-phone mr-2"></i>(0512) 56-65-39</li>
-                            <li><i class="fas fa-mobile mr-3"></i>(050) 318-40-64</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <p class="text-left text-muted"><i>Copyright © 2008 - 2019 orten.in.ua</i></p>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </body>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+            });
+    }
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('.menu').click(function(){
+                $('ul').toggleClass('active');
+            })
+        })
+    </script>
+</body>
 </html>
-
-{% comment %}
-<li class="nav-item dropdown">
-  <a class="nav-link dropdown-toggle" href="https://" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-globe-europe"></i></a>
-  <div class="dropdown-menu" aria-labelledby="dropdown09">
-
-    <form id='lang_uk' action='/i18n/setlang/' method='POST'>{% csrf_token %}
-    <input type='hidden' name='language' value='uk'/>
-    <a class="dropdown-item" href='#' title='Ukrine' onclick="document.getElementById('lang_uk').submit()"><span class="flag flag-ua"></span>  Ukrine
-    </a>
-    </form>
-
-    <form id='lang_ru' action='/i18n/setlang/' method='POST'>{% csrf_token %}
-    <input type='hidden' name='language' value='ru'/>
-    <a class="dropdown-item" href='#' title='Russian' onclick="document.getElementById('lang_ru').submit()"><span class="flag flag-ru"></span>  Russian
-    </a>
-    </form>
-  </div>
-  </li>
-  <form class="form-inline mr-2" action="{% url 'set_language' %}" method="post">{% csrf_token %}
-  <div class="form-row">
-    <div class="col-12">
-      <input name="next" type="hidden" value="{{ redirect_to }}" >
-      <select class="custom-select mr-sm-2" name="language">
-        {% get_current_language as LANGUAGE_CODE %}
-        {% get_available_languages as LANGUAGES %}
-        {% get_language_info_list for LANGUAGES as languages %}
-        {% for language in languages %}
-            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
-                {{ language.name_local }} ({{ language.code }})
-            </option>
-        {% endfor %}
-      </select>
-      <input class="btn btn-outline-link" type="submit" value="Input">
-    </div>
-  </div>
-</form>
-
-<div class="lang">
-<form id='lang_uk' action='/i18n/setlang/' method='POST'>{% csrf_token %}
-<input type='hidden' name='language' value='uk'/>
-<a href='#' title='Ukrine' onclick="document.getElementById('lang_uk').submit()">
-<img src="{% static 'img/flag/uk.png' %}" width="30" height="30"/>
-</a>
-</form>
-<form id='lang_ru' action='/i18n/setlang/' method='POST'>{% csrf_token %}
-<input type='hidden' name='language' value='ru'/>
-<a href='#' title='Russian' onclick="document.getElementById('lang_ru').submit()">
-<img src="{% static 'img/flag/ru.png' %}" width="30" height="30"/>
-</a>
-</form>
-</div>
-{% endcomment %}

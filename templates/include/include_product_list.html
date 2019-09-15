@@ -44,20 +44,20 @@
       <div class="table-responsive-sm">
       <tr>
         <th scope="row">
-            <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt="{{ product.name }}">
+     {#        <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt="{{ product.name }}">
         </th>
         <td>{{ product.vendor }}</td>
         <td>
             <a href="{% url 'shop:product_detail' product.slug %}">{{ product.name }}</a>
         </td>
         <td>{{ product.vendor_code }}</td>
-        <td>
-          {% if product.available %}
+        <td> #}
+         {#  {% if product.available %}
             <span style="color:green;"><i class="fas fa-check"></i></span>
           {% else %}
             <span style="color:red;"><i class="fas fa-times"></i></span>
           {% endif %}
-        </td>
+        </td> #}
         <td>
           {% if product.action %}
           <span style="text-decoration: line-through">{{ product.price }}</span>

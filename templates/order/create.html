@@ -8,148 +8,68 @@
 {% block title %}
   Оформление заказа
 {% endblock %}
-
 {% block content %}
-
-<title>Оформление заказа</title>
-
-<div class="container-fluid">
-    <div class="row">
-
-    <div class="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3">
-      <div class="card">
-       <div class="card-header text-bleck text-uppercase"><i class="fab fa-wpforms pr-3"></i>Заполнить Форму</div>
-        <div class="card-body bg-light">
-
-<form class="order-form" action="." method="post">
-{% bootstrap_field form.delivery_method show_label=False%}
-{% bootstrap_field form.pay_method show_label=False%}
-{% bootstrap_field form.city show_label=False%}
-{% bootstrap_field form.first_name show_label=False%}
-{% bootstrap_field form.last_name alert_type='warning' show_label=False%}
-{% bootstrap_field form.email show_label=False%}
-{% bootstrap_field form.mobile_phone show_label=False%}
-{% bootstrap_field form.note_text show_label=False%}
-{% csrf_token %}
-<button type="submit" class="btn btn-block btn-outline-success">Отправить<i class="fab fa-get-pocket pl-2"></i></button>
-</form>
-
+<section>
+	<aside>
+        <div class="hd_content"><i class="fab fa-wpforms pr-3"></i>Заполнить Форму</div>
+        <div class="accordion">
+            <form class="order-form" action="." method="post">
+                {% bootstrap_field form.delivery_method show_label=False%}
+                {% bootstrap_field form.pay_method show_label=False%}
+                {% bootstrap_field form.city show_label=False%}
+                {% bootstrap_field form.first_name show_label=False%}
+                {% bootstrap_field form.last_name alert_type='warning' show_label=False%}
+                {% bootstrap_field form.email show_label=False%}
+                {% bootstrap_field form.mobile_phone show_label=False%}
+                {% bootstrap_field form.note_text show_label=False%}
+                {% csrf_token %}
+                <button type="submit" class="apply">Отправить<i class="fab fa-get-pocket pl-2"></i></button>
+            </form>
         </div>
-      </div>
-    </div>
- 
-
-<div class="col-12 col-sm-6 col-md-7 col-lg-8 col-xl-9">
-    <div class="card bg-light">
-     <div class="card-header text-bleck text-uppercase"><i class="fas fa-truck pr-3"></i>Ваш Заказ</div>
-      <div class="card-body bg-light">
-
-{% comment %}
-  
-{%include 'include/include_cart_list.html' %}
-{% endcomment %}
-
-
-<div class="row">
-  <table class="table-responsive-sm">
-      <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Фото</th>
-        <th scope="col">Бренд</th>
-        <th scope="col">Имя</th>
-        <th scope="col">Артикул</th>
-        <th scope="col">Цена</th>
-        <th scope="col">Количество</th>
-        <th scope="col">Сумма</th>
-        <th scope="col">Удалить</th>
-      </tr>
-    </thead>
-{% for item in cart %}
-{% with product=item.product %}
-<tbody>
-      <div class="table-responsive-sm">
-      <tr>
-        <th scope="row">
-            <a class="item_img"><img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt="."></a>
-        </th>
-        <td>
-           {{ product.vendor }}
-        </td>
-        <td>
-          <a href="{% url 'shop:product_detail' product.slug %}">{{ product.name }}</a>
-        </td>
-        <td>
-          {{ product.vendor_code }}
-        </td>
-        <td>
-          {% if product.action %}
-            {{ product.discount }}
-          {% else %}
-            {{ product.price }}
-          {% endif %}
-        </td>
-        <td>
-          <span class="badge badge-secondary p-2">{{ item.quantity }}</span>
-        </td>
-        <td>
-           {{ item.total_price }}
-        </td>
-        <td>
-          <a href="{% url "cart:cart_remove" product.id %}" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i><role="button" aria-pressed="true"></role="button"></a>
-        </td>
-      </tr>
-    </div>
-</tbody>
-    {% endwith %}
-    {% endfor %}
-
-
-<tbody class="border">
-    <td><h5>Сумма:</h5></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td>
-      <h5>{{ cart.get_total_price }}</h5>
-    </td>
-    <td>
-      <span class="badge badge-secondary p-2">{{ cart|length }}</span>
-    </td>   
-    <td></td>
-    <td></td>
-
-  </table>
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col">
- 
-    </div>
-    <div class="col">
-      
-    </div>
-  </div>
-</div>
-
-
-
-
-      </div>
-    </div>
-  </div>
-</div>
-</div>  
-
+    </aside>
+    <article>
+	    <div class="hd_content"><i class="fas fa-truck pr-3"></i>Ваш Заказ</div>
+	    <div class="content">
+            <div class="cart_list">
+                <span class="s"><strong>Фото</strong></span>
+                <span class="s"><strong>Бренд</strong></span>
+                <span class="s"><strong>Название</strong></span>
+                <span class="s"><strong>Артикул</strong></span>
+                <span class="s"><strong>Цена ₴</strong></span>
+                <span class="s"><strong>Количество</strong></span>
+                <span class="s"><strong>Сумма</strong></span>
+                <span class="s"><strong>Удалить</strong></span>
+                <!-- динамический контент -->
+                {% for item in cart %}
+                {% with product=item.product %}
+                <span class="s-1"><a class="thumbnail pull-left" href="{% url 'shop:product_detail' product.slug %}"> <img src="{% if product.image %}{{ product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" style="width: 72px; height: 72px;"></a></span>
+                <span class="s-2"><b>Бренд: </b>{{ product.vendor }}</span>
+                <span class="s-3"><b>Название: </b><a href="{% url 'shop:product_detail' product.slug %}">{{ product.name }}</a></span>
+                <span class="s-4"><b>Артикул: </b>{{ product.vendor_code }}</span>
+                <span class="s-6"><b>Цена: </b>
+                {% if product.action %}
+                    {{ product.discount }}
+                {% else %}
+                    {{ product.price }}
+                {% endif %}
+                </span>
+                <span class="s-7"><b>Количество: </b>{{ item.quantity }}</span>
+                <span class="s-2"><b>Сумма: </b>{{ item.total_price }}</span>
+                <span class="s-2"><b>Удалить: </b>
+                <button class="minus"><a href="{% url 'cart:cart_remove' product.id %}"><i style="color:white;" class="fas fa-trash-alt"></i></a></button>
+                </span>
+                {% endwith %}
+                {% endfor %}
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span>Общая сумма: </span>
+                <span><h4>{{ cart.get_total_price }}</h4></span>
+            </div>
+	    </div>    
+	</article>
+</section>
 {% endblock %}
-
-{% comment %}
-  Продукт: {{ item.product.name }}
-<br>
-Количество: {{ item.quantity }} 
-<br>
-Цена: {{ item.total_price }}
-<br>
-Тотал: {{ cart.get_total_price }}
-
-{% endcomment %}

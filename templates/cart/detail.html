@@ -12,112 +12,126 @@
     <meta name="description" content="Richo, Duplo, Konica Minolta, ColorWay - Купить в Николаеве, интернет-магазин Ортен ★ Ортен более 20 лет рынке копировальной техники и сервисного обслуживания">
 {% endblock %}
 {% block content %}
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3">
-        <div class="card">
-         <div class="card-header text-bleck text-uppercase"><i class="fab fa-wpforms pr-3"></i>Информация</div>
-          <div class="card-body bg-light">
-            {% include "include/include_elivery_pay_contact.html" %}
-          </div>
-        </div>
-      </div>
-        <div class="col-12 col-sm-6 col-md-7 col-lg-8 col-xl-9">
-          <div class="card bg-light">
-           <div class="card-header text-bleck text-uppercase"><i class="fas fa-truck pr-3"></i>Ваш Заказ</div>
-            <div class="card-body bg-light">
-              {%include 'include/include_cart_list.html' %}
+<section>
+	<aside>
+        <div class="hd_content"><i class="fas fa-info-circle"></i>Информация</div>
+            <div class="accordion">
+                <div class="link"><i class="fas fa-truck"></i>Доставка</div>
+                <div class="submenu">
+                    <div class="hd_3">
+                    <H3>Доставка перевозчиком</H3>
+                    <hr>
+                    <div>Для нас крайне удобно использовать перевозчика "Новая Почта". Это связано, прежде всего, с оперативность отправки малогабаритных и маловесных грузов.</div>
+                    <div>В день поступления оплаты, будет осуществлена отправка. Конечно, если вам удобно принимать посылки от других перевозчиков, для нас это не есть проблема)</div>
+                    <strong>Оплата услуг доставки осуществляется за счет покупателя и не входит в стоимость товара.</strong>
+                    <hr>
+                    <H3>Самовывоз</H3>
+                    <hr>
+                    <div>Менеджер компании "Ортен" согласует с вами все нюансы, обговорит удобное для вас дату и время, соберет, подготовит, упакует заказанный вами товар.</div> 
+                    <div>При сложностях или различного рода форс-мажорах вы будете уведомлены заранее</div>
+                    <strong>Бесплатная доставка. Компания «Ортэн» доставит товар бесплатно по Николаеву при заказе от 3 000 гривен.</strong>
+                    </div>
+                </div>
+                <div class="link"><i class="far fa-credit-card"></i>Оплата</div>
+                <div class="submenu">
+                    <div class="hd_3">
+                    <div>Компания «Ортэн» работает как с юридическими, так и с частными лицами. Потому оплата услуг компании может осуществляться несколькими вариантами на выбор.</div>
+                        <hr>
+                        <div><strong>Наличный расчет (ФОП Сіряков С.В.)</strong></div>
+                        <div><strong>Безналичный расчет</strong></div>
+                        <div><strong>Гарантированный платеж</strong></div>
+                        <hr>
+                        <div>Также вы можете оплатить заказ наложенным платежом либо внести предоплату</div>
+                        <hr>
+                        <div>После оформления заказа с вами свяжется менеджер и предоставит реквизиты для оплаты.</div>
+                        <div>К товару прилагается стандартный пакет сопроводительных документов, которые удовлетворят требования и юридических лиц, и частных.</div>
+                    </div>
+                </div>
+                <div class="link"><i class="fas fa-phone"></i>Контакты</div>
+                <div class="submenu">
+                    <div class="hd_3">
+                        <h3 style="margin:12px">Продажи:</h3>
+                        <a href="https://www.google.com/maps/place/%D0%9E%D1%80%D1%82%D1%8D%D0%BD,+%D0%9E%D0%9E%D0%9E/@46.952503,32.040273,15z/data=!4m2!3m1!1s0x0:0x4784e49173525ad2?ved=2ahUKEwiLnpXuiPLfAhXNqIsKHWxSBAYQ_BIwCnoECAUQCA" target="_blank"><i class="fa fa-home mr-3 pl-3"></i><span itemprop="addressLocality">г. Николаев</span> <span itemprop="streetAddress">пр. Мира, 5</span></a>
+                        <br>
+                        <a href="mailto:orten_office@ukr.net"><i class="fas fa-envelope mr-3 pl-3"></i>orten_office@ukr.net</a>
+                        <br>
+                        <i class="fas fa-phone"></i><span itemprop="telephone">(0512) 56-65-39</span>
+                        <br> 
+                        <i class="fas fa-mobile"></i><span itemprop="telephone">(050) 318-40-64</span>
+                        <h3 style="margin:12px">Сервис:</h3>
+                        <a href="mailto:orten_office@ukr.net"><i class="fas fa-envelope mr-3 pl-3"></i>ivan_orten@ukr.net</a>
+                        <br>
+                        <i class="fas fa-phone"></i><span itemprop="telephone">(0512) 56-65-51</span>
+                        <h3 style="margin:12px">Полиграфия:</h3>
+                        <a href="mailto:orten_office@ukr.net"><i class="fas fa-envelope mr-3 pl-3"></i>orten_poligraf@ukr.net</a>
+                        <br>
+                        <i class="fas fa-phone"></i><span itemprop="telephone">(0512) 56-64-98</span>
+                        <br> 
+                        <i class="fas fa-mobile"></i><span itemprop="telephone">(094) 943-57-50</span>
+                    </div>
+                </div>
+            </div>       
+	</aside>
+	<article>
+		<div class="hd_content"><i class="fas fa-truck-loading"></i>ВАШ ЗАКАЗ</div>
+            <div class="content">
+                <div class="cart">
+                    <div class="cart_list">
+                        <span class="s"><strong>Фото</strong></span>
+                        <span class="s"><strong>Бренд</strong></span>
+                        <span class="s"><strong>Название</strong></span>
+                        <span class="s"><strong>Артикул</strong></span>
+                        <span class="s"><strong>Цена ₴</strong></span>
+                        <span class="s"><strong>Количество</strong></span>
+                        <span class="s"><strong>Сумма</strong></span>
+                        <span class="s"><strong>Удалить</strong></span>
+                        <!-- динамический контент -->
+                        {% for item in cart %}
+						{% with product=item.product %}
+                        <span class="s-1"><a class="thumbnail pull-left" href="{% url 'shop:product_detail' product.slug %}"> <img src="{% if product.image %}{{ product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" style="width: 72px; height: 72px;"></a></span>
+                        <span class="s-2"><b>Бренд: </b>{{ product.vendor }}</span>
+                        <span class="s-3"><b>Название: </b><a href="{% url 'shop:product_detail' product.slug %}">{{ product.name }}</a></span>
+                        <span class="s-4"><b>Артикул: </b>{{ product.vendor_code }}</span>
+                        <span class="s-6"><b>Цена: </b>
+						{% if product.action %}
+			            {{ product.discount }}
+				        {% else %}
+				            {{ product.price }}
+				        {% endif %}
+                        </span>
+                        <span class="foot_card_quantity s-7"><b>Количество: </b>
+                            <form action="{% url "cart:cart_add" product.id %}" method="post" class="add">
+				           {{ item.update_quantity_form.quantity }}
+				           {{ item.update_quantity_form.update }}
+				           {% csrf_token %}
+                            <button type="submit" class="plas"><i style="color:white;" class="fab fa-get-pocket"></i></button>
+                            </form>
+                        </span>
+                        <span class="s-2"><b>Сумма: </b>{{ item.total_price }}</span>
+                        <span class="s-2"><b>Удалить: </b>
+						<button class="minus"><a href="{% url "cart:cart_remove" product.id %}" class="minus"><i style="color:white;" class="fas fa-trash-alt"></i></a></button>
+                        </span>
+						{% endwith %}
+					    {% endfor %}
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span>Общая сумма: </span>
+                        <span><h4>{{ cart.get_total_price }}</h4></span>
+                	</div>
+                </div>
             </div>
-          </div>
-       </div>
-    </div>
-    <hr>
-    <div class="row">
-      <div class="col-6">
-          <a href="{% url "shop:product_list" %}" class="btn btn-block btn-outline-primary">Продолжить покупки<role="button" ></a>
-        </div>
-        <div class="col-6">
-          <a href="{% url "order:order_create" %}" class="btn btn-block btn-outline-success">Оформить заказ на сумму: {{ cart.get_total_price }}<role="button"></a>
-        </div>
-      </div>
-      <hr>
-      </div>
-    </div>
-  </div>
-</div>
+            <div class="cart_button">
+                <a href="{% url "shop:product_list" %}">
+                <button style="float:left;" class="return">Вернуться к товарам</button>
+                </a>
+                <a href="{% url "order:order_create" %}">
+                <button style="float:right;" class="apply">Оформить заказ</button>
+                </a>
+            </div>
+	</article>
+</section>
 {% endblock %}
-
-{% comment %}
-  
-  <h1>Ваша корзина товаров</h1>
-
-    <a href="{% url "shop:product_list" %}" class="btn">Продолжить Шопинг</a>
-    <a href="{% url "order:order_create" %}" class="btn">Оформить заказ</a>
-<table class="table">
-  <thead>
-    <tr>
-        <th>Изображение</th>
-        <th>Продукт</th>
-        <th>Цена</th>
-        <th>Количество/Обновить</th>
-        <th>Сумма</th>
-        <th>Удалить</th>
-    </tr>
-  </thead>
-
-{% for item in cart %}
-{% with product=item.product %}
-
-  <tbody>
-    <tr>
-        <td>
-          <a href="{{ product.get_absolute_url }}">
-          <img src="{% if product.image %}{{ product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" width="53" height="53" alt="lorem">
-        </td>
-
-        <td>
-          {{ product.name }}
-        </td>
-
-        <td>
-          {{ item.price_uah }}
-        </td>
-
-        <td>
-          <form action="{% url "cart:cart_add" product.id %}" method="post" class="add">
-          {{ item.update_quantity_form.quantity }}
-          {{ item.update_quantity_form.update }}
-          {% csrf_token %}
-          <input type="submit" value="Обновить">
-        </form>
-        </td>
-
-        <td>
-          {{ item.total_price_uah }}
-        </td>
-
-        <td>
-          <a href="{% url "cart:cart_remove" product.id %}">Удалить</a>
-        </td>
-    </tr>
-
- {% endwith %}
-{% endfor %}
-
-    <tr class="total">
-          <td>
-            Total
-          </td>
-
-          <td
-             class="num">{{ cart.get_total_price_uah }}
-          </td>
-    </tr>
-
-  </tbody>
-</table>
-
-
-{% endcomment %}
-
-

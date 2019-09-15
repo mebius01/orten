@@ -10,324 +10,41 @@
     <meta name="title" content="{{instance.name}} - Заказать в Николаеве">
     <meta name="description" content="{{instance.name}} - Заказать в Николаеве ★ Интернет-магазин Ортен более 20 лет рынке копировальной техники и сервисного обслуживания">
 {% endblock %}
-    {{ block.super }}<li><a href="{% url 'shop:category' %}">Категории</a><i class="fas fa-chevron-right pl-1"></i></li>
+    {{ block.super }}<li><a href="{% url 'shop:category' %}">Категории</a></li>
         {% for i in instance.get_anc %}
-            <li><a href="{% url 'shop:list_category' i.get_absolute_url %}">{{ i.name }}</a><i class="fas fa-chevron-right pl-1"></i></li>
+            <li><a href="{% url 'shop:list_category' i.get_absolute_url %}">{{ i.name }}</a></li>
         {% endfor %}
 {% endblock %}
-
 {% block content %}
-    <title>Orten - Category All</title>
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Блок Категорий -->
-            <div class="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3">
-                <div class="card bg-light">
-                    <article class="card-group-item">
-                        <header class="card-header text-bleck text-uppercase">
-                            <h6 class="title"><i class="fa fa-list pr-3"></i>Категории</h6>
-                        </header>
-                        <div class="card-body p-0">
-                            {% include "include/include_list_category.html" %}
-                        </div>
-                    </article>
-                </div>
-            </div>
-             <!-- Блок СубКатегорий  -->
-            <div class="col-12 col-sm-6 col-md-7 col-lg-8 col-xl-9">
-                <div class="card bg-light">
-                    <article class="card-group-item">
-                        <header class="card-header text-bleck text-uppercase">
-                            <h6 class="title"><i class="fa fa-list pr-3"></i>{{instance.name}}</h6>
-                        </header>
-                        {{instance.description|linebreaks}}
-                        <div class="card-group">
-                            {% if products %}
-                                <meta http-equiv="REFRESH" content="0;url={% url 'shop:product_list' %}?category={{instance.id}}">
-                            {% elif services %}
-                                {% include "include/include_service_list.html" %}
-                            {% else %}
-                                {% for i in instance.children.all|dictsort:"id" %}
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-3 p-2">
-                                        <div class="card h-100">
-                                            <a href="{% url 'shop:list_category' i.get_absolute_url %}"><img class="card-img-top" src="{% if i.image %}{{ i.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{i.name}}" width="230" height="230" title="{{i.name}}" alt="{{i.name}}"></a>
-                                            <div class="card-footer d-flex justify-content-center bg-transparent">
-                                                <div class="row">
-                                                    <a class="text-muted" href="{% url 'shop:list_category' i.get_absolute_url %}" title="{{i.name}}">{{i.name}}<span class="badgebadge-light ml-3">{% firstof i.product.count i.services.count i.polygraphy.count %}</span></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    {% endfor %}
-                                {% endif %}
-                            </div>
-                    </article>
-                </div>
-            </div>
-        </div>
-    <hr>
-    </div>
+	<section>
+		<aside>
+		{% include "include/include_list_category.html" %}
+    </aside>
+    <article>
+    	<div class="hd_content"><i class="fa fa-list"></i>
+    		{{instance.name}}
+    	</div>
+    	<div class="content">
+	    	{% comment %}
+	    		{{instance.description|linebreaks}}
+	    	{% endcomment %}
+	    	{% if products %}
+	        	<meta http-equiv="REFRESH" content="0;url={% url 'shop:product_list' %}?category={{instance.id}}">
+		    {% elif services %}
+		        {% include "include/include_service_list.html" %}
+		    {% else %}
+		    {% for i in instance.children.all|dictsort:"id" %}
+		    <div class="card"><a href="{% url 'shop:list_category' i.get_absolute_url %}">
+	            <div class="image">
+	                <img class="card-img-top" src="{% if i.image %}{{ i.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{i.name}}" width="100%" title="{{i.name}}" alt="{{i.name}}">
+	            </div>
+	            <div class="foot_card" style="text-align:center;font-size: 20px;">
+	                {{i.name}}
+	            </div>
+	        </div></a>
+	        {% endfor %}
+	        {% endif %}
+	    </div>
+    </article>
+	</section>
 {% endblock %}
-
-{% comment %}
-
-
-
-{% recursetree category %}
-
-        <a href="{{ node.get_absolute_url }}"><span class="text-muted">{{ node.name }}</span></a>
-                                {% if not node.is_leaf_node %}
-                                <ul class="children" {{node.slug}}>
-                                    {{ children }}
-                                </ul>
-                                {% endif %}
-                                {% endrecursetree %}
-
-
-{% recursetree category %}
-<ul><a class="btn btn-link" data-toggle="collapse" data-target="#{{node.slug}}" class="collapsing"><i class="fas fa-th-large p-3"></i>{{node.name}}
-</a><a href="{{node.get_absolute_url}}"><i class="fas fa-chevron-right"></i></a></ul>
-{% if not node.is_leaf_node %}
-<ul class="children list-group list-group-flush collapsing" id="{{node.slug}}">
-<li class="list-group-item"><a class="text-muted" href="{{node.get_absolute_url}}">{{ children }}</a></li> 
-</ul>
-{% endif %}
-{% endrecursetree %}
-
-
-    <div class="card-header" id="heading-{{item.slug}}">
-<ul class="list-group text-white" data-toggle="collapse" data-target="#collapse-{{item.slug}}" aria-expanded="true" aria-controls="collapse-{{item.slug}}">{{item.name}}
-</ul>
-</div>
-<div id="collapse-{{item.slug}}" class="collapse show" aria-labelledby="heading-{{item.slug}}" data-parent="#accordionExample">
-<div class="card-body">
-<ul class="list-group list-group-flush">
-{% for item_children in item.get_children %}
-<li class="list-group-item"><a class="text-muted" href="/category/{{ item_children.get_absolute_url }}">{{item_children.name}}</a></li>
-{% endfor %}
-
-
-
-{% for item in category %}
-    {% if item.is_root_node %}
-    <ul><a href="#" data-toggle="collapse" data-target="#{{item.slug}}" class="collapsed active text-muted" ><i class="fas fa-th-list p-3"></i>{{item.name}}</a></ul>
-      <ul class="list-group list-group-flush collapse" id="{{item.slug}}">
-       
-            <li class="list-group-item"><a class="text-muted" href="#"><span class="fas fa-chevron-right"></span>{{item.name}}</a></li> 
-        
-
-
-      </ul>
-{%endif%}
-{% endfor %}
-{% endcomment %}
-
-
-
-{% comment %}
- <li> <a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a> </li>
-    <li> <a href="#" data-toggle="collapse" data-target="#products" class="collapsed active" > <i class="fa fa-bar-chart-o"></i> <span class="nav-label">Graphs</span> <span class="fa fa-chevron-left pull-right"></span> </a>
-      <ul class="sub-menu collapse" id="products">
-        <li class="active"><a href="#">CSS3 Animation</a></li>
-        <li><a href="#">General</a></li>
-        <li><a href="#">Buttons</a></li>
-        <li><a href="#">Tabs & Accordions</a></li>
-        <li><a href="#">Typography</a></li>
-        <li><a href="#">FontAwesome</a></li>
-        <li><a href="#">Slider</a></li>
-        <li><a href="#">Panels</a></li>
-        <li><a href="#">Widgets</a></li>
-        <li><a href="#">Bootstrap Model</a></li>
-      </ul>
-    </li>
-    <li> <a href="#"><i class="fa fa-laptop"></i> <span class="nav-label">Grid options</span></a> </li>
-    <li> <a href="#" data-toggle="collapse" data-target="#tables" class="collapsed active" ><i class="fa fa-table"></i> <span class="nav-label">Tables</span><span class="fa fa-chevron-left pull-right"></span></a>
-      <ul  class="sub-menu collapse" id="tables" >
-        <li><a href=""> Static Tables</a></li>
-        <li><a href=""> Data Tables</a></li>
-        <li><a href=""> Foo Tables</a></li>
-        <li><a href=""> jqGrid</a></li>
-      </ul>
-    </li>
-    <li> <a href="#" data-toggle="collapse" data-target="#e-commerce" class="collapsed active" ><i class="fa fa-shopping-cart"></i> <span class="nav-label">E-commerce</span><span class="fa fa-chevron-left pull-right"></span></a>
-      <ul  class="sub-menu collapse" id="e-commerce" >
-        <li><a href=""> Products grid</a></li>
-        <li><a href=""> Products list</a></li>
-        <li><a href="">Product edit</a></li>
-        <li><a href=""> Product detail</a></li>
-        <li><a href="">Cart</a></li>
-        <li><a href=""> Orders</a></li>
-        <li><a href=""> Credit Card form</a> </li>
-      </ul>
-    </li>
-    <li> <a href=""><i class="fa fa-pie-chart"></i> <span class="nav-label">Metrics</span> </a></li>
-    <li> <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Other Pages</span></a> </li>
-    <li> <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Other Pages</span></a> </li>
-    <li> <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Other Pages</span></a> </li>
-    <li> <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Other Pages</span></a> </li>
-    <li> <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Other Pages</span></a> </li>
-  </ul>
-
-
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-<button> <i class="fa fa fa-th-large" >-india-7615949353 </i></button>
-  
-<div class="sidebar left ">
-  <ul class="list-sidebar bg-defoult">
-    <!--<li class="nav-header "> <span> <img alt="image" class="img-circle" src="http://placehold.it/150x150"> </span>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
-        <li><a href="#">Regular link</a></li>
-        <li class="disabled"><a href="#">Disabled link</a></li>
-        <li><a href="#">Another link</a></li> 
-      </ul> -->
-    </li>
-    <li> <a href="#" data-toggle="collapse" data-target="#dashboard" class="collapsed active" > <i class="fa fa-th-large"></i> <span class="nav-label"> Dashboards </span> <span class="fa fa-chevron-left pull-right"></span> </a>
-      <ul class="sub-menu collapse" id="dashboard">
-        <li class="active"><a href="#">CSS3 Animation</a></li>
-        <li><a href="#">General</a></li>
-        <li><a href="#">Buttons</a></li>
-        <li><a href="#">Tabs & Accordions</a></li>
-        <li><a href="#">Typography</a></li>
-        <li><a href="#">FontAwesome</a></li>
-        <li><a href="#">Slider</a></li>
-        <li><a href="#">Panels</a></li>
-        <li><a href="#">Widgets</a></li>
-        <li><a href="#">Bootstrap Model</a></li>
-      </ul>
-    </li>
-    <li> <a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a> </li>
-    <li> <a href="#" data-toggle="collapse" data-target="#products" class="collapsed active" > <i class="fa fa-bar-chart-o"></i> <span class="nav-label">Graphs</span> <span class="fa fa-chevron-left pull-right"></span> </a>
-      <ul class="sub-menu collapse" id="products">
-        <li class="active"><a href="#">CSS3 Animation</a></li>
-        <li><a href="#">General</a></li>
-        <li><a href="#">Buttons</a></li>
-        <li><a href="#">Tabs & Accordions</a></li>
-        <li><a href="#">Typography</a></li>
-        <li><a href="#">FontAwesome</a></li>
-        <li><a href="#">Slider</a></li>
-        <li><a href="#">Panels</a></li>
-        <li><a href="#">Widgets</a></li>
-        <li><a href="#">Bootstrap Model</a></li>
-      </ul>
-    </li>
-    <li> <a href="#"><i class="fa fa-laptop"></i> <span class="nav-label">Grid options</span></a> </li>
-    <li> <a href="#" data-toggle="collapse" data-target="#tables" class="collapsed active" ><i class="fa fa-table"></i> <span class="nav-label">Tables</span><span class="fa fa-chevron-left pull-right"></span></a>
-      <ul  class="sub-menu collapse" id="tables" >
-        <li><a href=""> Static Tables</a></li>
-        <li><a href=""> Data Tables</a></li>
-        <li><a href=""> Foo Tables</a></li>
-        <li><a href=""> jqGrid</a></li>
-      </ul>
-    </li>
-    <li> <a href="#" data-toggle="collapse" data-target="#e-commerce" class="collapsed active" ><i class="fa fa-shopping-cart"></i> <span class="nav-label">E-commerce</span><span class="fa fa-chevron-left pull-right"></span></a>
-      <ul  class="sub-menu collapse" id="e-commerce" >
-        <li><a href=""> Products grid</a></li>
-        <li><a href=""> Products list</a></li>
-        <li><a href="">Product edit</a></li>
-        <li><a href=""> Product detail</a></li>
-        <li><a href="">Cart</a></li>
-        <li><a href=""> Orders</a></li>
-        <li><a href=""> Credit Card form</a> </li>
-      </ul>
-    </li>
-    <li> <a href=""><i class="fa fa-pie-chart"></i> <span class="nav-label">Metrics</span> </a></li>
-    <li> <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Other Pages</span></a> </li>
-    <li> <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Other Pages</span></a> </li>
-    <li> <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Other Pages</span></a> </li>
-    <li> <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Other Pages</span></a> </li>
-    <li> <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Other Pages</span></a> </li>
-  </ul>
-</div>
-
-
-
-
-
-{% for item in category.get_descendants %}
-<div class="tab-pane fade" id="list-{{item.slug}}" role="tabpanel" aria-labelledby="list-{{item.slug}}-list">
-    {% for i in item.get_children%}
-    <div class="row mb-2">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="" width="230" height="230">
-                                </div>
-                            <div class="col-md-9">
-                                <div class="card-body">
-                                    <div class="news-content">
-                                        <a href="/category/{{ i.get_absolute_url }}" class="text-muted"><h2>{{ i.name }}</h2></a>
-                                    </div>
-                                    <hr>
-                                    <div class="news-footer">
-                                        <small>{{ i.description }}</small>
-                                    </div>
-                                    <hr>
-                                    <div class="news-footer">
-                                        <ul class="list-inline list-unstyled">
-                                            <li class="list-inline-item text-secondary">
-                                                <i class="fab fa-cloudscale"></i>
-                                                Counter Product : {{ i.product_set.count }}
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
-</div>
-{% endfor %}
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="col-9">
-    <div class="tab-content" id="nav-tabContent">
-        <div class="card-header text-bleck text-uppercase"><i class="fas fa-list"></i> List Category </div>
-        {% for item in category.get_descendants %}
-        <div class="tab-pane fade" id="list-{{item.slug}}" role="tabpanel" aria-labelledby="list-{{item.slug}}-list">
-            {% for i in item.get_children%}
-            <div class="card-body">
-                <a href="/category/{{ i.get_absolute_url }}">{{ i.name }}....</a>
-                <<<<<<< HEAD=======>>>>>>> 839f61db268251d1229b99336d71d85801f56596
-            </div>
-            {% endfor %}
-            {% endfor %}
-        </div>
-    </div>
-</div>
-{% endblock %}
-<div class="card-header text-bleck text-uppercase"><i class="fa fa-list"></i> Categories</div>
-{% for i in category.get_ancestors %}
-<a class="list-group-item list-group-item-action" id="list-{{item.slug}}-list" data-toggle="list" href="#list-{{item.slug}}" role="tab" aria-controls="{{item.slug}}">{{item.name}}</a>
-{% endfor %}
-</div>
-</div>
-<div class="col-9">
-    <div class="tab-content" id="nav-tabContent">
-        <div class="card-header text-bleck text-uppercase"><i class="fas fa-list"></i> List Category </div>
-        {% for item in category.get_descendants %}
-        <div class="tab-pane fade" id="list-{{item.slug}}" role="tabpanel" aria-labelledby="list-{{item.slug}}-list">
-            {{item.get_children}}
-        </div>
-        {% endfor %}
-    </div>
-</div>
-</div>
-</div>
-</div>
-{% endcomment %}

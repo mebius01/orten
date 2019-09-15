@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% load static %}
+{% load i18n %}
+{% block breadcrumbs %}
+{{ block.super }} <li><a href="#">Корзина</a></li>
+{% endblock %}
+{% load static %}
+{% block head %}
+    <title>Ваш предворительный заказ</title>
+    <meta name="title" content="Предварительный заказ">
+    <meta name="description" content="Richo, Duplo, Konica Minolta, ColorWay - Купить в Николаеве, интернет-магазин Ортен ★ Ортен более 20 лет рынке копировальной техники и сервисного обслуживания">
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3">
+        <div class="card">
+         <div class="card-header text-bleck text-uppercase"><i class="fab fa-wpforms pr-3"></i>Информация</div>
+          <div class="card-body bg-light">
+            {% include "include/include_elivery_pay_contact.html" %}
+          </div>
+        </div>
+      </div>
+        <div class="col-12 col-sm-6 col-md-7 col-lg-8 col-xl-9">
+          <div class="card bg-light">
+           <div class="card-header text-bleck text-uppercase"><i class="fas fa-truck pr-3"></i>Ваш Заказ</div>
+            <div class="card-body bg-light">
+              {%include 'include/include_cart_list.html' %}
+            </div>
+          </div>
+       </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-6">
+          <a href="{% url "shop:product_list" %}" class="btn btn-block btn-outline-primary">Продолжить покупки<role="button" ></a>
+        </div>
+        <div class="col-6">
+          <a href="{% url "order:order_create" %}" class="btn btn-block btn-outline-success">Оформить заказ на сумму: {{ cart.get_total_price }}<role="button"></a>
+        </div>
+      </div>
+      <hr>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% comment %}
+  
+  <h1>Ваша корзина товаров</h1>
+
+    <a href="{% url "shop:product_list" %}" class="btn">Продолжить Шопинг</a>
+    <a href="{% url "order:order_create" %}" class="btn">Оформить заказ</a>
+<table class="table">
+  <thead>
+    <tr>
+        <th>Изображение</th>
+        <th>Продукт</th>
+        <th>Цена</th>
+        <th>Количество/Обновить</th>
+        <th>Сумма</th>
+        <th>Удалить</th>
+    </tr>
+  </thead>
+
+{% for item in cart %}
+{% with product=item.product %}
+
+  <tbody>
+    <tr>
+        <td>
+          <a href="{{ product.get_absolute_url }}">
+          <img src="{% if product.image %}{{ product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" width="53" height="53" alt="lorem">
+        </td>
+
+        <td>
+          {{ product.name }}
+        </td>
+
+        <td>
+          {{ item.price_uah }}
+        </td>
+
+        <td>
+          <form action="{% url "cart:cart_add" product.id %}" method="post" class="add">
+          {{ item.update_quantity_form.quantity }}
+          {{ item.update_quantity_form.update }}
+          {% csrf_token %}
+          <input type="submit" value="Обновить">
+        </form>
+        </td>
+
+        <td>
+          {{ item.total_price_uah }}
+        </td>
+
+        <td>
+          <a href="{% url "cart:cart_remove" product.id %}">Удалить</a>
+        </td>
+    </tr>
+
+ {% endwith %}
+{% endfor %}
+
+    <tr class="total">
+          <td>
+            Total
+          </td>
+
+          <td
+             class="num">{{ cart.get_total_price_uah }}
+          </td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+{% endcomment %}
+
+

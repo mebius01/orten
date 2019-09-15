@@ -10,338 +10,64 @@
 {% block breadcrumbs %}
     {{ block.super }}
     {% for i in instance.category.get_anc %}
-        <li><a href="{% url 'shop:list_category' i.get_absolute_url %}">{{ i.name }}</a><i class="fas fa-chevron-right pl-1"></i></li>
+        <li><a href="{% url 'shop:list_category' i.get_absolute_url %}">{{ i.name }}</a></li>
     {% endfor %}
-        <li><a href="#">{{instance.name}}</a></li>
-{% comment %}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [{
-    "@type": "ListItem",
-    "position": 1,
-    "name": "Books",
-    "item": "https://example.com/books"
-  },{
-    "@type": "ListItem",
-    "position": 2,
-    "name": "Authors",
-    "item": "https://example.com/books/authors"
-  },{
-    "@type": "ListItem",
-    "position": 3,
-    "name": "Ann Leckie",
-    "item": "https://example.com/books/authors/annleckie"
-  },{
-    "@type": "ListItem",
-    "position": 4,
-    "name": "Ancillary Justice",
-    "item": "https://example.com/books/authors/ancillaryjustice"
-  }]
-}
-</script>
-{% endcomment %}
-{% endblock %}
-{% block content %}
-<div class="d-flex justify-content-center p-4">
-    <h1>{{ instance.name }}</h1>
-</div>
-<div class="container-fluid">
-<!-- SEO microdata -->
-    <div itemtype="http://schema.org/Product" itemscope>
-        <link itemprop="image" href="{% if instance.image %}{{ instance.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{instance.name}}" title="{{instance.name}}"/>
-        <meta itemprop="mpn" content="{{ instance.vendor_code }}"/>
-        <meta itemprop="name" content="{{instance.name}}"/>
-        <meta itemprop="description" content="{{instance.description}}"/>
-        <div itemprop="offers" itemtype="http://schema.org/Offer" itemscope>
-            <link itemprop="url" href="{% url 'shop:product_detail' instance.slug %}" /> 
-            {% comment %} "{% url 'shop:product_detail' instance.slug %}" {% endcomment %}
-            <meta itemprop="availability" content="https://schema.org/InStock" />
-            <meta itemprop="priceCurrency" content="UAH" />
-            <meta itemprop="itemCondition" content="https://schema.org/UsedCondition" />
-            <meta itemprop="price" content="{{ instance.price }}" />
-              {% comment %}
-                  <meta itemprop="priceValidUntil" content="2020-11-05" />
-              {% endcomment %}
-              <div itemprop="seller" itemtype="http://schema.org/Organization" itemscope>
-                <meta itemprop="name" content="ТОВ Ортен" />
-              </div>
-        </div>
-        <meta itemprop="sku" content="{{ instance.vendor_code }}" />
-        <div itemprop="brand" itemtype="http://schema.org/Thing" itemscope>
-          <meta itemprop="name" content="{{ instance.vendor }}" />
-        </div>
-    </div>
-    <div class="row">
-        <!-- Крайний левый блок Картинка Контакты Доставка Оплата -->
-        <div class="col-12 col-lg-4">
-            <div class="card bg-light mb-3">
-                <div class="card-body">
-                    <img style="max-width:100%;" src="{% if instance.image %}{{ instance.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{instance.name}}" title="{{instance.name}}">
-                    {% include "include/include_elivery_pay_contact.html" %}
-                </div>
+        <li>{{instance.name}}</li>
+    {% endblock %}
+    {% block content %}
+		<div class="product_detail">
+            <div class="product_header"><h1>{{ instance.name }}</h1></div>
+        	<div class="product_img">
+                <img style="max-width:100%;" src="{% if instance.image %}{{ instance.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{instance.name}}" title="{{instance.name}}">
             </div>
-        </div>
-        <!-- Средний блок Арикул Производитель Цена и т д Кнопка КУПИТЬ -->
-        <div class="col-12 col-lg-4">
-            <div class="card bg-light mb-3">
-                <div class="card-body">
-                    <span class="leftstr">Артикул:</span><span class="rightstr product_vendor_code">{{ instance.vendor_code }}</span><div style="clear: left"></div>
-                    <hr>
-                    <span class="leftstr">Производитель:</span><span class="rightstr product_vendor">
-                        <a class="text-muted" href="{% url 'shop:product_list' %}?vendor={{ instance.vendor }}">{{ instance.vendor }}</a></span><div style="clear: left"></div>
-                    <hr>
-                        <span class="leftstr">Тип товара:</span><span class="rightstr product_vendor">
-                        <a class="text-muted" href="{% url 'shop:product_list' %}?type_product={{ instance.type_product }}">{{ instance.type_product }}</a></span><div style="clear: left"></div>
-                    <hr>
-                    {% if instance.action %}
-                        <span class="leftstr">Цена:</span><span class="rightstr product_price"><h4><span style="text-decoration: line-through">{{ instance.price }}</h4></span><div style="clear: left"></div>
-                        <span class="leftstr">Супер Цена:</span><span class="rightstr product_price"><h4><span style="color: red">{{ instance.discount }}</span></h4></span><div style="clear: left"></div>
-                    {% else %}
-                    <span class="leftstr">Цена:</span><span class="rightstr product_price"><h4>{{ instance.price }}</h4></span><div style="clear: left"></div>
-                    {% endif %}
-                    <hr>
+            <div class="feature">
+                <div class="specification">
+                    <p class="p_left">Артикул:</p>
+                    <p class="p_right">{{ instance.vendor_code }}</p>
+                    <br><hr>
+                    <p class="p_left">Производитель:</p>
+                    <p class="p_right">{{instance.vendor}}</p>
+                    <br><hr>
+                    <p class="p_left">Тип товара:</p>
+                    <p class="p_right">{{instance.type_product}}</p>
+                    <br><hr>
+                    <p class="p_left">Цена:</p>
+                    <p class="p_right">{{instance.price}}</p>
+                </div>
+                <br><hr>
+                <div class="c_p_d">
+                    <ul>
+                        <li><a href=""><i class="far fa-credit-card"></i></a></li>
+                        <li><a href=""><i class="fas fa-truck"></i></a></li>
+                        <li><a href=""><i class="fas fa-phone"></i></a></li>
+                    </ul>
+                </div>
+                <div class="foot_card_quantity">
                     <form action="{% url "cart:cart_add" instance.id %}" method="post">
                        {% csrf_token %}
-                      {% bootstrap_field cart_product_form.quantity show_label=False %}
-                      {% bootstrap_field cart_product_form.update show_label=False %}
-                      <button type="submit" class="btn btn-success btn-lg btn-block text-uppercase">
-                       <i class="fa fa-shopping-cart pr-3"></i>Купить</button>
+                      {{cart_product_form.quantity}}
+                      {{cart_product_form.update}}
+                      <button type="submit" class="apply">
+                       <i style="padding-right:5px;" class="fa fa-shopping-cart"></i>Купить</button>
                     </form>
                 </div>
-             </div>
-        </div>
-        <!-- Крайний правый блок Описание INFI etc-->
-        <div class="col-12 col-lg-4">
-            <div class="card bg-light mb-3">
-                <div class="card-body">
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Описание</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Характеристики</a>
-                    </li>
-                      {% comment %}
-                          <li class="nav-item">
-                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">REVIEWS</a>
-                      </li>
-                      {% endcomment %}
-                      
-                    </ul>
-                    <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                       {{ instance.description|linebreaks }}
-                        </div>
-                        <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">{{ instance.specifications|safe }}</div>
-                        {% comment %}
-                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae doloribus fugit ab excepturi, ut doloremque, itaque expedita tenetur laborum eos et, necessitatibus natus! Harum laudantium, adipisci quisquam quas nulla delectus.
-                        </div>
-                        {% endcomment %}
-                    </div>
+            </div>
+            <div class="description">
+                <div class="descript">
+                    <strong>Краткое описание:</strong>
+                    <p>
+                    	{{ instance.description|linebreaks }}
+                    </p>
+                    <br><hr>
+                </div>
+                <div class="spec">
+                    <strong>Характеристика:</strong>
+                    <p>
+                    	{{ instance.specifications|safe }}
+                    </p>
                 </div>
             </div>
-        </div>
-        <!-- Нижний блок Связи -->
-        <div class="col-12 col-sm-12">
-            <div class="row">
-                <div class="card bg-light">
-                    <article class="card-group-item">
-                        <div class="card-group">
-                            {% for item in instance.accessories.get_queryset %}
-                                {% include "include/include_product_card.html" %}
-                            {% endfor %}
-                        </div>
-                    </article>
-                </div>
+            <div class="accessories">
             </div>
         </div>
-    </div>
-</div>
-{% endblock %}
-
-<div>
-  <div itemtype="http://schema.org/Product" itemscope>
-    <meta itemprop="mpn" content="925872" /> ПАРТ НОМЕР ПРОИЗВОДИТЕЛЯ! ---!
-    <meta itemprop="name" content="Executive Anvil" /> ИМЯ ТОВАРА ---!??
-    <link itemprop="image" href="https://example.com/photos/16x9/photo.jpg" /> КАРТИНКА
-    <meta itemprop="description" content="Sleeker than ACME's Classic Anvil, the Executive Anvil is perfect for the business traveler looking for something to drop from a height." /> ОПИСАНИЕ ---!
-
-    <div itemprop="offers" itemtype="http://schema.org/Offer" itemscope>
-      <link itemprop="url" href="https://example.com/anvil" /> ПРЯМАЯ ССыЛКА ---!
-      <meta itemprop="availability" content="https://schema.org/InStock" />
-      <meta itemprop="priceCurrency" content="USD" /> ВАЛЮТА ---!
-      <meta itemprop="itemCondition" content="https://schema.org/UsedCondition" />
-      <meta itemprop="price" content="119.99" /> ЦЕНА ---!
-      <meta itemprop="priceValidUntil" content="2020-11-05" /> Дата при которой цена актуальна
-      <div itemprop="seller" itemtype="http://schema.org/Organization" itemscope>
-        <meta itemprop="name" content="Executive Objects" />ИМЯ ТОВАРА ---!
-      </div>
-    </div>
-    <div itemprop="aggregateRating" itemtype="http://schema.org/AggregateRating" itemscope> РЕЙТИНГ
-      <meta itemprop="reviewCount" content="89" /> общий счетчик
-      <meta itemprop="ratingValue" content="4.4" /> значение рейтинга (5, 4, 4.5 )
-    </div>
-    <div itemprop="review" itemtype="http://schema.org/Review" itemscope> ОТЗЫВ
-      <div itemprop="author" itemtype="http://schema.org/Person" itemscope>
-        <meta itemprop="name" content="Fred Benson" />
-      </div>
-      <div itemprop="reviewRating" itemtype="http://schema.org/Rating" itemscope> Рейтинг
-        <meta itemprop="ratingValue" content="4" /> 
-        <meta itemprop="bestRating" content="5" />
-      </div>
-    </div>
-    <meta itemprop="sku" content="0446310786" /> АРТИКУЛ ПРОДОВЦА
-    <div itemprop="brand" itemtype="http://schema.org/Thing" itemscope>
-      <meta itemprop="name" content="ACME" /> БРЕНД ---!
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    {% comment %}
-
-    /*
-** Style Simple Ecommerce Theme for Bootstrap 4
-** Created by T-PHP https://t-php.fr/43-theme-ecommerce-bootstrap-4.html
-
-<p class="product_tags">Tags: 
-                        {% for tag in instance.tags.all %}
-                            <a href="/tag/{{tag.id}}">{{ tag.name }}</a> |
-                        {% endfor %}
-                    </span>
-                    <hr>
-                    <p class="product_name">{{ instance.name }}</p>
-                    <hr>
-                    <p class="product_vendor">{{ instance.vendor }}</p>
-                    <hr>
-                    <p class="product_vendor_code">{{ instance.vendor_code }}</p>
-*/
-/*
-.price {
-    color: #c01508;
-    text-align: center;
-    font-weight: bold;
-    font-size: 100%;
-}
-
-.product_tags {
-    color: #c01508;
-    text-align: center;
-    font-weight: bold;
-    font-size: 150%;
-}
-
-.product_name {
-    color: #c01508;
-    text-align: center;
-    font-weight: bold;
-    font-size: 150%;
-}
-
-.product_vendor {
-    color: #c01508;
-    text-align: center;
-    font-weight: bold;
-    font-size: 150%;
-}
-
-.product_vendor_code {
-    color: #c01508;
-    text-align: center;
-    font-weight: bold;
-    font-size: 150%;
-}
-*/
-
-
-   {% with filter_tag|slice:"1:" as products %}     
-{% include "include/include_product_list.html" %}
-{% endwith %} 
-
-
-
-    {% with instance.accessories.get_queryset as products %}     
-{% include "include/include_product_list.html" %}
-{% endwith %} 
-
-
-                            <div class="form-group">
-                            <label>Quantity :</label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <button type="button" class="quantity-left-minus btn btn-danger btn-number"  data-type="minus" data-field="">
-                                        <i class="fa fa-minus"></i>
-                                    </button>
-                                </div>
-                                <input type="text" class="form-control"  id="quantity" name="quantity" min="1" max="100" value="1">
-                                <div class="input-group-append">
-                                    <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
-                                        <i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#" class="btn btn-success btn-lg btn-block text-uppercase">
-                            <i class="fa fa-shopping-cart"></i> Add To Cart
-                        </a>
-                    </form>
-
-
-                        <div class="reviews_product p-3 mb-2 ">
-                        3 reviews
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        (4/5)
-                        <a class="pull-right" href="#reviews">View all reviews</a>
-                    </div>
-                    <div class="datasheet p-3 mb-2 bg-info text-white">
-                        <a href="" class="text-white"><i class="fa fa-file-text"></i> Download DataSheet</a>
-                    </div>
-                </div>
-
-
-
-                <script>
-    
-
-    $(document).ready(function(){
-        var quantity = 1;
-
-        $('.quantity-right-plus').click(function(e){
-            e.preventDefault();
-            var quantity = parseInt($('#quantity').val());
-            $('#quantity').val(quantity + 1);
-        });
-
-        $('.quantity-left-minus').click(function(e){
-            e.preventDefault();
-            var quantity = parseInt($('#quantity').val());
-            if(quantity > 1){
-                $('#quantity').val(quantity - 1);
-            }
-        });
-
-    });
-
-</script>
-
-                    {% endcomment %}
+	{% endblock %}
