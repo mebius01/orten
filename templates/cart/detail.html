@@ -109,7 +109,9 @@
                         </span>
                         <span class="s-2"><b>Сумма: </b>{{ item.total_price }}</span>
                         <span class="s-2"><b>Удалить: </b>
-						<button class="minus"><a href="{% url "cart:cart_remove" product.id %}" class="minus"><i style="color:white;" class="fas fa-trash-alt"></i></a></button>
+						<a href="{% url 'cart:cart_remove' product.id %}">
+                        <button class="minus"><i style="color:white;" class="fas fa-trash-alt"></i></button>
+                        </a>
                         </span>
 						{% endwith %}
 					    {% endfor %}
@@ -125,10 +127,10 @@
                 </div>
             </div>
             <div class="cart_button">
-                <a href="{% url "shop:product_list" %}">
+                <a href="{% url 'shop:product_list' %}">
                 <button style="float:left;" class="return">Вернуться к товарам</button>
                 </a>
-                <a href="{% url "order:order_create" %}">
+                <a href="{% url 'order:order_create' %}">
                 <button style="float:right;" class="apply">Оформить заказ</button>
                 </a>
             </div>

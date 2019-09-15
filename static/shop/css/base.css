@@ -445,13 +445,13 @@ article {
 .card .card-action {
     width: 90%;
     height: 30px;
-    background: #f38d8d;
+    background: #fa6262;
     position: absolute;
     top: 50px;
     left: -50px;
     text-align: center;
     line-height: 30px;
-    color: whitesmoke;
+    color: white;
     opacity: 0.5;
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
