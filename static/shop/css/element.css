@@ -1,7 +1,8 @@
 * {
     margin: 0px;
     padding: 0px;
-    font-family: 'Play', sans-serif;
+    /* font-family: 'Play', sans-serif; */
+    font-family: sans-serif;
 }
 :root{
     --global_geen: #85c987;

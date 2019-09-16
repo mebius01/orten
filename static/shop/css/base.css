@@ -305,6 +305,7 @@ nav input[type=text]{
 /* START ARTICLE AND SIDBAR */
 .accordion, .content {
     margin: 12px;
+    align-self: start;
 }
 .hd_content{
     background-color:  var(--global_geen);
@@ -387,11 +388,13 @@ aside {
 .accordion .link{
     margin-top: 1px;
     background-color: var(--global_geen);
-    height: 30px;
+    /* height: 30px;
+    width: auto; */
     color: var(--global_text_color);
     margin-left: -12px;
     margin-right: -12px;
     cursor: pointer;
+    word-wrap: break-word;
 }
 .accordion ul li{
     padding: 8px;
@@ -399,8 +402,7 @@ aside {
 }
 .accordion ul li span{
     margin-left: 5px;
-    padding: 2px;
-    border-bottom: 1px solid var(--global_geen);
+    color:#5cb85c;
 }
 article {
     display: grid;
@@ -410,32 +412,16 @@ article {
 }
 .content{
     display: grid;
-    gap: 20px;
+    gap: 12px;
     grid-template-columns: repeat(auto-fit, minmax(200px, auto));
     grid-template-rows: repeat(auto-fit, minmax(200px, auto));
 }
-.accordion .link{
-    margin-top: 1px;
-    background-color: var(--global_geen);
-    height: 30px;
-    color: var(--global_text_color);
-    margin-left: -12px;
-    margin-right: -12px;
-    cursor: pointer;
-}
-.accordion ul li{
-    padding: 8px;
-    margin-left: 24px;
-}
-article {
-    display: grid;
-    grid-area: article;
-    margin-right: 12px;
-}
+
+
 /* START PRODUCT CARD */
 .card {
     display: grid;
-    /* background-color: #f0f8ff; */
+    background-color: white;
     color:  var(--global_text_color);
     height: auto;
     max-width: 100%;
@@ -460,7 +446,7 @@ article {
     border: 1px solid var(--global_geen);
 }
 .card div{
-    padding: 3px;
+    padding: 5px;
 }
 .card a{
     display: block; /* Ссылка как блочный элемент */
