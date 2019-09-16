@@ -130,6 +130,7 @@ button{
     grid-area: paginator;
     width:auto;
     margin: auto;
+    padding: 24px;
     /* height: 40px; */
     /* margin: 12px; */
     display: inline-block;
@@ -206,3 +207,23 @@ textarea[name=note_text]{
   .langdown:hover .langdown-content {
     display: block;
   }
+.contact i{
+    margin-right: 5px;
+    color: var(--global_text_color);
+}
+.contact a{
+    text-decoration: none;
+    color: var(--global_text_color);
+}
+.map iframe{
+    width: auto;
+    height: auto;
+}
+.about ul li{
+    margin-bottom: 12px;
+    margin-left: 50px;
+    list-style-type: circle;
+}
+.about h4{
+    margin: 12px;
+}
