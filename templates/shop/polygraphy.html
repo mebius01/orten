@@ -20,9 +20,7 @@
 		{% include "include/include_list_category.html" %}
 	</aside>
     <article>
-	<div class="hd_content">
-            <i class="fas fa-th-large"></i>Список Категорий
-        </div>
+	<div class="hd_content"><i class="fas fa-th-large"></i>Список Категорий</div>
         <div class="content">
             {% get_flatpages as flatpages %}
             {% for item in flatpages|dictsort:"id" %}

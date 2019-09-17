@@ -178,18 +178,18 @@ textarea[name=note_text]{
 }
 .langdown {
     float: left;
- }
- .langdown .dropbtn {
+}
+.langdown .dropbtn {
     border: none;
     outline: none;
     padding: 14px 16px;
- }
-  .langdown-content {
+}
+.langdown-content {
     display: none;
     position: absolute;
     background-color: rgba(119, 187, 128, 0.219);
     /* border: 1px solid var(--global_geen); */
-  }
+}
   /* Links inside the langdown */
 .langdown-content a {
     float: none;
@@ -198,15 +198,17 @@ textarea[name=note_text]{
     text-decoration: none;
     display: block;
     text-align: center;
-  }
-  
+}
   /* Add a grey background color to langdown links on hover */
-  .langdown-content a:hover {
+.langdown-content a:hover {
     background-color: var(--global_geen);
-  }
-  .langdown:hover .langdown-content {
+}
+.langdown:hover .langdown-content {
     display: block;
-  }
+}
+.about,.contact,.flat_block{
+    line-height: 1.8;
+}
 .contact i{
     margin-right: 5px;
     color: var(--global_text_color);
@@ -214,10 +216,6 @@ textarea[name=note_text]{
 .contact a{
     text-decoration: none;
     color: var(--global_text_color);
-}
-.map iframe{
-    width: auto;
-    height: auto;
 }
 .about ul li{
     margin-bottom: 12px;

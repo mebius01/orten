@@ -1,34 +1,28 @@
 {% load static %}
 {% load bootstrap4 %}
 {% load i18n %}
-<div class="table-responsive-sm">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Фото</th>
-        <th scope="col">Бренд</th>
-        <th scope="col">Имя</th>
-        <th scope="col">Артикул</th>
-        <th scope="col">Цена</th>
-       {% comment %}
-          <th colspan="2">В корзину</th>
-       {% endcomment %}
-      </tr>
-    </thead>
+<div class="service_list">
+    <span class="s"><strong>Фото</strong></span>
+    <span class="s"><strong>Бренд</strong></span>
+    <span class="s"><strong>Название</strong></span>
+    <span class="s"><strong>Артикул</strong></span>
+    <span class="s"><strong>Цена ₴</strong></span>
+    <!-- динамический контент -->
     {% for service in services %}
-    <tbody>
-      <tr>
-        <th scope="row">
-            <a class="item_img"><img src="{% if service.image %}{{ service.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt=".">
-        </th>
-        <td>{{ service.vendor }}</td>
-        <td>
-              <a href="{% url 'shop:service_detail' service.slug %}">{{ service.name }}
-        </td>
-        <td>{{ service.vendor_code }}</td>
-        <td>{{ service.price }}</td>
-      </tr>
-    </tbody>
+    <span class="s-1"><img src="{% if service.image %}{{ service.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt="."></span>
+    <span class="s-2"><b>Бренд: </b>{{ service.vendor }}</span>
+    <span class="s-3"><b>Название: </b><a href="{% url 'shop:service_detail' service.slug %}">{{ service.name }}</a></span>
+    <span class="s-4"><b>Артикул: </b>{{ service.vendor_code }}</span>
+    <span class="s-6"><b>Цена: </b>
+        {% if service.action %}
+            <em style="text-decoration: line-through">{{ service.price }}</em>
+            <br>
+            <em style="color: red">{{ service.discount }}</em>
+        {% else %}
+            {{ service.price }}
+        {% endif %}
+    </span>
+    <div class="s-hr"><hr></div>
     {% endfor %}
-  </table>
 </div>
+

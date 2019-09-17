@@ -1,111 +1,57 @@
-{% extends 'shop/list_category.html' %}
+{% extends 'shop/list_product.html' %}
 {% load bootstrap4 %}
 {% load static %}
 {% load i18n %}
 {% block head %}
     <title>{{ instance.name }}</title>
-    <meta name="title" content="{{instance.name}} - Ремонт и обслуживание в Николаеве">
-    <meta name="description" content="{{instance.name}} - {{instance.price}} грн. - обслуживание  в Николаеве ★ {{instance.description}} ★ Ортен более 20 лет рынке копировальной техники и сервисного обслуживания">
+    <meta name="title" content="{{instance.name}} - купить в Николаеве и Украине">
+    <meta name="description" content="{{instance.name}} - {{instance.price}} грн. - купить в Николаеве и Украине ★ {{instance.description}} ★ Более 20 лет рынке копировальной техники и сервисного обслуживания">
 {% endblock %}
 {% block breadcrumbs %}
     {{ block.super }}
     {% for i in instance.category.get_anc %}
-        <li><a href="{% url 'shop:list_category' i.get_absolute_url %}">{{ i.name }}</a><i class="fas fa-chevron-right pl-1"></i></li>
+        <li><a href="{% url 'shop:list_category' i.get_absolute_url %}">{{ i.name }}</a></li>
     {% endfor %}
-        <li><a href="#">{{instance.name}}</a></li>
-{% endblock %}
-
-{% block content %}
-<div class="d-flex justify-content-center p-4">
-    <h1>{{ instance.name }}</h1>
-</div>
-<div class="container-fluid">
-    <div class="row">
-        <!-- Крайний левый блок Картинка Контакты Доставка Оплата -->
-        <div class="col-12 col-lg-4">
-            <div class="card bg-light mb-3">
-                <div class="card-body">
-                    <a href="" data-toggle="modal" data-target="#productModal">
-                    <img style="max-width:100%;" src="{% if instance.image %}{{ instance.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}"></a>
-                    {% include "include/include_elivery_pay_contact.html" %}
+        <li>{{instance.name}}</li>
+    {% endblock %}
+    {% block content %}
+    <div class="product_detail">
+            <div class="product_header"><h1>{{ instance.name }}</h1></div>
+        	<div class="product_img">
+                <img style="max-width:100%;" src="{% if instance.image %}{{ instance.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{instance.name}}" title="{{instance.name}}">
+            </div>
+            <div class="feature">
+                <div class="specification">
+                    <p class="p_left">Артикул:</p>
+                    <p class="p_right">{{ instance.vendor_code }}</p>
+                    <br><hr>
+                    <p class="p_left">Производитель:</p>
+                    <p class="p_right">{{instance.vendor}}</p>
+                    <br><hr>
+                    <p class="p_left">Модель:</p>
+                    <p class="p_right">{{ instance.vendor_model }}</p>
+                    <br><hr>
+                    <p class="p_left">Цена:</p>
+                    <p class="p_right">{{instance.price}}</p>
+                </div>
+                <br><hr>
+            </div>
+            <div class="description">
+                <div class="descript">
+                    <strong>Краткое описание:</strong>
+                    <p>
+                        {{ instance.description|linebreaks }}
+                    </p>
+                    <br><hr>
+                </div>
+                <div class="spec">
+                    <strong>Характеристика:</strong>
+                    <p>
+                        {{ instance.specifications|safe }}
+                    </p>
                 </div>
             </div>
-        </div>
-        <!-- Средний блок Арикул Производитель Цена и т д Кнопка КУПИТЬ -->
-        <div class="col-12 col-lg-4">
-            <div class="card bg-light mb-3">
-                <div class="card-body">
-                    <span class="leftstr">Артикул:</span><span class="rightstr product_vendor_code">{{ instance.vendor_code }}</span><div style="clear: left"></div>
-                    <hr>
-                    <span class="leftstr">Производитель:</span><span class="rightstr product_vendor">
-                    <a class="text-muted" href="{% url 'shop:product_list' %}?vendor={{ instance.vendor }}">{{ instance.vendor }}</a></span><div style="clear: left"></div>
-                    <hr>
-                   <span class="leftstr">Модель:</span><span class="rightstr product_vendor">
-                    {% comment %}
-                      <a class="text-muted" href="{% url 'shop:product_list' %}?vendor_model={{ instance.vendor_model }}">
-                    {% endcomment %}
-                    {{ instance.vendor_model }}</a></span><div style="clear: left"></div>
-                    <hr>
-                    <span class="leftstr">Цена:</span><span class="rightstr product_price"><h4>{{ instance.price }}</h4></span><div style="clear: left"></div>
-                    {% comment %}
-                      <hr>
-                    <form>
-                      <div class="form-group">
-                        <label for="formGroupExampleInput2">У вас вопросы? Оставьте свой телефон и мы свяжимся с вами</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Phone">
-                      </div>
-                    </form>
-                    {% endcomment %}
-                    
-                </div>
-             </div>
-        </div>
-        <!-- Крайний правый блок Описание INFI etc-->
-        <div class="col-12 col-lg-4">
-            <div class="card bg-light mb-3">
-                <div class="card-body">
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                      <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Описание услуги</a>
-                      </li>
-                      {% comment %}
-                        <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">INFO</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">REVIEWS</a>
-                      </li>
-                      {% endcomment %}
-                      
-                    </ul>
-                    <div class="tab-content" id="myTabContent">
-                      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"> {{ instance.description|linebreaks }}</div>
-                      {% comment %}
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur ea, quos at, delectus dolorum, molestiae vero debitis iste itaque maiores velit ducimus quis? Quas sequi, accusamus praesentium quam aperiam numquam.</div>
-
-                      <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae doloribus fugit ab excepturi, ut doloremque, itaque expedita tenetur laborum eos et, necessitatibus natus! Harum laudantium, adipisci quisquam quas nulla delectus.</div>
-                    </div>
-                      {% endcomment %}
-                </div>
+            <div class="accessories">
             </div>
         </div>
-    </div>
-        <!-- Нижний блок Связи -->
-    <div class="col-12 col-sm-12">
-        <div class="row">
-            <div class="card bg-light">
-                <article class="card-group-item">
-                    <div class="card-group">
-                        {% for item in instance.accessories.get_queryset %}
-                            {% include "include/include_product_card.html" %}
-                        {% endfor %}
-                    </div>
-                </article>
-            </div>
-        </div>
-    </div>
-<hr>
-</div>
-
-{% endblock %}
+    {%endblock%}
