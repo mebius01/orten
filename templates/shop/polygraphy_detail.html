@@ -20,11 +20,11 @@
 		{% include "include/include_list_category.html" %}
 	</aside>
     <article>
-	<div class="hd_content">
-            <i class="fas fa-list pr-3"></i>{{ instance.flatpage.title }}
-        </div>
-        <div class="content">
+	<div class="hd_content"><i class="fas fa-list pr-3"></i>{{ instance.flatpage.title }}</div>
+        <div class="img">
             <img src="/static/shop/img/polygraphy/{{ instance.slug }}.jpg" style="width: 100%;" hspace="16">
+        </div>
+        <div class="content-1">
             {{ instance.flatpage.content|safe }}
         </div>
     </article>
