@@ -6,44 +6,44 @@
 {% load flatpages %}
 {% load i18n %}
 {% block head %}
-    <title>{{instance.name}}</title>
-    <meta name="title" content="{{instance.name}} - Заказать в Николаеве">
-    <meta name="description" content="{{instance.name}} - Заказать в Николаеве ★ Интернет-магазин Ортен более 20 лет рынке копировальной техники и сервисного обслуживания">
+	<title>{{instance.name}}</title>
+	<meta name="title" content="{{instance.name}} - Заказать в Николаеве">
+	<meta name="description" content="{{instance.name}} - Заказать в Николаеве ★ Интернет-магазин Ортен более 20 лет рынке копировальной техники и сервисного обслуживания">
 {% endblock %}
-    {{ block.super }}<li><a href="{% url 'shop:category' %}">Категории</a></li>
-        {% for i in instance.get_anc %}
-            <li><a href="{% url 'shop:list_category' i.get_absolute_url %}">{{ i.name }}</a></li>
-        {% endfor %}
+	{{ block.super }}<li><a href="{% url 'shop:category' %}">Категории</a></li>
+	{% for i in instance.get_anc %}
+	<li><a href="{% url 'shop:list_category' i.get_absolute_url %}">{{ i.name }}</a></li>
+	{% endfor %}
 {% endblock %}
 {% block content %}
 	<section>
 		<aside>
 		{% include "include/include_list_category.html" %}
-    </aside>
-    <article>
-    	<div class="hd_content"><i class="fa fa-list"></i>{{instance.name}}</div>
-    	<div class="content">
-	    	{% comment %}
-	    		{{instance.description|linebreaks}}
-	    	{% endcomment %}
-	    	{% if products %}
-	        	<meta http-equiv="REFRESH" content="0;url={% url 'shop:product_list' %}?category={{instance.id}}">
-		    {% elif services %}
-		        {% include "include/include_service_list.html" %}
-		    {% else %}
-		    {% for i in instance.children.all|dictsort:"id" %}
-		    <div class="card"><a href="{% url 'shop:list_category' i.get_absolute_url %}">
-	            <div class="image">
-	                <img class="card-img-top" src="{% if i.image %}{{ i.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{i.name}}" width="100%" title="{{i.name}}" alt="{{i.name}}">
-	            </div>
-	            <div class="foot_card" style="text-align:center;">
-					{{i.name}}
-					<span style="color:#5cb85c">{% firstof i.product.count i.services.count i.polygraphy.count %}</span>
-	            </div>
-	        </div></a>
-	        {% endfor %}
-	        {% endif %}
-	    </div>
-    </article>
+	</aside>
+	<article>
+		<div class="hd_content"><i class="fa fa-list"></i>{{instance.name}}</div>
+		<div class="content">
+			{% comment %}
+				{{instance.description|linebreaks}}
+			{% endcomment %}
+			{% if products %}
+			<meta http-equiv="REFRESH" content="0;url={% url 'shop:product_list' %}?category={{instance.id}}">
+			{% elif services %}
+			{% include "include/include_service_list.html" %}
+			{% else %}
+			{% for i in instance.children.all|dictsort:"id" %}
+			<div class="card"><a href="{% url 'shop:list_category' i.get_absolute_url %}">
+			<div class="image">
+				<img class="card-img-top" src="{% if i.image %}{{ i.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{i.name}}" width="100%" title="{{i.name}}" alt="{{i.name}}">
+			</div>
+			<div class="foot_card" style="text-align:center;">
+				{{i.name}}
+				<span style="color:#5cb85c">{% firstof i.product.count i.services.count i.polygraphy.count %}</span>
+			</div>
+			</div></a>
+			{% endfor %}
+			{% endif %}
+		</div>
+	</article>
 	</section>
 {% endblock %}
