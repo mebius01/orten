@@ -22,9 +22,9 @@
         <link rel="stylesheet" href="{% static 'shop/css/base.css' %}" type="text/css">
          <link rel="stylesheet" href="{% static 'shop/css/flags.css' %}" type="text/css">
         <link rel="stylesheet" href="{% static 'shop/css/element.css' %}" type="text/css">
-        <link rel="stylesheet" href="{% static 'shop/css/cart.css' %}" type="text/css">
+        {% comment %} <link rel="stylesheet" href="{% static 'shop/css/cart.css' %}" type="text/css">
         <link rel="stylesheet" href="{% static 'shop/css/product.css' %}" type="text/css">
-        <link rel="stylesheet" href="{% static 'shop/css/product_detail.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'shop/css/product_detail.css' %}" type="text/css"> {% endcomment %}
         <link rel="shortcut icon" type="image/png" href="{% static "img/favicon.png" %}">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     </head>
@@ -121,13 +121,13 @@
                         {% with total_items=cart|length %}
                             {% if cart|length > 0 %}
                                 <a href="{% url "cart:cart_detail" %}">
-                                    <i class="fa fa-shopping-cart mr-2"></i>Корзина
-                                    <span class="badge badge-light ml-1">{{ total_items }}</span>
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <span class="badge badge-light">{{ total_items }}</span>
                                 </a>
                             {% else %}
                                 <a href="{% url "cart:cart_detail" %}">
-                                    <i class="fa fa-shopping-cart mr-2"></i>Корзина
-                                    <span class="badge badge-light ml-1">0</span>
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <span class="badge badge-light">0</span>
                                 </a>
                             {% endif %}
                         {% endwith %}
