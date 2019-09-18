@@ -26,11 +26,17 @@
 						<div class="image">
 							<img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{item.name}}" width="100%">
 						</div>
-						<div class="card_content">
+					<div class="card_content">
 							<div class="name">{{item.name}}</div>
+							<br>
 							<div class="pn">
 								<span style="float:left" >Артикул:</span>
 								<span style="float:right">{{item.vendor_code}}</span>
+							</div>
+							<br>
+							<div class="vendor">
+								<span style="float:left" >Вендор:</span>
+								<span style="float:right">{{item.vendor}}</span>
 							</div>
 							<br>
 							<div class="price">
@@ -38,9 +44,10 @@
 									<h6><span style="float: left">Цена: </span> <span style="text-decoration: line-through; float:right">{{item.price}}</span></h6>
 								{% endif %}
 								<br>
-								<span style="float:left" >Цена:</span> <span style="color:red; float:right"><h3>{{item.price}}</h3></span>
+								<span style="float:left" >Цена:</span> <span style="color:#fc6251; float:right"><h4>{{item.price}}</h4></span>
 							</div>
-					</a>
+							<br>
+						</a>
 					</div>
 					<div class="foot_card_quantity">
 						<form action="{% url "cart:cart_add" item.id %}" method="post">

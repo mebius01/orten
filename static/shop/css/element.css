@@ -336,8 +336,8 @@ article {
 .content{
     display: grid;
     gap: 12px;
-    grid-template-columns: repeat(auto-fit, minmax(200px, auto));
-    grid-template-rows: repeat(auto-fit, minmax(200px, auto));
+    grid-template-columns: repeat(auto-fit, minmax(260px, auto));
+    grid-template-rows: repeat(auto-fit, minmax(auto, auto));
 }
 @media (min-width: 1200px){
     aside {
@@ -430,6 +430,7 @@ article {
     max-width: 100%;
     text-align:left;
     position: relative;
+    /* margin: 5px; */
 }
 .card .card-action {
     width: 90%;
@@ -450,6 +451,7 @@ article {
 }
 .card div{
     padding: 5px;
+    /* border:1px solid; */
 }
 .card a{
     display: block; /* Ссылка как блочный элемент */
@@ -465,17 +467,15 @@ article {
 }
 .card .pn{
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 15px;
+    /* font-size: 15px; */
 }
 .card .price{
     font-family: 'Play', sans-serif;
-    font-size: 20px;
-}
-.card image{
-    align-self: start;
+    /* font-size: 20px; */    
 }
 .card .card_content{
-    align-self: end;
+    align-self: center;
+    margin-right: 12px;
 }
 .card .foot_card_quantity{
     align-self: end;
@@ -730,7 +730,6 @@ button{
 .pagination {
     grid-area: paginator;
     width:auto;
-    margin: auto;
     padding: 24px;
     display: inline-block;
 }
@@ -910,7 +909,7 @@ table {text-align: center;}
     width: 48%;
     height: 32px;
     margin-top: 12px;
-    /* float: right; */
+    margin-bottom: 12px;
 }
 /* START PRODUCT LIST */
 .product_list{
@@ -1138,6 +1137,7 @@ table {text-align: center;}
     text-align: center;
     padding: 20px;
     border-bottom: 1px solid var(--global_geen);
+    color: #428bca;
 }
 .product_img{
     grid-area: product_img;
