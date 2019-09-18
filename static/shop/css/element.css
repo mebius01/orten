@@ -457,6 +457,7 @@ article {
     color: var(--global_text_color);
 }
 .card .name{
+    align-self: end;
     /* font-family: 'Russo One', sans-serif; */
     font-weight: 700;
     font-size: 17px;
@@ -469,6 +470,12 @@ article {
 .card .price{
     font-family: 'Play', sans-serif;
     font-size: 20px;
+}
+.card image{
+    align-self: start;
+}
+.card .card_content{
+    align-self: end;
 }
 .card .foot_card_quantity{
     align-self: end;

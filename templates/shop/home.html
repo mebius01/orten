@@ -5,7 +5,7 @@
 {% load i18n %}
 {% block head %}
     <title>Ортен - интернет-магазин печатной и компьютерной техники в Николаеве</title>
-    <meta name="title" content="Ортен - розничный и оптовый интернет-магазин печатной и компьютерной техники в Николаеве">         
+    <meta name="title" content="Ортен - розничный и оптовый интернет-магазин печатной и компьютерной техники в Николаеве">
     <meta name="description" content="Ортен - розничный и оптовый интернет-магазин. Копировальная техника и расходные материалы ★ Компьютеры и комплектующие ★ Полиграфическое оборудование и расходные материалы ★ Оперативная полиграфия ★ Диагностика и ремонт копировальной техники и компьютеров ★  Ортен более 20 лет рынке копировальной техники и сервисного обслуживания">
     <link rel="stylesheet" href="{% static "shop/css/element.css" %}" type="text/css">
 {% endblock %}
@@ -15,40 +15,41 @@
 		{% include "include/include_list_category.html" %}
     </aside>
     <article>
-	    <div class="hd_content">
-	        <i class="fas fa-star"></i>Новинки и акции
-	    </div>
-	    <div class="content">
-	        {% for item in products %}
-	        <div class="card">
-	            {% if item.action %}
-		          <div class="card-action">Акция до {{item.end_action|date:"d.m.y"}}</div>
-		        {% endif %}
-	            <a href="{% url 'shop:product_detail' item.slug %}">
-	            <div class="image">
-	                <img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{item.name}}" width="100%">
-	            </div>
-	            <div class="name">{{item.name}}</div>
-	            <div class="pn">
-	            	<span style="float:left" >Артикул:</span>
-	                <span style="float:right">{{item.vendor_code}}</span>
-	            </div>
-	            <br>
-	            <div class="price">
-	            	{% if item.action %}
-					    <h6><span style="float: left">Цена: </span> <span style="text-decoration: line-through; float:right">{{item.price}}</span></h6>
-		            {% endif %}
-		        <br>
-		            <span style="float:left" >Цена:</span> <span style="color:red; float:right"><h3>{{item.price}}</h3></span>
-	            </div></a>
-	            <div class="foot_card_quantity">
-	              	<form action="{% url "cart:cart_add" item.id %}" method="post">
-	                {% csrf_token %}
-	                {{ cart_product_form.quantity }}
-	                <button type="submit" class="apply">В корзину</button>
-	              	</form>
-	            </div>
-	    </div>
+		<div class="hd_content"><i class="fas fa-star"></i>Новинки и акции</div>
+		<div class="content">
+			{% for item in products %}
+				<div class="card">
+					{% if item.action %}
+						<div class="card-action">Акция до {{item.end_action|date:"d.m.y"}}</div>
+					{% endif %}
+					<a href="{% url 'shop:product_detail' item.slug %}">
+						<div class="image">
+							<img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{item.name}}" width="100%">
+						</div>
+						<div class="card_content">
+							<div class="name">{{item.name}}</div>
+							<div class="pn">
+								<span style="float:left" >Артикул:</span>
+								<span style="float:right">{{item.vendor_code}}</span>
+							</div>
+							<br>
+							<div class="price">
+								{% if item.action %}
+									<h6><span style="float: left">Цена: </span> <span style="text-decoration: line-through; float:right">{{item.price}}</span></h6>
+								{% endif %}
+								<br>
+								<span style="float:left" >Цена:</span> <span style="color:red; float:right"><h3>{{item.price}}</h3></span>
+							</div>
+					</a>
+					</div>
+					<div class="foot_card_quantity">
+						<form action="{% url "cart:cart_add" item.id %}" method="post">
+						{% csrf_token %}
+						{{ cart_product_form.quantity }}
+						<button type="submit" class="apply">В корзину</button>
+						</form>
+					</div>
+				</div>
 	    {% endfor %}
 	</article>
 	</section>
