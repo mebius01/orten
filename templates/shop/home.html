@@ -18,6 +18,9 @@
 		<div class="hd_content"><i class="fas fa-star"></i>Новинки и акции</div>
 		<div class="content">
 			{% for item in products %}
+			<script type="application/ld+json">
+				{% include "include/home.json" %}
+			</script>
 				<div class="card">
 					{% if item.action %}
 						<div class="card-action">Акция до {{item.end_action|date:"d.m.y"}}</div>
@@ -57,7 +60,7 @@
 						</form>
 					</div>
 				</div>
-	    {% endfor %}
+			{% endfor %}
 	</article>
 	</section>
 {% endblock %}

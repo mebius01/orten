@@ -73,6 +73,9 @@
                     <span class="s"><strong>В корзину</strong></span>
                     <!-- динамический контент -->
                     {% for product in products %}
+                    <script type="application/ld+json">
+                        {% include "include/list_product.json" %}
+                    </script>
                     <span class="s-1"><img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt="{{ product.name }}"></span>
                     <span class="s-2"><b>Бренд: </b>{{ product.vendor }}</span>
                     <span class="s-3"><b>Название: </b><a href="{% url 'shop:product_detail' product.slug %}">{{ product.name }}</a></span>

@@ -16,8 +16,11 @@
     {% endblock %}
     {% block content %}
 		<div class="product_detail">
+            <script type="application/ld+json">
+				{% include "include/product_detail.json" %}
+			</script>
             <div class="product_header"><h1>{{ instance.name }}</h1></div>
-        	<div class="product_img">
+            <div class="product_img">
                 <img style="max-width:100%;" src="{% if instance.image %}{{ instance.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{instance.name}}" title="{{instance.name}}">
             </div>
             <div class="feature">

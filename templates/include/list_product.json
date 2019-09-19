@@ -1,0 +1,31 @@
+{
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "{{product.name}}",
+    {% if product.image %}
+    "image": "{{ product.image.url }}",
+    {% else %}
+    "image": "",
+    {% endif %}
+    "description": "{{product.description}}",
+    "brand": "{{ product.vendor }}",
+    "sku": "{{ product.vendor_code }}",
+    "mpn": "{{ product.vendor_code }}",
+    "offers": {
+        "@type": "Offer",
+        "url": "{% url 'shop:product_detail' product.slug %}",
+        "priceCurrency": "UAH",
+        {% if product.action %}
+        "price": "{{product.discount}}",
+        "priceValidUntil": "{{product.end_action|date:"Y-m-d"}}",
+        {% else %}
+        "price": "{{product.price}}",
+        {% endif %}
+        {% if product.available %}
+        "availability": "https://schema.org/InStock",
+        {% else %}
+        "availability": "https://schema.org/OutOfStock",
+        {% endif %}
+        "itemCondition": "https://schema.org/NewCondition"
+        }
+    }
