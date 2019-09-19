@@ -31,6 +31,65 @@
 <body>
     <header>
         <div class="one_header">
+            <script type="application/ld+json">
+            {
+                "@context": "http://schema.org",
+                "@type": "LocalBusiness",
+                "name": "ТОВ Ортен",
+                "priceRange" : "1-20000UAH",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Николаев",
+                    "addressRegion": "UA",
+                    "postalCode": "54034",
+                    "streetAddress": "пр. Мира, 5"
+                },
+                "image": "https://orten.in.ua/static/shop/img/logo.png",
+                "email": "orten_office@ukr.net",
+                "telephone": ["8(0512) 56-65-39", "8(050) 318-40-64"],
+                "url": "https://orten.in.ua/",
+                "paymentAccepted": [ "cash", "credit card", "invoice" ],
+                "openingHours":["Mo 9:00-18:00","Tu 9:00-18:00","We 9:00-18:00","Th 9:00-18:00","Fr 9:00-18:00","Sa 9:00-0"],
+                "openingHoursSpecification": [
+                    {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": "http:/schema.org/Monday",
+                    "opens": "9:00:00",
+                    "closes": "18:00:00"
+                    }
+            ,        {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": "http:/schema.org/Tuesday",
+                    "opens": "9:00:00",
+                    "closes": "18:00:00"
+                    }
+            ,        {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": "http:/schema.org/Wednesday",
+                    "opens": "9:00:00",
+                    "closes": "18:00:00"
+                    }
+            ,        {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": "http:/schema.org/Thursday",
+                    "opens": "9:00:00",
+                    "closes": "18:00:00"
+                    }
+            ,        {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": "http:/schema.org/Friday",
+                    "opens": "9:00:00",
+                    "closes": "18:00:00"
+                    }
+            ,        {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": "http:/schema.org/Saturday",
+                    "opens": "9:00:00",
+                    "closes": "14:00:00"
+                    }
+                ]
+            }
+            </script>
             <div class="hd_1">
                 <a href="{% url 'shop:home' %}"><img src="{% static "shop/img/logo.png" %}" alt="Ортен - розничный и оптовый интернет-магазин печатной и компьютерной техники в Николаеве" title="Копировальная техника и расходные материалы ★ Компьютеры и комплектующие ★ Полиграфическое оборудование и расходные материалы ★ Оперативная полиграфия ★ Диагностика и ремонт копировальной техники и компьютеров" width="200" height="80"hspace="16"></a>
             </div>
@@ -101,17 +160,19 @@
                     </div>
                     <!-- SEO Оптимизация -->
                     <script type="application/ld+json">
-                    {
-                    "@context": "http://schema.org",
-                    "@type": "WebSite",
-                    "url": "https://orten.in.ua/",
-                    "potentialAction": {
+                        {
+                        "@context": "https://schema.org/",
+                        "@type": "WebSite",
+                        "name": "Ортен",
+                        "url": "https://orten.in.ua",
+                        "potentialAction": {
                             "@type": "SearchAction",
                             "target": "https://orten.in.ua/shop/product/?search={search_term_string}",
                             "query-input": "required name=search_term_string"
-                    }
-                    }
+                        }
+                        }
                     </script>
+
                     <div class="search_container">
                         <form role="search" action="{% url 'shop:product_list' %}">
                             <input type="text" placeholder="Search..." name="search">
