@@ -45,6 +45,7 @@
                         <li><a href=""><i class="fas fa-phone"></i></a></li>
                     </ul>
                 </div>
+                {% if instance.available %}
                 <div class="foot_card_quantity">
                     <form action="{% url "cart:cart_add" instance.id %}" method="post">
                        {% csrf_token %}
@@ -54,6 +55,25 @@
                        <i style="padding-right:5px;" class="fa fa-shopping-cart"></i>Купить</button>
                     </form>
                 </div>
+                {% else %}
+                <div style="color:red; text-align: center">
+                    <span>
+                            В данный момент этот товар отсутствует,
+                            но Вы можете сделать заказ и
+                            получить детальную информацию о возможности поставки.
+                    </span>
+                </div>
+                <br><hr>
+                <div class="foot_card_quantity style="color:red;">
+                    <form action="{% url "cart:cart_add" instance.id %}" method="post">
+                       {% csrf_token %}
+                      {{cart_product_form.quantity}}
+                      {{cart_product_form.update}}
+                      <button type="submit" class="apply">
+                       <i style="padding-right:5px;" class="fa fa-shopping-cart"></i>Купить</button>
+                    </form>
+                </div>
+                {% endif %}
             </div>
             <div class="description">
                 <div class="descript">
