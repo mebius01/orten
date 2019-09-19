@@ -227,24 +227,47 @@ header {
 }
 /* start NavBar */
 nav{
+    display:grid;
+    grid-template-columns: auto auto auto auto auto;
+    grid-template-areas: "tog" "ul" "lang" "search" "card";
     grid-area: navbar;
     height: 100%;
     background-color: var(--global_geen);
 }
+.toggle{
+    grid-area: tog;
+}
+.card_container{
+    grid-area: card;
+    grid-column-start: 5;
+}
+.search_container{
+    grid-area: search;
+    width: calc(100%-200px);
+    
+}
+.langdown {
+    grid-area: lang;
+}
 nav ul{
+    grid-area: ul;
+    text-align: center;
+}
+nav ul, .toggle, .card_container, .search_container, .langdown {
     line-height: 32px;
     margin: 5px auto;
-    text-align: center;
+    /* border: 1px solid; */
 }
 nav li, .dropup_container, .card_container, .search_container{
     padding-right: 12px;
     list-style: none;
     display: inline-block;
 }
-.d_s_c{
+/* .d_s_c{
+    justify-items: end;
     margin-right: 12px;
     float: right;
-}
+} */
 nav a{
     text-decoration: none;
     color: var(--global_text_color);
@@ -263,7 +286,45 @@ nav input[type=text]{
     height: 20px;
     border:none;
 }
-@media (max-width: 400px){
+@media (min-width: 1200px){
+    nav{
+        grid-template-columns: auto auto 50px 200px 100px;
+        grid-template-areas: "tog ul lang search card";
+        grid-area: navbar;
+    }
+}
+@media (min-width: 992px) and (max-width: 1199px){
+    nav{
+        grid-template-columns: auto auto 50px 200px 100px;
+        grid-template-areas: "tog ul lang search card";
+        grid-area: navbar;
+    }
+
+}
+@media (min-width: 768px) and (max-width: 991px){
+    nav{
+        grid-template-columns: auto auto auto;
+        grid-template-rows: auto auto;
+        grid-template-areas: "tog ul ul" "lang search card";
+        grid-area: navbar;
+    }
+}
+@media (max-width: 767px){
+    nav{
+        grid-template-columns: auto auto auto;
+        grid-template-rows: auto auto;
+        grid-template-areas: "tog ul ul" "lang search card";
+        grid-area: navbar;
+    }
+
+}
+@media (max-width: 650px){
+    nav{
+        grid-template-columns: auto auto auto auto;
+        grid-template-rows: auto auto;
+        grid-template-areas: "tog lang search card" "ul ul ul ul";
+        grid-area: navbar;
+    }
     nav .toggle {
         display: block;
     }
@@ -285,22 +346,35 @@ nav input[type=text]{
         display: block;
     }
 }
-@media (min-width: 1200px){
-
-}
-@media (min-width: 992px) and (max-width: 1199px){
-
-}
-@media (min-width: 768px) and (max-width: 991px){
-
-}
-@media (max-width: 767px){
-
-}
-@media (max-width: 650px){
-
-}
 @media (max-width: 480px){
+    nav{
+        grid-template-columns: auto auto auto auto;
+        grid-template-rows: auto auto;
+        grid-template-areas: "tog lang search card" "ul ul ul ul";
+        grid-area: navbar;
+    }
+    nav .toggle {
+        display: block;
+    }
+    nav li{
+        display: block;
+    }
+    nav ul{
+        margin-left: 12px;
+        text-align: left;
+        display: none;
+    }
+    .d_s_c{
+        display: grid;
+        /* grid-template-columns: auto; */
+        margin-left: 0px;
+        float: left;
+    }
+    .active{
+        display: block;
+    }
+}
+@media (max-width: 400px){
     nav .toggle {
         display: block;
     }

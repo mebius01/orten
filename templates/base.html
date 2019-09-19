@@ -22,6 +22,7 @@
         <link rel="stylesheet" href="{% static 'shop/css/base.css' %}" type="text/css">
          <link rel="stylesheet" href="{% static 'shop/css/flags.css' %}" type="text/css">
         <link rel="stylesheet" href="{% static 'shop/css/element.css' %}" type="text/css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         {% comment %} <link rel="stylesheet" href="{% static 'shop/css/cart.css' %}" type="text/css">
         <link rel="stylesheet" href="{% static 'shop/css/product.css' %}" type="text/css">
         <link rel="stylesheet" href="{% static 'shop/css/product_detail.css' %}" type="text/css"> {% endcomment %}
@@ -137,10 +138,11 @@
                 <li><a href="{% url 'shop:delivery_payment' %}">Доставка и оплата</a></li>
                 <li><a href="{% url 'shop:about' %}">Кто мы</a></li>
                 <li><a href="{% url 'shop:contact' %}">Контакты</a></li>
-                <div class="d_s_c">
+            </ul>
+                {% comment %} <div class="d_s_c"> {% endcomment %}
                     <!-- Language -->
                     <div class="langdown">
-                        <span class="dropbtn">
+                        {% comment %} <span class="dropbtn">
                         {% get_current_language as LANGUAGE_CODE %}
                             {% if LANGUAGE_CODE == 'ru' %} <span class="flag flag-ru"></span>
                             {% elif LANGUAGE_CODE == 'uk' %} <span class="flag flag-ua"></span>
@@ -156,8 +158,9 @@
                                 <input type='hidden' name='language' value='ru'/>
                                 <a class="langdown-item" href='#' title='Russian' onclick="document.getElementById('lang_ru').submit()"><span class="flag flag-ru"></span> Russian</a>
                               </form>
-                        </div>
+                        </div> {% endcomment %}
                     </div>
+                    <div class="search_container">
                     <!-- SEO Оптимизация -->
                     <script type="application/ld+json">
                         {
@@ -172,8 +175,6 @@
                         }
                         }
                     </script>
-
-                    <div class="search_container">
                         <form role="search" action="{% url 'shop:product_list' %}">
                             <input type="text" placeholder="Search..." name="search">
                         </form>
@@ -193,8 +194,8 @@
                             {% endif %}
                         {% endwith %}
                     </div>
-                </div>
-            </ul>
+                {% comment %} </div> {% endcomment %}
+            {% comment %} </ul> {% endcomment %}
         </nav>
         <div class="breadcrumbs">
             <ul>
