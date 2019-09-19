@@ -1,0 +1,22 @@
+{
+    "@context": "https://schema.org/",
+    "@type": "Service",
+    "name": "{{instance.name}}",
+    {% if instance.image %}
+    "image": "{{ instance.image.url }}",
+    {% else %}
+    "image": "",
+    {% endif %}
+    "description": "{{instance.description}}",
+    "brand": "{{ instance.vendor }}",
+    "sku": "{{ instance.vendor_code }}",
+    "mpn": "{{ instance.vendor_code }}",
+    "offers": {
+        "@type": "Offer",
+        "url": "{% url 'shop:service_detail' service.slug %}",
+        "priceCurrency": "UAH",
+        "price": "{{instance.price}}",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition"
+        }
+    }
