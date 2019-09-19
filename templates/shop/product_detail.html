@@ -41,16 +41,12 @@
                     <p class="p_right">{{instance.type_product}}</p>
                     <br><hr>
                     {% if instance.action %}
-                    <p class="p_left">Очень хорошая Цена:</p>
-                    <p class="p_right" style="color:#fc6251;">{{instance.discount}}</p>
+                        <h4><span style="float: left">Цена: </span> <span style="color:#fc6251; float:right">{{instance.discount}}</span></h4>
                     <br>
-                    <p class="p_left">Цена:</p>
-                    <p class="p_right" style="text-decoration: line-through">{{instance.price}}</p>
+                        <H5><span style="float:left" >Цена:</span> <span style="text-decoration: line-through; float:right">{{instance.price}}</span></H5>
                     {% else %}
-                    <p class="p_left">Цена:</p>
-                    <p class="p_right">{{instance.price}}</p>
+                        <h4><span style="float:left" >Цена:</span> <span style="color:#fc6251; float:right">{{instance.price}}</span></h4>
                     {% endif %}
-                    <br>
                 </div>
                 <br><hr>
                 <div class="c_p_d">

@@ -840,6 +840,7 @@ button{
 }
 /* Paginator */
 .pagination {
+    justify-self: center;
     grid-area: paginator;
     width:auto;
     padding: 24px;
@@ -847,7 +848,7 @@ button{
 }
 .pagination a {
     color: black;
-    float: left;
+    float: center;
     padding: 8px 16px;
     text-decoration: none;
 }
