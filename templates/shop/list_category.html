@@ -22,10 +22,10 @@
 	</aside>
 	<article>
 		<div class="hd_content"><i class="fa fa-list"></i>{{instance.name}}</div>
-		<div class="content">
-			{% comment %}
+		<div style="margin:12px">
 				{{instance.description|linebreaks}}
-			{% endcomment %}
+		</div>
+		<div class="content">
 			{% if products %}
 			<meta http-equiv="REFRESH" content="0;url={% url 'shop:product_list' %}?category={{instance.id}}">
 			{% elif services %}
