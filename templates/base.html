@@ -156,8 +156,8 @@
                             <form id='lang_ru' action='/i18n/setlang/' method='POST'>{% csrf_token %}
                                 <input type='hidden' name='language' value='ru'/>
                                 <a class="langdown-item" href='#' title='Russian' onclick="document.getElementById('lang_ru').submit()"><span class="flag flag-ru"></span> Russian</a>
-                              </form>
-                        </div> {% endcomment %}
+                              </form> {% endcomment %}
+                        </div>
                     </div>
                     <div class="search_container">
                     <!-- SEO Оптимизация -->
@@ -241,7 +241,7 @@
             <a class="cool-link text-muted" href="mailto:orten_office@ukr.net"><i class="fas fa-envelope mr-3 pl-3"></i>orten_office@ukr.net</a>
             <br>
             <i class="fas fa-phone text-muted mr-3 pl-3"></i><span itemprop="telephone">(0512) 56-65-39</span>
-            <br> 
+            <br>
             <i class="fas fa-mobile text-muted mr-4 pl-3"></i><span itemprop="telephone">(050) 318-40-64</span>
         </div>
         <div class="hd_8">
@@ -267,10 +267,7 @@
         document.documentElement.scrollTop = 0;
     }
     </script>
-    <script
-  src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-  integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
-  crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
     <script>
         var acc = document.getElementsByClassName("link");
         var i;
