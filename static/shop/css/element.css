@@ -15,6 +15,9 @@ html {
     height: 100%;
 }
 li {list-style: none;}
+*{
+    line-height: 1.6;
+}
 hr{
     border: none;
     margin-bottom: 12px;
@@ -908,9 +911,6 @@ select[name=pay_method], select[name=delivery_method]{
 .about h4{
     margin: 12px;
 }
-.about,.contact,.flat_block,.content-1{
-    line-height: 1.6;
-}
 .content-1{
     margin: 12px;
 }
@@ -1293,4 +1293,40 @@ table {text-align: center;}
 }
 .accessories{
     grid-area: accessories;
+}
+/*GooglMap*/
+.map-responsive{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+.map-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+/*GO TO TOP*/
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 31px;
+    width: 31px;
+    z-index: 99;
+    font-size: 18px;
+    color: var(--global_text_color);
+    border: none;
+    outline: none;
+    background-color: red; /* #d9534f */
+    opacity:0.5;
+    color: white;
+    cursor: pointer;
+    /* padding: 15px; */
+    /* border-radius: 4px; */
+}
+#myBtn:hover {
+    background-color: rgba(29, 28, 28, 0.582);
 }

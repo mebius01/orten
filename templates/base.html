@@ -208,6 +208,7 @@
     {% block content %}
         {{content}}
     {% endblock %}
+    <!-- Go To Top -->
     <footer>
         <div class="hd_4">
             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5446.935101617827!2d32.040273!3d46.952503!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4784e49173525ad2!2z0J7RgNGC0Y3QvSwg0J7QntCe!5e0!3m2!1sru!2sua!4v1547893952458" frameborder="0" style="border:0" allowfullscreen></iframe>
@@ -247,6 +248,25 @@
             Copyright © 2008 - 2019 orten.in.ua
         </div>
     </footer>
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-chevron-up"></i></button>
+    <script>
+      //Get the button
+    var mybutton = document.getElementById("myBtn");
+      // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+      // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
     <script
   src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
   integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
