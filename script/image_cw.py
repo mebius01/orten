@@ -19,3 +19,11 @@ for i in paper:
         wget.download(url)
     except:
         print(url)
+
+
+# https://colorway.com/img/ink/full/CW-LHW130LM01.jpg
+# https://colorway.com/img/paper/full/PG26061030RL.jpg
+# https://colorway.com/img/tonercartridge/full/CW-DR-H232M.jpg
+# https://colorway.com/img/toner/full/TH-4200P.jpg
+# https://colorway.com/img/inkcartridge/full/CW-H141XL-I.jpg
+# https://colorway.com/img/cleaner/full/CW-5230.jpg
