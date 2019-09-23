@@ -28,7 +28,9 @@
 						<div class="image">
 							<img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{item.name}}" width="100%">
 						</div>
-					<div class="card_content">
+					</a>
+					<a href="{% url 'shop:product_detail' item.slug %}">
+						<div class="card_content">
 							<div class="name">{{item.name}}</div>
 							<br>
 							<div class="pn">
@@ -44,13 +46,12 @@
 							<div class="price">
 								{% if item.action %}
 									<h6><span style="float: left">Цена: </span> <span style="text-decoration: line-through; float:right">{{item.price}}</span></h6>
+									<br>
+									<span style="float:left" >Цена:</span> <span style="color:#fc6251; float:right"><h4>{{item.discount}}</h4></span>
 								{% endif %}
-								<br>
-								<span style="float:left" >Цена:</span> <span style="color:#fc6251; float:right"><h4>{{item.discount}}</h4></span>
 							</div>
-							<br>
-						</a>
-					</div>
+						</div>
+					</a>
 					<div class="foot_card_quantity">
 						<form action="{% url "cart:cart_add" item.id %}" method="post">
 						{% csrf_token %}

@@ -285,27 +285,27 @@ article {
     /* border:1px solid; */
 }
 .card a{
-    display: block; /* Ссылка как блочный элемент */
+    display:block; /* Ссылка как блочный элемент */
     text-decoration: none;
     color: var(--global_text_color);
 }
-.card .name{
+.card_content .name{
     align-self: end;
     /* font-family: 'Russo One', sans-serif; */
     font-weight: 700;
     font-size: 17px;
     color: #428bca;
 }
-.card .pn{
+.card_content .pn{
     font-family: 'IBM Plex Mono', monospace;
     /* font-size: 15px; */
 }
-.card .price{
+.card_content .price{
     font-family: 'Play', sans-serif;
-    /* font-size: 20px; */    
+    font-size: 20px;    
 }
 .card .card_content{
-    align-self: center;
+    display:inline-block;
     margin-right: 12px;
 }
 .card .foot_card_quantity{
