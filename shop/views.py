@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from .models import Category, Services, Product, Polygraphy #, ProductStock
 from cart.forms import CartAddProductForm
-from .filters import ProductFilter # ОСОБОЕ ВНИМЕНИЕ!!! При python manage.py makemigrations && python manage.py migrate КОМЕНТИРОВАТЬ ЭТУ СТРОКУ
+# from .filters import ProductFilter # ОСОБОЕ ВНИМЕНИЕ!!! При python manage.py makemigrations && python manage.py migrate КОМЕНТИРОВАТЬ ЭТУ СТРОКУ
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from watson import search as watson
 from django.views.decorators.cache import cache_page

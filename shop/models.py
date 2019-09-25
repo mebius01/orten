@@ -163,8 +163,27 @@ class Services(models.Model):
 	def get_absolute_url(self):
 		return ('service/'+self.slug)
 
+QUANTITY_CHOICES = (
+	('100', '100'),
+	('200', '200'),
+	('300', '300'),
+	('400', '400'),
+	('500', '500'),
+	('600', '600'),
+	('700', '700'),
+	('800', '800'),
+	('900', '900'),
+	('1000', '1000'),
+	('1200', '1200'),
+	('1300', '1300'),
+	)
+
 class Polygraphy(models.Model):
-	# category = models.ForeignKey(Category,related_name='polygraphy', on_delete=models.CASCADE) #коталог продукта связь
+	# category = models.ForeignKey(Category,related_name='polygraphy', default=181, on_delete=models.CASCADE) #коталог продукта связь
+	# name = models.CharField(max_length=400, default='Визитки', db_index=True) #имя продукта
+	# price = models.DecimalField(max_digits=10, decimal_places=2, default='0.00', blank=True, help_text='Цена входящая')
+	# format_fild = models.CharField(max_length=50, default='A4', blank=True, choices=FORMAT_CHOICES, help_text='A3,A4')
+	# quantity_fild = models.CharField(max_length=50, blank=True, choices=QUANTITY_CHOICES, help_text='100,200,1000')
 	slug = models.SlugField(max_length=400, default='True', help_text='')
 	flatpage = models.OneToOneField(FlatPage, on_delete=models.CASCADE)
 	image = models.ImageField(upload_to='polygraphy/', blank=True) #картинка
