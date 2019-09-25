@@ -27,7 +27,6 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     </head>
 <body>
-    {% cache 900 header %}
     <header>
         <div class="one_header">
             <script type="application/ld+json">
@@ -122,7 +121,6 @@
                 <li class="cool_link"><a title="Полиграфические услуги в Николаеве. Визитки, календари, флаера.. Тиражирование на ризографе" href="{% url 'shop:polygraphy' %}">Полиграфия</a></li>
             </ul>
         </div>
-
         <nav>
             <div class="toggle">
                 <i class="fa fa-bars menu"></i>
@@ -202,17 +200,17 @@
             </ul>
         </div>
     </header>
-    {% endcache %}
     <!-- CONTENT -->
     {% block content %}
         {{content}}
     {% endblock %}
     <!-- Go To Top -->
-    {% cache 900 footer %}
     <footer>
+        {% cache 900 hd_4 %}
         <div class="hd_4">
             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5446.935101617827!2d32.040273!3d46.952503!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4784e49173525ad2!2z0J7RgNGC0Y3QvSwg0J7QntCe!5e0!3m2!1sru!2sua!4v1547893952458" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
+        {% endcache %}
         <div class="hd_5">
             Меню
             <hr>
@@ -247,7 +245,6 @@
             Copyright © 2008 - 2019 orten.in.ua
         </div>
     </footer>
-    {% endcache %}
     <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-chevron-up"></i></button>
     <script>
       //Get the button
