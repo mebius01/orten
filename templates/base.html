@@ -27,7 +27,6 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     </head>
 <body>
-    {% cache 900 header %}
     <header>
         <div class="one_header">
             <script type="application/ld+json">
@@ -97,15 +96,17 @@
                 <br>
                 <i class="fas fa-clock"></i>Пн-Пт: 9:00 - 18:00
                 <br>
+                <i class="fas fa-utensils"></i>Пн-Пт: 12:00 - 12:30
+                <br>
                 <i class="fas fa-clock"></i>Сб: 9:00 - 14:00
             </div>
             <div class="hd_3">
-                <a class="cool-link text-muted" href="https://www.google.com/maps/place/%D0%9E%D1%80%D1%82%D1%8D%D0%BD,+%D0%9E%D0%9E%D0%9E/@46.952503,32.040273,15z/data=!4m2!3m1!1s0x0:0x4784e49173525ad2?ved=2ahUKEwiLnpXuiPLfAhXNqIsKHWxSBAYQ_BIwCnoECAUQCA" target="_blank"><i class="fa fa-home mr-3 pl-3"></i><span itemprop="addressLocality">г. Николаев</span> <span itemprop="streetAddress">пр. Мира, 5</span></a>
+                <a class="cool-link text-muted" href="https://www.google.com/maps/place/%D0%9E%D1%80%D1%82%D1%8D%D0%BD,+%D0%9E%D0%9E%D0%9E/@46.952503,32.040273,15z/data=!4m2!3m1!1s0x0:0x4784e49173525ad2?ved=2ahUKEwiLnpXuiPLfAhXNqIsKHWxSBAYQ_BIwCnoECAUQCA" target="_blank"><i class="fa fa-home"></i><span itemprop="addressLocality">г. Николаев</span> <span itemprop="streetAddress">пр. Мира, 5</span></a>
                 <br>
-                <a class="cool-link text-muted" href="mailto:orten_office@ukr.net"><i class="fas fa-envelope mr-3 pl-3"></i>orten_office@ukr.net</a>
+                <a class="cool-link text-muted" href="mailto:orten_office@ukr.net"><i class="fas fa-envelope"></i>orten_office@ukr.net</a>
                 <br>
-                <i class="fas fa-phone text-muted mr-3 pl-3"></i><span itemprop="telephone">(0512) 56-65-39</span>
-                <br> 
+                <i class="fas fa-phone text-muted"></i><span itemprop="telephone">(0512) 56-65-39</span>
+                <br>
                 <i class="fas fa-mobile text-muted mr-4 pl-3"></i><span itemprop="telephone">(050) 318-40-64</span>
             </div>
         </div>
@@ -122,7 +123,6 @@
                 <li class="cool_link"><a title="Полиграфические услуги в Николаеве. Визитки, календари, флаера.. Тиражирование на ризографе" href="{% url 'shop:polygraphy' %}">Полиграфия</a></li>
             </ul>
         </div>
-
         <nav>
             <div class="toggle">
                 <i class="fa fa-bars menu"></i>
@@ -202,26 +202,25 @@
             </ul>
         </div>
     </header>
-    {% endcache %}
     <!-- CONTENT -->
     {% block content %}
         {{content}}
     {% endblock %}
     <!-- Go To Top -->
-    {% cache 900 footer %}
     <footer>
+        {% cache 900 hd_4 %}
         <div class="hd_4">
             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5446.935101617827!2d32.040273!3d46.952503!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4784e49173525ad2!2z0J7RgNGC0Y3QvSwg0J7QntCe!5e0!3m2!1sru!2sua!4v1547893952458" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
+        {% endcache %}
         <div class="hd_5">
             Меню
             <hr>
             <ul>
-                <li><a href="">Что мы продаем</a></li>
-                <li><a href="">Категории</a></li>
-                <li><a href="">Сервисный центр</a></li>
-                <li><a href="">Полиграфия</a></li>
-                <li><a href=""></a></li>
+                <li><a href="{% url 'shop:product_list' %}">Что мы продаем</a></li>
+                <li><a href="{% url 'shop:category' %}">Категории</a></li>
+                <li><a href="{% url 'shop:list_category' 'servisnyj-centr' %}">Сервисный центр</a></li>
+                <li><a href="{% url 'shop:polygraphy' %}">Полиграфия</a></li>
             </ul>
         </div>
         <div class="hd_6">
@@ -236,11 +235,11 @@
         <div class="hd_7">
             Контакты
             <hr>
-            <a class="cool-link text-muted" href="https://www.google.com/maps/place/%D0%9E%D1%80%D1%82%D1%8D%D0%BD,+%D0%9E%D0%9E%D0%9E/@46.952503,32.040273,15z/data=!4m2!3m1!1s0x0:0x4784e49173525ad2?ved=2ahUKEwiLnpXuiPLfAhXNqIsKHWxSBAYQ_BIwCnoECAUQCA" target="_blank"><i class="fa fa-home mr-3 pl-3"></i><span itemprop="addressLocality">г. Николаев</span> <span itemprop="streetAddress">пр. Мира, 5</span></a>
+            <a class="cool-link text-muted" href="https://www.google.com/maps/place/%D0%9E%D1%80%D1%82%D1%8D%D0%BD,+%D0%9E%D0%9E%D0%9E/@46.952503,32.040273,15z/data=!4m2!3m1!1s0x0:0x4784e49173525ad2?ved=2ahUKEwiLnpXuiPLfAhXNqIsKHWxSBAYQ_BIwCnoECAUQCA" target="_blank"><i class="fa fa-home"></i><span itemprop="addressLocality">г. Николаев</span> <span itemprop="streetAddress">пр. Мира, 5</span></a>
             <br>
-            <a class="cool-link text-muted" href="mailto:orten_office@ukr.net"><i class="fas fa-envelope mr-3 pl-3"></i>orten_office@ukr.net</a>
+            <a class="cool-link text-muted" href="mailto:orten_office@ukr.net"><i class="fas fa-envelope"></i>orten_office@ukr.net</a>
             <br>
-            <i class="fas fa-phone text-muted mr-3 pl-3"></i><span itemprop="telephone">(0512) 56-65-39</span>
+            <i class="fas fa-phone text-muted"></i><span itemprop="telephone">(0512) 56-65-39</span>
             <br>
             <i class="fas fa-mobile text-muted mr-4 pl-3"></i><span itemprop="telephone">(050) 318-40-64</span>
         </div>
@@ -248,7 +247,6 @@
             Copyright © 2008 - 2019 orten.in.ua
         </div>
     </footer>
-    {% endcache %}
     <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-chevron-up"></i></button>
     <script>
       //Get the button
