@@ -44,7 +44,7 @@ jdcal==1.4
 kombu==4.3.0
 lxml==4.3.4
 marshmallow==2.19.1
-nltk==3.4.3
+nltk==3.4.5
 numpy==1.16.4
 odfpy==1.4.0
 openpyxl==2.6.0
