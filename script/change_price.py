@@ -7,7 +7,7 @@ import pandas as pd
 import numpy as np
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orten.settings")
-sys.path.append("/home/iv/project/virtshop/orten") #here store is root folder(means parent).
+sys.path.append("/home/iv/project/orten") #here store is root folder(means parent).
 django.setup()
 
 from orten import settings

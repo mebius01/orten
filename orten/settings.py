@@ -24,26 +24,26 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 # Security
 SECRET_KEY = env.str("SECRET_KEY")
-SECURE_HSTS_SECONDS = env.int('SECURE_HSTS_SECONDS', default=True)
+# SECURE_HSTS_SECONDS = env.int('SECURE_HSTS_SECONDS', default=True)
 # добавляет preload директиву в заголовок
-SECURE_HSTS_PRELOAD = env.bool('SECURE_HSTS_PRELOAD', default=True)
+# SECURE_HSTS_PRELOAD = env.bool('SECURE_HSTS_PRELOAD', default=True)
 # добавляет includeSubDomains директиву в заголовок
-SECURE_HSTS_INCLUDE_SUBDOMAINS = env.bool('SECURE_HSTS_INCLUDE_SUBDOMAINS', default=True)
-SECURE_CONTENT_TYPE_NOSNIFF = env.bool('SECURE_CONTENT_TYPE_NOSNIFF', default=True)
-SECURE_BROWSER_XSS_FILTER = env.bool('SECURE_BROWSER_XSS_FILTER', default=True)
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = env.bool('SECURE_HSTS_INCLUDE_SUBDOMAINS', default=True)
+# SECURE_CONTENT_TYPE_NOSNIFF = env.bool('SECURE_CONTENT_TYPE_NOSNIFF', default=True)
+# SECURE_BROWSER_XSS_FILTER = env.bool('SECURE_BROWSER_XSS_FILTER', default=True)
 # все не-HTTPS запросы на HTTPS
-SECURE_SSL_REDIRECT = env.bool('SECURE_SSL_REDIRECT', default=True)
+# SECURE_SSL_REDIRECT = env.bool('SECURE_SSL_REDIRECT', default=True)
 # Указывает использовать ли безопасные куки для сессии
-SESSION_COOKIE_SECURE = env.bool('SESSION_COOKIE_SECURE', default=True)
+# SESSION_COOKIE_SECURE = env.bool('SESSION_COOKIE_SECURE', default=True)
 # Указывает, использовать ли безопасные куки для CSRF.
-CSRF_COOKIE_SECURE = env.bool('CSRF_COOKIE_SECURE', default=True)
+# CSRF_COOKIE_SECURE = env.bool('CSRF_COOKIE_SECURE', default=True)
 
-X_FRAME_OPTIONS=env.str('X_FRAME_OPTIONS', default=True)
+# X_FRAME_OPTIONS=env.str('X_FRAME_OPTIONS', default=True)
 
 # Если URL удовлетворяет регулярному выражению из этого списка, запрос не будет перенаправлен По умолчанию: [] SECURE_SSL_REDIRECT=False
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool("DEBUG", default=False)
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+DEBUG = env.bool("DEBUG", default=True)
+ALLOWED_HOSTS = []
 SITE_ID = 1
 APPEND_SLASH = True
 
@@ -190,11 +190,13 @@ LOCALE_PATHS = (
 
 # Extra places for collectstatic to find static files.
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfile')
+STATIC_ROOT = '/home/orten/orten.in.ua/static/static'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = '/home/orten/orten.in.ua/static/media'
 MEDIA_URL = '/media/'
 
 # Email
