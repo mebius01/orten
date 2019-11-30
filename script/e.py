@@ -9,6 +9,7 @@ import json
 from decimal import Decimal
 
 #'cw' 'softcom' 'baden' 'megatrade' 'ecko'
+# Категории в прайсе и id категорий в BD
 type_product_list = [('Фильтры', '128'),
                      ('Мастер-пленки', '99'),
                      ('Зажимы', 'BED_TYPE'),
@@ -96,9 +97,10 @@ type_product_list = [('Фильтры', '128'),
                      ('Шестерни вала резинового', '128'),
                      ('Ремни', '128')]
 
+# Курс $
 rates = 24.2
 
-
+# Функция расчета цены в грн.
 def Create_price_e(pric, rate, procent):
     pric = str(pric)
     pric = pric.replace(",", ".")
