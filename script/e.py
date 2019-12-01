@@ -113,9 +113,7 @@ prod_r = ["PartNumber", "Название товара", "Производите
 prov = 'ecko'
 
 csv_header = 'id,category,name,slug,provider,vendor_code,vendor,type_product,price,stock,available'+'\n'
-product_file_in_db = open('csv/sorted_product_in_db_'+prov+'.csv', 'w')
 product_file_not_in_db = open('csv/sorted_product_not_in_db_'+prov+'.csv', 'w')
-backup = open('csv/backup_'+prov+'.csv', 'w')
 product_file_not_in_db.write(csv_header)
 
 raw_product = pd.read_excel('xlsx/'+prov+'.xls')

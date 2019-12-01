@@ -19,7 +19,7 @@ raw_product = pd.read_excel('xlsx/'+prov+'.xls')
 # 0 Удалить все ненужные строки. Нужные строки определаются prov_r
 raw_product = raw_product.dropna(subset=prod_r)
 c=0
-id_t=0
+id_t=14918
 data_list={}
 a, b = 0, 0
 

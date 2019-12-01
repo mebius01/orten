@@ -48,6 +48,8 @@
 									<h6><span style="float: left">Цена: </span> <span style="text-decoration: line-through; float:right">{{item.price}}</span></h6>
 									<br>
 									<span style="float:left" >Цена:</span> <span style="color:#fc6251; float:right"><h4>{{item.discount}}</h4></span>
+								{% else %}
+									<span style="float:left" >Цена:</span> <span style="color:#fc6251; float:right"><h4>{{item.discount}}</h4></span>
 								{% endif %}
 							</div>
 						</div>
