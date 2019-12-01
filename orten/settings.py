@@ -43,7 +43,7 @@ X_FRAME_OPTIONS=env.str('X_FRAME_OPTIONS', default=True)
 # Если URL удовлетворяет регулярному выражению из этого списка, запрос не будет перенаправлен По умолчанию: [] SECURE_SSL_REDIRECT=False
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", default=True)
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+ALLOWED_HOSTS = tuple(env.list('ALLOWED_HOSTS', default=[]))
 SITE_ID = 1
 APPEND_SLASH = True
 
