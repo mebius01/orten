@@ -4,15 +4,15 @@
 {% load flatpages %}
 {% load i18n %}
 {% block head %}
-    <title>{{ instance.flatpage.title }} - Печать в Николаеве</title>
-    <meta name="title" content="{{ instance.flatpage.title }} - Печать в Николаеве">
-    <meta name="description" content="{{ instance.flatpage.title }} - Печать в Николаеве ★ {{instance.flatpage.description}} ★ Ортен более 20 лет опыта в производстве печатной продукции">
+    <title>{{ object.flatpage.title }} - Печать в Николаеве</title>
+    <meta name="title" content="{{ object.flatpage.title }} - Печать в Николаеве">
+    <meta name="description" content="{{ object.flatpage.title }} - Печать в Николаеве ★ {{object.flatpage.description}} ★ Ортен более 20 лет опыта в производстве печатной продукции">
 {% endblock %}
 {% block breadcrumbs %}
     {{ block.super }}
     <li><a href="{% url 'shop:category' %}">Категории</a></li>
     <li><a href="{% url 'shop:polygraphy' %}">Полиграфия</a></li>
-    <li>{{instance.flatpage.title}}</li>
+    <li>{{object.flatpage.title}}</li>
 {% endblock %}
 {% block content %}
 <section>
@@ -20,19 +20,19 @@
 		{% include "include/include_list_category.html" %}
 	</aside>
     <article>
-	<div class="hd_content"><i class="fas fa-list pr-3"></i>{{ instance.flatpage.title }}</div>
+	<div class="hd_content"><i class="fas fa-list pr-3"></i>{{ object.flatpage.title }}</div>
         <div class="img">
-            <img src="/static/shop/img/polygraphy/{{ instance.slug }}.jpg" style="width: 100%;" hspace="16">
+            <img src="/static/shop/img/polygraphy/{{ object.slug }}.jpg" style="width: 100%;" hspace="16">
         </div>
         <div class="content-1">
-            {{ instance.flatpage.content|safe }}
+            {{ object.flatpage.content|safe }}
         </div>
         <div>
-            {{instance.category}}
+            {{object.category}}
         </div>
-        <div>{{instance.name}}</div>
-        <div>{{instance.price}}</div>
-        <div>{{instance.format_fild}}</div>
+        <div>{{object.name}}</div>
+        <div>{{object.price}}</div>
+        <div>{{object.format_fild}}</div>
     </article>
 </section>
 {% endblock %}

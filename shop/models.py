@@ -25,6 +25,8 @@ class Category(MPTTModel):
 	description = models.TextField(blank=True)
 	parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
 
+	# objects = models.Manager()
+
 	class MPTTMeta:
 		order_insertion_by = ['name']
 
@@ -42,6 +44,7 @@ class Category(MPTTModel):
 
 	def __str__(self):
 		return self.name
+	objects = models.Manager()
 
 FORMAT_CHOICES = (
 	('A0', 'A0'),
@@ -137,17 +140,17 @@ class Services(models.Model):
 	name = models.CharField(max_length=400, db_index=True) #имя продукта
 	slug = models.SlugField(max_length=400, db_index=True)
 	accessories = models.ManyToManyField(Product, editable=False, blank=True)
-	
+
 	type_service = models.CharField(max_length=200, blank=True, default="Заправка картриджа", help_text='Тип сервиса')
 	vendor_code = models.CharField(max_length=200, blank=True) #артикул или парт-номер
 	vendor = models.CharField(max_length=200, blank=True, help_text='Производитель') # Производитель
 	vendor_model = models.CharField(max_length=200, blank=True, help_text='Модель')
-	
+
 	image = models.ImageField(upload_to='service/', blank=True) #картинка
 	description = models.TextField(blank=True)
 	keywords= models.TextField(blank=True, help_text='Ключивые слова')
 	price = models.DecimalField(max_digits=10, decimal_places=2)
-	
+
 	created = models.DateTimeField(auto_now_add=True) # дата создания
 	updated = models.DateTimeField(auto_now=True) #дата обновления
 
@@ -200,7 +203,7 @@ class Polygraphy(models.Model):
 
 # # class ProductStock(models.Model):
 # # 	product = models.ForeignKey(Product, on_delete=models.CASCADE)
-# # 	slug = models.SlugField(max_length=400, db_index=True)	
+# # 	slug = models.SlugField(max_length=400, db_index=True)
 # # 	description = models.TextField(blank=True) #описание акции
 # # 	stock_start = models.DateTimeField(auto_now=False, blank=True, auto_now_add=False,) # дата создания
 # # 	stock_end = models.DateTimeField(auto_now=False, blank=True, auto_now_add=False,) # дата окончания
@@ -215,15 +218,15 @@ class Polygraphy(models.Model):
 # 	# 	ordering = ('product',)
 # 	# 	verbose_name = 'Акция'
 # 	# 	verbose_name_plural = 'Акции'
-# #  from django import forms 
-# #  class RelationForm(forms.ModelForm): 
-# #  	parent = forms.ChoiceField(required=False, choices=Relation.objects.values_list('id', 'name')) 
-# #  	particle = forms.ChoiceField(required=False, choices=Particle.objects.values_list('id', 'content')) 
-# #  	media = forms.ChoiceField(required=False, choices=Media.objects.values_list('id', 'name')) 
-# #  	class Meta: 
-# #  		model = Relation 
+# #  from django import forms
+# #  class RelationForm(forms.ModelForm):
+# #  	parent = forms.ChoiceField(required=False, choices=Relation.objects.values_list('id', 'name'))
+# #  	particle = forms.ChoiceField(required=False, choices=Particle.objects.values_list('id', 'content'))
+# #  	media = forms.ChoiceField(required=False, choices=Media.objects.values_list('id', 'name'))
+# #  	class Meta:
+# #  		model = Relation
 
-# # from django.contrib import admin 
-# # class RelationAdmin(admin.ModelAdmin): 
-# # 	raw_id_fields = ('Media','Particle',) 
-# # 	admin.site.register(Relation, RelationAdmin) 
+# # from django.contrib import admin
+# # class RelationAdmin(admin.ModelAdmin):
+# # 	raw_id_fields = ('Media','Particle',)
+# # 	admin.site.register(Relation, RelationAdmin)

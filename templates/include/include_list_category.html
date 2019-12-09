@@ -11,7 +11,8 @@
             <li class="cool_link"><a class="text-muted" href="{% url 'shop:polygraphy_detail' item.id%}">{{ item.title }}</a></li>
         {% endfor %}
         </ul>
-	 {% for item in category_all.get_cached_trees %}
+	 {% comment %}{% for item in category_all.get_cached_trees %}{% endcomment %}
+   {% for item in category_all %}
 	 {% if item.is_root_node %}
     <div class="link"><i class="fas fa-bars"></i>{{item.name}}</div>
     {% endif %}

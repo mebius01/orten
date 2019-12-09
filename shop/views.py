@@ -11,6 +11,7 @@ from django.core.cache import cache
 
 from django.views.generic import TemplateView
 from django.views.generic import ListView
+from django.views.generic import DetailView
 from django.views.generic import FormView
 
 
@@ -37,23 +38,50 @@ class About(TemplateView):
 	template_name = 'about.html'
 
 # @cache_page(60 * 15)
-class Category(TemplateView):
+class Categories(TemplateView):
 	template_name = 'shop/category.html'
 
 class Home(ListView, FormView):
 	model = Product
 	template_name = 'shop/home.html'
 	form_class = CartAddProductForm
-	def get_context_data(self, **kwargs):
-		context = super().get_context_data(**kwargs)
-		context['product_stok'] = Product.objects.filter(action=True)
-		context['products'] = Product.objects.all().order_by('-action', '-image')[:12]
-		context['cart_product_form'] = context.get('form')
-		return context
+	queryset = Product.objects.all().order_by('-action', '-image')[:12]
+	# def get_context_data(self, **kwargs):
+	#     context = super().get_context_data(**kwargs)
+	#     context['category_all'] = Category.objects.all()
+	#     return context
+
 	# product_stok = Product.objects.filter(action=True)
 	# products = Product.objects.all().order_by('-action', '-image')[:12] #'-available'
 	# cart_product_form = CartAddProductForm()
 	# return render(request, 'shop/home.html', {'cart_product_form':cart_product_form, 'products':products, 'product_stok':product_stok})
+
+class ProductDetail(DetailView, FormView):
+	model = Product
+	template_name = 'shop/product_detail.html'
+	form_class = CartAddProductForm
+
+	# instance = get_object_or_404(Product, slug=slug)
+	# cart_product_form = CartAddProductForm()
+	# return render( request, "shop/product_detail.html", {'instance':instance, 'cart_product_form': cart_product_form})
+
+class ServiceDetail(DetailView):
+	model = Services
+	template_name = 'shop/service_detail.html'
+
+	# instance = get_object_or_404(Services, slug=slug)
+	# cart_product_form = CartAddProductForm()
+	# return render( request, "shop/service_detail.html", {'instance':instance, 'cart_product_form': cart_product_form})
+
+class PolygraphyDetail(DetailView):
+	model = Polygraphy
+	template_name = 'shop/polygraphy_detail.html'
+
+	# instance = get_object_or_404(Polygraphy, flatpage_id=flatpage_id)
+	# return render( request, "shop/polygraphy_detail.html", {'instance':instance})
+
+class Polygraphy(TemplateView):
+	template_name = "shop/polygraphy.html"
 
 # @cache_page(60 * 15)
 def list_category(request, hierarchy=None):
@@ -66,7 +94,7 @@ def list_category(request, hierarchy=None):
 	instance = Category.objects.get(parent=parent, slug=category_slug[-1])
 	products = Product.objects.filter(category=instance)
 	services = Services.objects.filter(category=instance)
-	return render(request, 'shop/list_category.html', {'instance':instance, 'category':category, 'services':services, 'products': products})
+	return render(request, 'shop/list_category.html', {'instance':instance, 'services':services, 'products': products})
 
 def product_list(request):
 	search = request.GET.get('search', '')
@@ -97,21 +125,3 @@ def product_list(request):
 
 def test(request):
 	pass
-
-def product_detail(request, slug):
-	instance = get_object_or_404(Product, slug=slug)
-	cart_product_form = CartAddProductForm()
-	return render( request, "shop/product_detail.html", {'instance':instance, 'cart_product_form': cart_product_form})
-
-def service_detail(request, slug):
-	instance = get_object_or_404(Services, slug=slug)
-	cart_product_form = CartAddProductForm()
-	return render( request, "shop/service_detail.html", {'instance':instance, 'cart_product_form': cart_product_form})
-
-def polygraphy_detail(request, flatpage_id):
-	instance = get_object_or_404(Polygraphy, flatpage_id=flatpage_id)
-	return render( request, "shop/polygraphy_detail.html", {'instance':instance})
-
-def polygraphy(request):
-	return render( request, "shop/polygraphy.html")
-

@@ -31,11 +31,11 @@ urlpatterns = [
     path('delivery_payment/', DeliveryPayment.as_view(), name='delivery_payment'),
     path('about/', About.as_view(), name='about'),
     path('shop/product/', product_list, name ='product_list'),
-    path('category/', Category.as_view(), name ='category'),
-    path('polygraphy/', polygraphy, name='polygraphy'),
-    path('service/<slug>', service_detail, name='service_detail'),
-    path('shop/<slug>/', product_detail, name='product_detail'),
-    path('polygraphy/<flatpage_id>/', polygraphy_detail, name='polygraphy_detail'),
+    path('category/', Categories.as_view(), name ='category'),
+    path('polygraphy/', Polygraphy.as_view(), name='polygraphy'),
+    path('service/<slug:slug>', ServiceDetail.as_view(), name='service_detail'),
+    path('shop/<slug:slug>/', ProductDetail.as_view(), name='product_detail'),
+    path('polygraphy/<int:pk>/', PolygraphyDetail.as_view(), name='polygraphy_detail'),
     re_path(r'^category/(?P<hierarchy>.+)/$', list_category, name='list_category'),
     ]
 # from django.contrib.flatpages import views

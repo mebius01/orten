@@ -16,7 +16,7 @@
     <article>
 		<div class="hd_content"><i class="fas fa-star"></i>Новинки и акции</div>
 		<div class="content">
-			{% for item in products %}
+			{% for item in object_list %}
 			<script type="application/ld+json">
 				{% include "include/home.json" %}
 			</script>
@@ -57,7 +57,7 @@
 					<div class="foot_card_quantity">
 						<form action="{% url "cart:cart_add" item.id %}" method="post">
 						{% csrf_token %}
-						{{ cart_product_form.quantity }}
+						{{ form.quantity }}
 						<button type="submit" class="apply">В корзину</button>
 						</form>
 					</div>
