@@ -15,7 +15,7 @@ Including another URLconf
 """
 
 from django.urls import path, re_path
-from .import views
+from shop.views import *
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.decorators.cache import cache_page
@@ -24,24 +24,24 @@ from django.views.decorators.cache import cache_page
 app_name = 'shop'
 
 urlpatterns = [
-    path('test/', views.test, name='test'),
-    path('', views.home, name='home'),
-    path('googledd11b6ee42c918f5.html', views.search_console, name='search_console'),
-    path('contact/', views.contact, name='contact'),
-    path('delivery_payment/', views.delivery_payment, name='delivery_payment'),
-    path('about/', views.about, name='about'),
-    path('shop/product/', views.product_list, name ='product_list'),
-    path('category/', views.category, name ='category'),
-    path('polygraphy/', views.polygraphy, name='polygraphy'),
-    path('service/<slug>', views.service_detail, name='service_detail'),
-    path('shop/<slug>/', views.product_detail, name='product_detail'),
-    path('polygraphy/<flatpage_id>/', views.polygraphy_detail, name='polygraphy_detail'),
-    re_path(r'^category/(?P<hierarchy>.+)/$', views.list_category, name='list_category'),
+    path('test/', test, name='test'),
+    path('', Home.as_view(), name='home'),
+    path('googledd11b6ee42c918f5.html', search_console, name='search_console'),
+    path('contact/', Contact.as_view(), name='contact'),
+    path('delivery_payment/', DeliveryPayment.as_view(), name='delivery_payment'),
+    path('about/', About.as_view(), name='about'),
+    path('shop/product/', product_list, name ='product_list'),
+    path('category/', Category.as_view(), name ='category'),
+    path('polygraphy/', polygraphy, name='polygraphy'),
+    path('service/<slug>', service_detail, name='service_detail'),
+    path('shop/<slug>/', product_detail, name='product_detail'),
+    path('polygraphy/<flatpage_id>/', polygraphy_detail, name='polygraphy_detail'),
+    re_path(r'^category/(?P<hierarchy>.+)/$', list_category, name='list_category'),
     ]
 # from django.contrib.flatpages import views
 
 # urlpatterns += [
-#     path('polygraphy/vizitka/', views.flatpage, {'url': '/vizitka/'}, name='polygraphy'),
+#     path('polygraphy/vizitka/', flatpage, {'url': '/vizitka/'}, name='polygraphy'),
 #     path('polygraphy/kalendari/', views.flatpage, {'url': '/kalendari/'}, name='k'),
 
 # ]

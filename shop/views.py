@@ -9,8 +9,14 @@ from django.views.decorators.cache import cache_page
 from django.db.models import Q
 from django.core.cache import cache
 
+from django.views.generic import TemplateView
+from django.views.generic import ListView
+from django.views.generic import FormView
+
+
 def handler404(request, exception):
 	return render(request, '404.html', status=404)
+
 def handler500(request, exception):
 	return render(request, '500.html', status=500)
 
@@ -20,24 +26,34 @@ def robots(request):
 def search_console(request):
 	return render(request, 'googledd11b6ee42c918f5.html')
 
-def delivery_payment(request):
-	return render(request, 'delivery_payment.html')
+class DeliveryPayment(TemplateView):
+	template_name = 'delivery_payment.html'
+	# return render(request, 'delivery_payment.html')
 
-def contact(request):
-	return render(request, 'contact.html')
+class Contact(TemplateView):
+	template_name = 'contact.html'
 
-def about(request):
-	return render(request, 'about.html')
+class About(TemplateView):
+	template_name = 'about.html'
 
 # @cache_page(60 * 15)
-def category(request):
-	return render(request, 'shop/category.html')
+class Category(TemplateView):
+	template_name = 'shop/category.html'
 
-def home(request):
-	product_stok = Product.objects.filter(action=True)
-	products = Product.objects.all().order_by('-action', '-image')[:12] #'-available'
-	cart_product_form = CartAddProductForm()
-	return render(request, 'shop/home.html', {'cart_product_form':cart_product_form, 'products':products, 'product_stok':product_stok})
+class Home(ListView, FormView):
+	model = Product
+	template_name = 'shop/home.html'
+	form_class = CartAddProductForm
+	def get_context_data(self, **kwargs):
+		context = super().get_context_data(**kwargs)
+		context['product_stok'] = Product.objects.filter(action=True)
+		context['products'] = Product.objects.all().order_by('-action', '-image')[:12]
+		context['cart_product_form'] = context.get('form')
+		return context
+	# product_stok = Product.objects.filter(action=True)
+	# products = Product.objects.all().order_by('-action', '-image')[:12] #'-available'
+	# cart_product_form = CartAddProductForm()
+	# return render(request, 'shop/home.html', {'cart_product_form':cart_product_form, 'products':products, 'product_stok':product_stok})
 
 # @cache_page(60 * 15)
 def list_category(request, hierarchy=None):

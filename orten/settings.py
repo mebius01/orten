@@ -44,6 +44,7 @@ X_FRAME_OPTIONS=env.str('X_FRAME_OPTIONS', default=True)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", default=True)
 ALLOWED_HOSTS = tuple(env.list('ALLOWED_HOSTS', default=[]))
+# ALLOWED_HOSTS = ['localhost','127.0.0.1']
 SITE_ID = 1
 APPEND_SLASH = True
 
