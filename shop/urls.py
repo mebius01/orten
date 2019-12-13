@@ -31,6 +31,7 @@ urlpatterns = [
     path('delivery_payment/', DeliveryPayment.as_view(), name='delivery_payment'),
     path('about/', About.as_view(), name='about'),
     path('shop/product/', product_list, name ='product_list'),
+    # path('shop/product', ProductList.as_view(), name='product_list'),
     path('category/', Categories.as_view(), name ='category'),
     path('polygraphy/', Polygraphy.as_view(), name='polygraphy'),
     path('service/<slug:slug>', ServiceDetail.as_view(), name='service_detail'),

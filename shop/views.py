@@ -96,6 +96,26 @@ def list_category(request, hierarchy=None):
 	services = Services.objects.filter(category=instance)
 	return render(request, 'shop/list_category.html', {'instance':instance, 'services':services, 'products': products})
 
+# class ProductList(ListView, FormView):
+# 	model = Product
+# 	template_name = 'shop/list_product.html'
+# 	paginate_by = 24
+# 	form_class = CartAddProductForm
+# 	def get_queryset(self):
+# 		search = self.request.GET.get('search')
+# 		category = self.request.GET.get('category')
+# 		if search:
+# 			object_list = watson.filter(Product, search, ranking=True)
+# 		elif category:
+# 			object_list = Product.objects.filter(category=category).order_by('-action', '-image')
+# 		else:
+# 			object_list = Product.objects.all().order_by('-action', '-image')
+# 	def get_context_data(self, **kwargs):
+# 		context = super(ProductList, self).get_context_data(**kwargs)
+# 		context['instance'] = Category.objects.all()
+# 		return context
+
+
 def product_list(request):
 	search = request.GET.get('search', '')
 	category = request.GET.get('category', '')

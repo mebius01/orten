@@ -100,7 +100,7 @@ class Product(models.Model):
 	name = models.CharField(max_length=400, db_index=True, help_text='Название товара') #имя продукта
 	slug = models.SlugField(max_length=400, help_text='')
 	provider = models.CharField(max_length=20, help_text='Поставщик')
-	accessories = models.ManyToManyField("self", editable=False, blank=True)
+	# accessories = models.ManyToManyField("self", editable=False, blank=True)
 	vendor_code = models.CharField(max_length=200, unique=True, help_text='Артикул, парт номер') #артикул или парт-номер
 	vendor = models.CharField(max_length=200, blank=True, help_text='Производитель') # Производитель
 	type_product = models.CharField(max_length=200, blank=True, help_text='Тип товара')
@@ -123,6 +123,7 @@ class Product(models.Model):
 
 	created = models.DateTimeField(auto_now_add=True, help_text='дата создания') # дата создания
 	updated = models.DateTimeField(auto_now=True, help_text='дата обновления') #дата обновления
+	
 
 
 	class Meta:

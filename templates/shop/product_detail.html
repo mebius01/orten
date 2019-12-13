@@ -144,7 +144,7 @@
                     </span>
                 </div>
                 <br><hr>
-                <div class="foot_card_quantity style="color:red;">
+                <div class="foot_card_quantity style="color:red;>
                     <form action="{% url "cart:cart_add" object.id %}" method="post">
                        {% csrf_token %}
                       {{form.quantity}}
@@ -170,7 +170,85 @@
                     </p>
                 </div>
             </div>
-            <div class="accessories">
+            {% comment %} <div class="accessories">
+                {% for item in object.tags.similar_objects %}
+                    <div class="card">
+                        {% if item.action %}
+                            <div class="card-action">Акция до {{item.end_action|date:"d.m.y"}}</div>
+                        {% endif %}
+                        <a href="{% url 'shop:product_detail' item.slug %}">
+                            <div class="image">
+                                <img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{item.name}}" width="100%">
+                            </div>
+                        </a>
+                        <a href="{% url 'shop:product_detail' item.slug %}">
+                            <div class="card_content">
+                                <div class="name">{{item.name}}</div>
+                                <br>
+                                <div class="pn">
+                                    <span style="float:left" >Артикул:</span>
+                                    <span style="float:right">{{item.vendor_code}}</span>
+                                </div>
+                                <br>
+                                <div class="vendor">
+                                    <span style="float:left" >Вендор:</span>
+                                    <span style="float:right">{{item.vendor}}</span>
+                                </div>
+                                <br>
+                                <div class="price">
+                                    {% if item.action %}
+                                        <h6><span style="float: left">Цена: </span> <span style="text-decoration: line-through; float:right">{{item.price}}</span></h6>
+                                        <br>
+                                        <span style="float:left" >Цена:</span> <span style="color:#fc6251; float:right"><h4>{{item.discount}}</h4></span>
+                                    {% else %}
+                                        <span style="float:left" >Цена:</span> <span style="color:#fc6251; float:right"><h4>{{item.discount}}</h4></span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </a>
+                        <div class="foot_card_quantity">
+                            <form action="{% url "cart:cart_add" item.id %}" method="post">
+                            {% csrf_token %}
+                            {{ form.quantity }}
+                            <button type="submit" class="apply">В корзину</button>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div> {% endcomment %}
+            <div class="product_list accessories">
+                {% for product in object.tags.similar_objects %}
+                    <script type="application/ld+json">
+                        {% include "include/list_product.json" %}
+                    </script>
+                    <span class="s-1"><img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt="{{ product.name }}"></span>
+                    <span class="s-2"><b>Бренд: </b>{{ product.vendor }}</span>
+                    <span class="s-3"><b>Название: </b><a href="{% url 'shop:product_detail' product.slug %}">{{ product.name }}</a></span>
+                    <span class="s-4"><b>Артикул: </b>{{ product.vendor_code }}</span>
+                    <span class="s-5"><b>Наличие: </b>
+                        {% if product.available %}
+                            <i style="color:green;" class="fas fa-check"></i>
+                        {% else %}
+                            <i style="color:red;" class="fas fa-times"></i>
+                        {% endif %}
+                    </span>
+                    <span class="s-6"><b>Цена: </b>
+                        {% if product.action %}
+                            <em style="text-decoration: line-through">{{ product.price }}</em>
+                            <br>
+                            <em style="color:#fc6251;">{{ product.discount }}</em>
+                        {% else %}
+                            {{ product.price }}
+                        {% endif %}
+                    </span>
+                    <span class="foot_card_quantity s-7">
+                        <form action="{% url "cart:cart_add" product.id %}" method="post">{% csrf_token %}
+                        {{form.quantity}}
+                        <button type="submit" class="plas"><i style="color:white" class="fa fa-shopping-cart"></i></button>
+                        </form>
+                    </span>
+                    <div class="s-hr"><hr></div>
+                {% endfor %}
             </div>
         </div>
 	{% endblock %}

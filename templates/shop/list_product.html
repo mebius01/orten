@@ -17,7 +17,7 @@
 {% endblock %}
 {% block content %}
 <section>
-        <aside>
+    <aside>
         <div class="hd_content"><i class="fas fa-filter"></i>Фильтры</div>
             <div class="accordion">
                 <div class="filters">
@@ -99,7 +99,7 @@
                     <span class="foot_card_quantity s-7">
                         <form action="{% url "cart:cart_add" product.id %}" method="post">{% csrf_token %}
                         {{cart_product_form.quantity}}
-                        <button type="submit" class="plas"><i style="color:white" class="fab fa-get-pocket"></i></button>
+                        <button type="submit" class="plas"><i style="color:white" class="fa fa-shopping-cart"></i></button>
                         </form>
                     </span>
                     <div class="s-hr"><hr></div>
