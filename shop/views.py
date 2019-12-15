@@ -96,25 +96,49 @@ def list_category(request, hierarchy=None):
 	services = Services.objects.filter(category=instance)
 	return render(request, 'shop/list_category.html', {'instance':instance, 'services':services, 'products': products})
 
-# class ProductList(ListView, FormView):
-# 	model = Product
-# 	template_name = 'shop/list_product.html'
-# 	paginate_by = 24
-# 	form_class = CartAddProductForm
-# 	def get_queryset(self):
-# 		search = self.request.GET.get('search')
-# 		category = self.request.GET.get('category')
-# 		if search:
-# 			object_list = watson.filter(Product, search, ranking=True)
-# 		elif category:
-# 			object_list = Product.objects.filter(category=category).order_by('-action', '-image')
-# 		else:
-# 			object_list = Product.objects.all().order_by('-action', '-image')
-# 	def get_context_data(self, **kwargs):
-# 		context = super(ProductList, self).get_context_data(**kwargs)
-# 		context['instance'] = Category.objects.all()
-# 		return context
+class FilterListView(ListView):
+	filterset_class = None
+	def get_queryset(self):
+		search = self.request.GET.get('search')
+		category = self.request.GET.get('category')
+		if search:
+			queryset = watson.filter(Product, search, ranking=True)
+		elif category:
+			queryset = Product.objects.filter(category=category).order_by('-action', '-image')
+		else:
+			queryset = Product.objects.all().order_by('-action', '-image')
+		queryset = super().get_queryset()
+		self.filterset = self.filterset_class(self.request.GET, queryset=queryset)
+		return self.filterset.qs.distinct()
+	def get_context_data(self, **kwargs):
+		context = super().get_context_data(**kwargs)
+		context['filter'] = self.filterset
+		return context
 
+class ProductList(FilterListView):
+	model = Product
+	template_name = 'test_list_product.html'
+	form_class = CartAddProductForm
+	queryset = Product.objects.all().order_by('-action', '-image')
+	paginate_by = 24
+	filterset_class = ProductFilter
+
+	# def get_queryset(self):
+	# 	search = self.request.GET.get('search')
+	# 	category = self.request.GET.get('category')
+	# 	if search:
+	# 		queryset = watson.filter(Product, search, ranking=True)
+	# 	elif category:
+	# 		queryset = Product.objects.filter(category=category).order_by('-action', '-image')
+	# 	else:
+	# 		queryset = Product.objects.all().order_by('-action', '-image')
+	# 	return queryset
+	
+	# def get_context_data(self, **kwargs):
+	# 	context = super(ProductList, self).get_context_data(**kwargs)
+	# 	context['queryset'] = self.get_queryset()
+	# 	context['category'] = Category.objects.all()
+	# 	return context
 
 def product_list(request):
 	search = request.GET.get('search', '')
