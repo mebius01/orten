@@ -99,19 +99,22 @@ def list_category(request, hierarchy=None):
 class FilterListView(ListView):
 	filterset_class = None
 	def get_queryset(self):
-		search = self.request.GET.get('search')
-		category = self.request.GET.get('category')
-		if search:
-			queryset = watson.filter(Product, search, ranking=True)
-		elif category:
-			queryset = Product.objects.filter(category=category).order_by('-action', '-image')
-		else:
-			queryset = Product.objects.all().order_by('-action', '-image')
 		queryset = super().get_queryset()
 		self.filterset = self.filterset_class(self.request.GET, queryset=queryset)
 		return self.filterset.qs.distinct()
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
+		category = self.request.GET.get('category')
+		search = self.request.GET.get('search')
+		if search:
+			queryset = watson.filter(Product, search, ranking=True)
+		elif category:
+			if len(category)>1:
+				instance = Category.objects.get(id=category)
+				context['instance'] = instance
+			else:
+				instance = Category.objects.all()
+				context['instance'] = instance
 		context['filter'] = self.filterset
 		return context
 
@@ -123,22 +126,6 @@ class ProductList(FilterListView):
 	paginate_by = 24
 	filterset_class = ProductFilter
 
-	# def get_queryset(self):
-	# 	search = self.request.GET.get('search')
-	# 	category = self.request.GET.get('category')
-	# 	if search:
-	# 		queryset = watson.filter(Product, search, ranking=True)
-	# 	elif category:
-	# 		queryset = Product.objects.filter(category=category).order_by('-action', '-image')
-	# 	else:
-	# 		queryset = Product.objects.all().order_by('-action', '-image')
-	# 	return queryset
-	
-	# def get_context_data(self, **kwargs):
-	# 	context = super(ProductList, self).get_context_data(**kwargs)
-	# 	context['queryset'] = self.get_queryset()
-	# 	context['category'] = Category.objects.all()
-	# 	return context
 
 def product_list(request):
 	search = request.GET.get('search', '')
