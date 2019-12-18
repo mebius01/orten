@@ -9,11 +9,9 @@ from django.views.decorators.cache import cache_page
 from django.db.models import Q
 from django.core.cache import cache
 
-from django.views.generic import TemplateView
-from django.views.generic import ListView
-from django.views.generic import DetailView
-from django.views.generic import FormView
+from django.views.generic import TemplateView, ListView, DetailView, FormView
 
+from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 
 def handler404(request, exception):
 	return render(request, '404.html', status=404)
@@ -105,9 +103,9 @@ class FilterListView(ListView):
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
 		category = self.request.GET.get('category')
-		search = self.request.GET.get('search')
-		if search:
-			queryset = watson.filter(Product, search, ranking=True)
+		search_string = self.request.GET.get('search')
+		if search_string:
+			queryset = watson.filter(Product, search_string, ranking=True)
 		elif category:
 			if len(category)>1:
 				instance = Category.objects.get(id=category)
@@ -117,6 +115,21 @@ class FilterListView(ListView):
 				context['instance'] = instance
 		context['filter'] = self.filterset
 		return context
+
+
+# if search_string:
+# 			try:
+# 				queryset = queryset.annotate(
+# 					search=(
+# 						SearchVector('name')+
+# 						SearchVector('description')+
+# 						SearchVector('vendor_code')+
+# 						SearchVector('specifications')
+# 					),
+# 				).filter(search=SearchQuery(search_string))
+# 			except KeyError:
+# 				return Product.objects.none()
+
 
 class ProductList(FilterListView):
 	model = Product
