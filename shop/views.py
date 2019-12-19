@@ -102,17 +102,6 @@ class FilterListView(ListView):
 		return self.filterset.qs.distinct()
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
-		category = self.request.GET.get('category')
-		search_string = self.request.GET.get('search')
-		if search_string:
-			queryset = watson.filter(Product, search_string, ranking=True)
-		elif category:
-			if len(category)>1:
-				instance = Category.objects.get(id=category)
-				context['instance'] = instance
-			else:
-				instance = Category.objects.all()
-				context['instance'] = instance
 		context['filter'] = self.filterset
 		return context
 
@@ -131,13 +120,44 @@ class FilterListView(ListView):
 # 				return Product.objects.none()
 
 
-class ProductList(FilterListView):
+# class ProductList(FormView, FilterListView):
+class ProductList(FormView, ListView):
 	model = Product
 	template_name = 'test_list_product.html'
 	form_class = CartAddProductForm
-	queryset = Product.objects.all().order_by('-action', '-image')
 	paginate_by = 24
 	filterset_class = ProductFilter
+	def get_queryset(self):
+		qs = Product.objects.all()
+		try:
+			search_string = self.request.GET['search']
+			qs = qs.annotate(
+                search=(
+                    SearchVector('name')+
+					SearchVector('description')+
+					SearchVector('vendor_code')+
+					SearchVector('specifications')
+				),
+            ).filter(search=search_string)
+		except KeyError:
+			return Product.objects.all().order_by('-action', '-image')
+		queryset = qs.order_by('-action', '-image')
+		return queryset
+
+	def get_context_data(self, **kwargs):
+		context = super().get_context_data(**kwargs)
+		category = self.request.GET.get('category')
+		if category:
+			instance = Category.objects.get(id=category)
+			context['instance'] = instance
+		else:
+			instance = Category.objects.all()
+			context['instance'] = instance
+		context['filter'] = self.filterset_class(self.request.GET, queryset=self.queryset)
+		return context
+	# 	context['filter'] = self.filterset_class
+
+
 
 
 def product_list(request):
