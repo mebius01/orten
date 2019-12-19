@@ -105,22 +105,6 @@ class FilterListView(ListView):
 		context['filter'] = self.filterset
 		return context
 
-
-# if search_string:
-# 			try:
-# 				queryset = queryset.annotate(
-# 					search=(
-# 						SearchVector('name')+
-# 						SearchVector('description')+
-# 						SearchVector('vendor_code')+
-# 						SearchVector('specifications')
-# 					),
-# 				).filter(search=SearchQuery(search_string))
-# 			except KeyError:
-# 				return Product.objects.none()
-
-
-# class ProductList(FormView, FilterListView):
 class ProductList(FormView, ListView):
 	model = Product
 	template_name = 'test_list_product.html'
@@ -139,13 +123,17 @@ class ProductList(FormView, ListView):
 					SearchVector('specifications')
 				),
             ).filter(search=search_string)
+			queryset = qs.order_by('-action', '-image')
 		except KeyError:
-			return Product.objects.all().order_by('-action', '-image')
-		queryset = qs.order_by('-action', '-image')
-		return queryset
+			queryset =  Product.objects.all().order_by('-action', '-image')
+		filterset = ProductFilter(self.request.GET, queryset=queryset)
+		return filterset.queryset
+		# return queryset
 
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
+		context['search'] = self.request.GET['search']
+		context['filterset'] = self.filterset_class
 		category = self.request.GET.get('category')
 		if category:
 			instance = Category.objects.get(id=category)
@@ -153,7 +141,7 @@ class ProductList(FormView, ListView):
 		else:
 			instance = Category.objects.all()
 			context['instance'] = instance
-		context['filter'] = self.filterset_class(self.request.GET, queryset=self.queryset)
+		# context['filter'] = self.filterset_class(self.request.GET, queryset=self.queryset)
 		return context
 	# 	context['filter'] = self.filterset_class
 

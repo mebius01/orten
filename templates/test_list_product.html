@@ -26,26 +26,27 @@
                         <input class="min" type="number" name="price__gt" step="any" id="id_price__gt" placeholder="Цена min - 0">
                         <input class="max" type="number" name="price__lt" step="any" id="id_price__lt" placeholder="Цена max - 1000">
                     </div>
+                    <div>
+                    {{f.queryset}}
+                    </div>
                 <div>
-                    {{filter.form.category}}
+                    {{filterset.form.category}}
                 </div>
                 <div>
-                    {{filter.form.vendor}}
+                    {{filterset.form.vendor}}
                 </div>
                 <div>
-                    {{filter.form.type_product}}
+                    {{filterset.form.type_product}}
                 </div>
                 <div>
-                    {{filter.form.format_fild}}
+                    {{filterset.form.format_fild}}
                 </div>
                 <div>
-                    {{filter.form.color_fild}}
+                    {{filterset.form.color_fild}}
                 </div>
                 <div>
                     <label class="sr-only" for="search"></label>
                     <input type="text" autocomplete="on" value="{{search}}" name="search" class="search" placeholder="Search.." id="search">
-                </div>
-                <div>
                 </div>
                       <!-- Search for PN -->
                       {% comment %}
