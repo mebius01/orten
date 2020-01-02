@@ -20,24 +20,14 @@ def handler500(request, exception):
 	return render(request, '500.html', status=500)
 
 def robots(request):
-	return render_to_response('robots.txt', mimetype="text/plain")
+	return render('robots.txt', mimetype="text/plain")
 
-def search_console(request):
-	return render(request, 'googledd11b6ee42c918f5.html')
-
-class DeliveryPayment(TemplateView):
-	template_name = 'delivery_payment.html'
-	# return render(request, 'delivery_payment.html')
-
-class Contact(TemplateView):
-	template_name = 'contact.html'
-
-class About(TemplateView):
-	template_name = 'about.html'
+# def search_console(request):
+# 	return render(request, 'googledd11b6ee42c918f5.html')
 
 # @cache_page(60 * 15)
-class Categories(TemplateView):
-	template_name = 'shop/category.html'
+# class Categories(TemplateView):
+# 	template_name = 'shop/category.html'
 
 class Home(ListView, FormView):
 	model = Product
@@ -78,21 +68,34 @@ class PolygraphyDetail(DetailView):
 	# instance = get_object_or_404(Polygraphy, flatpage_id=flatpage_id)
 	# return render( request, "shop/polygraphy_detail.html", {'instance':instance})
 
-class Polygraphy(TemplateView):
-	template_name = "shop/polygraphy.html"
+# class Polygraphy(TemplateView):
+# 	template_name = "shop/polygraphy.html"
 
 # @cache_page(60 * 15)
-def list_category(request, hierarchy=None):
-	# Раззделяет строку УРЛа на список [категория, подкатегория, подкатегорияПодкатегории, итд]
-	category_slug = hierarchy.split('/')
-	parent = None
-	category_all = Category.objects.all() # передать в контестный процессор
-	for slug in category_slug[:-1]:
-		parent = category_all.get(parent=parent, slug = slug)
-	instance = Category.objects.get(parent=parent, slug=category_slug[-1])
-	products = Product.objects.filter(category=instance)
-	services = Services.objects.filter(category=instance)
-	return render(request, 'shop/list_category.html', {'instance':instance, 'services':services, 'products': products})
+# def list_category(request, path=None):
+# 	# Раззделяет строку УРЛа на список [категория, подкатегория, подкатегорияПодкатегории, итд]
+# 	print(path)
+# 	category_slug = path.split('/')
+# 	parent = None
+# 	category_all = Category.objects.all() # передать в контестный процессор
+# 	for slug in category_slug[:-1]:
+# 		parent = category_all.get(parent=parent, slug = slug)
+# 	instance = Category.objects.get(parent=parent, slug=category_slug[-1])
+# 	products = Product.objects.filter(category=instance)
+# 	services = Services.objects.filter(category=instance)
+# 	return render(request, 'shop/list_category.html', {'instance':instance, 'services':services, 'products': products})
+
+class ListCategory(ListView):
+	model = Product
+	template_name = 'shop/list_category.html'
+	def get_context_data(self, **kwargs):
+		context = super().get_context_data(**kwargs)
+		category_slug = self.request.get_full_path().split('/')[-2]
+		instance = Category.objects.get(slug=category_slug)
+		context['instance'] = instance
+		context['products'] = Product.objects.filter(category=instance.id)
+		context['services'] = Services.objects.filter(category=instance.id)
+		return context
 
 class FilterListView(ListView):
 	filterset_class = None
@@ -174,6 +177,3 @@ def product_list(request):
 	else:
 		instance = Category.objects.all()
 	return render(request, 'shop/list_product.html', {'search': search, 'instance': instance, 'paginator':paginator, 'filter': products_filter, 'products': products, 'cart_product_form': cart_product_form})
-
-def test(request):
-	pass
