@@ -10,16 +10,14 @@
 {% endblock %}
 {% block content %}
 <title>Orten - ERROR 500</title>
-<hr>
-<div class="d-flex justify-content-center">
-<div class="overlay"></div>
-<div class="terminal">
-  <h1>Error <span class="errorcode">500</span></h1>
-  <p class="output">Возможно, страница, которую вы ищете, не сущесвует, изменилось ее имя или временно недоступна из-за работ на сервере.</p>
-  <p class="output">Можно венуться <a href="{% url 'shop:home' %}">На главную</a></p>
-  <p class="output">Возвращайтесь к нам :)</p>
-</div>
-</div>
-<hr>
-
+<section>
+  <aside style="position: relative;">
+    <h1 style="color: blue; font-size: 250%; margin: 0;transform: translate(-50%, -50%);position: absolute;top: 50%;left: 50%;"><span>Error 500</span></h1>     
+  </aside>
+  <article>
+    <p style="text-align: center">Возможно, страница, которую вы ищете, не сущесвует, изменилось ее имя или временно недоступна из-за работ на сервере.</p>
+    <p style="text-align: center">Можно венуться <a href="{% url 'shop:home' %}">На главную</a></p>
+    <p style="text-align: center">Возвращайтесь к нам :)</p>
+  </article>
+</section>
 {% endblock %}
