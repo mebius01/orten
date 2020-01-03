@@ -10,6 +10,7 @@ from django.db.models import Q
 from django.core.cache import cache
 from django.views.generic import TemplateView, ListView, DetailView, FormView
 from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
+from django_filters.views import FilterView
 
 def handler404(request, exception):
 	return render(request, '404.html', status=404)
@@ -41,16 +42,34 @@ class ListCategory(ListView):
 		context['services'] = Services.objects.filter(category=instance.id)
 		return context
 
-class FilterListView(ListView):
-	filterset_class = None
-	def get_queryset(self):
-		queryset = super().get_queryset()
-		self.filterset = self.filterset_class(self.request.GET, queryset=queryset)
-		return self.filterset.qs.distinct()
-	def get_context_data(self, **kwargs):
-		context = super().get_context_data(**kwargs)
-		context['filterset'] = self.filterset
-		return context
+# class FilterListView(ListView):
+# 	filterset_class = None
+# 	def get_queryset(self):
+# 		queryset = super().get_queryset()
+# 		self.filterset = self.filterset_class(self.request.GET, queryset=queryset)
+# 		return self.filterset.qs.distinct()
+# 	def get_context_data(self, **kwargs):
+# 		context = super().get_context_data(**kwargs)
+# 		context['filterset'] = self.filterset
+# 		return context
+
+class FilteredListView(ListView):
+    filterset_class = None
+    def get_queryset(self):
+        # Get the queryset however you usually would.  For example:
+        queryset = super().get_queryset()
+        # Then use the query parameters and the queryset to
+        # instantiate a filterset and save it as an attribute
+        # on the view instance for later.
+        self.filterset = self.filterset_class(self.request.GET, queryset=queryset)
+        # Return the filtered queryset
+        return self.filterset.qs.distinct()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Pass the filterset to the template - it provides the form.
+        context['filterset'] = self.filterset
+        return context
 
 class ProductList(FormView, ListView):
 	model = Product
@@ -62,7 +81,7 @@ class ProductList(FormView, ListView):
 	def get_queryset(self):
 		qs = Product.objects.all()
 		try:
-			search_string = self.request.GET['search']
+			search = self.request.GET['search']
 			qs = qs.annotate(
 				search=(
 					SearchVector('name')+
@@ -70,7 +89,7 @@ class ProductList(FormView, ListView):
 					SearchVector('vendor_code')+
 					SearchVector('specifications')
 				),
-			).filter(search=search_string)
+			).filter(search=search)
 			queryset = qs.order_by('-action', '-image')
 		except KeyError:
 			category = self.request.GET.get('category')
@@ -78,16 +97,17 @@ class ProductList(FormView, ListView):
 				queryset = qs.filter(category=category).order_by('-action', '-image')
 			else:
 				queryset =  qs.order_by('-action', '-image')
-		return queryset
+		self.filterset = self.filterset_class(self.request.GET, queryset=queryset)
+		return self.filterset.qs.distinct()
 
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
 		category = self.request.GET.get('category')
-		# context['filterset'] = ProductFilter(self.request.GET, queryset=self.queryset)
 		if category:
 			context['instance'] = Category.objects.get(id=category)
 		else:
 			context['instance'] = Category.objects.all()
+		context['filterset'] = self.filterset
 		return context
 
 def product_list(request):
