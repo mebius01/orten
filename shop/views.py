@@ -58,42 +58,36 @@ class ProductList(FormView, ListView):
 	form_class = CartAddProductForm
 	paginate_by = 24
 	filterset_class = ProductFilter
+
 	def get_queryset(self):
 		qs = Product.objects.all()
 		try:
 			search_string = self.request.GET['search']
 			qs = qs.annotate(
-                search=(
-                    SearchVector('name')+
+				search=(
+					SearchVector('name')+
 					SearchVector('description')+
 					SearchVector('vendor_code')+
 					SearchVector('specifications')
 				),
-            ).filter(search=search_string)
+			).filter(search=search_string)
 			queryset = qs.order_by('-action', '-image')
 		except KeyError:
-			queryset =  Product.objects.all().order_by('-action', '-image')
-		# filterset = ProductFilter(self.request.GET, queryset=queryset)
+			category = self.request.GET.get('category')
+			if category:
+				queryset = qs.filter(category=category).order_by('-action', '-image')
+			else:
+				queryset =  qs.order_by('-action', '-image')
 		return queryset
-		# return queryset
 
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
-		# context['search'] = self.request.GET['search']
-		# context['filterset'] = self.filterset_class
 		category = self.request.GET.get('category')
 		if category:
-			instance = Category.objects.get(id=category)
-			context['instance'] = instance
+			context['instance'] = Category.objects.get(id=category)
 		else:
-			instance = Category.objects.all()
-			context['instance'] = instance
-		# context['filter'] = self.filterset_class(self.request.GET, queryset=self.queryset)
+			context['instance'] = Category.objects.all()
 		return context
-	# 	context['filter'] = self.filterset_class
-
-
-
 
 def product_list(request):
 	search = request.GET.get('search', '')
