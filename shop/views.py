@@ -49,7 +49,7 @@ class FilterListView(ListView):
 		return self.filterset.qs.distinct()
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
-		context['filter'] = self.filterset
+		context['filterset'] = self.filterset
 		return context
 
 class ProductList(FormView, ListView):
@@ -83,6 +83,7 @@ class ProductList(FormView, ListView):
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
 		category = self.request.GET.get('category')
+		# context['filterset'] = ProductFilter(self.request.GET, queryset=self.queryset)
 		if category:
 			context['instance'] = Category.objects.get(id=category)
 		else:
