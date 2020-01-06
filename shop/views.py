@@ -35,6 +35,8 @@ class ListCategory(ListView):
 	template_name = 'shop/list_category.html'
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
+		# с помощью get_full_path() получаем строку урла
+		# и получаем ['',url_1,url_2,url_3,'']
 		leaf = self.request.get_full_path().split('/')[-2]
 		instance = Category.objects.get(slug=leaf)
 		context['instance'] = instance
@@ -42,72 +44,61 @@ class ListCategory(ListView):
 		context['services'] = Services.objects.filter(category=instance.id)
 		return context
 
-# class FilterListView(ListView):
-# 	filterset_class = None
-# 	def get_queryset(self):
-# 		queryset = super().get_queryset()
-# 		self.filterset = self.filterset_class(self.request.GET, queryset=queryset)
-# 		return self.filterset.qs.distinct()
-# 	def get_context_data(self, **kwargs):
-# 		context = super().get_context_data(**kwargs)
-# 		context['filterset'] = self.filterset
-# 		return context
-
-class FilteredListView(ListView):
-    filterset_class = None
-    def get_queryset(self):
-        # Get the queryset however you usually would.  For example:
-        queryset = super().get_queryset()
-        # Then use the query parameters and the queryset to
-        # instantiate a filterset and save it as an attribute
-        # on the view instance for later.
-        self.filterset = self.filterset_class(self.request.GET, queryset=queryset)
-        # Return the filtered queryset
-        return self.filterset.qs.distinct()
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        # Pass the filterset to the template - it provides the form.
-        context['filterset'] = self.filterset
-        return context
-
-class ProductList(FormView, ListView):
-	model = Product
-	template_name = 'test_list_product.html'
-	form_class = CartAddProductForm
-	paginate_by = 24
-	filterset_class = ProductFilter
-
+class SearchView(ListView):
 	def get_queryset(self):
-		qs = Product.objects.all()
+		queryset = super().get_queryset()
+		qs = self.model.objects.all()
 		try:
-			search = self.request.GET['search']
+			search_string = self.request.GET['search']
 			qs = qs.annotate(
-				search=(
+				search = (
 					SearchVector('name')+
 					SearchVector('description')+
 					SearchVector('vendor_code')+
 					SearchVector('specifications')
 				),
-			).filter(search=search)
+			).filter(search=search_string)
 			queryset = qs.order_by('-action', '-image')
 		except KeyError:
-			category = self.request.GET.get('category')
-			if category:
-				queryset = qs.filter(category=category).order_by('-action', '-image')
-			else:
-				queryset =  qs.order_by('-action', '-image')
-		self.filterset = self.filterset_class(self.request.GET, queryset=queryset)
-		return self.filterset.qs.distinct()
+			queryset =  qs.order_by('-action', '-image')
+		return queryset
+	
+class FilteredListView(ListView):
+    filterset_class = None
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        self.filterset = self.filterset_class(self.request.GET, queryset=queryset)
+        return self.filterset.qs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filterset'] = self.filterset
+        return context
+
+class ProductList(FormView, FilteredListView, SearchView):
+	model = Product
+	template_name = 'shop/list_product.html'
+	form_class = CartAddProductForm
+	paginate_by = 24
+	filterset_class = ProductFilter
+
+	def get_queryset(self):
+		queryset = super().get_queryset()
+		category = self.request.GET.get('category')
+		if category:
+			queryset = queryset.filter(category=category).order_by('-action', '-image')
+		else:
+			queryset =  queryset.order_by('-action', '-image')
+		return queryset
 
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
 		category = self.request.GET.get('category')
+		search = self.request.GET.get('search')
 		if category:
 			context['instance'] = Category.objects.get(id=category)
-		else:
-			context['instance'] = Category.objects.all()
-		context['filterset'] = self.filterset
+		elif search:
+			context['search'] = search
 		return context
 
 def product_list(request):
@@ -135,4 +126,4 @@ def product_list(request):
 		instance = Category.objects.get(id=category)
 	else:
 		instance = Category.objects.all()
-	return render(request, 'shop/list_product.html', {'search': search, 'instance': instance, 'paginator':paginator, 'filter': products_filter, 'products': products, 'cart_product_form': cart_product_form})
+	return render(request, 'shop/list_product.html', {'search': search, 'instance': instance, 'paginator':paginator, 'filterset': products_filter, 'products': products, 'cart_product_form': cart_product_form})

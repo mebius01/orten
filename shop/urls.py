@@ -33,6 +33,7 @@ urlpatterns = [
     path('polygraphy/', TemplateView.as_view(template_name = "shop/polygraphy.html"), name='polygraphy'),
     path('googledd11b6ee42c918f5.html', TemplateView.as_view(template_name = 'googledd11b6ee42c918f5.html'), name='search_console'),
     path('shop/product/', ProductList.as_view(), name ='product_list'),
+    # path('shop/product/', product_list, name ='product_list'),
     path('service/<slug:slug>', DetailView.as_view(model = Services, template_name = 'shop/service_detail.html'), name='service_detail'),
     path('shop/<slug:slug>/', ProductDetail.as_view(), name='product_detail'),
     path('polygraphy/<int:pk>/', DetailView.as_view(model = Polygraphy,	template_name = 'shop/polygraphy_detail.html'), name='polygraphy_detail'),

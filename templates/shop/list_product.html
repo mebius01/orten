@@ -27,30 +27,27 @@
                         <input class="max" type="number" name="price__lt" step="any" id="id_price__lt" placeholder="Цена max - 1000">
                     </div>
                 <div>
-                    {{filter.form.category}}
+                    {{filterset.form.category}}
                 </div>
                 <div>
-                    {{filter.form.vendor}}
+                    {{filterset.form.vendor}}
                 </div>
                 <div>
-                    {{filter.form.type_product}}
+                    {{filterset.form.type_product}}
                 </div>
                 <div>
-                    {{filter.form.format_fild}}
+                    {{filterset.form.format_fild}}
                 </div>
                 <div>
-                    {{filter.form.color_fild}}
+                    {{filterset.form.color_fild}}
                 </div>
-                <div>
-                    <label class="sr-only" for="search"></label>
-                    <input type="text" autocomplete="on" value="{{search}}" name="search" class="search" placeholder="Search.." id="search">
-                </div>
-                <div>
-                                              </div>
-                      <!-- Search for PN -->
-                      {% comment %}
-                           {% bootstrap_field filter.form.vendor_code placeholder="Поиск по Артикль" show_label=False%}
-                      {% endcomment %}
+                {% if search %}
+                    <div>
+                        <label class="sr-only" for="search"></label>
+                        <input type="text" autocomplete="on" value="{{search}}" name="search" class="search" placeholder="Search.." id="search">
+                    </div>
+                {% endif %}
+                
                       <!--Кнопка -->
                         <button type="submit" class="apply">Фильтр<i class="fab fa-get-pocket pl-2"></i></button>
                         <button class="reset" href="{% url 'shop:product_list' %}">Сброс<i class="fas fa-redo-alt pl-2"></i></button>
@@ -72,33 +69,33 @@
                     <span class="s"><strong>Цена ₴</strong></span>
                     <span class="s"><strong>В корзину</strong></span>
                     <!-- динамический контент -->
-                    {% for product in products %}
+                    {% for item in object_list %}
                     <script type="application/ld+json">
-                        {% include "include/list_product.json" %}
+                        {% comment %} {% include "include/list_product.json" %} {% endcomment %}
                     </script>
-                    <span class="s-1"><img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt="{{ product.name }}"></span>
-                    <span class="s-2"><b>Бренд: </b>{{ product.vendor }}</span>
-                    <span class="s-3"><b>Название: </b><a href="{% url 'shop:product_detail' product.slug %}">{{ product.name }}</a></span>
-                    <span class="s-4"><b>Артикул: </b>{{ product.vendor_code }}</span>
+                    <span class="s-1"><img src="{% if item.image %}{{ item.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt="{{ item.name }}"></span>
+                    <span class="s-2"><b>Бренд: </b>{{ item.vendor }}</span>
+                    <span class="s-3"><b>Название: </b><a href="{% url 'shop:product_detail' item.slug %}">{{ item.name }}</a></span>
+                    <span class="s-4"><b>Артикул: </b>{{ item.vendor_code }}</span>
                     <span class="s-5"><b>Наличие: </b>
-                        {% if product.available %}
+                        {% if item.available %}
                             <i style="color:green;" class="fas fa-check"></i>
                         {% else %}
                             <i style="color:red;" class="fas fa-times"></i>
                         {% endif %}
                     </span>
                     <span class="s-6"><b>Цена: </b>
-                        {% if product.action %}
-                            <em style="text-decoration: line-through">{{ product.price }}</em>
+                        {% if item.action %}
+                            <em style="text-decoration: line-through">{{ item.price }}</em>
                             <br>
-                            <em style="color:#fc6251;">{{ product.discount }}</em>
+                            <em style="color:#fc6251;">{{ item.discount }}</em>
                         {% else %}
-                            {{ product.price }}
+                            {{ item.price }}
                         {% endif %}
                     </span>
                     <span class="foot_card_quantity s-7">
-                        <form action="{% url "cart:cart_add" product.id %}" method="post">{% csrf_token %}
-                        {{cart_product_form.quantity}}
+                        <form action="{% url "cart:cart_add" item.id %}" method="post">{% csrf_token %}
+                        {{form.quantity}}
                         <button type="submit" class="plas"><i style="color:white" class="fa fa-shopping-cart"></i></button>
                         </form>
                     </span>
@@ -106,52 +103,26 @@
                     {% endfor %}
                 </div>
     </article>
-     <div>
-    </div>
-    <ul class="pagination">
-        {% if products.has_previous %}
-        <a href="?{% param_replace page=1 %}" title="1">First</a>
-          <a href="?{% param_replace page=products.previous_page_number %}">&laquo;</a></li>
-          <a href="?{%param_replace page=products.previous_page_number %}">{{ products.previous_page_number }}</a>
-        {% endif %}
+    {% if is_paginated %}
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+            <a href="?{% param_replace page=1 %}" title="1">First</a>
+            <a href="?{% param_replace page=page_obj.previous_page_number %}">&laquo;</a></li>
+            <a href="?{%param_replace page=page_obj.previous_page_number %}">{{ page_obj.previous_page_number }}</a>
+            {% endif %}
 
-        {% for i in paginator.page_range %}
-          {% if products.number == i %}
-            <a class="active" href="#">{{ i }}</a>
-          {% endif %}
-        {% endfor %}
-       
-        {% if products.has_next %}
-         <a href="?{%param_replace page=products.next_page_number %}">{{ products.next_page_number }}</a>
-          <a href="?{% param_replace page=products.next_page_number %}">&raquo;</a>
-          <a href="?{% param_replace page=paginator.num_pages %}" title="{{paginator.num_pages}}">Last</a>
-        {% endif %}
-  </ul>
+            {% for i in paginator.page_range %}
+            {% if page_obj.number == i %}
+                <a class="active" href="#">{{ i }}</a>
+            {% endif %}
+            {% endfor %}
+        
+            {% if page_obj.has_next %}
+            <a href="?{%param_replace page=page_obj.next_page_number %}">{{ page_obj.next_page_number }}</a>
+            <a href="?{% param_replace page=page_obj.next_page_number %}">&raquo;</a>
+            <a href="?{% param_replace page=paginator.num_pages %}" title="{{paginator.num_pages}}">Last</a>
+            {% endif %}
+        </ul>
+    {% endif %}
 </section>
 {% endblock %}
-
-
-
-{% comment %}
-    <div itemtype="http://schema.org/Product" itemscope>
-   <link itemprop="image" href="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt="{{ product.name }}"/>
-    <meta itemprop="mpn" content="{{ product.vendor_code }}"/>
-    <meta itemprop="name" content="{{product.name}}"/>
-    <div itemprop="offers" itemtype="http://schema.org/Offer" itemscope>
-        <link itemprop="url" href="{% url 'shop:product_detail' product.slug %}" /> 
-        {% comment %} "{% url 'shop:product_detail' product.slug %}"
-        <meta itemprop="availability" content="https://schema.org/InStock" />
-        <meta itemprop="priceCurrency" content="UAH" />
-        <meta itemprop="itemCondition" content="https://schema.org/UsedCondition" />
-        <meta itemprop="price" content="{{ product.price }}" />
-          {% comment %}
-              <meta itemprop="priceValidUntil" content="2020-11-05" />
-          
-        <meta itemprop="sku" content="{{ product.vendor_code }}" />
-    </div>
-    <div itemprop="brand" itemtype="http://schema.org/Thing" itemscope>
-      <meta itemprop="name" content="{{ product.vendor }}" />
-    </div>
-</div>
-{% endcomment %}
-

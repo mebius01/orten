@@ -10,20 +10,20 @@ from django.utils import timezone
 from django.utils.translation import gettext as _
 
 class Rates(models.Model):
-	created = models.DateTimeField(auto_now_add=True, help_text='дата создания')
-	usd = models.DecimalField(max_digits=4, decimal_places=2, blank=True, help_text='Курс USD')
-	eur = models.DecimalField(max_digits=4, decimal_places=2, blank=True, help_text='Курс EUR')
+	created	= models.DateTimeField(auto_now_add=True, help_text='дата создания')
+	usd		= models.DecimalField(max_digits=4, decimal_places=2, blank=True, help_text='Курс USD')
+	eur		= models.DecimalField(max_digits=4, decimal_places=2, blank=True, help_text='Курс EUR')
 
 	class Meta:
 		verbose_name = 'Курс валют'
 		verbose_name_plural = 'Курсы валют'
 
 class Category(MPTTModel):
-	name = models.CharField(max_length=200, db_index=True, unique=True)
-	slug = models.SlugField(max_length=200, db_index=True, unique=True)
-	image = models.ImageField(upload_to='category/', blank=True)
-	description = models.TextField(blank=True)
-	parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
+	name		= models.CharField(max_length=200, db_index=True, unique=True)
+	slug		= models.SlugField(max_length=200, db_index=True, unique=True)
+	image		= models.ImageField(upload_to='category/', blank=True)
+	description	= models.TextField(blank=True)
+	parent		= TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
 
 	# objects = models.Manager()
 
@@ -96,33 +96,33 @@ INTEREST_CHOICES = (
 	)
 
 class Product(models.Model):
-	category = models.ForeignKey(Category,related_name='product', on_delete=models.CASCADE, help_text='Каталог товара (расходные материалы, компьютеры и комплетующие и т д)') #коталог продукта связь m2m
-	name = models.CharField(max_length=400, db_index=True, help_text='Название товара') #имя продукта
-	slug = models.SlugField(max_length=400, help_text='')
-	provider = models.CharField(max_length=20, help_text='Поставщик')
-	# accessories = models.ManyToManyField("self", editable=False, blank=True)
-	vendor_code = models.CharField(max_length=200, unique=True, help_text='Артикул, парт номер') #артикул или парт-номер
-	vendor = models.CharField(max_length=200, blank=True, help_text='Производитель') # Производитель
-	type_product = models.CharField(max_length=200, blank=True, help_text='Тип товара')
-	image = models.ImageField(upload_to='product/', blank=True, help_text='') #картинка
+	category		= models.ForeignKey(Category,related_name='product', on_delete=models.CASCADE, help_text='Каталог товара (расходные материалы, компьютеры и комплетующие и т д)') #коталог продукта связь m2m
+	name			= models.CharField(max_length=400, db_index=True, help_text='Название товара') #имя продукта
+	slug			= models.SlugField(max_length=400, help_text='')
+	provider		= models.CharField(max_length=20, help_text='Поставщик')
+	# accessories	= models.ManyToManyField("self", editable=False, blank=True)
+	vendor_code		= models.CharField(max_length=200, unique=True, help_text='Артикул, парт номер') #артикул или парт-номер
+	vendor			= models.CharField(max_length=200, blank=True, help_text='Производитель') # Производитель
+	type_product	= models.CharField(max_length=200, blank=True, help_text='Тип товара')
+	image			= models.ImageField(upload_to='product/', blank=True, help_text='') #картинка
 
-	format_fild = models.CharField(max_length=50, blank=True, choices=FORMAT_CHOICES, help_text='A3,A4')
-	color_fild = models.CharField(max_length=50, blank=True, choices=COLOR_CHOICES, help_text='BW, Color')
-	specifications = RichTextField(blank=True, help_text='Характеристики товара')
-	description = models.TextField(blank=True, help_text='Описание товара') #описание продукта
-	tags = TaggableManager(through=None, blank=True, help_text = 'Список тегов, разделенных запятыми')
+	format_fild		= models.CharField(max_length=50, blank=True, choices=FORMAT_CHOICES, help_text='A3,A4')
+	color_fild		= models.CharField(max_length=50, blank=True, choices=COLOR_CHOICES, help_text='BW, Color')
+	specifications	= RichTextField(blank=True, help_text='Характеристики товара')
+	description		= models.TextField(blank=True, help_text='Описание товара') #описание продукта
+	tags			= TaggableManager(through=None, blank=True, help_text = 'Список тегов, разделенных запятыми')
 
-	price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, help_text='Цена входящая') #цена Закупки
-	stock = models.PositiveIntegerField(blank=True, help_text='Остатоки', default=1) # Остатки
-	available = models.BooleanField(default=True, help_text='Доступен ли к заказу') # булево значение, указывающее, доступен ли продукт или нет
+	price			= models.DecimalField(max_digits=10, decimal_places=2, blank=True, help_text='Цена входящая') #цена Закупки
+	stock			= models.PositiveIntegerField(blank=True, help_text='Остатоки', default=1) # Остатки
+	available		= models.BooleanField(default=True, help_text='Доступен ли к заказу') # булево значение, указывающее, доступен ли продукт или нет
 
-	start_action = models.DateField(null = True, blank=True, default=timezone.now,)
-	end_action = models.DateField(null = True, blank=True, default=timezone.now,)
-	action = models.BooleanField(default=False, help_text='Акции')
-	discount =  models.DecimalField(max_digits=10,default=Decimal("0.00"), decimal_places=2, blank=True,  help_text='Цена со скидкой') #Процент)
+	start_action	= models.DateField(null = True, blank=True, default=timezone.now,)
+	end_action		= models.DateField(null = True, blank=True, default=timezone.now,)
+	action			= models.BooleanField(default=False, help_text='Акции')
+	discount		=  models.DecimalField(max_digits=10,default=Decimal("0.00"), decimal_places=2, blank=True,  help_text='Цена со скидкой') #Процент)
 
-	created = models.DateTimeField(auto_now_add=True, help_text='дата создания') # дата создания
-	updated = models.DateTimeField(auto_now=True, help_text='дата обновления') #дата обновления
+	created			= models.DateTimeField(auto_now_add=True, help_text='дата создания') # дата создания
+	updated			= models.DateTimeField(auto_now=True, help_text='дата обновления') #дата обновления
 	
 
 
@@ -137,23 +137,23 @@ class Product(models.Model):
 		return ('shop/'+self.slug)
 
 class Services(models.Model):
-	category = models.ForeignKey(Category,related_name='services', on_delete=models.CASCADE) #коталог продукта связь
-	name = models.CharField(max_length=400, db_index=True) #имя продукта
-	slug = models.SlugField(max_length=400, db_index=True)
-	accessories = models.ManyToManyField(Product, editable=False, blank=True)
+	category		= models.ForeignKey(Category,related_name='services', on_delete=models.CASCADE) #коталог продукта связь
+	name			= models.CharField(max_length=400, db_index=True) #имя продукта
+	slug			= models.SlugField(max_length=400, db_index=True)
+	accessories		= models.ManyToManyField(Product, editable=False, blank=True)
 
-	type_service = models.CharField(max_length=200, blank=True, default="Заправка картриджа", help_text='Тип сервиса')
-	vendor_code = models.CharField(max_length=200, blank=True) #артикул или парт-номер
-	vendor = models.CharField(max_length=200, blank=True, help_text='Производитель') # Производитель
-	vendor_model = models.CharField(max_length=200, blank=True, help_text='Модель')
+	type_service	= models.CharField(max_length=200, blank=True, default="Заправка картриджа", help_text='Тип сервиса')
+	vendor_code		= models.CharField(max_length=200, blank=True) #артикул или парт-номер
+	vendor			= models.CharField(max_length=200, blank=True, help_text='Производитель') # Производитель
+	vendor_model	= models.CharField(max_length=200, blank=True, help_text='Модель')
 
-	image = models.ImageField(upload_to='service/', blank=True) #картинка
-	description = models.TextField(blank=True)
-	keywords= models.TextField(blank=True, help_text='Ключивые слова')
-	price = models.DecimalField(max_digits=10, decimal_places=2)
+	image			= models.ImageField(upload_to='service/', blank=True) #картинка
+	description		= models.TextField(blank=True)
+	keywords		= models.TextField(blank=True, help_text='Ключивые слова')
+	price			= models.DecimalField(max_digits=10, decimal_places=2)
 
-	created = models.DateTimeField(auto_now_add=True) # дата создания
-	updated = models.DateTimeField(auto_now=True) #дата обновления
+	created			= models.DateTimeField(auto_now_add=True) # дата создания
+	updated			= models.DateTimeField(auto_now=True) #дата обновления
 
 	class Meta:
 		ordering = ('name',)
@@ -183,16 +183,11 @@ QUANTITY_CHOICES = (
 	)
 
 class Polygraphy(models.Model):
-	# category = models.ForeignKey(Category,related_name='polygraphy', default=181, on_delete=models.CASCADE) #коталог продукта связь
-	# name = models.CharField(max_length=400, default='Визитки', db_index=True) #имя продукта
-	# price = models.DecimalField(max_digits=10, decimal_places=2, default='0.00', blank=True, help_text='Цена входящая')
-	# format_fild = models.CharField(max_length=50, default='A4', blank=True, choices=FORMAT_CHOICES, help_text='A3,A4')
-	# quantity_fild = models.CharField(max_length=50, blank=True, choices=QUANTITY_CHOICES, help_text='100,200,1000')
-	slug = models.SlugField(max_length=400, default='True', help_text='')
-	flatpage = models.OneToOneField(FlatPage, on_delete=models.CASCADE)
-	image = models.ImageField(upload_to='polygraphy/', blank=True) #картинка
-	description = models.TextField(blank=True)
-	keywords= models.TextField(blank=True, help_text='Ключивые слова')
+	slug		= models.SlugField(max_length=400, default='True', help_text='')
+	flatpage	= models.OneToOneField(FlatPage, on_delete=models.CASCADE)
+	image		= models.ImageField(upload_to='polygraphy/', blank=True) #картинка
+	description	= models.TextField(blank=True)
+	keywords	= models.TextField(blank=True, help_text='Ключивые слова')
 
 	class Meta:
 		verbose_name = 'Полиграфия'
@@ -200,34 +195,3 @@ class Polygraphy(models.Model):
 
 	def __str__(self):
 		return self.flatpage.title
-
-
-# # class ProductStock(models.Model):
-# # 	product = models.ForeignKey(Product, on_delete=models.CASCADE)
-# # 	slug = models.SlugField(max_length=400, db_index=True)
-# # 	description = models.TextField(blank=True) #описание акции
-# # 	stock_start = models.DateTimeField(auto_now=False, blank=True, auto_now_add=False,) # дата создания
-# # 	stock_end = models.DateTimeField(auto_now=False, blank=True, auto_now_add=False,) # дата окончания
-
-# 	# @property
-# 	# def discount(self):
-# 	# 	product_price_uah=float(self.product.price)
-# 	# 	discount_percent=float(self.discount_percent)
-# 	# 	return product_price_uah - (product_price_uah*discount_percent)
-
-# 	# class Meta:
-# 	# 	ordering = ('product',)
-# 	# 	verbose_name = 'Акция'
-# 	# 	verbose_name_plural = 'Акции'
-# #  from django import forms
-# #  class RelationForm(forms.ModelForm):
-# #  	parent = forms.ChoiceField(required=False, choices=Relation.objects.values_list('id', 'name'))
-# #  	particle = forms.ChoiceField(required=False, choices=Particle.objects.values_list('id', 'content'))
-# #  	media = forms.ChoiceField(required=False, choices=Media.objects.values_list('id', 'name'))
-# #  	class Meta:
-# #  		model = Relation
-
-# # from django.contrib import admin
-# # class RelationAdmin(admin.ModelAdmin):
-# # 	raw_id_fields = ('Media','Particle',)
-# # 	admin.site.register(Relation, RelationAdmin)
