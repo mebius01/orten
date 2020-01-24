@@ -10,11 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
-from environs import Env
 import os
-
-env = Env()
-env.read_env()
+from decouple import config, Csv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,28 +20,26 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 # SECURITY WARNING: keep the secret key used in production secret!
 # Security
-SECRET_KEY = env.str("SECRET_KEY")
-SECURE_HSTS_SECONDS = env.int('SECURE_HSTS_SECONDS', default=True)
+SECRET_KEY = config("SECRET_KEY")
+SECURE_HSTS_SECONDS = config('SECURE_HSTS_SECONDS', cast=int)
 # добавляет preload директиву в заголовок
-SECURE_HSTS_PRELOAD = env.bool('SECURE_HSTS_PRELOAD', default=True)
+SECURE_HSTS_PRELOAD = config('SECURE_HSTS_PRELOAD', default=True, cast=bool)
 # добавляет includeSubDomains директиву в заголовок
-SECURE_HSTS_INCLUDE_SUBDOMAINS = env.bool('SECURE_HSTS_INCLUDE_SUBDOMAINS', default=True)
-SECURE_CONTENT_TYPE_NOSNIFF = env.bool('SECURE_CONTENT_TYPE_NOSNIFF', default=True)
-SECURE_BROWSER_XSS_FILTER = env.bool('SECURE_BROWSER_XSS_FILTER', default=True)
+SECURE_HSTS_INCLUDE_SUBDOMAINS = config('SECURE_HSTS_INCLUDE_SUBDOMAINS', default=True, cast=bool)
+SECURE_CONTENT_TYPE_NOSNIFF = config('SECURE_CONTENT_TYPE_NOSNIFF', default=True, cast=bool)
+SECURE_BROWSER_XSS_FILTER = config('SECURE_BROWSER_XSS_FILTER', default=True, cast=bool)
 # все не-HTTPS запросы на HTTPS
-SECURE_SSL_REDIRECT = env.bool('SECURE_SSL_REDIRECT', default=True)
+SECURE_SSL_REDIRECT = config('SECURE_SSL_REDIRECT', default=True, cast=bool)
 # Указывает использовать ли безопасные куки для сессии
-SESSION_COOKIE_SECURE = env.bool('SESSION_COOKIE_SECURE', default=True)
+SESSION_COOKIE_SECURE = config('SESSION_COOKIE_SECURE', default=True, cast=bool)
 # Указывает, использовать ли безопасные куки для CSRF.
-CSRF_COOKIE_SECURE = env.bool('CSRF_COOKIE_SECURE', default=True)
+CSRF_COOKIE_SECURE = config('CSRF_COOKIE_SECURE', default=True, cast=bool)
 
-X_FRAME_OPTIONS=env.str('X_FRAME_OPTIONS', default=True)
+X_FRAME_OPTIONS=config('X_FRAME_OPTIONS')
 
-# Если URL удовлетворяет регулярному выражению из этого списка, запрос не будет перенаправлен По умолчанию: [] SECURE_SSL_REDIRECT=False
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool("DEBUG", default=True)
-ALLOWED_HOSTS = tuple(env.list('ALLOWED_HOSTS', default=[]))
-# ALLOWED_HOSTS = ['localhost','127.0.0.1']
+DEBUG = config("DEBUG", default=True, cast=bool)
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+
 SITE_ID = 1
 APPEND_SLASH = True
 
@@ -127,21 +122,15 @@ TEMPLATES = [
 # DATABASES = {"default": env.dj_db_url("DATABASE_URL")}
 DATABASES = {
     'default': {
-        'ENGINE': env.str("DB_ENGINE"),
-        'NAME': env.str("DB_NAME"),
-        'USER': env.str("DB_USER"),
-        'PASSWORD': env.str("DB_PASSWORD"),
-        'HOST': env.str("DB_HOST"),
-        'PORT': env.str("DB_PORT"),
+        'ENGINE': config("DB_ENGINE"),
+        'NAME': config("DB_NAME"),
+        'USER': config("DB_USER"),
+        'PASSWORD': config("DB_PASSWORD"),
+        'HOST': config("DB_HOST"),
+        'PORT': config("DB_PORT"),
     }
 }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': 'db.sqlite3',
-#     }
-# }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -179,36 +168,31 @@ LANGUAGES = (
     ('uk', gettext('Ukrainian')),
 )
 
-# LANGUAGES = (
-#     ('ru', 'Russian'),
-#     ('uk', 'Ukrainian'),
-# )
-
- # указываем, где лежат файлы перевода
+# указываем, где лежат файлы перевода
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
 )
 
 # Extra places for collectstatic to find static files.
-STATIC_ROOT = env.str('STATIC_ROOT')
+STATIC_ROOT = config('STATIC_ROOT')
 # STATIC_ROOT = '/home/orten/orten.in.ua/static/static'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-MEDIA_ROOT = env.str('MEDIA_ROOT')
+MEDIA_ROOT = config('MEDIA_ROOT')
 # MEDIA_ROOT = '/home/orten/orten.in.ua/static/media'
 MEDIA_URL = '/media/'
 
 # Email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = env.str("EMAIL_HOST")
-EMAIL_PORT = env.int("EMAIL_PORT")
-EMAIL_HOST_PASSWORD = env.str("EMAIL_HOST_PASSWORD")
-EMAIL_HOST_USER = env.str("EMAIL_HOST_USER")
-EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS")
+EMAIL_HOST = config("EMAIL_HOST")
+EMAIL_PORT = config("EMAIL_PORT", cast=int)
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
+EMAIL_HOST_USER = config("EMAIL_HOST_USER")
+EMAIL_USE_TLS = config("EMAIL_USE_TLS")
 ADMINS=[('Ivan', 'orten.in.ua@gmail.com'),]
-DEFAULT_FROM_EMAIL = env.str("DEFAULT_FROM_EMAIL")
+DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL")
 # Асинхронность
 DRAMATIQ_RESULT_BACKEND = {
     "BACKEND": "dramatiq.results.backends.redis.RedisBackend",

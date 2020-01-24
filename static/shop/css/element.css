@@ -454,15 +454,24 @@ button{
     text-decoration: none;
     text-align: center;
 }
-.plas{background-color:#5cb85c;}
-.minus{background-color:#d9534f;}
-.plas:hover{
-    opacity: 0.5;
+.plas{
     color: white;
+    background-color:#5cb85c;
+}
+.minus{
+    color: white;
+    background-color:#d9534f;
+}
+
+.plas:hover{
+    border: 1px solid;
+    background-color: white;
+    color: #5cb85c;
 }
 .minus:hover{
-    opacity: 0.5;
-    color: white;
+    border: 1px solid;
+    background-color: white;
+    color: #d9534f;
 }
 .foot_card_quantity{
     float: left;
@@ -648,8 +657,17 @@ table {text-align: center;}
     border: none;
     text-decoration: none;
     outline: none;
-    /* border-radius: 4px; */
-    /* margin: 2px; */
+    margin: auto;
+    font-size: 15px;
+}
+.filters a{
+    width: 48%;
+    height: 32px;
+    border: none;
+    text-decoration: none;
+    text-align: center;
+    margin: auto;
+    font-size: 15px;
 }
 .filters .apply {
     float:right;
