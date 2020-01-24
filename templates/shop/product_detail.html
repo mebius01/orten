@@ -49,56 +49,9 @@
                     {% endif %}
                 </div>
                 <br><hr>
-                <div class="c_p_d">
-                    <ul>
-                        <li class="more" href=""><i class="far fa-credit-card"></i></li>
-                        <li class="more" href=""><i class="fas fa-truck"></i></li>
-                        <li class="more" href=""><i class="fas fa-phone"></i></li>
-                    </ul>
-                </div>
-                <div class="overlay">
-                    <div class="close">x</div>
-                    <div class="flat_block">
-                        <div class="card_header">
-                            ОПЛАТА
-                        </div>
-                        {% include 'include/include_payment.html' %}
-                    </div>
-                </div>
-                <style>
-                .more {
-                    color: #0275d8;
-                    cursor: pointer;
-                }
-                .overlay {
-                    /* max-height: calc(100% - 100px); */
-                    position: fixed;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    display: none;
-                }
-                .flat_block {
-                    background-color: var(--global_background_color);
-                    border: 1px solid var(--global_geen);
-                }
-                </style>
-                <script>
-                    let more = document.querySelector('.more'),
-                        overlay = document.querySelector('.overlay'),
-                        close = document.querySelector('.close');
-                    more.addEventListener('click', function() {
-                        overlay.style.display = 'block';
-                    });
-                    close.addEventListener('click', function() {
-                        overlay.style.display = 'none';
-                    });
-                    document.addEventListener('keydown', function(event) {
-                        if (event.key === 'Escape' || event.keyCode === 27) {
-                            overlay.style.display = 'none';
-                        }
-                    });
-                </script>
+                {% comment %} Блок модальных окон payment delivery contact {% endcomment %}
+               {% include "include/modal_include.html" %}
+
                 {% if object.available %}
                 <div class="foot_card_quantity">
                     <form action="{% url "cart:cart_add" object.id %}" method="post">

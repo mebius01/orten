@@ -101,29 +101,29 @@ class ProductList(FormView, FilteredListView, SearchView):
 			context['search'] = search
 		return context
 
-def product_list(request):
-	search = request.GET.get('search', '')
-	category = request.GET.get('category', '')
-	if search:
-		product_list_all = watson.filter(Product, search, ranking=True)
-	elif category:
-		product_list_all = Product.objects.filter(category=category).order_by('-action', '-image')
-	else:
-		product_list_all = Product.objects.all().order_by('-action', '-image')
-	products_filter = ProductFilter(request.GET, queryset=product_list_all)
-	page = request.GET.get('page', 1)
-	paginator = Paginator(products_filter.qs, 24)
-	try:
-		products = paginator.page(page)
-	except PageNotAnInteger:
-		# Если страница не является целым числом, показать первую страницу.
-		products = paginator.page(1)
-	except EmptyPage:
-		# Если страница выходит за пределы допустимого диапазона (например, 9999), казать последнюю страницу результатов
-		products = paginator.page(paginator.num_pages)
-	cart_product_form = CartAddProductForm()
-	if len(category)>1:
-		instance = Category.objects.get(id=category)
-	else:
-		instance = Category.objects.all()
-	return render(request, 'shop/list_product.html', {'search': search, 'instance': instance, 'paginator':paginator, 'filterset': products_filter, 'products': products, 'cart_product_form': cart_product_form})
+# def product_list(request):
+# 	search = request.GET.get('search', '')
+# 	category = request.GET.get('category', '')
+# 	if search:
+# 		product_list_all = watson.filter(Product, search, ranking=True)
+# 	elif category:
+# 		product_list_all = Product.objects.filter(category=category).order_by('-action', '-image')
+# 	else:
+# 		product_list_all = Product.objects.all().order_by('-action', '-image')
+# 	products_filter = ProductFilter(request.GET, queryset=product_list_all)
+# 	page = request.GET.get('page', 1)
+# 	paginator = Paginator(products_filter.qs, 24)
+# 	try:
+# 		products = paginator.page(page)
+# 	except PageNotAnInteger:
+# 		# Если страница не является целым числом, показать первую страницу.
+# 		products = paginator.page(1)
+# 	except EmptyPage:
+# 		# Если страница выходит за пределы допустимого диапазона (например, 9999), казать последнюю страницу результатов
+# 		products = paginator.page(paginator.num_pages)
+# 	cart_product_form = CartAddProductForm()
+# 	if len(category)>1:
+# 		instance = Category.objects.get(id=category)
+# 	else:
+# 		instance = Category.objects.all()
+# 	return render(request, 'shop/list_product.html', {'search': search, 'instance': instance, 'paginator':paginator, 'filterset': products_filter, 'products': products, 'cart_product_form': cart_product_form})
