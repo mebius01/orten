@@ -56,26 +56,6 @@ header {
     grid-area: header;
     grid-template-areas: "one" "two" "navbar" "breadcrumbs";
     grid-template-rows: auto auto auto auto;
-    background-image: 
-        /* url('http://pve.su/example/sn2.png'), */
-        url('http://pve.su/example/sn3.png'),
-        url('http://pve.su/example/sn1.png');
-    animation: snow 15s linear infinite;
-}
-/* Удалить после НГ */
-@keyframes snow {
-    0% {
-      background-position: 0px 0px, 0px 0px, 0px 0px;
-    }
-    100% {
-      background-position: 500px 1000px, 400px 400px, 200px 200px;
-    }
-}
-.img_nev_year {
-    position: absolute;
-    z-index: 1;
-    top: 0px;
-    left: 0px;
 }
 .one_header {
     display: grid;
