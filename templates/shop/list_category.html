@@ -29,7 +29,8 @@
 			{% if products %}
 			<meta http-equiv="REFRESH" content="0;url={% url 'shop:product_list' %}?category={{instance.id}}">
 			{% elif services %}
-			{% include "include/include_service_list.html" %}
+			<meta http-equiv="REFRESH" content="0;url={% url 'shop:service_list' %}?category={{instance.id}}">
+			{% comment %} {% include "include/include_service_list.html" %} {% endcomment %}
 			{% else %}
 			{% for i in instance.children.all|dictsort:"id" %}
 			<div class="card"><a href="{% url 'shop:list_category' i.get_absolute_url %}">
