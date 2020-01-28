@@ -5,7 +5,7 @@
 {% load paginator_filter %}
 {% load i18n %}
 {% block head %}
-    <title>{{instance.name}} Список товаров</title>
+    <title>{{instance.name}} Список услуг</title>
     <meta name="title" content="{{instance.name}} - купить в Николаеве и Украине">
     <meta name="description" content="{{instance.name}} - Купить в Николаеве, интернет-магазин Ортен ★ Ортен более 20 лет рынке копировальной техники и сервисного обслуживания">
 {% endblock %}
@@ -22,11 +22,11 @@
         <div class="hd_content"><i class="fas fa-cogs"></i>Сервис</div>
             <div class="content">
                 <div class="service_list">
-                    <span class="s"><strong>Фото</strong></span>
+                    <!-- <span class="s"><strong>Фото</strong></span>
                     <span class="s"><strong>Бренд</strong></span>
                     <span class="s"><strong>Название</strong></span>
                     <span class="s"><strong>Артикул</strong></span>
-                    <span class="s"><strong>Цена ₴</strong></span>
+                    <span class="s"><strong>Цена ₴</strong></span> -->
                     <!-- динамический контент -->
                     {% for item in object_list %}
                     <span class="s-1"><img src="{% if item.image %}{{ item.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt="."></span>
