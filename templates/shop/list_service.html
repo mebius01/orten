@@ -17,48 +17,7 @@
 {% endblock %}
 {% block content %}
 <section>
-    <aside>
-        <div class="hd_content"><i class="fas fa-filter"></i>Фильтры</div>
-            <div class="accordion">
-                <div class="filters">
-                    <form action="" method="get">
-                    <div class="min_max">
-                        <input class="min" type="number" name="price__gt" step="any" id="id_price__gt" placeholder="Цена min - 0">
-                        <input class="max" type="number" name="price__lt" step="any" id="id_price__lt" placeholder="Цена max - 1000">
-                    </div>
-                <div>
-                    {{filterset.form.category}}
-                </div>
-                <div>
-                    {{filterset.form.vendor}}
-                </div>
-                <div>
-                    {{filterset.form.type_service}}
-                </div>
-                <div>
-                    {{filterset.form.type_product}}
-                </div>
-                <div>
-                    {{filterset.form.format_fild}}
-                </div>
-                <div>
-                    {{filterset.form.color_fild}}
-                </div>
-                {% if search %}
-                    <div>
-                        <label class="sr-only" for="search"></label>
-                        <input type="text" autocomplete="on" value="{{search}}" name="search" class="search" placeholder="Search.." id="search">
-                    </div>
-                {% endif %}
-                    <!--Кнопка -->
-                        <button type="submit" class="apply">Фильтр<i class="fas fa-filter"></i></button>
-                        <a class="reset" href="{% url 'shop:product_list' %}">Сброс<i class="fas fa-redo-alt pl-2"></i></a>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </aside>
+    {% include 'include/filters.html' %}
     <article>
         <div class="hd_content"><i class="fas fa-cogs"></i>Сервис</div>
             <div class="content">

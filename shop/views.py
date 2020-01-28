@@ -62,7 +62,7 @@ class SearchView(ListView):
 		except KeyError:
 			queryset =  qs.order_by('-action', '-image')
 		return queryset
-	
+
 class FilteredListView(ListView):
     filterset_class = None
     def get_queryset(self):
@@ -79,6 +79,7 @@ class FilteredListView(ListView):
 class ServicesListView(FilteredListView):
 	model = Services
 	template_name = "shop/list_service.html"
+	form_class = CartAddProductForm
 	filterset_class = ServiceFilter
 	paginate_by = 24
 
@@ -87,8 +88,8 @@ class ProductList(FormView, FilteredListView, SearchView):
 	model = Product
 	template_name = 'shop/list_product.html'
 	form_class = CartAddProductForm
-	paginate_by = 24
 	filterset_class = ProductFilter
+	paginate_by = 24
 
 	def get_queryset(self):
 		queryset = super().get_queryset()
