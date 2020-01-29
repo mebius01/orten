@@ -38,10 +38,9 @@ class ListCategory(ListView):
 		# с помощью get_full_path() получаем строку урла
 		# и получаем ['',url_1,url_2,url_3,'']
 		leaf = self.request.get_full_path().split('/')[-2]
-		instance = Category.objects.get(slug=leaf)
-		context['instance'] = instance
-		context['products'] = Product.objects.filter(category=instance.id)
-		context['services'] = Services.objects.filter(category=instance.id)
+		context['instance'] = Category.objects.get(slug=leaf)
+		# context['products'] = Product.objects.filter(category=instance.id)
+		# context['services'] = Services.objects.filter(category=instance.id)
 		return context
 
 class SearchView(ListView):
@@ -82,6 +81,13 @@ class ServicesListView(FilteredListView):
 	form_class = CartAddProductForm
 	filterset_class = ServiceFilter
 	paginate_by = 24
+
+	def get_context_data(self, **kwargs):
+		context = super().get_context_data(**kwargs)
+		category = self.request.GET.get('category')
+		if category:
+			context['instance'] = Category.objects.get(id=category)
+		return context
 
 
 class ProductList(FormView, FilteredListView, SearchView):

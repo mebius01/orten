@@ -11,9 +11,10 @@
 {% endblock %}
 {% block breadcrumbs %}
     {{ block.super }}<li><a href="{% url 'shop:service_list' %}">Сервис</a></li>
-      {% for i in instance.get_anc %}
+      {% for i in instance.get_ancestors %}
           <li><a href="{% url 'shop:list_category' i.get_absolute_url %}">{{ i.name }}</a></li>
       {% endfor %}
+      <li>{{instance.name}}</li>
 {% endblock %}
 {% block content %}
 <section>

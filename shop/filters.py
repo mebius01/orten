@@ -6,35 +6,35 @@ class ProductFilter(django_filters.FilterSet):
 	price__gt = django_filters.NumberFilter(field_name='price', lookup_expr='gt', label='min')
 	price__lt = django_filters.NumberFilter(field_name='price', lookup_expr='lt', label='max')
 
-	l=[]
-	for i in Product.objects.all():
-		l.append((getattr(i, "vendor"), getattr(i, "vendor")))
-		if ('', '') in l:
-			l.remove(('', ''))
-	l=set(l)
-	vendor=django_filters.ChoiceFilter(choices=sorted(l, key=lambda tup: tup[1]), empty_label='Производитель')
+	# l=[]
+	# for i in Product.objects.all():
+	# 	l.append((getattr(i, "vendor"), getattr(i, "vendor")))
+	# 	if ('', '') in l:
+	# 		l.remove(('', ''))
+	# l=set(l)
+	# vendor=django_filters.ChoiceFilter(choices=sorted(l, key=lambda tup: tup[1]), empty_label='Производитель')
 
-	l=[]
-	for i in Product.objects.all():
-		l.append((getattr(i, "type_product"), getattr(i, "type_product")))
-		if ('', '') in l:
-			l.remove(('', ''))
-	l=set(l)
-	type_product=django_filters.ChoiceFilter(choices=sorted(l, key=lambda tup: tup[1]), empty_label='Тип Товара')
+	# l=[]
+	# for i in Product.objects.all():
+	# 	l.append((getattr(i, "type_product"), getattr(i, "type_product")))
+	# 	if ('', '') in l:
+	# 		l.remove(('', ''))
+	# l=set(l)
+	# type_product=django_filters.ChoiceFilter(choices=sorted(l, key=lambda tup: tup[1]), empty_label='Тип Товара')
 
-	l=[]
-	for i in Category.objects.all():
-		l.append((i.id, i.name))
-		if ('', '') in l:
-			l.remove(('', ''))
-	l=set(l)
-	category=django_filters.ChoiceFilter(choices=sorted(l, key=lambda tup: tup[1]), empty_label='Категория')
-	color_fild = django_filters.ChoiceFilter(field_name='color_fild', choices=models.COLOR_CHOICES, empty_label='BW/Color')
-	format_fild = django_filters.ChoiceFilter(choices=models.FORMAT_CHOICES, empty_label='Формат A0-A10')
+	# l=[]
+	# for i in Category.objects.all():
+	# 	l.append((i.id, i.name))
+	# 	if ('', '') in l:
+	# 		l.remove(('', ''))
+	# l=set(l)
+	# category=django_filters.ChoiceFilter(choices=sorted(l, key=lambda tup: tup[1]), empty_label='Категория')
+	# color_fild = django_filters.ChoiceFilter(field_name='color_fild', choices=models.COLOR_CHOICES, empty_label='BW/Color')
+	# format_fild = django_filters.ChoiceFilter(choices=models.FORMAT_CHOICES, empty_label='Формат A0-A10')
 
-	class Meta:
-		model = Product
-		fields = ['price__gt', 'price__lt', 'category', 'vendor', 'type_product', 'format_fild', 'color_fild']
+	# class Meta:
+	# 	model = Product
+	# 	fields = ['price__gt', 'price__lt', 'category', 'vendor', 'type_product', 'format_fild', 'color_fild']
 
 
 class ServiceFilter(django_filters.FilterSet):
