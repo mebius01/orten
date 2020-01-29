@@ -1,4 +1,4 @@
-{% extends 'shop/list_category.html' %}
+{% extends 'base.html' %}
 {% load bootstrap4 %}
 {% load static %}
 {% load i18n %}
@@ -7,97 +7,104 @@
     <meta name="title" content="{{object.name}} - купить в Николаеве и Украине">
     <meta name="description" content="{{object.name}} - {{object.price}} грн. - купить в Николаеве и Украине ★ {{object.description}} ★ Более 20 лет рынке копировальной техники и сервисного обслуживания">
 {% endblock %}
+
 {% block breadcrumbs %}
     {{ block.super }}
+    <li><a href="{% url 'shop:product_list' %}">Товары</a></li>
     {% for i in object.category.get_anc %}
-        <li><a href="{% url 'shop:list_category' i.get_absolute_url %}">{{ i.name }}</a></li>
+        {% if i.product.get_queryset %}
+		<li><a href="{% url 'shop:product_list' %}?category={{i.id}}">{{ i.name }}</a></li>
+		{% else %}
+		<li><a href="{% url 'shop:list_category' i.slug %}">{{ i.name }}</a></li>
+		{% endif %}
     {% endfor %}
         <li>{{object.name}}</li>
-    {% endblock %}
-    {% block content %}
-		<div class="product_detail">
-            <script type="application/ld+json">
-				{% include "include/product_detail.json" %}
-			</script>
-            <div class="product_header">
-                {% if object.action %}
-                <h2 style="color:#fc6251">Акция до {{object.end_action|date:"d.m.y"}}</h2>
-                <br>
-                {% endif %}
-                <h1>{{ object.name }}</h1>
-            </div>
-            <div class="product_img">
-                <img style="max-width:100%;" src="{% if object.image %}{{ object.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{object.name}}" title="{{object.name}}">
-            </div>
-            <div class="feature">
-                <div class="specification">
-                    <p class="p_left">Артикул:</p>
-                    <p class="p_right">{{ object.vendor_code }}</p>
-                    <br><hr>
-                    <p class="p_left">Производитель:</p>
-                    <p class="p_right">{{object.vendor}}</p>
-                    <br><hr>
-                    <p class="p_left">Тип товара:</p>
-                    <p class="p_right">{{object.type_product}}</p>
-                    <br><hr>
-                    {% if object.action %}
-                        <h4><span style="float: left">Цена: </span> <span style="color:#fc6251; float:right">{{object.discount}}</span></h4>
-                    <br>
-                        <H5><span style="float:left" >Цена:</span> <span style="text-decoration: line-through; float:right">{{object.price}}</span></H5>
-                    {% else %}
-                        <h4><span style="float:left" >Цена:</span> <span style="color:#fc6251; float:right">{{object.price}}</span></h4>
-                    {% endif %}
-                </div>
-                <br><hr>
-                {% comment %} Блок модальных окон payment delivery contact {% endcomment %}
-               {% include "include/modal_include.html" %}
+{% endblock %}
 
-                {% if object.available %}
-                <div class="foot_card_quantity">
-                    <form action="{% url "cart:cart_add" object.id %}" method="post">
-                       {% csrf_token %}
-                      {{form.quantity}}
-                      {{form.update}}
-                      <button type="submit" class="apply">
-                       <i style="padding-right:5px;" class="fa fa-shopping-cart"></i>Купить</button>
-                    </form>
-                </div>
-                {% else %}
-                <div style="color:red; text-align: center">
-                    <span>
-                            В данный момент этот товар отсутствует,
-                            но Вы можете сделать заказ и
-                            получить детальную информацию о возможности поставки.
-                    </span>
-                </div>
+{% block content %}
+    <div class="product_detail">
+        <script type="application/ld+json">
+            {% include "include/product_detail.json" %}
+        </script>
+        <div class="product_header">
+            {% if object.action %}
+            <h2 style="color:#fc6251">Акция до {{object.end_action|date:"d.m.y"}}</h2>
+            <br>
+            {% endif %}
+            <h1>{{ object.name }}</h1>
+        </div>
+        <div class="product_img">
+            <img style="max-width:100%;" src="{% if object.image %}{{ object.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{object.name}}" title="{{object.name}}">
+        </div>
+        <div class="feature">
+            <div class="specification">
+                <p class="p_left">Артикул:</p>
+                <p class="p_right">{{ object.vendor_code }}</p>
                 <br><hr>
-                <div class="foot_card_quantity style="color:red;>
-                    <form action="{% url "cart:cart_add" object.id %}" method="post">
-                       {% csrf_token %}
-                      {{form.quantity}}
-                      {{form.update}}
-                      <button type="submit" class="apply">
-                       <i style="padding-right:5px;" class="fa fa-shopping-cart"></i>Купить</button>
-                    </form>
-                </div>
+                <p class="p_left">Производитель:</p>
+                <p class="p_right">{{object.vendor}}</p>
+                <br><hr>
+                <p class="p_left">Тип товара:</p>
+                <p class="p_right">{{object.type_product}}</p>
+                <br><hr>
+                {% if object.action %}
+                    <h4><span style="float: left">Цена: </span> <span style="color:#fc6251; float:right">{{object.discount}}</span></h4>
+                <br>
+                    <H5><span style="float:left" >Цена:</span> <span style="text-decoration: line-through; float:right">{{object.price}}</span></H5>
+                {% else %}
+                    <h4><span style="float:left" >Цена:</span> <span style="color:#fc6251; float:right">{{object.price}}</span></h4>
                 {% endif %}
             </div>
-            <div class="description">
-                <div class="descript">
-                    <strong>Краткое описание:</strong>
-                    <p>
-                    	{{ object.description|linebreaks }}
-                    </p>
-                    <br><hr>
-                </div>
-                <div class="spec">
-                    <strong>Характеристика:</strong>
-                    <p>
-                    	{{ object.specifications|safe }}
-                    </p>
-                </div>
+            <br><hr>
+            {% comment %} Блок модальных окон payment delivery contact {% endcomment %}
+            {% include "include/modal_include.html" %}
+
+            {% if object.available %}
+            <div class="foot_card_quantity">
+                <form action="{% url "cart:cart_add" object.id %}" method="post">
+                    {% csrf_token %}
+                    {{form.quantity}}
+                    {{form.update}}
+                    <button type="submit" class="apply">
+                    <i style="padding-right:5px;" class="fa fa-shopping-cart"></i>Купить</button>
+                </form>
             </div>
-            {% comment %} <div class="accessories">
+            {% else %}
+            <div style="color:red; text-align: center">
+                <span>
+                        В данный момент этот товар отсутствует,
+                        но Вы можете сделать заказ и
+                        получить детальную информацию о возможности поставки.
+                </span>
+            </div>
+            <br><hr>
+            <div class="foot_card_quantity style="color:red;>
+                <form action="{% url "cart:cart_add" object.id %}" method="post">
+                    {% csrf_token %}
+                    {{form.quantity}}
+                    {{form.update}}
+                    <button type="submit" class="apply">
+                    <i style="padding-right:5px;" class="fa fa-shopping-cart"></i>Купить</button>
+                </form>
+            </div>
+            {% endif %}
+        </div>
+        <div class="description">
+            <div class="descript">
+                <strong>Краткое описание:</strong>
+                <p>
+                    {{ object.description|linebreaks }}
+                </p>
+                <br><hr>
+            </div>
+            <div class="spec">
+                <strong>Характеристика:</strong>
+                <p>
+                    {{ object.specifications|safe }}
+                </p>
+            </div>
+        </div>
+        {% comment %} <div class="accessories">
                 {% for item in object.tags.similar_objects %}
                     <div class="card">
                         {% if item.action %}
@@ -177,5 +184,5 @@
                     <div class="s-hr"><hr></div>
                 {% endfor %}
             </div>
-        </div>
+    </div>
 	{% endblock %}

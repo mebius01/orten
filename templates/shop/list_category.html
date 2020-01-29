@@ -2,20 +2,23 @@
 {% load bootstrap4 %}
 {% load static %}
 {% load mptt_tags %}
-{% block breadcrumbs %}
 {% load flatpages %}
 {% load i18n %}
+
 {% block head %}
 	<title>{{instance.name}}</title>
 	<meta name="title" content="{{instance.name}} - Заказать в Николаеве">
 	<meta name="description" content="{{instance.name}} - Заказать в Николаеве ★ Интернет-магазин Ортен более 20 лет рынке копировальной техники и сервисного обслуживания">
 {% endblock %}
-	{{ block.super }}<li><a href="{% url 'shop:category' %}">Категории</a></li>
-	{% for i in instance.get_ancestors %}
-	<li><a href="{% url 'shop:list_category' i.get_absolute_url %}">{{ i.name }}</a></li>
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<li><a href="{% url 'shop:category' %}">Категории</a></li>
+	{% for i in instance.get_anc %}
+		<li>{{ i.name }}</li>
 	{% endfor %}
-	<li>{{instance.name}}</li>
 {% endblock %}
+
 {% block content %}
 	<section>
 		<aside>
@@ -47,6 +50,7 @@
 				</a>
 			</div>
 			{% endfor %}
+			{% comment %} {% endif %} {% endcomment %}
 		</div>
 	</article>
 	</section>

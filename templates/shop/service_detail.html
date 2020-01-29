@@ -1,57 +1,65 @@
-{% extends 'shop/list_category.html' %}
+{% extends 'base.html' %}
 {% load bootstrap4 %}
 {% load static %}
 {% load i18n %}
+
 {% block head %}
     <title>{{ object.name }}</title>
     <meta name="title" content="{{object.name}} - купить в Николаеве и Украине">
     <meta name="description" content="{{object.name}} - {{object.price}} грн. - купить в Николаеве и Украине ★ {{object.description}} ★ Более 20 лет рынке копировальной техники и сервисного обслуживания">
 {% endblock %}
+
 {% block breadcrumbs %}
     {{ block.super }}
+    <li><a href="{% url 'shop:service_list' %}">Сервис</a></li>
     {% for i in object.category.get_anc %}
-        <li><a href="{% url 'shop:list_category' i.get_absolute_url %}">{{ i.name }}</a></li>
+        {% if i.services.get_queryset %}
+		<li><a href="{% url 'shop:service_list' %}?category={{i.id}}">{{ i.name }}</a></li>
+		{% else %}
+		<li><a href="{% url 'shop:list_category' i.slug %}">{{ i.name }}</a></li>
+		{% endif %}
     {% endfor %}
         <li>{{object.name}}</li>
-    {% endblock %}
-    {% block content %}
+{% endblock %}
+
+{% block content %}
     <div class="product_detail">
-            <div class="product_header"><h1>{{ object.name }}</h1></div>
-            <div class="product_img">
-                <img style="max-width:100%;" src="{% if object.image %}{{ object.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{object.name}}" title="{{object.name}}">
+        <div class="product_header"><h1>{{ object.name }}</h1></div>
+        <div class="product_img">
+            <img style="max-width:100%;" src="{% if object.image %}{{ object.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{object.name}}" title="{{object.name}}">
+        </div>
+        <div class="feature">
+            <div class="specification">
+                <p class="p_left">Артикул:</p>
+                <p class="p_right">{{ object.vendor_code }}</p>
+                <br><hr>
+                <p class="p_left">Производитель:</p>
+                <p class="p_right">{{object.vendor}}</p>
+                <br><hr>
+                <p class="p_left">Модель:</p>
+                <p class="p_right">{{ object.vendor_model }}</p>
+                <br><hr>
+                <p class="p_left">Цена:</p>
+                <p class="p_right">{{object.price}}</p>
             </div>
-            <div class="feature">
-                <div class="specification">
-                    <p class="p_left">Артикул:</p>
-                    <p class="p_right">{{ object.vendor_code }}</p>
-                    <br><hr>
-                    <p class="p_left">Производитель:</p>
-                    <p class="p_right">{{object.vendor}}</p>
-                    <br><hr>
-                    <p class="p_left">Модель:</p>
-                    <p class="p_right">{{ object.vendor_model }}</p>
-                    <br><hr>
-                    <p class="p_left">Цена:</p>
-                    <p class="p_right">{{object.price}}</p>
-                </div>
+            <br><hr>
+        </div>
+        <div class="description">
+            <div class="descript">
+                <strong>Краткое описание:</strong>
+                <p>
+                    {{ object.description|linebreaks }}
+                </p>
                 <br><hr>
             </div>
-            <div class="description">
-                <div class="descript">
-                    <strong>Краткое описание:</strong>
-                    <p>
-                        {{ object.description|linebreaks }}
-                    </p>
-                    <br><hr>
-                </div>
-                <div class="spec">
-                    <strong>Характеристика:</strong>
-                    <p>
-                        {{ object.specifications|safe }}
-                    </p>
-                </div>
-            </div>
-            <div class="accessories">
+            <div class="spec">
+                <strong>Характеристика:</strong>
+                <p>
+                    {{ object.specifications|safe }}
+                </p>
             </div>
         </div>
-    {%endblock%}
+        <div class="accessories">
+        </div>
+    </div>
+{% endblock %}

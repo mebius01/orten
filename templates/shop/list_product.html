@@ -4,18 +4,25 @@
 {% load bootstrap4 %}
 {% load paginator_filter %}
 {% load i18n %}
+
 {% block head %}
     <title>{{instance.name}} Список товаров</title>
     <meta name="title" content="{{instance.name}} - купить в Николаеве и Украине">
     <meta name="description" content="{{instance.name}} - Купить в Николаеве, интернет-магазин Ортен ★ Ортен более 20 лет рынке копировальной техники и сервисного обслуживания">
 {% endblock %}
+
 {% block breadcrumbs %}
-    {{ block.super }}<li><a href="{% url 'shop:product_list' %}">Товары</a></li>
-      {% for i in instance.get_ancestors %}
-          <li><a href="{% url 'shop:list_category' i.get_absolute_url %}">{{ i.name }}</a></li>
+    {{ block.super }}
+    <li><a href="{% url 'shop:product_list' %}">Товары</a></li>
+      {% for i in instance.get_anc %}
+          {% if i.product.get_queryset %}
+		<li>{{ i.name }}</li>
+		{% else %}
+		<li><a href="{% url 'shop:list_category' i.slug %}">{{ i.name }}</a></li>
+		{% endif %}
       {% endfor %}
-      <li>{{ instance.name }}</li>
 {% endblock %}
+
 {% block content %}
 <section>
     {% include 'include/filters.html' %}
@@ -23,13 +30,13 @@
         <div class="hd_content"><i class="fab fa-product-hunt"></i>Товары</div>
             <div class="content">
                 <div class="product_list">
-                    <!-- <span class="s"><strong>Фото</strong></span>
+                    <span class="s"><strong>Фото</strong></span>
                     <span class="s"><strong>Бренд</strong></span>
                     <span class="s"><strong>Название</strong></span>
                     <span class="s"><strong>Артикул</strong></span>
                     <span class="s"><strong></strong></span>
                     <span class="s"><strong>Цена ₴</strong></span>
-                    <span class="s"><strong>В корзину</strong></span> -->
+                    <span class="s"><strong>В корзину</strong></span>
                     <!-- динамический контент -->
                     {% for item in object_list %}
                     <script type="application/ld+json">
