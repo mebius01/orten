@@ -35,12 +35,10 @@ class ListCategory(ListView):
 	template_name = 'shop/list_category.html'
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
-		# с помощью get_full_path() получаем строку урла
-		# и получаем ['',url_1,url_2,url_3,'']
+		"""с помощью get_full_path() получаем строку урла
+		 и создаем массив ['',url_1,url_2,url_3,'']"""
 		leaf = self.request.get_full_path().split('/')[-2]
 		context['instance'] = Category.objects.get(slug=leaf)
-		# context['products'] = Product.objects.filter(category=instance.id)
-		# context['services'] = Services.objects.filter(category=instance.id)
 		return context
 
 class SearchView(ListView):
