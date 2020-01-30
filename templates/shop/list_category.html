@@ -15,10 +15,10 @@
 	{{ block.super }}
 	<li><a href="{% url 'shop:category' %}">Категории</a></li>
 	{% for i in instance.get_ancestors %}
-	{% if i.product.get_queryset %}
-		<li>{{ i.name }}</li>
+		{% if i.product.get_queryset %}
+			<li>{{ i.name }}</li>
 		{% else %}
-		<li><a href="{% url 'shop:list_category' i.slug %}">{{ i.name }}</a></li>
+			<li><a href="{% url 'shop:list_category' i.slug %}">{{ i.name }}</a></li>
 		{% endif %}
 	{% endfor %}
 	<li>{{ instance.name }}</li>

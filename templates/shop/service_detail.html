@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load bootstrap4 %}
 {% load static %}
 {% load i18n %}
 
@@ -14,9 +13,9 @@
     <li><a href="{% url 'shop:service_list' %}">Сервис</a></li>
     {% for i in object.category.get_anc %}
         {% if i.services.get_queryset %}
-		<li><a href="{% url 'shop:service_list' %}?category={{i.id}}">{{ i.name }}</a></li>
+		    <li><a href="{% url 'shop:service_list' %}?category={{i.id}}">{{ i.name }}</a></li>
 		{% else %}
-		<li><a href="{% url 'shop:list_category' i.slug %}">{{ i.name }}</a></li>
+		    <li><a href="{% url 'shop:list_category' i.slug %}">{{ i.name }}</a></li>
 		{% endif %}
     {% endfor %}
         <li>{{object.name}}</li>

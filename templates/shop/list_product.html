@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 {% load mptt_tags %}
-{% load bootstrap4 %}
 {% load paginator_filter %}
 {% load i18n %}
 
@@ -14,13 +13,13 @@
 {% block breadcrumbs %}
     {{ block.super }}
     <li><a href="{% url 'shop:product_list' %}">Товары</a></li>
-      {% for i in instance.get_anc %}
+    {% for i in instance.get_anc %}
         {% if i.product.get_queryset %}
-		<li>{{ i.name }}</li>
+		    <li>{{ i.name }}</li>
 		{% else %}
-		<li><a href="{% url 'shop:list_category' i.slug %}">{{ i.name }}</a></li>
-		{% endif %}
-      {% endfor %}
+		    <li><a href="{% url 'shop:list_category' i.slug %}">{{ i.name }}</a></li>
+	    {% endif %}
+    {% endfor %}
 {% endblock %}
 
 {% block content %}
