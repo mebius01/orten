@@ -17,8 +17,17 @@
     <div class="link"><i class="fas fa-bars"></i>{{item.name}}</div>
     {% endif %}
     <ul class="submenu">
-    	{% for item_children in item.get_descendants %}
-        <li class="cool_link"><a href="{% url 'shop:list_category' item_children.get_absolute_url %}">{{item_children.name}}<span>{% firstof item_children.product.count item_children.services.count %}</span></a></li>
+    	{% for i in item.get_descendants %}
+        <li class="cool_link">
+            {% if i.product.get_queryset %}
+				<a href="{% url 'shop:product_list' %}?category={{i.id}}">
+				{% elif i.services.get_queryset %}
+				<a href="{% url 'shop:service_list' %}?category={{i.id}}">
+				{% else %}
+				<a href="{% url 'shop:list_category' i.slug %}">
+				{% endif %}
+            {{i.name}}
+            <span>{% firstof i.product.count i.services.count %}</span></a></li>
         {% endfor %}
     </ul>
     {% endfor %}
