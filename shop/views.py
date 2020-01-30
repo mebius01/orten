@@ -23,7 +23,7 @@ class Home(ListView, FormView):
 	model = Product
 	template_name = 'shop/home.html'
 	form_class = CartAddProductForm
-	queryset = Product.objects.all().order_by('-action', '-image')[:12]
+	queryset = Product.objects.all().order_by('-action', '-image',)[:12]
 
 class ProductDetail(DetailView, FormView):
 	model = Product
@@ -55,9 +55,9 @@ class SearchView(ListView):
 					SearchVector('specifications')
 				),
 			).filter(search=search_string)
-			queryset = qs.order_by('-action', '-image')
+			queryset = qs.order_by('-action', '-image',)
 		except KeyError:
-			queryset =  qs.order_by('-action', '-image')
+			queryset =  qs.order_by('-action', '-image',)
 		return queryset
 
 class FilteredListView(ListView):
@@ -99,9 +99,9 @@ class ProductList(FormView, FilteredListView, SearchView):
 		queryset = super().get_queryset()
 		category = self.request.GET.get('category')
 		if category:
-			queryset = queryset.filter(category=category).order_by('-action', '-image')
+			queryset = queryset.filter(category=category)
 		else:
-			queryset =  queryset.order_by('-action', '-image')
+			queryset =  queryset
 		return queryset
 
 	def get_context_data(self, **kwargs):
@@ -120,9 +120,9 @@ class ProductList(FormView, FilteredListView, SearchView):
 # 	if search:
 # 		product_list_all = watson.filter(Product, search, ranking=True)
 # 	elif category:
-# 		product_list_all = Product.objects.filter(category=category).order_by('-action', '-image')
+# 		product_list_all = Product.objects.filter(category=category).order_by('-action', '-image',)
 # 	else:
-# 		product_list_all = Product.objects.all().order_by('-action', '-image')
+# 		product_list_all = Product.objects.all().order_by('-action', '-image',)
 # 	products_filter = ProductFilter(request.GET, queryset=product_list_all)
 # 	page = request.GET.get('page', 1)
 # 	paginator = Paginator(products_filter.qs, 24)

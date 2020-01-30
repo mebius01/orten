@@ -2,9 +2,19 @@ import django_filters
 from django_filters.widgets import LinkWidget
 from shop.models import Category, Product, Services
 from shop import models
+
+CHOICES =[
+        ["name", "От А"],
+        ["-name", "От Я"],
+        ["price", "От Дешевых"],
+        ["-price", "От Дорогих"]
+]
+
 class ProductFilter(django_filters.FilterSet):
 	price__gt = django_filters.NumberFilter(field_name='price', lookup_expr='gt', label='min')
 	price__lt = django_filters.NumberFilter(field_name='price', lookup_expr='lt', label='max')
+
+	ordering = django_filters.OrderingFilter(choices=CHOICES, required=True, empty_label=None,)
 
 	l=[]
 	for i in Product.objects.all():
@@ -34,7 +44,7 @@ class ProductFilter(django_filters.FilterSet):
 
 	class Meta:
 		model = Product
-		fields = ['price__gt', 'price__lt', 'category', 'vendor', 'type_product', 'format_fild', 'color_fild']
+		fields = ['price__gt', 'price__lt', 'ordering', 'category', 'vendor', 'type_product', 'format_fild', 'color_fild']
 
 
 class ServiceFilter(django_filters.FilterSet):

@@ -3,10 +3,13 @@
         <div class="accordion">
             <div class="filters">
                 <form action="" method="get">
-                <div class="min_max">
-                    <input class="min" type="number" name="price__gt" step="any" id="id_price__gt" placeholder="Цена min - 0">
-                    <input class="max" type="number" name="price__lt" step="any" id="id_price__lt" placeholder="Цена max - 1000">
-                </div>
+            <div class="min_max">
+                <input class="min" type="number" name="price__gt" step="any" id="id_price__gt" placeholder="Цена min - 0">
+                <input class="max" type="number" name="price__lt" step="any" id="id_price__lt" placeholder="Цена max - 1000">
+            </div>
+            <div>
+                {{filterset.form.ordering}}
+            </div>
             <div>
                 {{filterset.form.category}}
             </div>
