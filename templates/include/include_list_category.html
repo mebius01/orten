@@ -1,7 +1,7 @@
 {% load flatpages %}
 {% load cache %}
 {% load i18n %}
-{% comment %} {% cache 900 sidebar %} {% endcomment %}
+{% cache 900 sidebar %}
 <div class="hd_content"><i class="fas fa-th-list"></i>Категории</div>
 <div class="accordion">
     <div class="link"><i class="fas fa-bars"></i>Полиграфия</div>
@@ -32,4 +32,4 @@
     </ul>
     {% endfor %}
 </div>
-{% comment %} {% endcache %} {% endcomment %}
+{% endcache %}
