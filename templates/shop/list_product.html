@@ -14,7 +14,7 @@
     {{ block.super }}
     <li><a href="{% url 'shop:product_list' %}">Товары</a></li>
     {% for i in instance.get_anc %}
-        {% if i.product.get_queryset %}
+        {% if i.product.count %}
 		    <li>{{ i.name }}</li>
 		{% else %}
 		    <li><a href="{% url 'shop:list_category' i.slug %}">{{ i.name }}</a></li>
@@ -27,6 +27,7 @@
     {% include 'include/filters.html' %}
     <article>
         <div class="hd_content"><i class="fab fa-product-hunt"></i>Товары</div>
+        <div>{{filterset.form.ordering}}</div>
             <div class="content">
                 <div class="product_list">
                     <span class="s"><strong>Фото</strong></span>

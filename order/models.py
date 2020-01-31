@@ -2,7 +2,7 @@ from django.db import models
 from shop.models import Product
 
 PAY_CHOICES = (
-	('Ниличные','Ниличные'),
+	('Наличные','Наличные'),
 	('Безналичный расчет', 'Безналичный расчет'),
 	)
 

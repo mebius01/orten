@@ -4,8 +4,8 @@ from shop.models import Category, Product, Services
 from shop import models
 
 CHOICES =[
-        ["name", "От А"],
-        ["-name", "От Я"],
+        # ["name", "От А"],
+        # ["-name", "От Я"],
         ["price", "От Дешевых"],
         ["-price", "От Дорогих"]
 ]
@@ -14,7 +14,7 @@ class ProductFilter(django_filters.FilterSet):
 	price__gt = django_filters.NumberFilter(field_name='price', lookup_expr='gt', label='min')
 	price__lt = django_filters.NumberFilter(field_name='price', lookup_expr='lt', label='max')
 
-	ordering = django_filters.OrderingFilter(choices=CHOICES, required=True, empty_label=None,)
+	ordering = django_filters.OrderingFilter(choices=CHOICES, required=True, empty_label=None, widget=LinkWidget)
 
 	l=[]
 	for i in Product.objects.all():

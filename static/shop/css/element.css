@@ -91,6 +91,15 @@ header {
     margin-left: 12px;
     margin-right: 12px;
 }
+ul#id_ordering li{
+    display: inline;
+}
+
+ul#id_ordering li a{
+    display: inline;
+    text-decoration: none;
+    color: red;
+}
 /* START COOL LINK */
 .cool_link a {
     position: relative;

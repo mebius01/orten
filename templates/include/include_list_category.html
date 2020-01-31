@@ -19,9 +19,9 @@
     <ul class="submenu">
     	{% for i in item.get_descendants %}
         <li class="cool_link">
-            {% if i.product.get_queryset %}
+            {% if i.product.count %}
 				<a href="{% url 'shop:product_list' %}?category={{i.id}}">
-				{% elif i.services.get_queryset %}
+				{% elif i.services.count %}
 				<a href="{% url 'shop:service_list' %}?category={{i.id}}">
 				{% else %}
 				<a href="{% url 'shop:list_category' i.slug %}">
