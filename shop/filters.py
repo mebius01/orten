@@ -3,18 +3,91 @@ from django_filters.widgets import LinkWidget
 from shop.models import Category, Product, Services
 from shop import models
 
-CHOICES =[
-        ["name", "От А"],
-        ["-name", "От Я"],
-        ["price", "От Дешевых"],
-        ["-price", "От Дорогих"]
+CHOICES_image =[
+        ["image", "▲"],
+        ["-image", "▼"]
 ]
+
+CHOICES_PRICE =[
+        ["price", "▲"],
+        ["-price", "▼"]
+]
+
+CHOICES_available =[
+        ["available", "▲"],
+        ["-available", "▼"]
+]
+
+CHOICES_NAME =[
+        ["name", "▲"],
+        ["-name", "▼"]
+]
+
+CHOICES_VEND =[
+        ["vendor", "▲"],
+        ["-vendor", "▼"]
+]
+
+CHOICES = [
+		["image", "По Картинке ▲"],
+        ["-image", "По Картинке ▼"],
+		["price", "По Цене ▲"],
+        ["-price", "По Цене ▼"],
+		["available", "По Наличию ▲"],
+        ["-available", "По Наличию ▼"],
+		["name", "По Имени ▲"],
+        ["-name", "По Имени ▼"],
+		["vendor", "По Бренду ▲"],
+        ["-vendor", "по Бренду ▼"]
+
+]
+
+# CHOICES_VEND =[
+#         ["vendor", "▲"],
+#         ["-vendor", "▼"]
+# ]
+
+# CHOICES_VEND =[
+#         ["vendor", "▲"],
+#         ["-vendor", "▼"]
+# ]
+
+# vendor_code available
+
 
 class ProductFilter(django_filters.FilterSet):
 	price__gt = django_filters.NumberFilter(field_name='price', lookup_expr='gt', label='min')
 	price__lt = django_filters.NumberFilter(field_name='price', lookup_expr='lt', label='max')
 
-	ordering = django_filters.OrderingFilter(choices=CHOICES, required=True, empty_label=None,)
+	ordering_image = django_filters.OrderingFilter(
+		choices=CHOICES_image,
+		empty_label=None,
+		widget=LinkWidget)
+
+	ordering_price = django_filters.OrderingFilter(
+		choices=CHOICES_PRICE,
+		empty_label=None,
+		widget=LinkWidget)
+
+	ordering_available = django_filters.OrderingFilter(
+		choices=CHOICES_available,
+		empty_label=None,
+		widget=LinkWidget)	
+	
+	ordering_name = django_filters.OrderingFilter(
+		choices=CHOICES_NAME,
+		empty_label=None,
+		widget=LinkWidget)
+	
+	ordering_vend = django_filters.OrderingFilter(
+		choices=CHOICES_VEND,
+		empty_label=None,
+		widget=LinkWidget)	
+
+	ordering = django_filters.OrderingFilter(
+		choices=CHOICES,
+		required=True,
+		empty_label="All")
 
 	l=[]
 	for i in Product.objects.all():
@@ -44,7 +117,7 @@ class ProductFilter(django_filters.FilterSet):
 
 	class Meta:
 		model = Product
-		fields = ['price__gt', 'price__lt', 'ordering', 'category', 'vendor', 'type_product', 'format_fild', 'color_fild']
+		fields = ['price__gt', 'price__lt', 'ordering_price', 'category', 'vendor', 'type_product', 'format_fild', 'color_fild']
 
 
 class ServiceFilter(django_filters.FilterSet):

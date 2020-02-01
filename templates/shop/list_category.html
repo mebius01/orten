@@ -15,7 +15,7 @@
 	{{ block.super }}
 	<li><a href="{% url 'shop:category' %}">Категории</a></li>
 	{% for i in instance.get_ancestors %}
-		{% if i.product.get_queryset %}
+		{% if i.product.count %}
 			<li>{{ i.name }}</li>
 		{% else %}
 			<li><a href="{% url 'shop:list_category' i.slug %}">{{ i.name }}</a></li>
@@ -39,9 +39,9 @@
 		<div class="content">
 			{% for i in instance.children.all|dictsort:"id" %}
 			<div class="card">
-				{% if i.product.get_queryset %}
+				{% if i.product.count %}
 				<a href="{% url 'shop:product_list' %}?category={{i.id}}">
-				{% elif i.services.get_queryset %}
+				{% elif i.services.count %}
 				<a href="{% url 'shop:service_list' %}?category={{i.id}}">
 				{% else %}
 				<a href="{% url 'shop:list_category' i.slug %}">
