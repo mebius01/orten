@@ -1,5 +1,5 @@
 import django_filters
-from django_filters.widgets import LinkWidget
+from django_filters.widgets import LinkWidget, BooleanWidget
 from shop.models import Category, Product, Services
 from shop import models
 
@@ -74,23 +74,24 @@ class ProductFilter(django_filters.FilterSet):
 	ordering_available = django_filters.OrderingFilter(
 		choices=CHOICES_available,
 		empty_label=None,
-		widget=LinkWidget)	
-	
+		widget=LinkWidget)
+
 	ordering_name = django_filters.OrderingFilter(
 		choices=CHOICES_NAME,
 		empty_label=None,
 		widget=LinkWidget)
-	
+
 	ordering_vend = django_filters.OrderingFilter(
 		choices=CHOICES_VEND,
 		empty_label=None,
-		widget=LinkWidget)	
+		widget=LinkWidget)
 
 	ordering = django_filters.OrderingFilter(
 		choices=CHOICES,
 		required=True,
 		empty_label="All")
 
+	available = django_filters.BooleanFilter(widget=BooleanWidget())
 
 	l=[]
 	for i in Product.objects.all():
