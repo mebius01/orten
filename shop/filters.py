@@ -30,16 +30,16 @@ CHOICES_VEND =[
 ]
 
 CHOICES = [
-		["image", "По Картинке ▲"],
-        ["-image", "По Картинке ▼"],
+		# ["image", "По Картинке ▲"],
+        # ["-image", "По Картинке ▼"],
 		["price", "По Цене ▲"],
         ["-price", "По Цене ▼"],
-		["available", "По Наличию ▲"],
-        ["-available", "По Наличию ▼"],
+		# ["available", "По Наличию ▲"],
+        # ["-available", "По Наличию ▼"],
 		["name", "По Имени ▲"],
         ["-name", "По Имени ▼"],
-		["vendor", "По Бренду ▲"],
-        ["-vendor", "по Бренду ▼"]
+		# ["vendor", "По Бренду ▲"],
+        # ["-vendor", "по Бренду ▼"]
 
 ]
 
@@ -57,14 +57,14 @@ CHOICES = [
 
 
 class ProductFilter(django_filters.FilterSet):
-	price__gt = django_filters.NumberFilter(field_name='price', lookup_expr='gt', label='min')
-	price__lt = django_filters.NumberFilter(field_name='price', lookup_expr='lt', label='max')
+	price__gt = django_filters.NumberFilter(field_name='price', lookup_expr='gt', label='Цена min - 0')
+	price__lt = django_filters.NumberFilter(field_name='price', lookup_expr='lt', label='Цена min - 0')
 
 
-	ordering_image = django_filters.OrderingFilter(
-		choices=CHOICES_image,
-		empty_label=None,
-		widget=LinkWidget)
+	# ordering_image = django_filters.OrderingFilter(
+	# 	choices=CHOICES_image,
+	# 	empty_label=None,
+	# 	widget=LinkWidget)
 
 	ordering_price = django_filters.OrderingFilter(
 		choices=CHOICES_PRICE,
@@ -88,12 +88,15 @@ class ProductFilter(django_filters.FilterSet):
 
 	ordering = django_filters.OrderingFilter(
 		choices=CHOICES,
-		required=True,
-		empty_label="All")
+		empty_label='Сортировка По')
 
-	available = django_filters.BooleanFilter(widget=BooleanWidget())
+	available =django_filters.BooleanFilter(widget=BooleanWidget())
+
 
 	l=[]
+	l_vendor=[]
+	l_type_product=[]
+
 	for i in Product.objects.all():
 		l.append((getattr(i, "vendor"), getattr(i, "vendor")))
 		if ('', '') in l:
@@ -121,13 +124,13 @@ class ProductFilter(django_filters.FilterSet):
 
 	class Meta:
 		model = Product
-		fields = ['price__gt', 'price__lt', 'ordering_price', 'category', 'vendor', 'type_product', 'format_fild', 'color_fild']
+		fields = ['price__gt', 'price__lt', 'category', 'vendor', 'type_product', 'format_fild', 'color_fild']
 
 
 class ServiceFilter(django_filters.FilterSet):
 
-	price__gt = django_filters.NumberFilter(field_name='price', lookup_expr='gt', label='min')
-	price__lt = django_filters.NumberFilter(field_name='price', lookup_expr='lt', label='max')
+	price__gt = django_filters.NumberFilter(field_name='price', lookup_expr='gt', label='Цена min - 0')
+	price__lt = django_filters.NumberFilter(field_name='price', lookup_expr='lt', label='Цена min - 0')
 
 	l=[]
 	for i in Services.objects.all():
@@ -145,13 +148,14 @@ class ServiceFilter(django_filters.FilterSet):
 	l=set(l)
 	vendor=django_filters.ChoiceFilter(choices=sorted(l, key=lambda tup: tup[1]), empty_label='Производитель')
 
-	l=[]
-	for i in Category.objects.all():
-		l.append((i.id, i.name))
-		if ('', '') in l:
-			l.remove(('', ''))
-	l=set(l)
-	category=django_filters.ChoiceFilter(choices=sorted(l, key=lambda tup: tup[1]), empty_label='Категория')
+	CHOICES_CATEGORY_SERVICE = [
+		['123','Авторизованный сервисный центр Ricoh'],
+		['124','Авторизованный сервисный центр Konica Minolta'],
+		['126','Ремонт Принтеров и МФУ'],
+		['146','Заправка и ремонт картриджей'],
+		['125','Ремонт компьютерной техники'],
+	]
+	category=django_filters.ChoiceFilter(choices=CHOICES_CATEGORY_SERVICE, empty_label='Категория')
 
 
 

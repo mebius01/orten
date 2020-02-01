@@ -646,16 +646,16 @@ table {text-align: center;}
     color: #428bca;
 }
 
-.filters .min, .filters .max{
+.min_max input{
     width: 43%;
     height: 32px;
     border: 1px solid #5cb85c;
     margin-bottom: 12px;
 }
-.filters .min{
+#id_price__gt{
     float: left;
 }
-.filters .max{
+#id_price__lt{
     float: right;
 }
 .filters select{

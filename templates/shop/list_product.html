@@ -27,15 +27,14 @@
     {% include 'include/filters.html' %}
     <article>
         <div class="hd_content"><i class="fab fa-product-hunt"></i>Товары</div>
-        <div>{{filterset.form.ordering}}</div>
             <div class="content">
                 <div class="product_list">
-                    <span class="s">Фото{{filterset.form.ordering_image}}</span>
-                    <span class="s">Бренд{{filterset.form.ordering_vend}}</span>
-                    <span class="s">Название{{filterset.form.ordering_name}}</span>
+                    <span class="s">Фото</span>
+                    <span class="s">Бренд</span>
+                    <span class="s">Название</span>
                     <span class="s">Артикул</span>
-                    <span class="s"><i style="color:green;" class="fas fa-check"></i>{{filterset.form.ordering_available}}</span>
-                    <span class="s">Цена ₴{{filterset.form.ordering_price}}</span>
+                    <span class="s"></span>
+                    <span class="s">Цена ₴</span>
                     <span class="s">В корзину</span>
                     <!-- динамический контент -->
                     {% for item in object_list %}
