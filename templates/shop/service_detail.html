@@ -12,7 +12,7 @@
     {{ block.super }}
     <li><a href="{% url 'shop:service_list' %}">Сервис</a></li>
     {% for i in object.category.get_anc %}
-        {% if i.services.get_queryset %}
+        {% if i.services.count %}
 		    <li><a href="{% url 'shop:service_list' %}?category={{i.id}}">{{ i.name }}</a></li>
 		{% else %}
 		    <li><a href="{% url 'shop:list_category' i.slug %}">{{ i.name }}</a></li>

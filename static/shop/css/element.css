@@ -31,6 +31,21 @@ img {
     max-width: 100%;
 }
 
+
+/* ul#id_ordering_price {
+    margin: 0;
+    padding: 4px;
+} */
+ul#id_ordering_price li,
+ul#id_ordering_vend li,
+ul#id_ordering_name li,
+ul#id_ordering_image li,
+ul#id_ordering_available li{
+    /* display: inline; */
+    margin: 0;
+    padding: 0;
+}
+
 body {
     min-height: 100%;
     display: grid;
@@ -808,3 +823,4 @@ table {text-align: center;}
 #myBtn:hover {
     background-color: rgba(29, 28, 28, 0.582);
 }
+
