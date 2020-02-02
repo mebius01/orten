@@ -29,21 +29,28 @@
         </div>
         <div class="feature">
             <div class="specification">
+            {% if object.vendor_code %}
                 <p class="p_left">Артикул:</p>
                 <p class="p_right">{{ object.vendor_code }}</p>
                 <br><hr>
+            {% endif %}
+            {% if object.vendor %}
                 <p class="p_left">Производитель:</p>
                 <p class="p_right">{{object.vendor}}</p>
                 <br><hr>
+            {% endif %}
+            {% if object.vendor_model %}
                 <p class="p_left">Модель:</p>
                 <p class="p_right">{{ object.vendor_model }}</p>
                 <br><hr>
+            {% endif %}
                 <p class="p_left">Цена:</p>
                 <p class="p_right">{{object.price}}</p>
             </div>
             <br><hr>
         </div>
         <div class="description">
+        {% if object.description %}
             <div class="descript">
                 <strong>Краткое описание:</strong>
                 <p>
@@ -51,12 +58,15 @@
                 </p>
                 <br><hr>
             </div>
+        {% endif %}
+        {% if object.specifications %}
             <div class="spec">
                 <strong>Характеристика:</strong>
                 <p>
                     {{ object.specifications|safe }}
                 </p>
             </div>
+        {% endif %}
         </div>
         <div class="accessories">
         </div>
