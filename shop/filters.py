@@ -3,53 +3,6 @@ from django_filters.widgets import LinkWidget, BooleanWidget
 from shop.models import Category, Product, Services
 from shop import models
 
-
-# CHOICES_image =[
-#         ["image", "▲"],
-#         ["-image", "▼"]
-# ]
-
-# CHOICES_PRICE =[
-#         ["price", "▲"],
-#         ["-price", "▼"]
-# ]
-
-# CHOICES_available =[
-#         ["available", "▲"],
-#         ["-available", "▼"]
-# ]
-
-# CHOICES_NAME =[
-#         ["name", "▲"],
-#         ["-name", "▼"]
-# ]
-
-# CHOICES_VEND =[
-#         ["vendor", "▲"],
-#         ["-vendor", "▼"]
-# ]
-	# ordering_image = django_filters.OrderingFilter(
-	# 	choices=CHOICES_image,
-	# 	empty_label=None,
-	# 	widget=LinkWidget)
-	# ordering_price = django_filters.OrderingFilter(
-	# 	choices=CHOICES_PRICE,
-	# 	empty_label=None,
-	# 	widget=LinkWidget)
-	# ordering_available = django_filters.OrderingFilter(
-	# 	choices=CHOICES_available,
-	# 	empty_label=None,
-	# 	widget=LinkWidget)
-	# ordering_name = django_filters.OrderingFilter(
-	# 	choices=CHOICES_NAME,
-	# 	empty_label=None,
-	# 	widget=LinkWidget)
-	# ordering_vend = django_filters.OrderingFilter(
-	# 	choices=CHOICES_VEND,
-	# 	empty_label=None,
-	# 	widget=LinkWidget)
-
-
 class ProductFilter(django_filters.FilterSet):
 	CHOICES = [
 			["name", "По Имени A-Z ▲"],
@@ -141,39 +94,47 @@ class ServiceFilter(django_filters.FilterSet):
 
 
 
+# CHOICES_image =[
+#         ["image", "▲"],
+#         ["-image", "▼"]
+# ]
 
+# CHOICES_PRICE =[
+#         ["price", "▲"],
+#         ["-price", "▼"]
+# ]
 
-	# category = django_filters.ModelMultipleChoiceFilter(queryset=Category.objects.all().get_descendants(), conjoined=True, label="Фильтр по категориям")
+# CHOICES_available =[
+#         ["available", "▲"],
+#         ["-available", "▼"]
+# ]
 
-	# vendor1=django_filters.AllValuesFilter(widget=django_filters.widgets.LinkWidget)
-	# price=django_filters.AllValuesFilter(widget=django_filters.widgets.RangeWidget)
-	 # = django_filters.ModelMultipleChoiceFilter(queryset=Group.objects.all(), widget=forms.CheckboxSelectMultiple)
-# class ProductFilter(django_filters.FilterSet):
-# 	# fields = django_filters.ModelChoiceFilter(field_name='vendor', lookup_expr='isnull', null_label='Uncategorized', queryset=Category.objects.all(),
-# 	# )
-# 	vendor = django_filters.ModelChoiceFilter(
-#         lookup_expr='isnull',
-#         to_field_name="vendor",
-#         queryset=Product.objects.values_list("vendor", flat=True),
-#     )
+# CHOICES_NAME =[
+#         ["name", "▲"],
+#         ["-name", "▼"]
+# ]
 
-	# l=[]
-	# for i in Product.objects.all():
-	# 	l.append((i.format_fild, i.format_fild))
-	# 	if ('', '') in l:
-	# 		l.remove(('', ''))
-	# format_fild = django_filters.ChoiceFilter(choices=set(l), empty_label='Формат A0-A10')
-	# format_fild = django_filters.ModelChoiceFilter(label="Фильтр по Формату")
-
-	# l=[]
-	# for i in Product.objects.all():
-	# 	l.append((i.color_fild, i.color_fild))
-	# 	if ('', '') in l:
-	# 		l.remove(('', ''))
-	# color_fild = django_filters.ChoiceFilter(choices=set(l), empty_label='BW/Color')
-
-	# l=[]
-	# for i in Product.objects.all():
-	# 	l.append((i.category_id, i.category))
-	# 	if ('', '') in l:
-	# 		l.remove(('', ''))
+# CHOICES_VEND =[
+#         ["vendor", "▲"],
+#         ["-vendor", "▼"]
+# ]
+	# ordering_image = django_filters.OrderingFilter(
+	# 	choices=CHOICES_image,
+	# 	empty_label=None,
+	# 	widget=LinkWidget)
+	# ordering_price = django_filters.OrderingFilter(
+	# 	choices=CHOICES_PRICE,
+	# 	empty_label=None,
+	# 	widget=LinkWidget)
+	# ordering_available = django_filters.OrderingFilter(
+	# 	choices=CHOICES_available,
+	# 	empty_label=None,
+	# 	widget=LinkWidget)
+	# ordering_name = django_filters.OrderingFilter(
+	# 	choices=CHOICES_NAME,
+	# 	empty_label=None,
+	# 	widget=LinkWidget)
+	# ordering_vend = django_filters.OrderingFilter(
+	# 	choices=CHOICES_VEND,
+	# 	empty_label=None,
+	# 	widget=LinkWidget)
