@@ -32,7 +32,7 @@ class ProductFilter(django_filters.FilterSet):
 	for i in Category.objects.all():
 		if i.product.count():
 			l_category.append((i.id, i.name))
-			if ('', '') in l:
+			if ('', '') in l_category:
 				l_category.remove(('', ''))
 
 	l_type_product=set(l_type_product)
@@ -66,15 +66,22 @@ class ProductFilter(django_filters.FilterSet):
 class ServiceFilter(django_filters.FilterSet):
 	l_type_service=[]
 	l_vendor=[]
+	l_category=[]
+
 	for i in Services.objects.all():
 		l_type_service.append((getattr(i, "type_service"), getattr(i, "type_service")))
 		l_vendor.append((getattr(i, "vendor"), getattr(i, "vendor")))
-
 		if ('', '') in l_type_service:
 			l_type_service.remove(('', ''))
 		if ('', '') in l_vendor:
 			l_vendor.remove(('', ''))
 
+	for i in Category.objects.all():
+			if i.services.count():
+				l_category.append((i.id, i.name))
+				if ('', '') in l_category:
+					l_category.remove(('', ''))
+	l_category=set(l_category)
 	l_type_service=set(l_type_service)
 	l_vendor=set(l_vendor)
 
@@ -91,7 +98,7 @@ class ServiceFilter(django_filters.FilterSet):
 	price__lt = django_filters.NumberFilter(field_name='price', lookup_expr='lt', label='Цена min - 0')
 	type_service=django_filters.ChoiceFilter(choices=sorted(l_type_service, key=lambda tup: tup[1]), empty_label='Тип Сервиса')
 	vendor=django_filters.ChoiceFilter(choices=sorted(l_vendor, key=lambda tup: tup[1]), empty_label='Производитель')
-	category=django_filters.ChoiceFilter(choices=CHOICES_CATEGORY_SERVICE, empty_label='Категория')
+	category=django_filters.ChoiceFilter(choices=sorted(l_category, key=lambda tup: tup[1]), empty_label='Категория')
 
 
 
