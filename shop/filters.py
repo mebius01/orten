@@ -73,7 +73,7 @@ class ServiceFilter(django_filters.FilterSet):
 		if ('', '') in l_type_service:
 			l_type_service.remove(('', ''))
 		if ('', '') in l_vendor:
-			l.remove(('', ''))
+			l_vendor.remove(('', ''))
 
 	l_type_service=set(l_type_service)
 	l_vendor=set(l_vendor)
