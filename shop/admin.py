@@ -38,7 +38,7 @@ class ServicesResource(resources.ModelResource):
 class ServicesAdmin(ImportExportModelAdmin):
 	search_fields = ['name','vendor_code','vendor_model']
 	list_display = ['vendor','name','vendor_code','price','updated','created']
-	list_filter = ['name', 'price','vendor']
+	list_filter = ['vendor', 'type_service', 'price', 'name']
 	prepopulated_fields = {'slug': ('name', 'vendor_code')}
 	resource_class = ServicesResource
 
