@@ -22,3 +22,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+bootstrap/
+script/json/
+script/work_price/
+script/xlsx/
