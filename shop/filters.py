@@ -84,6 +84,7 @@ class ServiceFilter(django_filters.FilterSet):
 		['126','Ремонт Принтеров и МФУ'],
 		['146','Заправка и ремонт картриджей'],
 		['125','Ремонт компьютерной техники'],
+		['180','Cети'],
 	]
 
 	price__gt = django_filters.NumberFilter(field_name='price', lookup_expr='gt', label='Цена min - 0')
