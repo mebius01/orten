@@ -43,7 +43,12 @@
                     </script>
                     <span class="s-1"><img src="{% if item.image %}{{ item.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt="{{ item.name }}"></span>
                     <span class="s-2"><b>Бренд: </b>{{ item.vendor }}</span>
-                    <span class="s-3"><b>Название: </b><a href="{% url 'shop:product_detail' item.slug %}">{{ item.name }}</a></span>
+                    <span class="s-3"><b>Название: </b>
+                        <a href="{% url 'shop:product_detail' item.slug %}"
+                        {% if item.description %}
+                        title="{{item.description}}"
+                        {% endif %}
+                        >{{ item.name }}</a></span>
                     <span class="s-4"><b>Артикул: </b>{{ item.vendor_code }}</span>
                     <span class="s-5"><b>Наличие: </b>
                         {% if item.available %}
