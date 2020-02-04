@@ -56,7 +56,11 @@
                         {% if item.action %}
                             <em style="text-decoration: line-through">{{ item.price }}</em>
                             <br>
-                            <em style="color:#fc6251;">{{ item.discount }}</em>
+                            <em style="color:#fc6251;
+                                cursor: pointer" 
+                                title='Акция дейсвует до {{item.end_action|date:"d.m.y"}}'>
+                                {{ item.discount }}
+                            </em>
                         {% else %}
                             {{ item.price }}
                         {% endif %}
