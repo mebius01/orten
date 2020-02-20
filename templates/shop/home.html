@@ -21,7 +21,7 @@
 				{% include "include/home.json" %}
 			</script>
 				<div class="card">
-					{% if item.action %}
+					{% if item.action and item.end_action|date:"d.m.y" > date_now|date:"d.m.y" %}
 						<div class="card-action">Акция до {{item.end_action|date:"d.m.y"}}</div>
 					{% endif %}
 					<a href="{% url 'shop:product_detail' item.slug %}">
@@ -44,7 +44,7 @@
 							</div>
 							<br>
 							<div class="price">
-								{% if item.action %}
+								{% if item.action and item.end_action|date:"d.m.y" > date_now|date:"d.m.y" %}
 									<h6><span style="float: left">Цена: </span> <span style="text-decoration: line-through; float:right">{{item.price}}</span></h6>
 									<br>
 									<span style="float:left" >Цена:</span> <span style="color:#fc6251; float:right"><h4>{{item.discount}}</h4></span>

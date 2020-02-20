@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block head %}
+    <title>{{ object.name }}</title>
+    <meta name="title" content="{{object.name}} - купить в Николаеве и Украине">
+    <meta name="description" content="{{object.name}} - {{object.price}} грн. - купить в Николаеве и Украине ★ {{object.description}} ★ Более 20 лет рынке копировальной техники и сервисного обслуживания">
+{% endblock %}
+
+{% block breadcrumbs %}
+    {{ block.super }}
+    <li><a href="{% url 'shop:product_list' %}">Товары</a></li>
+    {% for i in object.category.get_anc %}
+        {% if i.product.count %}
+		    <li><a href="{% url 'shop:product_list' %}?category={{i.id}}">{{ i.name }}</a></li>
+		{% else %}
+		    <li><a href="{% url 'shop:list_category' i.slug %}">{{ i.name }}</a></li>
+		{% endif %}
+    {% endfor %}
+        <li>{{object.name}}</li>
+{% endblock %}
+
+{% block content %}
+123
+{% endblock %}    
+        {% comment %} <div class="accessories">
+                {% for item in object.tags.similar_objects %}
+                    <div class="card">
+ 

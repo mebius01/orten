@@ -11,6 +11,7 @@ from django.core.cache import cache
 from django.views.generic import TemplateView, ListView, DetailView, FormView
 from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 from django_filters.views import FilterView
+from datetime import datetime
 
 def handler404(request, exception):
 	return render(request, '404.html', status=404)
@@ -24,11 +25,20 @@ class Home(ListView, FormView):
 	template_name = 'shop/home.html'
 	form_class = CartAddProductForm
 	queryset = Product.objects.all().order_by('-action', '-image',)[:12]
+	def get_context_data(self, **kwargs):
+		context = super().get_context_data(**kwargs)
+		context["date_now"] = datetime.now()
+		return context
+	
 
 class ProductDetail(DetailView, FormView):
 	model = Product
 	template_name = 'shop/product_detail.html'
 	form_class = CartAddProductForm
+	def get_context_data(self, **kwargs):
+		context = super().get_context_data(**kwargs)
+		context["date_now"] = datetime.now()
+		return context
 
 class ListCategory(ListView):
 	model = Product
@@ -112,6 +122,7 @@ class ProductList(FormView, FilteredListView, SearchView):
 			context['instance'] = Category.objects.get(id=category)
 		elif search:
 			context['search'] = search
+		context["date_now"] = datetime.now()
 		return context
 
 # def product_list(request):
