@@ -394,7 +394,7 @@ footer hr {
 input[type=text], input[type=number]{
     padding-left: 12px;
 }
-select[name=quantity]{
+input[name=quantity]{
     height: 31px;
     width: 41px;
     text-decoration: none;
@@ -831,3 +831,25 @@ table {text-align: center;}
     background-color: rgba(29, 28, 28, 0.582);
 }
 
+
+.more, .more_2, .more_3 {
+    color: #0275d8;
+    cursor: pointer;
+}
+.overlay, .overlay_2, .overlay_3 {
+    /* max-height: calc(100% - 100px); */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+.flat_block {
+    background-color: var(--global_background_color);
+    border: 1px solid var(--global_geen);
+}
+@media (max-width: 900px){
+    .c_p_d{
+            display: none;
+        }
+}
