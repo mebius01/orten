@@ -26,7 +26,9 @@
 <section>
     {% include 'include/filters.html' %}
     <article>
-        <div class="hd_content"><i class="fab fa-product-hunt"></i>Товары</div>
+        <div class="hd_content">
+            <i class="fab fa-product-hunt"></i>Товары
+        </div>
             <div class="content">
                 <div class="product_list">
                     <span class="s">Фото</span>
@@ -76,12 +78,15 @@
                         <button type="submit" class="plas"><i class="fa fa-shopping-cart"></i></button>
                         </form>
                     </span>
-                    <div class="s-hr"><hr></div>
+                    <div class="s-hr">
+                        <hr>
+                    </div>
                     {% endfor %}
                 </div>
+            </div>
     </article>
     {% if is_paginated %}
-        <ul class="pagination">
+        <div class="pagination">
             {% if page_obj.has_previous %}
             <a href="?{% param_replace page=1 %}" title="1">First</a>
             <a href="?{% param_replace page=page_obj.previous_page_number %}">&laquo;</a></li>
@@ -99,7 +104,7 @@
             <a href="?{% param_replace page=page_obj.next_page_number %}">&raquo;</a>
             <a href="?{% param_replace page=paginator.num_pages %}" title="{{paginator.num_pages}}">Last</a>
             {% endif %}
-        </ul>
+        </div>
     {% endif %}
 </section>
 {% endblock %}

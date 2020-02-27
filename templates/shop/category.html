@@ -3,38 +3,44 @@
 {% load static %}
 {% load mptt_tags %}
 {% load i18n %}
-
 {% block head %}
     <title>Ортен - Все категории</title>
     <meta name="title" content="Ортен - розничный и оптовый интернет-магазин печатной и компьютерной техники в Украине">
     <meta name="description" content="Ортен - розничный и оптовый интернет-магазин. Копировальная техника и расходные материалы ★ Компьютеры и комплектующие ★ Полиграфическое оборудование и расходные материалы ★ Оперативная полиграфия ★ Диагностика и ремонт копировальной техники и компьютеров ★  Ортен более 20 лет рынке копировальной техники и сервисного обслуживания">
 {% endblock %}
-
 {% block breadcrumbs %}
     {{ block.super }}
-    <li>Категории</a>
+    <li>Категории</li>
 {% endblock %}
-
 {% block content %}
 <section>
-        <aside>
+    <aside>
         {% include "include/include_list_category.html" %}
     </aside>
     <article>
-        <div class="hd_content"><i class="fas fa-th-large"></i>Список Категорий</div>
+        <div class="hd_content">
+            <i class="fas fa-th-large"></i>Список Категорий
+        </div>
         <div class="content">
             {% for item in category_all %}
             {% if item.is_root_node %}
-            <div class="card"><a href="{% url 'shop:list_category' item.get_absolute_url %}">
-                <div class="image">
-                    <img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{item.name}}" width="100%" title="{{item.name}}" alt="{{item.name}}">
-                </div>
-                <div class="foot_card" style="text-align:center">
-                    {{item.name}}
-                </div>
-            </div></a>
+            <div class="card">
+                <a href="{% url 'shop:list_category' item.get_absolute_url %}">
+                    <div class="image">
+                        <img class="card-img-top"
+                        src="{% if item.image %}{{ item.image.url }}
+                        {% else %}{% static "img/no_image.png" %}
+                        {% endif %}" alt="{{item.name}}"
+                        title="{{item.name}}">
+                    </div>
+                    <div class="foot_card" style="text-align:center">
+                        {{item.name}}
+                    </div>
+                </a>
+            </div>
             {% endif %}
             {% endfor %}
+        </div>
     </article>
 </section>
 {% endblock %}

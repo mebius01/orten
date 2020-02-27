@@ -1,30 +1,30 @@
-<!DOCTYPE html>
 {% load staticfiles %}
 {% load mptt_tags %}
-{% load bootstrap4 %}
 {% load paginator_filter %}
 {% load cache %}
 {% load i18n %}
+<!DOCTYPE html>
 <html lang="ru">
     <head>
-    <!-- Google Tag Manager -->
-      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-56KXN4');</script>
-      <!-- End Google Tag Manager -->
-      {% block head %}
-        {{ head }}
-      {% endblock %}
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta charset="utf-8">
-         <link rel="stylesheet" href="{% static 'shop/css/flags.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'shop/css/flags.css' %}" type="text/css">
         {% comment %} <link rel="stylesheet" href="{% static 'shop/css/base.css' %}" type="text/css"> {% endcomment %}
         <link rel="stylesheet" href="{% static 'shop/css/element.css' %}" type="text/css">
         <link rel="stylesheet" href="{% static 'shop/css/media.css' %}" type="text/css">
         <link rel="shortcut icon" type="image/png" href="{% static "img/favicon.png" %}">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        {% block head %}
+            {{ head }}
+        {% endblock %}
+        <!-- Google Tag Manager -->
+        <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-56KXN4');
+        </script>
     </head>
 <body>
     <header>
@@ -89,7 +89,11 @@
             }
             </script>
             <div class="hd_1" style="justify-self: start;">
-                <a href="{% url 'shop:home' %}"><img src="{% static "shop/img/logo.png" %}" alt="Ортен - розничный и оптовый интернет-магазин печатной и компьютерной техники в Николаеве" title="Копировальная техника и расходные материалы ★ Компьютеры и комплектующие ★ Полиграфическое оборудование и расходные материалы ★ Оперативная полиграфия ★ Диагностика и ремонт копировальной техники и компьютеров" width="200" height="80" hspace="16"></a>
+                <a href="{% url 'shop:home' %}">
+                <img src="{% static "shop/img/logo.png" %}" 
+                alt="Ортен - розничный и оптовый интернет-магазин печатной и компьютерной техники в Николаеве" 
+                title="Копировальная техника и расходные материалы ★ Компьютеры и комплектующие ★ Полиграфическое оборудование и расходные материалы ★ Оперативная полиграфия ★ Диагностика и ремонт копировальной техники и компьютеров">
+                </a>
             </div>
             <div class="hd_2">
                 <i class="fas fa-door-open"></i>Мы открыты
@@ -101,13 +105,15 @@
                 <i class="fas fa-clock"></i>Сб: 9:00 - 14:00
             </div>
             <div class="hd_3">
-                <a class="cool-link text-muted" href="https://www.google.com/maps/place/%D0%9E%D1%80%D1%82%D1%8D%D0%BD,+%D0%9E%D0%9E%D0%9E/@46.952503,32.040273,15z/data=!4m2!3m1!1s0x0:0x4784e49173525ad2?ved=2ahUKEwiLnpXuiPLfAhXNqIsKHWxSBAYQ_BIwCnoECAUQCA" target="_blank"><i class="fa fa-home"></i><span itemprop="addressLocality">г. Николаев</span> <span itemprop="streetAddress">пр. Мира, 5</span></a>
+                <a class="cool-link text-muted" 
+                href="https://www.google.com/maps/place/%D0%9E%D1%80%D1%82%D1%8D%D0%BD,+%D0%9E%D0%9E%D0%9E/@46.952503,32.040273,15z/data=!4m2!3m1!1s0x0:0x4784e49173525ad2?ved=2ahUKEwiLnpXuiPLfAhXNqIsKHWxSBAYQ_BIwCnoECAUQCA" target="_blank">
+                <i class="fa fa-home"></i> г. Николаев пр. Мира, 5</a>
                 <br>
                 <a class="cool-link text-muted" href="mailto:orten_office@ukr.net"><i class="fas fa-envelope"></i>orten_office@ukr.net</a>
                 <br>
-                <i class="fas fa-phone text-muted"></i><span itemprop="telephone">(0512) 56-65-39</span>
+                <i class="fas fa-phone text-muted"></i> (0512) 56-65-39
                 <br>
-                <i class="fas fa-mobile text-muted mr-4 pl-3"></i><span itemprop="telephone">(050) 318-40-64</span>
+                <i class="fas fa-mobile text-muted"></i> (050) 318-40-64
             </div>
         </div>
         <div class="two_header">
@@ -235,13 +241,14 @@
         <div class="hd_7">
             Контакты
             <hr>
-            <a class="cool-link text-muted" href="https://www.google.com/maps/place/%D0%9E%D1%80%D1%82%D1%8D%D0%BD,+%D0%9E%D0%9E%D0%9E/@46.952503,32.040273,15z/data=!4m2!3m1!1s0x0:0x4784e49173525ad2?ved=2ahUKEwiLnpXuiPLfAhXNqIsKHWxSBAYQ_BIwCnoECAUQCA" target="_blank"><i class="fa fa-home"></i><span itemprop="addressLocality">г. Николаев</span> <span itemprop="streetAddress">пр. Мира, 5</span></a>
+            <a class="cool-link text-muted" href="https://www.google.com/maps/place/%D0%9E%D1%80%D1%82%D1%8D%D0%BD,+%D0%9E%D0%9E%D0%9E/@46.952503,32.040273,15z/data=!4m2!3m1!1s0x0:0x4784e49173525ad2?ved=2ahUKEwiLnpXuiPLfAhXNqIsKHWxSBAYQ_BIwCnoECAUQCA" target="_blank">
+            <i class="fa fa-home"></i> г. Николаев пр. Мира, 5</a>
             <br>
-            <a class="cool-link text-muted" href="mailto:orten_office@ukr.net"><i class="fas fa-envelope"></i>orten_office@ukr.net</a>
+            <a class="cool-link text-muted" href="mailto:orten_office@ukr.net"><i class="fas fa-envelope"></i> orten_office@ukr.net</a>
             <br>
-            <i class="fas fa-phone text-muted"></i><span itemprop="telephone">(0512) 56-65-39</span>
+            <i class="fas fa-phone text-muted"></i> (0512) 56-65-39
             <br>
-            <i class="fas fa-mobile text-muted mr-4 pl-3"></i><span itemprop="telephone">(050) 318-40-64</span>
+            <i class="fas fa-mobile text-muted mr-4 pl-3"></i> (050) 318-40-64
         </div>
         <div class="hd_8">
             Copyright © 2008 - 2019 orten.in.ua

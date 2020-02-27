@@ -94,6 +94,10 @@ header {
     text-decoration: none;
     color: var(--global_text_color);
 }
+.hd_1 img{
+    width: 200px;
+    height: 100px;
+}
 .two_header {
     grid-area: two;
     align-self: start;
@@ -313,6 +317,9 @@ article {
     display:block; /* Ссылка как блочный элемент */
     text-decoration: none;
     color: var(--global_text_color);
+}
+.card-img-top {
+    width: 100%;
 }
 .card_content .name{
     align-self: end;
