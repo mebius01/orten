@@ -1,0 +1,46 @@
+.content {
+}
+.content-header {
+}
+.content-main {
+}
+.card {
+    width: 200px;
+    height: 300px;
+    border: 1px solid;
+}
+.card-action {
+}
+.card-img {
+}
+.card-img--adapt {
+}
+.card-name {
+}
+.card-content {
+    /* display: flex; */
+}
+.card-pn {
+}
+.card-content--left {
+}
+.card-content--right {
+}
+.card-vendor {
+}
+.card-price {
+}
+.card-content-left {
+}
+.card-content-right {
+}
+.card-form {
+    border: 1px solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.card-form-button {
+}
+#id_quantity {
+}
