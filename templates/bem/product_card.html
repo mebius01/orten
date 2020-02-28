@@ -1,0 +1,39 @@
+<article class="card">
+    {% if item.action and item.end_action|date:"d.m.y" > date_now|date:"d.m.y" %}
+    <div class="card-action">
+        Акция до {{item.end_action|date:"d.m.y"}}
+    </div>
+    {% endif %}
+    <a href="{% url 'shop:product_detail' item.slug %}">
+        <div class="card-image">
+            <img class="card-image-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{item.name}}">
+        </div>
+    </a>
+    <a href="{% url 'shop:product_detail' item.slug %}">
+        <div class="card-content">
+            <div class="card-content-name">
+                <h2>{{item.name}}</h2>
+            </div>
+            <br>
+            <div class="card-content-pn">
+                <span style="float:left" >Артикул:</span>
+                <span style="float:right">{{item.vendor_code}}</span>
+            </div>
+            <br>
+            <div class="card-content-vendor">
+                <span style="float:left" >Вендор:</span>
+                <span style="float:right">{{item.vendor}}</span>
+            </div>
+            <br>
+            <div class="card-content-price">
+                {% if item.action and item.end_action|date:"d.m.y" > date_now|date:"d.m.y" %}
+                    <h6><span style="float: left">Цена: </span> <span style="text-decoration: line-through; float:right">{{item.price}}</span></h6>
+                    <br>
+                    <span style="float:left" >Цена:</span> <span style="color:#fc6251; float:right">{{item.discount}}</span>
+                {% else %}
+                    <span style="float:left" >Цена:</span> <span style="color:#fc6251; float:right">{{item.discount}}</span>
+                {% endif %}
+            </div>
+        </div>
+    </a>
+</article>

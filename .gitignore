@@ -1,5 +1,4 @@
 ### Django ###
-*.xls
 *.xlsx
 *.csv
 *.log

@@ -11,58 +11,61 @@
 {% block content %}
 	<section>
 		<aside>
-		{% include "include/include_list_category.html" %}
-    </aside>
-    <article>
-		<div class="hd_content"><i class="fas fa-star"></i>Новинки и акции</div>
-		<div class="content">
-			{% for item in object_list %}
-			<script type="application/ld+json">
-				{% include "include/home.json" %}
-			</script>
-				<div class="card">
-					{% if item.action and item.end_action|date:"d.m.y" > date_now|date:"d.m.y" %}
-						<div class="card-action">Акция до {{item.end_action|date:"d.m.y"}}</div>
-					{% endif %}
-					<a href="{% url 'shop:product_detail' item.slug %}">
-						<div class="image">
-							<img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{item.name}}">
+			{% include "include/include_list_category.html" %}
+    	</aside>
+		<article>
+			<div class="hd_content">
+				<i class="fas fa-star"></i>Новинки и акции
+			</div>
+			<div class="content">
+				{% for item in object_list %}
+				<script type="application/ld+json">
+					{% include "include/home.json" %}
+				</script>
+					<div class="card">
+						{% if item.action and item.end_action|date:"d.m.y" > date_now|date:"d.m.y" %}
+							<div class="card-action">Акция до {{item.end_action|date:"d.m.y"}}</div>
+						{% endif %}
+						<a href="{% url 'shop:product_detail' item.slug %}">
+							<div class="image">
+								<img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{item.name}}">
+							</div>
+						</a>
+						<a href="{% url 'shop:product_detail' item.slug %}">
+							<div class="card_content">
+								<div class="name">{{item.name}}</div>
+								<br>
+								<div class="pn">
+									<span style="float:left" >Артикул:</span>
+									<span style="float:right">{{item.vendor_code}}</span>
+								</div>
+								<br>
+								<div class="vendor">
+									<span style="float:left" >Вендор:</span>
+									<span style="float:right">{{item.vendor}}</span>
+								</div>
+								<br>
+								<div class="price">
+									{% if item.action and item.end_action|date:"d.m.y" > date_now|date:"d.m.y" %}
+										<h6><span style="float: left">Цена: </span> <span style="text-decoration: line-through; float:right">{{item.price}}</span></h6>
+										<br>
+										<span style="float:left" >Цена:</span> <span style="color:#fc6251; float:right">{{item.discount}}</span>
+									{% else %}
+										<span style="float:left" >Цена:</span> <span style="color:#fc6251; float:right">{{item.discount}}</span>
+									{% endif %}
+								</div>
+							</div>
+						</a>
+						<div class="foot_card_quantity">
+							<form action="{% url "cart:cart_add" item.id %}" method="post">
+							{% csrf_token %}
+							{{ form.quantity }}
+							<button type="submit" class="apply"><i style="padding-right:5px;" class="fa fa-shopping-cart"></i>Купить</button>
+							</form>
 						</div>
-					</a>
-					<a href="{% url 'shop:product_detail' item.slug %}">
-						<div class="card_content">
-							<div class="name">{{item.name}}</div>
-							<br>
-							<div class="pn">
-								<span style="float:left" >Артикул:</span>
-								<span style="float:right">{{item.vendor_code}}</span>
-							</div>
-							<br>
-							<div class="vendor">
-								<span style="float:left" >Вендор:</span>
-								<span style="float:right">{{item.vendor}}</span>
-							</div>
-							<br>
-							<div class="price">
-								{% if item.action and item.end_action|date:"d.m.y" > date_now|date:"d.m.y" %}
-									<h6><span style="float: left">Цена: </span> <span style="text-decoration: line-through; float:right">{{item.price}}</span></h6>
-									<br>
-									<span style="float:left" >Цена:</span> <span style="color:#fc6251; float:right">{{item.discount}}</span>
-								{% else %}
-									<span style="float:left" >Цена:</span> <span style="color:#fc6251; float:right">{{item.discount}}</span>
-								{% endif %}
-							</div>
-						</div>
-					</a>
-					<div class="foot_card_quantity">
-						<form action="{% url "cart:cart_add" item.id %}" method="post">
-						{% csrf_token %}
-						{{ form.quantity }}
-						<button type="submit" class="apply"><i style="padding-right:5px;" class="fa fa-shopping-cart"></i>Купить</button>
-						</form>
 					</div>
-				</div>
-			{% endfor %}
-	</article>
+				{% endfor %}
+			</div>
+		</article>
 	</section>
 {% endblock %}
