@@ -27,7 +27,7 @@
             {% include "include/product_detail.json" %}
         </script>
         <div class="product_header">
-            {% if item.action and item.end_action|date:"d.m.y" > date_now|date:"d.m.y" %}
+            {% if item.action %}
             <h2 style="color:#fc6251">Акция до {{object.end_action|date:"d.m.y"}}</h2>
             <br>
             {% endif %}
@@ -47,7 +47,7 @@
                 <p class="p_left">Тип товара:</p>
                 <p class="p_right">{{object.type_product}}</p>
                 <br><hr>
-                {% if item.action and item.end_action|date:"d.m.y" > date_now|date:"d.m.y" %}
+                {% if item.action %}
                     <h4><span style="float: left">Цена: </span> <span style="color:#fc6251; float:right">{{object.discount}}</span></h4>
                 <br>
                     <H5><span style="float:left" >Цена:</span> <span style="text-decoration: line-through; float:right">{{object.price}}</span></H5>

@@ -60,7 +60,7 @@
                         {% endif %}
                     </span>
                     <span class="s-6"><b>Цена: </b>
-                        {% if item.action and item.end_action|date > date_now|date %}
+                        {% if item.action %}
                             <em style="text-decoration: line-through">{{ item.price }}</em>
                             <br>
                             <em style="color:#fc6251;
