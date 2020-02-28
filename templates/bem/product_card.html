@@ -11,21 +11,21 @@
     </a>
     <a href="{% url 'shop:product_detail' item.slug %}">
         <div class="card-content">
-            <div class="card-content-name">
+            <div class="card-name">
                 <h2>{{item.name}}</h2>
             </div>
             <br>
-            <div class="card-content-pn">
+            <div class="card-pn">
                 <span style="float:left" >Артикул:</span>
                 <span style="float:right">{{item.vendor_code}}</span>
             </div>
             <br>
-            <div class="card-content-vendor">
+            <div class="card-vendor">
                 <span style="float:left" >Вендор:</span>
                 <span style="float:right">{{item.vendor}}</span>
             </div>
             <br>
-            <div class="card-content-price">
+            <div class="card-price">
                 {% if item.action and item.end_action|date:"d.m.y" > date_now|date:"d.m.y" %}
                     <h6><span style="float: left">Цена: </span> <span style="text-decoration: line-through; float:right">{{item.price}}</span></h6>
                     <br>
