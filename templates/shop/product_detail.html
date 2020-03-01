@@ -92,24 +92,20 @@
         <div class="description">
             <div class="descript">
                 <strong>Краткое описание:</strong>
-                <p>
                 {% if object.description %}
                     {{ object.description|linebreaks }}
                 {% else %}
                     Пока пусто
                 {% endif %} 
-                </p>
                 <br><hr>
             </div>
             <div class="spec">
                 <strong>Характеристика:</strong>
-                <p>
                 {% if object.specifications %}
                     {{ object.specifications|safe }}
                 {% else %}
                     Пока пусто
                 {% endif %}
-                </p>
             </div>
         </div>
             <div class="product_list accessories">
