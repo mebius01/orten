@@ -57,7 +57,7 @@
 				            {{ product.price }}
 				        {% endif %}
                         </span>
-                        <span class="foot_card_quantity s-7"><b>Количество: </b>
+                        <span class="foot_card_quantity"><b>Количество: </b>
                             <form action="{% url "cart:cart_add" product.id %}" method="post" class="add">
 				           {{ item.update_quantity_form.quantity }}
 				           {{ item.update_quantity_form.update }}

@@ -53,7 +53,7 @@
                     {{ product.price }}
                 {% endif %}
                 </span>
-                <span class="s-7"><b>Количество: </b>{{ item.quantity }}</span>
+                <span><b>Количество: </b>{{ item.quantity }}</span>
                 <span class="s-2"><b>Сумма: </b>{{ item.total_price }}</span>
                 <span class="s-2"><b>Удалить: </b>
                 <button class="minus"><a href="{% url 'cart:cart_remove' product.id %}"><i style="color:white;" class="fas fa-trash-alt"></i></a></button>
