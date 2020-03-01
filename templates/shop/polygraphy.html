@@ -24,14 +24,16 @@
         <div class="content">
             {% get_flatpages as flatpages %}
             {% for item in flatpages|dictsort:"id" %}
-            <div class="card"><a href="{% url 'shop:polygraphy_detail' item.id %}" title="{{item.title}}">
-                <div class="image">
-                    <img class="card-img-top" src="{% if item.polygraphy.image %}{{ item.polygraphy.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{item.name}}" width="100%">
-                </div>
-                <div class="foot_card" style="text-align:center;font-size: 20px;">
-                    {{item.title}}
-                </div>
-            </div></a>
+            <div class="card">
+                <a href="{% url 'shop:polygraphy_detail' item.id %}" title="{{item.title}}">
+                    <div class="image">
+                        <img class="card-img-top" src="{% if item.polygraphy.image %}{{ item.polygraphy.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{item.name}}">
+                    </div>
+                    <div class="foot_card" style="text-align:center;font-size: 20px;">
+                        {{item.title}}
+                    </div>
+                </a>
+            </div>
             {% endfor %}
         </div>
     </article>

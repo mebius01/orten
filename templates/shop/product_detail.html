@@ -137,12 +137,12 @@
                             {{ product.price }}
                         {% endif %}
                     </span>
-                    <span class="foot_card_quantity s-7">
+                    <div class="foot_card_quantity s-7">
                         <form action="{% url "cart:cart_add" product.id %}" method="post">{% csrf_token %}
                         {{form.quantity}}
                         <button type="submit" class="plas"><i style="color:white" class="fa fa-shopping-cart"></i></button>
                         </form>
-                    </span>
+                    </div>
                     <div class="s-hr"><hr></div>
                 {% endfor %}
             </div>

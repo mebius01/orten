@@ -55,18 +55,19 @@
                         <div class="s-hr"><hr></div>
                         {% endfor %}
                     </div>
+                </div>
         </article>
         {% if is_paginated %}
-            <ul class="pagination">
+            <div class="pagination">
                 {% if page_obj.has_previous %}
                 <a href="?{% param_replace page=1 %}" title="1">First</a>
-                <a href="?{% param_replace page=page_obj.previous_page_number %}">&laquo;</a></li>
+                <a href="?{% param_replace page=page_obj.previous_page_number %}">&laquo;</a>
                 <a href="?{%param_replace page=page_obj.previous_page_number %}">{{ page_obj.previous_page_number }}</a>
                 {% endif %}
 
                 {% for i in paginator.page_range %}
                 {% if page_obj.number == i %}
-                    <a class="active" href="#">{{ i }}</a>
+                    <a class="active">{{ i }}</a>
                 {% endif %}
                 {% endfor %}
             
@@ -75,7 +76,7 @@
                 <a href="?{% param_replace page=page_obj.next_page_number %}">&raquo;</a>
                 <a href="?{% param_replace page=paginator.num_pages %}" title="{{paginator.num_pages}}">Last</a>
                 {% endif %}
-            </ul>
+            </div>
         {% endif %}
     </section>
 {% endblock %}
