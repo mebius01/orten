@@ -1,0 +1,141 @@
+.card {
+    display: grid;
+    padding: 5px;
+    background-color: white;
+    color:  var(--global_text_color);
+    height: auto;
+    max-width: 100%;
+    text-align:left;
+    position: relative;
+}
+.card:hover{
+    border: 1px solid var(--global_geen);
+}
+.card-link {
+    text-decoration: none;
+    display: block;
+    padding: 5px;
+
+}
+.card-action {
+    width: 90%;
+    height: 30px;
+    background: #fa6262;
+    position: absolute;
+    top: 50px;
+    left: -50px;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    opacity: 0.5;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+.card-img {
+}
+.card-img--adapt {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+.card-name {
+    /* border: 1px solid; */
+    font-weight: 700;
+    font-size: 17px;
+    color: #428bca;
+}
+.card-content {
+    /* border: 1px solid; */
+    font-family: 'IBM Plex Mono', monospace;
+    line-height: 0.3;
+    color: rgb(20, 27, 34);
+}
+.card-pn {
+}
+.card-content-left {
+    display: flex;
+    justify-content: flex-start;
+}
+.card-content-right {
+    display: flex;
+    justify-content: flex-end;
+}
+.card-vendor {
+}
+.card-price {
+}
+.card-form {
+    display: flex;
+    justify-content: space-between;
+    align-self: end;
+}
+.button {
+    height: 34px;
+    border: none;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+}
+.card--button {
+    width: 96px;
+    background-color: white;
+    color: #5cb85c;
+    border: 1px solid #5cb85c;
+}
+.list--button {
+    width: 34px;
+    border: none;
+    text-align: center;
+    color: white;
+    background-color: #5cb85c;
+    margin-left: 5px;
+}
+.list--button:hover{
+    border: 1px solid;
+    background-color: white;
+    color: #5cb85c;
+}
+.card--button:hover{
+    background-color: #5cb85c;
+    color:white;
+}
+input[name=quantity] {
+    border: 1px solid var(--global_geen);
+    height: 30px;
+    width: 50px;
+    outline: none;
+    text-decoration: none;
+    text-align: center;
+}
+
+.list {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 50px auto auto auto auto auto 160px;
+}
+
+.card-img--min{
+    width: 43px;
+    height: 43px;
+}
+.card--center {
+    margin: auto;
+}
+.card--row {
+    display: flex;
+    justify-content: space-around;
+}
+/*
+.card--column {
+    display: flex;
+    flex-direction: column;
+}
+.card-content--padding {
+    padding: 0 10px;
+}
+
+
+
+.card--none{
+    display: none;
+} */

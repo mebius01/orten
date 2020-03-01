@@ -1,0 +1,44 @@
+:root{
+    --global_geen: #85c987;
+    --global_text_color:rgb(37, 52, 68);
+    --pading_5:5px;
+    --global_12:12px;
+    --global_background_color:#f4f6f6;
+}
+h1, h2{
+    margin: 0;
+    padding: 0;
+}
+.main{
+    display: grid;
+    gap: 5px;
+    grid-template-columns: 20% auto;
+}
+.aside{
+    border: var(--global_geen) 2px solid;
+    background-color: var(--global_background_color);
+}
+.content {
+    background-color: var(--global_background_color);
+    border: var(--global_geen) 2px solid;
+}
+.content-header {
+    background-color:  var(--global_geen);
+    color: var(--global_text_color);
+    height: 30px;
+}
+.content-main {
+    /* border: #fa6262 2px solid; */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, auto));
+    grid-template-rows: repeat(auto-fit, minmax(auto, auto));
+    gap: 12px;
+    padding: 12px;
+}
+.content-main--list{
+    grid-template-columns: 50px auto auto auto auto auto 160px;
+    grid-template-rows: auto auto;
+    padding: auto;
+    /* grid-template-columns: repeat(auto-fit, minmax(220px, auto));
+    grid-template-rows: repeat(auto-fit, minmax(auto, auto)); */
+}
