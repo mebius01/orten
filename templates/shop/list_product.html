@@ -41,7 +41,7 @@
                     <!-- динамический контент -->
                     {% for item in object_list %}
                     <script type="application/ld+json">
-                        {% comment %} {% include "include/list_product.json" %} {% endcomment %}
+                        {% include "include/list_product.json" %}
                     </script>
                     <span class="s-1"><img src="{% if item.image %}{{ item.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" width="30" height="30" alt="{{ item.name }}"></span>
                     <span class="s-2"><b>Бренд: </b>{{ item.vendor }}</span>
@@ -72,12 +72,12 @@
                             {{ item.price }}
                         {% endif %}
                     </span>
-                    <span class="foot_card_quantity s-7">
+                    <div class="foot_card_quantity s-7">
                         <form action="{% url "cart:cart_add" item.id %}" method="post">{% csrf_token %}
-                        {{form.quantity}}
-                        <button type="submit" class="plas"><i class="fa fa-shopping-cart"></i></button>
+                        <input type="number" name="{{ form.quantity.name }}" value="{{ form.quantity.value}}" min="1" {% if form.quantity.field.required %}required{% endif %}>
+                       <button type="submit" class="plas"><i class="fa fa-shopping-cart"></i></button>
                         </form>
-                    </span>
+                    </div>
                     <div class="s-hr">
                         <hr>
                     </div>
@@ -95,7 +95,7 @@
 
             {% for i in paginator.page_range %}
             {% if page_obj.number == i %}
-                <a class="active" href="#">{{ i }}</a>
+                <a class="active">{{ i }}</a>
             {% endif %}
             {% endfor %}
         
@@ -108,3 +108,68 @@
     {% endif %}
 </section>
 {% endblock %}
+
+{% comment %} <div class="content-main content-main--list">
+    <span class="s card--center">Фото</span>
+    <span class="s card--center">Бренд</span>
+    <span class="s card--center">Название</span>
+    <span class="s card--center">Артикул</span>
+    <span class="s card--center"></span>
+    <span class="s card--center">Цена ₴</span>
+    <span class="s card--center">В корзину</span>
+    {% for item in object_list %}
+    <script type="application/ld+json">
+        {% include "include/list_product.json" %}
+    </script>
+        <div class="card-img card--center">
+            <img src="{% if item.image %}{{ item.image.url }}
+            {% else %}
+            {% static "img/no_image.png" %}
+            {% endif %}" 
+            alt="{{ item.name }}">
+        </div>
+        <div class="card-vendor card--center">
+            {{ item.vendor }}   
+        </div>
+        <h2 class="card-name card--center">
+            <a href="{% url 'shop:product_detail' item.slug %}"
+                    {% if item.description %}
+                    title="{{item.description}}"
+                    {% endif %}>
+                    {{ item.name }}</a></h2>
+        <div class="pn card--center">
+            {{ item.vendor_code }}
+        </div>
+        <div class="availability card--center">
+            {% if item.available %}
+                <i style="color:green;" class="fas fa-check"></i>
+            {% else %}
+                <i style="color:red;" class="fas fa-times"></i>
+            {% endif %}
+        </div>
+        <div class="card-price card--center">
+            {% if item.action %}
+                <em style="text-decoration: line-through">{{ item.price }}</em>
+                <br>
+                <em style="color:#fc6251;
+                    cursor: pointer" 
+                    title='Акция действует до {{item.end_action|date:"d.m.y"}}'>
+                    {{ item.discount }}
+                </em>
+            {% else %}
+                {{ item.price }}
+            {% endif %}
+        </div>
+        <form action="{% url "cart:cart_add" item.id %}" method="POST">{% csrf_token %}
+            <input
+            type="number"
+            name="{{ form.quantity.name }}"
+            value="{{ form.quantity.value}}"
+            min="1"
+            {% if form.quantity.field.required %}required{% endif %}>
+            <button class="button list--button" type="submit">
+                <i class="fa fa-shopping-cart"></i>
+            </button>
+        </form>
+    {% endfor %}
+</div> {% endcomment %}

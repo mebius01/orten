@@ -92,24 +92,20 @@
         <div class="description">
             <div class="descript">
                 <strong>Краткое описание:</strong>
-                <p>
                 {% if object.description %}
                     {{ object.description|linebreaks }}
                 {% else %}
                     Пока пусто
                 {% endif %} 
-                </p>
                 <br><hr>
             </div>
             <div class="spec">
                 <strong>Характеристика:</strong>
-                <p>
                 {% if object.specifications %}
                     {{ object.specifications|safe }}
                 {% else %}
                     Пока пусто
                 {% endif %}
-                </p>
             </div>
         </div>
             <div class="product_list accessories">
@@ -137,12 +133,12 @@
                             {{ product.price }}
                         {% endif %}
                     </span>
-                    <span class="foot_card_quantity s-7">
+                    <div class="foot_card_quantity s-7">
                         <form action="{% url "cart:cart_add" product.id %}" method="post">{% csrf_token %}
                         {{form.quantity}}
                         <button type="submit" class="plas"><i style="color:white" class="fa fa-shopping-cart"></i></button>
                         </form>
-                    </span>
+                    </div>
                     <div class="s-hr"><hr></div>
                 {% endfor %}
             </div>

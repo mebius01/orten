@@ -20,16 +20,12 @@
 		{% include "include/include_list_category.html" %}
 	</aside>
     <article>
-	<div class="hd_content"><i class="fas fa-list pr-3"></i>{{ object.flatpage.title }}</div>
+	    <div class="hd_content"><i class="fas fa-list pr-3"></i>{{ object.flatpage.title }}</div>
         <div class="img">
-            <img src="/static/shop/img/polygraphy/{{ object.slug }}.jpg" style="width: 100%;" hspace="16">
+            <img src="/static/shop/img/polygraphy/{{ object.slug }}.jpg" alt="{{ object.flatpage.title }}">
         </div>
-        <div class="content-1">
-            {{ object.flatpage.content|safe }}
-        </div>
-        <div>
-            {{object.category}}
-        </div>
+        <div class="content-1">{{ object.flatpage.content|safe }}</div>
+        <div>{{object.category}}</div>
         <div>{{object.name}}</div>
         <div>{{object.price}}</div>
         <div>{{object.format_fild}}</div>

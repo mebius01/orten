@@ -50,23 +50,19 @@
             <br><hr>
         </div>
         <div class="description">
-        {% if object.description %}
+            {% if object.description %}
             <div class="descript">
                 <strong>Краткое описание:</strong>
-                <p>
-                    {{ object.description|linebreaks }}
-                </p>
+                {{ object.description|linebreaks }}
                 <br><hr>
             </div>
-        {% endif %}
-        {% if object.specifications %}
+            {% endif %}
+            {% if object.specifications %}
             <div class="spec">
                 <strong>Характеристика:</strong>
-                <p>
-                    {{ object.specifications|safe }}
-                </p>
+                {{ object.specifications|safe }}
             </div>
-        {% endif %}
+            {% endif %}
         </div>
         <div class="accessories">
         </div>

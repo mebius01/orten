@@ -59,7 +59,7 @@
 						<div class="foot_card_quantity">
 							<form action="{% url "cart:cart_add" item.id %}" method="post">
 							{% csrf_token %}
-							{{ form.quantity }}
+							<input type="number" name="{{ form.quantity.name }}" value="{{ form.quantity.value}}" min="1" {% if form.quantity.field.required %}required{% endif %}>
 							<button type="submit" class="apply"><i style="padding-right:5px;" class="fa fa-shopping-cart"></i>Купить</button>
 							</form>
 						</div>

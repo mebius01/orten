@@ -652,7 +652,9 @@ table {text-align: center;}
     text-decoration: none;
     color: #428bca;
 }
-
+.s-7 {
+    margin: auto;
+}
 .min_max input{
     width: 43%;
     height: 32px;
@@ -665,6 +667,7 @@ table {text-align: center;}
 #id_price__lt{
     float: right;
 }
+
 .filters select{
     border: 1px solid #5cb85c;
     background-color: white;
