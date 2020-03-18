@@ -72,6 +72,16 @@ header {
     grid-template-areas: "one" "two" "navbar" "breadcrumbs";
     grid-template-rows: auto auto auto auto;
 }
+.ad {
+    /* display: flex; */
+    text-align: center;
+    padding: 12px;
+    border: crimson 2px dotted;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 700;
+    color: crimson;
+}
 .one_header {
     display: grid;
     grid-template-columns: auto;
