@@ -300,7 +300,6 @@ article {
     max-width: 100%;
     text-align:left;
     position: relative;
-    /* margin: 5px; */
 }
 .card .card-action {
     width: 90%;
@@ -319,12 +318,9 @@ article {
 .card:hover{
     border: 1px solid var(--global_geen);
 }
-.card div{
-    padding: 5px;
-    /* border:1px solid; */
-}
+
 .card a{
-    display:block; /* Ссылка как блочный элемент */
+    display:block;
     text-decoration: none;
     color: var(--global_text_color);
 }
@@ -332,21 +328,23 @@ article {
     width: 100%;
 }
 .card_content .name{
-    align-self: end;
-    /* font-family: 'Russo One', sans-serif; */
     font-weight: 700;
-    font-size: 17px;
+    font-size: 18px;
+    line-height: normal;
     color: #428bca;
+}
+.card--left-right {
+    display: flex;
+    justify-content: space-between;
 }
 .card_content .pn{
     font-family: 'IBM Plex Mono', monospace;
-    /* font-size: 15px; */
 }
 .card_content .price{
     font-family: 'Play', sans-serif;
     font-size: 20px;    
 }
-.card .card_content{
+.card__content{
     display:inline-block;
     margin-right: 12px;
 }

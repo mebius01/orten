@@ -22,48 +22,7 @@
 				<script type="application/ld+json">
 					{% include "include/home.json" %}
 				</script>
-					<div class="card">
-						{% if item.action %}
-							<div class="card-action">Акция до {{item.end_action|date:"d.m.y"}}</div>
-						{% endif %}
-						<a href="{% url 'shop:product_detail' item.slug %}">
-							<div class="image">
-								<img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{item.name}}">
-							</div>
-						</a>
-						<a href="{% url 'shop:product_detail' item.slug %}">
-							<div class="card_content">
-								<div class="name">{{item.name}}</div>
-								<br>
-								<div class="pn">
-									<span style="float:left" >Артикул:</span>
-									<span style="float:right">{{item.vendor_code}}</span>
-								</div>
-								<br>
-								<div class="vendor">
-									<span style="float:left" >Вендор:</span>
-									<span style="float:right">{{item.vendor}}</span>
-								</div>
-								<br>
-								<div class="price">
-									{% if item.action %}
-										<h6><span style="float: left">Цена: </span> <span style="text-decoration: line-through; float:right">{{item.price}}</span></h6>
-										<br>
-										<span style="float:left" >Цена:</span> <span style="color:#fc6251; float:right">{{item.discount}}</span>
-									{% else %}
-										<span style="float:left" >Цена:</span> <span style="color:#fc6251; float:right">{{item.price}}</span>
-									{% endif %}
-								</div>
-							</div>
-						</a>
-						<div class="foot_card_quantity">
-							<form action="{% url "cart:cart_add" item.id %}" method="post">
-							{% csrf_token %}
-							<input type="number" name="{{ form.quantity.name }}" value="{{ form.quantity.value}}" min="1" {% if form.quantity.field.required %}required{% endif %}>
-							<button type="submit" class="apply"><i style="padding-right:5px;" class="fa fa-shopping-cart"></i>Купить</button>
-							</form>
-						</div>
-					</div>
+					{% include "include/card.html" %}
 				{% endfor %}
 			</div>
 		</article>
