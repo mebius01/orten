@@ -1,43 +1,4 @@
 {% load static %}
-<!-- <div class="card">
-    {% if item.action %}
-        <div class="card-action">Акция до {{item.end_action|date:"d.m.y"}}</div>
-    {% endif %}
-    <a href="{% url 'shop:product_detail' item.slug %}">
-        <div class="card__img">
-            <img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{item.name}}">
-        </div>
-    </a>
-    <a href="{% url 'shop:product_detail' item.slug %}">
-        <div class="card_content">
-            <h2 class="name">{{item.name}}</h2>
-            <p class="card__pn card--left-right">
-                <span>Артикул:</span>
-                <span>{{item.vendor_code}}</span>
-            </p>
-            <p class="card__vendor card--left-right">
-                <span>Вендор:</span>
-                <span>{{item.vendor}}</span>
-            </p>
-            <div class="card__price">
-                {% if item.action %}
-                    <p class="card--left-right"><span>Цена: </span> <span>{{item.price}}</span></p>
-                    <p class="card--left-right"><span>Цена:</span> <span>{{item.discount}}</span></p>
-                {% else %}
-                    <p class="card--left-right"><span>Цена:</span> <span>{{item.price}}</span></p>
-                {% endif %}
-            </div>
-        </div>
-    </a>
-    <div class="foot_card_quantity">
-        <form action="{% url "cart:cart_add" item.id %}" method="post">
-        {% csrf_token %}
-        <input type="number" name="{{ form.quantity.name }}" value="{{ form.quantity.value}}" min="1" {% if form.quantity.field.required %}required{% endif %}>
-        <button type="submit" class="apply"><i style="padding-right:5px;" class="fa fa-shopping-cart"></i>Купить</button>
-        </form>
-    </div>
-</div> -->
-
 <div class="card">
     {% if item.action %}
         <div class="card__action">Акция до {{item.end_action|date:"d.m.y"}}</div>
@@ -83,3 +44,43 @@
         </form>
     </div>
 </div>
+
+
+{% comment %} <div class="card">
+    {% if item.action %}
+        <div class="card-action">Акция до {{item.end_action|date:"d.m.y"}}</div>
+    {% endif %}
+    <a href="{% url 'shop:product_detail' item.slug %}">
+        <div class="card__img">
+            <img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{item.name}}">
+        </div>
+    </a>
+    <a href="{% url 'shop:product_detail' item.slug %}">
+        <div class="card_content">
+            <h2 class="name">{{item.name}}</h2>
+            <p class="card__pn card--left-right">
+                <span>Артикул:</span>
+                <span>{{item.vendor_code}}</span>
+            </p>
+            <p class="card__vendor card--left-right">
+                <span>Вендор:</span>
+                <span>{{item.vendor}}</span>
+            </p>
+            <div class="card__price">
+                {% if item.action %}
+                    <p class="card--left-right"><span>Цена: </span> <span>{{item.price}}</span></p>
+                    <p class="card--left-right"><span>Цена:</span> <span>{{item.discount}}</span></p>
+                {% else %}
+                    <p class="card--left-right"><span>Цена:</span> <span>{{item.price}}</span></p>
+                {% endif %}
+            </div>
+        </div>
+    </a>
+    <div class="foot_card_quantity">
+        <form action="{% url "cart:cart_add" item.id %}" method="post">
+        {% csrf_token %}
+        <input type="number" name="{{ form.quantity.name }}" value="{{ form.quantity.value}}" min="1" {% if form.quantity.field.required %}required{% endif %}>
+        <button type="submit" class="apply"><i style="padding-right:5px;" class="fa fa-shopping-cart"></i>Купить</button>
+        </form>
+    </div>
+</div> {% endcomment %}
