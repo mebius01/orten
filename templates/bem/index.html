@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:100,200,300,400,500,600,700|Play:400,700&display=swap&subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
+    <title>Test page</title>
+</head>
+<body>
+    <article  class="content-main content-main--card">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, facere dolor! Atque commodi consequatur alias impedit sit perspiciatis ratione similique possimus cum quam illum, eos explicabo inventore quaerat placeat? Mollitia!
+        <br>
+        <hr>
+        <br>
+        Кассетные фрикционные фальцовщики (аппараты для сгибания бумаги) предназначены для выполнения небольших и средних тиражей в офисах, копи-центрах и минитипографиях. Недорогие и компактные модели настольного типа, отличаются надежностью, простотой использования и универсальностью.
+        <div class="card">
+            <!-- {% if item.action %} -->
+                <div class="card__action">Акция до 21.03.20</div>
+            <!-- {% endif %} -->
+            <a class="card__link" href="{% url 'shop:product_detail' item.slug %}">
+                <div class="card__img">
+                    <img class="card-img-top" src="img/Шредер_703xx.jpg">
+                </div>
+            </a>
+            <a class="card__link" href="{% url 'shop:product_detail' item.slug %}">
+                <div class="card__body">
+                    <h2 class="card__name title-h2">Ламинатор рулонный Boway F650 A (шт.)</h2>
+                    <p class="card__pn card--left-right">
+                        <span>Артикул:</span>
+                        <span>20396</span>
+                    </p>
+                    <p class="card__vendor card--left-right">
+                        <span>Вендор:</span>
+                        <span>Boway</span>
+                    </p>
+                    <div class="card__price">
+                        <!-- {% if item.action %} -->
+                            <p class="card--left-right">
+                                <span>Цена:</span>
+                                <span class="card--text-crossed">60840.00</span>
+                            </p>
+                            <p class="card--left-right">
+                                <span>Цена:</span>
+                                <span class="card--red-text">45630.00</span>
+                            </p>
+                        <!-- {% else %} -->
+                            <p class="card--left-right">
+                                <span>Цена:</span><span class="card__price--text">60840.00</span></p>
+                        <!-- {% endif %} -->
+                    </div>
+                </div>
+            </a>
+            <div class="foot_card_quantity card--left-right">
+                <form action="{% url "cart:cart_add" item.id %}" method="post">
+                {% csrf_token %}
+                <input type="number" name="{{ form.quantity.name }}" value="{{ form.quantity.value}}" min="1" {% if form.quantity.field.required %}required{% endif %}>
+                <button type="submit" class="apply"><i style="padding-right:5px;" class="fa fa-shopping-cart"></i>Купить</button>
+                </form>
+            </div>
+        </div>
+
+        
+    </article>
+</body>
+</html>

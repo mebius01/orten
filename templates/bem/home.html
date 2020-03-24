@@ -106,6 +106,153 @@
                 </form>
             <!-- </article> -->
         </article>
+        <article  class="content-main content-main--card">
+            <div class="card">
+                <!-- {% if item.action %} -->
+                    <div class="card-action">Акция до 21.03.20</div>
+                <!-- {% endif %} -->
+                <a href="{% url 'shop:product_detail' item.slug %}">
+                    <div class="card__img">
+                        <img class="card-img-top" src="img/Шредер_703xx.jpg">
+                    </div>
+                </a>
+                <a href="{% url 'shop:product_detail' item.slug %}">
+                    <div class="card_content">
+                        <h2 class="name">Ламинатор рулонный Boway F650 A (шт.)</h2>
+                        <p class="card__pn card--left-right">
+                            <span>Артикул:</span>
+                            <span>20396</span>
+                        </p>
+                        <p class="card__vendor card--left-right">
+                            <span>Вендор:</span>
+                            <span>Boway</span>
+                        </p>
+                        <div class="card__price">
+                            <!-- {% if item.action %} -->
+                                <p class="card--left-right"><span>Цена: </span> <span>60840.00
+</span></p>
+                                <p class="card--left-right"><span>Цена:</span> <span>45630.00
+                                </span></p>
+                            <!-- {% else %} -->
+                                <p class="card--left-right"><span>Цена:</span> <span>60840.00
+</span></p>
+                            <!-- {% endif %} -->
+                        </div>
+                    </div>
+                </a>
+                <form class="card-form card--center" action="cart/cart_add" method="POST">
+                    <input type="number" name="quantity" value="1" min="1" required="">
+                    <button class="button list--button" type="submit">
+                        <i class="fa fa-shopping-cart"></i>
+                    </button>
+                </form>
+                <!-- <div class="foot_card_quantity">
+                    <form action="{% url "cart:cart_add" item.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="number" name="{{ form.quantity.name }}" value="{{ form.quantity.value}}" min="1" {% if form.quantity.field.required %}required{% endif %}>
+                    <button type="submit" class="apply"><i style="padding-right:5px;" class="fa fa-shopping-cart"></i>Купить</button>
+                    </form>
+                </div> -->
+            </div>
+
+            <div class="card">
+                <!-- {% if item.action %} -->
+                    <div class="card-action">Акция до 21.03.20</div>
+                <!-- {% endif %} -->
+                <a href="{% url 'shop:product_detail' item.slug %}">
+                    <div class="card__img">
+                        <img class="card-img-top" src="img/Шредер_703xx.jpg">
+                    </div>
+                </a>
+                <a href="{% url 'shop:product_detail' item.slug %}">
+                    <div class="card_content">
+                        <h2 class="name">Ламинатор рулонный Boway F650 A (шт.)</h2>
+                        <p class="card__pn card--left-right">
+                            <span>Артикул:</span>
+                            <span>20396</span>
+                        </p>
+                        <p class="card__vendor card--left-right">
+                            <span>Вендор:</span>
+                            <span>Boway</span>
+                        </p>
+                        <div class="card__price">
+                            <!-- {% if item.action %} -->
+                                <p class="card--left-right"><span>Цена: </span> <span>60840.00
+</span></p>
+                                <p class="card--left-right"><span>Цена:</span> <span>45630.00
+                                </span></p>
+                            <!-- {% else %} -->
+                                <p class="card--left-right"><span>Цена:</span> <span>60840.00
+</span></p>
+                            <!-- {% endif %} -->
+                        </div>
+                    </div>
+                </a>
+                <form class="card-form card--center" action="cart/cart_add" method="POST">
+                    <input type="number" name="quantity" value="1" min="1" required="">
+                    <button class="button list--button" type="submit">
+                        <i class="fa fa-shopping-cart"></i>
+                    </button>
+                </form>
+                <!-- <div class="foot_card_quantity">
+                    <form action="{% url "cart:cart_add" item.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="number" name="{{ form.quantity.name }}" value="{{ form.quantity.value}}" min="1" {% if form.quantity.field.required %}required{% endif %}>
+                    <button type="submit" class="apply"><i style="padding-right:5px;" class="fa fa-shopping-cart"></i>Купить</button>
+                    </form>
+                </div> -->
+            </div>
+
+            <div class="card">
+                <!-- {% if item.action %} -->
+                    <div class="card-action">Акция до 21.03.20</div>
+                <!-- {% endif %} -->
+                <a href="{% url 'shop:product_detail' item.slug %}">
+                    <div class="card__img">
+                        <img class="card-img-top" src="img/Шредер_703xx.jpg">
+                    </div>
+                </a>
+                <a href="{% url 'shop:product_detail' item.slug %}">
+                    <div class="card_content">
+                        <h2 class="name">Ламинатор рулонный Boway F650 A (шт.)</h2>
+                        <p class="card__pn card--left-right">
+                            <span>Артикул:</span>
+                            <span>20396</span>
+                        </p>
+                        <p class="card__vendor card--left-right">
+                            <span>Вендор:</span>
+                            <span>Boway</span>
+                        </p>
+                        <div class="card__price">
+                            <!-- {% if item.action %} -->
+                                <p class="card--left-right"><span>Цена: </span> <span>60840.00
+</span></p>
+                                <p class="card--left-right"><span>Цена:</span> <span>45630.00
+                                </span></p>
+                            <!-- {% else %} -->
+                                <p class="card--left-right"><span>Цена:</span> <span>60840.00
+</span></p>
+                            <!-- {% endif %} -->
+                        </div>
+                    </div>
+                </a>
+                <form class="card-form card--center" action="cart/cart_add" method="POST">
+                    <input type="number" name="quantity" value="1" min="1" required="">
+                    <button class="button list--button" type="submit">
+                        <i class="fa fa-shopping-cart"></i>
+                    </button>
+                </form>
+                <!-- <div class="foot_card_quantity">
+                    <form action="{% url "cart:cart_add" item.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="number" name="{{ form.quantity.name }}" value="{{ form.quantity.value}}" min="1" {% if form.quantity.field.required %}required{% endif %}>
+                    <button type="submit" class="apply"><i style="padding-right:5px;" class="fa fa-shopping-cart"></i>Купить</button>
+                    </form>
+                </div> -->
+            </div>
+
+            
+        </article>
     </section>
 
 </div>

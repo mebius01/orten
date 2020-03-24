@@ -31,15 +31,6 @@ img {
     max-width: 100%;
 }
 
-h1, h2{
-    margin: 0;
-    padding: 0;
-}
-.title-h2 {
-    font-weight: 700;
-    font-size: 17px;
-    line-height: normal;
-}
 
 /* ul#id_ordering_price {
     margin: 0;
@@ -80,16 +71,6 @@ header {
     grid-area: header;
     grid-template-areas: "one" "two" "navbar" "breadcrumbs";
     grid-template-rows: auto auto auto auto;
-}
-.ad {
-    /* display: flex; */
-    text-align: center;
-    padding: 12px;
-    border: crimson 2px dotted;
-    font-size: 18px;
-    line-height: 24px;
-    font-weight: 700;
-    color: crimson;
 }
 .one_header {
     display: grid;
@@ -309,8 +290,9 @@ article {
     max-width: 100%;
     text-align:left;
     position: relative;
+    /* margin: 5px; */
 }
-.card .card-action {
+.card-action {
     width: 90%;
     height: 30px;
     background: #fa6262;
@@ -327,9 +309,11 @@ article {
 .card:hover{
     border: 1px solid var(--global_geen);
 }
-
+.card_content{
+    padding: 5px;
+}
 .card a{
-    display:block;
+    display:block; /* Ссылка как блочный элемент */
     text-decoration: none;
     color: var(--global_text_color);
 }
@@ -337,102 +321,27 @@ article {
     width: 100%;
 }
 .card_content .name{
+    align-self: end;
+    /* font-family: 'Russo One', sans-serif; */
     font-weight: 700;
-    font-size: 18px;
-    line-height: normal;
+    font-size: 17px;
     color: #428bca;
-}
-.card--left-right {
-    display: flex;
-    justify-content: space-between;
 }
 .card_content .pn{
     font-family: 'IBM Plex Mono', monospace;
+    /* font-size: 15px; */
 }
 .card_content .price{
     font-family: 'Play', sans-serif;
     font-size: 20px;    
 }
-.card__content{
+.card .card_content{
     display:inline-block;
     margin-right: 12px;
 }
 .card .foot_card_quantity{
     align-self: end;
 }
-
-/* ----------- */
-.card {
-    display: grid;
-    background-color: white;
-    color:  var(--global_text_color);
-    height: auto;
-    max-width: 100%;
-    text-align:left;
-    position: relative;
-    /* margin: 5px; */
-}
-.card__action {
-    width: 90%;
-    height: 30px;
-    background: #fa6262;
-    position: absolute;
-    top: 50px;
-    left: -50px;
-    text-align: center;
-    line-height: 30px;
-    color: white;
-    opacity: 0.5;
-    transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-}
-.card:hover{
-    border: 1px solid var(--global_geen);
-}
-
-.card__link {
-    display:block; /* Ссылка как блочный элемент */
-    text-decoration: none;
-    color: var(--global_text_color);
-}
-.card__body {
-    padding: 5px;
-}
-.card-img-top {
-    width: 100%;
-}
-.card__name{
-    color: #428bca;
-}
-.card--left-right {
-    display: flex;
-    justify-content: space-between;
-    margin: 0;
-    margin-bottom: 3px;
-}
-.card--text-crossed  {
-    text-decoration: line-through;
-    font-size: 13px;
-    font-weight: 700;
-}
-
-.card--red-text {
-    color: rgb(252,98,91);
-    font-size: 16px;
-    font-weight: 700;
-}
-.card__price--text {
-    font-size: 16px;
-    font-weight: 700;
-    padding: 2px 5px;
-    background-color: rgba(252, 99, 91, 0.18);
-}
-.card .card__footer{
-    align-self: end;
-    display: flex;
-    justify-content: space-between;
-}
-
 /* START FOOTER */
 .hd_4 {
     grid-area: hd_4;

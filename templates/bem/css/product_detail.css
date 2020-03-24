@@ -1,0 +1,122 @@
+/* Product Detail */
+.product_detail{
+    display: grid;
+    gap:30px;
+    grid-template-areas:
+        "product_header"
+        "product_img"
+        "feature"
+        "description"
+        "accessories";
+    padding: var(--global_12);
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto auto auto;
+}
+.product_header{
+    grid-area: product_header;
+    text-align: center;
+    padding: 20px;
+    border-bottom: 1px solid var(--global_geen);
+    color: #428bca;
+}
+.product_img{
+    grid-area: product_img;
+}
+.feature{
+    grid-area: feature;
+    padding: var(--global_12);
+}
+.p_left, .p_right{
+    float: left;
+    width: 50%;
+}
+.p_right{
+    text-align: right;
+}
+.feature .foot_card_quantity{
+    width: 100%
+}
+/* .feature .foot_card_quantity button{
+    height: 32px;
+} */
+.c_p_d {
+    font-size: 40px;
+    padding: var(--global_12);
+    border-bottom: 1px solid var(--global_geen);
+    margin-bottom: var(--global_12);
+}
+.c_p_d ul{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+}
+.c_p_d a{
+    color: #0275d8;
+}
+.description{
+    grid-area: description;
+    padding: var(--global_12);
+    /* border: 1px solid var(--global_geen); */
+}
+.accessories{
+    grid-area: accessories;
+}
+/*GooglMap*/
+.map-responsive{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+.map-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+/*GO TO TOP*/
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 31px;
+    width: 31px;
+    z-index: 99;
+    font-size: 18px;
+    color: var(--global_text_color);
+    border: none;
+    outline: none;
+    background-color: red; /* #d9534f */
+    opacity:0.5;
+    color: white;
+    cursor: pointer;
+    /* padding: 15px; */
+    /* border-radius: 4px; */
+}
+#myBtn:hover {
+    background-color: rgba(29, 28, 28, 0.582);
+}
+
+
+.more, .more_2, .more_3 {
+    color: #0275d8;
+    cursor: pointer;
+}
+.overlay, .overlay_2, .overlay_3 {
+    /* max-height: calc(100% - 100px); */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+.flat_block {
+    background-color: var(--global_background_color);
+    border: 1px solid var(--global_geen);
+}
+@media (max-width: 900px){
+    .c_p_d{
+            display: none;
+        }
+}

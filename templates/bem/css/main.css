@@ -5,9 +5,18 @@
     --global_12:12px;
     --global_background_color:#f4f6f6;
 }
+* {
+    /* font-family: 'IBM Plex Mono', monospace; */
+    font-family: 'Play', sans-serif;
+}
 h1, h2{
     margin: 0;
     padding: 0;
+}
+.title-h2 {
+    font-weight: 700;
+    font-size: 17px;
+    line-height: normal;
 }
 .main{
     display: grid;
@@ -28,17 +37,89 @@ h1, h2{
     height: 30px;
 }
 .content-main {
-    /* border: #fa6262 2px solid; */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, auto));
     grid-template-rows: repeat(auto-fit, minmax(auto, auto));
     gap: 12px;
     padding: 12px;
+    border: 2px red dashed;
+    background-color: rgb(185, 185, 185);
 }
 .content-main--list{
     grid-template-columns: 50px auto auto auto auto auto 160px;
     grid-template-rows: auto auto;
     padding: auto;
-    /* grid-template-columns: repeat(auto-fit, minmax(220px, auto));
-    grid-template-rows: repeat(auto-fit, minmax(auto, auto)); */
 }
+.card {
+    display: grid;
+    background-color: white;
+    color:  var(--global_text_color);
+    height: auto;
+    max-width: 100%;
+    text-align:left;
+    position: relative;
+    /* margin: 5px; */
+}
+.card__action {
+    width: 90%;
+    height: 30px;
+    background: #fa6262;
+    position: absolute;
+    top: 50px;
+    left: -50px;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    opacity: 0.5;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+.card:hover{
+    border: 1px solid var(--global_geen);
+}
+
+.card__link {
+    display:block; /* Ссылка как блочный элемент */
+    text-decoration: none;
+    color: var(--global_text_color);
+}
+.card__body {
+    padding: 5px;
+}
+.card-img-top {
+    width: 100%;
+}
+.card__name{
+    color: #428bca;
+}
+.card--left-right {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    margin-bottom: 3px;
+}
+.card--text-crossed  {
+    text-decoration: line-through;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.card--red-text {
+    color: rgb(252,98,91);
+    font-size: 16px;
+    font-weight: 700;
+}
+.card__price--text {
+    font-size: 16px;
+    font-weight: 700;
+    padding: 5px;
+    color: #428bca;
+    background-color: rgba(252, 99, 91, 0.5);
+}
+.card .card__footer{
+    align-self: end;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Кнопки */

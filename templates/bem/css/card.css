@@ -113,7 +113,12 @@ input[name=quantity] {
     grid-template-rows: 1fr;
     grid-template-columns: 50px auto auto auto auto auto 160px;
 }
-
+.content-main--card {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, auto));
+    grid-template-rows: repeat(auto-fit, minmax(auto, auto));
+}
 .card-img--min{
     width: 43px;
     height: 43px;
