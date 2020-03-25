@@ -25,17 +25,15 @@
             {% for item in category_all %}
             {% if item.is_root_node %}
             <div class="card">
-                <a href="{% url 'shop:list_category' item.get_absolute_url %}">
-                    <div class="image">
+                <a class="card__link" href="{% url 'shop:list_category' item.get_absolute_url %}">
+                    <div class="card__img">
                         <img class="card-img-top"
                         src="{% if item.image %}{{ item.image.url }}
                         {% else %}{% static "img/no_image.png" %}
                         {% endif %}" alt="{{item.name}}"
                         title="{{item.name}}">
                     </div>
-                    <div class="foot_card" style="text-align:center">
-                        {{item.name}}
-                    </div>
+                    <h2 class="card--text-centr card__name title-h2">{{item.name}}</h2>
                 </a>
             </div>
             {% endif %}

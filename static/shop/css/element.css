@@ -7,6 +7,7 @@
 :root{
     --global_geen: #85c987;
     --global_text_color:#2E4053;
+    --global_blue: #428bca;
     --pading_5:5px;
     --global_12:12px;
     --global_background_color:#f4f6f6;
@@ -30,7 +31,12 @@ img {
     height: auto;
     max-width: 100%;
 }
-
+.color--blue{
+    color: var(--global_blue);
+}
+.color--green{
+    color: var(--global_geen);
+}
 h1, h2{
     margin: 0;
     padding: 0;

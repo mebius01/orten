@@ -10,7 +10,7 @@
     </a>
     <a class="card__link" href="{% url 'shop:product_detail' item.slug %}">
         <div class="card__body">
-            <h2 class="card__name title-h2">{{item.name}}</h2>
+            <h2 class="card__name title-h2 color--blue">{{item.name}}</h2>
             <p class="card__pn card--left-right">
                 <span>Артикул:</span>
                 <span>{{item.vendor_code}}</span>
@@ -45,7 +45,8 @@
 </div>
 
 
-{% comment %} <div class="card">
+{% comment %} 
+<div class="card">
     {% if item.action %}
         <div class="card-action">Акция до {{item.end_action|date:"d.m.y"}}</div>
     {% endif %}
@@ -82,4 +83,5 @@
         <button type="submit" class="apply"><i style="padding-right:5px;" class="fa fa-shopping-cart"></i>Купить</button>
         </form>
     </div>
-</div> {% endcomment %}
+</div>
+{% endcomment %}

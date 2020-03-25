@@ -11,11 +11,11 @@
 {% block breadcrumbs %}
 	{{ block.super }}
 	<li><a href="{% url 'shop:category' %}">Категории</a></li>
-	{% for i in instance.get_ancestors %}
-		{% if i.product.count %}
-			<li>{{ i.name }}</li>
+	{% for item in instance.get_ancestors %}
+		{% if item.product.count %}
+			<li>{{ item.name }}</li>
 		{% else %}
-			<li><a href="{% url 'shop:list_category' i.slug %}">{{ i.name }}</a></li>
+			<li><a href="{% url 'shop:list_category' item.slug %}">{{ item.name }}</a></li>
 		{% endif %}
 	{% endfor %}
 	<li>{{ instance.name }}</li>
@@ -30,24 +30,24 @@
 				{{instance.name}}
 			</div>
 			<div class="content">
-				{% for i in instance.children.all|dictsort:"id" %}
+				{% for item in instance.children.all|dictsort:"id" %}
 				<div class="card">
-					{% if i.product.count %}
-					<a href="{% url 'shop:product_list' %}?category={{i.id}}">
-					{% elif i.services.count %}
-					<a href="{% url 'shop:service_list' %}?category={{i.id}}">
+					{% if item.product.count %}
+					<a class="card__link" href="{% url 'shop:product_list' %}?category={{item.id}}">
+					{% elif item.services.count %}
+					<a class="card__link" href="{% url 'shop:service_list' %}?category={{item.id}}">
 					{% else %}
-					<a href="{% url 'shop:list_category' i.slug %}">
+					<a class="card__link" href="{% url 'shop:list_category' item.slug %}">
 					{% endif %}
-						<div class="image">
+						<div class="card__img">
 							<img class="card-img-top"
-							src="{% if i.image %}{{ i.image.url }} {% else %}{% static "img/no_image.png" %}
-							{% endif %}" title="{{i.name}}" 
-							alt="{{i.name}}">
+							src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}
+							{% endif %}" title="{{item.name}}" 
+							alt="{{item.name}}">
 						</div>
-						<div class="foot_card" style="text-align:center;">
-							{{i.name}} <span style="color:#5cb85c">{% firstof i.product.count i.services.count %}</span>
-						</div>
+						<h2 class="card__name title-h2 card--text-centr">{{item.name}}
+							<span class="color--green">{% firstof item.product.count item.services.count %}</span>
+						</h2>
 					</a>
 				</div>
 				{% endfor %}

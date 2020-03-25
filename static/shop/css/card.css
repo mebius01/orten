@@ -41,9 +41,7 @@
 .card-img-top {
     width: 100%;
 }
-.card__name{
-    color: #428bca;
-}
+
 .card--left-right {
     display: flex;
     justify-content: space-between;
@@ -55,7 +53,12 @@
     font-size: 13px;
     font-weight: 700;
 }
-
+.card--text-centr {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    text-align: center;
+}
 .card--red-text {
     color: rgb(252,98,91);
     font-size: 16px;
