@@ -1,0 +1,15 @@
+.
+├── baden_change-price.py
+├── csv
+│   └── sorted_product_not_in_db_baden.csv
+├── json
+│   ├── baden.json
+│   └── baden-new.json
+└── xlsx
+    └── baden.xls
+
+Где:
+    baden_change-price.py - исполняющий файл
+    json/baden.json - файл экспорта. Это файл со старыми ценами слитый с БД (обязателен)
+    json/baden-new.json - файл импорта. Этот файл формируется в результате работы baden_change-price.py
+    xlsx/baden.xls - Файл с ценами поставщика оттуда скрипт берет цены (Обязателен)
