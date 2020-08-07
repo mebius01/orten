@@ -827,12 +827,12 @@ table {text-align: center;}
     align-items: center;
 }
 .error h1 {
-    margin: 10px 30px 10px 30px;
+    margin: 0px 30px 0px 30px;
     font-size: 255px;
 }
 .error__content {
     font-size: 20px;
-    margin: 10px 30px 10px 30px;
+    margin: 0px 30px 0px 30px;
 }
 .error__content li::before {
     content: '>';
