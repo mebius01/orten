@@ -1,29 +1,27 @@
-{% extends "base.html" %}
-{% load static %}
-{% load bootstrap4 %}
-{% load mptt_tags %}
-{% block head %}
-    {{head}}
-{% endblock %}
-{% block breadcrumbs %}
-    {{ block.super }}<li><a href="">ERROR 404</a></li>
-{% endblock %}
-{% block content %}
+{% extends "base.html" %} {% load static %} {% load bootstrap4 %} {% load
+mptt_tags %} {% block head %} {{head}} {% endblock %} {% block breadcrumbs %} {{
+block.super }}
+<li><a href="">ERROR 404</a></li>
+{% endblock %} {% block content %}
 <title>Orten - ERROR 404</title>
 <section class="error">
-      <h1 class="rotate-center">404</h1>
-      <div class="error__content">
-        <p>
-          Возможно, страница, которую вы ищете, не сущесвует, изменилось ее имя
-          или временно недоступна из-за работ на сервере.
-        </p>
-        <p>
-          Можно венуться:
-        </p>
-        <ul>
-          <li class="cool_link"><a href="{% url 'shop:home' %}">Главную</a></li>
-        </ul>
-        <p>Возвращайтесь к нам :)</p>
-      </div>
-    </section>
+  <h1 class="rotate-center">404</h1>
+  <div class="error__content">
+    <p>
+      Ууупс! Страница не найдена. Причины:
+    </p>
+    <ul>
+      <li>Ошибка в адресе</li>
+      <li>Документ был удален с ресурса</li>
+      <li>Сервер работает некорректно</li>
+    </ul>
+    <p>
+      Можно венуться:
+    </p>
+    <ul>
+      <li class="cool_link"><a href="{% url 'shop:home' %}">Главную</a></li>
+    </ul>
+    <p>Возвращайтесь к нам :)</p>
+  </div>
+</section>
 {% endblock %}
