@@ -3,19 +3,19 @@
     {% if item.action %}
         <div class="card__action">Акция до {{item.end_action|date:"d.m.y"}}</div>
     {% endif %}
-    <a class="card__link" href="{% url 'shop:product_detail' item.slug %}">
+    <a class="card__link" href="{% url 'shop:service_detail' item.slug %}">
         <div class="card__img">
             <img class="card-img-top" src="{% if item.image %}{{ item.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{item.name}}">
         </div>
     </a>
-    <a class="card__link" href="{% url 'shop:product_detail' item.slug %}">
+    <a class="card__link" href="{% url 'shop:service_detail' item.slug %}">
         <div class="card__body">
-            <h2 class="card__name color--blue">{{item.name}}</h2>
-            <p class="card__pn space-between">
+            <h2 class="card__name title-h2 color--blue">{{item.name}}</h2>
+            <p class="card__pn card--left-right">
                 <span>Артикул:</span>
                 <span>{{item.vendor_code}}</span>
             </p>
-            <p class="card__vendor space-between">
+            <p class="card__vendor card--left-right">
                 <span>Вендор:</span>
                 <span>{{item.vendor}}</span>
             </p>
@@ -31,16 +31,9 @@
                     </p>
                 {% else %}
                     <p class="space-between">
-                        <span>Цена:</span>
-                        <span class="card__price--text">{{item.price}}</span>
-                    </p>
+                        <span>Цена:</span><span class="card__price--text">{{item.price}}</span></p>
                 {% endif %}
             </div>
         </div>
     </a>
-    <form class="form-footer" action="{% url "cart:cart_add" item.id %}" method="post">
-        {% csrf_token %}
-        <input type="number" name="{{ form.quantity.name }}" value="{{ form.quantity.value}}" min="1" {% if form.quantity.field.required %}required{% endif %}>
-        <button type="submit" class="apply"><i style="padding-right:5px;" class="fa fa-shopping-cart"></i>Купить</button>
-    </form>
 </div>

@@ -8,12 +8,14 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta charset="utf-8">
-        <link rel="stylesheet" href="{% static 'shop/css/flags.css' %}" type="text/css">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+        {% comment %} <link rel="stylesheet" href="{% static 'shop/css/flags.css' %}" type="text/css"> {% endcomment %}
         {% comment %} <link rel="stylesheet" href="{% static 'shop/css/base.css' %}" type="text/css"> {% endcomment %}
-        <link rel="stylesheet" href="{% static 'shop/css/element.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'shop/css/main.css' %}" type="text/css">
+        <!-- <link rel="stylesheet" href="{% static 'shop/css/element.css' %}" type="text/css">
         <link rel="stylesheet" href="{% static 'shop/css/card.css' %}">
-        <link rel="stylesheet" href="{% static 'shop/css/media.css' %}" type="text/css">
-        <!-- <link rel="stylesheet" href="{% static 'shop/css/normalize.css' %}"> -->
+        <link rel="stylesheet" href="{% static 'shop/css/media.css' %}" type="text/css"> -->
+        <link rel="stylesheet" href="{% static 'shop/css/normalize.css' %}">
         <link rel="shortcut icon" type="image/png" href="{% static "img/favicon.png" %}">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
         {% block head %}
@@ -21,17 +23,17 @@
         {% endblock %}
         <!-- Google Tag Manager -->
         <script>
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-56KXN4');
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-56KXN4');
         </script>
     </head>
 <body>
-    <header>
-        <div class="one_header">
-            <script type="application/ld+json">
+    <header class="header">
+        <div class="header-row">
+        <script type="application/ld+json">
             {
                 "@context": "http://schema.org",
                 "@type": "LocalBusiness",
@@ -89,60 +91,62 @@
                     }
                 ]
             }
-            </script>
-            <div class="hd_1" style="justify-self: start;">
-                <a href="{% url 'shop:home' %}">
-                <img src="{% static "shop/img/logo.png" %}" 
+        </script>
+            <div class="logo">
+                <a class="logo__link" href="{% url 'shop:home' %}">
+                <img class="logo__img" src="{% static "shop/img/logo.png" %}" 
                 alt="Ортен - розничный и оптовый интернет-магазин печатной и компьютерной техники в Николаеве" 
                 title="Копировальная техника и расходные материалы ★ Компьютеры и комплектующие ★ Полиграфическое оборудование и расходные материалы ★ Оперативная полиграфия ★ Диагностика и ремонт копировальной техники и компьютеров">
                 </a>
             </div>
-            <div class="hd_2">
-                <i class="fas fa-door-open"></i>Мы открыты
-                <br>
-                <i class="fas fa-clock"></i>Пн-Пт: 9:00 - 18:00
-                <br>
-                <i class="fas fa-utensils"></i>Пн-Пт: 12:00 - 12:30
-                <br>
-                <i class="fas fa-clock"></i>Сб: 9:00 - 14:00
-            </div>
-            <div class="hd_3">
-                <a class="cool-link text-muted" 
-                href="https://www.google.com/maps/place/%D0%9E%D1%80%D1%82%D1%8D%D0%BD,+%D0%9E%D0%9E%D0%9E/@46.952503,32.040273,15z/data=!4m2!3m1!1s0x0:0x4784e49173525ad2?ved=2ahUKEwiLnpXuiPLfAhXNqIsKHWxSBAYQ_BIwCnoECAUQCA" target="_blank">
-                <i class="fa fa-home"></i>г. Николаев пр. Мира, 5</a>
-                <br>
-                <a class="cool-link text-muted" href="mailto:orten_office@ukr.net"><i class="fas fa-envelope"></i>orten_office@ukr.net</a>
-                <br>
-                <i class="fas fa-phone text-muted"></i>(0512) 56-65-39
-                <br>
-                <i class="fas fa-mobile text-muted"></i>(050) 318-40-64
+            <div class="contact">
+                <ul class="hd_2">
+                    <li><i class="fas fa-door-open"></i>Мы открыты</li>
+                    <li><i class="fas fa-clock"></i>Пн-Пт: 9:00 - 18:00</li>
+                    <li><i class="fas fa-utensils"></i>Пн-Пт: 12:00 - 12:30</li>
+                    <li><i class="fas fa-clock"></i>Сб: 9:00 - 14:00</li>
+                </ul>
+                <ul class="hd_3">
+                    <li>
+                        <a class="cool-link text-muted" 
+                        href="https://www.google.com/maps/place/%D0%9E%D1%80%D1%82%D1%8D%D0%BD,+%D0%9E%D0%9E%D0%9E/@46.952503,32.040273,15z/data=!4m2!3m1!1s0x0:0x4784e49173525ad2?ved=2ahUKEwiLnpXuiPLfAhXNqIsKHWxSBAYQ_BIwCnoECAUQCA" target="_blank">
+                        <i class="fa fa-home"></i>г. Николаев пр. Мира, 5</a>
+                    </li>
+                    <li>
+                        <a class="cool-link text-muted" href="mailto:orten_office@ukr.net"><i class="fas fa-envelope"></i>orten_office@ukr.net</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone text-muted"></i>(0512) 56-65-39
+                    </li>
+                    <li>
+                        <i class="fas fa-mobile text-muted"></i>(050) 318-40-64
+                    </li>
+                </ul>
             </div>
         </div>
-        <div class="two_header">
-            <div class="ad">
-                У зв'язку з посиленням карантинних мір, офіс ТОВ Ортен тимчасово працює у режимі  обмеженого доступу.
-                <br>
-                Всі питання за телефоном <b>(0512)58-32-60, (050)318-40-64</b> та електронною поштою <b>orten_office@ukr.net</b>.
-                <br>
-                У <b>суботу</b> офіс тимчасово не працює.
-            </div>
-            <ul>
-                <li class="cool_link"><a title="Принтеры, МФУ, Дупликаторы японской компании Ricoh. Тонера, фотобарабаны, рессурсные детали" href="{% url 'shop:list_category' 'ricoh' %}">Ricoh</a></li>
-                <li class="cool_link"><a title="Konica Minolta - японский холдинг, один из ведущих мировых производителей. МФУ, принтеры, инженерные печатные системы. Расходные материалы, дополнительное оборудование, рессурсные детали" href="{% url 'shop:list_category' 'konica-minolta' %}">Konica Minolta</a></li>
-                <li class="cool_link"><a title="Цифровые дупликаторы, чернила и мастер-пленки от японской компании Duplo и других" href="{% url 'shop:list_category' 'cifrovye-duplikatory' %}">{% trans 'Цифровые дупликаторы' %}</a></li>
-                <li class="cool_link"><a title="ColorWay, лицензионные расходные материалы для лазерной и струйной печати, фотобумага, СНПЧ и КПК" href="{% url 'shop:list_category' 'colorway' %}">ColorWay</a></li>
-                <li class="cool_link"><a title="Ремонт Принтеров, МФУ, компьютеров, заправка и реставрация картриджей. Все возможные и невозможные ремонты" href="{% url 'shop:list_category' 'servisnyj-centr' %}">Сервисный Центр</a></li>
-                <li class="cool_link"><a title="Все возможные и не возможные услуги по ремонту и техническому сопровождению техники Ricoh" href="{% url 'shop:list_category' 'servisnyj-centr/avtorizovannyj-servisnyj-centr-ricoh' %}">Сервис Ricoh</a></li>
-                <li class="cool_link"><a title="Покопийное обслуживание Konica Minolta, ремон, ввод в эксплуатацию" href="{% url 'shop:list_category' 'servisnyj-centr/avtorizovannyj-servisnyj-centr-konica-minolta' %}">Сервис Konica Minolta</a></li>
-                <li class="cool_link"><a title="Тонера, фотобарабаны, вали, ролики, картриджи мировых брендов Toshiba, Erus, Static Control, Vision, Xerox, HP, Samsung" href="{% url 'shop:list_category' 'licenzionnye-rashodnye-materialy' %}">Все для Принтеров и МФУ</a></li>
-                <li class="cool_link"><a title="Полиграфические услуги в Николаеве. Визитки, календари, флаера.. Тиражирование на ризографе" href="{% url 'shop:polygraphy' %}">Полиграфия</a></li>
-            </ul>
+        <div class="ad">
+            У зв'язку з посиленням карантинних мір, офіс ТОВ Ортен тимчасово працює у режимі  обмеженого доступу.
+            <br>
+            Всі питання за телефоном <b>(0512)58-32-60, (050)318-40-64</b> та електронною поштою <b>orten_office@ukr.net</b>.
+            <br>
+            У <b>суботу</b> офіс тимчасово не працює.
         </div>
+        <ul class="main_categories">
+            <li class="cool_link"><a title="Принтеры, МФУ, Дупликаторы японской компании Ricoh. Тонера, фотобарабаны, рессурсные детали" href="{% url 'shop:list_category' 'ricoh' %}">Ricoh</a></li>
+            <li class="cool_link"><a title="Konica Minolta - японский холдинг, один из ведущих мировых производителей. МФУ, принтеры, инженерные печатные системы. Расходные материалы, дополнительное оборудование, рессурсные детали" href="{% url 'shop:list_category' 'konica-minolta' %}">Konica Minolta</a></li>
+            <li class="cool_link"><a title="Цифровые дупликаторы, чернила и мастер-пленки от японской компании Duplo и других" href="{% url 'shop:list_category' 'cifrovye-duplikatory' %}">{% trans 'Цифровые дупликаторы' %}</a></li>
+            <li class="cool_link"><a title="ColorWay, лицензионные расходные материалы для лазерной и струйной печати, фотобумага, СНПЧ и КПК" href="{% url 'shop:list_category' 'colorway' %}">ColorWay</a></li>
+            <li class="cool_link"><a title="Ремонт Принтеров, МФУ, компьютеров, заправка и реставрация картриджей. Все возможные и невозможные ремонты" href="{% url 'shop:list_category' 'servisnyj-centr' %}">Сервисный Центр</a></li>
+            <li class="cool_link"><a title="Все возможные и не возможные услуги по ремонту и техническому сопровождению техники Ricoh" href="{% url 'shop:list_category' 'servisnyj-centr/avtorizovannyj-servisnyj-centr-ricoh' %}">Сервис Ricoh</a></li>
+            <li class="cool_link"><a title="Покопийное обслуживание Konica Minolta, ремон, ввод в эксплуатацию" href="{% url 'shop:list_category' 'servisnyj-centr/avtorizovannyj-servisnyj-centr-konica-minolta' %}">Сервис Konica Minolta</a></li>
+            <li class="cool_link"><a title="Тонера, фотобарабаны, вали, ролики, картриджи мировых брендов Toshiba, Erus, Static Control, Vision, Xerox, HP, Samsung" href="{% url 'shop:list_category' 'licenzionnye-rashodnye-materialy' %}">Все для Принтеров и МФУ</a></li>
+            <li class="cool_link"><a title="Полиграфические услуги в Николаеве. Визитки, календари, флаера.. Тиражирование на ризографе" href="{% url 'shop:polygraphy' %}">Полиграфия</a></li>
+        </ul>
         <nav>
             <div class="toggle">
                 <i class="fa fa-bars menu"></i>
             </div>
-            <ul>
+            <ul class="menu">
                 <li><a href="{% url 'shop:home' %}">Дом</a></li>
                 <li><a href="{% url 'shop:category' %}">Категории</a></li>
                 <li><a href="{% url 'shop:product_list' %}">Товары</a></li>
@@ -152,121 +156,123 @@
                 <li><a href="{% url 'shop:about' %}">Кто мы</a></li>
                 <li><a href="{% url 'shop:contact' %}">Контакты</a></li>
             </ul>
-            <!-- Language -->
-            {% comment %} <div class="langdown">
-                <span class="dropbtn">
-                {% get_current_language as LANGUAGE_CODE %}
-                    {% if LANGUAGE_CODE == 'ru' %} <span class="flag flag-ru"></span>
-                    {% elif LANGUAGE_CODE == 'uk' %} <span class="flag flag-ua"></span>
-                    {% endif %}
-                </span>
-                <div class="langdown-content">
-                    <form id='lang_uk' action='/i18n/setlang/' method='POST'>{% csrf_token %}
-                        <input type='hidden' name='language' value='uk'/>
-                        <a class="langdown-item" href='#' title='Ukrine' onclick="document.getElementById('lang_uk').submit()"><span class="flag flag-ua"></span> Ukrine</a>
-                        </form>
-
-                    <form id='lang_ru' action='/i18n/setlang/' method='POST'>{% csrf_token %}
-                        <input type='hidden' name='language' value='ru'/>
-                        <a class="langdown-item" href='#' title='Russian' onclick="document.getElementById('lang_ru').submit()"><span class="flag flag-ru"></span> Russian</a>
-                        </form>
-                </div>
-            </div> {% endcomment %}
-            <div class="search_container">
-            <!-- SEO Оптимизация -->
-            <script type="application/ld+json">
-                {
-                "@context": "https://schema.org/",
-                "@type": "WebSite",
-                "name": "Ортен",
-                "url": "https://orten.in.ua",
-                "potentialAction": {
-                    "@type": "SearchAction",
-                    "target": "https://orten.in.ua/shop/product/?search={search_term_string}",
-                    "query-input": "required name=search_term_string"
-                }
-                }
-            </script>
-                <form role="search" action="{% url 'shop:product_list' %}">
-                    <input type="text" placeholder="Search..." name="search">
-                </form>
+            <div class="control-block">
+            <div class="langdown">
+                <a href=""><i class="fas fa-globe"></i></a>
             </div>
-            <div class="card_container">
-                {% with total_items=cart|length %}
-                    {% if cart|length > 0 %}
-                        <a href="{% url "cart:cart_detail" %}">
-                            <i class="fa fa-shopping-cart"></i>
-                            <span>{{ total_items }}</span>
-                        </a>
-                    {% else %}
-                        <a href="{% url "cart:cart_detail" %}" title="Пока, что Ваша корзина пуста">
-                            <i class="fa fa-shopping-cart"></i>
-                            <span>0</span>
-                        </a>
-                    {% endif %}
-                {% endwith %}
+                <!-- Language -->
+                {% comment %} <div class="langdown">
+                    <span class="dropbtn">
+                    {% get_current_language as LANGUAGE_CODE %}
+                        {% if LANGUAGE_CODE == 'ru' %} <span class="flag flag-ru"></span>
+                        {% elif LANGUAGE_CODE == 'uk' %} <span class="flag flag-ua"></span>
+                        {% endif %}
+                    </span>
+                    <div class="langdown-content">
+                        <form id='lang_uk' action='/i18n/setlang/' method='POST'>{% csrf_token %}
+                            <input type='hidden' name='language' value='uk'/>
+                            <a class="langdown-item" href='#' title='Ukrine' onclick="document.getElementById('lang_uk').submit()"><span class="flag flag-ua"></span> Ukrine</a>
+                            </form>
+
+                        <form id='lang_ru' action='/i18n/setlang/' method='POST'>{% csrf_token %}
+                            <input type='hidden' name='language' value='ru'/>
+                            <a class="langdown-item" href='#' title='Russian' onclick="document.getElementById('lang_ru').submit()"><span class="flag flag-ru"></span> Russian</a>
+                            </form>
+                    </div>
+                </div> {% endcomment %}
+                <div class="search_container">
+                <!-- SEO Оптимизация -->
+                    <script type="application/ld+json">
+                        {
+                        "@context": "https://schema.org/",
+                        "@type": "WebSite",
+                        "name": "Ортен",
+                        "url": "https://orten.in.ua",
+                        "potentialAction": {
+                            "@type": "SearchAction",
+                            "target": "https://orten.in.ua/shop/product/?search={search_term_string}",
+                            "query-input": "required name=search_term_string"
+                        }
+                        }
+                    </script>
+                    <form role="search" action="{% url 'shop:product_list' %}">
+                        <input type="text" placeholder="Search..." name="search">
+                    </form>
+                </div>
+                <div class="card_container">
+                    {% with total_items=cart|length %}
+                        {% if cart|length > 0 %}
+                            <a href="{% url "cart:cart_detail" %}">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span>{{ total_items }}</span>
+                            </a>
+                        {% else %}
+                            <a href="{% url "cart:cart_detail" %}" title="Пока, что Ваша корзина пуста">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span>0</span>
+                            </a>
+                        {% endif %}
+                    {% endwith %}
+                </div>
             </div>
         </nav>
-        <div class="breadcrumbs">
-            <ul>
-                {% block breadcrumbs %}
-                    <li><a href="/"><i class="fas fa-home"></i></a></li>
-                {% endblock %}
-            </ul>
-        </div>
+        <ul class="breadcrumbs">
+            {% block breadcrumbs %}
+                <li><a href="/"><i class="fas fa-home"></i></a></li>
+            {% endblock %}
+        </ul>
     </header>
     <!-- CONTENT -->
     {% block content %}
         {{content}}
     {% endblock %}
     <!-- Go To Top -->
-    <footer>
-        {% cache 900 hd_4 %}
-        <div class="hd_4">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5446.935101617827!2d32.040273!3d46.952503!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4784e49173525ad2!2z0J7RgNGC0Y3QvSwg0J7QntCe!5e0!3m2!1sru!2sua!4v1547893952458">
-            </iframe>
+    <footer class="footer">
+        <div class="map">
+            <img src="{% static "shop/img/icon/map.png" %}" alt="">
         </div>
-        {% endcache %}
-        <div class="hd_5">
-            Меню
-            <hr>
-            <ul>
-                <li><a href="{% url 'shop:product_list' %}">Что мы продаем</a></li>
-                <li><a href="{% url 'shop:category' %}">Категории</a></li>
-                <li><a href="{% url 'shop:list_category' 'servisnyj-centr' %}">Сервисный центр</a></li>
-                <li><a href="{% url 'shop:polygraphy' %}">Полиграфия</a></li>
-            </ul>
-        </div>
-        <div class="hd_6">
-            Гафик
-            <hr>
-            <i class="fas fa-door-open"></i>Мы открыты
-            <br>
-            <i class="fas fa-clock"></i>Пн-Пт: 9:00 - 18:00
-            <br>
-            <i class="fas fa-clock"></i>Сб: 9:00 - 14:00
-        </div>
-        <div class="hd_7">
-            Контакты
-            <hr>
-            <a class="cool-link text-muted" href="https://www.google.com/maps/place/%D0%9E%D1%80%D1%82%D1%8D%D0%BD,+%D0%9E%D0%9E%D0%9E/@46.952503,32.040273,15z/data=!4m2!3m1!1s0x0:0x4784e49173525ad2?ved=2ahUKEwiLnpXuiPLfAhXNqIsKHWxSBAYQ_BIwCnoECAUQCA" target="_blank">
-            <i class="fa fa-home"></i>г. Николаев пр. Мира, 5</a>
-            <br>
-            <a class="cool-link text-muted" href="mailto:orten_office@ukr.net"><i class="fas fa-envelope"></i> orten_office@ukr.net</a>
-            <br>
-            <i class="fas fa-phone text-muted"></i>(0512) 56-65-39
-            <br>
-            <i class="fas fa-mobile text-muted mr-4 pl-3"></i> (050) 318-40-64
-        </div>
-        <div class="hd_8">
-            Copyright © 2008 - 2019 orten.in.ua
-        </div>
+        <ul class="hd_1">
+            <li><a href="{% url 'shop:product_list' %}">Что мы продаем</a></li>
+            <li><a href="{% url 'shop:category' %}">Категории</a></li>
+            <li><a href="{% url 'shop:list_category' 'servisnyj-centr' %}">Сервисный центр</a></li>
+            <li><a href="{% url 'shop:polygraphy' %}">Полиграфия</a></li>
+        </ul>
+        <ul class="hd_2">
+            <li><i class="fas fa-door-open"></i>Мы открыты</li>
+            <li><i class="fas fa-clock"></i>Пн-Пт: 9:00 - 18:00</li>
+            <li><i class="fas fa-utensils"></i>Пн-Пт: 12:00 - 12:30</li>
+            <li><i class="fas fa-clock"></i>Сб: 9:00 - 14:00</li>
+        </ul>
+        <ul class="hd_3">
+            <li>
+                <a class="cool-link text-muted" 
+                href="https://www.google.com/maps/place/%D0%9E%D1%80%D1%82%D1%8D%D0%BD,+%D0%9E%D0%9E%D0%9E/@46.952503,32.040273,15z/data=!4m2!3m1!1s0x0:0x4784e49173525ad2?ved=2ahUKEwiLnpXuiPLfAhXNqIsKHWxSBAYQ_BIwCnoECAUQCA" target="_blank">
+                <i class="fa fa-home"></i>г. Николаев пр. Мира, 5</a>
+            </li>
+            <li>
+                <a class="cool-link text-muted" href="mailto:orten_office@ukr.net"><i class="fas fa-envelope"></i>orten_office@ukr.net</a>
+            </li>
+            <li>
+                <i class="fas fa-phone text-muted"></i>(0512) 56-65-39
+            </li>
+            <li>
+                <i class="fas fa-mobile text-muted"></i>(050) 318-40-64
+            </li>
+        </ul>
     </footer>
-    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-chevron-up"></i></button>
-    
+    <div class="copyright">
+      <p class="copyright__item" style="color: #e74c3c;">
+        orten.in.ua <span style="color: white;">© 2020</span>
+      </p>
+      <a style="text-decoration: none; color: #e74c3c;"
+        href="mailto:8th.port@gmail.com" class="copyright__link">
+        <span style="color: #3498db;">created 😄</span>
+        <span style="color: white;">:</span>
+        <span style="color: #e74c3c;"></span> 8-th Port</a>
+    </div>
+    <button onclick="topFunction()" id="scrollA" title="Go to top"><i class="fas fa-chevron-up"></i></button>
+    <button onclick="downFunction()" id="scrollB" title="Go to down"><i class="fas fa-chevron-down"></i></button>
     {% block javascript %}
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
     <script src="{% static 'shop/js/main.js' %}"></script>
     {% endblock javascript %}
 </body>

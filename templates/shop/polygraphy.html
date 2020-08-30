@@ -15,27 +15,27 @@
     <li>Полиграфия</li>
 {% endblock %}
 {% block content %}
-<section>
-	<aside>
-		{% include "include/include_list_category.html" %}
-	</aside>
-    <article>
-	<div class="hd_content"><i class="fas fa-th-large"></i>Список Категорий</div>
-        <div class="content">
-            {% get_flatpages as flatpages %}
-            {% for item in flatpages|dictsort:"id" %}
-            <div class="card">
-                <a class="card__link" href="{% url 'shop:polygraphy_detail' item.id %}" title="{{item.title}}">
-                    <div class="card__img">
-                        <img class="card-img-top"
-                        src="{% if item.polygraphy.image %}{{ item.polygraphy.image.url }} {% else %}
-                        {% static "img/no_image.png" %}{% endif %}" alt="{{item.name}}">
-                    </div>
-					<h2 class="card__name title-h2 card--text-centr">{{item.title}}</h2>
-                </a>
+    <section  class="main-container">
+        <aside>
+            {% include "include/include_list_category.html" %}
+        </aside>
+        <main >
+            <div class="header-for-block"><i class="fas fa-th-large"></i>Список Категорий</div>
+            <div class="card-grid">
+                {% get_flatpages as flatpages %}
+                {% for item in flatpages|dictsort:"id" %}
+                <div class="card">
+                    <a class="card__link" href="{% url 'shop:polygraphy_detail' item.id %}" title="{{item.title}}">
+                        <div class="card__img">
+                            <img class="card-img-top"
+                            src="{% if item.polygraphy.image %}{{ item.polygraphy.image.url }} {% else %}
+                            {% static "img/no_image.png" %}{% endif %}" alt="{{item.name}}">
+                        </div>
+                        <h2 class="card__name title-h2 card--text-centr">{{item.title}}</h2>
+                    </a>
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
-    </article>
-</section>
+        </main>
+    </section>
 {% endblock %}

@@ -23,33 +23,23 @@
 {% endblock %}
 
 {% block content %}
-<section>
-    {% include 'include/filters.html' %}
-    <article>
-        <div class="hd_content">
-            <i class="fab fa-product-hunt"></i>Товары
-        </div>
-            <div class="content">
-                <div class="product_list">
-                    <span class="s">Фото</span>
-                    <span class="s">Бренд</span>
-                    <span class="s">Название</span>
-                    <span class="s">Артикул</span>
-                    <span class="s"></span>
-                    <span class="s">Цена ₴</span>
-                    <span class="s">В корзину</span>
-                    <!-- динамический контент -->
-                    {% for item in object_list %}
-                    <script type="application/ld+json">
-                        {% include "include/list_product.json" %}
-                    </script>
-                        {% include "include/product_list.html" %}
-                    {% endfor %}
-                </div>
+    <section class="main-container">
+        {% include 'include/filters.html' %}
+        <main>
+            <div class="header-for-block">
+                <i class="fab fa-product-hunt"></i>Товары
             </div>
-    </article>
+            <div class="card-grid">
+                {% for item in object_list %}
+                <script type="application/ld+json">
+                    {% include "include/home.json" %}
+                </script>
+                    {% include "include/product_card.html" %}
+                {% endfor %}
+            </div>
+        </main>
+    </section>
     {% if is_paginated %}
         {% include "include/pagination.html" %}
     {% endif %}
-</section>
 {% endblock %}

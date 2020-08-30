@@ -1,5 +1,4 @@
 {% load static %}
-{% load bootstrap4 %}
 {% load i18n %}
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-3 p-2">
     <div class="card h-100">
@@ -19,9 +18,9 @@
                 <br>
                 {{item.vendor_code}}
                 <br>
-{% if item.action %}
-          Цена: <span style="text-decoration: line-through">{{item.price}}</span>
-              {% endif %}
+                {% if item.action %}
+                    Цена: <span style="text-decoration: line-through">{{item.price}}</span>
+                {% endif %}
                 </p>
             </ul>
         </div>

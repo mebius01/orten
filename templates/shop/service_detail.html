@@ -22,32 +22,36 @@
 {% endblock %}
 
 {% block content %}
-    <div class="product_detail">
-        <div class="product_header"><h1>{{ object.name }}</h1></div>
+    <div class="product">
+        <div class="product__head"><h1>{{ object.name }}</h1></div>
         <div class="product_img">
             <img style="max-width:100%;" src="{% if object.image %}{{ object.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{object.name}}" title="{{object.name}}">
         </div>
-        <div class="feature">
+        <div class="product__feature">
             <div class="specification">
-            {% if object.vendor_code %}
-                <p class="p_left">Артикул:</p>
-                <p class="p_right">{{ object.vendor_code }}</p>
-                <br><hr>
-            {% endif %}
-            {% if object.vendor %}
-                <p class="p_left">Производитель:</p>
-                <p class="p_right">{{object.vendor}}</p>
-                <br><hr>
-            {% endif %}
-            {% if object.vendor_model %}
-                <p class="p_left">Модель:</p>
-                <p class="p_right">{{ object.vendor_model }}</p>
-                <br><hr>
-            {% endif %}
-                <p class="p_left">Цена:</p>
-                <p class="p_right">{{object.price}}</p>
+                {% if object.vendor_code %}
+                    <p class="space-between">
+                        <span>Артикул:</span>
+                        <span>{{ object.vendor_code }}</span>
+                    </p>
+                {% endif %}
+                {% if object.vendor %}
+                    <p class="space-between">
+                    <span>Производитель:</span>
+                    <span>{{object.vendor}}</span>
+                    </p>
+                {% endif %}
+                {% if object.vendor_model %}
+                    <p class="space-between">
+                        <span>Модель:</span>
+                        <span>{{ object.vendor_model }}</span>
+                    </p>
+                {% endif %}
+                    <p class="space-between">
+                        <span>Цена:</span>
+                        <span>{{object.price}}</span>
+                    </p>
             </div>
-            <br><hr>
         </div>
         <div class="description">
             {% if object.description %}

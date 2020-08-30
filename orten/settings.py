@@ -25,17 +25,21 @@ SECURE_HSTS_SECONDS = config('SECURE_HSTS_SECONDS', cast=int)
 # добавляет preload директиву в заголовок
 SECURE_HSTS_PRELOAD = config('SECURE_HSTS_PRELOAD', default=True, cast=bool)
 # добавляет includeSubDomains директиву в заголовок
-SECURE_HSTS_INCLUDE_SUBDOMAINS = config('SECURE_HSTS_INCLUDE_SUBDOMAINS', default=True, cast=bool)
-SECURE_CONTENT_TYPE_NOSNIFF = config('SECURE_CONTENT_TYPE_NOSNIFF', default=True, cast=bool)
-SECURE_BROWSER_XSS_FILTER = config('SECURE_BROWSER_XSS_FILTER', default=True, cast=bool)
+SECURE_HSTS_INCLUDE_SUBDOMAINS = config(
+    'SECURE_HSTS_INCLUDE_SUBDOMAINS', default=True, cast=bool)
+SECURE_CONTENT_TYPE_NOSNIFF = config(
+    'SECURE_CONTENT_TYPE_NOSNIFF', default=True, cast=bool)
+SECURE_BROWSER_XSS_FILTER = config(
+    'SECURE_BROWSER_XSS_FILTER', default=True, cast=bool)
 # все не-HTTPS запросы на HTTPS
 SECURE_SSL_REDIRECT = config('SECURE_SSL_REDIRECT', default=True, cast=bool)
 # Указывает использовать ли безопасные куки для сессии
-SESSION_COOKIE_SECURE = config('SESSION_COOKIE_SECURE', default=True, cast=bool)
+SESSION_COOKIE_SECURE = config(
+    'SESSION_COOKIE_SECURE', default=True, cast=bool)
 # Указывает, использовать ли безопасные куки для CSRF.
 CSRF_COOKIE_SECURE = config('CSRF_COOKIE_SECURE', default=True, cast=bool)
 
-X_FRAME_OPTIONS=config('X_FRAME_OPTIONS')
+X_FRAME_OPTIONS = config('X_FRAME_OPTIONS')
 
 DEBUG = config("DEBUG", default=True, cast=bool)
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
@@ -46,10 +50,10 @@ APPEND_SLASH = True
 # Application definition
 INSTALLED_APPS = [
     # django-admin-tools
-    'admin_tools' ,
-    'admin_tools.theming' ,
-    'admin_tools.menu' ,
-    'admin_tools.dashboard' ,
+    'admin_tools',
+    'admin_tools.theming',
+    'admin_tools.menu',
+    'admin_tools.dashboard',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -162,7 +166,10 @@ DATE_INPUT_FORMATS = ['%d.%m.%Y']
 IMPORT_EXPORT_USE_TRANSACTIONS = True
 WSGI_APPLICATION = 'orten.wsgi.application'
 
-gettext = lambda s: s
+
+def gettext(s): return s
+
+
 LANGUAGES = (
     ('ru', gettext('Russian')),
     ('uk', gettext('Ukrainian')),
@@ -191,7 +198,7 @@ EMAIL_PORT = config("EMAIL_PORT", cast=int)
 EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
 EMAIL_HOST_USER = config("EMAIL_HOST_USER")
 EMAIL_USE_TLS = config("EMAIL_USE_TLS")
-ADMINS=[('Ivan', 'orten.in.ua@gmail.com'),]
+ADMINS = [('Ivan', 'orten.in.ua@gmail.com'), ]
 DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL")
 # Асинхронность
 DRAMATIQ_RESULT_BACKEND = {
@@ -222,7 +229,7 @@ CACHES = {
     }
 }
 CART_SESSION_ID = 'cart'
-SESSION_COOKIE_AGE = 7200 #Время жизни сессии секундах
+SESSION_COOKIE_AGE = 7200  # Время жизни сессии секундах
 
 # django-debug-toolbar
 INTERNAL_IPS = ('127.0.0.1',)

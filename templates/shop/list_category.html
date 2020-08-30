@@ -21,15 +21,15 @@
 	<li>{{ instance.name }}</li>
 {% endblock %}
 {% block content %}
-	<section>
+	<section class="main-container">
 		<aside>
 			{% include "include/include_list_category.html" %}
 		</aside>
-		<article>
-			<div class="hd_content"><i class="fa fa-list"></i>
+		<main>
+			<div class="header-for-block"><i class="fa fa-list"></i>
 				{{instance.name}}
 			</div>
-			<div class="content">
+			<div class="card-grid">
 				{% for item in instance.children.all|dictsort:"id" %}
 				<div class="card">
 					{% if item.product.count %}
@@ -52,6 +52,6 @@
 				</div>
 				{% endfor %}
 			</div>
-		</article>
+		</main>
 	</section>
 {% endblock %}

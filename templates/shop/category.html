@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load bootstrap4 %}
 {% load static %}
 {% load mptt_tags %}
 {% load i18n %}
@@ -13,15 +12,15 @@
     <li>Категории</li>
 {% endblock %}
 {% block content %}
-<section>
+<section class="main-container">
     <aside>
         {% include "include/include_list_category.html" %}
     </aside>
-    <article>
-        <div class="hd_content">
+    <main>
+        <div class="header-for-block">
             <i class="fas fa-th-large"></i>Список Категорий
         </div>
-        <div class="content">
+        <div class="card-grid">
             {% for item in category_all %}
             {% if item.is_root_node %}
             <div class="card">
@@ -39,6 +38,6 @@
             {% endif %}
             {% endfor %}
         </div>
-    </article>
+    </main>
 </section>
 {% endblock %}
