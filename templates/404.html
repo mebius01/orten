@@ -10,14 +10,24 @@
 {% endblock %}
 {% block content %}
 <title>Orten - ERROR 404</title>
-<section>
-  <aside style="position: relative;">
-    <h1 style="color: red; font-size: 250%; margin: 0;transform: translate(-50%, -50%);position: absolute;top: 50%;left: 50%;"><span>Error 404</span></h1>     
-  </aside>
-  <article>
-    <p style="text-align: center">Возможно, страница, которую вы ищете, не сущесвует, изменилось ее имя или временно недоступна из-за работ на сервере.</p>
-    <p style="text-align: center">Можно венуться <a href="{% url 'shop:home' %}">На главную</a></p>
-    <p style="text-align: center">Возвращайтесь к нам :)</p>
-  </article>
-</section>
+<section class="error">
+   <h1 class="rotate-center">404</h1>
+  <div class="error__content">
+    <p>
+      Ууупс! Страница не найдена. Причины:
+    </p>
+    <ul>
+      <li>Ошибка в адресе</li>
+      <li>Документ был удален с ресурса</li>
+      <li>Сервер работает некорректно</li>
+    </ul>
+    <p>
+      Можно венуться:
+    </p>
+    <ul>
+      <li class="cool_link"><a href="{% url 'shop:home' %}">Главную</a></li>
+    </ul>
+    <p>Возвращайтесь к нам :)</p>
+  </div>
+    </section>
 {% endblock %}

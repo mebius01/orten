@@ -195,8 +195,17 @@ with open('json/'+prov+'.json') as json_file:
                                 raw_product.iloc[c, 5], rates, 0.30)
                             provider = prov
                             available, stock = "1", "1"
-                            product_file_not_in_db.writelines(id_product+','+category+','+name+','+slug+','+provider +
-                                                              ','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
+                            product_file_not_in_db.writelines(id_product +
+                                                              ',' + category +
+                                                              ',' + name +
+                                                              ',' + slug +
+                                                              ',' + provider +
+                                                              ',' + vendor_code +
+                                                              ',' + vendor +
+                                                              ',' + type_product +
+                                                              ',' + price +
+                                                              ',' + stock +
+                                                              ','+available+'\n')
                             b += 1
         c += 1
 # 6 Формируем обновленный файл для экспорта dw-new.json

@@ -46,7 +46,6 @@ raw_product = pd.read_excel('xlsx/'+prov+'.xls')
 # 0 Удалить все ненужные строки. Нужные строки определаются prov_r
 raw_product = raw_product.dropna(subset=prod_r)
 c = 0
-id_t = 14918  # Последний ID в базе Product.objects.latest('id').id
 data_list = {}
 a, b = 0, 0
 
@@ -91,8 +90,17 @@ with open('json/'+prov+'.json') as json_file:
                 price = price.replace(",", ".")
                 provider = prov
                 available, stock = "1", "1"
-                product_file_not_in_db.writelines(id_product+','+category+','+name+','+slug+','+provider +
-                                                  ','+vendor_code+','+vendor+','+type_product+','+price+','+stock+','+available+'\n')
+                product_file_not_in_db.writelines(id_product +
+                                                  ',' + category +
+                                                  ',' + name +
+                                                  ',' + slug +
+                                                  ',' + provider +
+                                                  ',' + vendor_code +
+                                                  ',' + vendor +
+                                                  ',' + type_product +
+                                                  ',' + price +
+                                                  ',' + stock +
+                                                  ','+available+'\n')
                 b += 1
         c += 1
 # 6 Формируем обновленный файл для экспорта baden-new.json
