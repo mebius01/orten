@@ -38,5 +38,5 @@ urlpatterns = [
     path('service/<slug:slug>', DetailView.as_view(model = Services, template_name = 'shop/service_detail.html'), name='service_detail'),
     path('shop/<slug:slug>/', ProductDetail.as_view(), name='product_detail'),
     path('polygraphy/<int:pk>/', DetailView.as_view(model = Polygraphy,	template_name = 'shop/polygraphy_detail.html'), name='polygraphy_detail'),
-    path('category/<path:path>/', ListCategory.as_view(), name='list_category'),
+    path('category/<path:path>/', ListCategory.as_view(), name='child_category'),
     ]

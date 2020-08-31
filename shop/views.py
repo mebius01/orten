@@ -4,7 +4,6 @@ from .models import Category, Services, Product, Polygraphy #, ProductStock
 from cart.forms import CartAddProductForm
 from .filters import ProductFilter, ServiceFilter # ОСОБОЕ ВНИМЕНИЕ!!! При python manage.py makemigrations && python manage.py migrate КОМЕНТИРОВАТЬ ЭТУ СТРОКУ
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from watson import search as watson
 from django.views.decorators.cache import cache_page
 from django.db.models import Q
 from django.core.cache import cache
@@ -42,7 +41,7 @@ class ProductDetail(DetailView, FormView):
 
 class ListCategory(ListView):
 	model = Product
-	template_name = 'shop/list_category.html'
+	template_name = 'shop/child_category.html'
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
 		"""с помощью get_full_path() получаем строку урла

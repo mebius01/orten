@@ -266,20 +266,20 @@ button{
   .breadcrumbs {
     @extend .padding-12;
     display: flex;
+    font-size: 14px;
     @media (max-width: 640px) {
       flex-direction: column;
     }
     li {
-
       a {
         @extend .link_style;
         color: $green-color;
-        margin-right: 8px;
+        margin-right: 3px;
         &::after {
           cursor: default;
           content: "\002F";
           color: $text-color;
-          margin-left: 8px;
+          margin-left: 3px;
         }
       }
     }

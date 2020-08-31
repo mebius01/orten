@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load bootstrap4 %}
 {% load static %}
 {% load flatpages %}
 {% load i18n %}
@@ -15,20 +14,20 @@
     <li>{{object.flatpage.title}}</li>
 {% endblock %}
 {% block content %}
-<section class="main-container">
-	<aside>
-		{% include "include/include_list_category.html" %}
-	</aside>
-    <main>
-	    <div class="header-for-block"><i class="fas fa-list pr-3"></i>{{ object.flatpage.title }}</div>
-        <div class="img">
-            <img src="/static/shop/img/polygraphy/{{ object.slug }}.jpg" alt="{{ object.flatpage.title }}">
-        </div>
-        <div class="content-1">{{ object.flatpage.content|safe }}</div>
-        <div>{{object.category}}</div>
-        <div>{{object.name}}</div>
-        <div>{{object.price}}</div>
-        <div>{{object.format_fild}}</div>
-    </main>
-</section>
+    <section class="main-container">
+        <aside>
+            {% include "include/aside_category_include.html" %}
+        </aside>
+        <main>
+            <div class="header-for-block"><i class="fas fa-list pr-3"></i>{{ object.flatpage.title }}</div>
+            <div class="img">
+                <img src="/static/shop/img/polygraphy/{{ object.slug }}.jpg" alt="{{ object.flatpage.title }}">
+            </div>
+            <div class="content-1">{{ object.flatpage.content|safe }}</div>
+            <div>{{object.category}}</div>
+            <div>{{object.name}}</div>
+            <div>{{object.price}}</div>
+            <div>{{object.format_fild}}</div>
+        </main>
+    </section>
 {% endblock %}

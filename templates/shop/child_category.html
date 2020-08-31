@@ -23,7 +23,7 @@
 {% block content %}
 	<section class="main-container">
 		<aside>
-			{% include "include/include_list_category.html" %}
+			{% include "include/aside_category_include.html" %}
 		</aside>
 		<main>
 			<div class="header-for-block"><i class="fa fa-list"></i>
@@ -37,7 +37,7 @@
 					{% elif item.services.count %}
 					<a class="card__link" href="{% url 'shop:service_list' %}?category={{item.id}}">
 					{% else %}
-					<a class="card__link" href="{% url 'shop:list_category' item.slug %}">
+					<a class="card__link" href="{% url 'shop:child_category' item.slug %}">
 					{% endif %}
 						<div class="card__img">
 							<img class="card-img-top"
@@ -55,3 +55,4 @@
 		</main>
 	</section>
 {% endblock %}
+{% comment %} rename {% endcomment %}

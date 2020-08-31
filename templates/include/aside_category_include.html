@@ -1,3 +1,4 @@
+{% comment %} rename {% endcomment %}
 {% load flatpages %}
 {% load cache %}
 {% load i18n %}
@@ -23,7 +24,7 @@
 				{% elif i.services.count %}
 				<a href="{% url 'shop:service_list' %}?category={{i.id}}">
 				{% else %}
-				<a href="{% url 'shop:list_category' i.slug %}">
+				<a href="{% url 'shop:child_category' i.slug %}">
 				{% endif %}
             {{i.name}}
             <span>{% firstof i.product.count i.services.count %}</span></a></li>
@@ -61,7 +62,7 @@
 				{% elif i.services.count %}
 				<a href="{% url 'shop:service_list' %}?category={{i.id}}">
 				{% else %}
-				<a href="{% url 'shop:list_category' i.slug %}">
+				<a href="{% url 'shop:child_category' i.slug %}">
 				{% endif %}
             {{i.name}}
             <span>{% firstof i.product.count i.services.count %}</span></a></li>

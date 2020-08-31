@@ -326,6 +326,7 @@ button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  font-size: 14px;
 }
 
 @media (max-width: 640px) {
@@ -339,14 +340,14 @@ button {
 
 .header .breadcrumbs li a {
   color: #85C987;
-  margin-right: 8px;
+  margin-right: 3px;
 }
 
 .header .breadcrumbs li a::after {
   cursor: default;
   content: "\002F";
   color: #2E4053;
-  margin-left: 8px;
+  margin-left: 3px;
 }
 
 .footer {

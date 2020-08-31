@@ -17,7 +17,7 @@
         {% if i.services.count %}
             <li>{{ i.name }}</li>
         {% else %}
-            <li><a href="{% url 'shop:list_category' i.slug %}">{{ i.name }}</a></li>
+            <li><a href="{% url 'shop:child_category' i.slug %}">{{ i.name }}</a></li>
         {% endif %}
     {% endfor %}
 {% endblock %}
@@ -30,7 +30,7 @@
                 <div class="card-grid">
                     {% for item in object_list %}
                     <script type="application/ld+json">
-                        {% include "include/home.json" %}
+                        {% include "include/main_card_include.json" %}
                     </script>
                         {% include "include/service_card.html" %}
                     {% endfor %}

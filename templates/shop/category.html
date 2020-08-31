@@ -12,32 +12,33 @@
     <li>Категории</li>
 {% endblock %}
 {% block content %}
-<section class="main-container">
-    <aside>
-        {% include "include/include_list_category.html" %}
-    </aside>
-    <main>
-        <div class="header-for-block">
-            <i class="fas fa-th-large"></i>Список Категорий
-        </div>
-        <div class="card-grid">
-            {% for item in category_all %}
-            {% if item.is_root_node %}
-            <div class="card">
-                <a class="card__link" href="{% url 'shop:list_category' item.get_absolute_url %}">
-                    <div class="card__img">
-                        <img class="card-img-top"
-                        src="{% if item.image %}{{ item.image.url }}
-                        {% else %}{% static "img/no_image.png" %}
-                        {% endif %}" alt="{{item.name}}"
-                        title="{{item.name}}">
-                    </div>
-                    <h2 class="card--text-centr card__name title-h2">{{item.name}}</h2>
-                </a>
+    <section class="main-container">
+        <aside>
+            {% include "include/aside_category_include.html" %}
+        </aside>
+        <main>
+            <div class="header-for-block">
+                <i class="fas fa-th-large"></i>Список Категорий
             </div>
-            {% endif %}
-            {% endfor %}
-        </div>
-    </main>
-</section>
+            <div class="card-grid">
+                {% for item in category_all %}
+                {% if item.is_root_node %}
+                <div class="card">
+                    <a class="card__link" href="{% url 'shop:child_category' item.get_absolute_url %}">
+                        <div class="card__img">
+                            <img class="card-img-top"
+                            src="{% if item.image %}{{ item.image.url }}
+                            {% else %}{% static "img/no_image.png" %}
+                            {% endif %}" alt="{{item.name}}"
+                            title="{{item.name}}">
+                        </div>
+                        <h2 class="card--text-centr card__name title-h2">{{item.name}}</h2>
+                    </a>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </main>
+    </section>
 {% endblock %}
+{% comment %} rename {% endcomment %}

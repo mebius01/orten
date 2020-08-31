@@ -15,7 +15,7 @@
         {% if i.services.count %}
 		    <li><a href="{% url 'shop:service_list' %}?category={{i.id}}">{{ i.name }}</a></li>
 		{% else %}
-		    <li><a href="{% url 'shop:list_category' i.slug %}">{{ i.name }}</a></li>
+		    <li><a href="{% url 'shop:child_category' i.slug %}">{{ i.name }}</a></li>
 		{% endif %}
     {% endfor %}
         <li>{{object.name}}</li>

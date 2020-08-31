@@ -10,21 +10,21 @@
 {% block content %}
 	<section class="main-container">
 		<aside>
-			{% include "include/include_list_category.html" %}
-    </aside>
+			{% include "include/aside_category_include.html" %}
+		</aside>
 		<main>
 			<div class="header-for-block">
 				<i class="fas fa-star"></i>Новинки и акции
 			</div>
 			<div class="card-grid">
 				{% for item in object_list %}
-				<script type="application/ld+json">
-					{% include "include/home.json" %}
-				</script>
-					{% include "include/product_card.html" %}
+					<script type="application/ld+json">
+						{% include "include/main_card_include.json" %}
+					</script>
+						{% include "include/main_card_include.html" %}
 				{% endfor %}
 			</div>
 		</main>
 	</section>
 {% endblock %}
-{% comment %} {% if item.action and item.end_action|date > date_now|date %} {% endcomment %}
+{% comment %} rename {% endcomment %}

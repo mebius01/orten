@@ -15,7 +15,7 @@
         {% if i.product.count %}
 		    <li><a href="{% url 'shop:product_list' %}?category={{i.id}}">{{ i.name }}</a></li>
 		{% else %}
-		    <li><a href="{% url 'shop:list_category' i.slug %}">{{ i.name }}</a></li>
+		    <li><a href="{% url 'shop:child_category' i.slug %}">{{ i.name }}</a></li>
 		{% endif %}
     {% endfor %}
         <li>{{object.name}}</li>
