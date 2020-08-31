@@ -1,3 +1,5 @@
+import '../css/main.css'
+
 // top down and bottom up
 var scrollA = document.getElementById('scrollA');
 var scrollB = document.getElementById('scrollB');
@@ -28,4 +30,4 @@ scrollB.addEventListener('click', downFunction)
 
 // Canegories
 var categories = document.getElementById("categories")
-console.log("Hai");
+console.log("Ha! this is test Webpack!");
