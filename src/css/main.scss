@@ -10,7 +10,6 @@ $global_blue: #428bca;
 html {
   height: 100%;
   color: $text-color;
-  background: red;
 }
 li {list-style: none;}
 hr{
@@ -188,6 +187,7 @@ button{
       li {
         a {
           @extend .link_style;
+          text-align: center;
           margin: 5px;
         }
       }
@@ -206,7 +206,7 @@ button{
       align-items: center;
       visibility: hidden;
 
-      @media (max-width: 650px) {
+      @media (max-width: 730px) {
         visibility: initial;
       }
     }
@@ -214,7 +214,7 @@ button{
       @extend .space-between;
       align-items: center;
 
-      @media (max-width: 650px) {
+      @media (max-width: 730px) {
         padding: 5px 0;
         flex-direction: column;
         align-items: flex-start;
@@ -629,4 +629,10 @@ table {text-align: center;}
   bottom: 30px;
   background: hsla(0, 86%, 59%, 0.6);
   color: white;
+}
+
+.root {
+  li {
+    margin-left: 12px;
+  }
 }

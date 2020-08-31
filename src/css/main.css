@@ -9,7 +9,6 @@
 html {
   height: 100%;
   color: #2E4053;
-  background: red;
 }
 
 li {
@@ -239,6 +238,7 @@ button {
 }
 
 .header .main_categories li a {
+  text-align: center;
   margin: 5px;
 }
 
@@ -264,7 +264,7 @@ button {
   visibility: hidden;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 730px) {
   .header nav .toggle {
     visibility: initial;
   }
@@ -276,7 +276,7 @@ button {
           align-items: center;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 730px) {
   .header nav .menu {
     padding: 5px 0;
     -webkit-box-orient: vertical;
@@ -762,5 +762,9 @@ table {
   bottom: 30px;
   background: rgba(240, 61, 61, 0.6);
   color: white;
+}
+
+.root li {
+  margin-left: 12px;
 }
 /*# sourceMappingURL=main.css.map */

@@ -2,37 +2,34 @@
 {% load flatpages %}
 {% load cache %}
 {% load i18n %}
-{% cache 900 sidebar %}
+{% load mptt_tags %}
+{% comment %} {% cache 900 sidebar %} {% endcomment %}
 <div class="header-for-block" id="categories"><i class="fas fa-th-list"></i>Категории</div>
 <div class="accordion">
-    <div class="header-for-block"><i class="fas fa-bars"></i>Полиграфия</div>
-        <ul class="submenu">
-        {% get_flatpages as flatpages %}
-        {% for item in flatpages|dictsort:"id" %}
-            <li class="cool_link"><a class="text-muted" href="{% url 'shop:polygraphy_detail' item.id%}">{{ item.title }}</a></li>
-        {% endfor %}
-        </ul>
+    <ul class="root">
     {% for item in category_all %}
-	    {% if item.is_root_node %}
-            <div class="header-for-block" id="{{item.id}}"><i class="fas fa-bars"></i>{{item.name}}</div>
+    {% if item.is_root_node %}
+            <li class="header-for-block" id="{{item.id}}"><i class="fas fa-bars"></i>{{item.name}}</li>
         {% endif %}
-    <ul class="submenu">
-    	{% for i in item.get_descendants %}
-        <li class="cool_link" id="{{i.id}}">
-            {% if i.product.count %}
-				<a href="{% url 'shop:product_list' %}?category={{i.id}}">
-				{% elif i.services.count %}
-				<a href="{% url 'shop:service_list' %}?category={{i.id}}">
-				{% else %}
-				<a href="{% url 'shop:child_category' i.slug %}">
-				{% endif %}
-            {{i.name}}
-            <span>{% firstof i.product.count i.services.count %}</span></a></li>
-        {% endfor %}
-    </ul>
+    {% recursetree item.get_descendants %}
+        <li>
+        {% if node.product.count %}
+			<a href="{% url 'shop:product_list' %}?category={{node.id}}">
+		{% elif node.services.count %}
+			<a href="{% url 'shop:service_list' %}?category={{node.id}}">
+		{% else %}
+			<a href="{% url 'shop:child_category' node.slug %}">
+		{% endif %}
+         <span class="space-between"> <i>{{node.name}}</i>
+                                    <b>{% firstof node.product.count node.services.count %}</b>
+        </span>
+        </a></li>
+
+    {% endrecursetree %}
     {% endfor %}
+</ul>
 </div>
-{% endcache %}
+{% comment %} {% endcache %} {% endcomment %}
 
 {% comment %}
 
@@ -71,5 +68,34 @@
     {% endfor %}
 </div>
 {% endcache %}
+
+
+<div class="header-for-block"><i class="fas fa-bars"></i>Полиграфия</div>
+        <ul class="submenu">
+        {% get_flatpages as flatpages %}
+        {% for item in flatpages|dictsort:"id" %}
+            <li class="cool_link"><a class="text-muted" href="{% url 'shop:polygraphy_detail' item.id%}">{{ item.title }}</a></li>
+        {% endfor %}
+        </ul>
+    {% for item in category_all %}
+	    {% if item.is_root_node %}
+            <div class="header-for-block" id="{{item.id}}"><i class="fas fa-bars"></i>{{item.name}}</div>
+        {% endif %}
+    <ul class="submenu">
+    	{% for i in item.get_descendants %}
+        <li class="cool_link" id="{{i.id}}">
+            {% if i.product.count %}
+				<a href="{% url 'shop:product_list' %}?category={{i.id}}">
+				{% elif i.services.count %}
+				<a href="{% url 'shop:service_list' %}?category={{i.id}}">
+				{% else %}
+				<a href="{% url 'shop:child_category' i.slug %}">
+				{% endif %}
+            {{i.name}}
+            <span>{% firstof i.product.count i.services.count %}</span></a></li>
+        {% endfor %}
+    </ul>
+    {% endfor %}
+
 
 {% endcomment %}
