@@ -10,7 +10,7 @@
         <meta charset="utf-8">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'shop/css/main.css' %}" type="text/css">
-        <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}">
+        <link rel="shortcut icon" type="image/png" href="{% static 'shop/img/favicon-32x32.png' %}">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
         {% block head %}
             {{ head }}
@@ -149,9 +149,9 @@
                 <li><a href="{% url 'shop:contact' %}">Контакты</a></li>
             </ul>
             <div class="control-block">
-            <div class="langdown">
-                <a href=""><i class="fas fa-globe"></i></a>
-            </div>
+                <div class="langdown">
+                    <a href=""><i class="fas fa-globe"></i></a>
+                </div>
                 <!-- Language -->
                 {% comment %} <div class="langdown">
                     <span class="dropbtn">
@@ -191,6 +191,9 @@
                         <input type="text" placeholder="Search..." name="search">
                     </form>
                 </div>
+                <div class="heart">
+                    <i class="fas fa-heart"></i>
+                </div>
                 <div class="card_container">
                     {% with total_items=cart|length %}
                         {% if cart|length > 0 %}
@@ -221,7 +224,7 @@
     <!-- Go To Top -->
     <footer class="footer">
         <div class="map">
-            <img src="{% static "shop/img/icon/map.png" %}" alt="">
+            <img src="{% static 'shop/img/map.png' %}" alt="">
         </div>
         <ul class="hd_1">
             <li><a href="{% url 'shop:product_list' %}">Что мы продаем</a></li>
@@ -267,5 +270,8 @@
     {% block javascript %}
     <script src="{% static 'shop/js/main.js' %}"></script>
     {% endblock javascript %}
+    <div class="msg error-msg">
+        test msg meny text and do not long
+    </div>
 </body>
 </html>

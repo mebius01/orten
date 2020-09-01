@@ -4,31 +4,25 @@
 {% block breadcrumbs %}
 {{ block.super }}<li><a href="#">Заказ</li></a>
 {% endblock %}
-{% load bootstrap4 %}
 {% block title %}
   Оформление заказа
 {% endblock %}
 {% block content %}
-<section>
+<section class="main-container">
 	<aside>
-        <div class="hd_content"><i class="fab fa-wpforms pr-3"></i>Заполнить Форму</div>
+        <div class="header-for-block"><i class="fab fa-wpforms pr-3"></i>Заполнить Форму</div>
         <div class="accordion">
             <form class="order-form" action="." method="post">
-                {% bootstrap_field form.delivery_method show_label=False%}
-                {% bootstrap_field form.pay_method show_label=False%}
-                {% bootstrap_field form.city show_label=False%}
-                {% bootstrap_field form.first_name show_label=False%}
-                {% bootstrap_field form.last_name alert_type='warning' show_label=False%}
-                {% bootstrap_field form.email show_label=False%}
-                {% bootstrap_field form.mobile_phone show_label=False%}
-                {% bootstrap_field form.note_text show_label=False%}
+                
+                {{form}}
+                
                 {% csrf_token %}
                 <button type="submit" class="apply">Отправить<i class="fab fa-get-pocket pl-2"></i></button>
             </form>
         </div>
     </aside>
     <article>
-	    <div class="hd_content"><i class="fas fa-truck pr-3"></i>Ваш Заказ</div>
+	    <div class="header-for-block"><i class="fas fa-truck pr-3"></i>Ваш Заказ</div>
 	    <div class="content">
             <div class="cart_list">
                 <span class="s"><strong>Фото</strong></span>

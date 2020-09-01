@@ -1,5 +1,7 @@
 import '../img/logo.png'
-import '../css/main.css'
+import '../img/map.png'
+import '../img/favicon-32x32.png'
+import '../css/main.scss'
 
 
 // top down and bottom up

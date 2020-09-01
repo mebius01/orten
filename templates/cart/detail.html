@@ -19,17 +19,9 @@
             </div>
 	</aside>
 	<main>
-		<div lass="header-for-block"><i class="fas fa-truck-loading"></i>ВАШ ЗАКАЗ</div>
+		<div class="header-for-block"><i class="fas fa-truck-loading"></i>ВАШ ЗАКАЗ</div>
             <div class="content">
                     <div class="cart_list">
-                        <span class="s"><strong>Фото</strong></span>
-                        <span class="s"><strong>Бренд</strong></span>
-                        <span class="s"><strong>Название</strong></span>
-                        <span class="s"><strong>Артикул</strong></span>
-                        <span class="s"><strong>Цена ₴</strong></span>
-                        <span class="s"><strong>Количество</strong></span>
-                        <span class="s"><strong>Сумма</strong></span>
-                        <span class="s"><strong>Удалить</strong></span>
                         <!-- динамический контент -->
                         {% for item in cart %}
 						{% with product=item.product %}

@@ -223,8 +223,13 @@ button{
       }
       li {
         a {
+          border-bottom: $green-color 3px solid;
           @extend .link_style;
           padding: 5px;
+          &:hover {
+            border-bottom: $text-color 3px solid;
+            transition: border-bottom 2s;
+          }
         }
       }
     }
@@ -232,17 +237,15 @@ button{
       @extend .space-between;
       padding: 5px 0;
       align-items: center;
-      
+      .marg-10 {
+        margin: 0 10px;
+      }
       .langdown {
+        @extend .marg-10;
         a {
           @extend .link_style;
         }
-
-        i {
-          margin-right: 20px;
-        }
       }
-
       .search_container {
         width: 40vh;
         input {
@@ -254,13 +257,13 @@ button{
 
         }
       }
+      .heart {
+        @extend .marg-10;
+      }
       .card_container {
+        @extend .marg-10;
         a {
           @extend .link_style;
-        }
-
-        i {
-          margin-left: 20px;
         }
       }
     }
@@ -355,6 +358,15 @@ button{
 }
 .accordion {
   padding-top: 5px;
+  li {
+    .node-count {
+      color: $global_blue;
+    }
+    a {
+      @extend .link_style;
+      padding: 2px 0 2px 12px;
+    }
+  }
   .submenu {
     padding-left: 24px;
     li {
@@ -389,6 +401,7 @@ button{
   display: grid;
   grid-template-columns: 30% auto;
   gap: 12px;
+
   @media (max-width: 767px) {
     grid-template-columns: 40% auto;
   }
@@ -434,6 +447,8 @@ button{
     transform: rotate(-45deg);
   }
   &__name {
+    margin-top: 12px;
+    margin-bottom: 5px;
     text-transform: uppercase;
     font-size: 16px;
     text-align: center;
@@ -657,4 +672,91 @@ table {text-align: center;}
     height: 32px;
     margin-top: 12px;
     margin-bottom: 12px;
+}
+/* CART */
+.cart_list{
+  display: grid;
+  grid-template-rows: auto auto auto auto auto auto auto auto;
+  /* grid-template-columns: 50px auto auto auto 100px auto 140px; */
+}
+
+.cart_list span{
+  padding: 5px;
+  text-align: left;
+}
+.cart_list span a{
+  text-decoration: none;
+  color: #428bca;
+}
+.img_list{
+  width: 40px;
+  height: 40px;
+}
+
+.cart_button button{
+  width: 48%;
+  height: 32px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+/* cart_list */
+@media (min-width: 1200px){
+  .cart_list{grid-template-columns: auto auto auto auto auto 140px auto auto;}
+  .s-hr{display: none;}
+  .cart_list span b{display: none;}
+  .cart_list span{ border-bottom: 1px solid var(--global_geen);}
+}
+@media (min-width: 992px) and (max-width: 1199px){
+  .cart_list{grid-template-columns: auto auto auto auto auto 140px auto auto;}
+  .s-hr{display: none;}
+  .cart_list span b{display: none;}
+  .cart_list span{border-bottom: 1px solid var(--global_geen);}
+}
+@media (min-width: 768px) and (max-width: 991px){
+  .cart_list img{
+      width: 100%;
+      height: 100%;
+  }
+  .s{display: none;}
+  .cart_list span{border-bottom: none;}
+}
+@media (max-width: 767px){
+  .cart_list img{
+      width: 100%;
+      height: 100%;
+  }
+  .s{display: none;}
+  .cart_list span{border-bottom: none;}
+}
+@media (max-width: 650px){
+  .cart_list img{
+      width: 100%;
+      height: 100%;
+  }
+  .s{display: none;}
+  .cart_list span{border-bottom: none;}
+}
+@media (max-width: 480px){
+  .cart_list img{
+      width: 100%;
+      height: 100%;
+  }
+  .s{display: none;}
+  .cart_list span{border-bottom: none;}
+}
+
+.msg {
+  display: none;
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  @extend .padding-12;
+  // border: 2px solid $green-color;
+  border-radius: 6px;
+}
+.error-msg{
+  background: #ffd4d4;
+}
+.acss-msg {
+  background: #d4ffd6;
 }

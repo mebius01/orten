@@ -24,4 +24,4 @@ class CategorySitemap(Sitemap):
 	def items(self):
 		return Category.objects.all()
 	def location(self, item):
-		return reverse('shop:list_category', args=[item.get_absolute_url()])
+		return reverse('shop:child_category', args=[item.get_absolute_url()])

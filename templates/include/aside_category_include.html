@@ -5,30 +5,27 @@
 {% load mptt_tags %}
 {% comment %} {% cache 900 sidebar %} {% endcomment %}
 <div class="header-for-block" id="categories"><i class="fas fa-th-list"></i>Категории</div>
-<div class="accordion">
-    <ul class="root">
+<ul class="accordion">
     {% for item in category_all %}
-    {% if item.is_root_node %}
+        {% if item.is_root_node %}
             <li class="header-for-block" id="{{item.id}}"><i class="fas fa-bars"></i>{{item.name}}</li>
         {% endif %}
-    {% recursetree item.get_descendants %}
-        <li>
-        {% if node.product.count %}
-			<a href="{% url 'shop:product_list' %}?category={{node.id}}">
-		{% elif node.services.count %}
-			<a href="{% url 'shop:service_list' %}?category={{node.id}}">
-		{% else %}
-			<a href="{% url 'shop:child_category' node.slug %}">
-		{% endif %}
-         <span class="space-between"> <i>{{node.name}}</i>
-                                    <b>{% firstof node.product.count node.services.count %}</b>
-        </span>
-        </a></li>
-
-    {% endrecursetree %}
+        {% for i in item.get_descendants %}
+            <li class="space-between">
+                {% if i.product.count %}
+                    <a href="{% url 'shop:product_list' %}?category={{i.id}}">
+                {% elif i.services.count %}
+                    <a href="{% url 'shop:service_list' %}?category={{i.id}}">
+                {% else %}
+                    <a href="{% url 'shop:child_category' i.slug %}">
+                {% endif %}
+                    <span class="node-name">{{i.name}}</span>
+                </a>
+                <span class="node-count">{% firstof i.product.count i.services.count %}</span>
+            </li>
+        {% endfor %}
     {% endfor %}
 </ul>
-</div>
 {% comment %} {% endcache %} {% endcomment %}
 
 {% comment %}
