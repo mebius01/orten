@@ -1,4 +1,6 @@
+import '../img/logo.png'
 import '../css/main.css'
+
 
 // top down and bottom up
 var scrollA = document.getElementById('scrollA');

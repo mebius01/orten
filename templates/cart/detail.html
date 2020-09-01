@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% load bootstrap4 %}
 {% load static %}
 {% load i18n %}
 {% block breadcrumbs %}
@@ -12,28 +11,16 @@
     <meta name="description" content="Richo, Duplo, Konica Minolta, ColorWay - Купить в Николаеве, интернет-магазин Ортен ★ Ортен более 20 лет рынке копировальной техники и сервисного обслуживания">
 {% endblock %}
 {% block content %}
-<section>
+<section class="main-container">
 	<aside>
-        <div class="hd_content"><i class="fas fa-info-circle"></i>Информация</div>
+        <div class="header-for-block"><i class="fas fa-info-circle"></i>Информация</div>
             <div class="accordion">
-                <div class="link"><i class="fas fa-truck"></i>Доставка</div>
-                    <div class="submenu">
-                        {% include 'include/include_delivery.html' %}
-                    </div>
-                <div class="link"><i class="far fa-credit-card"></i>Оплата</div>
-                    <div class="submenu">
-                        {% include 'include/include_payment.html' %}
-                    </div>
-                <div class="link"><i class="fas fa-phone"></i>Контакты</div>
-                    <div class="submenu">
-                        {% include 'include/include_contact.html' %}
-                    </div>
+                
             </div>
 	</aside>
-	<article>
-		<div class="hd_content"><i class="fas fa-truck-loading"></i>ВАШ ЗАКАЗ</div>
+	<main>
+		<div lass="header-for-block"><i class="fas fa-truck-loading"></i>ВАШ ЗАКАЗ</div>
             <div class="content">
-                <div class="cart">
                     <div class="cart_list">
                         <span class="s"><strong>Фото</strong></span>
                         <span class="s"><strong>Бренд</strong></span>
@@ -81,7 +68,6 @@
                         <span></span>
                         <span>Общая сумма: </span>
                         <span><h4>{{ cart.get_total_price }}</h4></span>
-                	</div>
                 </div>
             </div>
             <div class="cart_button">
@@ -92,6 +78,6 @@
                 <button style="float:right;" class="apply">Оформить заказ</button>
                 </a>
             </div>
-	</article>
+	</main>
 </section>
 {% endblock %}

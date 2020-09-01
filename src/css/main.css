@@ -1,3 +1,4 @@
+@import url(/home/iv/project/orten/src/css/normalize.css);
 * {
   margin: 0px;
   padding: 0px;
@@ -764,7 +765,34 @@ table {
   color: white;
 }
 
-.root li {
-  margin-left: 12px;
+/* CART */
+.cart_list {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto auto auto auto auto auto auto auto;
+      grid-template-rows: auto auto auto auto auto auto auto auto;
+  /* grid-template-columns: 50px auto auto auto 100px auto 140px; */
+}
+
+.cart_list span {
+  padding: 5px;
+  text-align: left;
+}
+
+.cart_list span a {
+  text-decoration: none;
+  color: #428bca;
+}
+
+.img_list {
+  width: 40px;
+  height: 40px;
+}
+
+.cart_button button {
+  width: 48%;
+  height: 32px;
+  margin-top: 12px;
+  margin-bottom: 12px;
 }
 /*# sourceMappingURL=main.css.map */
