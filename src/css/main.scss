@@ -193,7 +193,7 @@ button{
         }
       }
     }
-  nav {
+  .nav {
     background-color: $green-color;
     @extend .padding-12;
     @extend .space-between;
@@ -233,34 +233,45 @@ button{
         }
       }
     }
-    .control-block {
+    .control {
       @extend .space-between;
       padding: 5px 0;
       align-items: center;
       .marg-10 {
         margin: 0 10px;
       }
-      .langdown {
+      &_langdown {
         @extend .marg-10;
         a {
           @extend .link_style;
         }
       }
-      .search_container {
-        width: 40vh;
+      &_search {
+        width: 20vw;
+        position: relative;
         input {
           width: 100%;
           height: 32px;
           padding: 5px;
           outline: none;
           border: none;
-
+        }
+        .search_result {
+          @extend .space-between;
+          @extend .padding-12;
+          // margin: auto;
+          width: 60vw;
+          position: absolute;
+          top: 40px;
+          right: 0;
+          background: rgb(228, 228, 228);
+          z-index: 99;
         }
       }
-      .heart {
+      &_heart {
         @extend .marg-10;
       }
-      .card_container {
+      &_cart {
         @extend .marg-10;
         a {
           @extend .link_style;
@@ -429,6 +440,9 @@ button{
   justify-content: space-between;
   &:hover {
     @extend .shadow-hover;
+  }
+  p {
+    padding: 2px 0;
   }
   a {
     @extend .link_style;
@@ -760,3 +774,4 @@ table {text-align: center;}
 .acss-msg {
   background: #d4ffd6;
 }
+
