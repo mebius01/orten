@@ -122,17 +122,23 @@ TEMPLATES = [
 
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 # DATABASES = {"default": env.dj_db_url("DATABASE_URL")}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': config("DB_ENGINE"),
+#         'NAME': config("DB_NAME"),
+#         'USER': config("DB_USER"),
+#         'PASSWORD': config("DB_PASSWORD"),
+#         'HOST': config("DB_HOST"),
+#         'PORT': config("DB_PORT"),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': config("DB_ENGINE"),
-        'NAME': config("DB_NAME"),
-        'USER': config("DB_USER"),
-        'PASSWORD': config("DB_PASSWORD"),
-        'HOST': config("DB_HOST"),
-        'PORT': config("DB_PORT"),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators

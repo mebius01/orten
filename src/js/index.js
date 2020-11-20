@@ -5,11 +5,10 @@ import '../css/main.scss'
 
 
 // top down and bottom up
-var scrollA = document.getElementById('scrollA');
-var scrollB = document.getElementById('scrollB');
-var heightDoc;
+const scrollA = document.getElementById('scrollA');
+const scrollB = document.getElementById('scrollB');
 window.addEventListener('scroll', function() {
-    heightDoc = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const heightDoc = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     if (document.documentElement.scrollTop > 100) {
         scrollA.style.display = "block";
         scrollB.style.display = "block";
@@ -33,5 +32,15 @@ scrollA.addEventListener('click', topFunction)
 scrollB.addEventListener('click', downFunction)
 
 // Canegories
-var categories = document.getElementById("categories")
-console.log("Ha! this is test Webpack!");
+const categories = document.getElementById("categories")
+console.log(categories);
+
+
+const card = document.querySelector(".card")
+
+card.addEventListener("click", cardHendler)
+console.log(card);
+function cardHendler(e) {
+    e.preventDefault()
+    console.log(e.form-footer);
+}

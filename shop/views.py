@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from .models import Category, Services, Product, Polygraphy #, ProductStock
 from cart.forms import CartAddProductForm
-from .filters import ProductFilter, ServiceFilter # ОСОБОЕ ВНИМЕНИЕ!!! При python manage.py makemigrations && python manage.py migrate КОМЕНТИРОВАТЬ ЭТУ СТРОКУ
+# from .filters import ProductFilter, ServiceFilter # ОСОБОЕ ВНИМЕНИЕ!!! При python manage.py makemigrations && python manage.py migrate КОМЕНТИРОВАТЬ ЭТУ СТРОКУ
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.decorators.cache import cache_page
 from django.db.models import Q
@@ -86,7 +86,7 @@ class ServicesListView(FilteredListView):
 	model = Services
 	template_name = "shop/list_service.html"
 	form_class = CartAddProductForm
-	filterset_class = ServiceFilter
+	# filterset_class = ServiceFilter
 	paginate_by = 24
 
 	def get_context_data(self, **kwargs):
@@ -101,7 +101,7 @@ class ProductList(FormView, FilteredListView, SearchView):
 	model = Product
 	template_name = 'shop/list_product.html'
 	form_class = CartAddProductForm
-	filterset_class = ProductFilter
+	# filterset_class = ProductFilter
 	paginate_by = 24
 
 	def get_queryset(self):
